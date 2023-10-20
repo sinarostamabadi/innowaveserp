@@ -1,0 +1,35 @@
+.page-break {
+  display: block;
+  page-break-before: always;
+}
+.print-part * {
+    color: #000;
+    font-size: 3rem !important;
+  }
+  
+  .print-part .dark {
+    color: #fff !important;
+    font-size: 4rem !important;
+  }
+
+  .lines td {
+    border-color: #000;
+  }
+  
+  .bg-black {
+    color: #fff !important;
+  }
+  
+  @media print {
+    body {
+      background-color: #fff !important;
+    }
+  }
+  
+  .print-part th {
+    font-size: 2.5rem !important;
+  }
+  .print-part td {
+    font-size: 3rem !important;
+  }
+  

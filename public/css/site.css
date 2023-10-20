@@ -1,0 +1,126 @@
+* {
+  font-family: "IransansFa", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #3b3e45;
+  overflow-y: auto !important;
+}
+
+.bg-base-color {
+  background-color: #3b3e45 !important;
+}
+
+.base-color {
+  color: #3b3e45 !important;
+}
+
+nav.bg-base-color {
+  background-color: #454b58 !important;
+}
+
+.rc-time-picker-input {
+  margin-top: -5px !important;
+  border: none !important;
+  padding: 0 !important;
+  text-align: center;
+}
+iframe {
+  display: none;
+}
+
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+  background-image: none !important;
+  padding-left: 1rem !important;
+}
+
+.dir-rtl {
+  direction: rtl;
+}
+
+.dir-ltr {
+  direction: ltr;
+}
+
+.Calendar__section {
+  padding: 0 2em !important;
+}
+
+.Calendar__weekDays {
+  padding: 0 1.7em !important;
+}
+
+.Calendar__header {
+  padding: 1.5em 2em !important;
+}
+
+.Calendar {
+  padding-top: 0 !important;
+  width: 28em !important;
+  max-width: 80vw !important;
+  min-height: 28em !important;
+}
+
+.Calendar__day.-rtl {
+  font-size: 1.5em !important;
+  height: 2em !important;
+}
+
+.Calendar__sectionWrapper {
+  min-height: 20em !important;
+}
+
+.Calendar__weekDays {
+  margin-bottom: 0.7em !important;
+  padding: 0 1.7em !important;
+}
+
+.table.table-foot-custom tfoot td, .table.table-foot-custom tfoot th, .table.table-head-custom thead th, .table.table-head-custom thead tr {
+  letter-spacing: 0 !important;
+}
+label.required::after{
+  content:"*";
+  color: #F00;
+  padding: 0 0.2rem;
+}
+
+[dir="ltr"] .end-1rem {
+  right: 1rem;
+}
+[dir="rtl"] .end-1rem {
+  left: 1rem;
+}
+
+[dir="rtl"] .end-1rem {
+  left: 1rem;
+}
+
+.mt--6 {
+  margin-top: 1.6rem;
+}
+
+[dir="rtl"] .end-1rem {
+  left: 1rem;
+}
+[dir="rtl"] .show-start {
+  left: 0;
+  right: unset;
+}
+
+[dir="ltr"] .show-start {
+  right: 0;
+  left: unset;
+}
+
+.flex-1{
+  flex-grow: 1;
+}
+
+.w-2rem{
+  width: 2rem;
+}
+
+.w-auto {
+  width: auto;
+}

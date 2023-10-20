@@ -1,0 +1,7 @@
+.custom-file-input ~ .custom-file-label::after {
+    content: "انتخاب فایل";
+}
+
+.card-border-dark{
+    border-color: #d1d3e0 !important;
+}

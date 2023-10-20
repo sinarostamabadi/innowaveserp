@@ -1,0 +1,19 @@
+.detail-according{
+    margin: 2rem 0 0;
+    border-top: 1px solid #d1d3e0;
+    position: relative;
+    padding: 0;
+}
+
+.detail-according > .btn {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    top: -19px;
+    background-color: #fff;
+    padding: 0.5rem;
+}
+
+.detail-according > .btn > i{
+    font-size: 1.5rem;
+}

@@ -1,0 +1,35 @@
+.print-part * {
+  color: #000;
+  font-size: 4rem !important;
+}
+
+.print-part .dark {
+  color: #fff !important;
+  font-size: 4rem !important;
+}
+.print-part tr,
+.print-part td,
+.print-part th {
+  padding: 0;
+  background: transparent !important;
+}
+.lines td {
+  border-color: #000;
+}
+
+.bg-black {
+  color: #fff !important;
+}
+
+@media print {
+  body {
+    background-color: #fff !important;
+  }
+}
+
+.print-part th {
+  font-size: 3.5rem !important;
+}
+.print-part td {
+  font-size: 4rem !important;
+}

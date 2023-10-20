@@ -1,0 +1,210 @@
+* {
+  font-family: "IransansFa", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ltr {
+  direction: ltr !important;
+}
+
+body {
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+}
+
+/* Begin Bill Part */
+.bill * {
+  color: #000;
+  font-size: 2rem !important;
+}
+
+.bill h2 {
+  margin: 0.2rem auto 0.2rem auto;
+  font-size: 3.4rem !important;
+  font-weight: 500;
+}
+
+.bill h3 {
+  margin: 0.2rem auto 0.2rem auto;
+  font-size: 2.4rem !important;
+  font-weight: 500;
+}
+
+.bill .dark {
+  color: #fff !important;
+  font-size: 2rem !important;
+}
+
+.bill tr {
+  line-height: 3.7rem;
+}
+
+.bill .fs-25 {
+  font-size: 2.5rem !important;
+}
+
+.bill tr,
+.bill td,
+.bill th {
+  padding: 0;
+}
+.lines td {
+  border-color: #000;
+}
+
+.bg-black {
+  color: #fff !important;
+  background-color: #000 !important;
+}
+
+@media print {
+  body {
+    background-color: #fff !important;
+  }
+}
+
+.bill th {
+  font-size: 2.5rem !important;
+  color: #fff !important;
+}
+.bill td {
+  font-size: 2.5rem !important;
+}
+.bill td.head b {
+  font-size: 2.5rem !important;
+}
+/* End Bill Part */
+
+.text-center {
+  text-align: center;
+}
+
+.page-break-after {
+  page-break-after: always;
+}
+
+table.sell-detail {
+  font-weight: lighter;
+}
+
+table.sell-detail hr {
+  height: 0px;
+  padding: 0;
+  border-bottom: none;
+  margin: 1pt 0;
+}
+table.sell-detail caption {
+  font-weight: normal;
+  font-size: 1.3rem;
+  margin-top: 4pt;
+  padding: 1pt 0 2pt;
+  border-top: 1px solid #000;
+}
+table.sell-detail th {
+  border-left: 1px solid #000;
+  border-top: 1px solid #000;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: normal;
+}
+
+table.sell-detail td {
+  border-left: 1px solid #000;
+  border-top: 1px solid #000;
+  margin: 0;
+  padding: 2pt;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.buy-table th,
+.buy-table td {
+  border: 2px solid #000 !important;
+  color: #000 !important;
+  padding: 0.4rem 0.8rem;
+  font-size: 2rem !important;
+}
+
+.buy-table {
+  border-collapse: collapse;
+}
+
+.table-bordered {
+  border-collapse: collapse;
+}
+
+.table-bordered td,
+.table-bordered th {
+  border-collapse: collapse;
+  border: 1px solid #000;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.font-size-3 {
+  font-size: 3rem !important;
+}
+
+.text-black {
+  color: #000 !important;
+}
+
+table.report {
+  page-break-after: auto !important;
+  border: solid #000 !important;
+  border-width: 1px 0 0 1px !important;
+  direction: rtl !important;
+}
+table.report tr {
+  page-break-inside: avoid !important;
+  page-break-after: auto !important;
+}
+table.report td {
+  page-break-inside: avoid !important;
+  page-break-after: auto !important;
+}
+table.report thead {
+  display: table-header-group !important;
+}
+table.report tfoot {
+  display: table-footer-group !important;
+}
+
+table.report th,
+table.report td {
+  border: solid #000 !important;
+  border-width: 0 1px 1px 0 !important;
+  padding: 0.5rem;
+}
+
+@media print
+{
+   @page {
+     margin-top: 0;
+     margin-bottom: 0;
+   }
+   body  {
+     padding-top: 72px;
+     padding-bottom: 72px ;
+   }
+} 

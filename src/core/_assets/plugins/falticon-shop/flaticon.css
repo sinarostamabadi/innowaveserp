@@ -1,0 +1,94 @@
+@font-face {
+  font-family: "FlaticonShop";
+  src: url("./font/FlaticonShop.woff2");
+  src: url("./font/FlaticonShop.woff2") format("woff2"),
+       url("./font/FlaticonShop.woff") format("woff"),
+       url("./font/FlaticonShop.ttf") format("truetype"),
+       url("./font/FlaticonShop.svg#FlaticonShop") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "FlaticonShop";
+    src: url("./font/FlaticonShop.svg#FlaticonShop") format("svg");
+  }
+}
+
+.fimanager:before {
+      display: inline-block;
+  font-family: "FlaticonShop";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    display: block;
+}
+
+.flaticon-shop-cart:before { content: "\f100"; }
+.flaticon-shop-dollar:before { content: "\f101"; }
+.flaticon-shop-chat:before { content: "\f102"; }
+.flaticon-shop-place:before { content: "\f103"; }
+.flaticon-shop-offer:before { content: "\f104"; }
+.flaticon-shop-debit-card:before { content: "\f105"; }
+.flaticon-shop-truck:before { content: "\f106"; }
+.flaticon-shop-trolley:before { content: "\f107"; }
+.flaticon-shop-gift-box:before { content: "\f108"; }
+.flaticon-shop-yen:before { content: "\f109"; }
+.flaticon-shop-barcode:before { content: "\f10a"; }
+.flaticon-shop-laptop:before { content: "\f10b"; }
+.flaticon-shop-shop:before { content: "\f10c"; }
+.flaticon-shop-calculator:before { content: "\f10d"; }
+.flaticon-shop-headset:before { content: "\f10e"; }
+.flaticon-shop-cashbox:before { content: "\f10f"; }
+.flaticon-shop-note:before { content: "\f110"; }
+.flaticon-shop-mobile:before { content: "\f111"; }
+.flaticon-shop-cctv:before { content: "\f112"; }
+.flaticon-shop-map:before { content: "\f113"; }
+.flaticon-shop-search:before { content: "\f114"; }
+.flaticon-shop-search:before { content: "\f115"; }
+.flaticon-shop-online-store:before { content: "\f116"; }
+.flaticon-shop-signboard:before { content: "\f117"; }
+.flaticon-shop-gift-box:before { content: "\f118"; }
+.flaticon-shop-wallet:before { content: "\f119"; }
+.flaticon-shop-rupee:before { content: "\f11a"; }
+.flaticon-shop-bill:before { content: "\f11b"; }
+.flaticon-shop-truck:before { content: "\f11c"; }
+.flaticon-shop-euro:before { content: "\f11d"; }
+.flaticon-shop-tag:before { content: "\f11e"; }
+.flaticon-shop-laptop:before { content: "\f11f"; }
+.flaticon-shop-phone:before { content: "\f120"; }
+.flaticon-shop-tablet:before { content: "\f121"; }
+.flaticon-shop-mail:before { content: "\f122"; }
+.flaticon-shop-shopping-bag:before { content: "\f123"; }
+.flaticon-shop-pound:before { content: "\f124"; }
+.flaticon-shop-cargo:before { content: "\f125"; }
+.flaticon-shop-notepad:before { content: "\f126"; }
+.flaticon-shop-tag:before { content: "\f127"; }
+.flaticon-shop-customer-service:before { content: "\f128"; }
+.flaticon-shop-customer-service:before { content: "\f129"; }
+.flaticon-shop-online-support:before { content: "\f12a"; }
+.flaticon-shop-discount:before { content: "\f12b"; }
+.flaticon-shop-website:before { content: "\f12c"; }
+.flaticon-shop-bag:before { content: "\f12d"; }
+.flaticon-shop-woman-bag:before { content: "\f12e"; }
+.flaticon-shop-date:before { content: "\f12f"; }
+.flaticon-shop-chat:before { content: "\f130"; }
+.flaticon-shop-boxes:before { content: "\f131"; }
+.flaticon-shop-delivery:before { content: "\f132"; }
+.flaticon-shop-money:before { content: "\f133"; }
+.flaticon-shop-ship:before { content: "\f134"; }
+.flaticon-shop-delivery:before { content: "\f135"; }
+.flaticon-shop-delivery:before { content: "\f136"; }
+.flaticon-shop-bag:before { content: "\f137"; }
+.flaticon-shop-crane:before { content: "\f138"; }
+.flaticon-shop-basket:before { content: "\f139"; }
+.flaticon-shop-box:before { content: "\f13a"; }
+.flaticon-shop-bill:before { content: "\f13b"; }

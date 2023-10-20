@@ -1,0 +1,4 @@
+.page-break {
+    display: block;
+    page-break-after: always;
+  }
