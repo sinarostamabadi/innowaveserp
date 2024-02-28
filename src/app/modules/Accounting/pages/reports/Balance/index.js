@@ -16,14 +16,14 @@ export function Balance({
   },
 }) {
   const colName = {
-    2: "دو",
-    3: "سه",
-    4: "چهار",
-    5: "پنج",
-    6: "شش",
-    7: "هفت",
-    8: "هشت",
-    9: "نه",
+    2: "Two",
+    3: "Three",
+    4: "Four",
+    5: "Five",
+    6: "Six",
+    7: "Seven",
+    8: "Eight",
+    9: "Nine",
   };
   const { t } = useTranslation();
   const events = {};

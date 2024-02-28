@@ -198,7 +198,7 @@ export function AccountsTable() {
           treeData={tree}
           rowHeight={50}
           canDrag={false}
-          rowDirection="rtl"
+          rowDirection="ltr"
           isVirtualized={false}
           nodeContentRenderer={(props) => (
             <NodeRendererDefault {...props} buttons={buttons} />

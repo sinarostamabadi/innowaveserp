@@ -132,7 +132,7 @@ export const Filter = forwardRef(({ reserve, btnRef, saveReserve }, ref) => {
               <div className="alert alert-info">
                 <strong>کد: </strong>{" "}
                 {steps && steps.length > 0 && steps[0].FullCode}
-                <strong className="ml-5 pl-2">عنوان: </strong>{" "}
+                <strong className="ml-5 pl-2">Title :</strong>{" "}
                 {steps && steps.length > 0 && steps[0].FullTitle}
               </div>
             )}

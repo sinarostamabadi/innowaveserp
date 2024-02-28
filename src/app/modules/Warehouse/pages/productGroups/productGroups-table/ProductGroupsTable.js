@@ -74,7 +74,7 @@ console.log(uiContext);
           treeData={uiProps.tree}
           rowHeight={50}
           canDrag={false}
-          rowDirection="rtl"
+          rowDirection="ltr"
           isVirtualized={false}
           nodeContentRenderer={(props) => (
             <PublicNodeRenderer {...props} buttons={buttons}/>

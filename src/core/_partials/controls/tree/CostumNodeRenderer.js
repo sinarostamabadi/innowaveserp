@@ -75,12 +75,12 @@ class NodeRendererDefault extends Component {
       buttonStyle = { right: -0.5 * scaffoldBlockPxWidth };
     }
     function boolToString(boolValue) {
-      return boolValue ? "بله": "خیر";
+      return boolValue ? "Yes": "No";
     }
     return (
-      <OverlayTrigger placement="left" overlay={
+      <OverlayTrigger placement="right" overlay={
         <Tooltip id="accounts-edit-tooltip">
-          <div style={{direction: "rtl", textAlign: "right", width: "180px"}}>
+          <div style={{direction: "ltr", textAlign: "left", width: "180px"}}>
             <ul className="m-0 p-0 pl-3">
               <li><b>IsActive: </b>{boolToString(node.object.Active)}</li>
               <li><b>Type: </b>{node.object.AccountType.Title}</li>

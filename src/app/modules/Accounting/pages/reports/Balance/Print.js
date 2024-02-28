@@ -20,14 +20,14 @@ export const Print = React.forwardRef(({ data, filters, product }, ref) => {
   return (
     <>
       <div ref={ref} style={{ margin: "1rem" }}>
-        <h3 className="text-center">گزارش كاردكس</h3>
+        <h3 className="text-center">Cardex report</h3>
 
-        <h4>{`${moment().format("jYYYY/jMM/jDD")} :تاریخ گزارش`}</h4>
+        <h4>{`${moment().format("jYYYY/jMM/jDD")} :Report date`}</h4>
 
         <div style={{ display: "flex", justifyContent: "right" }}>
-          <h4>{`نام کالا: ${product}`}</h4>
+          <h4>{`Product Name: ${product}`}</h4>
           <h4 style={{ marginLeft: "5rem" }}>
-            {!!filterPrint && `کد کالا: ${filterPrint.ProductId}`}
+            {!!filterPrint && `Product code: ${filterPrint.ProductId}`}
           </h4>
         </div>
 
@@ -43,28 +43,28 @@ export const Print = React.forwardRef(({ data, filters, product }, ref) => {
           <thead style={{ backgroundColor: "#ccc" }}>
             <tr>
               <th className="border-dark" style={{ width: "7%" }}>
-                تاريخ
+                Date
               </th>
               <th className="border-dark" style={{ width: "10%" }}>
-                نوع فرم
+                Form type
               </th>
               <th className="border-dark" style={{ width: "10%" }}>
-                شماره فرم
+                Form number
               </th>
               <th className="border-dark" style={{ width: "12%" }}>
-                ورودي به انبار
+                Entrance to the warehouse
               </th>
               <th className="border-dark" style={{ width: "12%" }}>
-                خروجي از انبار
+                Exit from the warehouse
               </th>
               <th className="border-dark" style={{ width: "12%" }}>
-                مانده در انبار
+                Remaining in stock
               </th>
               <th className="border-dark" style={{ width: "7%" }}>
-                واحد
+                Unit
               </th>
               <th className="border-dark" style={{ width: "12%" }}>
-                توضيحات
+                Description
               </th>
             </tr>
           </thead>
@@ -97,9 +97,9 @@ export const Print = React.forwardRef(({ data, filters, product }, ref) => {
               ))}
             <tr>
               <td colSpan="9" className="text-center border-dark">
-                RoshaSoft.ir
+                Futurewavesco.com
                 <br />
-                گروه نرم‌افزاری نوت
+                
               </td>
             </tr>
           </tbody>
