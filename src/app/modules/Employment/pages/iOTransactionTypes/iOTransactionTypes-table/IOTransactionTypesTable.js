@@ -32,8 +32,10 @@ export function IOTransactionTypesTable() {
       setIds: iOTransactionTypesUIContext.setIds,
       queryParams: iOTransactionTypesUIContext.queryParams,
       setQueryParams: iOTransactionTypesUIContext.setQueryParams,
-      openEditIOTransactionTypePage: iOTransactionTypesUIContext.openEditIOTransactionTypePage,
-      openDeleteIOTransactionTypeDialog: iOTransactionTypesUIContext.openDeleteIOTransactionTypeDialog,
+      openEditIOTransactionTypePage:
+        iOTransactionTypesUIContext.openEditIOTransactionTypePage,
+      openDeleteIOTransactionTypeDialog:
+        iOTransactionTypesUIContext.openDeleteIOTransactionTypeDialog,
     };
   }, [iOTransactionTypesUIContext]);
 
@@ -50,7 +52,9 @@ export function IOTransactionTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     iOTransactionTypesUIProps.setIds([]);
-    dispatch(actions.fetchIOTransactionTypes(iOTransactionTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchIOTransactionTypes(iOTransactionTypesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [iOTransactionTypesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function IOTransactionTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditIOTransactionTypePage: iOTransactionTypesUIProps.openEditIOTransactionTypePage,
-        openDeleteIOTransactionTypeDialog: iOTransactionTypesUIProps.openDeleteIOTransactionTypeDialog,
+        openEditIOTransactionTypePage:
+          iOTransactionTypesUIProps.openEditIOTransactionTypePage,
+        openDeleteIOTransactionTypeDialog:
+          iOTransactionTypesUIProps.openDeleteIOTransactionTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { FutsalReserveModel } from "../../../../../core/_models/Futsal/FutsalReserveModel";
@@ -30,7 +29,7 @@ export function FutsalReservesUIProvider({ futsalReservesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function FutsalReservesUIProvider({ futsalReservesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: FutsalReserveModel,
-    newFutsalReserveButtonClick: futsalReservesUIEvents.newFutsalReserveButtonClick,
+    newFutsalReserveButtonClick:
+      futsalReservesUIEvents.newFutsalReserveButtonClick,
     openEditFutsalReservePage: futsalReservesUIEvents.openEditFutsalReservePage,
-    openDeleteFutsalReserveDialog: futsalReservesUIEvents.openDeleteFutsalReserveDialog,
-    openDeleteFutsalReservesDialog: futsalReservesUIEvents.openDeleteFutsalReservesDialog,
-    openFetchFutsalReservesDialog: futsalReservesUIEvents.openFetchFutsalReservesDialog,
-    openUpdateFutsalReservesStatusDialog: futsalReservesUIEvents.openUpdateFutsalReservesStatusDialog,
+    openDeleteFutsalReserveDialog:
+      futsalReservesUIEvents.openDeleteFutsalReserveDialog,
+    openDeleteFutsalReservesDialog:
+      futsalReservesUIEvents.openDeleteFutsalReservesDialog,
+    openFetchFutsalReservesDialog:
+      futsalReservesUIEvents.openFetchFutsalReservesDialog,
+    openUpdateFutsalReservesStatusDialog:
+      futsalReservesUIEvents.openUpdateFutsalReservesStatusDialog,
   };
   return (
-    <FutsalReservesUIContext.Provider value={value}>{children}</FutsalReservesUIContext.Provider>
+    <FutsalReservesUIContext.Provider value={value}>
+      {children}
+    </FutsalReservesUIContext.Provider>
   );
 }

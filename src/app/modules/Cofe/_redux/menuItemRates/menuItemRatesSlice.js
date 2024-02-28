@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialMenuItemRatesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const menuItemRatesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getMenuItemRateById  
+    // getMenuItemRateById
     menuItemRateFetched: (state, action) => {
       state.actionsLoading = false;
       state.menuItemRateForEdit = action.payload.menuItemRateForEdit;
       state.error = null;
     },
-    // findMenuItemRates  
+    // findMenuItemRates
     menuItemRatesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,42 @@ export const menuItemRatesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createMenuItemRate  
+    // createMenuItemRate
     menuItemRateCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateMenuItemRate  
+    // updateMenuItemRate
     menuItemRateUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.MenuItemRateId === action.payload.menuItemRate.MenuItemRateId) {
+        if (
+          entity.MenuItemRateId === action.payload.menuItemRate.MenuItemRateId
+        ) {
           return action.payload.menuItemRate;
         }
         return entity;
       });
     },
-    // deleteMenuItemRate  
+    // deleteMenuItemRate
     menuItemRateDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.MenuItemRateId !== action.payload.MenuItemRateId  
+        (el) => el.MenuItemRateId !== action.payload.MenuItemRateId
       );
     },
-    // deleteMenuItemRates  
+    // deleteMenuItemRates
     menuItemRatesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.MenuItemRateId)  
+        (el) => !action.payload.ids.includes(el.MenuItemRateId)
       );
     },
-    // menuItemRatesUpdateState  
+    // menuItemRatesUpdateState
     menuItemRatesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

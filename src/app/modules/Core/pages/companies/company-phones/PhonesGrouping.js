@@ -7,10 +7,8 @@ export function PhonesGrouping() {
   const specsUIProps = useMemo(() => {
     return {
       ids: specsUIContext.ids,
-      openDeletePhonesDialog:
-        specsUIContext.openDeletePhonesDialog,
-      openFetchPhonesDialog:
-        specsUIContext.openFetchPhonesDialog,
+      openDeletePhonesDialog: specsUIContext.openDeletePhonesDialog,
+      openFetchPhonesDialog: specsUIContext.openFetchPhonesDialog,
     };
   }, [specsUIContext]);
 

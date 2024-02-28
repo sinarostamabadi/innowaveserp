@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BodyBuildingContractModel } from "../../../../../core/_models/BodyBuilding/BodyBuildingContractModel";
@@ -13,7 +12,9 @@ export function useContractsUIContext() {
 export const ContractsUIConsumer = ContractsUIContext.Consumer;
 
 export function ContractsUIProvider({ contractsUIEvents, children }) {
-  const [queryParams, setQueryParamsBase] = useState(getConfig(BodyBuildingContractModel).initialFilter);
+  const [queryParams, setQueryParamsBase] = useState(
+    getConfig(BodyBuildingContractModel).initialFilter
+  );
 
   const [ids, setIds] = useState([]);
 
@@ -28,7 +29,7 @@ export function ContractsUIProvider({ contractsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -42,6 +43,8 @@ export function ContractsUIProvider({ contractsUIEvents, children }) {
     openShowContractDialog: contractsUIEvents.openShowContractDialog,
   };
   return (
-    <ContractsUIContext.Provider value={value}>{children}</ContractsUIContext.Provider>
+    <ContractsUIContext.Provider value={value}>
+      {children}
+    </ContractsUIContext.Provider>
   );
 }

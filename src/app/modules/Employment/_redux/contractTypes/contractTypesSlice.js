@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialContractTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const contractTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getContractTypeById  
+    // getContractTypeById
     contractTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.contractTypeForEdit = action.payload.contractTypeForEdit;
       state.error = null;
     },
-    // findContractTypes  
+    // findContractTypes
     contractTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,42 @@ export const contractTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createContractType  
+    // createContractType
     contractTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateContractType  
+    // updateContractType
     contractTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.ContractTypeId === action.payload.contractType.ContractTypeId) {
+        if (
+          entity.ContractTypeId === action.payload.contractType.ContractTypeId
+        ) {
           return action.payload.contractType;
         }
         return entity;
       });
     },
-    // deleteContractType  
+    // deleteContractType
     contractTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.ContractTypeId !== action.payload.ContractTypeId  
+        (el) => el.ContractTypeId !== action.payload.ContractTypeId
       );
     },
-    // deleteContractTypes  
+    // deleteContractTypes
     contractTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ContractTypeId)  
+        (el) => !action.payload.ids.includes(el.ContractTypeId)
       );
     },
-    // contractTypesUpdateState  
+    // contractTypesUpdateState
     contractTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -26,7 +26,7 @@ export function BuyRequestsPage({ history }) {
       history.push("/PurchaseOrder/buyRequests/updateStatus");
     },
   };
-  
+
   return (
     <BuyRequestsUIProvider buyRequestsUIEvents={buyRequestsUIEvents}>
       <BuyRequestsLoadingDialog />

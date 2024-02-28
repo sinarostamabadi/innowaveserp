@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialSoldiershipTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const soldiershipTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getSoldiershipTypeById  
+    // getSoldiershipTypeById
     soldiershipTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.soldiershipTypeForEdit = action.payload.soldiershipTypeForEdit;
       state.error = null;
     },
-    // findSoldiershipTypes  
+    // findSoldiershipTypes
     soldiershipTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const soldiershipTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createSoldiershipType  
+    // createSoldiershipType
     soldiershipTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateSoldiershipType  
+    // updateSoldiershipType
     soldiershipTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.SoldiershipTypeId === action.payload.soldiershipType.SoldiershipTypeId) {
+        if (
+          entity.SoldiershipTypeId ===
+          action.payload.soldiershipType.SoldiershipTypeId
+        ) {
           return action.payload.soldiershipType;
         }
         return entity;
       });
     },
-    // deleteSoldiershipType  
+    // deleteSoldiershipType
     soldiershipTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.SoldiershipTypeId !== action.payload.SoldiershipTypeId  
+        (el) => el.SoldiershipTypeId !== action.payload.SoldiershipTypeId
       );
     },
-    // deleteSoldiershipTypes  
+    // deleteSoldiershipTypes
     soldiershipTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.SoldiershipTypeId)  
+        (el) => !action.payload.ids.includes(el.SoldiershipTypeId)
       );
     },
-    // soldiershipTypesUpdateState  
+    // soldiershipTypesUpdateState
     soldiershipTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

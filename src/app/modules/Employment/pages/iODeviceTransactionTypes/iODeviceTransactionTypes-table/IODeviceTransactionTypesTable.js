@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function IODeviceTransactionTypesTable() {
   const { t } = useTranslation();
 
-  const iODeviceTransactionTypesUIContext = useIODeviceTransactionTypesUIContext();
+  const iODeviceTransactionTypesUIContext =
+    useIODeviceTransactionTypesUIContext();
 
   const iODeviceTransactionTypesUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function IODeviceTransactionTypesTable() {
       setIds: iODeviceTransactionTypesUIContext.setIds,
       queryParams: iODeviceTransactionTypesUIContext.queryParams,
       setQueryParams: iODeviceTransactionTypesUIContext.setQueryParams,
-      openEditIODeviceTransactionTypePage: iODeviceTransactionTypesUIContext.openEditIODeviceTransactionTypePage,
-      openDeleteIODeviceTransactionTypeDialog: iODeviceTransactionTypesUIContext.openDeleteIODeviceTransactionTypeDialog,
+      openEditIODeviceTransactionTypePage:
+        iODeviceTransactionTypesUIContext.openEditIODeviceTransactionTypePage,
+      openDeleteIODeviceTransactionTypeDialog:
+        iODeviceTransactionTypesUIContext.openDeleteIODeviceTransactionTypeDialog,
     };
   }, [iODeviceTransactionTypesUIContext]);
 
@@ -50,7 +53,11 @@ export function IODeviceTransactionTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     iODeviceTransactionTypesUIProps.setIds([]);
-    dispatch(actions.fetchIODeviceTransactionTypes(iODeviceTransactionTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchIODeviceTransactionTypes(
+        iODeviceTransactionTypesUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [iODeviceTransactionTypesUIProps.queryParams, dispatch]);
 
@@ -72,8 +79,10 @@ export function IODeviceTransactionTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditIODeviceTransactionTypePage: iODeviceTransactionTypesUIProps.openEditIODeviceTransactionTypePage,
-        openDeleteIODeviceTransactionTypeDialog: iODeviceTransactionTypesUIProps.openDeleteIODeviceTransactionTypeDialog,
+        openEditIODeviceTransactionTypePage:
+          iODeviceTransactionTypesUIProps.openEditIODeviceTransactionTypePage,
+        openDeleteIODeviceTransactionTypeDialog:
+          iODeviceTransactionTypesUIProps.openDeleteIODeviceTransactionTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { UnitConversionModel } from "../../../../../core/_models/General/UnitConversionModel";
@@ -12,7 +11,10 @@ export function useUnitConversionsUIContext() {
 
 export const UnitConversionsUIConsumer = UnitConversionsUIContext.Consumer;
 
-export function UnitConversionsUIProvider({ unitConversionsUIEvents, children }) {
+export function UnitConversionsUIProvider({
+  unitConversionsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(UnitConversionModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function UnitConversionsUIProvider({ unitConversionsUIEvents, children })
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function UnitConversionsUIProvider({ unitConversionsUIEvents, children })
     setIds,
     setQueryParams,
     dataModel: UnitConversionModel,
-    newUnitConversionButtonClick: unitConversionsUIEvents.newUnitConversionButtonClick,
-    openEditUnitConversionPage: unitConversionsUIEvents.openEditUnitConversionPage,
-    openDeleteUnitConversionDialog: unitConversionsUIEvents.openDeleteUnitConversionDialog,
-    openDeleteUnitConversionsDialog: unitConversionsUIEvents.openDeleteUnitConversionsDialog,
-    openFetchUnitConversionsDialog: unitConversionsUIEvents.openFetchUnitConversionsDialog,
-    openUpdateUnitConversionsStatusDialog: unitConversionsUIEvents.openUpdateUnitConversionsStatusDialog,
+    newUnitConversionButtonClick:
+      unitConversionsUIEvents.newUnitConversionButtonClick,
+    openEditUnitConversionPage:
+      unitConversionsUIEvents.openEditUnitConversionPage,
+    openDeleteUnitConversionDialog:
+      unitConversionsUIEvents.openDeleteUnitConversionDialog,
+    openDeleteUnitConversionsDialog:
+      unitConversionsUIEvents.openDeleteUnitConversionsDialog,
+    openFetchUnitConversionsDialog:
+      unitConversionsUIEvents.openFetchUnitConversionsDialog,
+    openUpdateUnitConversionsStatusDialog:
+      unitConversionsUIEvents.openUpdateUnitConversionsStatusDialog,
   };
   return (
-    <UnitConversionsUIContext.Provider value={value}>{children}</UnitConversionsUIContext.Provider>
+    <UnitConversionsUIContext.Provider value={value}>
+      {children}
+    </UnitConversionsUIContext.Provider>
   );
 }

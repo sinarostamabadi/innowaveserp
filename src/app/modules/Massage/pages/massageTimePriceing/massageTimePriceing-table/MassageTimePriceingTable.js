@@ -32,8 +32,10 @@ export function MassageTimePriceingTable() {
       setIds: massageTimePriceingUIContext.setIds,
       queryParams: massageTimePriceingUIContext.queryParams,
       setQueryParams: massageTimePriceingUIContext.setQueryParams,
-      openEditMassageTimePriceingPage: massageTimePriceingUIContext.openEditMassageTimePriceingPage,
-      openDeleteMassageTimePriceingDialog: massageTimePriceingUIContext.openDeleteMassageTimePriceingDialog,
+      openEditMassageTimePriceingPage:
+        massageTimePriceingUIContext.openEditMassageTimePriceingPage,
+      openDeleteMassageTimePriceingDialog:
+        massageTimePriceingUIContext.openDeleteMassageTimePriceingDialog,
     };
   }, [massageTimePriceingUIContext]);
 
@@ -50,7 +52,9 @@ export function MassageTimePriceingTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     massageTimePriceingUIProps.setIds([]);
-    dispatch(actions.fetchMassageTimePriceing(massageTimePriceingUIProps.queryParams));
+    dispatch(
+      actions.fetchMassageTimePriceing(massageTimePriceingUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [massageTimePriceingUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function MassageTimePriceingTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditMassageTimePriceingPage: massageTimePriceingUIProps.openEditMassageTimePriceingPage,
-        openDeleteMassageTimePriceingDialog: massageTimePriceingUIProps.openDeleteMassageTimePriceingDialog,
+        openEditMassageTimePriceingPage:
+          massageTimePriceingUIProps.openEditMassageTimePriceingPage,
+        openDeleteMassageTimePriceingDialog:
+          massageTimePriceingUIProps.openDeleteMassageTimePriceingDialog,
         t: t,
       },
       classes: "text-right pr-0",

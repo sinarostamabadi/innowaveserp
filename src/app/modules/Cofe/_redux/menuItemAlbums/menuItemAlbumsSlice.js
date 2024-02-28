@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialMenuItemAlbumsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const menuItemAlbumsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getMenuItemAlbumById  
+    // getMenuItemAlbumById
     menuItemAlbumFetched: (state, action) => {
       state.actionsLoading = false;
       state.menuItemAlbumForEdit = action.payload.menuItemAlbumForEdit;
       state.error = null;
     },
-    // findMenuItemAlbums  
+    // findMenuItemAlbums
     menuItemAlbumsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const menuItemAlbumsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createMenuItemAlbum  
+    // createMenuItemAlbum
     menuItemAlbumCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateMenuItemAlbum  
+    // updateMenuItemAlbum
     menuItemAlbumUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.MenuItemAlbumId === action.payload.menuItemAlbum.MenuItemAlbumId) {
+        if (
+          entity.MenuItemAlbumId ===
+          action.payload.menuItemAlbum.MenuItemAlbumId
+        ) {
           return action.payload.menuItemAlbum;
         }
         return entity;
       });
     },
-    // deleteMenuItemAlbum  
+    // deleteMenuItemAlbum
     menuItemAlbumDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.MenuItemAlbumId !== action.payload.MenuItemAlbumId  
+        (el) => el.MenuItemAlbumId !== action.payload.MenuItemAlbumId
       );
     },
-    // deleteMenuItemAlbums  
+    // deleteMenuItemAlbums
     menuItemAlbumsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.MenuItemAlbumId)  
+        (el) => !action.payload.ids.includes(el.MenuItemAlbumId)
       );
     },
-    // menuItemAlbumsUpdateState  
+    // menuItemAlbumsUpdateState
     menuItemAlbumsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

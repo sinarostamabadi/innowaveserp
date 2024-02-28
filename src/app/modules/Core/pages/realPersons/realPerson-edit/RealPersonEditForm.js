@@ -43,9 +43,9 @@ export const RealPersonEditForm = forwardRef(
     }, [realPerson]);
 
     const Genders = [
-      { text: "بدون انتخاب", value: null },
-      { text: "مرد", value: 1 },
-      { text: "زن", value: 0 },
+      { text: "Not selected", value: null },
+      { text: "Male", value: 1 },
+      { text: "Female", value: 0 },
     ];
 
     let callBack;
@@ -78,12 +78,28 @@ export const RealPersonEditForm = forwardRef(
         FirstNameFa: data.FirstNameFa,
         NationalCode: digitsFaToEn(data.NationalCode),
         LastNameFa: data.LastNameFa,
-        BirthDate: !!data.BirthDateObj? FaObjToEnDateTime(data.BirthDateObj): null,
-        GenderId: data.GenderId == null || data.GenderId == ""? null: +data.GenderId,
+        BirthDate: !!data.BirthDateObj
+          ? FaObjToEnDateTime(data.BirthDateObj)
+          : null,
+        GenderId:
+          data.GenderId == null || data.GenderId == "" ? null : +data.GenderId,
         FatherNameFa: data.FatherNameFa,
-        PlaceOfBirthId: Array.isArray(data.PlaceOfBirthId) && data.PlaceOfBirthId.length == 1? data.PlaceOfBirthId[0].CityId: !!data.PlaceOfBirthId? data.PlaceOfBirthId: null,
-        IssueCityId: Array.isArray(data.IssueCityId) && data.IssueCityId.length == 1? data.IssueCityId[0].CityId: !!data.IssueCityId? data.IssueCityId: null,
-        IODeviceId: data.IODeviceId == null || data.IODeviceId == ""? null: +data.IODeviceId,
+        PlaceOfBirthId:
+          Array.isArray(data.PlaceOfBirthId) && data.PlaceOfBirthId.length == 1
+            ? data.PlaceOfBirthId[0].CityId
+            : !!data.PlaceOfBirthId
+            ? data.PlaceOfBirthId
+            : null,
+        IssueCityId:
+          Array.isArray(data.IssueCityId) && data.IssueCityId.length == 1
+            ? data.IssueCityId[0].CityId
+            : !!data.IssueCityId
+            ? data.IssueCityId
+            : null,
+        IODeviceId:
+          data.IODeviceId == null || data.IODeviceId == ""
+            ? null
+            : +data.IODeviceId,
       };
     }
 
@@ -190,7 +206,7 @@ export const RealPersonEditForm = forwardRef(
                       />
                     </div>
                     <div className="col-lg-4">
-                      {console.log("data............",datares)}
+                      {console.log("data............", datares)}
                       <DatePickerField
                         name="BirthDateObj"
                         customFeedbackLabel=""

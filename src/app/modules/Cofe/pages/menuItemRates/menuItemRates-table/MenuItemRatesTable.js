@@ -33,7 +33,8 @@ export function MenuItemRatesTable() {
       queryParams: menuItemRatesUIContext.queryParams,
       setQueryParams: menuItemRatesUIContext.setQueryParams,
       openEditMenuItemRatePage: menuItemRatesUIContext.openEditMenuItemRatePage,
-      openDeleteMenuItemRateDialog: menuItemRatesUIContext.openDeleteMenuItemRateDialog,
+      openDeleteMenuItemRateDialog:
+        menuItemRatesUIContext.openDeleteMenuItemRateDialog,
     };
   }, [menuItemRatesUIContext]);
 
@@ -73,7 +74,8 @@ export function MenuItemRatesTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditMenuItemRatePage: menuItemRatesUIProps.openEditMenuItemRatePage,
-        openDeleteMenuItemRateDialog: menuItemRatesUIProps.openDeleteMenuItemRateDialog,
+        openDeleteMenuItemRateDialog:
+          menuItemRatesUIProps.openDeleteMenuItemRateDialog,
         t: t,
       },
       classes: "text-right pr-0",

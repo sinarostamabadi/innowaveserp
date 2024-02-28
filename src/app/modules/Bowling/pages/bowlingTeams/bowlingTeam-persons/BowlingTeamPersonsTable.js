@@ -15,10 +15,14 @@ export function BowlingTeamPersonsTable() {
   const bowlingTeamPersonsUIProps = useMemo(() => {
     return {
       bowlingTeamPersons: bowlingTeamPersonsUIContext.bowlingTeamPersons,
-      activeBowlingTeamPersons: bowlingTeamPersonsUIContext.activeBowlingTeamPersons,
-      openEditBowlingTeamPersonDialog: bowlingTeamPersonsUIContext.openEditBowlingTeamPersonDialog,
-      openSerialBowlingTeamPersonDialog: bowlingTeamPersonsUIContext.openSerialBowlingTeamPersonDialog,
-      openDeleteBowlingTeamPersonDialog: bowlingTeamPersonsUIContext.openDeleteBowlingTeamPersonDialog,
+      activeBowlingTeamPersons:
+        bowlingTeamPersonsUIContext.activeBowlingTeamPersons,
+      openEditBowlingTeamPersonDialog:
+        bowlingTeamPersonsUIContext.openEditBowlingTeamPersonDialog,
+      openSerialBowlingTeamPersonDialog:
+        bowlingTeamPersonsUIContext.openSerialBowlingTeamPersonDialog,
+      openDeleteBowlingTeamPersonDialog:
+        bowlingTeamPersonsUIContext.openDeleteBowlingTeamPersonDialog,
     };
   }, [bowlingTeamPersonsUIContext]);
 
@@ -33,9 +37,12 @@ export function BowlingTeamPersonsTable() {
       text: t("Common.Action"),
       formatter: ActionsColumnFormatter,
       formatExtraData: {
-        openEditBowlingTeamPersonDialog: bowlingTeamPersonsUIProps.openEditBowlingTeamPersonDialog,
-        openDeleteBowlingTeamPersonDialog: bowlingTeamPersonsUIProps.openDeleteBowlingTeamPersonDialog,
-        openSerialBowlingTeamPersonDialog: bowlingTeamPersonsUIProps.openSerialBowlingTeamPersonDialog,
+        openEditBowlingTeamPersonDialog:
+          bowlingTeamPersonsUIProps.openEditBowlingTeamPersonDialog,
+        openDeleteBowlingTeamPersonDialog:
+          bowlingTeamPersonsUIProps.openDeleteBowlingTeamPersonDialog,
+        openSerialBowlingTeamPersonDialog:
+          bowlingTeamPersonsUIProps.openSerialBowlingTeamPersonDialog,
         t: t,
       },
       classes: "text-right pr-0",
@@ -62,8 +69,12 @@ export function BowlingTeamPersonsTable() {
         }
         columns={columns}
       >
-        <PleaseWaitMessage entities={bowlingTeamPersonsUIProps.activeBowlingTeamPersons} />
-        <NoRecordsFoundMessage entities={bowlingTeamPersonsUIProps.activeBowlingTeamPersons} />
+        <PleaseWaitMessage
+          entities={bowlingTeamPersonsUIProps.activeBowlingTeamPersons}
+        />
+        <NoRecordsFoundMessage
+          entities={bowlingTeamPersonsUIProps.activeBowlingTeamPersons}
+        />
       </BootstrapTable>
     </>
   );

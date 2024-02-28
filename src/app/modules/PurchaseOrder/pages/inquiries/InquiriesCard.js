@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { InquiriesTable } from "./inquiries-table/InquiriesTable";
-import { useInquiriesUIContext, InquiriesUIConsumer } from "./InquiriesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useInquiriesUIContext,
+  InquiriesUIConsumer,
+} from "./InquiriesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function InquiriesCard() {
   const { t } = useTranslation();
@@ -24,21 +26,22 @@ export function InquiriesCard() {
       newInquiryButtonClick: inquiriesUIContext.newInquiryButtonClick,
       openDeleteInquiriesDialog: inquiriesUIContext.openDeleteInquiriesDialog,
       openEditInquiryPage: inquiriesUIContext.openEditInquiryPage,
-      openUpdateInquiriesStatusDialog: inquiriesUIContext.openUpdateInquiriesStatusDialog,
+      openUpdateInquiriesStatusDialog:
+        inquiriesUIContext.openUpdateInquiriesStatusDialog,
       openFetchInquiriesDialog: inquiriesUIContext.openFetchInquiriesDialog,
     };
   }, [inquiriesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Inquiry.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Inquiry.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={inquiriesUIProps.newInquiryButtonClick}
           >
-            {t("Inquiry.Entity")} {' '} {t("Common.New")}
+            {t("Inquiry.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

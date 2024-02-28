@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialCoffeeShopDiscountTypesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const coffeeShopDiscountTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCoffeeShopDiscountTypeById  
+    // getCoffeeShopDiscountTypeById
     coffeeShopDiscountTypeFetched: (state, action) => {
       state.actionsLoading = false;
-      state.coffeeShopDiscountTypeForEdit = action.payload.coffeeShopDiscountTypeForEdit;
+      state.coffeeShopDiscountTypeForEdit =
+        action.payload.coffeeShopDiscountTypeForEdit;
       state.error = null;
     },
-    // findCoffeeShopDiscountTypes  
+    // findCoffeeShopDiscountTypes
     coffeeShopDiscountTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,46 +47,53 @@ export const coffeeShopDiscountTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCoffeeShopDiscountType  
+    // createCoffeeShopDiscountType
     coffeeShopDiscountTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCoffeeShopDiscountType  
+    // updateCoffeeShopDiscountType
     coffeeShopDiscountTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.CoffeeShopDiscountTypeId === action.payload.coffeeShopDiscountType.CoffeeShopDiscountTypeId) {
+        if (
+          entity.CoffeeShopDiscountTypeId ===
+          action.payload.coffeeShopDiscountType.CoffeeShopDiscountTypeId
+        ) {
           return action.payload.coffeeShopDiscountType;
         }
         return entity;
       });
     },
-    // deleteCoffeeShopDiscountType  
+    // deleteCoffeeShopDiscountType
     coffeeShopDiscountTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CoffeeShopDiscountTypeId !== action.payload.CoffeeShopDiscountTypeId  
+        (el) =>
+          el.CoffeeShopDiscountTypeId !==
+          action.payload.CoffeeShopDiscountTypeId
       );
     },
-    // deleteCoffeeShopDiscountTypes  
+    // deleteCoffeeShopDiscountTypes
     coffeeShopDiscountTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CoffeeShopDiscountTypeId)  
+        (el) => !action.payload.ids.includes(el.CoffeeShopDiscountTypeId)
       );
     },
-    // coffeeShopDiscountTypesUpdateState  
+    // coffeeShopDiscountTypesUpdateState
     coffeeShopDiscountTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       const { ids, status } = action.payload;
       state.entities = state.entities.map((entity) => {
-        if (ids.findIndex((id) => id === entity.CoffeeShopDiscountTypeId) > -1) {
+        if (
+          ids.findIndex((id) => id === entity.CoffeeShopDiscountTypeId) > -1
+        ) {
           entity.status = status;
         }
         return entity;

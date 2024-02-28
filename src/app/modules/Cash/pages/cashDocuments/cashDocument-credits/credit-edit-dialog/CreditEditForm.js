@@ -6,12 +6,7 @@ import * as Yup from "yup";
 import { Input, DatePickerField, Select } from "src/core/_partials/controls";
 import { CreditTools } from "../../quick/Dependency";
 
-export function CreditEditForm({
-  saveCredit,
-  credit,
-  actionsLoading,
-  onHide,
-}) {
+export function CreditEditForm({ saveCredit, credit, actionsLoading, onHide }) {
   const { t } = useTranslation();
 
   const transactionTypes = [
@@ -21,9 +16,9 @@ export function CreditEditForm({
   ];
 
   const CreditEditSchema = Yup.object().shape({
-    TransactionTypeId: Yup.number().nullable().required(
-      t("err.IsRequired", { 0: t("CashDocument.TransactionType") })
-    ),
+    TransactionTypeId: Yup.number()
+      .nullable()
+      .required(t("err.IsRequired", { 0: t("CashDocument.TransactionType") })),
     Price: Yup.string().required(
       t("err.IsRequired", { 0: t("CashDocument.Price") })
     ),
@@ -68,41 +63,41 @@ export function CreditEditForm({
                         ))}
                       </Select>
                     </div>
+                  </div>
+                  <div className="row mt-2">
+                    <div className="col-lg-3">
+                      <Field
+                        name="Title"
+                        component={Input}
+                        customFeedbackLabel=""
+                        label={t("CashDocument.Title")}
+                      />
                     </div>
-                    <div className="row mt-2">
-                      <div className="col-lg-3">
-                        <Field
-                          name="Title"
-                          component={Input}
-                          customFeedbackLabel=""
-                          label={t("CashDocument.Title")}
-                        />
-                      </div>
+                  </div>
+                  <div className="row mt-2">
+                    <div className="col-lg-6">
+                      <Field
+                        name="Price"
+                        type="number"
+                        component={Input}
+                        isLtr={true}
+                        customFeedbackLabel=""
+                        label={t("CashDocument.Price")}
+                      />
                     </div>
-                    <div className="row mt-2">
-                      <div className="col-lg-6">
-                        <Field
-                          name="Price"
-                          type="number"
-                          component={Input}
-                          isLtr={true}
-                          customFeedbackLabel=""
-                          label={t("CashDocument.Price")}
-                        />
-                      </div>
+                  </div>
+                  <div className="row mt-2">
+                    <div className="col">
+                      <Field
+                        name="Description"
+                        component={Input}
+                        customFeedbackLabel=""
+                        label={t("CashDocument.Description")}
+                      />
                     </div>
-                    <div className="row mt-2">
-                      <div className="col">
-                        <Field
-                          name="Description"
-                          component={Input}
-                          customFeedbackLabel=""
-                          label={t("CashDocument.Description")}
-                        />
-                      </div>
-                    </div>
-                  </Form>
-                </Modal.Body>
+                  </div>
+                </Form>
+              </Modal.Body>
               <Modal.Footer>
                 <button
                   type="button"

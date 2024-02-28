@@ -32,8 +32,10 @@ export function NextOperationsTable() {
       setIds: nextOperationsUIContext.setIds,
       queryParams: nextOperationsUIContext.queryParams,
       setQueryParams: nextOperationsUIContext.setQueryParams,
-      openEditNextOperationPage: nextOperationsUIContext.openEditNextOperationPage,
-      openDeleteNextOperationDialog: nextOperationsUIContext.openDeleteNextOperationDialog,
+      openEditNextOperationPage:
+        nextOperationsUIContext.openEditNextOperationPage,
+      openDeleteNextOperationDialog:
+        nextOperationsUIContext.openDeleteNextOperationDialog,
     };
   }, [nextOperationsUIContext]);
 
@@ -72,8 +74,10 @@ export function NextOperationsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditNextOperationPage: nextOperationsUIProps.openEditNextOperationPage,
-        openDeleteNextOperationDialog: nextOperationsUIProps.openDeleteNextOperationDialog,
+        openEditNextOperationPage:
+          nextOperationsUIProps.openEditNextOperationPage,
+        openDeleteNextOperationDialog:
+          nextOperationsUIProps.openDeleteNextOperationDialog,
         t: t,
       },
       classes: "text-right pr-0",

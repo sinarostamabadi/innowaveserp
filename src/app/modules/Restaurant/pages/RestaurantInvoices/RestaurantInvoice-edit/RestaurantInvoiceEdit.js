@@ -1,11 +1,6 @@
 /* eslint-disable no-script-url,jsx-a11y/anchor-is-valid,jsx-a11y/role-supports-aria-props */
 
-import React, {
-  useEffect,
-  useState,
-  useRef,
-  useCallback
-} from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { shallowEqual, useSelector } from "react-redux";
 import * as actions from "../../../_redux/RestaurantInvoices/RestaurantInvoicesActions";
@@ -25,7 +20,7 @@ import {
   useReactToPrint,
   getStorage,
   CloneObject,
-  FaObjToEnDateTime
+  FaObjToEnDateTime,
 } from "../../../../../../core/_helpers";
 import { useTranslation } from "react-i18next";
 import { RestaurantInvoiceDetailsUIProvider } from "../restaurantInvoice-details/RestaurantInvoiceDetailsUIContext";
@@ -44,25 +39,25 @@ export function RestaurantInvoiceEdit({
     params: { id },
   },
 }) {
-  const showMode = !!history && !!history.location && history.location.pathname.indexOf("/show") > -1;
+  const showMode =
+    !!history &&
+    !!history.location &&
+    history.location.pathname.indexOf("/show") > -1;
 
   const { t } = useTranslation();
   const defaultRestaurant = !!getStorage("defaultRestaurant")
-  ? JSON.parse(getStorage("defaultRestaurant"))
-  : null;
-  
+    ? JSON.parse(getStorage("defaultRestaurant"))
+    : null;
+
   const initModel = {
     RestaurantInvoiceId: null,
-    RestaurantId: !!defaultRestaurant ? defaultRestaurant.RestaurantId: "",
+    RestaurantId: !!defaultRestaurant ? defaultRestaurant.RestaurantId : "",
     Restaurant: defaultRestaurant,
     RestaurantTableId: "",
     RestaurantInvoiceStatusId: null,
     InvoiceNumber: 0,
     InvoiceDateObj: EnToFaObjDate(new Date()),
-    InvoiceDate: moment
-      .from()
-      .locale("en")
-      .format("YYYY-MM-DDTHH:mm:ss"),
+    InvoiceDate: moment.from().locale("en").format("YYYY-MM-DDTHH:mm:ss"),
     InvoicePrice: 0,
     DisountPrice: 0,
     CostPrice: 0,
@@ -104,17 +99,13 @@ export function RestaurantInvoiceEdit({
   );
 
   const [restaurantInvoiceObj, setRestaurantInvoiceObj] = useState(copyModel);
-  const [
-    restaurantInvoiceDetailsObj,
-    setRestaurantInvoiceDetailsObj,
-  ] = useState(initModel.RestaurantInvoiceDtl);
+  const [restaurantInvoiceDetailsObj, setRestaurantInvoiceDetailsObj] =
+    useState(initModel.RestaurantInvoiceDtl);
   const [restaurantInvoiceCostsObj, setRestaurantInvoiceCostsObj] = useState(
     initModel.RestaurantInvoiceCost
   );
-  const [
-    restaurantInvoiceDiscountsObj,
-    setRestaurantInvoiceDiscountsObj,
-  ] = useState(initModel.RestaurantInvoiceDiscount);
+  const [restaurantInvoiceDiscountsObj, setRestaurantInvoiceDiscountsObj] =
+    useState(initModel.RestaurantInvoiceDiscount);
 
   useEffect(() => {
     dispatch(actions.fetchRestaurantInvoice(id));
@@ -128,7 +119,10 @@ export function RestaurantInvoiceEdit({
     if (restaurantInvoiceForEdit && id) {
       _title = t("Common.Edit") + " " + restaurantInvoiceForEdit.InvoiceNumber;
 
-      setRestaurantInvoiceObj({...restaurantInvoiceForEdit, PersonId: [restaurantInvoiceForEdit.Person]});
+      setRestaurantInvoiceObj({
+        ...restaurantInvoiceForEdit,
+        PersonId: [restaurantInvoiceForEdit.Person],
+      });
       setPrices({
         InvoicePrice: restaurantInvoiceForEdit.InvoicePrice,
         DisountPrice: restaurantInvoiceForEdit.DisountPrice,
@@ -316,7 +310,10 @@ export function RestaurantInvoiceEdit({
           </CardHeaderToolbar>
         </CardHeader>
         <CardBody>
-          {(!!id && !!restaurantInvoiceObj && !!restaurantInvoiceObj.RestaurantInvoiceId) || !!id == false ? (
+          {(!!id &&
+            !!restaurantInvoiceObj &&
+            !!restaurantInvoiceObj.RestaurantInvoiceId) ||
+          !!id == false ? (
             <>
               <RestaurantInvoiceEditForm
                 actionsLoading={actionsLoading}
@@ -326,7 +323,7 @@ export function RestaurantInvoiceEdit({
               />
               <Row>
                 <Col lg="12">
-                  <h6>آیتم‌های سفارش</h6>
+                  <h6>Order items</h6>
                   <RestaurantInvoiceDetailsUIProvider
                     invoceId={id}
                     personId={personId}
@@ -346,9 +343,9 @@ export function RestaurantInvoiceEdit({
                     <tbody>
                       <tr>
                         <td style={{ width: "150px" }}>
-                          <strong>جمع کل فاکتور:</strong>
+                          <strong>Total invoice :</strong>
                         </td>
-                        <td>{numberWithCommas(prices.InvoicePrice)} ریال</td>
+                        <td>{numberWithCommas(prices.InvoicePrice)} Euro</td>
                         {/* <td>
                         <strong>جمع کل تخفیف:</strong>
                       </td>

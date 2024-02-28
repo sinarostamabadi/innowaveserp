@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmploymentStatusesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const employmentStatusesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmploymentStatusById  
+    // getEmploymentStatusById
     employmentStatusFetched: (state, action) => {
       state.actionsLoading = false;
       state.employmentStatusForEdit = action.payload.employmentStatusForEdit;
       state.error = null;
     },
-    // findEmploymentStatuses  
+    // findEmploymentStatuses
     employmentStatusesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const employmentStatusesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmploymentStatus  
+    // createEmploymentStatus
     employmentStatusCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmploymentStatus  
+    // updateEmploymentStatus
     employmentStatusUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.EmploymentStatusId === action.payload.employmentStatus.EmploymentStatusId) {
+        if (
+          entity.EmploymentStatusId ===
+          action.payload.employmentStatus.EmploymentStatusId
+        ) {
           return action.payload.employmentStatus;
         }
         return entity;
       });
     },
-    // deleteEmploymentStatus  
+    // deleteEmploymentStatus
     employmentStatusDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EmploymentStatusId !== action.payload.EmploymentStatusId  
+        (el) => el.EmploymentStatusId !== action.payload.EmploymentStatusId
       );
     },
-    // deleteEmploymentStatuses  
+    // deleteEmploymentStatuses
     employmentStatusesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EmploymentStatusId)  
+        (el) => !action.payload.ids.includes(el.EmploymentStatusId)
       );
     },
-    // employmentStatusesUpdateState  
+    // employmentStatusesUpdateState
     employmentStatusesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

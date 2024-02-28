@@ -96,4 +96,4 @@ export const deleteCosts = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

@@ -48,11 +48,11 @@ export function ClosetFreeDialog({ id, show, onHide }) {
       </Modal.Header>
       <Modal.Body>
         {!isLoading && error != null && (
-            <Alerty
-              variant="danger"
-              title={t("err.Error")}
-              description={error.clientMessage}
-            ></Alerty>
+          <Alerty
+            variant="danger"
+            title={t("err.Error")}
+            description={error.clientMessage}
+          ></Alerty>
         )}
         {!isLoading && <span>{t("Common.ConfirmQuestion")}</span>}
         {isLoading && <span>{t("Common.ConfirmLoading")}</span>}

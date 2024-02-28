@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialImportXMLKeiesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const importXMLKeiesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getImportXMLKeyById  
+    // getImportXMLKeyById
     importXMLKeyFetched: (state, action) => {
       state.actionsLoading = false;
       state.importXMLKeyForEdit = action.payload.importXMLKeyForEdit;
       state.error = null;
     },
-    // findImportXMLKeies  
+    // findImportXMLKeies
     importXMLKeiesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,42 @@ export const importXMLKeiesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createImportXMLKey  
+    // createImportXMLKey
     importXMLKeyCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateImportXMLKey  
+    // updateImportXMLKey
     importXMLKeyUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.ImportXMLKeyId === action.payload.importXMLKey.ImportXMLKeyId) {
+        if (
+          entity.ImportXMLKeyId === action.payload.importXMLKey.ImportXMLKeyId
+        ) {
           return action.payload.importXMLKey;
         }
         return entity;
       });
     },
-    // deleteImportXMLKey  
+    // deleteImportXMLKey
     importXMLKeyDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.ImportXMLKeyId !== action.payload.ImportXMLKeyId  
+        (el) => el.ImportXMLKeyId !== action.payload.ImportXMLKeyId
       );
     },
-    // deleteImportXMLKeies  
+    // deleteImportXMLKeies
     importXMLKeiesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ImportXMLKeyId)  
+        (el) => !action.payload.ids.includes(el.ImportXMLKeyId)
       );
     },
-    // importXMLKeiesUpdateState  
+    // importXMLKeiesUpdateState
     importXMLKeiesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

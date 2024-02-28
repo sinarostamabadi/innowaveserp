@@ -1,20 +1,36 @@
 import { Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 
-export function DeleteDialog({ show, onHide, deleteObj, transactions, setTransactions }) {
+export function DeleteDialog({
+  show,
+  onHide,
+  deleteObj,
+  transactions,
+  setTransactions,
+}) {
   const { t } = useTranslation();
 
   function deleteTran() {
-    setTransactions(trans => ({
+    setTransactions((trans) => ({
       ...transactions,
-      Transactions: transactions.Transactions.filter(x => x.TranId != deleteObj.TranId),
-      Payments: transactions.Payments.filter(x => x.TranId != deleteObj.TranId),
-      BankTransfers: transactions.BankTransfers.filter(x => x.TranId != deleteObj.TranId),
-      Cheques: transactions.Cheques.filter(x => x.TranId != deleteObj.TranId),
-      CouponTransactions: transactions.CouponTransactions.filter(x => x.TranId != deleteObj.TranId),
-      Credits: transactions.Credits.filter(x => x.TranId != deleteObj.TranId),
-      PromissoryNotes: transactions.PromissoryNotes.filter(x => x.TranId != deleteObj.TranId),
-      Wallets: transactions.Wallets.filter(x => x.TranId != deleteObj.TranId),
+      Transactions: transactions.Transactions.filter(
+        (x) => x.TranId != deleteObj.TranId
+      ),
+      Payments: transactions.Payments.filter(
+        (x) => x.TranId != deleteObj.TranId
+      ),
+      BankTransfers: transactions.BankTransfers.filter(
+        (x) => x.TranId != deleteObj.TranId
+      ),
+      Cheques: transactions.Cheques.filter((x) => x.TranId != deleteObj.TranId),
+      CouponTransactions: transactions.CouponTransactions.filter(
+        (x) => x.TranId != deleteObj.TranId
+      ),
+      Credits: transactions.Credits.filter((x) => x.TranId != deleteObj.TranId),
+      PromissoryNotes: transactions.PromissoryNotes.filter(
+        (x) => x.TranId != deleteObj.TranId
+      ),
+      Wallets: transactions.Wallets.filter((x) => x.TranId != deleteObj.TranId),
     }));
     onHide();
   }

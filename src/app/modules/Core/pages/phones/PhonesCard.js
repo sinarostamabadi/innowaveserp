@@ -7,10 +7,7 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { PhonesTable } from "./phones-table/PhonesTable";
-import {
-  usePhonesUIContext,
-  PhonesUIConsumer,
-} from "./PhonesUIContext";
+import { usePhonesUIContext, PhonesUIConsumer } from "./PhonesUIContext";
 export function PhonesCard() {
   const phonesUIContext = usePhonesUIContext();
   const phonesUIProps = useMemo(() => {
@@ -19,10 +16,9 @@ export function PhonesCard() {
       queryParams: phonesUIContext.queryParams,
       setQueryParams: phonesUIContext.setQueryParams,
       newPhoneButtonClick: phonesUIContext.newPhoneButtonClick,
-      openDeletePhonesDialog:  
-        phonesUIContext.openDeletePhonesDialog,
+      openDeletePhonesDialog: phonesUIContext.openDeletePhonesDialog,
       openEditPhonePage: phonesUIContext.openEditPhonePage,
-      openUpdatePhonesStatusDialog:  
+      openUpdatePhonesStatusDialog:
         phonesUIContext.openUpdatePhonesStatusDialog,
       openFetchPhonesDialog: phonesUIContext.openFetchPhonesDialog,
     };
@@ -31,12 +27,12 @@ export function PhonesCard() {
     <Card>
       <CardHeader title="EntityTitle">
         <CardHeaderToolbar>
-          <button  
-            type="button"  
-            className="btn btn-primary"  
+          <button
+            type="button"
+            className="btn btn-primary"
             onClick={phonesUIProps.newPhoneButtonClick}
           >
-            EntityTitle  
+            EntityTitle
           </button>
         </CardHeaderToolbar>
       </CardHeader>

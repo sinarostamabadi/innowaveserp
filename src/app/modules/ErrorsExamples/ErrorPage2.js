@@ -1,5 +1,5 @@
 import React from "react";
-import {toAbsoluteUrl} from "../../../core/_helpers";
+import { toAbsoluteUrl } from "../../../core/_helpers";
 
 export function ErrorPage2() {
   return (
@@ -7,7 +7,7 @@ export function ErrorPage2() {
       <div
         className="d-flex flex-row-fluid bgi-size-cover bgi-position-center"
         style={{
-          backgroundImage: `url(${toAbsoluteUrl("/media/error/bg2.jpg")})`
+          backgroundImage: `url(${toAbsoluteUrl("/media/error/bg2.jpg")})`,
         }}
       >
         <div className="d-flex flex-row-fluid flex-column justify-content-end align-items-center text-center text-white pb-40">

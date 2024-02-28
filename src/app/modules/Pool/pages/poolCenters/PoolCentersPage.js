@@ -26,7 +26,7 @@ export function PoolCentersPage({ history }) {
       history.push("/pool/poolCenters/updateStatus");
     },
   };
-  
+
   return (
     <PoolCentersUIProvider poolCentersUIEvents={poolCentersUIEvents}>
       <PoolCentersLoadingDialog />

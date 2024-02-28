@@ -31,7 +31,7 @@ export function RestaurantDashboard() {
           >
             <div className="card-header">
               <div className="card-title">
-                <h3 className="card-label">اطلاعات رستوران</h3>
+                <h3 className="card-label">Restaurant information</h3>
               </div>
             </div>
             <div className="card-body">

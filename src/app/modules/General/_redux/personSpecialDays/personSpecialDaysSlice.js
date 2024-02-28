@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPersonSpecialDaysState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const personSpecialDaysSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPersonSpecialDayById  
+    // getPersonSpecialDayById
     personSpecialDayFetched: (state, action) => {
       state.actionsLoading = false;
       state.personSpecialDayForEdit = action.payload.personSpecialDayForEdit;
       state.error = null;
     },
-    // findPersonSpecialDays  
+    // findPersonSpecialDays
     personSpecialDaysFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const personSpecialDaysSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPersonSpecialDay  
+    // createPersonSpecialDay
     personSpecialDayCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePersonSpecialDay  
+    // updatePersonSpecialDay
     personSpecialDayUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.PersonSpecialDayId === action.payload.personSpecialDay.PersonSpecialDayId) {
+        if (
+          entity.PersonSpecialDayId ===
+          action.payload.personSpecialDay.PersonSpecialDayId
+        ) {
           return action.payload.personSpecialDay;
         }
         return entity;
       });
     },
-    // deletePersonSpecialDay  
+    // deletePersonSpecialDay
     personSpecialDayDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PersonSpecialDayId !== action.payload.PersonSpecialDayId  
+        (el) => el.PersonSpecialDayId !== action.payload.PersonSpecialDayId
       );
     },
-    // deletePersonSpecialDays  
+    // deletePersonSpecialDays
     personSpecialDaysDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PersonSpecialDayId)  
+        (el) => !action.payload.ids.includes(el.PersonSpecialDayId)
       );
     },
-    // personSpecialDaysUpdateState  
+    // personSpecialDaysUpdateState
     personSpecialDaysStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -26,9 +26,11 @@ export function BilliardDiscountsPage({ history }) {
       history.push("/billiard/billiardDiscounts/updateStatus");
     },
   };
-  
+
   return (
-    <BilliardDiscountsUIProvider billiardDiscountsUIEvents={billiardDiscountsUIEvents}>
+    <BilliardDiscountsUIProvider
+      billiardDiscountsUIEvents={billiardDiscountsUIEvents}
+    >
       <BilliardDiscountsLoadingDialog />
       <Route path="/billiard/billiardDiscounts/:id/delete">
         {({ history, match }) => (

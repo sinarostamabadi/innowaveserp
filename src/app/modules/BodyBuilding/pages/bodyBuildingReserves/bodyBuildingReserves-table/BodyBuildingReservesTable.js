@@ -32,8 +32,10 @@ export function BodyBuildingReservesTable() {
       setIds: bodyBuildingReservesUIContext.setIds,
       queryParams: bodyBuildingReservesUIContext.queryParams,
       setQueryParams: bodyBuildingReservesUIContext.setQueryParams,
-      openEditBodyBuildingReservePage: bodyBuildingReservesUIContext.openEditBodyBuildingReservePage,
-      openDeleteBodyBuildingReserveDialog: bodyBuildingReservesUIContext.openDeleteBodyBuildingReserveDialog,
+      openEditBodyBuildingReservePage:
+        bodyBuildingReservesUIContext.openEditBodyBuildingReservePage,
+      openDeleteBodyBuildingReserveDialog:
+        bodyBuildingReservesUIContext.openDeleteBodyBuildingReserveDialog,
     };
   }, [bodyBuildingReservesUIContext]);
 
@@ -50,7 +52,9 @@ export function BodyBuildingReservesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     bodyBuildingReservesUIProps.setIds([]);
-    dispatch(actions.fetchBodyBuildingReserves(bodyBuildingReservesUIProps.queryParams));
+    dispatch(
+      actions.fetchBodyBuildingReserves(bodyBuildingReservesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bodyBuildingReservesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function BodyBuildingReservesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditBodyBuildingReservePage: bodyBuildingReservesUIProps.openEditBodyBuildingReservePage,
-        openDeleteBodyBuildingReserveDialog: bodyBuildingReservesUIProps.openDeleteBodyBuildingReserveDialog,
+        openEditBodyBuildingReservePage:
+          bodyBuildingReservesUIProps.openEditBodyBuildingReservePage,
+        openDeleteBodyBuildingReserveDialog:
+          bodyBuildingReservesUIProps.openDeleteBodyBuildingReserveDialog,
         t: t,
       },
       classes: "text-right pr-0",

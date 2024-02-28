@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBuySettlementTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const buySettlementTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBuySettlementTypeById  
+    // getBuySettlementTypeById
     buySettlementTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.buySettlementTypeForEdit = action.payload.buySettlementTypeForEdit;
       state.error = null;
     },
-    // findBuySettlementTypes  
+    // findBuySettlementTypes
     buySettlementTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const buySettlementTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBuySettlementType  
+    // createBuySettlementType
     buySettlementTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBuySettlementType  
+    // updateBuySettlementType
     buySettlementTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BuySettlementTypeId === action.payload.buySettlementType.BuySettlementTypeId) {
+        if (
+          entity.BuySettlementTypeId ===
+          action.payload.buySettlementType.BuySettlementTypeId
+        ) {
           return action.payload.buySettlementType;
         }
         return entity;
       });
     },
-    // deleteBuySettlementType  
+    // deleteBuySettlementType
     buySettlementTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BuySettlementTypeId !== action.payload.BuySettlementTypeId  
+        (el) => el.BuySettlementTypeId !== action.payload.BuySettlementTypeId
       );
     },
-    // deleteBuySettlementTypes  
+    // deleteBuySettlementTypes
     buySettlementTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BuySettlementTypeId)  
+        (el) => !action.payload.ids.includes(el.BuySettlementTypeId)
       );
     },
-    // buySettlementTypesUpdateState  
+    // buySettlementTypesUpdateState
     buySettlementTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { BowlingTeamsTable } from "./bowlingTeams-table/BowlingTeamsTable";
-import { useBowlingTeamsUIContext, BowlingTeamsUIConsumer } from "./BowlingTeamsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useBowlingTeamsUIContext,
+  BowlingTeamsUIConsumer,
+} from "./BowlingTeamsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function BowlingTeamsCard() {
   const { t } = useTranslation();
@@ -21,17 +23,21 @@ export function BowlingTeamsCard() {
       ids: bowlingTeamsUIContext.ids,
       queryParams: bowlingTeamsUIContext.queryParams,
       setQueryParams: bowlingTeamsUIContext.setQueryParams,
-      newBowlingTeamButtonClick: bowlingTeamsUIContext.newBowlingTeamButtonClick,
-      openDeleteBowlingTeamsDialog: bowlingTeamsUIContext.openDeleteBowlingTeamsDialog,
+      newBowlingTeamButtonClick:
+        bowlingTeamsUIContext.newBowlingTeamButtonClick,
+      openDeleteBowlingTeamsDialog:
+        bowlingTeamsUIContext.openDeleteBowlingTeamsDialog,
       openEditBowlingTeamPage: bowlingTeamsUIContext.openEditBowlingTeamPage,
-      openUpdateBowlingTeamsStatusDialog: bowlingTeamsUIContext.openUpdateBowlingTeamsStatusDialog,
-      openFetchBowlingTeamsDialog: bowlingTeamsUIContext.openFetchBowlingTeamsDialog,
+      openUpdateBowlingTeamsStatusDialog:
+        bowlingTeamsUIContext.openUpdateBowlingTeamsStatusDialog,
+      openFetchBowlingTeamsDialog:
+        bowlingTeamsUIContext.openFetchBowlingTeamsDialog,
     };
   }, [bowlingTeamsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("BowlingTeam.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("BowlingTeam.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"

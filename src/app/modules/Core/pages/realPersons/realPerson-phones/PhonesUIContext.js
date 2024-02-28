@@ -29,13 +29,16 @@ export const PhonesUIProvider = forwardRef(
         fn(
           phones.map((phone) => {
             return {
-              PhoneId: phone.PhoneId.toString().indexOf("temp_") > -1? null: phone.PhoneId,
+              PhoneId:
+                phone.PhoneId.toString().indexOf("temp_") > -1
+                  ? null
+                  : phone.PhoneId,
               PhoneTypeId: +phone.PhoneTypeId,
               PersonId: +personId,
               AreaCode: phone.AreaCode,
               PhoneNumber: phone.PhoneNumber,
               Extension: phone.Extension,
-              IsDeleted: phone.IsDeleted
+              IsDeleted: phone.IsDeleted,
             };
           })
         );
@@ -159,9 +162,7 @@ export const PhonesUIProvider = forwardRef(
 
     const removePhone = (phoneId) => {
       if (phoneId.toString().indexOf("temp_") > -1) {
-        setPhones((phones) =>
-          phones.filter((item) => item.PhoneId != phoneId)
-        );
+        setPhones((phones) => phones.filter((item) => item.PhoneId != phoneId));
       } else {
         setPhones((phones) =>
           phones.map((item) => {

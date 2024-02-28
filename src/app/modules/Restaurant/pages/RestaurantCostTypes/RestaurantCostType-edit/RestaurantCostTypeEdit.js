@@ -44,7 +44,8 @@ export function RestaurantCostTypeEdit({
   const { actionsLoading, restaurantCostTypeForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.restaurantCostTypes.actionsLoading,
-      restaurantCostTypeForEdit: state.restaurantCostTypes.restaurantCostTypeForEdit,
+      restaurantCostTypeForEdit:
+        state.restaurantCostTypes.restaurantCostTypeForEdit,
       error: state.restaurantCostTypes.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function RestaurantCostTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("RestaurantCostType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("RestaurantCostType.Entity");
 
     if (restaurantCostTypeForEdit && id) {
       _title = t("Common.Edit") + " " + restaurantCostTypeForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function RestaurantCostTypeEdit({
         .then((arg) => {
           backToRestaurantCostTypesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateRestaurantCostType(id, values))
         .then(() => backToRestaurantCostTypesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

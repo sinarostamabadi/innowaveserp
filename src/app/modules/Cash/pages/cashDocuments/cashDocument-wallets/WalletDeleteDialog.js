@@ -40,10 +40,10 @@ export function WalletDeleteDialog() {
   }, [walletsUIProps.id]);
 
   // looking for loading/dispatch
-  useEffect(() => { }, [isLoading, dispatch]);
+  useEffect(() => {}, [isLoading, dispatch]);
 
   const deleteWallet = () => {
-    walletsUIProps.removeWallet(walletsUIProps.id)
+    walletsUIProps.removeWallet(walletsUIProps.id);
     walletsUIProps.onHide();
   };
 
@@ -60,9 +60,7 @@ export function WalletDeleteDialog() {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && (
-          <span>{t("Common.DeleteQuestion")}</span>
-        )}
+        {!isLoading && <span>{t("Common.DeleteQuestion")}</span>}
         {isLoading && <span>{t("Common.DeleteLoading")}</span>}
       </Modal.Body>
       <Modal.Footer>

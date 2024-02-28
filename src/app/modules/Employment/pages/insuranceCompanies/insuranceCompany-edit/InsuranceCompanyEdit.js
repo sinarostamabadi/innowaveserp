@@ -55,7 +55,9 @@ export function InsuranceCompanyEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("InsuranceCompany.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("InsuranceCompany.Entity");
 
     if (insuranceCompanyForEdit && id) {
       _title = t("Common.Edit") + " " + insuranceCompanyForEdit.TitleFa;
@@ -73,11 +75,11 @@ export function InsuranceCompanyEdit({
         .then((arg) => {
           backToInsuranceCompaniesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateInsuranceCompany(id, values))
         .then(() => backToInsuranceCompaniesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

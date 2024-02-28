@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialYearsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const yearsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getYearById  
+    // getYearById
     yearFetched: (state, action) => {
       state.actionsLoading = false;
       state.yearForEdit = action.payload.yearForEdit;
       state.error = null;
     },
-    // findYears  
+    // findYears
     yearsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const yearsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createYear  
+    // createYear
     yearCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateYear  
+    // updateYear
     yearUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const yearsSlice = createSlice({
         return entity;
       });
     },
-    // deleteYear  
+    // deleteYear
     yearDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.YearId !== action.payload.YearId  
+        (el) => el.YearId !== action.payload.YearId
       );
     },
-    // deleteYears  
+    // deleteYears
     yearsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.YearId)  
+        (el) => !action.payload.ids.includes(el.YearId)
       );
     },
-    // yearsUpdateState  
+    // yearsUpdateState
     yearsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

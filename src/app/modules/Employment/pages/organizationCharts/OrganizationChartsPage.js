@@ -26,9 +26,11 @@ export function OrganizationChartsPage({ history }) {
       history.push("/employment/organizationCharts/updateStatus");
     },
   };
-  
+
   return (
-    <OrganizationChartsUIProvider organizationChartsUIEvents={organizationChartsUIEvents}>
+    <OrganizationChartsUIProvider
+      organizationChartsUIEvents={organizationChartsUIEvents}
+    >
       <OrganizationChartsLoadingDialog />
       <Route path="/employment/organizationCharts/:id/delete">
         {({ history, match }) => (

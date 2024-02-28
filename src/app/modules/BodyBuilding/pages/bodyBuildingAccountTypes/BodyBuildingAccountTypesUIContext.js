@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BodyBuildingAccountTypeModel } from "../../../../../core/_models/BodyBuilding/BodyBuildingAccountTypeModel";
@@ -10,9 +9,13 @@ export function useBodyBuildingAccountTypesUIContext() {
   return useContext(BodyBuildingAccountTypesUIContext);
 }
 
-export const BodyBuildingAccountTypesUIConsumer = BodyBuildingAccountTypesUIContext.Consumer;
+export const BodyBuildingAccountTypesUIConsumer =
+  BodyBuildingAccountTypesUIContext.Consumer;
 
-export function BodyBuildingAccountTypesUIProvider({ bodyBuildingAccountTypesUIEvents, children }) {
+export function BodyBuildingAccountTypesUIProvider({
+  bodyBuildingAccountTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(BodyBuildingAccountTypeModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function BodyBuildingAccountTypesUIProvider({ bodyBuildingAccountTypesUIE
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function BodyBuildingAccountTypesUIProvider({ bodyBuildingAccountTypesUIE
     setIds,
     setQueryParams,
     dataModel: BodyBuildingAccountTypeModel,
-    newBodyBuildingAccountTypeButtonClick: bodyBuildingAccountTypesUIEvents.newBodyBuildingAccountTypeButtonClick,
-    openEditBodyBuildingAccountTypePage: bodyBuildingAccountTypesUIEvents.openEditBodyBuildingAccountTypePage,
-    openDeleteBodyBuildingAccountTypeDialog: bodyBuildingAccountTypesUIEvents.openDeleteBodyBuildingAccountTypeDialog,
-    openDeleteBodyBuildingAccountTypesDialog: bodyBuildingAccountTypesUIEvents.openDeleteBodyBuildingAccountTypesDialog,
-    openFetchBodyBuildingAccountTypesDialog: bodyBuildingAccountTypesUIEvents.openFetchBodyBuildingAccountTypesDialog,
-    openUpdateBodyBuildingAccountTypesStatusDialog: bodyBuildingAccountTypesUIEvents.openUpdateBodyBuildingAccountTypesStatusDialog,
+    newBodyBuildingAccountTypeButtonClick:
+      bodyBuildingAccountTypesUIEvents.newBodyBuildingAccountTypeButtonClick,
+    openEditBodyBuildingAccountTypePage:
+      bodyBuildingAccountTypesUIEvents.openEditBodyBuildingAccountTypePage,
+    openDeleteBodyBuildingAccountTypeDialog:
+      bodyBuildingAccountTypesUIEvents.openDeleteBodyBuildingAccountTypeDialog,
+    openDeleteBodyBuildingAccountTypesDialog:
+      bodyBuildingAccountTypesUIEvents.openDeleteBodyBuildingAccountTypesDialog,
+    openFetchBodyBuildingAccountTypesDialog:
+      bodyBuildingAccountTypesUIEvents.openFetchBodyBuildingAccountTypesDialog,
+    openUpdateBodyBuildingAccountTypesStatusDialog:
+      bodyBuildingAccountTypesUIEvents.openUpdateBodyBuildingAccountTypesStatusDialog,
   };
   return (
-    <BodyBuildingAccountTypesUIContext.Provider value={value}>{children}</BodyBuildingAccountTypesUIContext.Provider>
+    <BodyBuildingAccountTypesUIContext.Provider value={value}>
+      {children}
+    </BodyBuildingAccountTypesUIContext.Provider>
   );
 }

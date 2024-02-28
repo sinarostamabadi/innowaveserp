@@ -1,4 +1,3 @@
-
 import { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { ServicesTable } from "./Services-table/ServicesTable";
 import { useServicesUIContext, ServicesUIConsumer } from "./ServicesUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function ServicesCard() {
   const { t } = useTranslation();
@@ -24,14 +23,17 @@ export function ServicesCard() {
       newServiceButtonClick: servicesUIContext.newServiceButtonClick,
       openDeleteServicesDialog: servicesUIContext.openDeleteServicesDialog,
       openEditServicePage: servicesUIContext.openEditServicePage,
-      openUpdateServicesStatusDialog: servicesUIContext.openUpdateServicesStatusDialog,
+      openUpdateServicesStatusDialog:
+        servicesUIContext.openUpdateServicesStatusDialog,
       openFetchServicesDialog: servicesUIContext.openFetchServicesDialog,
     };
   }, [servicesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("BodyBuildingService.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("BodyBuildingService.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"

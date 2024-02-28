@@ -32,8 +32,10 @@ export function PersonSpecialDaysTable() {
       setIds: personSpecialDaysUIContext.setIds,
       queryParams: personSpecialDaysUIContext.queryParams,
       setQueryParams: personSpecialDaysUIContext.setQueryParams,
-      openEditPersonSpecialDayPage: personSpecialDaysUIContext.openEditPersonSpecialDayPage,
-      openDeletePersonSpecialDayDialog: personSpecialDaysUIContext.openDeletePersonSpecialDayDialog,
+      openEditPersonSpecialDayPage:
+        personSpecialDaysUIContext.openEditPersonSpecialDayPage,
+      openDeletePersonSpecialDayDialog:
+        personSpecialDaysUIContext.openDeletePersonSpecialDayDialog,
     };
   }, [personSpecialDaysUIContext]);
 
@@ -50,7 +52,9 @@ export function PersonSpecialDaysTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     personSpecialDaysUIProps.setIds([]);
-    dispatch(actions.fetchPersonSpecialDays(personSpecialDaysUIProps.queryParams));
+    dispatch(
+      actions.fetchPersonSpecialDays(personSpecialDaysUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [personSpecialDaysUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function PersonSpecialDaysTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditPersonSpecialDayPage: personSpecialDaysUIProps.openEditPersonSpecialDayPage,
-        openDeletePersonSpecialDayDialog: personSpecialDaysUIProps.openDeletePersonSpecialDayDialog,
+        openEditPersonSpecialDayPage:
+          personSpecialDaysUIProps.openEditPersonSpecialDayPage,
+        openDeletePersonSpecialDayDialog:
+          personSpecialDaysUIProps.openDeletePersonSpecialDayDialog,
         t: t,
       },
       classes: "text-right pr-0",

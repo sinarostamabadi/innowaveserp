@@ -55,7 +55,9 @@ export function ContractEndTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("ContractEndType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("ContractEndType.Entity");
 
     if (contractEndTypeForEdit && id) {
       _title = t("Common.Edit") + " " + contractEndTypeForEdit.TitleFa;
@@ -73,11 +75,11 @@ export function ContractEndTypeEdit({
         .then((arg) => {
           backToContractEndTypesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateContractEndType(id, values))
         .then(() => backToContractEndTypesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

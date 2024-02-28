@@ -26,9 +26,11 @@ export function BuyRequestDetailsPage({ history }) {
       history.push("/purchaseOrder/buyRequestDetails/updateStatus");
     },
   };
-  
+
   return (
-    <BuyRequestDetailsUIProvider buyRequestDetailsUIEvents={buyRequestDetailsUIEvents}>
+    <BuyRequestDetailsUIProvider
+      buyRequestDetailsUIEvents={buyRequestDetailsUIEvents}
+    >
       <BuyRequestDetailsLoadingDialog />
       <Route path="/purchaseOrder/buyRequestDetails/:id/delete">
         {({ history, match }) => (

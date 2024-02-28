@@ -9,13 +9,25 @@ export const ActionsColumnFormatter = (
   cellContent,
   row,
   rowIndex,
-  { openEditOrganizationChartLevelPage, openDeleteOrganizationChartLevelDialog, t }
+  {
+    openEditOrganizationChartLevelPage,
+    openDeleteOrganizationChartLevelDialog,
+    t,
+  }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="organizationChartLevels-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="organizationChartLevels-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-        onClick={() => openEditOrganizationChartLevelPage(row.OrganizationChartLevelId)}
+        onClick={() =>
+          openEditOrganizationChartLevelPage(row.OrganizationChartLevelId)
+        }
       >
         <span className="svg-icon svg-icon-md svg-icon-primary">
           <SVG
@@ -26,11 +38,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="organizationChartLevels-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="organizationChartLevels-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteOrganizationChartLevelDialog(row.OrganizationChartLevelId)}
+        onClick={() =>
+          openDeleteOrganizationChartLevelDialog(row.OrganizationChartLevelId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

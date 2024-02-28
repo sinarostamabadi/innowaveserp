@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -48,7 +47,9 @@ export function BilliardCenterDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteBilliardCenter(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchBilliardCenters(billiardCentersUIProps.queryParams));
+        dispatch(
+          actions.fetchBilliardCenters(billiardCentersUIProps.queryParams)
+        );
         // clear selections list
         billiardCentersUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +68,12 @@ export function BilliardCenterDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("BilliardCenter.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("BilliardCenter.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

@@ -1,7 +1,12 @@
 import React, { useCallback } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { Input, SuggestionField, Select, TextArea } from "src/core/_partials/controls";
+import {
+  Input,
+  SuggestionField,
+  Select,
+  TextArea,
+} from "src/core/_partials/controls";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 
@@ -13,15 +18,15 @@ export function ChequePaperEditForm({ chequePaper, btnRef, saveChequePaper }) {
       .min(2, t("err.Min", { 0: 2 }))
       .max(100, t("err.Max", { 0: 100 }))
       .required(t("err.IsRequired", { 0: t("ChequePaper.SerialNo") })),
-    BankAccountId: Yup.array()
-      .required(t("err.IsRequired", { 0: t("ChequePaper.BankAccount") })),
-    ChequeBookId: Yup.array()
-      .required(t("err.IsRequired", { 0: t("ChequePaper.ChequeBook") })),
-    ChequePaperStatus: Yup.string()
-      .required(t("err.IsRequired", { 0: t("ChequePaper.ChequePaperStatus") })),
-
-
-
+    BankAccountId: Yup.array().required(
+      t("err.IsRequired", { 0: t("ChequePaper.BankAccount") })
+    ),
+    ChequeBookId: Yup.array().required(
+      t("err.IsRequired", { 0: t("ChequePaper.ChequeBook") })
+    ),
+    ChequePaperStatus: Yup.string().required(
+      t("err.IsRequired", { 0: t("ChequePaper.ChequePaperStatus") })
+    ),
   });
 
   const handleSuggestionBankAccount = useCallback((query, fnCallback) => {
@@ -65,7 +70,6 @@ export function ChequePaperEditForm({ chequePaper, btnRef, saveChequePaper }) {
       Description: dirty.Description,
       SerialNo: dirty.SerialNo,
       BankAccountId: dirty.BankAccountId,
-
     };
   }
   return (
@@ -91,9 +95,7 @@ export function ChequePaperEditForm({ chequePaper, btnRef, saveChequePaper }) {
                     placeHolder={t("msg.SelectBySuggestion")}
                     handleSearch={handleSuggestionBankAccount}
                     defaultValue={
-                      chequePaper.BankAccount
-                        ? [chequePaper.BankAccount]
-                        : []
+                      chequePaper.BankAccount ? [chequePaper.BankAccount] : []
                     }
                     renderMenuItemChildren={(option, props) => (
                       <div>
@@ -111,9 +113,7 @@ export function ChequePaperEditForm({ chequePaper, btnRef, saveChequePaper }) {
                     placeHolder={t("msg.SelectBySuggestion")}
                     handleSearch={handleSuggestionChequeBook}
                     defaultValue={
-                      chequePaper.ChequeBook
-                        ? [chequePaper.ChequeBook]
-                        : []
+                      chequePaper.ChequeBook ? [chequePaper.ChequeBook] : []
                     }
                     renderMenuItemChildren={(option, props) => (
                       <div>
@@ -134,7 +134,6 @@ export function ChequePaperEditForm({ chequePaper, btnRef, saveChequePaper }) {
                       </option>
                     ))}
                   </Select>
-
                 </div>
               </div>
               <div className="form-group row">

@@ -12,7 +12,13 @@ export const ActionsColumnFormatter = (
   { openEditEmployeeEducarionPage, openDeleteEmployeeEducarionDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="employeeEducarions-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="employeeEducarions-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditEmployeeEducarionPage(row.EmployeeEducarionId)}
@@ -26,11 +32,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="employeeEducarions-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="employeeEducarions-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteEmployeeEducarionDialog(row.EmployeeEducarionId)}
+        onClick={() =>
+          openDeleteEmployeeEducarionDialog(row.EmployeeEducarionId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

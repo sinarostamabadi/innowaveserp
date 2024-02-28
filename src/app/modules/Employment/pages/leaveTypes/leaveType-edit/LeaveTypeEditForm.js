@@ -14,7 +14,7 @@ export function LeaveTypeEditForm({ leaveType, btnRef, saveLeaveType }) {
       .required(t("err.IsRequired", { 0: t("LeaveType.TitleFa") })),
     TitleEn: Yup.string()
       .min(2, t("err.Min", { 0: 2 }))
-      .max(100, t("err.Max", { 0: 100 }))
+      .max(100, t("err.Max", { 0: 100 })),
   });
 
   return (

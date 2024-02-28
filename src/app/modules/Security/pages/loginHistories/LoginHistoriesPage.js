@@ -26,7 +26,7 @@ export function LoginHistoriesPage({ history }) {
       history.push("/security/loginHistories/updateStatus");
     },
   };
-  
+
   return (
     <LoginHistoriesUIProvider loginHistoriesUIEvents={loginHistoriesUIEvents}>
       <LoginHistoriesLoadingDialog />

@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmployeeRewardPenaltiesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const employeeRewardPenaltiesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmployeeRewardPenaltyById  
+    // getEmployeeRewardPenaltyById
     employeeRewardPenaltyFetched: (state, action) => {
       state.actionsLoading = false;
-      state.employeeRewardPenaltyForEdit = action.payload.employeeRewardPenaltyForEdit;
+      state.employeeRewardPenaltyForEdit =
+        action.payload.employeeRewardPenaltyForEdit;
       state.error = null;
     },
-    // findEmployeeRewardPenalties  
+    // findEmployeeRewardPenalties
     employeeRewardPenaltiesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const employeeRewardPenaltiesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmployeeRewardPenalty  
+    // createEmployeeRewardPenalty
     employeeRewardPenaltyCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmployeeRewardPenalty  
+    // updateEmployeeRewardPenalty
     employeeRewardPenaltyUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.EmployeeRewardPenaltyId === action.payload.employeeRewardPenalty.EmployeeRewardPenaltyId) {
+        if (
+          entity.EmployeeRewardPenaltyId ===
+          action.payload.employeeRewardPenalty.EmployeeRewardPenaltyId
+        ) {
           return action.payload.employeeRewardPenalty;
         }
         return entity;
       });
     },
-    // deleteEmployeeRewardPenalty  
+    // deleteEmployeeRewardPenalty
     employeeRewardPenaltyDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EmployeeRewardPenaltyId !== action.payload.EmployeeRewardPenaltyId  
+        (el) =>
+          el.EmployeeRewardPenaltyId !== action.payload.EmployeeRewardPenaltyId
       );
     },
-    // deleteEmployeeRewardPenalties  
+    // deleteEmployeeRewardPenalties
     employeeRewardPenaltiesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EmployeeRewardPenaltyId)  
+        (el) => !action.payload.ids.includes(el.EmployeeRewardPenaltyId)
       );
     },
-    // employeeRewardPenaltiesUpdateState  
+    // employeeRewardPenaltiesUpdateState
     employeeRewardPenaltiesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

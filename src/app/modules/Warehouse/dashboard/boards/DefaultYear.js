@@ -43,9 +43,9 @@ export default function DefaultYear() {
           <Row>
             <Col xs="12">
               <p className="text-center font-weight-normal font-size-lg pb-7">
-                توجه: انتخاب سال مالی پیشفرض الزامی می‌باشد
+              Note: It is mandatory to select the default fiscal year
                 <br />
-                لطفا سال مربوطه را انتخاب نمایید.
+                Please select the relevant year.
               </p>
               <select
                 id="YearId"

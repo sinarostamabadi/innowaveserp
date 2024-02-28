@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { ImportXMLKeyModel } from "../../../../../core/_models/Accounting/ImportXMLKeyModel";
@@ -30,7 +29,7 @@ export function ImportXMLKeiesUIProvider({ importXMLKeiesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function ImportXMLKeiesUIProvider({ importXMLKeiesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: ImportXMLKeyModel,
-    newImportXMLKeyButtonClick: importXMLKeiesUIEvents.newImportXMLKeyButtonClick,
+    newImportXMLKeyButtonClick:
+      importXMLKeiesUIEvents.newImportXMLKeyButtonClick,
     openEditImportXMLKeyPage: importXMLKeiesUIEvents.openEditImportXMLKeyPage,
-    openDeleteImportXMLKeyDialog: importXMLKeiesUIEvents.openDeleteImportXMLKeyDialog,
-    openDeleteImportXMLKeiesDialog: importXMLKeiesUIEvents.openDeleteImportXMLKeiesDialog,
-    openFetchImportXMLKeiesDialog: importXMLKeiesUIEvents.openFetchImportXMLKeiesDialog,
-    openUpdateImportXMLKeiesStatusDialog: importXMLKeiesUIEvents.openUpdateImportXMLKeiesStatusDialog,
+    openDeleteImportXMLKeyDialog:
+      importXMLKeiesUIEvents.openDeleteImportXMLKeyDialog,
+    openDeleteImportXMLKeiesDialog:
+      importXMLKeiesUIEvents.openDeleteImportXMLKeiesDialog,
+    openFetchImportXMLKeiesDialog:
+      importXMLKeiesUIEvents.openFetchImportXMLKeiesDialog,
+    openUpdateImportXMLKeiesStatusDialog:
+      importXMLKeiesUIEvents.openUpdateImportXMLKeiesStatusDialog,
   };
   return (
-    <ImportXMLKeiesUIContext.Provider value={value}>{children}</ImportXMLKeiesUIContext.Provider>
+    <ImportXMLKeiesUIContext.Provider value={value}>
+      {children}
+    </ImportXMLKeiesUIContext.Provider>
   );
 }

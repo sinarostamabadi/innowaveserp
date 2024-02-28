@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./RestaurantsCrud";
 import { restaurantsSlice, callTypes } from "./RestaurantsSlice";
 const { actions } = restaurantsSlice;
@@ -19,7 +18,9 @@ export const fetchRestaurants = (queryParams) => (dispatch) => {
 };
 export const fetchRestaurant = (id) => (dispatch) => {
   if (!id) {
-    return dispatch(actions.restaurantFetched({ restaurantForEdit: undefined }));
+    return dispatch(
+      actions.restaurantFetched({ restaurantForEdit: undefined })
+    );
   }
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
@@ -97,4 +98,4 @@ export const deleteRestaurants = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

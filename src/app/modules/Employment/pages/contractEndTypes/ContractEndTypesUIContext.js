@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { ContractEndTypeModel } from "../../../../../core/_models/Employment/ContractEndTypeModel";
@@ -12,7 +11,10 @@ export function useContractEndTypesUIContext() {
 
 export const ContractEndTypesUIConsumer = ContractEndTypesUIContext.Consumer;
 
-export function ContractEndTypesUIProvider({ contractEndTypesUIEvents, children }) {
+export function ContractEndTypesUIProvider({
+  contractEndTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(ContractEndTypeModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function ContractEndTypesUIProvider({ contractEndTypesUIEvents, children 
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function ContractEndTypesUIProvider({ contractEndTypesUIEvents, children 
     setIds,
     setQueryParams,
     dataModel: ContractEndTypeModel,
-    newContractEndTypeButtonClick: contractEndTypesUIEvents.newContractEndTypeButtonClick,
-    openEditContractEndTypePage: contractEndTypesUIEvents.openEditContractEndTypePage,
-    openDeleteContractEndTypeDialog: contractEndTypesUIEvents.openDeleteContractEndTypeDialog,
-    openDeleteContractEndTypesDialog: contractEndTypesUIEvents.openDeleteContractEndTypesDialog,
-    openFetchContractEndTypesDialog: contractEndTypesUIEvents.openFetchContractEndTypesDialog,
-    openUpdateContractEndTypesStatusDialog: contractEndTypesUIEvents.openUpdateContractEndTypesStatusDialog,
+    newContractEndTypeButtonClick:
+      contractEndTypesUIEvents.newContractEndTypeButtonClick,
+    openEditContractEndTypePage:
+      contractEndTypesUIEvents.openEditContractEndTypePage,
+    openDeleteContractEndTypeDialog:
+      contractEndTypesUIEvents.openDeleteContractEndTypeDialog,
+    openDeleteContractEndTypesDialog:
+      contractEndTypesUIEvents.openDeleteContractEndTypesDialog,
+    openFetchContractEndTypesDialog:
+      contractEndTypesUIEvents.openFetchContractEndTypesDialog,
+    openUpdateContractEndTypesStatusDialog:
+      contractEndTypesUIEvents.openUpdateContractEndTypesStatusDialog,
   };
   return (
-    <ContractEndTypesUIContext.Provider value={value}>{children}</ContractEndTypesUIContext.Provider>
+    <ContractEndTypesUIContext.Provider value={value}>
+      {children}
+    </ContractEndTypesUIContext.Provider>
   );
 }

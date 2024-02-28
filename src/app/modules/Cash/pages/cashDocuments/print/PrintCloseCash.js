@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { CloneObject, numberWithCommas } from "src/core/_helpers";
 
 export const PrintCloseCash = React.forwardRef(({ data }, ref) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [dataPrint, setDataPrint] = useState(data);
   useEffect(() => {
     if (!!data) {
@@ -37,7 +37,12 @@ export const PrintCloseCash = React.forwardRef(({ data }, ref) => {
           style={{ border: "1px solid #000", textAlign: "right", padding: "0" }}
         >
           <table
-            style={{ fontSize: "1rem", width: "100%", textAlign: "right", direction: "rtl" }}
+            style={{
+              fontSize: "1rem",
+              width: "100%",
+              textAlign: "right",
+              direction: "rtl",
+            }}
           >
             <tbody>
               <tr>
@@ -61,21 +66,21 @@ export const PrintCloseCash = React.forwardRef(({ data }, ref) => {
                 <td style={{ width: "50%", textAlign: "right" }}>
                   <span style={{ display: "inline-block" }}>ساعت شروع: </span>
                   <span style={{ display: "inline-block" }}>
-                    {!!dataPrint && !!dataPrint.StartDateTime && (
+                    {!!dataPrint &&
+                      !!dataPrint.StartDateTime &&
                       moment(dataPrint.StartDateTime, "YYYY-MM-DDTHH:mm:ss")
-                      .locale(process.env.REACT_APP_DATE)
-                      .format("HH:mm:ss")
-                    )}
+                        .locale(process.env.REACT_APP_DATE)
+                        .format("HH:mm:ss")}
                   </span>
                 </td>
                 <td style={{ width: "50%", textAlign: "right" }}>
                   <span style={{ display: "inline-block" }}>ساعت اتمام: </span>
                   <span style={{ display: "inline-block" }}>
-                    {!!dataPrint && !!dataPrint.EndDateTime && (
+                    {!!dataPrint &&
+                      !!dataPrint.EndDateTime &&
                       moment(dataPrint.EndDateTime, "YYYY-MM-DDTHH:mm:ss")
-                      .locale("en")
-                      .format("HH:mm:ss")
-                    )}
+                        .locale("en")
+                        .format("HH:mm:ss")}
                   </span>
                 </td>
               </tr>
@@ -101,7 +106,9 @@ export const PrintCloseCash = React.forwardRef(({ data }, ref) => {
                   </span>
                 </td>
                 <td style={{ width: "50%", textAlign: "right" }}>
-                  <span style={{ display: "inline-block" }}>{t("Common.Score")}: </span>
+                  <span style={{ display: "inline-block" }}>
+                    {t("Common.Score")}:{" "}
+                  </span>
                   <span style={{ display: "inline-block" }}>
                     {!!dataPrint && numberWithCommas(dataPrint.PointPrice)}
                   </span>
@@ -123,7 +130,9 @@ export const PrintCloseCash = React.forwardRef(({ data }, ref) => {
               </tr>
               <tr>
                 <td style={{ width: "50%", textAlign: "right" }}>
-                  <span style={{ display: "inline-block" }}>تعداد حذف شده: </span>
+                  <span style={{ display: "inline-block" }}>
+                    تعداد حذف شده:{" "}
+                  </span>
                   <span style={{ display: "inline-block" }}>
                     {!!dataPrint && numberWithCommas(dataPrint.DeletedCount)}
                   </span>
@@ -175,75 +184,78 @@ export const PrintCloseCash = React.forwardRef(({ data }, ref) => {
                 </td>
               </tr>
             )}
-            <tr><td colSpan="5" style={{padding: "1rem"}}></td></tr>
+            <tr>
+              <td colSpan="5" style={{ padding: "1rem" }}></td>
+            </tr>
           </tbody>
         </table>
         <table
-              className="sell-detail table table-bordered border-dark text-black"
-              style={{ borderSpacing: "0", direction: "rtl", width: "100%" }}>
-              <thead>
-                <tr>
-                  <th className="border-dark" style={{ width: "5%" }}>
-                    <div style={{ transform: "rotate(90deg)" }}>ردیف</div>
-                  </th>
-                  <th className="border-dark" style={{ width: "35%" }}>
-                    کالا
-                  </th>
-                  <th className="border-dark" style={{ width: "10%" }}>
-                    تعداد
-                    <br />
-                    مقدار
-                  </th>
-                  <th className="border-dark" style={{ width: "12%" }}>
-                    قیمت کالا
-                    <hr className="border-dark" />
-                    تخفیف
-                  </th>
-                  <th className="border-dark" style={{ width: "15%" }}>
-                    قبل تخفیف
-                    <hr className="border-dark" />
-                    بعد تخفیف
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="text-black">
-                {!!dataPrint &&
-                  dataPrint.SellDocumentDetails.length &&
-                  dataPrint.SellDocumentDetails.map((x, i) => (
-                    <tr key={x.SellDocumentDetailId}>
-                      <td className="text-center border-dark">{i + 1}</td>
-                      <td className="border-dark">{x.Product.Name}</td>
-                      <td className="text-center border-dark">{x.Amount}</td>
-                      <td className="text-center border-dark">
-                        {numberWithCommas(x.Price)}
-                        <br />
-                        {numberWithCommas(x.DiscountPrice)}
-                      </td>
-                      <td className="border-dark">
-                        {numberWithCommas(x.PayablePrice)}
-                        <br />
-                        {numberWithCommas(x.FinalPrice)}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-                <tr>
-              <td colSpan="5" className="text-center border-dark">
-                امضاء
-                <br />
-                <br />
-                <br />
-                <br />
-              </td>
-            </tr>
+          className="sell-detail table table-bordered border-dark text-black"
+          style={{ borderSpacing: "0", direction: "rtl", width: "100%" }}
+        >
+          <thead>
             <tr>
-              <td colSpan="5" className="text-center border-dark">
-                RoshaSoft.ir
+              <th className="border-dark" style={{ width: "5%" }}>
+                <div style={{ transform: "rotate(90deg)" }}>ردیف</div>
+              </th>
+              <th className="border-dark" style={{ width: "35%" }}>
+                کالا
+              </th>
+              <th className="border-dark" style={{ width: "10%" }}>
+                تعداد
                 <br />
-                گروه نرم‌افزاری نوت
-              </td>
+                مقدار
+              </th>
+              <th className="border-dark" style={{ width: "12%" }}>
+                قیمت کالا
+                <hr className="border-dark" />
+                تخفیف
+              </th>
+              <th className="border-dark" style={{ width: "15%" }}>
+                قبل تخفیف
+                <hr className="border-dark" />
+                بعد تخفیف
+              </th>
             </tr>
-            </table>
+          </thead>
+          <tbody className="text-black">
+            {!!dataPrint &&
+              dataPrint.SellDocumentDetails.length &&
+              dataPrint.SellDocumentDetails.map((x, i) => (
+                <tr key={x.SellDocumentDetailId}>
+                  <td className="text-center border-dark">{i + 1}</td>
+                  <td className="border-dark">{x.Product.Name}</td>
+                  <td className="text-center border-dark">{x.Amount}</td>
+                  <td className="text-center border-dark">
+                    {numberWithCommas(x.Price)}
+                    <br />
+                    {numberWithCommas(x.DiscountPrice)}
+                  </td>
+                  <td className="border-dark">
+                    {numberWithCommas(x.PayablePrice)}
+                    <br />
+                    {numberWithCommas(x.FinalPrice)}
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+          <tr>
+            <td colSpan="5" className="text-center border-dark">
+              امضاء
+              <br />
+              <br />
+              <br />
+              <br />
+            </td>
+          </tr>
+          <tr>
+            <td colSpan="5" className="text-center border-dark">
+              RoshaSoft.ir
+              <br />
+              گروه نرم‌افزاری نوت
+            </td>
+          </tr>
+        </table>
       </div>
     </>
   );

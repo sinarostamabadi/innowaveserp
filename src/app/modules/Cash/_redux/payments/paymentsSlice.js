@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPaymentsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const paymentsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPaymentById  
+    // getPaymentById
     paymentFetched: (state, action) => {
       state.actionsLoading = false;
       state.paymentForEdit = action.payload.paymentForEdit;
       state.error = null;
     },
-    // findPayments  
+    // findPayments
     paymentsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const paymentsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPayment  
+    // createPayment
     paymentCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePayment  
+    // updatePayment
     paymentUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const paymentsSlice = createSlice({
         return entity;
       });
     },
-    // deletePayment  
+    // deletePayment
     paymentDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PaymentId !== action.payload.PaymentId  
+        (el) => el.PaymentId !== action.payload.PaymentId
       );
     },
-    // deletePayments  
+    // deletePayments
     paymentsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PaymentId)  
+        (el) => !action.payload.ids.includes(el.PaymentId)
       );
     },
-    // paymentsUpdateState  
+    // paymentsUpdateState
     paymentsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

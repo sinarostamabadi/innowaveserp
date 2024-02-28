@@ -26,9 +26,11 @@ export function FutsalDiscountsPage({ history }) {
       history.push("/futsal/futsalDiscounts/updateStatus");
     },
   };
-  
+
   return (
-    <FutsalDiscountsUIProvider futsalDiscountsUIEvents={futsalDiscountsUIEvents}>
+    <FutsalDiscountsUIProvider
+      futsalDiscountsUIEvents={futsalDiscountsUIEvents}
+    >
       <FutsalDiscountsLoadingDialog />
       <Route path="/futsal/futsalDiscounts/:id/delete">
         {({ history, match }) => (

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { RestaurantModel } from "../../../../../core/_models/Restaurant/RestaurantModel";
@@ -30,7 +29,7 @@ export function RestaurantsUIProvider({ restaurantsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -41,11 +40,15 @@ export function RestaurantsUIProvider({ restaurantsUIEvents, children }) {
     newRestaurantButtonClick: restaurantsUIEvents.newRestaurantButtonClick,
     openEditRestaurantPage: restaurantsUIEvents.openEditRestaurantPage,
     openDeleteRestaurantDialog: restaurantsUIEvents.openDeleteRestaurantDialog,
-    openDeleteRestaurantsDialog: restaurantsUIEvents.openDeleteRestaurantsDialog,
+    openDeleteRestaurantsDialog:
+      restaurantsUIEvents.openDeleteRestaurantsDialog,
     openFetchRestaurantsDialog: restaurantsUIEvents.openFetchRestaurantsDialog,
-    openUpdateRestaurantsStatusDialog: restaurantsUIEvents.openUpdateRestaurantsStatusDialog,
+    openUpdateRestaurantsStatusDialog:
+      restaurantsUIEvents.openUpdateRestaurantsStatusDialog,
   };
   return (
-    <RestaurantsUIContext.Provider value={value}>{children}</RestaurantsUIContext.Provider>
+    <RestaurantsUIContext.Provider value={value}>
+      {children}
+    </RestaurantsUIContext.Provider>
   );
 }

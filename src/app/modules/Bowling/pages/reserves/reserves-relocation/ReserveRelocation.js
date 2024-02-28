@@ -20,7 +20,7 @@ export function ReserveRelocation({ id, show, onHide }) {
 
   useEffect(() => {
     if (lines.length == 0)
-    getAllLines().then(({ data }) =>
+      getAllLines().then(({ data }) =>
         setLines((lines) => [
           { LineId: null, Title: t("Common.WithoutSelect") },
           ...data.Items,
@@ -54,9 +54,7 @@ export function ReserveRelocation({ id, show, onHide }) {
     } else {
       console.log("entities >> ", entities);
 
-      setInvoiceModel(
-        entities.filter((model) => model.ReserveId == id)[0]
-      );
+      setInvoiceModel(entities.filter((model) => model.ReserveId == id)[0]);
       console.log("invoiceModel >> ", invoiceModel);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -68,9 +66,7 @@ export function ReserveRelocation({ id, show, onHide }) {
     dispatch(actions.updateReserve(id, values))
       .then(() => {
         // refresh list after deletion
-        dispatch(
-          actions.fetchReserves(uiProps.queryParams)
-        );
+        dispatch(actions.fetchReserves(uiProps.queryParams));
 
         // closing delete modal
         onHide();
@@ -123,10 +119,7 @@ export function ReserveRelocation({ id, show, onHide }) {
                       customFeedbackLabel=""
                     >
                       {lines.map((line) => (
-                        <option
-                          key={line.LineId}
-                          value={line.LineId}
-                        >
+                        <option key={line.LineId} value={line.LineId}>
                           {line.Title}
                         </option>
                       ))}

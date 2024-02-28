@@ -26,7 +26,7 @@ export function ProvincesPage({ history }) {
       history.push("/general/provinces/updateStatus");
     },
   };
-  
+
   return (
     <ProvincesUIProvider provincesUIEvents={provincesUIEvents}>
       <ProvincesLoadingDialog />

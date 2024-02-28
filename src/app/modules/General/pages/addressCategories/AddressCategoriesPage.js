@@ -26,9 +26,11 @@ export function AddressCategoriesPage({ history }) {
       history.push("/general/addressCategories/updateStatus");
     },
   };
-  
+
   return (
-    <AddressCategoriesUIProvider addressCategoriesUIEvents={addressCategoriesUIEvents}>
+    <AddressCategoriesUIProvider
+      addressCategoriesUIEvents={addressCategoriesUIEvents}
+    >
       <AddressCategoriesLoadingDialog />
       <Route path="/general/addressCategories/:id/delete">
         {({ history, match }) => (

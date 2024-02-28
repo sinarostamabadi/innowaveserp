@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function RestaurantInvoiceDiscountsTable() {
   const { t } = useTranslation();
 
-  const restaurantInvoiceDiscountsUIContext = useRestaurantInvoiceDiscountsUIContext();
+  const restaurantInvoiceDiscountsUIContext =
+    useRestaurantInvoiceDiscountsUIContext();
 
   const restaurantInvoiceDiscountsUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function RestaurantInvoiceDiscountsTable() {
       setIds: restaurantInvoiceDiscountsUIContext.setIds,
       queryParams: restaurantInvoiceDiscountsUIContext.queryParams,
       setQueryParams: restaurantInvoiceDiscountsUIContext.setQueryParams,
-      openEditRestaurantInvoiceDiscountPage: restaurantInvoiceDiscountsUIContext.openEditRestaurantInvoiceDiscountPage,
-      openDeleteRestaurantInvoiceDiscountDialog: restaurantInvoiceDiscountsUIContext.openDeleteRestaurantInvoiceDiscountDialog,
+      openEditRestaurantInvoiceDiscountPage:
+        restaurantInvoiceDiscountsUIContext.openEditRestaurantInvoiceDiscountPage,
+      openDeleteRestaurantInvoiceDiscountDialog:
+        restaurantInvoiceDiscountsUIContext.openDeleteRestaurantInvoiceDiscountDialog,
     };
   }, [restaurantInvoiceDiscountsUIContext]);
 
@@ -50,7 +53,11 @@ export function RestaurantInvoiceDiscountsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     restaurantInvoiceDiscountsUIProps.setIds([]);
-    dispatch(actions.fetchRestaurantInvoiceDiscounts(restaurantInvoiceDiscountsUIProps.queryParams));
+    dispatch(
+      actions.fetchRestaurantInvoiceDiscounts(
+        restaurantInvoiceDiscountsUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restaurantInvoiceDiscountsUIProps.queryParams, dispatch]);
 
@@ -72,8 +79,10 @@ export function RestaurantInvoiceDiscountsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditRestaurantInvoiceDiscountPage: restaurantInvoiceDiscountsUIProps.openEditRestaurantInvoiceDiscountPage,
-        openDeleteRestaurantInvoiceDiscountDialog: restaurantInvoiceDiscountsUIProps.openDeleteRestaurantInvoiceDiscountDialog,
+        openEditRestaurantInvoiceDiscountPage:
+          restaurantInvoiceDiscountsUIProps.openEditRestaurantInvoiceDiscountPage,
+        openDeleteRestaurantInvoiceDiscountDialog:
+          restaurantInvoiceDiscountsUIProps.openDeleteRestaurantInvoiceDiscountDialog,
         t: t,
       },
       classes: "text-right pr-0",

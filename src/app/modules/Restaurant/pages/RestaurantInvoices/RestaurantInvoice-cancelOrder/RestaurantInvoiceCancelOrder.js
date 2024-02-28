@@ -38,10 +38,11 @@ export function RestaurantInvoiceCancelOrder({ id, show, onHide }) {
   useEffect(() => {
     if (!id) {
       onHide();
-    }else{
-      setInvoiceModel(
-        {...entities.filter((model) => model.RestaurantInvoiceId == id)[0], RestaurantInvoiceStatusId: 5}
-      );
+    } else {
+      setInvoiceModel({
+        ...entities.filter((model) => model.RestaurantInvoiceId == id)[0],
+        RestaurantInvoiceStatusId: 5,
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
@@ -53,7 +54,9 @@ export function RestaurantInvoiceCancelOrder({ id, show, onHide }) {
     dispatch(actions.updateRestaurantInvoice(id, invoiceModel))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchRestaurantInvoices(restaurantInvoicesUIProps.queryParams));
+        dispatch(
+          actions.fetchRestaurantInvoices(restaurantInvoicesUIProps.queryParams)
+        );
 
         // closing delete modal
         onHide();

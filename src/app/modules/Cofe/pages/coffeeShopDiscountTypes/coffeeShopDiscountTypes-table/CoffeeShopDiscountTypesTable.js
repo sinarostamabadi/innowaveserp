@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function CoffeeShopDiscountTypesTable() {
   const { t } = useTranslation();
 
-  const coffeeShopDiscountTypesUIContext = useCoffeeShopDiscountTypesUIContext();
+  const coffeeShopDiscountTypesUIContext =
+    useCoffeeShopDiscountTypesUIContext();
 
   const coffeeShopDiscountTypesUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function CoffeeShopDiscountTypesTable() {
       setIds: coffeeShopDiscountTypesUIContext.setIds,
       queryParams: coffeeShopDiscountTypesUIContext.queryParams,
       setQueryParams: coffeeShopDiscountTypesUIContext.setQueryParams,
-      openEditCoffeeShopDiscountTypePage: coffeeShopDiscountTypesUIContext.openEditCoffeeShopDiscountTypePage,
-      openDeleteCoffeeShopDiscountTypeDialog: coffeeShopDiscountTypesUIContext.openDeleteCoffeeShopDiscountTypeDialog,
+      openEditCoffeeShopDiscountTypePage:
+        coffeeShopDiscountTypesUIContext.openEditCoffeeShopDiscountTypePage,
+      openDeleteCoffeeShopDiscountTypeDialog:
+        coffeeShopDiscountTypesUIContext.openDeleteCoffeeShopDiscountTypeDialog,
     };
   }, [coffeeShopDiscountTypesUIContext]);
 
@@ -50,7 +53,11 @@ export function CoffeeShopDiscountTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     coffeeShopDiscountTypesUIProps.setIds([]);
-    dispatch(actions.fetchCoffeeShopDiscountTypes(coffeeShopDiscountTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchCoffeeShopDiscountTypes(
+        coffeeShopDiscountTypesUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coffeeShopDiscountTypesUIProps.queryParams, dispatch]);
 
@@ -72,8 +79,10 @@ export function CoffeeShopDiscountTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditCoffeeShopDiscountTypePage: coffeeShopDiscountTypesUIProps.openEditCoffeeShopDiscountTypePage,
-        openDeleteCoffeeShopDiscountTypeDialog: coffeeShopDiscountTypesUIProps.openDeleteCoffeeShopDiscountTypeDialog,
+        openEditCoffeeShopDiscountTypePage:
+          coffeeShopDiscountTypesUIProps.openEditCoffeeShopDiscountTypePage,
+        openDeleteCoffeeShopDiscountTypeDialog:
+          coffeeShopDiscountTypesUIProps.openDeleteCoffeeShopDiscountTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

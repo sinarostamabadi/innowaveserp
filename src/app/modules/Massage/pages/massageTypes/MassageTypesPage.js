@@ -26,7 +26,7 @@ export function MassageTypesPage({ history }) {
       history.push("/massage/massageTypes/updateStatus");
     },
   };
-  
+
   return (
     <MassageTypesUIProvider massageTypesUIEvents={massageTypesUIEvents}>
       <MassageTypesLoadingDialog />

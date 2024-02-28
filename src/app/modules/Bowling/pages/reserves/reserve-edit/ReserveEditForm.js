@@ -154,17 +154,19 @@ export const ReserveEditForm = forwardRef(
     function clean(dirty) {
       return {
         ReserveId: dirty.ReserveId,
-        LineId: !!dirty.LineId? +dirty.LineId: null,
-        BowlingCompetitionId: !!dirty.BowlingCompetitionId? +dirty.BowlingCompetitionId: null,
-        BowlingTeamId: !!dirty.BowlingTeamId? +dirty.BowlingTeamId: null,
+        LineId: !!dirty.LineId ? +dirty.LineId : null,
+        BowlingCompetitionId: !!dirty.BowlingCompetitionId
+          ? +dirty.BowlingCompetitionId
+          : null,
+        BowlingTeamId: !!dirty.BowlingTeamId ? +dirty.BowlingTeamId : null,
         ReserveDate: dirty.ReserveDate,
-        PersonId: !!dirty.PersonId? +dirty.PersonId: null,
+        PersonId: !!dirty.PersonId ? +dirty.PersonId : null,
         PersonCount: +dirty.PersonCount,
         FromTime: dirty.FromTime,
         ToTime: dirty.ToTime,
-        ClosetNumber: dirty.ClosetNumber != null? +dirty.ClosetNumber: null,
+        ClosetNumber: dirty.ClosetNumber != null ? +dirty.ClosetNumber : null,
         IsSet: dirty.IsSet,
-        ReservePersonScores: dirty.ReservePersonScores
+        ReservePersonScores: dirty.ReservePersonScores,
       };
     }
 

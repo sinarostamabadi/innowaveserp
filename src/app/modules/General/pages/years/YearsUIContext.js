@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { YearModel } from "../../../../../core/_models/General/YearModel";
@@ -30,7 +29,7 @@ export function YearsUIProvider({ yearsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,

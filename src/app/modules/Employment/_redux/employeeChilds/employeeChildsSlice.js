@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmployeeChildsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const employeeChildsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmployeeChildById  
+    // getEmployeeChildById
     employeeChildFetched: (state, action) => {
       state.actionsLoading = false;
       state.employeeChildForEdit = action.payload.employeeChildForEdit;
       state.error = null;
     },
-    // findEmployeeChilds  
+    // findEmployeeChilds
     employeeChildsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const employeeChildsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmployeeChild  
+    // createEmployeeChild
     employeeChildCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmployeeChild  
+    // updateEmployeeChild
     employeeChildUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.EmployeeChildId === action.payload.employeeChild.EmployeeChildId) {
+        if (
+          entity.EmployeeChildId ===
+          action.payload.employeeChild.EmployeeChildId
+        ) {
           return action.payload.employeeChild;
         }
         return entity;
       });
     },
-    // deleteEmployeeChild  
+    // deleteEmployeeChild
     employeeChildDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EmployeeChildId !== action.payload.EmployeeChildId  
+        (el) => el.EmployeeChildId !== action.payload.EmployeeChildId
       );
     },
-    // deleteEmployeeChilds  
+    // deleteEmployeeChilds
     employeeChildsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EmployeeChildId)  
+        (el) => !action.payload.ids.includes(el.EmployeeChildId)
       );
     },
-    // employeeChildsUpdateState  
+    // employeeChildsUpdateState
     employeeChildsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

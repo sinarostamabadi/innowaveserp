@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialDiscountsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const bodyBuildingDiscountsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getDiscountById  
+    // getDiscountById
     discountFetched: (state, action) => {
       state.actionsLoading = false;
       state.discountForEdit = action.payload.discountForEdit;
       state.error = null;
     },
-    // findDiscounts  
+    // findDiscounts
     discountsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,44 @@ export const bodyBuildingDiscountsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createDiscount  
+    // createDiscount
     discountCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateDiscount  
+    // updateDiscount
     discountUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BodyBuildingDiscountId === action.payload.discount.BodyBuildingDiscountId) {
+        if (
+          entity.BodyBuildingDiscountId ===
+          action.payload.discount.BodyBuildingDiscountId
+        ) {
           return action.payload.discount;
         }
         return entity;
       });
     },
-    // deleteDiscount  
+    // deleteDiscount
     discountDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BodyBuildingDiscountId !== action.payload.BodyBuildingDiscountId  
+        (el) =>
+          el.BodyBuildingDiscountId !== action.payload.BodyBuildingDiscountId
       );
     },
-    // deleteDiscounts  
+    // deleteDiscounts
     discountsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BodyBuildingDiscountId)  
+        (el) => !action.payload.ids.includes(el.BodyBuildingDiscountId)
       );
     },
-    // discountsUpdateState  
+    // discountsUpdateState
     discountsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

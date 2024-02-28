@@ -32,8 +32,10 @@ export function ChequeStatusesTable() {
       setIds: chequeStatusesUIContext.setIds,
       queryParams: chequeStatusesUIContext.queryParams,
       setQueryParams: chequeStatusesUIContext.setQueryParams,
-      openEditChequeStatusPage: chequeStatusesUIContext.openEditChequeStatusPage,
-      openDeleteChequeStatusDialog: chequeStatusesUIContext.openDeleteChequeStatusDialog,
+      openEditChequeStatusPage:
+        chequeStatusesUIContext.openEditChequeStatusPage,
+      openDeleteChequeStatusDialog:
+        chequeStatusesUIContext.openDeleteChequeStatusDialog,
     };
   }, [chequeStatusesUIContext]);
 
@@ -72,8 +74,10 @@ export function ChequeStatusesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditChequeStatusPage: chequeStatusesUIProps.openEditChequeStatusPage,
-        openDeleteChequeStatusDialog: chequeStatusesUIProps.openDeleteChequeStatusDialog,
+        openEditChequeStatusPage:
+          chequeStatusesUIProps.openEditChequeStatusPage,
+        openDeleteChequeStatusDialog:
+          chequeStatusesUIProps.openDeleteChequeStatusDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -32,8 +32,10 @@ export function BilliardTimePriceingTable() {
       setIds: billiardTimePriceingUIContext.setIds,
       queryParams: billiardTimePriceingUIContext.queryParams,
       setQueryParams: billiardTimePriceingUIContext.setQueryParams,
-      openEditBilliardTimePriceingPage: billiardTimePriceingUIContext.openEditBilliardTimePriceingPage,
-      openDeleteBilliardTimePriceingDialog: billiardTimePriceingUIContext.openDeleteBilliardTimePriceingDialog,
+      openEditBilliardTimePriceingPage:
+        billiardTimePriceingUIContext.openEditBilliardTimePriceingPage,
+      openDeleteBilliardTimePriceingDialog:
+        billiardTimePriceingUIContext.openDeleteBilliardTimePriceingDialog,
     };
   }, [billiardTimePriceingUIContext]);
 
@@ -50,7 +52,9 @@ export function BilliardTimePriceingTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     billiardTimePriceingUIProps.setIds([]);
-    dispatch(actions.fetchBilliardTimePriceing(billiardTimePriceingUIProps.queryParams));
+    dispatch(
+      actions.fetchBilliardTimePriceing(billiardTimePriceingUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [billiardTimePriceingUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function BilliardTimePriceingTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditBilliardTimePriceingPage: billiardTimePriceingUIProps.openEditBilliardTimePriceingPage,
-        openDeleteBilliardTimePriceingDialog: billiardTimePriceingUIProps.openDeleteBilliardTimePriceingDialog,
+        openEditBilliardTimePriceingPage:
+          billiardTimePriceingUIProps.openEditBilliardTimePriceingPage,
+        openDeleteBilliardTimePriceingDialog:
+          billiardTimePriceingUIProps.openDeleteBilliardTimePriceingDialog,
         t: t,
       },
       classes: "text-right pr-0",

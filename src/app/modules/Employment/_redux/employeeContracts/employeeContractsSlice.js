@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmployeeContractsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const employeeContractsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmployeeContractById  
+    // getEmployeeContractById
     employeeContractFetched: (state, action) => {
       state.actionsLoading = false;
       state.employeeContractForEdit = action.payload.employeeContractForEdit;
       state.error = null;
     },
-    // findEmployeeContracts  
+    // findEmployeeContracts
     employeeContractsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const employeeContractsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmployeeContract  
+    // createEmployeeContract
     employeeContractCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmployeeContract  
+    // updateEmployeeContract
     employeeContractUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.EmployeeContractId === action.payload.employeeContract.EmployeeContractId) {
+        if (
+          entity.EmployeeContractId ===
+          action.payload.employeeContract.EmployeeContractId
+        ) {
           return action.payload.employeeContract;
         }
         return entity;
       });
     },
-    // deleteEmployeeContract  
+    // deleteEmployeeContract
     employeeContractDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EmployeeContractId !== action.payload.EmployeeContractId  
+        (el) => el.EmployeeContractId !== action.payload.EmployeeContractId
       );
     },
-    // deleteEmployeeContracts  
+    // deleteEmployeeContracts
     employeeContractsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EmployeeContractId)  
+        (el) => !action.payload.ids.includes(el.EmployeeContractId)
       );
     },
-    // employeeContractsUpdateState  
+    // employeeContractsUpdateState
     employeeContractsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

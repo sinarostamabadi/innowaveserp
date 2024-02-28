@@ -29,7 +29,7 @@ export function PersonGroupEdit({
 
   const initModel = {
     PersonGroupId: undefined,
-    Title: ""
+    Title: "",
   };
 
   // Subheader
@@ -70,19 +70,19 @@ export function PersonGroupEdit({
   const savePersonGroup = (values) => {
     const newValues = {
       Title: values.Title,
-      PersonGroupId: values.PersonGroupId
-    }
-    console.log(values)
+      PersonGroupId: values.PersonGroupId,
+    };
+    console.log(values);
     if (!id) {
       dispatch(actions.createPersonGroup(newValues))
         .then((arg) => {
           backToPersonGroupsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updatePersonGroup(id, newValues))
         .then(() => backToPersonGroupsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

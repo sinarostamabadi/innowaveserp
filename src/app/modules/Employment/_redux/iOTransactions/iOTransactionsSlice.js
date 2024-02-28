@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialIOTransactionsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const iOTransactionsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getIOTransactionById  
+    // getIOTransactionById
     iOTransactionFetched: (state, action) => {
       state.actionsLoading = false;
       state.iOTransactionForEdit = action.payload.iOTransactionForEdit;
       state.error = null;
     },
-    // findIOTransactions  
+    // findIOTransactions
     iOTransactionsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const iOTransactionsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createIOTransaction  
+    // createIOTransaction
     iOTransactionCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateIOTransaction  
+    // updateIOTransaction
     iOTransactionUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.IOTransactionId === action.payload.iOTransaction.IOTransactionId) {
+        if (
+          entity.IOTransactionId ===
+          action.payload.iOTransaction.IOTransactionId
+        ) {
           return action.payload.iOTransaction;
         }
         return entity;
       });
     },
-    // deleteIOTransaction  
+    // deleteIOTransaction
     iOTransactionDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.IOTransactionId !== action.payload.IOTransactionId  
+        (el) => el.IOTransactionId !== action.payload.IOTransactionId
       );
     },
-    // deleteIOTransactions  
+    // deleteIOTransactions
     iOTransactionsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.IOTransactionId)  
+        (el) => !action.payload.ids.includes(el.IOTransactionId)
       );
     },
-    // iOTransactionsUpdateState  
+    // iOTransactionsUpdateState
     iOTransactionsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

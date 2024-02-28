@@ -44,7 +44,8 @@ export function EmployeeWorkShiftEdit({
   const { actionsLoading, employeeWorkShiftForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.employeeWorkShifts.actionsLoading,
-      employeeWorkShiftForEdit: state.employeeWorkShifts.employeeWorkShiftForEdit,
+      employeeWorkShiftForEdit:
+        state.employeeWorkShifts.employeeWorkShiftForEdit,
       error: state.employeeWorkShifts.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function EmployeeWorkShiftEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("EmployeeWorkShift.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("EmployeeWorkShift.Entity");
 
     if (employeeWorkShiftForEdit && id) {
       _title = t("Common.Edit") + " " + employeeWorkShiftForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function EmployeeWorkShiftEdit({
         .then((arg) => {
           backToEmployeeWorkShiftsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateEmployeeWorkShift(id, values))
         .then(() => backToEmployeeWorkShiftsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

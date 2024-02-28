@@ -35,9 +35,9 @@ export const BuyEditForm = forwardRef(({ buy }, ref) => {
     InquiryId: Yup.array().required(
       t("err.IsRequired", { 0: t("Buy.Inquiry") })
     ),
-    ProviderId: Yup.array().nullable().required(
-      t("err.IsRequired", { 0: t("Buy.Provider") })
-    ),
+    ProviderId: Yup.array()
+      .nullable()
+      .required(t("err.IsRequired", { 0: t("Buy.Provider") })),
     BuyDateObj: Yup.object()
       .required(t("err.IsRequired", { 0: t("Buy.BuyDate") }))
       .nullable(),
@@ -47,7 +47,7 @@ export const BuyEditForm = forwardRef(({ buy }, ref) => {
       .nullable()
       .required(t("err.IsRequired", { 0: t("Buy.BuyNumber") })),
   });
-  
+
   useImperativeHandle(ref, () => ({
     Collect(fn) {
       callBack = fn;
@@ -63,16 +63,18 @@ export const BuyEditForm = forwardRef(({ buy }, ref) => {
       BuyNumber: 0,
       FactorNumber: data.FactorNumber,
       BuySettlementTypeId: data.BuySettlementTypeId,
-      ProviderId: !!data.ProviderId && Array.isArray(data.ProviderId)
+      ProviderId:
+        !!data.ProviderId && Array.isArray(data.ProviderId)
           ? +data.ProviderId[0].PersonId
           : data.ProviderId != ""
           ? data.ProviderId
           : null,
-      InquiryId: !!data.InquiryId && Array.isArray(data.InquiryId)
-      ? +data.InquiryId[0].PersonId
-      : data.InquiryId != ""
-      ? data.InquiryId
-      : null,
+      InquiryId:
+        !!data.InquiryId && Array.isArray(data.InquiryId)
+          ? +data.InquiryId[0].PersonId
+          : data.InquiryId != ""
+          ? data.InquiryId
+          : null,
       BuyDate: FaObjToEnDateTime(data.BuyDateObj),
       FactorDate: FaObjToEnDateTime(data.FactorDateObj),
       IsClosed: !!data.IsClosed,
@@ -144,9 +146,11 @@ export const BuyEditForm = forwardRef(({ buy }, ref) => {
                     customFeedbackLabel=""
                     label={t("Buy.FactorDate")}
                     minimumDate={{
-                      year: +moment().locale(process.env.REACT_APP_DATE).format("YYYY"),
-                      month: 1, 
-                      day: 1
+                      year: +moment()
+                        .locale(process.env.REACT_APP_DATE)
+                        .format("YYYY"),
+                      month: 1,
+                      day: 1,
                     }}
                     value={buy.FactorDateObj}
                   />
@@ -178,7 +182,7 @@ export const BuyEditForm = forwardRef(({ buy }, ref) => {
                     placeHolder={t("msg.SelectBySuggestion")}
                     handleSearch={handleSuggestionProvider}
                     initOptions={buy && buy.Provider ? [buy.Provider] : null}
-                    defaultSelected={buy && buy.Provider? [buy.Provider] : []}
+                    defaultSelected={buy && buy.Provider ? [buy.Provider] : []}
                     // defaultValue={buy ? [buy.Provider] : []}
                     renderMenuItemChildren={(option, props) => (
                       <div>

@@ -55,7 +55,9 @@ export function MassageDiscountEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("MassageDiscount.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("MassageDiscount.Entity");
 
     if (massageDiscountForEdit && id) {
       _title = t("Common.Edit") + " " + massageDiscountForEdit.TitleFa;
@@ -73,11 +75,11 @@ export function MassageDiscountEdit({
         .then((arg) => {
           backToMassageDiscountsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateMassageDiscount(id, values))
         .then(() => backToMassageDiscountsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

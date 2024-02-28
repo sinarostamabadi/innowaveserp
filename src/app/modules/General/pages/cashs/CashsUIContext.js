@@ -29,7 +29,7 @@ export function CashsUIProvider({ cashsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,

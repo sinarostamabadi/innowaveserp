@@ -31,13 +31,13 @@ export const peopleSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPersonById  
+    // getPersonById
     personFetched: (state, action) => {
       state.actionsLoading = false;
       state.personForEdit = action.payload.personForEdit;
       state.error = null;
     },
-    // findpeople  
+    // findpeople
     peopleFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -45,13 +45,13 @@ export const peopleSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPerson  
+    // createPerson
     personCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePerson  
+    // updatePerson
     personUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -62,23 +62,23 @@ export const peopleSlice = createSlice({
         return entity;
       });
     },
-    // deletePerson  
+    // deletePerson
     personDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PersonId !== action.payload.PersonId  
+        (el) => el.PersonId !== action.payload.PersonId
       );
     },
-    // deletepeople  
+    // deletepeople
     peopleDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PersonId)  
+        (el) => !action.payload.ids.includes(el.PersonId)
       );
     },
-    // peopleUpdateState  
+    // peopleUpdateState
     peopleStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

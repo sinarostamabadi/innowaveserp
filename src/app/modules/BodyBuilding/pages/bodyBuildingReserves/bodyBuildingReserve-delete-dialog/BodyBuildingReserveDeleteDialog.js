@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -48,7 +47,11 @@ export function BodyBuildingReserveDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteBodyBuildingReserve(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchBodyBuildingReserves(bodyBuildingReservesUIProps.queryParams));
+        dispatch(
+          actions.fetchBodyBuildingReserves(
+            bodyBuildingReservesUIProps.queryParams
+          )
+        );
         // clear selections list
         bodyBuildingReservesUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +70,12 @@ export function BodyBuildingReserveDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("BodyBuildingReserve.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("BodyBuildingReserve.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

@@ -12,7 +12,13 @@ export const ActionsColumnFormatter = (
   { openEditOrganizationChartPage, openDeleteOrganizationChartDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="organizationCharts-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="organizationCharts-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditOrganizationChartPage(row.OrganizationChartId)}
@@ -26,11 +32,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="organizationCharts-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="organizationCharts-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteOrganizationChartDialog(row.OrganizationChartId)}
+        onClick={() =>
+          openDeleteOrganizationChartDialog(row.OrganizationChartId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

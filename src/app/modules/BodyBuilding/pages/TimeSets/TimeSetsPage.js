@@ -25,7 +25,7 @@ export function TimeSetsPage({ history }) {
       history.push("/BodyBuilding/TimeSets/updateStatus");
     },
   };
-  
+
   return (
     <TimeSetsUIProvider timeSetsUIEvents={timeSetsUIEvents}>
       <TimeSetsLoadingDialog />

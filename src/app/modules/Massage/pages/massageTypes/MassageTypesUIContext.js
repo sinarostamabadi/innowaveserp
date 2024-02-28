@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { MassageTypeModel } from "../../../../../core/_models/Massage/MassageTypeModel";
@@ -30,7 +29,7 @@ export function MassageTypesUIProvider({ massageTypesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -40,12 +39,18 @@ export function MassageTypesUIProvider({ massageTypesUIEvents, children }) {
     dataModel: MassageTypeModel,
     newMassageTypeButtonClick: massageTypesUIEvents.newMassageTypeButtonClick,
     openEditMassageTypePage: massageTypesUIEvents.openEditMassageTypePage,
-    openDeleteMassageTypeDialog: massageTypesUIEvents.openDeleteMassageTypeDialog,
-    openDeleteMassageTypesDialog: massageTypesUIEvents.openDeleteMassageTypesDialog,
-    openFetchMassageTypesDialog: massageTypesUIEvents.openFetchMassageTypesDialog,
-    openUpdateMassageTypesStatusDialog: massageTypesUIEvents.openUpdateMassageTypesStatusDialog,
+    openDeleteMassageTypeDialog:
+      massageTypesUIEvents.openDeleteMassageTypeDialog,
+    openDeleteMassageTypesDialog:
+      massageTypesUIEvents.openDeleteMassageTypesDialog,
+    openFetchMassageTypesDialog:
+      massageTypesUIEvents.openFetchMassageTypesDialog,
+    openUpdateMassageTypesStatusDialog:
+      massageTypesUIEvents.openUpdateMassageTypesStatusDialog,
   };
   return (
-    <MassageTypesUIContext.Provider value={value}>{children}</MassageTypesUIContext.Provider>
+    <MassageTypesUIContext.Provider value={value}>
+      {children}
+    </MassageTypesUIContext.Provider>
   );
 }

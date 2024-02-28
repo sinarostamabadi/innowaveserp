@@ -68,7 +68,7 @@ export function DetailsTable() {
           dataField: "ApproveStatuseChangeDate",
           text: t("BuyRequestDetail.ApproveStatuseChangeDate"),
           sort: false,
-          formatter: DateTimeFaColumnFormatter
+          formatter: DateTimeFaColumnFormatter,
         },
       ]
     );
@@ -104,7 +104,7 @@ export function DetailsTable() {
           dataField: "MainWarehouseChangeDate",
           text: t("BuyRequestDetail.MainWarehouseChangeDate"),
           sort: false,
-          formatter: DateTimeFaColumnFormatter
+          formatter: DateTimeFaColumnFormatter,
         },
       ]
     );

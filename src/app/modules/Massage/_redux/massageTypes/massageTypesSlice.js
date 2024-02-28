@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialMassageTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const massageTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getMassageTypeById  
+    // getMassageTypeById
     massageTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.massageTypeForEdit = action.payload.massageTypeForEdit;
       state.error = null;
     },
-    // findMassageTypes  
+    // findMassageTypes
     massageTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const massageTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createMassageType  
+    // createMassageType
     massageTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateMassageType  
+    // updateMassageType
     massageTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const massageTypesSlice = createSlice({
         return entity;
       });
     },
-    // deleteMassageType  
+    // deleteMassageType
     massageTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.MassageTypeId !== action.payload.MassageTypeId  
+        (el) => el.MassageTypeId !== action.payload.MassageTypeId
       );
     },
-    // deleteMassageTypes  
+    // deleteMassageTypes
     massageTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.MassageTypeId)  
+        (el) => !action.payload.ids.includes(el.MassageTypeId)
       );
     },
-    // massageTypesUpdateState  
+    // massageTypesUpdateState
     massageTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

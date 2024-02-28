@@ -33,7 +33,8 @@ export function BuyDiscountsTable() {
       queryParams: buyDiscountsUIContext.queryParams,
       setQueryParams: buyDiscountsUIContext.setQueryParams,
       openEditBuyDiscountPage: buyDiscountsUIContext.openEditBuyDiscountPage,
-      openDeleteBuyDiscountDialog: buyDiscountsUIContext.openDeleteBuyDiscountDialog,
+      openDeleteBuyDiscountDialog:
+        buyDiscountsUIContext.openDeleteBuyDiscountDialog,
     };
   }, [buyDiscountsUIContext]);
 
@@ -73,7 +74,8 @@ export function BuyDiscountsTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditBuyDiscountPage: buyDiscountsUIProps.openEditBuyDiscountPage,
-        openDeleteBuyDiscountDialog: buyDiscountsUIProps.openDeleteBuyDiscountDialog,
+        openDeleteBuyDiscountDialog:
+          buyDiscountsUIProps.openDeleteBuyDiscountDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -1,13 +1,17 @@
-
 import { useMemo, useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
-import { Card,CardBody,CardHeader,CardHeaderToolbar} from "src/core/_partials/controls";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderToolbar,
+} from "src/core/_partials/controls";
 import { AdvancedFilter } from "src/core/_partials/custom/advanced-filter/AdvancedFilter";
 import { ReservesTable } from "./reserves-table/ReservesTable";
 import { useReservesUIContext, ReservesUIConsumer } from "./ReservesUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
-export function ReservesCard({history}) {
+export function ReservesCard({ history }) {
   const { t } = useTranslation();
   const [unfinished, setUnfinished] = useState({
     Property: "IsActive",
@@ -48,9 +52,9 @@ export function ReservesCard({history}) {
   return (
     <Card>
       <CardHeader>
-      <div className="card-title">
+        <div className="card-title">
           <h3 className="card-label">
-          {t("Common.List") + ' ' + t("BowlingReserve.Entity")}
+            {t("Common.List") + " " + t("BowlingReserve.Entity")}
             <Form.Check
               type="switch"
               id="custom-switch"
@@ -68,12 +72,13 @@ export function ReservesCard({history}) {
           </h3>
         </div>
         <CardHeaderToolbar>
-        <button
+          <button
             type="button"
             className="btn btn-primary mx-2"
             onClick={uiProps.openReportDialog}
           >
-            <i className="fas fa-cash-register"></i> {t("Reports.RestaurantInvoiceCash")}
+            <i className="fas fa-cash-register"></i>{" "}
+            {t("Reports.RestaurantInvoiceCash")}
           </button>
           <button
             type="button"
@@ -88,7 +93,7 @@ export function ReservesCard({history}) {
         <ReservesUIConsumer>
           {(dataUI) => <AdvancedFilter uiActions={dataUI} />}
         </ReservesUIConsumer>
-        <ReservesTable history={history}/>
+        <ReservesTable history={history} />
       </CardBody>
     </Card>
   );

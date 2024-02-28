@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { BodyBuildingReservesTable } from "./bodyBuildingReserves-table/BodyBuildingReservesTable";
-import { useBodyBuildingReservesUIContext, BodyBuildingReservesUIConsumer } from "./BodyBuildingReservesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useBodyBuildingReservesUIContext,
+  BodyBuildingReservesUIConsumer,
+} from "./BodyBuildingReservesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function BodyBuildingReservesCard() {
   const { t } = useTranslation();
@@ -21,24 +23,33 @@ export function BodyBuildingReservesCard() {
       ids: bodyBuildingReservesUIContext.ids,
       queryParams: bodyBuildingReservesUIContext.queryParams,
       setQueryParams: bodyBuildingReservesUIContext.setQueryParams,
-      newBodyBuildingReserveButtonClick: bodyBuildingReservesUIContext.newBodyBuildingReserveButtonClick,
-      openDeleteBodyBuildingReservesDialog: bodyBuildingReservesUIContext.openDeleteBodyBuildingReservesDialog,
-      openEditBodyBuildingReservePage: bodyBuildingReservesUIContext.openEditBodyBuildingReservePage,
-      openUpdateBodyBuildingReservesStatusDialog: bodyBuildingReservesUIContext.openUpdateBodyBuildingReservesStatusDialog,
-      openFetchBodyBuildingReservesDialog: bodyBuildingReservesUIContext.openFetchBodyBuildingReservesDialog,
+      newBodyBuildingReserveButtonClick:
+        bodyBuildingReservesUIContext.newBodyBuildingReserveButtonClick,
+      openDeleteBodyBuildingReservesDialog:
+        bodyBuildingReservesUIContext.openDeleteBodyBuildingReservesDialog,
+      openEditBodyBuildingReservePage:
+        bodyBuildingReservesUIContext.openEditBodyBuildingReservePage,
+      openUpdateBodyBuildingReservesStatusDialog:
+        bodyBuildingReservesUIContext.openUpdateBodyBuildingReservesStatusDialog,
+      openFetchBodyBuildingReservesDialog:
+        bodyBuildingReservesUIContext.openFetchBodyBuildingReservesDialog,
     };
   }, [bodyBuildingReservesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("BodyBuildingReserve.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("BodyBuildingReserve.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
-            onClick={bodyBuildingReservesUIProps.newBodyBuildingReserveButtonClick}
+            onClick={
+              bodyBuildingReservesUIProps.newBodyBuildingReserveButtonClick
+            }
           >
-            {t("BodyBuildingReserve.Entity")} {' '} {t("Common.New")}
+            {t("BodyBuildingReserve.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

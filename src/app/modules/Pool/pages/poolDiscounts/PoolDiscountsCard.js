@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { PoolDiscountsTable } from "./poolDiscounts-table/PoolDiscountsTable";
-import { usePoolDiscountsUIContext, PoolDiscountsUIConsumer } from "./PoolDiscountsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  usePoolDiscountsUIContext,
+  PoolDiscountsUIConsumer,
+} from "./PoolDiscountsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function PoolDiscountsCard() {
   const { t } = useTranslation();
@@ -21,24 +23,28 @@ export function PoolDiscountsCard() {
       ids: poolDiscountsUIContext.ids,
       queryParams: poolDiscountsUIContext.queryParams,
       setQueryParams: poolDiscountsUIContext.setQueryParams,
-      newPoolDiscountButtonClick: poolDiscountsUIContext.newPoolDiscountButtonClick,
-      openDeletePoolDiscountsDialog: poolDiscountsUIContext.openDeletePoolDiscountsDialog,
+      newPoolDiscountButtonClick:
+        poolDiscountsUIContext.newPoolDiscountButtonClick,
+      openDeletePoolDiscountsDialog:
+        poolDiscountsUIContext.openDeletePoolDiscountsDialog,
       openEditPoolDiscountPage: poolDiscountsUIContext.openEditPoolDiscountPage,
-      openUpdatePoolDiscountsStatusDialog: poolDiscountsUIContext.openUpdatePoolDiscountsStatusDialog,
-      openFetchPoolDiscountsDialog: poolDiscountsUIContext.openFetchPoolDiscountsDialog,
+      openUpdatePoolDiscountsStatusDialog:
+        poolDiscountsUIContext.openUpdatePoolDiscountsStatusDialog,
+      openFetchPoolDiscountsDialog:
+        poolDiscountsUIContext.openFetchPoolDiscountsDialog,
     };
   }, [poolDiscountsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("PoolDiscount.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("PoolDiscount.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={poolDiscountsUIProps.newPoolDiscountButtonClick}
           >
-            {t("PoolDiscount.Entity")} {' '} {t("Common.New")}
+            {t("PoolDiscount.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

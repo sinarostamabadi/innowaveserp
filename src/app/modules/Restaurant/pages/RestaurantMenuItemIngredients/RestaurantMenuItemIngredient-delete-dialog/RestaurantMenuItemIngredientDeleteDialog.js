@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -16,7 +15,8 @@ export function RestaurantMenuItemIngredientDeleteDialog({ id, show, onHide }) {
   const { t } = useTranslation();
 
   // RestaurantMenuItemIngredients UI Context
-  const restaurantMenuItemIngredientsUIContext = useRestaurantMenuItemIngredientsUIContext();
+  const restaurantMenuItemIngredientsUIContext =
+    useRestaurantMenuItemIngredientsUIContext();
   const [error, setError] = useState(null);
   const restaurantMenuItemIngredientsUIProps = useMemo(() => {
     return {
@@ -29,7 +29,9 @@ export function RestaurantMenuItemIngredientDeleteDialog({ id, show, onHide }) {
   const dispatch = useDispatch();
 
   const { isLoading } = useSelector(
-    (state) => ({ isLoading: state.restaurantMenuItemIngredients.actionsLoading }),
+    (state) => ({
+      isLoading: state.restaurantMenuItemIngredients.actionsLoading,
+    }),
     shallowEqual
   );
 
@@ -48,7 +50,11 @@ export function RestaurantMenuItemIngredientDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteRestaurantMenuItemIngredient(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchRestaurantMenuItemIngredients(restaurantMenuItemIngredientsUIProps.queryParams));
+        dispatch(
+          actions.fetchRestaurantMenuItemIngredients(
+            restaurantMenuItemIngredientsUIProps.queryParams
+          )
+        );
         // clear selections list
         restaurantMenuItemIngredientsUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +73,12 @@ export function RestaurantMenuItemIngredientDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("RestaurantMenuItemIngredient.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("RestaurantMenuItemIngredient.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

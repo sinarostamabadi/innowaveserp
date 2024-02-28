@@ -26,7 +26,7 @@ export function RolesesPage({ history }) {
       history.push("/security/roleses/updateStatus");
     },
   };
-  
+
   return (
     <RolesesUIProvider rolesesUIEvents={rolesesUIEvents}>
       <RolesesLoadingDialog />

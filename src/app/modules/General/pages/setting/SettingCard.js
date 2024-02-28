@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { SettingTable } from "./setting-table/SettingTable";
 import { useSettingUIContext, SettingUIConsumer } from "./SettingUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function SettingCard() {
   const { t } = useTranslation();
@@ -24,21 +23,22 @@ export function SettingCard() {
       newSettingButtonClick: settingUIContext.newSettingButtonClick,
       openDeleteSettingDialog: settingUIContext.openDeleteSettingDialog,
       openEditSettingPage: settingUIContext.openEditSettingPage,
-      openUpdateSettingStatusDialog: settingUIContext.openUpdateSettingStatusDialog,
+      openUpdateSettingStatusDialog:
+        settingUIContext.openUpdateSettingStatusDialog,
       openFetchSettingDialog: settingUIContext.openFetchSettingDialog,
     };
   }, [settingUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Setting.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Setting.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={settingUIProps.newSettingButtonClick}
           >
-            {t("Setting.Entity")} {' '} {t("Common.New")}
+            {t("Setting.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

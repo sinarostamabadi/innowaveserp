@@ -29,7 +29,10 @@ export const AddressesUIProvider = forwardRef(
         fn(
           addresses.map((obj) => {
             return {
-              AddressId: obj.AddressId.toString().indexOf("temp_") > -1? null: obj.AddressId,
+              AddressId:
+                obj.AddressId.toString().indexOf("temp_") > -1
+                  ? null
+                  : obj.AddressId,
               AddressCategoryId: +obj.AddressCategoryId,
               CityId: +obj.CityId,
               PersonId: +personId,
@@ -99,7 +102,8 @@ export const AddressesUIProvider = forwardRef(
       if (
         !!realPersonForEdit &&
         !!realPersonForEdit.Addresses &&
-        realPersonForEdit.Addresses.length > 0 && realPersonForEdit.PersonId == currentPersonId
+        realPersonForEdit.Addresses.length > 0 &&
+        realPersonForEdit.PersonId == currentPersonId
       ) {
         setAddresses(realPersonForEdit.Addresses);
         setTotalCount(realPersonForEdit.Addresses.length);
@@ -108,7 +112,7 @@ export const AddressesUIProvider = forwardRef(
     }, [realPersonForEdit]);
 
     useEffect(() => {
-      setActiveAddresses(addresses.filter(x => x.IsDeleted == false))
+      setActiveAddresses(addresses.filter((x) => x.IsDeleted == false));
     }, [addresses]);
 
     useEffect(() => {
@@ -145,9 +149,8 @@ export const AddressesUIProvider = forwardRef(
       setShowEditAddressDialog(false);
     };
 
-    const [showDeleteAddressDialog, setShowDeleteAddressDialog] = useState(
-      false
-    );
+    const [showDeleteAddressDialog, setShowDeleteAddressDialog] =
+      useState(false);
     const openDeleteAddressDialog = (id) => {
       setSelectedId(id);
       setShowDeleteAddressDialog(true);
@@ -159,9 +162,8 @@ export const AddressesUIProvider = forwardRef(
       setShowDeleteAddressDialog(false);
     };
 
-    const [showDeleteAddressesDialog, setShowDeleteAddressesDialog] = useState(
-      false
-    );
+    const [showDeleteAddressesDialog, setShowDeleteAddressesDialog] =
+      useState(false);
     const openDeleteAddressesDialog = () => {
       setShowDeleteAddressesDialog(true);
     };
@@ -169,9 +171,8 @@ export const AddressesUIProvider = forwardRef(
       setShowDeleteAddressesDialog(false);
     };
 
-    const [showFetchAddressesDialog, setShowFetchAddressesDialog] = useState(
-      false
-    );
+    const [showFetchAddressesDialog, setShowFetchAddressesDialog] =
+      useState(false);
     const openFetchAddressesDialog = () => {
       setShowFetchAddressesDialog(true);
     };
@@ -181,7 +182,10 @@ export const AddressesUIProvider = forwardRef(
 
     const findAddress = (addressId) => {
       if (!!addressId == false) return null;
-      console.log("Finder > ", addresses.filter((address) => address.AddressId == addressId));
+      console.log(
+        "Finder > ",
+        addresses.filter((address) => address.AddressId == addressId)
+      );
       return addresses.filter((address) => address.AddressId == addressId)[0];
     };
 
@@ -200,7 +204,8 @@ export const AddressesUIProvider = forwardRef(
         setAddresses((addresses) =>
           addresses.map((item) => {
             let copyAddress = CloneObject(item);
-            if (copyAddress.AddressId == addressId) copyAddress.IsDeleted = true;
+            if (copyAddress.AddressId == addressId)
+              copyAddress.IsDeleted = true;
 
             return copyAddress;
           })

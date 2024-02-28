@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEntityPointsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const entityPointsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEntityPointById  
+    // getEntityPointById
     entityPointFetched: (state, action) => {
       state.actionsLoading = false;
       state.entityPointForEdit = action.payload.entityPointForEdit;
       state.error = null;
     },
-    // findEntityPoints  
+    // findEntityPoints
     entityPointsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const entityPointsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEntityPoint  
+    // createEntityPoint
     entityPointCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEntityPoint  
+    // updateEntityPoint
     entityPointUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const entityPointsSlice = createSlice({
         return entity;
       });
     },
-    // deleteEntityPoint  
+    // deleteEntityPoint
     entityPointDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EntityPointId !== action.payload.EntityPointId  
+        (el) => el.EntityPointId !== action.payload.EntityPointId
       );
     },
-    // deleteEntityPoints  
+    // deleteEntityPoints
     entityPointsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EntityPointId)  
+        (el) => !action.payload.ids.includes(el.EntityPointId)
       );
     },
-    // entityPointsUpdateState  
+    // entityPointsUpdateState
     entityPointsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

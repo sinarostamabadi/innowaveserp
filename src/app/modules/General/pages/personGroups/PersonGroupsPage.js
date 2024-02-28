@@ -26,7 +26,7 @@ export function PersonGroupsPage({ history }) {
       history.push("/general/personGroups/updateStatus");
     },
   };
-  
+
   return (
     <PersonGroupsUIProvider personGroupsUIEvents={personGroupsUIEvents}>
       <PersonGroupsLoadingDialog />

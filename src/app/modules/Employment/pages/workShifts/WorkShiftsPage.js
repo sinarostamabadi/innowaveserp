@@ -26,7 +26,7 @@ export function WorkShiftsPage({ history }) {
       history.push("/employment/workShifts/updateStatus");
     },
   };
-  
+
   return (
     <WorkShiftsUIProvider workShiftsUIEvents={workShiftsUIEvents}>
       <WorkShiftsLoadingDialog />

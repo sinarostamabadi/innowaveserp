@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BodyBuildingDiscountModel } from "../../../../../core/_models/BodyBuilding/BodyBuildingDiscountModel";
@@ -10,9 +9,13 @@ export function useBodyBuildingDiscountsUIContext() {
   return useContext(BodyBuildingDiscountsUIContext);
 }
 
-export const BodyBuildingDiscountsUIConsumer = BodyBuildingDiscountsUIContext.Consumer;
+export const BodyBuildingDiscountsUIConsumer =
+  BodyBuildingDiscountsUIContext.Consumer;
 
-export function BodyBuildingDiscountsUIProvider({ bodyBuildingDiscountsUIEvents, children }) {
+export function BodyBuildingDiscountsUIProvider({
+  bodyBuildingDiscountsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(BodyBuildingDiscountModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function BodyBuildingDiscountsUIProvider({ bodyBuildingDiscountsUIEvents,
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function BodyBuildingDiscountsUIProvider({ bodyBuildingDiscountsUIEvents,
     setIds,
     setQueryParams,
     dataModel: BodyBuildingDiscountModel,
-    newBodyBuildingDiscountButtonClick: bodyBuildingDiscountsUIEvents.newBodyBuildingDiscountButtonClick,
-    openEditBodyBuildingDiscountPage: bodyBuildingDiscountsUIEvents.openEditBodyBuildingDiscountPage,
-    openDeleteBodyBuildingDiscountDialog: bodyBuildingDiscountsUIEvents.openDeleteBodyBuildingDiscountDialog,
-    openDeleteBodyBuildingDiscountsDialog: bodyBuildingDiscountsUIEvents.openDeleteBodyBuildingDiscountsDialog,
-    openFetchBodyBuildingDiscountsDialog: bodyBuildingDiscountsUIEvents.openFetchBodyBuildingDiscountsDialog,
-    openUpdateBodyBuildingDiscountsStatusDialog: bodyBuildingDiscountsUIEvents.openUpdateBodyBuildingDiscountsStatusDialog,
+    newBodyBuildingDiscountButtonClick:
+      bodyBuildingDiscountsUIEvents.newBodyBuildingDiscountButtonClick,
+    openEditBodyBuildingDiscountPage:
+      bodyBuildingDiscountsUIEvents.openEditBodyBuildingDiscountPage,
+    openDeleteBodyBuildingDiscountDialog:
+      bodyBuildingDiscountsUIEvents.openDeleteBodyBuildingDiscountDialog,
+    openDeleteBodyBuildingDiscountsDialog:
+      bodyBuildingDiscountsUIEvents.openDeleteBodyBuildingDiscountsDialog,
+    openFetchBodyBuildingDiscountsDialog:
+      bodyBuildingDiscountsUIEvents.openFetchBodyBuildingDiscountsDialog,
+    openUpdateBodyBuildingDiscountsStatusDialog:
+      bodyBuildingDiscountsUIEvents.openUpdateBodyBuildingDiscountsStatusDialog,
   };
   return (
-    <BodyBuildingDiscountsUIContext.Provider value={value}>{children}</BodyBuildingDiscountsUIContext.Provider>
+    <BodyBuildingDiscountsUIContext.Provider value={value}>
+      {children}
+    </BodyBuildingDiscountsUIContext.Provider>
   );
 }

@@ -32,8 +32,10 @@ export function IOTransactionsTable() {
       setIds: iOTransactionsUIContext.setIds,
       queryParams: iOTransactionsUIContext.queryParams,
       setQueryParams: iOTransactionsUIContext.setQueryParams,
-      openEditIOTransactionPage: iOTransactionsUIContext.openEditIOTransactionPage,
-      openDeleteIOTransactionDialog: iOTransactionsUIContext.openDeleteIOTransactionDialog,
+      openEditIOTransactionPage:
+        iOTransactionsUIContext.openEditIOTransactionPage,
+      openDeleteIOTransactionDialog:
+        iOTransactionsUIContext.openDeleteIOTransactionDialog,
     };
   }, [iOTransactionsUIContext]);
 
@@ -72,8 +74,10 @@ export function IOTransactionsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditIOTransactionPage: iOTransactionsUIProps.openEditIOTransactionPage,
-        openDeleteIOTransactionDialog: iOTransactionsUIProps.openDeleteIOTransactionDialog,
+        openEditIOTransactionPage:
+          iOTransactionsUIProps.openEditIOTransactionPage,
+        openDeleteIOTransactionDialog:
+          iOTransactionsUIProps.openDeleteIOTransactionDialog,
         t: t,
       },
       classes: "text-right pr-0",

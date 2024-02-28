@@ -1,38 +1,48 @@
-
 import axios from "axios";
 export const BODYBUILDINGPRICEING_URL = "BodyBuildingPriceing";
-// CREATE = add a new bodyBuildingPriceing to the server 
-export function createBodyBuildingPriceing(bodyBuildingPriceing) { 
-  return axios.post(`${BODYBUILDINGPRICEING_URL}/post`, bodyBuildingPriceing); 
+// CREATE = add a new bodyBuildingPriceing to the server
+export function createBodyBuildingPriceing(bodyBuildingPriceing) {
+  return axios.post(`${BODYBUILDINGPRICEING_URL}/post`, bodyBuildingPriceing);
 }
-// READ  
+// READ
 export function getAllBodyBuildingPriceing() {
   return axios.get(`${BODYBUILDINGPRICEING_URL}/get`);
 }
 export function getBodyBuildingPriceingById(bodyBuildingPriceingId) {
   return axios.get(`${BODYBUILDINGPRICEING_URL}/get/${bodyBuildingPriceingId}`);
 }
-// Method from server should return QueryResultsModel(items: any[], totalsCount: number)  
-// items = result  
+// Method from server should return QueryResultsModel(items: any[], totalsCount: number)
+// items = result
 export function findBodyBuildingPriceing(queryParams) {
   return axios.post(`${BODYBUILDINGPRICEING_URL}/get`, queryParams);
 }
-// UPDATE = update the procuct on the server  
+// UPDATE = update the procuct on the server
 export function updateBodyBuildingPriceing(id, bodyBuildingPriceing) {
-  return axios.put(`${BODYBUILDINGPRICEING_URL}/put/${id}`, bodyBuildingPriceing);
+  return axios.put(
+    `${BODYBUILDINGPRICEING_URL}/put/${id}`,
+    bodyBuildingPriceing
+  );
 }
-// UPDATE Status  
+// UPDATE Status
 export function updateStatusForBodyBuildingPriceing(ids, status) {
-  return axios.post(`${BODYBUILDINGPRICEING_URL}/updateStatusForBodyBuildingPriceing`, {
-    ids,
-    status,
-  });
+  return axios.post(
+    `${BODYBUILDINGPRICEING_URL}/updateStatusForBodyBuildingPriceing`,
+    {
+      ids,
+      status,
+    }
+  );
 }
-// DELETE = the bodyBuildingPriceing from the server  
+// DELETE = the bodyBuildingPriceing from the server
 export function deleteBodyBuildingPriceing(bodyBuildingPriceingId) {
-  return axios.delete(`${BODYBUILDINGPRICEING_URL}/delete/${bodyBuildingPriceingId}`);
+  return axios.delete(
+    `${BODYBUILDINGPRICEING_URL}/delete/${bodyBuildingPriceingId}`
+  );
 }
-// DELETE BodyBuildingPriceing by ids  
+// DELETE BodyBuildingPriceing by ids
 export function deleteBodyBuildingPriceing(ids) {
-return axios.post(`${BODYBUILDINGPRICEING_URL}/deleteBodyBuildingPriceing`, ids);
+  return axios.post(
+    `${BODYBUILDINGPRICEING_URL}/deleteBodyBuildingPriceing`,
+    ids
+  );
 }

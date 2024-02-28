@@ -16,21 +16,48 @@ export default function ManagementPage() {
   return (
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
-        {<Redirect exact={true} from="/Management" to="/Management/dashboard" />}
-        
+        {
+          <Redirect
+            exact={true}
+            from="/Management"
+            to="/Management/dashboard"
+          />
+        }
+
         {/* begin ManagementDashboard */}
-        <ContentRoute path="/Management/dashboard" component={ManagementDashboard} />
+        <ContentRoute
+          path="/Management/dashboard"
+          component={ManagementDashboard}
+        />
         {/* end ManagementDashboard */}
-	
-      {/* begin Reports */}
-          <ContentRoute path="/Management/reports/productLifeCycle" component={ProductLifeCycle} />
-          <ContentRoute path="/Management/reports/totalSalesSold" component={TotalSalesSold} />
-          <ContentRoute path="/Management/reports/totalSalesPrice" component={TotalSalesPrice} />
-          <ContentRoute path="/Management/reports/totalSalesProfit" component={TotalSalesProfit} />
-          <ContentRoute path="/Management/reports/sell" component={Sell} />
-          <ContentRoute path="/Management/reports/productProfit" component={ProductProfit} />
-          <ContentRoute path="/Management/tools/sendToScale" component={SendToScale} />
-			{/* end Reports */}
+
+        {/* begin Reports */}
+        <ContentRoute
+          path="/Management/reports/productLifeCycle"
+          component={ProductLifeCycle}
+        />
+        <ContentRoute
+          path="/Management/reports/totalSalesSold"
+          component={TotalSalesSold}
+        />
+        <ContentRoute
+          path="/Management/reports/totalSalesPrice"
+          component={TotalSalesPrice}
+        />
+        <ContentRoute
+          path="/Management/reports/totalSalesProfit"
+          component={TotalSalesProfit}
+        />
+        <ContentRoute path="/Management/reports/sell" component={Sell} />
+        <ContentRoute
+          path="/Management/reports/productProfit"
+          component={ProductProfit}
+        />
+        <ContentRoute
+          path="/Management/tools/sendToScale"
+          component={SendToScale}
+        />
+        {/* end Reports */}
       </Switch>
     </Suspense>
   );

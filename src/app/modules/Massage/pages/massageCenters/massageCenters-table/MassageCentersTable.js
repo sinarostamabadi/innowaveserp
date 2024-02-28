@@ -32,8 +32,10 @@ export function MassageCentersTable() {
       setIds: massageCentersUIContext.setIds,
       queryParams: massageCentersUIContext.queryParams,
       setQueryParams: massageCentersUIContext.setQueryParams,
-      openEditMassageCenterPage: massageCentersUIContext.openEditMassageCenterPage,
-      openDeleteMassageCenterDialog: massageCentersUIContext.openDeleteMassageCenterDialog,
+      openEditMassageCenterPage:
+        massageCentersUIContext.openEditMassageCenterPage,
+      openDeleteMassageCenterDialog:
+        massageCentersUIContext.openDeleteMassageCenterDialog,
     };
   }, [massageCentersUIContext]);
 
@@ -72,8 +74,10 @@ export function MassageCentersTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditMassageCenterPage: massageCentersUIProps.openEditMassageCenterPage,
-        openDeleteMassageCenterDialog: massageCentersUIProps.openDeleteMassageCenterDialog,
+        openEditMassageCenterPage:
+          massageCentersUIProps.openEditMassageCenterPage,
+        openDeleteMassageCenterDialog:
+          massageCentersUIProps.openDeleteMassageCenterDialog,
         t: t,
       },
       classes: "text-right pr-0",

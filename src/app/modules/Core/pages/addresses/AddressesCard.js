@@ -19,10 +19,9 @@ export function AddressesCard() {
       queryParams: addressesUIContext.queryParams,
       setQueryParams: addressesUIContext.setQueryParams,
       newAddressButtonClick: addressesUIContext.newAddressButtonClick,
-      openDeleteAddressesDialog:  
-        addressesUIContext.openDeleteAddressesDialog,
+      openDeleteAddressesDialog: addressesUIContext.openDeleteAddressesDialog,
       openEditAddressPage: addressesUIContext.openEditAddressPage,
-      openUpdateAddressesStatusDialog:  
+      openUpdateAddressesStatusDialog:
         addressesUIContext.openUpdateAddressesStatusDialog,
       openFetchAddressesDialog: addressesUIContext.openFetchAddressesDialog,
     };
@@ -31,12 +30,12 @@ export function AddressesCard() {
     <Card>
       <CardHeader title="EntityTitle">
         <CardHeaderToolbar>
-          <button  
-            type="button"  
-            className="btn btn-primary"  
+          <button
+            type="button"
+            className="btn btn-primary"
             onClick={addressesUIProps.newAddressButtonClick}
           >
-            EntityTitle  
+            EntityTitle
           </button>
         </CardHeaderToolbar>
       </CardHeader>

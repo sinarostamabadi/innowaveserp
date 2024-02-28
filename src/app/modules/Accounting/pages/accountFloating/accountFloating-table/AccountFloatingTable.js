@@ -32,8 +32,10 @@ export function AccountFloatingTable() {
       setIds: accountFloatingUIContext.setIds,
       queryParams: accountFloatingUIContext.queryParams,
       setQueryParams: accountFloatingUIContext.setQueryParams,
-      openEditAccountFloatingPage: accountFloatingUIContext.openEditAccountFloatingPage,
-      openDeleteAccountFloatingDialog: accountFloatingUIContext.openDeleteAccountFloatingDialog,
+      openEditAccountFloatingPage:
+        accountFloatingUIContext.openEditAccountFloatingPage,
+      openDeleteAccountFloatingDialog:
+        accountFloatingUIContext.openDeleteAccountFloatingDialog,
     };
   }, [accountFloatingUIContext]);
 
@@ -59,7 +61,7 @@ export function AccountFloatingTable() {
       dataField: fieldKey.Code,
       text: t("AccountFloating.Code"),
       sort: fields.Code.sortable,
-      sortCaret: sortCaret
+      sortCaret: sortCaret,
     },
     {
       dataField: fieldKey.Title,
@@ -78,8 +80,10 @@ export function AccountFloatingTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditAccountFloatingPage: accountFloatingUIProps.openEditAccountFloatingPage,
-        openDeleteAccountFloatingDialog: accountFloatingUIProps.openDeleteAccountFloatingDialog,
+        openEditAccountFloatingPage:
+          accountFloatingUIProps.openEditAccountFloatingPage,
+        openDeleteAccountFloatingDialog:
+          accountFloatingUIProps.openDeleteAccountFloatingDialog,
         t: t,
       },
       classes: "text-right pr-0",

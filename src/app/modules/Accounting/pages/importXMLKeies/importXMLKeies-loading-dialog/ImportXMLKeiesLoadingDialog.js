@@ -4,8 +4,8 @@ import { LoadingDialog } from "../../../../../../core/_partials/controls";
 export function ImportXMLKeiesLoadingDialog() {
   const { isLoading } = useSelector(
     (state) => ({ isLoading: state.importXMLKeies.listLoading }),
-    shallowEqual  
+    shallowEqual
   );
-useEffect(() => {}, [isLoading]);
+  useEffect(() => {}, [isLoading]);
   return <LoadingDialog isLoading={isLoading} text="در حال بارگذاری..." />;
 }

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { UnitMeasureGroupModel } from "../../../../../core/_models/General/UnitMeasureGroupModel";
@@ -12,7 +11,10 @@ export function useUnitMeasureGroupsUIContext() {
 
 export const UnitMeasureGroupsUIConsumer = UnitMeasureGroupsUIContext.Consumer;
 
-export function UnitMeasureGroupsUIProvider({ unitMeasureGroupsUIEvents, children }) {
+export function UnitMeasureGroupsUIProvider({
+  unitMeasureGroupsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(UnitMeasureGroupModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function UnitMeasureGroupsUIProvider({ unitMeasureGroupsUIEvents, childre
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function UnitMeasureGroupsUIProvider({ unitMeasureGroupsUIEvents, childre
     setIds,
     setQueryParams,
     dataModel: UnitMeasureGroupModel,
-    newUnitMeasureGroupButtonClick: unitMeasureGroupsUIEvents.newUnitMeasureGroupButtonClick,
-    openEditUnitMeasureGroupPage: unitMeasureGroupsUIEvents.openEditUnitMeasureGroupPage,
-    openDeleteUnitMeasureGroupDialog: unitMeasureGroupsUIEvents.openDeleteUnitMeasureGroupDialog,
-    openDeleteUnitMeasureGroupsDialog: unitMeasureGroupsUIEvents.openDeleteUnitMeasureGroupsDialog,
-    openFetchUnitMeasureGroupsDialog: unitMeasureGroupsUIEvents.openFetchUnitMeasureGroupsDialog,
-    openUpdateUnitMeasureGroupsStatusDialog: unitMeasureGroupsUIEvents.openUpdateUnitMeasureGroupsStatusDialog,
+    newUnitMeasureGroupButtonClick:
+      unitMeasureGroupsUIEvents.newUnitMeasureGroupButtonClick,
+    openEditUnitMeasureGroupPage:
+      unitMeasureGroupsUIEvents.openEditUnitMeasureGroupPage,
+    openDeleteUnitMeasureGroupDialog:
+      unitMeasureGroupsUIEvents.openDeleteUnitMeasureGroupDialog,
+    openDeleteUnitMeasureGroupsDialog:
+      unitMeasureGroupsUIEvents.openDeleteUnitMeasureGroupsDialog,
+    openFetchUnitMeasureGroupsDialog:
+      unitMeasureGroupsUIEvents.openFetchUnitMeasureGroupsDialog,
+    openUpdateUnitMeasureGroupsStatusDialog:
+      unitMeasureGroupsUIEvents.openUpdateUnitMeasureGroupsStatusDialog,
   };
   return (
-    <UnitMeasureGroupsUIContext.Provider value={value}>{children}</UnitMeasureGroupsUIContext.Provider>
+    <UnitMeasureGroupsUIContext.Provider value={value}>
+      {children}
+    </UnitMeasureGroupsUIContext.Provider>
   );
 }

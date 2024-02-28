@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { PaymentStatusModel } from "../../../../../core/_models//PaymentStatusModel";
@@ -12,7 +11,10 @@ export function usePaymentStatusesUIContext() {
 
 export const PaymentStatusesUIConsumer = PaymentStatusesUIContext.Consumer;
 
-export function PaymentStatusesUIProvider({ paymentStatusesUIEvents, children }) {
+export function PaymentStatusesUIProvider({
+  paymentStatusesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(PaymentStatusModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function PaymentStatusesUIProvider({ paymentStatusesUIEvents, children })
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function PaymentStatusesUIProvider({ paymentStatusesUIEvents, children })
     setIds,
     setQueryParams,
     dataModel: PaymentStatusModel,
-    newPaymentStatusButtonClick: paymentStatusesUIEvents.newPaymentStatusButtonClick,
-    openEditPaymentStatusPage: paymentStatusesUIEvents.openEditPaymentStatusPage,
-    openDeletePaymentStatusDialog: paymentStatusesUIEvents.openDeletePaymentStatusDialog,
-    openDeletePaymentStatusesDialog: paymentStatusesUIEvents.openDeletePaymentStatusesDialog,
-    openFetchPaymentStatusesDialog: paymentStatusesUIEvents.openFetchPaymentStatusesDialog,
-    openUpdatePaymentStatusesStatusDialog: paymentStatusesUIEvents.openUpdatePaymentStatusesStatusDialog,
+    newPaymentStatusButtonClick:
+      paymentStatusesUIEvents.newPaymentStatusButtonClick,
+    openEditPaymentStatusPage:
+      paymentStatusesUIEvents.openEditPaymentStatusPage,
+    openDeletePaymentStatusDialog:
+      paymentStatusesUIEvents.openDeletePaymentStatusDialog,
+    openDeletePaymentStatusesDialog:
+      paymentStatusesUIEvents.openDeletePaymentStatusesDialog,
+    openFetchPaymentStatusesDialog:
+      paymentStatusesUIEvents.openFetchPaymentStatusesDialog,
+    openUpdatePaymentStatusesStatusDialog:
+      paymentStatusesUIEvents.openUpdatePaymentStatusesStatusDialog,
   };
   return (
-    <PaymentStatusesUIContext.Provider value={value}>{children}</PaymentStatusesUIContext.Provider>
+    <PaymentStatusesUIContext.Provider value={value}>
+      {children}
+    </PaymentStatusesUIContext.Provider>
   );
 }

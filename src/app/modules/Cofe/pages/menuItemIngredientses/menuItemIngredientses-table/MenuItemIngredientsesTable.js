@@ -32,8 +32,10 @@ export function MenuItemIngredientsesTable() {
       setIds: menuItemIngredientsesUIContext.setIds,
       queryParams: menuItemIngredientsesUIContext.queryParams,
       setQueryParams: menuItemIngredientsesUIContext.setQueryParams,
-      openEditMenuItemIngredientsPage: menuItemIngredientsesUIContext.openEditMenuItemIngredientsPage,
-      openDeleteMenuItemIngredientsDialog: menuItemIngredientsesUIContext.openDeleteMenuItemIngredientsDialog,
+      openEditMenuItemIngredientsPage:
+        menuItemIngredientsesUIContext.openEditMenuItemIngredientsPage,
+      openDeleteMenuItemIngredientsDialog:
+        menuItemIngredientsesUIContext.openDeleteMenuItemIngredientsDialog,
     };
   }, [menuItemIngredientsesUIContext]);
 
@@ -50,7 +52,11 @@ export function MenuItemIngredientsesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     menuItemIngredientsesUIProps.setIds([]);
-    dispatch(actions.fetchMenuItemIngredientses(menuItemIngredientsesUIProps.queryParams));
+    dispatch(
+      actions.fetchMenuItemIngredientses(
+        menuItemIngredientsesUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuItemIngredientsesUIProps.queryParams, dispatch]);
 
@@ -72,8 +78,10 @@ export function MenuItemIngredientsesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditMenuItemIngredientsPage: menuItemIngredientsesUIProps.openEditMenuItemIngredientsPage,
-        openDeleteMenuItemIngredientsDialog: menuItemIngredientsesUIProps.openDeleteMenuItemIngredientsDialog,
+        openEditMenuItemIngredientsPage:
+          menuItemIngredientsesUIProps.openEditMenuItemIngredientsPage,
+        openDeleteMenuItemIngredientsDialog:
+          menuItemIngredientsesUIProps.openDeleteMenuItemIngredientsDialog,
         t: t,
       },
       classes: "text-right pr-0",

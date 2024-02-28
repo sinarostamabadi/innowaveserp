@@ -21,7 +21,7 @@ export function WalletEditDialogHeader({ id }) {
   useEffect(() => {
     let _title = id ? "" : t("Common.Create") + " " + t("Wallet.Entity");
     if (walletForEdit && id) {
-      _title = t("Common.Edit") + " " + t("Wallet.Entity") ;
+      _title = t("Common.Edit") + " " + t("Wallet.Entity");
     }
 
     setTitle(_title);

@@ -9,10 +9,13 @@ export function IdToTitleColumnFormatter(
   rowIndex,
   { array }
 ) {
-
   return (
     <>
-      <span>{!!array && !!cellContent && array.filter(x=>x.id==cellContent)[0].title}</span>
+      <span>
+        {!!array &&
+          !!cellContent &&
+          array.filter((x) => x.id == cellContent)[0].title}
+      </span>
     </>
   );
 }

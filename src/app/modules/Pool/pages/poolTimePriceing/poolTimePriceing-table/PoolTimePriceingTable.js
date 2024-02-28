@@ -32,8 +32,10 @@ export function PoolTimePriceingTable() {
       setIds: poolTimePriceingUIContext.setIds,
       queryParams: poolTimePriceingUIContext.queryParams,
       setQueryParams: poolTimePriceingUIContext.setQueryParams,
-      openEditPoolTimePriceingPage: poolTimePriceingUIContext.openEditPoolTimePriceingPage,
-      openDeletePoolTimePriceingDialog: poolTimePriceingUIContext.openDeletePoolTimePriceingDialog,
+      openEditPoolTimePriceingPage:
+        poolTimePriceingUIContext.openEditPoolTimePriceingPage,
+      openDeletePoolTimePriceingDialog:
+        poolTimePriceingUIContext.openDeletePoolTimePriceingDialog,
     };
   }, [poolTimePriceingUIContext]);
 
@@ -50,7 +52,9 @@ export function PoolTimePriceingTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     poolTimePriceingUIProps.setIds([]);
-    dispatch(actions.fetchPoolTimePriceing(poolTimePriceingUIProps.queryParams));
+    dispatch(
+      actions.fetchPoolTimePriceing(poolTimePriceingUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [poolTimePriceingUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function PoolTimePriceingTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditPoolTimePriceingPage: poolTimePriceingUIProps.openEditPoolTimePriceingPage,
-        openDeletePoolTimePriceingDialog: poolTimePriceingUIProps.openDeletePoolTimePriceingDialog,
+        openEditPoolTimePriceingPage:
+          poolTimePriceingUIProps.openEditPoolTimePriceingPage,
+        openDeletePoolTimePriceingDialog:
+          poolTimePriceingUIProps.openDeletePoolTimePriceingDialog,
         t: t,
       },
       classes: "text-right pr-0",

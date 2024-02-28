@@ -55,7 +55,9 @@ export function EmployeeMissionEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("EmployeeMission.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("EmployeeMission.Entity");
 
     if (employeeMissionForEdit && id) {
       _title = t("Common.Edit") + " " + employeeMissionForEdit.TitleFa;
@@ -73,11 +75,11 @@ export function EmployeeMissionEdit({
         .then((arg) => {
           backToEmployeeMissionsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateEmployeeMission(id, values))
         .then(() => backToEmployeeMissionsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

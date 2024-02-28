@@ -26,9 +26,11 @@ export function PromissoryNotesPage({ history }) {
       history.push("/cash/promissoryNotes/updateStatus");
     },
   };
-  
+
   return (
-    <PromissoryNotesUIProvider promissoryNotesUIEvents={promissoryNotesUIEvents}>
+    <PromissoryNotesUIProvider
+      promissoryNotesUIEvents={promissoryNotesUIEvents}
+    >
       <PromissoryNotesLoadingDialog />
       <Route path="/cash/promissoryNotes/:id/delete">
         {({ history, match }) => (

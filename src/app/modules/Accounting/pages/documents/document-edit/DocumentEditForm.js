@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import {
@@ -34,7 +34,10 @@ export function DocumentEditForm({ document, btnRef, saveDocument }) {
         initialValues={document}
         validationSchema={DocumentEditSchema}
         onSubmit={(values) => {
-          saveDocument({...values, DocumentId: !!values.DocumentId? +values.DocumentId: null});
+          saveDocument({
+            ...values,
+            DocumentId: !!values.DocumentId ? +values.DocumentId : null,
+          });
         }}
       >
         {({ handleSubmit }) => (
@@ -56,7 +59,7 @@ export function DocumentEditForm({ document, btnRef, saveDocument }) {
                     name="DocumentDateObj"
                     customFeedbackLabel=""
                     label={t("Document.DocumentDate")}
-                    />
+                  />
                 </div>
                 <div className="col-lg-3">
                   <Field

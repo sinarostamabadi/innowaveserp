@@ -14,7 +14,7 @@ export function CashEditForm({ cash, btnRef, saveCash }) {
       .required(t("err.IsRequired", { 0: t("Cash.Title") })),
     AccountFloatingId: Yup.string()
       .min(1, t("err.Min", { 0: 1 }))
-      .max(100, t("err.Max", { 0: 100 }))
+      .max(100, t("err.Max", { 0: 100 })),
   });
 
   return (

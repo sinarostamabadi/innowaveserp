@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,37 +7,50 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { EmployeeWorkExperiencesTable } from "./employeeWorkExperiences-table/EmployeeWorkExperiencesTable";
-import { useEmployeeWorkExperiencesUIContext, EmployeeWorkExperiencesUIConsumer } from "./EmployeeWorkExperiencesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useEmployeeWorkExperiencesUIContext,
+  EmployeeWorkExperiencesUIConsumer,
+} from "./EmployeeWorkExperiencesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function EmployeeWorkExperiencesCard() {
   const { t } = useTranslation();
 
-  const employeeWorkExperiencesUIContext = useEmployeeWorkExperiencesUIContext();
+  const employeeWorkExperiencesUIContext =
+    useEmployeeWorkExperiencesUIContext();
 
   const employeeWorkExperiencesUIProps = useMemo(() => {
     return {
       ids: employeeWorkExperiencesUIContext.ids,
       queryParams: employeeWorkExperiencesUIContext.queryParams,
       setQueryParams: employeeWorkExperiencesUIContext.setQueryParams,
-      newEmployeeWorkExperienceButtonClick: employeeWorkExperiencesUIContext.newEmployeeWorkExperienceButtonClick,
-      openDeleteEmployeeWorkExperiencesDialog: employeeWorkExperiencesUIContext.openDeleteEmployeeWorkExperiencesDialog,
-      openEditEmployeeWorkExperiencePage: employeeWorkExperiencesUIContext.openEditEmployeeWorkExperiencePage,
-      openUpdateEmployeeWorkExperiencesStatusDialog: employeeWorkExperiencesUIContext.openUpdateEmployeeWorkExperiencesStatusDialog,
-      openFetchEmployeeWorkExperiencesDialog: employeeWorkExperiencesUIContext.openFetchEmployeeWorkExperiencesDialog,
+      newEmployeeWorkExperienceButtonClick:
+        employeeWorkExperiencesUIContext.newEmployeeWorkExperienceButtonClick,
+      openDeleteEmployeeWorkExperiencesDialog:
+        employeeWorkExperiencesUIContext.openDeleteEmployeeWorkExperiencesDialog,
+      openEditEmployeeWorkExperiencePage:
+        employeeWorkExperiencesUIContext.openEditEmployeeWorkExperiencePage,
+      openUpdateEmployeeWorkExperiencesStatusDialog:
+        employeeWorkExperiencesUIContext.openUpdateEmployeeWorkExperiencesStatusDialog,
+      openFetchEmployeeWorkExperiencesDialog:
+        employeeWorkExperiencesUIContext.openFetchEmployeeWorkExperiencesDialog,
     };
   }, [employeeWorkExperiencesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("EmployeeWorkExperience.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("EmployeeWorkExperience.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
-            onClick={employeeWorkExperiencesUIProps.newEmployeeWorkExperienceButtonClick}
+            onClick={
+              employeeWorkExperiencesUIProps.newEmployeeWorkExperienceButtonClick
+            }
           >
-            {t("EmployeeWorkExperience.Entity")} {' '} {t("Common.New")}
+            {t("EmployeeWorkExperience.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

@@ -32,8 +32,10 @@ export function OperationTypeAccountsTable() {
       setIds: operationTypeAccountsUIContext.setIds,
       queryParams: operationTypeAccountsUIContext.queryParams,
       setQueryParams: operationTypeAccountsUIContext.setQueryParams,
-      openEditOperationTypeAccountPage: operationTypeAccountsUIContext.openEditOperationTypeAccountPage,
-      openDeleteOperationTypeAccountDialog: operationTypeAccountsUIContext.openDeleteOperationTypeAccountDialog,
+      openEditOperationTypeAccountPage:
+        operationTypeAccountsUIContext.openEditOperationTypeAccountPage,
+      openDeleteOperationTypeAccountDialog:
+        operationTypeAccountsUIContext.openDeleteOperationTypeAccountDialog,
     };
   }, [operationTypeAccountsUIContext]);
 
@@ -50,7 +52,11 @@ export function OperationTypeAccountsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     operationTypeAccountsUIProps.setIds([]);
-    dispatch(actions.fetchOperationTypeAccounts(operationTypeAccountsUIProps.queryParams));
+    dispatch(
+      actions.fetchOperationTypeAccounts(
+        operationTypeAccountsUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [operationTypeAccountsUIProps.queryParams, dispatch]);
 
@@ -72,8 +78,10 @@ export function OperationTypeAccountsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditOperationTypeAccountPage: operationTypeAccountsUIProps.openEditOperationTypeAccountPage,
-        openDeleteOperationTypeAccountDialog: operationTypeAccountsUIProps.openDeleteOperationTypeAccountDialog,
+        openEditOperationTypeAccountPage:
+          operationTypeAccountsUIProps.openEditOperationTypeAccountPage,
+        openDeleteOperationTypeAccountDialog:
+          operationTypeAccountsUIProps.openDeleteOperationTypeAccountDialog,
         t: t,
       },
       classes: "text-right pr-0",

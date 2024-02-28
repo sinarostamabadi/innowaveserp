@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { MajorsTable } from "./majors-table/MajorsTable";
 import { useMajorsUIContext, MajorsUIConsumer } from "./MajorsUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function MajorsCard() {
   const { t } = useTranslation();
@@ -24,7 +23,8 @@ export function MajorsCard() {
       newMajorButtonClick: majorsUIContext.newMajorButtonClick,
       openDeleteMajorsDialog: majorsUIContext.openDeleteMajorsDialog,
       openEditMajorPage: majorsUIContext.openEditMajorPage,
-      openUpdateMajorsStatusDialog: majorsUIContext.openUpdateMajorsStatusDialog,
+      openUpdateMajorsStatusDialog:
+        majorsUIContext.openUpdateMajorsStatusDialog,
       openFetchMajorsDialog: majorsUIContext.openFetchMajorsDialog,
     };
   }, [majorsUIContext]);

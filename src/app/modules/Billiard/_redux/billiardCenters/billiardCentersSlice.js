@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBilliardCentersState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const billiardCentersSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBilliardCenterById  
+    // getBilliardCenterById
     billiardCenterFetched: (state, action) => {
       state.actionsLoading = false;
       state.billiardCenterForEdit = action.payload.billiardCenterForEdit;
       state.error = null;
     },
-    // findBilliardCenters  
+    // findBilliardCenters
     billiardCentersFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const billiardCentersSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBilliardCenter  
+    // createBilliardCenter
     billiardCenterCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBilliardCenter  
+    // updateBilliardCenter
     billiardCenterUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BilliardCenterId === action.payload.billiardCenter.BilliardCenterId) {
+        if (
+          entity.BilliardCenterId ===
+          action.payload.billiardCenter.BilliardCenterId
+        ) {
           return action.payload.billiardCenter;
         }
         return entity;
       });
     },
-    // deleteBilliardCenter  
+    // deleteBilliardCenter
     billiardCenterDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BilliardCenterId !== action.payload.BilliardCenterId  
+        (el) => el.BilliardCenterId !== action.payload.BilliardCenterId
       );
     },
-    // deleteBilliardCenters  
+    // deleteBilliardCenters
     billiardCentersDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BilliardCenterId)  
+        (el) => !action.payload.ids.includes(el.BilliardCenterId)
       );
     },
-    // billiardCentersUpdateState  
+    // billiardCentersUpdateState
     billiardCentersStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

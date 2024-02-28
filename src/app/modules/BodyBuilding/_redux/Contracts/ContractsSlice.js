@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialContractsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const contractsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getContractById  
+    // getContractById
     contractFetched: (state, action) => {
       state.actionsLoading = false;
       state.contractForEdit = action.payload.contractForEdit;
       state.error = null;
     },
-    // findContracts  
+    // findContracts
     contractsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,44 @@ export const contractsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createContract  
+    // createContract
     contractCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateContract  
+    // updateContract
     contractUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BodyBuildingContractId === action.payload.contract.BodyBuildingContractId) {
+        if (
+          entity.BodyBuildingContractId ===
+          action.payload.contract.BodyBuildingContractId
+        ) {
           return action.payload.contract;
         }
         return entity;
       });
     },
-    // deleteContract  
+    // deleteContract
     contractDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BodyBuildingContractId !== action.payload.BodyBuildingContractId  
+        (el) =>
+          el.BodyBuildingContractId !== action.payload.BodyBuildingContractId
       );
     },
-    // deleteContracts  
+    // deleteContracts
     contractsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BodyBuildingContractId)  
+        (el) => !action.payload.ids.includes(el.BodyBuildingContractId)
       );
     },
-    // contractsUpdateState  
+    // contractsUpdateState
     contractsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

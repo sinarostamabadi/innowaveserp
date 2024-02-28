@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { MarridationTypeModel } from "../../../../../core/_models/Employment/MarridationTypeModel";
@@ -12,7 +11,10 @@ export function useMarridationTypesUIContext() {
 
 export const MarridationTypesUIConsumer = MarridationTypesUIContext.Consumer;
 
-export function MarridationTypesUIProvider({ marridationTypesUIEvents, children }) {
+export function MarridationTypesUIProvider({
+  marridationTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(MarridationTypeModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function MarridationTypesUIProvider({ marridationTypesUIEvents, children 
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function MarridationTypesUIProvider({ marridationTypesUIEvents, children 
     setIds,
     setQueryParams,
     dataModel: MarridationTypeModel,
-    newMarridationTypeButtonClick: marridationTypesUIEvents.newMarridationTypeButtonClick,
-    openEditMarridationTypePage: marridationTypesUIEvents.openEditMarridationTypePage,
-    openDeleteMarridationTypeDialog: marridationTypesUIEvents.openDeleteMarridationTypeDialog,
-    openDeleteMarridationTypesDialog: marridationTypesUIEvents.openDeleteMarridationTypesDialog,
-    openFetchMarridationTypesDialog: marridationTypesUIEvents.openFetchMarridationTypesDialog,
-    openUpdateMarridationTypesStatusDialog: marridationTypesUIEvents.openUpdateMarridationTypesStatusDialog,
+    newMarridationTypeButtonClick:
+      marridationTypesUIEvents.newMarridationTypeButtonClick,
+    openEditMarridationTypePage:
+      marridationTypesUIEvents.openEditMarridationTypePage,
+    openDeleteMarridationTypeDialog:
+      marridationTypesUIEvents.openDeleteMarridationTypeDialog,
+    openDeleteMarridationTypesDialog:
+      marridationTypesUIEvents.openDeleteMarridationTypesDialog,
+    openFetchMarridationTypesDialog:
+      marridationTypesUIEvents.openFetchMarridationTypesDialog,
+    openUpdateMarridationTypesStatusDialog:
+      marridationTypesUIEvents.openUpdateMarridationTypesStatusDialog,
   };
   return (
-    <MarridationTypesUIContext.Provider value={value}>{children}</MarridationTypesUIContext.Provider>
+    <MarridationTypesUIContext.Provider value={value}>
+      {children}
+    </MarridationTypesUIContext.Provider>
   );
 }

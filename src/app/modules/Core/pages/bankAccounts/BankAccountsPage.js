@@ -26,13 +26,13 @@ export function BankAccountsPage({ history }) {
       history.push("/Core/bankAccounts/updateStatus");
     },
   };
-  
+
   return (
     <BankAccountsUIProvider bankAccountsUIEvents={bankAccountsUIEvents}>
       <BankAccountsLoadingDialog />
       <Route path="/Core/bankAccounts/:id/delete">
         {({ history, match }) => (
-          <BankAccountDeleteDialog  
+          <BankAccountDeleteDialog
             show={match != null}
             id={match && match.params.id}
             onHide={() => {

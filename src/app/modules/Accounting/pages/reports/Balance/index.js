@@ -8,14 +8,23 @@ import {
   CardHeader,
   CardHeaderToolbar,
 } from "src/core/_partials/controls";
-import {Table} from './Table'
+import { Table } from "./Table";
 export function Balance({
   history,
   match: {
     params: { col },
   },
 }) {
-  const colName = {2: "دو", 3: "سه", 4: "چهار", 5: "پنج", 6: "شش", 7: "هفت", 8: "هشت", 9: "نه"};
+  const colName = {
+    2: "دو",
+    3: "سه",
+    4: "چهار",
+    5: "پنج",
+    6: "شش",
+    7: "هفت",
+    8: "هشت",
+    9: "نه",
+  };
   const { t } = useTranslation();
   const events = {};
   const btnSearchRef = createRef("1");
@@ -26,14 +35,13 @@ export function Balance({
   };
 
   return (
-    <BalanceProvider 
-      events={events} 
-      col={{id: col, name: colName[col]}}
-    >
+    <BalanceProvider events={events} col={{ id: col, name: colName[col] }}>
       <Card>
         <CardHeader
           title={
-            t("Common.Report") + " " + t("Reports.Balance.Name", { 0: colName[col] })
+            t("Common.Report") +
+            " " +
+            t("Reports.Balance.Name", { 0: colName[col] })
           }
         >
           <CardHeaderToolbar>
@@ -48,7 +56,7 @@ export function Balance({
         </CardHeader>
         <CardBody>
           <Filter ref={btnSearchRef} />
-          <Table/>
+          <Table />
         </CardBody>
       </Card>
     </BalanceProvider>

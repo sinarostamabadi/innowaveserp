@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { WarehouseModel } from "../../../../../core/_models/General/WarehouseModel";
@@ -30,7 +29,7 @@ export function WarehousesUIProvider({ warehousesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function WarehousesUIProvider({ warehousesUIEvents, children }) {
     openDeleteWarehouseDialog: warehousesUIEvents.openDeleteWarehouseDialog,
     openDeleteWarehousesDialog: warehousesUIEvents.openDeleteWarehousesDialog,
     openFetchWarehousesDialog: warehousesUIEvents.openFetchWarehousesDialog,
-    openUpdateWarehousesStatusDialog: warehousesUIEvents.openUpdateWarehousesStatusDialog,
+    openUpdateWarehousesStatusDialog:
+      warehousesUIEvents.openUpdateWarehousesStatusDialog,
   };
   return (
-    <WarehousesUIContext.Provider value={value}>{children}</WarehousesUIContext.Provider>
+    <WarehousesUIContext.Provider value={value}>
+      {children}
+    </WarehousesUIContext.Provider>
   );
 }

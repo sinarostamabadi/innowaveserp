@@ -29,8 +29,7 @@ export function CostEditDialog() {
   const [editCost, setEditCost] = useState(costsUIProps.initCost);
 
   useEffect(() => {
-    if (!!costsUIProps.id)
-      setEditCost(costsUIProps.findCost(costsUIProps.id));
+    if (!!costsUIProps.id) setEditCost(costsUIProps.findCost(costsUIProps.id));
   }, [costsUIProps.id, dispatch]);
 
   const saveCost = (cost) => {
@@ -42,7 +41,7 @@ export function CostEditDialog() {
       costsUIProps.onHide();
     }
   };
-  
+
   return (
     <Modal
       show={costsUIProps.show}

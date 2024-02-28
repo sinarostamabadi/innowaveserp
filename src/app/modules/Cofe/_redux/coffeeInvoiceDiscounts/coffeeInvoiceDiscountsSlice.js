@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialCoffeeInvoiceDiscountsState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const coffeeInvoiceDiscountsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCoffeeInvoiceDiscountById  
+    // getCoffeeInvoiceDiscountById
     coffeeInvoiceDiscountFetched: (state, action) => {
       state.actionsLoading = false;
-      state.coffeeInvoiceDiscountForEdit = action.payload.coffeeInvoiceDiscountForEdit;
+      state.coffeeInvoiceDiscountForEdit =
+        action.payload.coffeeInvoiceDiscountForEdit;
       state.error = null;
     },
-    // findCoffeeInvoiceDiscounts  
+    // findCoffeeInvoiceDiscounts
     coffeeInvoiceDiscountsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const coffeeInvoiceDiscountsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCoffeeInvoiceDiscount  
+    // createCoffeeInvoiceDiscount
     coffeeInvoiceDiscountCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCoffeeInvoiceDiscount  
+    // updateCoffeeInvoiceDiscount
     coffeeInvoiceDiscountUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.CoffeeInvoiceDiscountId === action.payload.coffeeInvoiceDiscount.CoffeeInvoiceDiscountId) {
+        if (
+          entity.CoffeeInvoiceDiscountId ===
+          action.payload.coffeeInvoiceDiscount.CoffeeInvoiceDiscountId
+        ) {
           return action.payload.coffeeInvoiceDiscount;
         }
         return entity;
       });
     },
-    // deleteCoffeeInvoiceDiscount  
+    // deleteCoffeeInvoiceDiscount
     coffeeInvoiceDiscountDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CoffeeInvoiceDiscountId !== action.payload.CoffeeInvoiceDiscountId  
+        (el) =>
+          el.CoffeeInvoiceDiscountId !== action.payload.CoffeeInvoiceDiscountId
       );
     },
-    // deleteCoffeeInvoiceDiscounts  
+    // deleteCoffeeInvoiceDiscounts
     coffeeInvoiceDiscountsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CoffeeInvoiceDiscountId)  
+        (el) => !action.payload.ids.includes(el.CoffeeInvoiceDiscountId)
       );
     },
-    // coffeeInvoiceDiscountsUpdateState  
+    // coffeeInvoiceDiscountsUpdateState
     coffeeInvoiceDiscountsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

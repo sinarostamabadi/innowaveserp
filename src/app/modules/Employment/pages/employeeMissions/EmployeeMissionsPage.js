@@ -26,9 +26,11 @@ export function EmployeeMissionsPage({ history }) {
       history.push("/employment/employeeMissions/updateStatus");
     },
   };
-  
+
   return (
-    <EmployeeMissionsUIProvider employeeMissionsUIEvents={employeeMissionsUIEvents}>
+    <EmployeeMissionsUIProvider
+      employeeMissionsUIEvents={employeeMissionsUIEvents}
+    >
       <EmployeeMissionsLoadingDialog />
       <Route path="/employment/employeeMissions/:id/delete">
         {({ history, match }) => (

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { InsuranceTypeModel } from "../../../../../core/_models/Employment/InsuranceTypeModel";
@@ -30,7 +29,7 @@ export function InsuranceTypesUIProvider({ insuranceTypesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function InsuranceTypesUIProvider({ insuranceTypesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: InsuranceTypeModel,
-    newInsuranceTypeButtonClick: insuranceTypesUIEvents.newInsuranceTypeButtonClick,
+    newInsuranceTypeButtonClick:
+      insuranceTypesUIEvents.newInsuranceTypeButtonClick,
     openEditInsuranceTypePage: insuranceTypesUIEvents.openEditInsuranceTypePage,
-    openDeleteInsuranceTypeDialog: insuranceTypesUIEvents.openDeleteInsuranceTypeDialog,
-    openDeleteInsuranceTypesDialog: insuranceTypesUIEvents.openDeleteInsuranceTypesDialog,
-    openFetchInsuranceTypesDialog: insuranceTypesUIEvents.openFetchInsuranceTypesDialog,
-    openUpdateInsuranceTypesStatusDialog: insuranceTypesUIEvents.openUpdateInsuranceTypesStatusDialog,
+    openDeleteInsuranceTypeDialog:
+      insuranceTypesUIEvents.openDeleteInsuranceTypeDialog,
+    openDeleteInsuranceTypesDialog:
+      insuranceTypesUIEvents.openDeleteInsuranceTypesDialog,
+    openFetchInsuranceTypesDialog:
+      insuranceTypesUIEvents.openFetchInsuranceTypesDialog,
+    openUpdateInsuranceTypesStatusDialog:
+      insuranceTypesUIEvents.openUpdateInsuranceTypesStatusDialog,
   };
   return (
-    <InsuranceTypesUIContext.Provider value={value}>{children}</InsuranceTypesUIContext.Provider>
+    <InsuranceTypesUIContext.Provider value={value}>
+      {children}
+    </InsuranceTypesUIContext.Provider>
   );
 }

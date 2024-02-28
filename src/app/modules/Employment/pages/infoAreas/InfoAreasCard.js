@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { InfoAreasTable } from "./infoAreas-table/InfoAreasTable";
-import { useInfoAreasUIContext, InfoAreasUIConsumer } from "./InfoAreasUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useInfoAreasUIContext,
+  InfoAreasUIConsumer,
+} from "./InfoAreasUIContext";
+import { useTranslation } from "react-i18next";
 
 export function InfoAreasCard() {
   const { t } = useTranslation();
@@ -24,21 +26,22 @@ export function InfoAreasCard() {
       newInfoAreaButtonClick: infoAreasUIContext.newInfoAreaButtonClick,
       openDeleteInfoAreasDialog: infoAreasUIContext.openDeleteInfoAreasDialog,
       openEditInfoAreaPage: infoAreasUIContext.openEditInfoAreaPage,
-      openUpdateInfoAreasStatusDialog: infoAreasUIContext.openUpdateInfoAreasStatusDialog,
+      openUpdateInfoAreasStatusDialog:
+        infoAreasUIContext.openUpdateInfoAreasStatusDialog,
       openFetchInfoAreasDialog: infoAreasUIContext.openFetchInfoAreasDialog,
     };
   }, [infoAreasUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("InfoArea.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("InfoArea.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={infoAreasUIProps.newInfoAreaButtonClick}
           >
-            {t("InfoArea.Entity")} {' '} {t("Common.New")}
+            {t("InfoArea.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

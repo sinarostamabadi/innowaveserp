@@ -30,18 +30,24 @@ export const ChequePapersUIProvider = forwardRef(
           chequePapers.map((chequePaper) => {
             return {
               ChequePaperId: chequePaper.ChequePaperId,
-              ChequeBookId: !!chequePaper.ChequeBookId ? +chequePaper.ChequeBookId: null,
-              ChequePaperStatus: chequePaper.ChequePaperStatus == null || chequePaper.ChequePaperStatus == "" ? null : +chequePaper.ChequePaperStatus,
+              ChequeBookId: !!chequePaper.ChequeBookId
+                ? +chequePaper.ChequeBookId
+                : null,
+              ChequePaperStatus:
+                chequePaper.ChequePaperStatus == null ||
+                chequePaper.ChequePaperStatus == ""
+                  ? null
+                  : +chequePaper.ChequePaperStatus,
               Description: chequePaper.Description,
               SerialNo: chequePaper.SerialNo,
               ChangeDate: chequePaper.ChangeDate,
               IsDeleted: chequePaper.IsDeleted,
-            }
+            };
           })
         );
       },
     }));
-    
+
     const [selectedId, setSelectedId] = useState(null);
     const [chequeBookId, setChequeBookId] = useState(currentChequeBookId);
 
@@ -100,8 +106,9 @@ export const ChequePapersUIProvider = forwardRef(
       setSelectedItem(findChequePaper(selectedId));
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedId]);
-    
-    const [showEditChequePaperDialog, setShowEditChequePaperDialog] = useState(false);
+
+    const [showEditChequePaperDialog, setShowEditChequePaperDialog] =
+      useState(false);
     const openNewChequePaperDialog = () => {
       setSelectedId(undefined);
       setSelectedItem(CloneObject(initChequePaper));
@@ -123,7 +130,8 @@ export const ChequePapersUIProvider = forwardRef(
       setShowEditChequePaperDialog(false);
     };
 
-    const [showDeleteChequePaperDialog, setShowDeleteChequePaperDialog] = useState(false);
+    const [showDeleteChequePaperDialog, setShowDeleteChequePaperDialog] =
+      useState(false);
     const openDeleteChequePaperDialog = (id) => {
       setSelectedId(id);
       setShowDeleteChequePaperDialog(true);
@@ -134,9 +142,8 @@ export const ChequePapersUIProvider = forwardRef(
       setShowDeleteChequePaperDialog(false);
     };
 
-    const [showDeleteChequePapersDialog, setShowDeleteChequePapersDialog] = useState(
-      false
-    );
+    const [showDeleteChequePapersDialog, setShowDeleteChequePapersDialog] =
+      useState(false);
     const openDeleteChequePapersDialog = () => {
       setShowDeleteChequePapersDialog(true);
     };
@@ -144,7 +151,8 @@ export const ChequePapersUIProvider = forwardRef(
       setShowDeleteChequePapersDialog(false);
     };
 
-    const [showFetchChequePapersDialog, setShowFetchChequePapersDialog] = useState(false);
+    const [showFetchChequePapersDialog, setShowFetchChequePapersDialog] =
+      useState(false);
     const openFetchChequePapersDialog = () => {
       setShowFetchChequePapersDialog(true);
     };
@@ -153,7 +161,9 @@ export const ChequePapersUIProvider = forwardRef(
     };
 
     const findChequePaper = (chequePaperId) => {
-      return chequePapers.filter((chequePaper) => chequePaper.ChequePaperId == chequePaperId)[0];
+      return chequePapers.filter(
+        (chequePaper) => chequePaper.ChequePaperId == chequePaperId
+      )[0];
     };
 
     const addChequePaper = (chequePaper) => {
@@ -172,7 +182,8 @@ export const ChequePapersUIProvider = forwardRef(
         setChequePapers((chequePapers) =>
           chequePapers.map((item) => {
             let copyChequePaper = CloneObject(item);
-            if (copyChequePaper.ChequePaperId == chequePaperId) copyChequePaper.IsDeleted = true;
+            if (copyChequePaper.ChequePaperId == chequePaperId)
+              copyChequePaper.IsDeleted = true;
 
             return copyChequePaper;
           })

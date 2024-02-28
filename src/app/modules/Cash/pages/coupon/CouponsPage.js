@@ -26,7 +26,7 @@ export function CouponsPage({ history }) {
       history.push("/cash/coupons/updateStatus");
     },
   };
-  
+
   return (
     <CouponsUIProvider couponsUIEvents={couponsUIEvents}>
       <CouponsLoadingDialog />

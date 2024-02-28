@@ -95,9 +95,13 @@ export const RestaurantMenuItemEditForm = forwardRef(
       return {
         RestaurantMenuItemId: data.RestaurantMenuItemId,
         RestaurantId: +data.RestaurantId,
-        RestaurantMenuGroupId: Array.isArray(data.RestaurantMenuGroupId) && data.RestaurantMenuGroupId.length
-          ? +data.RestaurantMenuGroupId[0].RestaurantMenuGroupId
-          : !!data.RestaurantMenuGroupId? +data.RestaurantMenuGroupId: null,
+        RestaurantMenuGroupId:
+          Array.isArray(data.RestaurantMenuGroupId) &&
+          data.RestaurantMenuGroupId.length
+            ? +data.RestaurantMenuGroupId[0].RestaurantMenuGroupId
+            : !!data.RestaurantMenuGroupId
+            ? +data.RestaurantMenuGroupId
+            : null,
         PlaceOfPreparationId: +data.PlaceOfPreparationId,
         NameFa: data.NameFa,
         NameEn: data.NameEn,
@@ -106,7 +110,9 @@ export const RestaurantMenuItemEditForm = forwardRef(
         WaitTime: !!data.WaitTimeObj ? data.WaitTimeObj.format("HH:mm") : null,
         IsAccepted: data.IsAccepted,
         Barcode: data.Barcode,
-        AcceptedDate: !!data.AcceptedDateObj ? FaObjToEnDateTime(data.AcceptedDateObj): null,
+        AcceptedDate: !!data.AcceptedDateObj
+          ? FaObjToEnDateTime(data.AcceptedDateObj)
+          : null,
       };
     }
 
@@ -125,7 +131,10 @@ export const RestaurantMenuItemEditForm = forwardRef(
               <Form className="form form-label-right">
                 <div className="form-group row">
                   <div className="col-lg-4">
-                    <DefaultRestaurant name="RestaurantId" defaultRestaurant={restaurantMenuItem.Restaurant}/>
+                    <DefaultRestaurant
+                      name="RestaurantId"
+                      defaultRestaurant={restaurantMenuItem.Restaurant}
+                    />
                   </div>
                   <div className="col-lg-4">
                     <Select

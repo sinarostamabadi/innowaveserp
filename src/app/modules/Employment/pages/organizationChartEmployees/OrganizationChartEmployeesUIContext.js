@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { OrganizationChartEmployeeModel } from "../../../../../core/_models/Employment/OrganizationChartEmployeeModel";
@@ -10,9 +9,13 @@ export function useOrganizationChartEmployeesUIContext() {
   return useContext(OrganizationChartEmployeesUIContext);
 }
 
-export const OrganizationChartEmployeesUIConsumer = OrganizationChartEmployeesUIContext.Consumer;
+export const OrganizationChartEmployeesUIConsumer =
+  OrganizationChartEmployeesUIContext.Consumer;
 
-export function OrganizationChartEmployeesUIProvider({ organizationChartEmployeesUIEvents, children }) {
+export function OrganizationChartEmployeesUIProvider({
+  organizationChartEmployeesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(OrganizationChartEmployeeModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function OrganizationChartEmployeesUIProvider({ organizationChartEmployee
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function OrganizationChartEmployeesUIProvider({ organizationChartEmployee
     setIds,
     setQueryParams,
     dataModel: OrganizationChartEmployeeModel,
-    newOrganizationChartEmployeeButtonClick: organizationChartEmployeesUIEvents.newOrganizationChartEmployeeButtonClick,
-    openEditOrganizationChartEmployeePage: organizationChartEmployeesUIEvents.openEditOrganizationChartEmployeePage,
-    openDeleteOrganizationChartEmployeeDialog: organizationChartEmployeesUIEvents.openDeleteOrganizationChartEmployeeDialog,
-    openDeleteOrganizationChartEmployeesDialog: organizationChartEmployeesUIEvents.openDeleteOrganizationChartEmployeesDialog,
-    openFetchOrganizationChartEmployeesDialog: organizationChartEmployeesUIEvents.openFetchOrganizationChartEmployeesDialog,
-    openUpdateOrganizationChartEmployeesStatusDialog: organizationChartEmployeesUIEvents.openUpdateOrganizationChartEmployeesStatusDialog,
+    newOrganizationChartEmployeeButtonClick:
+      organizationChartEmployeesUIEvents.newOrganizationChartEmployeeButtonClick,
+    openEditOrganizationChartEmployeePage:
+      organizationChartEmployeesUIEvents.openEditOrganizationChartEmployeePage,
+    openDeleteOrganizationChartEmployeeDialog:
+      organizationChartEmployeesUIEvents.openDeleteOrganizationChartEmployeeDialog,
+    openDeleteOrganizationChartEmployeesDialog:
+      organizationChartEmployeesUIEvents.openDeleteOrganizationChartEmployeesDialog,
+    openFetchOrganizationChartEmployeesDialog:
+      organizationChartEmployeesUIEvents.openFetchOrganizationChartEmployeesDialog,
+    openUpdateOrganizationChartEmployeesStatusDialog:
+      organizationChartEmployeesUIEvents.openUpdateOrganizationChartEmployeesStatusDialog,
   };
   return (
-    <OrganizationChartEmployeesUIContext.Provider value={value}>{children}</OrganizationChartEmployeesUIContext.Provider>
+    <OrganizationChartEmployeesUIContext.Provider value={value}>
+      {children}
+    </OrganizationChartEmployeesUIContext.Provider>
   );
 }

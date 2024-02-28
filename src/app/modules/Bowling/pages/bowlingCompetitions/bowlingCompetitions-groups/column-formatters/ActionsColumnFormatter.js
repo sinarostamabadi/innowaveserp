@@ -12,22 +12,18 @@ export function ActionsColumnFormatter(
 ) {
   return (
     <>
-        <OverlayTrigger
-          overlay={
-            <Tooltip id="specs-edit-tooltip">{t("Common.Teams")}</Tooltip>
-          }
+      <OverlayTrigger
+        overlay={<Tooltip id="specs-edit-tooltip">{t("Common.Teams")}</Tooltip>}
+      >
+        <a
+          className="btn btn-icon btn-light btn-hover-primary btn-sm"
+          onClick={() => openTeamGroupDialog(row.BowlingCompetitionGroupId)}
         >
-          <a
-            className="btn btn-icon btn-light btn-hover-primary btn-sm"
-            onClick={() => openTeamGroupDialog(row.BowlingCompetitionGroupId)}
-          >
-            <span className="svg-icon svg-icon-md svg-icon-primary">
-              <SVG
-                src={toAbsoluteUrl("/media/svg/icons/Text/Bullet-list.svg")}
-              />
-            </span>
-          </a>
-        </OverlayTrigger>
+          <span className="svg-icon svg-icon-md svg-icon-primary">
+            <SVG src={toAbsoluteUrl("/media/svg/icons/Text/Bullet-list.svg")} />
+          </span>
+        </a>
+      </OverlayTrigger>
       <> </>
       <OverlayTrigger
         overlay={<Tooltip id="specs-edit-tooltip">{t("Common.Edit")}</Tooltip>}

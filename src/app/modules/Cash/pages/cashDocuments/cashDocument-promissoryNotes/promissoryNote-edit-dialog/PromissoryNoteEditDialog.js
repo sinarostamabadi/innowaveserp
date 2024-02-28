@@ -36,7 +36,9 @@ export function PromissoryNoteEditDialog() {
   const [editPromissoryNote, setEditPromissoryNote] = useState(null);
   useEffect(() => {
     // server request for getting promissoryNote by seleted id
-    setEditPromissoryNote(promissoryNotesUIProps.findPromissoryNote(promissoryNotesUIProps.id));
+    setEditPromissoryNote(
+      promissoryNotesUIProps.findPromissoryNote(promissoryNotesUIProps.id)
+    );
   }, [promissoryNotesUIProps.id, dispatch]);
 
   const savePromissoryNote = (promissoryNote) => {

@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { MenuItemsTable } from "./menuItems-table/MenuItemsTable";
-import { useMenuItemsUIContext, MenuItemsUIConsumer } from "./MenuItemsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useMenuItemsUIContext,
+  MenuItemsUIConsumer,
+} from "./MenuItemsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function MenuItemsCard() {
   const { t } = useTranslation();
@@ -24,21 +26,22 @@ export function MenuItemsCard() {
       newMenuItemButtonClick: menuItemsUIContext.newMenuItemButtonClick,
       openDeleteMenuItemsDialog: menuItemsUIContext.openDeleteMenuItemsDialog,
       openEditMenuItemPage: menuItemsUIContext.openEditMenuItemPage,
-      openUpdateMenuItemsStatusDialog: menuItemsUIContext.openUpdateMenuItemsStatusDialog,
+      openUpdateMenuItemsStatusDialog:
+        menuItemsUIContext.openUpdateMenuItemsStatusDialog,
       openFetchMenuItemsDialog: menuItemsUIContext.openFetchMenuItemsDialog,
     };
   }, [menuItemsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("MenuItem.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("MenuItem.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={menuItemsUIProps.newMenuItemButtonClick}
           >
-            {t("MenuItem.Entity")} {' '} {t("Common.New")}
+            {t("MenuItem.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

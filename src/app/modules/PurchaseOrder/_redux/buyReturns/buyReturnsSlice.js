@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBuyReturnsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const buyReturnsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBuyReturnById  
+    // getBuyReturnById
     buyReturnFetched: (state, action) => {
       state.actionsLoading = false;
       state.buyReturnForEdit = action.payload.buyReturnForEdit;
       state.error = null;
     },
-    // findBuyReturns  
+    // findBuyReturns
     buyReturnsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const buyReturnsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBuyReturn  
+    // createBuyReturn
     buyReturnCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBuyReturn  
+    // updateBuyReturn
     buyReturnUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const buyReturnsSlice = createSlice({
         return entity;
       });
     },
-    // deleteBuyReturn  
+    // deleteBuyReturn
     buyReturnDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BuyReturnId !== action.payload.BuyReturnId  
+        (el) => el.BuyReturnId !== action.payload.BuyReturnId
       );
     },
-    // deleteBuyReturns  
+    // deleteBuyReturns
     buyReturnsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BuyReturnId)  
+        (el) => !action.payload.ids.includes(el.BuyReturnId)
       );
     },
-    // buyReturnsUpdateState  
+    // buyReturnsUpdateState
     buyReturnsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

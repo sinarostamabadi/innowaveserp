@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { SettingModel } from "../../../../../core/_models/General/SettingModel";
@@ -30,7 +29,7 @@ export function SettingUIProvider({ settingUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function SettingUIProvider({ settingUIEvents, children }) {
     openDeleteSettingDialog: settingUIEvents.openDeleteSettingDialog,
     openDeleteSettingDialog: settingUIEvents.openDeleteSettingDialog,
     openFetchSettingDialog: settingUIEvents.openFetchSettingDialog,
-    openUpdateSettingStatusDialog: settingUIEvents.openUpdateSettingStatusDialog,
+    openUpdateSettingStatusDialog:
+      settingUIEvents.openUpdateSettingStatusDialog,
   };
   return (
-    <SettingUIContext.Provider value={value}>{children}</SettingUIContext.Provider>
+    <SettingUIContext.Provider value={value}>
+      {children}
+    </SettingUIContext.Provider>
   );
 }

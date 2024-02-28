@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmployeeMissionsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const employeeMissionsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmployeeMissionById  
+    // getEmployeeMissionById
     employeeMissionFetched: (state, action) => {
       state.actionsLoading = false;
       state.employeeMissionForEdit = action.payload.employeeMissionForEdit;
       state.error = null;
     },
-    // findEmployeeMissions  
+    // findEmployeeMissions
     employeeMissionsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const employeeMissionsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmployeeMission  
+    // createEmployeeMission
     employeeMissionCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmployeeMission  
+    // updateEmployeeMission
     employeeMissionUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.EmployeeMissionId === action.payload.employeeMission.EmployeeMissionId) {
+        if (
+          entity.EmployeeMissionId ===
+          action.payload.employeeMission.EmployeeMissionId
+        ) {
           return action.payload.employeeMission;
         }
         return entity;
       });
     },
-    // deleteEmployeeMission  
+    // deleteEmployeeMission
     employeeMissionDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EmployeeMissionId !== action.payload.EmployeeMissionId  
+        (el) => el.EmployeeMissionId !== action.payload.EmployeeMissionId
       );
     },
-    // deleteEmployeeMissions  
+    // deleteEmployeeMissions
     employeeMissionsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EmployeeMissionId)  
+        (el) => !action.payload.ids.includes(el.EmployeeMissionId)
       );
     },
-    // employeeMissionsUpdateState  
+    // employeeMissionsUpdateState
     employeeMissionsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

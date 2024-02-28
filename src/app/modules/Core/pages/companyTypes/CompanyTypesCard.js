@@ -18,25 +18,27 @@ export function CompanyTypesCard() {
       ids: companyTypesUIContext.ids,
       queryParams: companyTypesUIContext.queryParams,
       setQueryParams: companyTypesUIContext.setQueryParams,
-      newCompanyTypeButtonClick: companyTypesUIContext.newCompanyTypeButtonClick,
-      openDeleteCompanyTypesDialog:  
+      newCompanyTypeButtonClick:
+        companyTypesUIContext.newCompanyTypeButtonClick,
+      openDeleteCompanyTypesDialog:
         companyTypesUIContext.openDeleteCompanyTypesDialog,
       openEditCompanyTypePage: companyTypesUIContext.openEditCompanyTypePage,
-      openUpdateCompanyTypesStatusDialog:  
+      openUpdateCompanyTypesStatusDialog:
         companyTypesUIContext.openUpdateCompanyTypesStatusDialog,
-      openFetchCompanyTypesDialog: companyTypesUIContext.openFetchCompanyTypesDialog,
+      openFetchCompanyTypesDialog:
+        companyTypesUIContext.openFetchCompanyTypesDialog,
     };
   }, [companyTypesUIContext]);
   return (
     <Card>
       <CardHeader title="EntityTitle">
         <CardHeaderToolbar>
-          <button  
-            type="button"  
-            className="btn btn-primary"  
+          <button
+            type="button"
+            className="btn btn-primary"
             onClick={companyTypesUIProps.newCompanyTypeButtonClick}
           >
-            EntityTitle  
+            EntityTitle
           </button>
         </CardHeaderToolbar>
       </CardHeader>

@@ -46,13 +46,16 @@ export function BowlingCompetitionEdit({
   const [title, setTitle] = useState("");
   const dispatch = useDispatch();
   const [bowlingCompetitionObj, setBowlingCompetitionObj] = useState(copyModel);
-  const [bowlingCompetitionDtlObj, setBowlingCompetitionGroupObj] = useState(copyModel.BowlingCompetitionGroups);
+  const [bowlingCompetitionDtlObj, setBowlingCompetitionGroupObj] = useState(
+    copyModel.BowlingCompetitionGroups
+  );
 
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
   const { actionsLoading, bowlingCompetitionForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.bowlingCompetitions.actionsLoading,
-      bowlingCompetitionForEdit: state.bowlingCompetitions.bowlingCompetitionForEdit,
+      bowlingCompetitionForEdit:
+        state.bowlingCompetitions.bowlingCompetitionForEdit,
       error: state.bowlingCompetitions.error,
     }),
     shallowEqual
@@ -63,9 +66,15 @@ export function BowlingCompetitionEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("BowlingCompetition.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("BowlingCompetition.Entity");
 
-    if (bowlingCompetitionForEdit && id && bowlingCompetitionForEdit.BowlingCompetitionId == id) {
+    if (
+      bowlingCompetitionForEdit &&
+      id &&
+      bowlingCompetitionForEdit.BowlingCompetitionId == id
+    ) {
       _title =
         t("Common.Edit") +
         " " +
@@ -75,7 +84,9 @@ export function BowlingCompetitionEdit({
         "»";
 
       setBowlingCompetitionObj(bowlingCompetitionForEdit);
-      setBowlingCompetitionGroupObj(bowlingCompetitionForEdit.BowlingCompetitionGroups);
+      setBowlingCompetitionGroupObj(
+        bowlingCompetitionForEdit.BowlingCompetitionGroups
+      );
     }
 
     setTitle(_title);
@@ -137,7 +148,8 @@ export function BowlingCompetitionEdit({
 
   return (
     <>
-      {((!!id && !!bowlingCompetitionObj.BowlingCompetitionId) || !!id == false) && (
+      {((!!id && !!bowlingCompetitionObj.BowlingCompetitionId) ||
+        !!id == false) && (
         <Card>
           {actionsLoading && <ModalProgressBar />}
           {!actionsLoading && error != null && (
@@ -164,20 +176,17 @@ export function BowlingCompetitionEdit({
                 <i className="fa fa-redo"></i> {t("Common.Reset")}
               </button>
               {`  `}
-              <button
-                type="submit"
-                className="btn btn-light ml-2"
-              >
+              <button type="submit" className="btn btn-light ml-2">
                 <i className="fa fa-print"></i> {t("Common.Print")}
               </button>
               {`  `}
-                <button
-                  type="submit"
-                  className="btn btn-primary ml-2"
-                  onClick={saveBowlingCompetitionClick}
-                >
-                  <i className="fa fa-save"></i> {t("Common.Save")}
-                </button>
+              <button
+                type="submit"
+                className="btn btn-primary ml-2"
+                onClick={saveBowlingCompetitionClick}
+              >
+                <i className="fa fa-save"></i> {t("Common.Save")}
+              </button>
             </CardHeaderToolbar>
           </CardHeader>
           <CardBody>

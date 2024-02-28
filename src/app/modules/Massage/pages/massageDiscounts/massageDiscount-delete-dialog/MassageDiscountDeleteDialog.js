@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -48,7 +47,9 @@ export function MassageDiscountDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteMassageDiscount(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchMassageDiscounts(massageDiscountsUIProps.queryParams));
+        dispatch(
+          actions.fetchMassageDiscounts(massageDiscountsUIProps.queryParams)
+        );
         // clear selections list
         massageDiscountsUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +68,12 @@ export function MassageDiscountDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("MassageDiscount.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("MassageDiscount.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

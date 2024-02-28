@@ -15,13 +15,9 @@ import * as columnFormatters from "./column-formatters";
 import { Pagination } from "src/core/_partials/controls";
 import { useChequePapersUIContext } from "../ChequePapersUIContext";
 import { ChequePaperModel } from "src/core/_models/Cash/ChequePaperModel";
-import {
-  getConfig,
-  getFields,
-} from "src/core/_models/ModelDescriber";
+import { getConfig, getFields } from "src/core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
 import { DataFormatter } from "src/core/_formatters/DataFormatter";
-
 
 export function ChequePapersTable() {
   const { t } = useTranslation();
@@ -35,7 +31,8 @@ export function ChequePapersTable() {
       queryParams: chequePapersUIContext.queryParams,
       setQueryParams: chequePapersUIContext.setQueryParams,
       openEditChequePaperPage: chequePapersUIContext.openEditChequePaperPage,
-      openDeleteChequePaperDialog: chequePapersUIContext.openDeleteChequePaperDialog,
+      openDeleteChequePaperDialog:
+        chequePapersUIContext.openDeleteChequePaperDialog,
     };
   }, [chequePapersUIContext]);
 
@@ -80,8 +77,8 @@ export function ChequePapersTable() {
           t: t,
           1: t("ChequePaper.ChequeStatus.Exist"),
           2: t("ChequePaper.ChequeStatus.Invalid"),
-          3: t("ChequePaper.ChequeStatus.Issue")
-        }
+          3: t("ChequePaper.ChequeStatus.Issue"),
+        },
       },
     },
     {
@@ -96,7 +93,8 @@ export function ChequePapersTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditChequePaperPage: chequePapersUIProps.openEditChequePaperPage,
-        openDeleteChequePaperDialog: chequePapersUIProps.openDeleteChequePaperDialog,
+        openDeleteChequePaperDialog:
+          chequePapersUIProps.openDeleteChequePaperDialog,
         t: t,
       },
       classes: "text-right pr-0",

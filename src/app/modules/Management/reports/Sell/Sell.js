@@ -24,11 +24,7 @@ export function Sell({ history }) {
   return (
     <TotalSalesProfitProvider events={events}>
       <Card>
-        <CardHeader
-          title={
-            t("Common.Report") + " " + t("Reports.Sell.Report")
-          }
-        >
+        <CardHeader title={t("Common.Report") + " " + t("Reports.Sell.Report")}>
           <CardHeaderToolbar>
             <button
               type="button"

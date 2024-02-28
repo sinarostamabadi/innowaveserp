@@ -26,9 +26,11 @@ export function EmployeeWorkShiftsPage({ history }) {
       history.push("/employment/employeeWorkShifts/updateStatus");
     },
   };
-  
+
   return (
-    <EmployeeWorkShiftsUIProvider employeeWorkShiftsUIEvents={employeeWorkShiftsUIEvents}>
+    <EmployeeWorkShiftsUIProvider
+      employeeWorkShiftsUIEvents={employeeWorkShiftsUIEvents}
+    >
       <EmployeeWorkShiftsLoadingDialog />
       <Route path="/employment/employeeWorkShifts/:id/delete">
         {({ history, match }) => (

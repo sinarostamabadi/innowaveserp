@@ -29,7 +29,7 @@ export function ScalesUIProvider({ scalesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -45,6 +45,8 @@ export function ScalesUIProvider({ scalesUIEvents, children }) {
     openUpdateScalesStatusDialog: scalesUIEvents.openUpdateScalesStatusDialog,
   };
   return (
-    <ScalesUIContext.Provider value={value}>{children}</ScalesUIContext.Provider>
+    <ScalesUIContext.Provider value={value}>
+      {children}
+    </ScalesUIContext.Provider>
   );
 }

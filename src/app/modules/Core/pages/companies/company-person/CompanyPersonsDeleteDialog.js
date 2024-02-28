@@ -40,7 +40,6 @@ export function CompanyPersonsDeleteDialog() {
 
   const deleteCompanyPersons = () => {
     // server request for selected deleting companyPersons
-
   };
 
   return (

@@ -8,12 +8,12 @@ export const actionTypes = {
   Logout: "[Logout] Action",
   Register: "[Register] Action",
   UserRequested: "[Request User] Action",
-  UserLoaded: "[Load User] Auth API"
+  UserLoaded: "[Load User] Auth API",
 };
 
 const initialAuthState = {
   user: undefined,
-  authToken: undefined
+  authToken: undefined,
 };
 
 export const reducer = persistReducer(
@@ -46,10 +46,11 @@ export const reducer = persistReducer(
           NationalCode: user?.RealPerson?.MobileNo,
           FirstName: user?.RealPerson?.FirstNameFa,
           LastName: user?.RealPerson?.LastNameFa,
-          FullName: user?.RealPerson?.FirstNameFa + " " + user?.RealPerson?.LastNameFa,
+          FullName:
+            user?.RealPerson?.FirstNameFa + " " + user?.RealPerson?.LastNameFa,
           BirthDate: user?.RealPerson?.BirthDate,
         };
-        
+
         return { ...state, extractUser };
       }
 
@@ -60,14 +61,20 @@ export const reducer = persistReducer(
 );
 
 export const actions = {
-  login: (authToken, user) => ({ type: actionTypes.Login, payload: { authToken, user } }),
-  register: authToken => ({
+  login: (authToken, user) => ({
+    type: actionTypes.Login,
+    payload: { authToken, user },
+  }),
+  register: (authToken) => ({
     type: actionTypes.Register,
-    payload: { authToken }
+    payload: { authToken },
   }),
   logout: () => ({ type: actionTypes.Logout }),
-  requestUser: user => ({ type: actionTypes.UserRequested, payload: { user } }),
-  fulfillUser: user => ({ type: actionTypes.UserLoaded, payload: { user } })
+  requestUser: (user) => ({
+    type: actionTypes.UserRequested,
+    payload: { user },
+  }),
+  fulfillUser: (user) => ({ type: actionTypes.UserLoaded, payload: { user } }),
 };
 
 export function* saga() {

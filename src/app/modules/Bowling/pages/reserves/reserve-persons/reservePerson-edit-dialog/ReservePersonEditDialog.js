@@ -27,11 +27,15 @@ export function ReservePersonEditDialog() {
   const dispatch = useDispatch();
   const { actionsLoading, setActionsLoading } = useState(false);
 
-  const [editReservePerson, setEditReservePerson] = useState(reservePersonsUIProps.initReservePerson);
+  const [editReservePerson, setEditReservePerson] = useState(
+    reservePersonsUIProps.initReservePerson
+  );
 
   useEffect(() => {
     if (!!reservePersonsUIProps.id)
-      setEditReservePerson(reservePersonsUIProps.findReservePerson(reservePersonsUIProps.id));
+      setEditReservePerson(
+        reservePersonsUIProps.findReservePerson(reservePersonsUIProps.id)
+      );
   }, [reservePersonsUIProps.id, dispatch]);
 
   const saveReservePerson = (reservePerson) => {
@@ -53,7 +57,10 @@ export function ReservePersonEditDialog() {
       <ReservePersonEditForm
         saveReservePerson={saveReservePerson}
         actionsLoading={actionsLoading}
-        reservePerson={reservePersonsUIProps.selectedItem || reservePersonsUIProps.initReservePerson}
+        reservePerson={
+          reservePersonsUIProps.selectedItem ||
+          reservePersonsUIProps.initReservePerson
+        }
         onHide={reservePersonsUIProps.onHide}
       />
     </Modal>

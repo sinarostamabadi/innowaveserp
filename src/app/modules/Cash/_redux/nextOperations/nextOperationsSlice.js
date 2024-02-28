@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialNextOperationsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const nextOperationsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getNextOperationById  
+    // getNextOperationById
     nextOperationFetched: (state, action) => {
       state.actionsLoading = false;
       state.nextOperationForEdit = action.payload.nextOperationForEdit;
       state.error = null;
     },
-    // findNextOperations  
+    // findNextOperations
     nextOperationsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const nextOperationsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createNextOperation  
+    // createNextOperation
     nextOperationCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateNextOperation  
+    // updateNextOperation
     nextOperationUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.NextOperationId === action.payload.nextOperation.NextOperationId) {
+        if (
+          entity.NextOperationId ===
+          action.payload.nextOperation.NextOperationId
+        ) {
           return action.payload.nextOperation;
         }
         return entity;
       });
     },
-    // deleteNextOperation  
+    // deleteNextOperation
     nextOperationDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.NextOperationId !== action.payload.NextOperationId  
+        (el) => el.NextOperationId !== action.payload.NextOperationId
       );
     },
-    // deleteNextOperations  
+    // deleteNextOperations
     nextOperationsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.NextOperationId)  
+        (el) => !action.payload.ids.includes(el.NextOperationId)
       );
     },
-    // nextOperationsUpdateState  
+    // nextOperationsUpdateState
     nextOperationsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

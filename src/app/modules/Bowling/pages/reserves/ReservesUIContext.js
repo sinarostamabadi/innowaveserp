@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { ReserveModel } from "../../../../../core/_models/Bowling/ReserveModel";
@@ -16,11 +15,12 @@ export function ReservesUIProvider({ reservesUIEvents, children }) {
   const defaultFilter = {
     Property: "IsActive",
     Operation: 5,
-    Values: ["1"]
+    Values: ["1"],
   };
-  const [queryParams, setQueryParamsBase] = useState(
-    {...getConfig(ReserveModel).initialFilter, Filters: [defaultFilter]}
-  );
+  const [queryParams, setQueryParamsBase] = useState({
+    ...getConfig(ReserveModel).initialFilter,
+    Filters: [defaultFilter],
+  });
 
   const [ids, setIds] = useState([]);
 
@@ -43,7 +43,7 @@ export function ReservesUIProvider({ reservesUIEvents, children }) {
   const closeReportDialog = () => {
     setShowReportDialog(false);
   };
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -61,11 +61,14 @@ export function ReservesUIProvider({ reservesUIEvents, children }) {
     openDeleteReserveDialog: reservesUIEvents.openDeleteReserveDialog,
     openDeleteReservesDialog: reservesUIEvents.openDeleteReservesDialog,
     openFetchReservesDialog: reservesUIEvents.openFetchReservesDialog,
-    openUpdateReservesStatusDialog: reservesUIEvents.openUpdateReservesStatusDialog,
-    openRelocationDialog: reservesUIEvents.openRelocationDialog
+    openUpdateReservesStatusDialog:
+      reservesUIEvents.openUpdateReservesStatusDialog,
+    openRelocationDialog: reservesUIEvents.openRelocationDialog,
   };
-  
+
   return (
-    <ReservesUIContext.Provider value={value}>{children}</ReservesUIContext.Provider>
+    <ReservesUIContext.Provider value={value}>
+      {children}
+    </ReservesUIContext.Provider>
   );
 }

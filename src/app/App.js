@@ -9,6 +9,7 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import faMessages from "../core/i18n/messages/fa.json";
 import trMessages from "../core/i18n/messages/tr.json";
+import enMessages from "../core/i18n/messages/en.json";
 import { defaultPerson } from "./modules/Core/_redux/people/peopleCrud";
 import { setStorage, getStorage } from "../core/_helpers/LocalStorageHelpers";
 import { toAbsoluteUrl } from "src/core/_helpers";
@@ -23,6 +24,9 @@ i18n
       tr: {
         translation: trMessages,
       },
+      en: {
+        translation: enMessages
+      }
     },
     lng: process.env.REACT_APP_LANG,
     fallbackLng: process.env.REACT_APP_LANG,
@@ -33,11 +37,9 @@ i18n
   });
 
 export default function App({ store, persistor, basename }) {
-  if (process.env.REACT_APP_DIR == "rtl"){
-    require("src/sass/style.react.rtl.css");  // RTL version
-  }
-  else
-    require("src/sass/style.react.css");      // Standard version
+  if (process.env.REACT_APP_DIR == "rtl") {
+    require("src/sass/style.react.rtl.css"); // RTL version
+  } else require("src/sass/style.react.css"); // Standard version
 
   const [defPerson, setDefPerson] = useState(getStorage("defaultPerson"));
   useEffect(() => {

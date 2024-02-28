@@ -17,7 +17,9 @@ export function SoldiershipExemptionsPage({ history }) {
       history.push(`/employment/soldiershipExemptions/${id}/delete`);
     },
     openDeleteSoldiershipExemptionsDialog: () => {
-      history.push(`/employment/soldiershipExemptions/deleteSoldiershipExemptions`);
+      history.push(
+        `/employment/soldiershipExemptions/deleteSoldiershipExemptions`
+      );
     },
     openFetchSoldiershipExemptionsDialog: () => {
       history.push(`/employment/soldiershipExemptions/fetch`);
@@ -26,9 +28,11 @@ export function SoldiershipExemptionsPage({ history }) {
       history.push("/employment/soldiershipExemptions/updateStatus");
     },
   };
-  
+
   return (
-    <SoldiershipExemptionsUIProvider soldiershipExemptionsUIEvents={soldiershipExemptionsUIEvents}>
+    <SoldiershipExemptionsUIProvider
+      soldiershipExemptionsUIEvents={soldiershipExemptionsUIEvents}
+    >
       <SoldiershipExemptionsLoadingDialog />
       <Route path="/employment/soldiershipExemptions/:id/delete">
         {({ history, match }) => (

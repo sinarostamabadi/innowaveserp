@@ -56,7 +56,9 @@ export function BilliardDiscountEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("BilliardDiscount.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("BilliardDiscount.Entity");
 
     if (billiardDiscountForEdit && id) {
       _title = t("Common.Edit") + " " + billiardDiscountForEdit.TitleFa;
@@ -125,14 +127,14 @@ export function BilliardDiscountEdit({
           </button>
           {`  `}
           <button
-              type="submit"
-              className="btn btn-primary ml-2"
-              onClick={saveBilliardDiscountClick}
-            >
-              <i className="fa fa-save"></i> {t("Common.Save")}
-            </button>
-          </CardHeaderToolbar>
-        </CardHeader>
+            type="submit"
+            className="btn btn-primary ml-2"
+            onClick={saveBilliardDiscountClick}
+          >
+            <i className="fa fa-save"></i> {t("Common.Save")}
+          </button>
+        </CardHeaderToolbar>
+      </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>

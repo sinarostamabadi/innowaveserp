@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialInsuranceTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const insuranceTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getInsuranceTypeById  
+    // getInsuranceTypeById
     insuranceTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.insuranceTypeForEdit = action.payload.insuranceTypeForEdit;
       state.error = null;
     },
-    // findInsuranceTypes  
+    // findInsuranceTypes
     insuranceTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const insuranceTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createInsuranceType  
+    // createInsuranceType
     insuranceTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateInsuranceType  
+    // updateInsuranceType
     insuranceTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.InsuranceTypeId === action.payload.insuranceType.InsuranceTypeId) {
+        if (
+          entity.InsuranceTypeId ===
+          action.payload.insuranceType.InsuranceTypeId
+        ) {
           return action.payload.insuranceType;
         }
         return entity;
       });
     },
-    // deleteInsuranceType  
+    // deleteInsuranceType
     insuranceTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.InsuranceTypeId !== action.payload.InsuranceTypeId  
+        (el) => el.InsuranceTypeId !== action.payload.InsuranceTypeId
       );
     },
-    // deleteInsuranceTypes  
+    // deleteInsuranceTypes
     insuranceTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.InsuranceTypeId)  
+        (el) => !action.payload.ids.includes(el.InsuranceTypeId)
       );
     },
-    // insuranceTypesUpdateState  
+    // insuranceTypesUpdateState
     insuranceTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

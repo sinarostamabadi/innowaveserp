@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { MonthlyEmployeeIOsTable } from "./monthlyEmployeeIOs-table/MonthlyEmployeeIOsTable";
-import { useMonthlyEmployeeIOsUIContext, MonthlyEmployeeIOsUIConsumer } from "./MonthlyEmployeeIOsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useMonthlyEmployeeIOsUIContext,
+  MonthlyEmployeeIOsUIConsumer,
+} from "./MonthlyEmployeeIOsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function MonthlyEmployeeIOsCard() {
   const { t } = useTranslation();
@@ -21,24 +23,31 @@ export function MonthlyEmployeeIOsCard() {
       ids: monthlyEmployeeIOsUIContext.ids,
       queryParams: monthlyEmployeeIOsUIContext.queryParams,
       setQueryParams: monthlyEmployeeIOsUIContext.setQueryParams,
-      newMonthlyEmployeeIOButtonClick: monthlyEmployeeIOsUIContext.newMonthlyEmployeeIOButtonClick,
-      openDeleteMonthlyEmployeeIOsDialog: monthlyEmployeeIOsUIContext.openDeleteMonthlyEmployeeIOsDialog,
-      openEditMonthlyEmployeeIOPage: monthlyEmployeeIOsUIContext.openEditMonthlyEmployeeIOPage,
-      openUpdateMonthlyEmployeeIOsStatusDialog: monthlyEmployeeIOsUIContext.openUpdateMonthlyEmployeeIOsStatusDialog,
-      openFetchMonthlyEmployeeIOsDialog: monthlyEmployeeIOsUIContext.openFetchMonthlyEmployeeIOsDialog,
+      newMonthlyEmployeeIOButtonClick:
+        monthlyEmployeeIOsUIContext.newMonthlyEmployeeIOButtonClick,
+      openDeleteMonthlyEmployeeIOsDialog:
+        monthlyEmployeeIOsUIContext.openDeleteMonthlyEmployeeIOsDialog,
+      openEditMonthlyEmployeeIOPage:
+        monthlyEmployeeIOsUIContext.openEditMonthlyEmployeeIOPage,
+      openUpdateMonthlyEmployeeIOsStatusDialog:
+        monthlyEmployeeIOsUIContext.openUpdateMonthlyEmployeeIOsStatusDialog,
+      openFetchMonthlyEmployeeIOsDialog:
+        monthlyEmployeeIOsUIContext.openFetchMonthlyEmployeeIOsDialog,
     };
   }, [monthlyEmployeeIOsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("MonthlyEmployeeIO.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("MonthlyEmployeeIO.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={monthlyEmployeeIOsUIProps.newMonthlyEmployeeIOButtonClick}
           >
-            {t("MonthlyEmployeeIO.Entity")} {' '} {t("Common.New")}
+            {t("MonthlyEmployeeIO.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

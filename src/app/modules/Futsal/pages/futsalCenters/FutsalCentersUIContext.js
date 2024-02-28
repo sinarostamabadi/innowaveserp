@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { FutsalCenterModel } from "../../../../../core/_models/Futsal/FutsalCenterModel";
@@ -30,7 +29,7 @@ export function FutsalCentersUIProvider({ futsalCentersUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function FutsalCentersUIProvider({ futsalCentersUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: FutsalCenterModel,
-    newFutsalCenterButtonClick: futsalCentersUIEvents.newFutsalCenterButtonClick,
+    newFutsalCenterButtonClick:
+      futsalCentersUIEvents.newFutsalCenterButtonClick,
     openEditFutsalCenterPage: futsalCentersUIEvents.openEditFutsalCenterPage,
-    openDeleteFutsalCenterDialog: futsalCentersUIEvents.openDeleteFutsalCenterDialog,
-    openDeleteFutsalCentersDialog: futsalCentersUIEvents.openDeleteFutsalCentersDialog,
-    openFetchFutsalCentersDialog: futsalCentersUIEvents.openFetchFutsalCentersDialog,
-    openUpdateFutsalCentersStatusDialog: futsalCentersUIEvents.openUpdateFutsalCentersStatusDialog,
+    openDeleteFutsalCenterDialog:
+      futsalCentersUIEvents.openDeleteFutsalCenterDialog,
+    openDeleteFutsalCentersDialog:
+      futsalCentersUIEvents.openDeleteFutsalCentersDialog,
+    openFetchFutsalCentersDialog:
+      futsalCentersUIEvents.openFetchFutsalCentersDialog,
+    openUpdateFutsalCentersStatusDialog:
+      futsalCentersUIEvents.openUpdateFutsalCentersStatusDialog,
   };
   return (
-    <FutsalCentersUIContext.Provider value={value}>{children}</FutsalCentersUIContext.Provider>
+    <FutsalCentersUIContext.Provider value={value}>
+      {children}
+    </FutsalCentersUIContext.Provider>
   );
 }

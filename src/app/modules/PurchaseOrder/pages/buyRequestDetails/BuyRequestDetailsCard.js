@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { BuyRequestDetailsTable } from "./buyRequestDetails-table/BuyRequestDetailsTable";
-import { useBuyRequestDetailsUIContext, BuyRequestDetailsUIConsumer } from "./BuyRequestDetailsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useBuyRequestDetailsUIContext,
+  BuyRequestDetailsUIConsumer,
+} from "./BuyRequestDetailsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function BuyRequestDetailsCard() {
   const { t } = useTranslation();
@@ -21,24 +23,29 @@ export function BuyRequestDetailsCard() {
       ids: buyRequestDetailsUIContext.ids,
       queryParams: buyRequestDetailsUIContext.queryParams,
       setQueryParams: buyRequestDetailsUIContext.setQueryParams,
-      newBuyRequestDetailButtonClick: buyRequestDetailsUIContext.newBuyRequestDetailButtonClick,
-      openDeleteBuyRequestDetailsDialog: buyRequestDetailsUIContext.openDeleteBuyRequestDetailsDialog,
-      openEditBuyRequestDetailPage: buyRequestDetailsUIContext.openEditBuyRequestDetailPage,
-      openUpdateBuyRequestDetailsStatusDialog: buyRequestDetailsUIContext.openUpdateBuyRequestDetailsStatusDialog,
-      openFetchBuyRequestDetailsDialog: buyRequestDetailsUIContext.openFetchBuyRequestDetailsDialog,
+      newBuyRequestDetailButtonClick:
+        buyRequestDetailsUIContext.newBuyRequestDetailButtonClick,
+      openDeleteBuyRequestDetailsDialog:
+        buyRequestDetailsUIContext.openDeleteBuyRequestDetailsDialog,
+      openEditBuyRequestDetailPage:
+        buyRequestDetailsUIContext.openEditBuyRequestDetailPage,
+      openUpdateBuyRequestDetailsStatusDialog:
+        buyRequestDetailsUIContext.openUpdateBuyRequestDetailsStatusDialog,
+      openFetchBuyRequestDetailsDialog:
+        buyRequestDetailsUIContext.openFetchBuyRequestDetailsDialog,
     };
   }, [buyRequestDetailsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("BuyRequestDetail.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("BuyRequestDetail.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={buyRequestDetailsUIProps.newBuyRequestDetailButtonClick}
           >
-            {t("BuyRequestDetail.Entity")} {' '} {t("Common.New")}
+            {t("BuyRequestDetail.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

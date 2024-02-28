@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialFutsalReserveDatesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const futsalReserveDatesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getFutsalReserveDateById  
+    // getFutsalReserveDateById
     futsalReserveDateFetched: (state, action) => {
       state.actionsLoading = false;
       state.futsalReserveDateForEdit = action.payload.futsalReserveDateForEdit;
       state.error = null;
     },
-    // findFutsalReserveDates  
+    // findFutsalReserveDates
     futsalReserveDatesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const futsalReserveDatesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createFutsalReserveDate  
+    // createFutsalReserveDate
     futsalReserveDateCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateFutsalReserveDate  
+    // updateFutsalReserveDate
     futsalReserveDateUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.FutsalReserveDateId === action.payload.futsalReserveDate.FutsalReserveDateId) {
+        if (
+          entity.FutsalReserveDateId ===
+          action.payload.futsalReserveDate.FutsalReserveDateId
+        ) {
           return action.payload.futsalReserveDate;
         }
         return entity;
       });
     },
-    // deleteFutsalReserveDate  
+    // deleteFutsalReserveDate
     futsalReserveDateDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.FutsalReserveDateId !== action.payload.FutsalReserveDateId  
+        (el) => el.FutsalReserveDateId !== action.payload.FutsalReserveDateId
       );
     },
-    // deleteFutsalReserveDates  
+    // deleteFutsalReserveDates
     futsalReserveDatesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.FutsalReserveDateId)  
+        (el) => !action.payload.ids.includes(el.FutsalReserveDateId)
       );
     },
-    // futsalReserveDatesUpdateState  
+    // futsalReserveDatesUpdateState
     futsalReserveDatesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

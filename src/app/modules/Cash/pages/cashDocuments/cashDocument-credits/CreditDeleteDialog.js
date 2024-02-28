@@ -40,10 +40,10 @@ export function CreditDeleteDialog() {
   }, [creditsUIProps.id]);
 
   // looking for loading/dispatch
-  useEffect(() => { }, [isLoading, dispatch]);
+  useEffect(() => {}, [isLoading, dispatch]);
 
   const deleteCredit = () => {
-    creditsUIProps.removeCredit(creditsUIProps.id)
+    creditsUIProps.removeCredit(creditsUIProps.id);
     creditsUIProps.onHide();
   };
 
@@ -60,9 +60,7 @@ export function CreditDeleteDialog() {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && (
-          <span>{t("Common.DeleteQuestion")}</span>
-        )}
+        {!isLoading && <span>{t("Common.DeleteQuestion")}</span>}
         {isLoading && <span>{t("Common.DeleteLoading")}</span>}
       </Modal.Body>
       <Modal.Footer>

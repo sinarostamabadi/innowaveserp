@@ -17,7 +17,9 @@ export function ImportAccountFloatingTempsPage({ history }) {
       history.push(`/accounting/importAccountFloatingTemps/${id}/delete`);
     },
     openDeleteImportAccountFloatingTempsDialog: () => {
-      history.push(`/accounting/importAccountFloatingTemps/deleteImportAccountFloatingTemps`);
+      history.push(
+        `/accounting/importAccountFloatingTemps/deleteImportAccountFloatingTemps`
+      );
     },
     openFetchImportAccountFloatingTempsDialog: () => {
       history.push(`/accounting/importAccountFloatingTemps/fetch`);
@@ -26,9 +28,11 @@ export function ImportAccountFloatingTempsPage({ history }) {
       history.push("/accounting/importAccountFloatingTemps/updateStatus");
     },
   };
-  
+
   return (
-    <ImportAccountFloatingTempsUIProvider importAccountFloatingTempsUIEvents={importAccountFloatingTempsUIEvents}>
+    <ImportAccountFloatingTempsUIProvider
+      importAccountFloatingTempsUIEvents={importAccountFloatingTempsUIEvents}
+    >
       <ImportAccountFloatingTempsLoadingDialog />
       <Route path="/accounting/importAccountFloatingTemps/:id/delete">
         {({ history, match }) => (

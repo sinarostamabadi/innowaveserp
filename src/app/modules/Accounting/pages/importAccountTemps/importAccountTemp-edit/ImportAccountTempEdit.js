@@ -45,7 +45,8 @@ export function ImportAccountTempEdit({
   const { actionsLoading, importAccountTempForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.importAccountTemps.actionsLoading,
-      importAccountTempForEdit: state.importAccountTemps.importAccountTempForEdit,
+      importAccountTempForEdit:
+        state.importAccountTemps.importAccountTempForEdit,
       error: state.importAccountTemps.error,
     }),
     shallowEqual
@@ -56,7 +57,9 @@ export function ImportAccountTempEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("ImportAccountTemp.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("ImportAccountTemp.Entity");
 
     if (importAccountTempForEdit && id) {
       _title = t("Common.Edit") + " " + importAccountTempForEdit.TitleFa;
@@ -125,14 +128,14 @@ export function ImportAccountTempEdit({
           </button>
           {`  `}
           <button
-              type="submit"
-              className="btn btn-primary ml-2"
-              onClick={saveImportAccountTempClick}
-            >
-              <i className="fa fa-save"></i> {t("Common.Save")}
-            </button>
-          </CardHeaderToolbar>
-        </CardHeader>
+            type="submit"
+            className="btn btn-primary ml-2"
+            onClick={saveImportAccountTempClick}
+          >
+            <i className="fa fa-save"></i> {t("Common.Save")}
+          </button>
+        </CardHeaderToolbar>
+      </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>

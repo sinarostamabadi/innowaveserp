@@ -44,7 +44,8 @@ export function MassageTimePriceingEdit({
   const { actionsLoading, massageTimePriceingForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.massageTimePriceing.actionsLoading,
-      massageTimePriceingForEdit: state.massageTimePriceing.massageTimePriceingForEdit,
+      massageTimePriceingForEdit:
+        state.massageTimePriceing.massageTimePriceingForEdit,
       error: state.massageTimePriceing.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function MassageTimePriceingEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("MassageTimePriceing.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("MassageTimePriceing.Entity");
 
     if (massageTimePriceingForEdit && id) {
       _title = t("Common.Edit") + " " + massageTimePriceingForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function MassageTimePriceingEdit({
         .then((arg) => {
           backToMassageTimePriceingList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateMassageTimePriceing(id, values))
         .then(() => backToMassageTimePriceingList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

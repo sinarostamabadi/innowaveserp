@@ -33,7 +33,8 @@ export function EntityPointsTable() {
       queryParams: entityPointsUIContext.queryParams,
       setQueryParams: entityPointsUIContext.setQueryParams,
       openEditEntityPointPage: entityPointsUIContext.openEditEntityPointPage,
-      openDeleteEntityPointDialog: entityPointsUIContext.openDeleteEntityPointDialog,
+      openDeleteEntityPointDialog:
+        entityPointsUIContext.openDeleteEntityPointDialog,
     };
   }, [entityPointsUIContext]);
 
@@ -79,7 +80,8 @@ export function EntityPointsTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditEntityPointPage: entityPointsUIProps.openEditEntityPointPage,
-        openDeleteEntityPointDialog: entityPointsUIProps.openDeleteEntityPointDialog,
+        openDeleteEntityPointDialog:
+          entityPointsUIProps.openDeleteEntityPointDialog,
         t: t,
       },
       classes: "text-right pr-0",

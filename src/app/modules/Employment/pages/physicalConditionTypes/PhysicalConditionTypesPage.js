@@ -17,7 +17,9 @@ export function PhysicalConditionTypesPage({ history }) {
       history.push(`/employment/physicalConditionTypes/${id}/delete`);
     },
     openDeletePhysicalConditionTypesDialog: () => {
-      history.push(`/employment/physicalConditionTypes/deletePhysicalConditionTypes`);
+      history.push(
+        `/employment/physicalConditionTypes/deletePhysicalConditionTypes`
+      );
     },
     openFetchPhysicalConditionTypesDialog: () => {
       history.push(`/employment/physicalConditionTypes/fetch`);
@@ -26,9 +28,11 @@ export function PhysicalConditionTypesPage({ history }) {
       history.push("/employment/physicalConditionTypes/updateStatus");
     },
   };
-  
+
   return (
-    <PhysicalConditionTypesUIProvider physicalConditionTypesUIEvents={physicalConditionTypesUIEvents}>
+    <PhysicalConditionTypesUIProvider
+      physicalConditionTypesUIEvents={physicalConditionTypesUIEvents}
+    >
       <PhysicalConditionTypesLoadingDialog />
       <Route path="/employment/physicalConditionTypes/:id/delete">
         {({ history, match }) => (

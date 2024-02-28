@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmployeeTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const employeeTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmployeeTypeById  
+    // getEmployeeTypeById
     employeeTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.employeeTypeForEdit = action.payload.employeeTypeForEdit;
       state.error = null;
     },
-    // findEmployeeTypes  
+    // findEmployeeTypes
     employeeTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,46 +46,53 @@ export const employeeTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmployeeType  
+    // createEmployeeType
     employeeTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmployeeType  
+    // updateEmployeeType
     employeeTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BodyBuildingEmployeeTypeId === action.payload.employeeType.BodyBuildingEmployeeTypeId) {
+        if (
+          entity.BodyBuildingEmployeeTypeId ===
+          action.payload.employeeType.BodyBuildingEmployeeTypeId
+        ) {
           return action.payload.employeeType;
         }
         return entity;
       });
     },
-    // deleteEmployeeType  
+    // deleteEmployeeType
     employeeTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BodyBuildingEmployeeTypeId !== action.payload.BodyBuildingEmployeeTypeId  
+        (el) =>
+          el.BodyBuildingEmployeeTypeId !==
+          action.payload.BodyBuildingEmployeeTypeId
       );
     },
-    // deleteEmployeeTypes  
+    // deleteEmployeeTypes
     employeeTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BodyBuildingEmployeeTypeId)  
+        (el) => !action.payload.ids.includes(el.BodyBuildingEmployeeTypeId)
       );
     },
-    // employeeTypesUpdateState  
+    // employeeTypesUpdateState
     employeeTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       const { ids, status } = action.payload;
       state.entities = state.entities.map((entity) => {
-        if (ids.findIndex((id) => id === entity.BodyBuildingEmployeeTypeId) > -1) {
+        if (
+          ids.findIndex((id) => id === entity.BodyBuildingEmployeeTypeId) > -1
+        ) {
           entity.status = status;
         }
         return entity;

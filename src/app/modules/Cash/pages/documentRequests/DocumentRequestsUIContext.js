@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { DocumentRequestModel } from "../../../../../core/_models/Cash/DocumentRequestModel";
@@ -12,7 +11,10 @@ export function useDocumentRequestsUIContext() {
 
 export const DocumentRequestsUIConsumer = DocumentRequestsUIContext.Consumer;
 
-export function DocumentRequestsUIProvider({ documentRequestsUIEvents, children }) {
+export function DocumentRequestsUIProvider({
+  documentRequestsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(DocumentRequestModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function DocumentRequestsUIProvider({ documentRequestsUIEvents, children 
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function DocumentRequestsUIProvider({ documentRequestsUIEvents, children 
     setIds,
     setQueryParams,
     dataModel: DocumentRequestModel,
-    newDocumentRequestButtonClick: documentRequestsUIEvents.newDocumentRequestButtonClick,
-    openEditDocumentRequestPage: documentRequestsUIEvents.openEditDocumentRequestPage,
-    openDeleteDocumentRequestDialog: documentRequestsUIEvents.openDeleteDocumentRequestDialog,
-    openDeleteDocumentRequestsDialog: documentRequestsUIEvents.openDeleteDocumentRequestsDialog,
-    openFetchDocumentRequestsDialog: documentRequestsUIEvents.openFetchDocumentRequestsDialog,
-    openUpdateDocumentRequestsStatusDialog: documentRequestsUIEvents.openUpdateDocumentRequestsStatusDialog,
+    newDocumentRequestButtonClick:
+      documentRequestsUIEvents.newDocumentRequestButtonClick,
+    openEditDocumentRequestPage:
+      documentRequestsUIEvents.openEditDocumentRequestPage,
+    openDeleteDocumentRequestDialog:
+      documentRequestsUIEvents.openDeleteDocumentRequestDialog,
+    openDeleteDocumentRequestsDialog:
+      documentRequestsUIEvents.openDeleteDocumentRequestsDialog,
+    openFetchDocumentRequestsDialog:
+      documentRequestsUIEvents.openFetchDocumentRequestsDialog,
+    openUpdateDocumentRequestsStatusDialog:
+      documentRequestsUIEvents.openUpdateDocumentRequestsStatusDialog,
   };
   return (
-    <DocumentRequestsUIContext.Provider value={value}>{children}</DocumentRequestsUIContext.Provider>
+    <DocumentRequestsUIContext.Provider value={value}>
+      {children}
+    </DocumentRequestsUIContext.Provider>
   );
 }

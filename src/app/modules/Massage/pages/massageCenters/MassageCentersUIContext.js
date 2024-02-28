@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { MassageCenterModel } from "../../../../../core/_models/Massage/MassageCenterModel";
@@ -30,7 +29,7 @@ export function MassageCentersUIProvider({ massageCentersUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function MassageCentersUIProvider({ massageCentersUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: MassageCenterModel,
-    newMassageCenterButtonClick: massageCentersUIEvents.newMassageCenterButtonClick,
+    newMassageCenterButtonClick:
+      massageCentersUIEvents.newMassageCenterButtonClick,
     openEditMassageCenterPage: massageCentersUIEvents.openEditMassageCenterPage,
-    openDeleteMassageCenterDialog: massageCentersUIEvents.openDeleteMassageCenterDialog,
-    openDeleteMassageCentersDialog: massageCentersUIEvents.openDeleteMassageCentersDialog,
-    openFetchMassageCentersDialog: massageCentersUIEvents.openFetchMassageCentersDialog,
-    openUpdateMassageCentersStatusDialog: massageCentersUIEvents.openUpdateMassageCentersStatusDialog,
+    openDeleteMassageCenterDialog:
+      massageCentersUIEvents.openDeleteMassageCenterDialog,
+    openDeleteMassageCentersDialog:
+      massageCentersUIEvents.openDeleteMassageCentersDialog,
+    openFetchMassageCentersDialog:
+      massageCentersUIEvents.openFetchMassageCentersDialog,
+    openUpdateMassageCentersStatusDialog:
+      massageCentersUIEvents.openUpdateMassageCentersStatusDialog,
   };
   return (
-    <MassageCentersUIContext.Provider value={value}>{children}</MassageCentersUIContext.Provider>
+    <MassageCentersUIContext.Provider value={value}>
+      {children}
+    </MassageCentersUIContext.Provider>
   );
 }

@@ -56,7 +56,9 @@ export function BilliardReserveEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("BilliardReserve.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("BilliardReserve.Entity");
 
     if (billiardReserveForEdit && id) {
       _title = t("Common.Edit") + " " + billiardReserveForEdit.TitleFa;
@@ -125,14 +127,14 @@ export function BilliardReserveEdit({
           </button>
           {`  `}
           <button
-              type="submit"
-              className="btn btn-primary ml-2"
-              onClick={saveBilliardReserveClick}
-            >
-              <i className="fa fa-save"></i> {t("Common.Save")}
-            </button>
-          </CardHeaderToolbar>
-        </CardHeader>
+            type="submit"
+            className="btn btn-primary ml-2"
+            onClick={saveBilliardReserveClick}
+          >
+            <i className="fa fa-save"></i> {t("Common.Save")}
+          </button>
+        </CardHeaderToolbar>
+      </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>

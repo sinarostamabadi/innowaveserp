@@ -4,7 +4,12 @@ export function ActionsColumnFormatter(
   cellContent,
   row,
   rowIndex,
-  { openEditReservePersonDialog, openDeleteReservePersonDialog, openSerialReservePersonDialog, t }
+  {
+    openEditReservePersonDialog,
+    openDeleteReservePersonDialog,
+    openSerialReservePersonDialog,
+    t,
+  }
 ) {
   return (
     <>

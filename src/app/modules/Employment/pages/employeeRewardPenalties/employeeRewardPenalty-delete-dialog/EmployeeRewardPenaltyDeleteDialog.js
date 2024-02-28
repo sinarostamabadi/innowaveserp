@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -16,7 +15,8 @@ export function EmployeeRewardPenaltyDeleteDialog({ id, show, onHide }) {
   const { t } = useTranslation();
 
   // EmployeeRewardPenalties UI Context
-  const employeeRewardPenaltiesUIContext = useEmployeeRewardPenaltiesUIContext();
+  const employeeRewardPenaltiesUIContext =
+    useEmployeeRewardPenaltiesUIContext();
   const [error, setError] = useState(null);
   const employeeRewardPenaltiesUIProps = useMemo(() => {
     return {
@@ -48,7 +48,11 @@ export function EmployeeRewardPenaltyDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteEmployeeRewardPenalty(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchEmployeeRewardPenalties(employeeRewardPenaltiesUIProps.queryParams));
+        dispatch(
+          actions.fetchEmployeeRewardPenalties(
+            employeeRewardPenaltiesUIProps.queryParams
+          )
+        );
         // clear selections list
         employeeRewardPenaltiesUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +71,12 @@ export function EmployeeRewardPenaltyDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("EmployeeRewardPenalty.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("EmployeeRewardPenalty.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

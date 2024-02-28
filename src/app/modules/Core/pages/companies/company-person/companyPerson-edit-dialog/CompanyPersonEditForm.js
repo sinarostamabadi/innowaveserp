@@ -4,30 +4,38 @@ import { useTranslation } from "react-i18next";
 import { Modal } from "react-bootstrap";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { Select, Input, SuggestionField } from "../../../../../../../core/_partials/controls";
+import {
+  Select,
+  Input,
+  SuggestionField,
+} from "../../../../../../../core/_partials/controls";
 import { getAllCompanyPersonTypes } from "./../../../../../General/_redux/companyPersonTypes/companyPersonTypesCrud";
 
-export function CompanyPersonEditForm({ saveCompanyPerson, companyPerson, actionsLoading, onHide }) {
+export function CompanyPersonEditForm({
+  saveCompanyPerson,
+  companyPerson,
+  actionsLoading,
+  onHide,
+}) {
   const { t } = useTranslation();
 
   const [personTypes, setPersonTypes] = useState([]);
   useEffect(() => {
     if (personTypes.length == 0)
-    getAllCompanyPersonTypes().then(({ data }) =>
-        {
-          console.log("data > ", data);
-          setPersonTypes((personTypes) => [
+      getAllCompanyPersonTypes().then(({ data }) => {
+        console.log("data > ", data);
+        setPersonTypes((personTypes) => [
           { CompanyPersonTypeId: null, Title: t("Common.WithoutSelect") },
           ...data.Items,
         ]);
-      }
-      );
+      });
   }, [personTypes.length]);
 
   // Validation schema
   const CompanyPersonEditSchema = Yup.object().shape({
-    CompanyPersonTypeId: Yup.string()
-      .required(t("err.IsRequired", { 0: t("PersonType.Entity") })),
+    CompanyPersonTypeId: Yup.string().required(
+      t("err.IsRequired", { 0: t("PersonType.Entity") })
+    ),
   });
 
   const handleSuggestionPerson = useCallback((query, fnCallback) => {
@@ -54,10 +62,19 @@ export function CompanyPersonEditForm({ saveCompanyPerson, companyPerson, action
         ).Title,
       },
       Person: {
-        PersonId: !!dirtyModel.PersonId && dirtyModel.PersonId.length == 1 ? +dirtyModel.PersonId[0].PersonId: null,
-        FullNameFa: !!dirtyModel.PersonId && dirtyModel.PersonId.length == 1 ? dirtyModel.PersonId[0].FullNameFa: null,
+        PersonId:
+          !!dirtyModel.PersonId && dirtyModel.PersonId.length == 1
+            ? +dirtyModel.PersonId[0].PersonId
+            : null,
+        FullNameFa:
+          !!dirtyModel.PersonId && dirtyModel.PersonId.length == 1
+            ? dirtyModel.PersonId[0].FullNameFa
+            : null,
       },
-      PersonId: !!dirtyModel.PersonId && dirtyModel.PersonId.length == 1 ? +dirtyModel.PersonId[0].PersonId: null
+      PersonId:
+        !!dirtyModel.PersonId && dirtyModel.PersonId.length == 1
+          ? +dirtyModel.PersonId[0].PersonId
+          : null,
     };
   }
 
@@ -90,7 +107,11 @@ export function CompanyPersonEditForm({ saveCompanyPerson, companyPerson, action
                       label={t("CompanyPerson.Person")}
                       placeHolder={t("msg.SelectBySuggestion")}
                       handleSearch={handleSuggestionPerson}
-                      defaultValue={companyPerson && !!companyPerson.Person ? [companyPerson.Person] : []}
+                      defaultValue={
+                        companyPerson && !!companyPerson.Person
+                          ? [companyPerson.Person]
+                          : []
+                      }
                       renderMenuItemChildren={(option, props) => (
                         <div>
                           <h6>{option.FullNameFa}</h6>
@@ -100,21 +121,26 @@ export function CompanyPersonEditForm({ saveCompanyPerson, companyPerson, action
                         {
                           icon: "far fa-plus",
                           title: t("RealPerson.Entity"),
-                          url: "/Core/realPersons/new"
+                          url: "/Core/realPersons/new",
                         },
                       ]}
                     />
                   </div>
                   <div className="col-lg-6">
-                    <Select name="CompanyPersonTypeId" label={t("CompanyPerson.CompanyPersonType")}>
-                      {!!personTypes && personTypes.length > 0 && personTypes.map((personType) => (
-                        <option
-                          key={personType.CompanyPersonTypeId}
-                          value={personType.CompanyPersonTypeId}
-                        >
-                          {personType.Title}
-                        </option>
-                      ))}
+                    <Select
+                      name="CompanyPersonTypeId"
+                      label={t("CompanyPerson.CompanyPersonType")}
+                    >
+                      {!!personTypes &&
+                        personTypes.length > 0 &&
+                        personTypes.map((personType) => (
+                          <option
+                            key={personType.CompanyPersonTypeId}
+                            value={personType.CompanyPersonTypeId}
+                          >
+                            {personType.Title}
+                          </option>
+                        ))}
                     </Select>
                   </div>
                 </div>

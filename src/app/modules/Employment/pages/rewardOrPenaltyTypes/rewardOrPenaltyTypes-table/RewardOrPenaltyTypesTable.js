@@ -32,8 +32,10 @@ export function RewardOrPenaltyTypesTable() {
       setIds: rewardOrPenaltyTypesUIContext.setIds,
       queryParams: rewardOrPenaltyTypesUIContext.queryParams,
       setQueryParams: rewardOrPenaltyTypesUIContext.setQueryParams,
-      openEditRewardOrPenaltyTypePage: rewardOrPenaltyTypesUIContext.openEditRewardOrPenaltyTypePage,
-      openDeleteRewardOrPenaltyTypeDialog: rewardOrPenaltyTypesUIContext.openDeleteRewardOrPenaltyTypeDialog,
+      openEditRewardOrPenaltyTypePage:
+        rewardOrPenaltyTypesUIContext.openEditRewardOrPenaltyTypePage,
+      openDeleteRewardOrPenaltyTypeDialog:
+        rewardOrPenaltyTypesUIContext.openDeleteRewardOrPenaltyTypeDialog,
     };
   }, [rewardOrPenaltyTypesUIContext]);
 
@@ -50,7 +52,9 @@ export function RewardOrPenaltyTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     rewardOrPenaltyTypesUIProps.setIds([]);
-    dispatch(actions.fetchRewardOrPenaltyTypes(rewardOrPenaltyTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchRewardOrPenaltyTypes(rewardOrPenaltyTypesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rewardOrPenaltyTypesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function RewardOrPenaltyTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditRewardOrPenaltyTypePage: rewardOrPenaltyTypesUIProps.openEditRewardOrPenaltyTypePage,
-        openDeleteRewardOrPenaltyTypeDialog: rewardOrPenaltyTypesUIProps.openDeleteRewardOrPenaltyTypeDialog,
+        openEditRewardOrPenaltyTypePage:
+          rewardOrPenaltyTypesUIProps.openEditRewardOrPenaltyTypePage,
+        openDeleteRewardOrPenaltyTypeDialog:
+          rewardOrPenaltyTypesUIProps.openDeleteRewardOrPenaltyTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

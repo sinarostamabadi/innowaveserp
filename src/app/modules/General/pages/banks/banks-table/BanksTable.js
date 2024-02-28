@@ -15,10 +15,7 @@ import * as columnFormatters from "./column-formatters";
 import { Pagination } from "src/core/_partials/controls";
 import { useBanksUIContext } from "../BanksUIContext";
 import { BankModel } from "src/core/_models/General/BankModel";
-import {
-  getConfig,
-  getFields,
-} from "src/core/_models/ModelDescriber";
+import { getConfig, getFields } from "src/core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
 
 export function BanksTable() {
@@ -91,7 +88,7 @@ export function BanksTable() {
     sizePerPage: banksUIProps.queryParams.PageSize,
     page: banksUIProps.queryParams.PageNumber,
   };
-  
+
   return (
     <>
       <PaginationProvider pagination={paginationFactory(paginationOptions)}>

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { LinkDocumentModel } from "../../../../../core/_models/Accounting/LinkDocumentModel";
@@ -30,7 +29,7 @@ export function LinkDocumentsUIProvider({ linkDocumentsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function LinkDocumentsUIProvider({ linkDocumentsUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: LinkDocumentModel,
-    newLinkDocumentButtonClick: linkDocumentsUIEvents.newLinkDocumentButtonClick,
+    newLinkDocumentButtonClick:
+      linkDocumentsUIEvents.newLinkDocumentButtonClick,
     openEditLinkDocumentPage: linkDocumentsUIEvents.openEditLinkDocumentPage,
-    openDeleteLinkDocumentDialog: linkDocumentsUIEvents.openDeleteLinkDocumentDialog,
-    openDeleteLinkDocumentsDialog: linkDocumentsUIEvents.openDeleteLinkDocumentsDialog,
-    openFetchLinkDocumentsDialog: linkDocumentsUIEvents.openFetchLinkDocumentsDialog,
-    openUpdateLinkDocumentsStatusDialog: linkDocumentsUIEvents.openUpdateLinkDocumentsStatusDialog,
+    openDeleteLinkDocumentDialog:
+      linkDocumentsUIEvents.openDeleteLinkDocumentDialog,
+    openDeleteLinkDocumentsDialog:
+      linkDocumentsUIEvents.openDeleteLinkDocumentsDialog,
+    openFetchLinkDocumentsDialog:
+      linkDocumentsUIEvents.openFetchLinkDocumentsDialog,
+    openUpdateLinkDocumentsStatusDialog:
+      linkDocumentsUIEvents.openUpdateLinkDocumentsStatusDialog,
   };
   return (
-    <LinkDocumentsUIContext.Provider value={value}>{children}</LinkDocumentsUIContext.Provider>
+    <LinkDocumentsUIContext.Provider value={value}>
+      {children}
+    </LinkDocumentsUIContext.Provider>
   );
 }

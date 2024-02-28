@@ -12,7 +12,11 @@ export const ActionsColumnFormatter = (
   { openEditImportXMLSettingPage, openDeleteImportXMLSettingDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="importXMLSetting-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="importXMLSetting-edit-tooltip">{t("Common.Edit")}</Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditImportXMLSettingPage(row.ImportXMLSettingId)}
@@ -26,7 +30,11 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="importXMLSetting-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="importXMLSetting-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"

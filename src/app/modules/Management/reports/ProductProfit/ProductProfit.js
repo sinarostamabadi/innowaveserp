@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import fileDownload from 'js-file-download';
+import fileDownload from "js-file-download";
 import { useTranslation } from "react-i18next";
 import { ProductProfitProvider } from "./Context";
 import {
@@ -14,9 +14,10 @@ export function ProductProfit({ history }) {
   const { t } = useTranslation();
   const events = {};
 
- 
   function download() {
-    window.open(process.env.REACT_APP_API_URL + 'ProductManagement/ProductBenefit');
+    window.open(
+      process.env.REACT_APP_API_URL + "ProductManagement/ProductBenefit"
+    );
 
     // axios.get("/ProductManagement/ProductBenefit", {
     //   responseType: 'blob',
@@ -44,7 +45,7 @@ export function ProductProfit({ history }) {
           </CardHeaderToolbar>
         </CardHeader>
         <CardBody>
-          <p>با کلیک روی دکمه‌ی دانلود اکسل مربوطه را دریافت نمایید.</p>
+          <p>Click on the download button to get the corresponding Excel file.</p>
         </CardBody>
       </Card>
     </ProductProfitProvider>

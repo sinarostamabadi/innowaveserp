@@ -4,7 +4,11 @@ import * as Yup from "yup";
 import { Input, TextArea } from "../../../../../../core/_partials/controls";
 import { useTranslation } from "react-i18next";
 
-export function BuySettlementTypeEditForm({ buySettlementType, btnRef, saveBuySettlementType }) {
+export function BuySettlementTypeEditForm({
+  buySettlementType,
+  btnRef,
+  saveBuySettlementType,
+}) {
   const { t } = useTranslation();
 
   const BuySettlementTypeEditSchema = Yup.object().shape({

@@ -22,7 +22,7 @@ export function QuickUserToggler() {
       {layoutProps.offcanvas && (
         <OverlayTrigger
           placement="bottom"
-          overlay={<Tooltip id="quick-user-tooltip">نمایش اطلاعات کاربر</Tooltip>}
+          overlay={<Tooltip id="quick-user-tooltip">Show ussr information</Tooltip>}
         >
           <div className="topbar-item">
             <div

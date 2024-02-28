@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialOperationsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const operationsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getOperationById  
+    // getOperationById
     operationFetched: (state, action) => {
       state.actionsLoading = false;
       state.operationForEdit = action.payload.operationForEdit;
       state.error = null;
     },
-    // findOperations  
+    // findOperations
     operationsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const operationsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createOperation  
+    // createOperation
     operationCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateOperation  
+    // updateOperation
     operationUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const operationsSlice = createSlice({
         return entity;
       });
     },
-    // deleteOperation  
+    // deleteOperation
     operationDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.OperationId !== action.payload.OperationId  
+        (el) => el.OperationId !== action.payload.OperationId
       );
     },
-    // deleteOperations  
+    // deleteOperations
     operationsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.OperationId)  
+        (el) => !action.payload.ids.includes(el.OperationId)
       );
     },
-    // operationsUpdateState  
+    // operationsUpdateState
     operationsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function AccountFloatingGroupRelationsTable() {
   const { t } = useTranslation();
 
-  const accountFloatingGroupRelationsUIContext = useAccountFloatingGroupRelationsUIContext();
+  const accountFloatingGroupRelationsUIContext =
+    useAccountFloatingGroupRelationsUIContext();
 
   const accountFloatingGroupRelationsUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function AccountFloatingGroupRelationsTable() {
       setIds: accountFloatingGroupRelationsUIContext.setIds,
       queryParams: accountFloatingGroupRelationsUIContext.queryParams,
       setQueryParams: accountFloatingGroupRelationsUIContext.setQueryParams,
-      openEditAccountFloatingGroupRelationPage: accountFloatingGroupRelationsUIContext.openEditAccountFloatingGroupRelationPage,
-      openDeleteAccountFloatingGroupRelationDialog: accountFloatingGroupRelationsUIContext.openDeleteAccountFloatingGroupRelationDialog,
+      openEditAccountFloatingGroupRelationPage:
+        accountFloatingGroupRelationsUIContext.openEditAccountFloatingGroupRelationPage,
+      openDeleteAccountFloatingGroupRelationDialog:
+        accountFloatingGroupRelationsUIContext.openDeleteAccountFloatingGroupRelationDialog,
     };
   }, [accountFloatingGroupRelationsUIContext]);
 
@@ -50,7 +53,11 @@ export function AccountFloatingGroupRelationsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     accountFloatingGroupRelationsUIProps.setIds([]);
-    dispatch(actions.fetchAccountFloatingGroupRelations(accountFloatingGroupRelationsUIProps.queryParams));
+    dispatch(
+      actions.fetchAccountFloatingGroupRelations(
+        accountFloatingGroupRelationsUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accountFloatingGroupRelationsUIProps.queryParams, dispatch]);
 
@@ -63,7 +70,9 @@ export function AccountFloatingGroupRelationsTable() {
     },
     {
       dataField: fieldKey.AccountFloatingGroup.Title,
-      text: t("AccountFloatingGroupRelation." + fields.AccountFloatingGroup.display),
+      text: t(
+        "AccountFloatingGroupRelation." + fields.AccountFloatingGroup.display
+      ),
       sort: fields.AccountFloatingGroupId.sortable,
       sortCaret: sortCaret,
     },
@@ -72,8 +81,10 @@ export function AccountFloatingGroupRelationsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditAccountFloatingGroupRelationPage: accountFloatingGroupRelationsUIProps.openEditAccountFloatingGroupRelationPage,
-        openDeleteAccountFloatingGroupRelationDialog: accountFloatingGroupRelationsUIProps.openDeleteAccountFloatingGroupRelationDialog,
+        openEditAccountFloatingGroupRelationPage:
+          accountFloatingGroupRelationsUIProps.openEditAccountFloatingGroupRelationPage,
+        openDeleteAccountFloatingGroupRelationDialog:
+          accountFloatingGroupRelationsUIProps.openDeleteAccountFloatingGroupRelationDialog,
         t: t,
       },
       classes: "text-right pr-0",

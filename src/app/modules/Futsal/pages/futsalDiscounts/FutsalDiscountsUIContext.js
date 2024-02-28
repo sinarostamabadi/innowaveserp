@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { FutsalDiscountModel } from "../../../../../core/_models/Futsal/FutsalDiscountModel";
@@ -12,7 +11,10 @@ export function useFutsalDiscountsUIContext() {
 
 export const FutsalDiscountsUIConsumer = FutsalDiscountsUIContext.Consumer;
 
-export function FutsalDiscountsUIProvider({ futsalDiscountsUIEvents, children }) {
+export function FutsalDiscountsUIProvider({
+  futsalDiscountsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(FutsalDiscountModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function FutsalDiscountsUIProvider({ futsalDiscountsUIEvents, children })
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function FutsalDiscountsUIProvider({ futsalDiscountsUIEvents, children })
     setIds,
     setQueryParams,
     dataModel: FutsalDiscountModel,
-    newFutsalDiscountButtonClick: futsalDiscountsUIEvents.newFutsalDiscountButtonClick,
-    openEditFutsalDiscountPage: futsalDiscountsUIEvents.openEditFutsalDiscountPage,
-    openDeleteFutsalDiscountDialog: futsalDiscountsUIEvents.openDeleteFutsalDiscountDialog,
-    openDeleteFutsalDiscountsDialog: futsalDiscountsUIEvents.openDeleteFutsalDiscountsDialog,
-    openFetchFutsalDiscountsDialog: futsalDiscountsUIEvents.openFetchFutsalDiscountsDialog,
-    openUpdateFutsalDiscountsStatusDialog: futsalDiscountsUIEvents.openUpdateFutsalDiscountsStatusDialog,
+    newFutsalDiscountButtonClick:
+      futsalDiscountsUIEvents.newFutsalDiscountButtonClick,
+    openEditFutsalDiscountPage:
+      futsalDiscountsUIEvents.openEditFutsalDiscountPage,
+    openDeleteFutsalDiscountDialog:
+      futsalDiscountsUIEvents.openDeleteFutsalDiscountDialog,
+    openDeleteFutsalDiscountsDialog:
+      futsalDiscountsUIEvents.openDeleteFutsalDiscountsDialog,
+    openFetchFutsalDiscountsDialog:
+      futsalDiscountsUIEvents.openFetchFutsalDiscountsDialog,
+    openUpdateFutsalDiscountsStatusDialog:
+      futsalDiscountsUIEvents.openUpdateFutsalDiscountsStatusDialog,
   };
   return (
-    <FutsalDiscountsUIContext.Provider value={value}>{children}</FutsalDiscountsUIContext.Provider>
+    <FutsalDiscountsUIContext.Provider value={value}>
+      {children}
+    </FutsalDiscountsUIContext.Provider>
   );
 }

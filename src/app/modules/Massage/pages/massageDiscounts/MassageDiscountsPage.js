@@ -26,9 +26,11 @@ export function MassageDiscountsPage({ history }) {
       history.push("/massage/massageDiscounts/updateStatus");
     },
   };
-  
+
   return (
-    <MassageDiscountsUIProvider massageDiscountsUIEvents={massageDiscountsUIEvents}>
+    <MassageDiscountsUIProvider
+      massageDiscountsUIEvents={massageDiscountsUIEvents}
+    >
       <MassageDiscountsLoadingDialog />
       <Route path="/massage/massageDiscounts/:id/delete">
         {({ history, match }) => (

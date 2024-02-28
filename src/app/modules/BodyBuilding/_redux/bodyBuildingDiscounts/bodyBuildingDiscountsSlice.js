@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBodyBuildingDiscountsState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const bodyBuildingDiscountsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBodyBuildingDiscountById  
+    // getBodyBuildingDiscountById
     bodyBuildingDiscountFetched: (state, action) => {
       state.actionsLoading = false;
-      state.bodyBuildingDiscountForEdit = action.payload.bodyBuildingDiscountForEdit;
+      state.bodyBuildingDiscountForEdit =
+        action.payload.bodyBuildingDiscountForEdit;
       state.error = null;
     },
-    // findBodyBuildingDiscounts  
+    // findBodyBuildingDiscounts
     bodyBuildingDiscountsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const bodyBuildingDiscountsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBodyBuildingDiscount  
+    // createBodyBuildingDiscount
     bodyBuildingDiscountCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBodyBuildingDiscount  
+    // updateBodyBuildingDiscount
     bodyBuildingDiscountUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BodyBuildingDiscountId === action.payload.bodyBuildingDiscount.BodyBuildingDiscountId) {
+        if (
+          entity.BodyBuildingDiscountId ===
+          action.payload.bodyBuildingDiscount.BodyBuildingDiscountId
+        ) {
           return action.payload.bodyBuildingDiscount;
         }
         return entity;
       });
     },
-    // deleteBodyBuildingDiscount  
+    // deleteBodyBuildingDiscount
     bodyBuildingDiscountDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BodyBuildingDiscountId !== action.payload.BodyBuildingDiscountId  
+        (el) =>
+          el.BodyBuildingDiscountId !== action.payload.BodyBuildingDiscountId
       );
     },
-    // deleteBodyBuildingDiscounts  
+    // deleteBodyBuildingDiscounts
     bodyBuildingDiscountsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BodyBuildingDiscountId)  
+        (el) => !action.payload.ids.includes(el.BodyBuildingDiscountId)
       );
     },
-    // bodyBuildingDiscountsUpdateState  
+    // bodyBuildingDiscountsUpdateState
     bodyBuildingDiscountsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

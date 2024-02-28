@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { YearsTable } from "./years-table/YearsTable";
 import { useYearsUIContext, YearsUIConsumer } from "./YearsUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function YearsCard() {
   const { t } = useTranslation();
@@ -31,7 +30,7 @@ export function YearsCard() {
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Year.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Year.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"

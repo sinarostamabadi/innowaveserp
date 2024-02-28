@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BowlingTeamModel } from "../../../../../core/_models/Bowling/BowlingTeamModel";
@@ -30,7 +29,7 @@ export function BowlingTeamsUIProvider({ bowlingTeamsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -41,15 +40,22 @@ export function BowlingTeamsUIProvider({ bowlingTeamsUIEvents, children }) {
     newBowlingTeamButtonClick: bowlingTeamsUIEvents.newBowlingTeamButtonClick,
     openEditBowlingTeamPage: bowlingTeamsUIEvents.openEditBowlingTeamPage,
     openDoneBowlingTeamDialog: bowlingTeamsUIEvents.openDoneBowlingTeamDialog,
-    openAddTimeBowlingTeamDialog: bowlingTeamsUIEvents.openAddTimeBowlingTeamDialog,
-    openDeleteBowlingTeamDialog: bowlingTeamsUIEvents.openDeleteBowlingTeamDialog,
-    openDeleteBowlingTeamsDialog: bowlingTeamsUIEvents.openDeleteBowlingTeamsDialog,
-    openFetchBowlingTeamsDialog: bowlingTeamsUIEvents.openFetchBowlingTeamsDialog,
-    openUpdateBowlingTeamsStatusDialog: bowlingTeamsUIEvents.openUpdateBowlingTeamsStatusDialog,
-    openRelocationDialog: bowlingTeamsUIEvents.openRelocationDialog
+    openAddTimeBowlingTeamDialog:
+      bowlingTeamsUIEvents.openAddTimeBowlingTeamDialog,
+    openDeleteBowlingTeamDialog:
+      bowlingTeamsUIEvents.openDeleteBowlingTeamDialog,
+    openDeleteBowlingTeamsDialog:
+      bowlingTeamsUIEvents.openDeleteBowlingTeamsDialog,
+    openFetchBowlingTeamsDialog:
+      bowlingTeamsUIEvents.openFetchBowlingTeamsDialog,
+    openUpdateBowlingTeamsStatusDialog:
+      bowlingTeamsUIEvents.openUpdateBowlingTeamsStatusDialog,
+    openRelocationDialog: bowlingTeamsUIEvents.openRelocationDialog,
   };
-  
+
   return (
-    <BowlingTeamsUIContext.Provider value={value}>{children}</BowlingTeamsUIContext.Provider>
+    <BowlingTeamsUIContext.Provider value={value}>
+      {children}
+    </BowlingTeamsUIContext.Provider>
   );
 }

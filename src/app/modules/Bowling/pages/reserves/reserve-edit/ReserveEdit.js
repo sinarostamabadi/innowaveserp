@@ -4,7 +4,14 @@ import { shallowEqual, useSelector } from "react-redux";
 import moment from "jalali-moment";
 import { useTranslation } from "react-i18next";
 import { useReactToPrint } from "react-to-print";
-import { Card, CardBody, CardHeader, CardHeaderToolbar, ModalProgressBar, Alerty } from "src/core/_partials/controls";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderToolbar,
+  ModalProgressBar,
+  Alerty,
+} from "src/core/_partials/controls";
 import { getStorage, EnToFaObjDate } from "src/core/_helpers";
 import { useSubheader } from "src/core/layout";
 import config from "src/config";
@@ -59,8 +66,10 @@ export function ReserveEdit({
   const suhbeader = useSubheader();
   const [editMode, setEditMode] = useState(false);
   const [printModel, setPrintModel] = useState(null);
-  const [reserveObj, setReserveObj] = useState({...initModel});
-  const [reservePersonObj, setReservePersonObj] = useState({...initModel}.ReservePersonScores);
+  const [reserveObj, setReserveObj] = useState({ ...initModel });
+  const [reservePersonObj, setReservePersonObj] = useState(
+    { ...initModel }.ReservePersonScores
+  );
   const [title, setTitle] = useState("");
   const dispatch = useDispatch();
 
@@ -241,7 +250,9 @@ export function ReserveEdit({
               <button
                 type="button"
                 onClick={Print}
-                disabled={!!id === false || (mode !== "replay" && mode === "edit")}
+                disabled={
+                  !!id === false || (mode !== "replay" && mode === "edit")
+                }
                 className="btn btn-light ml-2"
               >
                 <i className="fa fa-print"></i> {t("Common.Print")}
@@ -249,7 +260,9 @@ export function ReserveEdit({
               <button
                 type="button"
                 onClick={() => PrintGameMode()}
-                disabled={!!id === false || (mode !== "replay" && mode === "edit")}
+                disabled={
+                  !!id === false || (mode !== "replay" && mode === "edit")
+                }
                 className="btn btn-light ml-2"
               >
                 <i className="fa fa-print"></i> {t("Common.PrintGame")}

@@ -26,7 +26,7 @@ export function PaymentsPage({ history }) {
       history.push("/cash/payments/updateStatus");
     },
   };
-  
+
   return (
     <PaymentsUIProvider paymentsUIEvents={paymentsUIEvents}>
       <PaymentsLoadingDialog />

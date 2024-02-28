@@ -8,16 +8,32 @@ const CashPage = lazy(() => import("./modules/Cash/pages/CashPage"));
 const CorePage = lazy(() => import("./modules/Core/pages/CorePage"));
 const BowlingPage = lazy(() => import("./modules/Bowling/pages/BowlingPage"));
 const FutsalPage = lazy(() => import("./modules/Futsal/pages/FutsalPage"));
-const RestaurantPage = lazy(() => import("./modules/Restaurant/pages/RestaurantPage"));
-const WarehousePage = lazy(() => import("./modules/Warehouse/pages/WarehousePage"));
-const PurchaseOrderPage = lazy(() => import("./modules/PurchaseOrder/pages/PurchaseOrderPage"));
+const RestaurantPage = lazy(() =>
+  import("./modules/Restaurant/pages/RestaurantPage")
+);
+const WarehousePage = lazy(() =>
+  import("./modules/Warehouse/pages/WarehousePage")
+);
+const PurchaseOrderPage = lazy(() =>
+  import("./modules/PurchaseOrder/pages/PurchaseOrderPage")
+);
 const SellPage = lazy(() => import("./modules/Sell/pages/SellPage"));
-const AccountingPage = lazy(() => import("./modules/Accounting/pages/AccountingPage"));
+const AccountingPage = lazy(() =>
+  import("./modules/Accounting/pages/AccountingPage")
+);
 const CrmPage = lazy(() => import("./modules/Crm/pages/CrmPage"));
-const ManagementPage = lazy(() => import("./modules/Management/ManagementPage"));
-const TakeAwayPage = lazy(() => import("./modules/TakeAway/pages/TakeAwayPage"));
-const BodyBuildingPage = lazy(() => import("./modules/BodyBuilding/pages/BodyBuildingPage"));
-const SecurityPage = lazy(() => import("./modules/Security/pages/SecurityPage"));
+const ManagementPage = lazy(() =>
+  import("./modules/Management/ManagementPage")
+);
+const TakeAwayPage = lazy(() =>
+  import("./modules/TakeAway/pages/TakeAwayPage")
+);
+const BodyBuildingPage = lazy(() =>
+  import("./modules/BodyBuilding/pages/BodyBuildingPage")
+);
+const SecurityPage = lazy(() =>
+  import("./modules/Security/pages/SecurityPage")
+);
 export default function BasePage() {
   return (
     <Suspense fallback={<LayoutSplashScreen />}>

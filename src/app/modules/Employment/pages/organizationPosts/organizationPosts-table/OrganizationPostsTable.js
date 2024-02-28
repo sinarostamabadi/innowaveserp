@@ -32,8 +32,10 @@ export function OrganizationPostsTable() {
       setIds: organizationPostsUIContext.setIds,
       queryParams: organizationPostsUIContext.queryParams,
       setQueryParams: organizationPostsUIContext.setQueryParams,
-      openEditOrganizationPostPage: organizationPostsUIContext.openEditOrganizationPostPage,
-      openDeleteOrganizationPostDialog: organizationPostsUIContext.openDeleteOrganizationPostDialog,
+      openEditOrganizationPostPage:
+        organizationPostsUIContext.openEditOrganizationPostPage,
+      openDeleteOrganizationPostDialog:
+        organizationPostsUIContext.openDeleteOrganizationPostDialog,
     };
   }, [organizationPostsUIContext]);
 
@@ -50,7 +52,9 @@ export function OrganizationPostsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     organizationPostsUIProps.setIds([]);
-    dispatch(actions.fetchOrganizationPosts(organizationPostsUIProps.queryParams));
+    dispatch(
+      actions.fetchOrganizationPosts(organizationPostsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [organizationPostsUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function OrganizationPostsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditOrganizationPostPage: organizationPostsUIProps.openEditOrganizationPostPage,
-        openDeleteOrganizationPostDialog: organizationPostsUIProps.openDeleteOrganizationPostDialog,
+        openEditOrganizationPostPage:
+          organizationPostsUIProps.openEditOrganizationPostPage,
+        openDeleteOrganizationPostDialog:
+          organizationPostsUIProps.openDeleteOrganizationPostDialog,
         t: t,
       },
       classes: "text-right pr-0",

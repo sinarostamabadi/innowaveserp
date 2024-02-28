@@ -11,11 +11,11 @@ import {
   useCompaniesUIContext,
   CompaniesUIConsumer,
 } from "./CompaniesUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function CompaniesCard() {
-  const {t} = useTranslation();
-  
+  const { t } = useTranslation();
+
   const companiesUIContext = useCompaniesUIContext();
   const companiesUIProps = useMemo(() => {
     return {
@@ -23,10 +23,9 @@ export function CompaniesCard() {
       queryParams: companiesUIContext.queryParams,
       setQueryParams: companiesUIContext.setQueryParams,
       newCompanyButtonClick: companiesUIContext.newCompanyButtonClick,
-      openDeleteCompaniesDialog:  
-        companiesUIContext.openDeleteCompaniesDialog,
+      openDeleteCompaniesDialog: companiesUIContext.openDeleteCompaniesDialog,
       openEditCompanyPage: companiesUIContext.openEditCompanyPage,
-      openUpdateCompaniesStatusDialog:  
+      openUpdateCompaniesStatusDialog:
         companiesUIContext.openUpdateCompaniesStatusDialog,
       openFetchCompaniesDialog: companiesUIContext.openFetchCompaniesDialog,
     };
@@ -34,11 +33,11 @@ export function CompaniesCard() {
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Company.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Company.Entity")}>
         <CardHeaderToolbar>
-          <button  
-            type="button"  
-            className="btn btn-primary"  
+          <button
+            type="button"
+            className="btn btn-primary"
             onClick={companiesUIProps.newCompanyButtonClick}
           >
             <i className="far fa-plus ml-1"></i> {t("Common.New")}

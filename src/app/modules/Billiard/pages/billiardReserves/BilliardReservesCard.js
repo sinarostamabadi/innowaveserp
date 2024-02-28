@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { BilliardReservesTable } from "./billiardReserves-table/BilliardReservesTable";
-import { useBilliardReservesUIContext, BilliardReservesUIConsumer } from "./BilliardReservesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useBilliardReservesUIContext,
+  BilliardReservesUIConsumer,
+} from "./BilliardReservesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function BilliardReservesCard() {
   const { t } = useTranslation();
@@ -21,24 +23,29 @@ export function BilliardReservesCard() {
       ids: billiardReservesUIContext.ids,
       queryParams: billiardReservesUIContext.queryParams,
       setQueryParams: billiardReservesUIContext.setQueryParams,
-      newBilliardReserveButtonClick: billiardReservesUIContext.newBilliardReserveButtonClick,
-      openDeleteBilliardReservesDialog: billiardReservesUIContext.openDeleteBilliardReservesDialog,
-      openEditBilliardReservePage: billiardReservesUIContext.openEditBilliardReservePage,
-      openUpdateBilliardReservesStatusDialog: billiardReservesUIContext.openUpdateBilliardReservesStatusDialog,
-      openFetchBilliardReservesDialog: billiardReservesUIContext.openFetchBilliardReservesDialog,
+      newBilliardReserveButtonClick:
+        billiardReservesUIContext.newBilliardReserveButtonClick,
+      openDeleteBilliardReservesDialog:
+        billiardReservesUIContext.openDeleteBilliardReservesDialog,
+      openEditBilliardReservePage:
+        billiardReservesUIContext.openEditBilliardReservePage,
+      openUpdateBilliardReservesStatusDialog:
+        billiardReservesUIContext.openUpdateBilliardReservesStatusDialog,
+      openFetchBilliardReservesDialog:
+        billiardReservesUIContext.openFetchBilliardReservesDialog,
     };
   }, [billiardReservesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("BilliardReserve.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("BilliardReserve.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={billiardReservesUIProps.newBilliardReserveButtonClick}
           >
-            {t("BilliardReserve.Entity")} {' '} {t("Common.New")}
+            {t("BilliardReserve.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

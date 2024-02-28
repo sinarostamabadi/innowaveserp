@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./TimeSetsCrud";
 import { timeSetsSlice, callTypes } from "./TimeSetsSlice";
 const { actions } = timeSetsSlice;
@@ -97,4 +96,4 @@ export const deleteTimeSets = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

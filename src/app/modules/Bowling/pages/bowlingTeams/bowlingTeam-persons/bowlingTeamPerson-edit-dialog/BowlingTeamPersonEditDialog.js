@@ -19,7 +19,8 @@ export function BowlingTeamPersonEditDialog() {
       initBowlingTeamPerson: bowlingTeamPersonsUIContext.initBowlingTeamPerson,
       findBowlingTeamPerson: bowlingTeamPersonsUIContext.findBowlingTeamPerson,
       addBowlingTeamPerson: bowlingTeamPersonsUIContext.addBowlingTeamPerson,
-      updateBowlingTeamPerson: bowlingTeamPersonsUIContext.updateBowlingTeamPerson,
+      updateBowlingTeamPerson:
+        bowlingTeamPersonsUIContext.updateBowlingTeamPerson,
     };
   }, [bowlingTeamPersonsUIContext]);
 
@@ -27,11 +28,17 @@ export function BowlingTeamPersonEditDialog() {
   const dispatch = useDispatch();
   const { actionsLoading, setActionsLoading } = useState(false);
 
-  const [editBowlingTeamPerson, setEditBowlingTeamPerson] = useState(bowlingTeamPersonsUIProps.initBowlingTeamPerson);
+  const [editBowlingTeamPerson, setEditBowlingTeamPerson] = useState(
+    bowlingTeamPersonsUIProps.initBowlingTeamPerson
+  );
 
   useEffect(() => {
     if (!!bowlingTeamPersonsUIProps.id)
-      setEditBowlingTeamPerson(bowlingTeamPersonsUIProps.findBowlingTeamPerson(bowlingTeamPersonsUIProps.id));
+      setEditBowlingTeamPerson(
+        bowlingTeamPersonsUIProps.findBowlingTeamPerson(
+          bowlingTeamPersonsUIProps.id
+        )
+      );
   }, [bowlingTeamPersonsUIProps.id, dispatch]);
 
   const saveBowlingTeamPerson = (bowlingTeamPerson) => {
@@ -53,7 +60,10 @@ export function BowlingTeamPersonEditDialog() {
       <BowlingTeamPersonEditForm
         saveBowlingTeamPerson={saveBowlingTeamPerson}
         actionsLoading={actionsLoading}
-        bowlingTeamPerson={bowlingTeamPersonsUIProps.selectedItem || bowlingTeamPersonsUIProps.initBowlingTeamPerson}
+        bowlingTeamPerson={
+          bowlingTeamPersonsUIProps.selectedItem ||
+          bowlingTeamPersonsUIProps.initBowlingTeamPerson
+        }
         onHide={bowlingTeamPersonsUIProps.onHide}
       />
     </Modal>

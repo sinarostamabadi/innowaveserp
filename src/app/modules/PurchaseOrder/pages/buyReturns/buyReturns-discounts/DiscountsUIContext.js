@@ -25,7 +25,18 @@ export function useDiscountsUIContext() {
 export const DiscountsUIConsumer = DiscountsUIContext.Consumer;
 
 export const DiscountsUIProvider = forwardRef(
-      ({ currentBuyReturnId, children, discount, btnRef, updateBuyReturn, editable, buyReturnSum}, ref) => {
+  (
+    {
+      currentBuyReturnId,
+      children,
+      discount,
+      btnRef,
+      updateBuyReturn,
+      editable,
+      buyReturnSum,
+    },
+    ref
+  ) => {
     const { t } = useTranslation();
 
     useImperativeHandle(ref, () => ({
@@ -33,11 +44,14 @@ export const DiscountsUIProvider = forwardRef(
         fn(
           discounts.map((d) => {
             let xx = {
-              BuyReturnDiscountId: d.BuyReturnDiscountId.toString().indexOf("temp") > -1? null: d.BuyReturnDiscountId,
+              BuyReturnDiscountId:
+                d.BuyReturnDiscountId.toString().indexOf("temp") > -1
+                  ? null
+                  : d.BuyReturnDiscountId,
               DiscountTypeId: d.DiscountTypeId,
               DiscountPercent: d.DiscountPercent,
               PricePercent: Math.ceil(+d.PricePercent),
-              IsDeleted: d.IsDeleted
+              IsDeleted: d.IsDeleted,
             };
 
             return xx;
@@ -90,7 +104,8 @@ export const DiscountsUIProvider = forwardRef(
       setDiscounts(
         !!realPersonForEdit &&
           !!realPersonForEdit.BuyReturnDiscounts &&
-          realPersonForEdit.BuyReturnDiscounts.length > 0 && realPersonForEdit.BuyReturnId == currentBuyReturnId
+          realPersonForEdit.BuyReturnDiscounts.length > 0 &&
+          realPersonForEdit.BuyReturnId == currentBuyReturnId
           ? realPersonForEdit.BuyReturnDiscounts
           : []
       );
@@ -114,7 +129,9 @@ export const DiscountsUIProvider = forwardRef(
     useEffect(() => {
       setActiveDiscounts(discounts.filter((x) => x.IsDeleted == false));
       updateBuyReturn(
-        !!discounts && discounts.length > 0 && discounts.filter((x) => x.IsDeleted == false).length > 0
+        !!discounts &&
+          discounts.length > 0 &&
+          discounts.filter((x) => x.IsDeleted == false).length > 0
           ? discounts
               .filter((x) => x.IsDeleted == false)
               .map((x) => x.PricePercent)
@@ -142,9 +159,8 @@ export const DiscountsUIProvider = forwardRef(
       setShowEditDiscountDialog(false);
     };
 
-    const [showDeleteDiscountDialog, setShowDeleteDiscountDialog] = useState(
-      false
-    );
+    const [showDeleteDiscountDialog, setShowDeleteDiscountDialog] =
+      useState(false);
     const openDeleteDiscountDialog = (id) => {
       setSelectedId(id);
       setShowDeleteDiscountDialog(true);
@@ -155,9 +171,8 @@ export const DiscountsUIProvider = forwardRef(
       setShowDeleteDiscountDialog(false);
     };
 
-    const [showDeleteDiscountsDialog, setShowDeleteDiscountsDialog] = useState(
-      false
-    );
+    const [showDeleteDiscountsDialog, setShowDeleteDiscountsDialog] =
+      useState(false);
     const openDeleteDiscountsDialog = () => {
       setShowDeleteDiscountsDialog(true);
     };
@@ -165,9 +180,8 @@ export const DiscountsUIProvider = forwardRef(
       setShowDeleteDiscountsDialog(false);
     };
 
-    const [showFetchDiscountsDialog, setShowFetchDiscountsDialog] = useState(
-      false
-    );
+    const [showFetchDiscountsDialog, setShowFetchDiscountsDialog] =
+      useState(false);
     const openFetchDiscountsDialog = () => {
       setShowFetchDiscountsDialog(true);
     };
@@ -195,15 +209,18 @@ export const DiscountsUIProvider = forwardRef(
 
     const addDiscount = (discount) => {
       discount.BuyReturnDiscountId = "temp_" + Math.floor(Math.random() * 100);
-      if(+discount.DiscountPercent > 0)
-        discount.PricePercent = (+buyReturnSum.SumPayable * +discount.DiscountPercent) / 100;
+      if (+discount.DiscountPercent > 0)
+        discount.PricePercent =
+          (+buyReturnSum.SumPayable * +discount.DiscountPercent) / 100;
 
       setDiscounts((discounts) => [...discounts, discount]);
     };
 
     const removeDiscount = (discountId) => {
       if (discountId.toString().indexOf("temp_") > -1)
-        setDiscounts(discounts.filter((x) => x.BuyReturnDiscountId != discountId));
+        setDiscounts(
+          discounts.filter((x) => x.BuyReturnDiscountId != discountId)
+        );
       else {
         let discount = findDiscount(discountId);
         discount["IsDeleted"] = true;
@@ -212,12 +229,15 @@ export const DiscountsUIProvider = forwardRef(
     };
 
     const updateDiscount = (discount) => {
-      if(+discount.DiscountPercent > 0)
-        discount.PricePercent = (+buyReturnSum.SumPayable * +discount.DiscountPercent) / 100;
+      if (+discount.DiscountPercent > 0)
+        discount.PricePercent =
+          (+buyReturnSum.SumPayable * +discount.DiscountPercent) / 100;
 
       setDiscounts((discounts) =>
         discounts.map((item) =>
-          item.BuyReturnDiscountId == discount.BuyReturnDiscountId ? discount : item
+          item.BuyReturnDiscountId == discount.BuyReturnDiscountId
+            ? discount
+            : item
         )
       );
 

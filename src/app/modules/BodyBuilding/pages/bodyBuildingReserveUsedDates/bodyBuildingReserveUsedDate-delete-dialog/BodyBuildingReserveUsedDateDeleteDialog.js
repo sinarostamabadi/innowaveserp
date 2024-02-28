@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -16,7 +15,8 @@ export function BodyBuildingReserveUsedDateDeleteDialog({ id, show, onHide }) {
   const { t } = useTranslation();
 
   // BodyBuildingReserveUsedDates UI Context
-  const bodyBuildingReserveUsedDatesUIContext = useBodyBuildingReserveUsedDatesUIContext();
+  const bodyBuildingReserveUsedDatesUIContext =
+    useBodyBuildingReserveUsedDatesUIContext();
   const [error, setError] = useState(null);
   const bodyBuildingReserveUsedDatesUIProps = useMemo(() => {
     return {
@@ -29,7 +29,9 @@ export function BodyBuildingReserveUsedDateDeleteDialog({ id, show, onHide }) {
   const dispatch = useDispatch();
 
   const { isLoading } = useSelector(
-    (state) => ({ isLoading: state.bodyBuildingReserveUsedDates.actionsLoading }),
+    (state) => ({
+      isLoading: state.bodyBuildingReserveUsedDates.actionsLoading,
+    }),
     shallowEqual
   );
 
@@ -48,7 +50,11 @@ export function BodyBuildingReserveUsedDateDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteBodyBuildingReserveUsedDate(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchBodyBuildingReserveUsedDates(bodyBuildingReserveUsedDatesUIProps.queryParams));
+        dispatch(
+          actions.fetchBodyBuildingReserveUsedDates(
+            bodyBuildingReserveUsedDatesUIProps.queryParams
+          )
+        );
         // clear selections list
         bodyBuildingReserveUsedDatesUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +73,12 @@ export function BodyBuildingReserveUsedDateDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("BodyBuildingReserveUsedDate.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("BodyBuildingReserveUsedDate.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

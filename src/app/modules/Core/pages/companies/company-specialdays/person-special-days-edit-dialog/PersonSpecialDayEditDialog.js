@@ -38,7 +38,9 @@ export function PersonSpecialDayEditDialog() {
 
   useEffect(() => {
     // server request for getting personSpecialDay by seleted id
-    setEditPersonSpecialDay(personSpecialDaysUIProps.findPersonSpecialDay(personSpecialDaysUIProps.id));
+    setEditPersonSpecialDay(
+      personSpecialDaysUIProps.findPersonSpecialDay(personSpecialDaysUIProps.id)
+    );
   }, [personSpecialDaysUIProps.id, dispatch]);
 
   const savePersonSpecialDay = (personSpecialDay) => {
@@ -64,7 +66,9 @@ export function PersonSpecialDayEditDialog() {
       <PersonSpecialDayEditForm
         savePersonSpecialDay={savePersonSpecialDay}
         actionsLoading={actionsLoading}
-        personSpecialDay={editPersonSpecialDay || personSpecialDaysUIProps.initPersonSpecialDay}
+        personSpecialDay={
+          editPersonSpecialDay || personSpecialDaysUIProps.initPersonSpecialDay
+        }
         onHide={personSpecialDaysUIProps.onHide}
       />
     </Modal>

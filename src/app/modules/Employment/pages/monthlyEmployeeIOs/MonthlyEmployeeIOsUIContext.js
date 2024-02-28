@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { MonthlyEmployeeIOModel } from "../../../../../core/_models/Employment/MonthlyEmployeeIOModel";
@@ -10,9 +9,13 @@ export function useMonthlyEmployeeIOsUIContext() {
   return useContext(MonthlyEmployeeIOsUIContext);
 }
 
-export const MonthlyEmployeeIOsUIConsumer = MonthlyEmployeeIOsUIContext.Consumer;
+export const MonthlyEmployeeIOsUIConsumer =
+  MonthlyEmployeeIOsUIContext.Consumer;
 
-export function MonthlyEmployeeIOsUIProvider({ monthlyEmployeeIOsUIEvents, children }) {
+export function MonthlyEmployeeIOsUIProvider({
+  monthlyEmployeeIOsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(MonthlyEmployeeIOModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function MonthlyEmployeeIOsUIProvider({ monthlyEmployeeIOsUIEvents, child
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function MonthlyEmployeeIOsUIProvider({ monthlyEmployeeIOsUIEvents, child
     setIds,
     setQueryParams,
     dataModel: MonthlyEmployeeIOModel,
-    newMonthlyEmployeeIOButtonClick: monthlyEmployeeIOsUIEvents.newMonthlyEmployeeIOButtonClick,
-    openEditMonthlyEmployeeIOPage: monthlyEmployeeIOsUIEvents.openEditMonthlyEmployeeIOPage,
-    openDeleteMonthlyEmployeeIODialog: monthlyEmployeeIOsUIEvents.openDeleteMonthlyEmployeeIODialog,
-    openDeleteMonthlyEmployeeIOsDialog: monthlyEmployeeIOsUIEvents.openDeleteMonthlyEmployeeIOsDialog,
-    openFetchMonthlyEmployeeIOsDialog: monthlyEmployeeIOsUIEvents.openFetchMonthlyEmployeeIOsDialog,
-    openUpdateMonthlyEmployeeIOsStatusDialog: monthlyEmployeeIOsUIEvents.openUpdateMonthlyEmployeeIOsStatusDialog,
+    newMonthlyEmployeeIOButtonClick:
+      monthlyEmployeeIOsUIEvents.newMonthlyEmployeeIOButtonClick,
+    openEditMonthlyEmployeeIOPage:
+      monthlyEmployeeIOsUIEvents.openEditMonthlyEmployeeIOPage,
+    openDeleteMonthlyEmployeeIODialog:
+      monthlyEmployeeIOsUIEvents.openDeleteMonthlyEmployeeIODialog,
+    openDeleteMonthlyEmployeeIOsDialog:
+      monthlyEmployeeIOsUIEvents.openDeleteMonthlyEmployeeIOsDialog,
+    openFetchMonthlyEmployeeIOsDialog:
+      monthlyEmployeeIOsUIEvents.openFetchMonthlyEmployeeIOsDialog,
+    openUpdateMonthlyEmployeeIOsStatusDialog:
+      monthlyEmployeeIOsUIEvents.openUpdateMonthlyEmployeeIOsStatusDialog,
   };
   return (
-    <MonthlyEmployeeIOsUIContext.Provider value={value}>{children}</MonthlyEmployeeIOsUIContext.Provider>
+    <MonthlyEmployeeIOsUIContext.Provider value={value}>
+      {children}
+    </MonthlyEmployeeIOsUIContext.Provider>
   );
 }

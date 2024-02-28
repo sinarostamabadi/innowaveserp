@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPoolReservePricesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const poolReservePricesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPoolReservePriceById  
+    // getPoolReservePriceById
     poolReservePriceFetched: (state, action) => {
       state.actionsLoading = false;
       state.poolReservePriceForEdit = action.payload.poolReservePriceForEdit;
       state.error = null;
     },
-    // findPoolReservePrices  
+    // findPoolReservePrices
     poolReservePricesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const poolReservePricesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPoolReservePrice  
+    // createPoolReservePrice
     poolReservePriceCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePoolReservePrice  
+    // updatePoolReservePrice
     poolReservePriceUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.PoolReservePriceId === action.payload.poolReservePrice.PoolReservePriceId) {
+        if (
+          entity.PoolReservePriceId ===
+          action.payload.poolReservePrice.PoolReservePriceId
+        ) {
           return action.payload.poolReservePrice;
         }
         return entity;
       });
     },
-    // deletePoolReservePrice  
+    // deletePoolReservePrice
     poolReservePriceDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PoolReservePriceId !== action.payload.PoolReservePriceId  
+        (el) => el.PoolReservePriceId !== action.payload.PoolReservePriceId
       );
     },
-    // deletePoolReservePrices  
+    // deletePoolReservePrices
     poolReservePricesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PoolReservePriceId)  
+        (el) => !action.payload.ids.includes(el.PoolReservePriceId)
       );
     },
-    // poolReservePricesUpdateState  
+    // poolReservePricesUpdateState
     poolReservePricesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

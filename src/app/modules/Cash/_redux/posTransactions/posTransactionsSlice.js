@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPosTransactionsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const posTransactionsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPosTransactionById  
+    // getPosTransactionById
     posTransactionFetched: (state, action) => {
       state.actionsLoading = false;
       state.posTransactionForEdit = action.payload.posTransactionForEdit;
       state.error = null;
     },
-    // findPosTransactions  
+    // findPosTransactions
     posTransactionsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const posTransactionsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPosTransaction  
+    // createPosTransaction
     posTransactionCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePosTransaction  
+    // updatePosTransaction
     posTransactionUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.PosTransactionId === action.payload.posTransaction.PosTransactionId) {
+        if (
+          entity.PosTransactionId ===
+          action.payload.posTransaction.PosTransactionId
+        ) {
           return action.payload.posTransaction;
         }
         return entity;
       });
     },
-    // deletePosTransaction  
+    // deletePosTransaction
     posTransactionDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PosTransactionId !== action.payload.PosTransactionId  
+        (el) => el.PosTransactionId !== action.payload.PosTransactionId
       );
     },
-    // deletePosTransactions  
+    // deletePosTransactions
     posTransactionsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PosTransactionId)  
+        (el) => !action.payload.ids.includes(el.PosTransactionId)
       );
     },
-    // posTransactionsUpdateState  
+    // posTransactionsUpdateState
     posTransactionsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

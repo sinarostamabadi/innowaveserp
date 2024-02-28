@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function AccountFloatingGroupTypesTable() {
   const { t } = useTranslation();
 
-  const accountFloatingGroupTypesUIContext = useAccountFloatingGroupTypesUIContext();
+  const accountFloatingGroupTypesUIContext =
+    useAccountFloatingGroupTypesUIContext();
 
   const accountFloatingGroupTypesUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function AccountFloatingGroupTypesTable() {
       setIds: accountFloatingGroupTypesUIContext.setIds,
       queryParams: accountFloatingGroupTypesUIContext.queryParams,
       setQueryParams: accountFloatingGroupTypesUIContext.setQueryParams,
-      openEditAccountFloatingGroupTypePage: accountFloatingGroupTypesUIContext.openEditAccountFloatingGroupTypePage,
-      openDeleteAccountFloatingGroupTypeDialog: accountFloatingGroupTypesUIContext.openDeleteAccountFloatingGroupTypeDialog,
+      openEditAccountFloatingGroupTypePage:
+        accountFloatingGroupTypesUIContext.openEditAccountFloatingGroupTypePage,
+      openDeleteAccountFloatingGroupTypeDialog:
+        accountFloatingGroupTypesUIContext.openDeleteAccountFloatingGroupTypeDialog,
     };
   }, [accountFloatingGroupTypesUIContext]);
 
@@ -50,7 +53,11 @@ export function AccountFloatingGroupTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     accountFloatingGroupTypesUIProps.setIds([]);
-    dispatch(actions.fetchAccountFloatingGroupTypes(accountFloatingGroupTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchAccountFloatingGroupTypes(
+        accountFloatingGroupTypesUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accountFloatingGroupTypesUIProps.queryParams, dispatch]);
 
@@ -66,8 +73,10 @@ export function AccountFloatingGroupTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditAccountFloatingGroupTypePage: accountFloatingGroupTypesUIProps.openEditAccountFloatingGroupTypePage,
-        openDeleteAccountFloatingGroupTypeDialog: accountFloatingGroupTypesUIProps.openDeleteAccountFloatingGroupTypeDialog,
+        openEditAccountFloatingGroupTypePage:
+          accountFloatingGroupTypesUIProps.openEditAccountFloatingGroupTypePage,
+        openDeleteAccountFloatingGroupTypeDialog:
+          accountFloatingGroupTypesUIProps.openDeleteAccountFloatingGroupTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -1,9 +1,7 @@
 import React, { forwardRef, useImperativeHandle } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import {
-  Input
-} from "../../../../../../core/_partials/controls";
+import { Input } from "../../../../../../core/_partials/controls";
 import { useTranslation } from "react-i18next";
 
 export const PersonEditForm = forwardRef(({ person, btnRef }, ref) => {
@@ -82,7 +80,8 @@ export const PersonEditForm = forwardRef(({ person, btnRef }, ref) => {
                   />
                 </div>
               </div>
-              <button id="BtnPersonSend"
+              <button
+                id="BtnPersonSend"
                 type="submit"
                 style={{ display: "none" }}
                 ref={btnRef}
@@ -94,4 +93,4 @@ export const PersonEditForm = forwardRef(({ person, btnRef }, ref) => {
       </Formik>
     </div>
   );
-})
+});

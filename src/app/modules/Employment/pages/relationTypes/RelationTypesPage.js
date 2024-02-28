@@ -26,7 +26,7 @@ export function RelationTypesPage({ history }) {
       history.push("/employment/relationTypes/updateStatus");
     },
   };
-  
+
   return (
     <RelationTypesUIProvider relationTypesUIEvents={relationTypesUIEvents}>
       <RelationTypesLoadingDialog />

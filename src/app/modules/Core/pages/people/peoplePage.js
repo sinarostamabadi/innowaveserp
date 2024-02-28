@@ -30,7 +30,7 @@ export function peoplePage({ history }) {
       <peopleLoadingDialog />
       <Route path="/Core/people/:id/delete">
         {({ history, match }) => (
-          <PersonDeleteDialog  
+          <PersonDeleteDialog
             show={match != null}
             id={match && match.params.id}
             onHide={() => {

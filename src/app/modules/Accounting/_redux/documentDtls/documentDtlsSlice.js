@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialDocumentDtlsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const documentDtlsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getDocumentDtlById  
+    // getDocumentDtlById
     documentDtlFetched: (state, action) => {
       state.actionsLoading = false;
       state.documentDtlForEdit = action.payload.documentDtlForEdit;
       state.error = null;
     },
-    // findDocumentDtls  
+    // findDocumentDtls
     documentDtlsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const documentDtlsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createDocumentDtl  
+    // createDocumentDtl
     documentDtlCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateDocumentDtl  
+    // updateDocumentDtl
     documentDtlUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const documentDtlsSlice = createSlice({
         return entity;
       });
     },
-    // deleteDocumentDtl  
+    // deleteDocumentDtl
     documentDtlDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.DocumentDtlId !== action.payload.DocumentDtlId  
+        (el) => el.DocumentDtlId !== action.payload.DocumentDtlId
       );
     },
-    // deleteDocumentDtls  
+    // deleteDocumentDtls
     documentDtlsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.DocumentDtlId)  
+        (el) => !action.payload.ids.includes(el.DocumentDtlId)
       );
     },
-    // documentDtlsUpdateState  
+    // documentDtlsUpdateState
     documentDtlsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

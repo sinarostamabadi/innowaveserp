@@ -31,13 +31,13 @@ export const errorHandlersSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getErrorHandlerById  
+    // getErrorHandlerById
     errorHandlerFetched: (state, action) => {
       state.actionsLoading = false;
       state.errorHandlerForEdit = action.payload.errorHandlerForEdit;
       state.error = null;
     },
-    // findErrorHandlers  
+    // findErrorHandlers
     errorHandlersFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -45,40 +45,42 @@ export const errorHandlersSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createErrorHandler  
+    // createErrorHandler
     errorHandlerCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateErrorHandler  
+    // updateErrorHandler
     errorHandlerUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.ErrorHandlerId === action.payload.errorHandler.ErrorHandlerId) {
+        if (
+          entity.ErrorHandlerId === action.payload.errorHandler.ErrorHandlerId
+        ) {
           return action.payload.errorHandler;
         }
         return entity;
       });
     },
-    // deleteErrorHandler  
+    // deleteErrorHandler
     errorHandlerDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.ErrorHandlerId !== action.payload.ErrorHandlerId  
+        (el) => el.ErrorHandlerId !== action.payload.ErrorHandlerId
       );
     },
-    // deleteErrorHandlers  
+    // deleteErrorHandlers
     errorHandlersDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ErrorHandlerId)  
+        (el) => !action.payload.ids.includes(el.ErrorHandlerId)
       );
     },
-    // errorHandlersUpdateState  
+    // errorHandlersUpdateState
     errorHandlersStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

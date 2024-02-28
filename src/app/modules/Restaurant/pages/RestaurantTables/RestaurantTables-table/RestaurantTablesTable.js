@@ -32,8 +32,10 @@ export function RestaurantTablesTable() {
       setIds: restaurantTablesUIContext.setIds,
       queryParams: restaurantTablesUIContext.queryParams,
       setQueryParams: restaurantTablesUIContext.setQueryParams,
-      openEditRestaurantTablePage: restaurantTablesUIContext.openEditRestaurantTablePage,
-      openDeleteRestaurantTableDialog: restaurantTablesUIContext.openDeleteRestaurantTableDialog,
+      openEditRestaurantTablePage:
+        restaurantTablesUIContext.openEditRestaurantTablePage,
+      openDeleteRestaurantTableDialog:
+        restaurantTablesUIContext.openDeleteRestaurantTableDialog,
     };
   }, [restaurantTablesUIContext]);
 
@@ -50,7 +52,9 @@ export function RestaurantTablesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     restaurantTablesUIProps.setIds([]);
-    dispatch(actions.fetchRestaurantTables(restaurantTablesUIProps.queryParams));
+    dispatch(
+      actions.fetchRestaurantTables(restaurantTablesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restaurantTablesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function RestaurantTablesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditRestaurantTablePage: restaurantTablesUIProps.openEditRestaurantTablePage,
-        openDeleteRestaurantTableDialog: restaurantTablesUIProps.openDeleteRestaurantTableDialog,
+        openEditRestaurantTablePage:
+          restaurantTablesUIProps.openEditRestaurantTablePage,
+        openDeleteRestaurantTableDialog:
+          restaurantTablesUIProps.openDeleteRestaurantTableDialog,
         t: t,
       },
       classes: "text-right pr-0",

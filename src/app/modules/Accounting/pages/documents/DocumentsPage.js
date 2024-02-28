@@ -26,7 +26,7 @@ export function DocumentsPage({ history }) {
       history.push("/accounting/documents/updateStatus");
     },
   };
-  
+
   return (
     <DocumentsUIProvider documentsUIEvents={documentsUIEvents}>
       <DocumentsLoadingDialog />

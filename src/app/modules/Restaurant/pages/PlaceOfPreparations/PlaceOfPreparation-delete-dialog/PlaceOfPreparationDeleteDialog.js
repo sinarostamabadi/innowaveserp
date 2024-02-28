@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -48,7 +47,11 @@ export function PlaceOfPreparationDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deletePlaceOfPreparation(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchPlaceOfPreparations(placeOfPreparationsUIProps.queryParams));
+        dispatch(
+          actions.fetchPlaceOfPreparations(
+            placeOfPreparationsUIProps.queryParams
+          )
+        );
         // clear selections list
         placeOfPreparationsUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +70,12 @@ export function PlaceOfPreparationDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("PlaceOfPreparation.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("PlaceOfPreparation.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

@@ -12,7 +12,11 @@ export const ActionsColumnFormatter = (
   { openEditMenuItemPage, openDeleteMenuItemDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="menuItems-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="menuItems-edit-tooltip">{t("Common.Edit")}</Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditMenuItemPage(row.MenuItemId)}
@@ -26,7 +30,9 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="menuItems-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="menuItems-delete-tooltip">{t("Common.Delete")}</Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"

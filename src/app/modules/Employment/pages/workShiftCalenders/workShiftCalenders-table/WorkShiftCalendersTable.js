@@ -32,8 +32,10 @@ export function WorkShiftCalendersTable() {
       setIds: workShiftCalendersUIContext.setIds,
       queryParams: workShiftCalendersUIContext.queryParams,
       setQueryParams: workShiftCalendersUIContext.setQueryParams,
-      openEditWorkShiftCalenderPage: workShiftCalendersUIContext.openEditWorkShiftCalenderPage,
-      openDeleteWorkShiftCalenderDialog: workShiftCalendersUIContext.openDeleteWorkShiftCalenderDialog,
+      openEditWorkShiftCalenderPage:
+        workShiftCalendersUIContext.openEditWorkShiftCalenderPage,
+      openDeleteWorkShiftCalenderDialog:
+        workShiftCalendersUIContext.openDeleteWorkShiftCalenderDialog,
     };
   }, [workShiftCalendersUIContext]);
 
@@ -50,7 +52,9 @@ export function WorkShiftCalendersTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     workShiftCalendersUIProps.setIds([]);
-    dispatch(actions.fetchWorkShiftCalenders(workShiftCalendersUIProps.queryParams));
+    dispatch(
+      actions.fetchWorkShiftCalenders(workShiftCalendersUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [workShiftCalendersUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function WorkShiftCalendersTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditWorkShiftCalenderPage: workShiftCalendersUIProps.openEditWorkShiftCalenderPage,
-        openDeleteWorkShiftCalenderDialog: workShiftCalendersUIProps.openDeleteWorkShiftCalenderDialog,
+        openEditWorkShiftCalenderPage:
+          workShiftCalendersUIProps.openEditWorkShiftCalenderPage,
+        openDeleteWorkShiftCalenderDialog:
+          workShiftCalendersUIProps.openDeleteWorkShiftCalenderDialog,
         t: t,
       },
       classes: "text-right pr-0",

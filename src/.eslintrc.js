@@ -3,14 +3,12 @@
 const fs = require("fs");
 const path = require("path");
 
-const restrictedPaths = [
-  { name: "react-bootstrap" }
-].map(pkg =>
+const restrictedPaths = [{ name: "react-bootstrap" }].map((pkg) =>
   fs
     .readdirSync(path.dirname(require.resolve(`${pkg.name}/package.json`)))
-    .map(component => ({
+    .map((component) => ({
       name: `${pkg.name}/${component}`,
-      message: `This loads CommonJS version of the package. To fix replace with: import { ${component} } from "${pkg.name}";`
+      message: `This loads CommonJS version of the package. To fix replace with: import { ${component} } from "${pkg.name}";`,
     }))
 );
 
@@ -21,6 +19,9 @@ module.exports = {
   rules: {
     // "no-script-url": "warn",
     "jsx-a11y/anchor-is-valid": "warn",
-    "no-restricted-imports": ["error", { paths: [].concat(...restrictedPaths) }]
-  }
+    "no-restricted-imports": [
+      "error",
+      { paths: [].concat(...restrictedPaths) },
+    ],
+  },
 };

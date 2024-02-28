@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialFutsalDiscountsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const futsalDiscountsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getFutsalDiscountById  
+    // getFutsalDiscountById
     futsalDiscountFetched: (state, action) => {
       state.actionsLoading = false;
       state.futsalDiscountForEdit = action.payload.futsalDiscountForEdit;
       state.error = null;
     },
-    // findFutsalDiscounts  
+    // findFutsalDiscounts
     futsalDiscountsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const futsalDiscountsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createFutsalDiscount  
+    // createFutsalDiscount
     futsalDiscountCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateFutsalDiscount  
+    // updateFutsalDiscount
     futsalDiscountUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.FutsalDiscountId === action.payload.futsalDiscount.FutsalDiscountId) {
+        if (
+          entity.FutsalDiscountId ===
+          action.payload.futsalDiscount.FutsalDiscountId
+        ) {
           return action.payload.futsalDiscount;
         }
         return entity;
       });
     },
-    // deleteFutsalDiscount  
+    // deleteFutsalDiscount
     futsalDiscountDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.FutsalDiscountId !== action.payload.FutsalDiscountId  
+        (el) => el.FutsalDiscountId !== action.payload.FutsalDiscountId
       );
     },
-    // deleteFutsalDiscounts  
+    // deleteFutsalDiscounts
     futsalDiscountsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.FutsalDiscountId)  
+        (el) => !action.payload.ids.includes(el.FutsalDiscountId)
       );
     },
-    // futsalDiscountsUpdateState  
+    // futsalDiscountsUpdateState
     futsalDiscountsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -60,7 +60,7 @@ export function SellDiscountsCard() {
             <Form.Check
               type="switch"
               id="custom-switch"
-              label="نمایش لیست فعال"
+              label="Show active list"
               defaultChecked={true}
               className="ml-5 d-inline-block opacity-90"
               style={{ fontSize: "0.9rem" }}

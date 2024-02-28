@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BodyBuildingReserveModel } from "../../../../../core/_models/BodyBuilding/BodyBuildingReserveModel";
@@ -10,9 +9,13 @@ export function useBodyBuildingReservesUIContext() {
   return useContext(BodyBuildingReservesUIContext);
 }
 
-export const BodyBuildingReservesUIConsumer = BodyBuildingReservesUIContext.Consumer;
+export const BodyBuildingReservesUIConsumer =
+  BodyBuildingReservesUIContext.Consumer;
 
-export function BodyBuildingReservesUIProvider({ bodyBuildingReservesUIEvents, children }) {
+export function BodyBuildingReservesUIProvider({
+  bodyBuildingReservesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(BodyBuildingReserveModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function BodyBuildingReservesUIProvider({ bodyBuildingReservesUIEvents, c
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function BodyBuildingReservesUIProvider({ bodyBuildingReservesUIEvents, c
     setIds,
     setQueryParams,
     dataModel: BodyBuildingReserveModel,
-    newBodyBuildingReserveButtonClick: bodyBuildingReservesUIEvents.newBodyBuildingReserveButtonClick,
-    openEditBodyBuildingReservePage: bodyBuildingReservesUIEvents.openEditBodyBuildingReservePage,
-    openDeleteBodyBuildingReserveDialog: bodyBuildingReservesUIEvents.openDeleteBodyBuildingReserveDialog,
-    openDeleteBodyBuildingReservesDialog: bodyBuildingReservesUIEvents.openDeleteBodyBuildingReservesDialog,
-    openFetchBodyBuildingReservesDialog: bodyBuildingReservesUIEvents.openFetchBodyBuildingReservesDialog,
-    openUpdateBodyBuildingReservesStatusDialog: bodyBuildingReservesUIEvents.openUpdateBodyBuildingReservesStatusDialog,
+    newBodyBuildingReserveButtonClick:
+      bodyBuildingReservesUIEvents.newBodyBuildingReserveButtonClick,
+    openEditBodyBuildingReservePage:
+      bodyBuildingReservesUIEvents.openEditBodyBuildingReservePage,
+    openDeleteBodyBuildingReserveDialog:
+      bodyBuildingReservesUIEvents.openDeleteBodyBuildingReserveDialog,
+    openDeleteBodyBuildingReservesDialog:
+      bodyBuildingReservesUIEvents.openDeleteBodyBuildingReservesDialog,
+    openFetchBodyBuildingReservesDialog:
+      bodyBuildingReservesUIEvents.openFetchBodyBuildingReservesDialog,
+    openUpdateBodyBuildingReservesStatusDialog:
+      bodyBuildingReservesUIEvents.openUpdateBodyBuildingReservesStatusDialog,
   };
   return (
-    <BodyBuildingReservesUIContext.Provider value={value}>{children}</BodyBuildingReservesUIContext.Provider>
+    <BodyBuildingReservesUIContext.Provider value={value}>
+      {children}
+    </BodyBuildingReservesUIContext.Provider>
   );
 }

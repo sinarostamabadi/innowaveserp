@@ -26,7 +26,7 @@ export function ChequePapersPage({ history }) {
       history.push("/cash/chequePapers/updateStatus");
     },
   };
-  
+
   return (
     <ChequePapersUIProvider chequePapersUIEvents={chequePapersUIEvents}>
       <ChequePapersLoadingDialog />

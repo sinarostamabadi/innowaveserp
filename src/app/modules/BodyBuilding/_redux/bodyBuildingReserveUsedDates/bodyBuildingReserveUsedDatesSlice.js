@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBodyBuildingReserveUsedDatesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const bodyBuildingReserveUsedDatesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBodyBuildingReserveUsedDateById  
+    // getBodyBuildingReserveUsedDateById
     bodyBuildingReserveUsedDateFetched: (state, action) => {
       state.actionsLoading = false;
-      state.bodyBuildingReserveUsedDateForEdit = action.payload.bodyBuildingReserveUsedDateForEdit;
+      state.bodyBuildingReserveUsedDateForEdit =
+        action.payload.bodyBuildingReserveUsedDateForEdit;
       state.error = null;
     },
-    // findBodyBuildingReserveUsedDates  
+    // findBodyBuildingReserveUsedDates
     bodyBuildingReserveUsedDatesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,46 +47,55 @@ export const bodyBuildingReserveUsedDatesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBodyBuildingReserveUsedDate  
+    // createBodyBuildingReserveUsedDate
     bodyBuildingReserveUsedDateCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBodyBuildingReserveUsedDate  
+    // updateBodyBuildingReserveUsedDate
     bodyBuildingReserveUsedDateUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BodyBuildingReserveUsedDateId === action.payload.bodyBuildingReserveUsedDate.BodyBuildingReserveUsedDateId) {
+        if (
+          entity.BodyBuildingReserveUsedDateId ===
+          action.payload.bodyBuildingReserveUsedDate
+            .BodyBuildingReserveUsedDateId
+        ) {
           return action.payload.bodyBuildingReserveUsedDate;
         }
         return entity;
       });
     },
-    // deleteBodyBuildingReserveUsedDate  
+    // deleteBodyBuildingReserveUsedDate
     bodyBuildingReserveUsedDateDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BodyBuildingReserveUsedDateId !== action.payload.BodyBuildingReserveUsedDateId  
+        (el) =>
+          el.BodyBuildingReserveUsedDateId !==
+          action.payload.BodyBuildingReserveUsedDateId
       );
     },
-    // deleteBodyBuildingReserveUsedDates  
+    // deleteBodyBuildingReserveUsedDates
     bodyBuildingReserveUsedDatesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BodyBuildingReserveUsedDateId)  
+        (el) => !action.payload.ids.includes(el.BodyBuildingReserveUsedDateId)
       );
     },
-    // bodyBuildingReserveUsedDatesUpdateState  
+    // bodyBuildingReserveUsedDatesUpdateState
     bodyBuildingReserveUsedDatesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       const { ids, status } = action.payload;
       state.entities = state.entities.map((entity) => {
-        if (ids.findIndex((id) => id === entity.BodyBuildingReserveUsedDateId) > -1) {
+        if (
+          ids.findIndex((id) => id === entity.BodyBuildingReserveUsedDateId) >
+          -1
+        ) {
           entity.status = status;
         }
         return entity;

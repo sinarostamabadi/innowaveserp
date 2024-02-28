@@ -12,7 +12,11 @@ export const ActionsColumnFormatter = (
   { openEditMassageDiscountPage, openDeleteMassageDiscountDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="massageDiscounts-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="massageDiscounts-edit-tooltip">{t("Common.Edit")}</Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditMassageDiscountPage(row.MassageDiscountId)}
@@ -26,7 +30,11 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="massageDiscounts-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="massageDiscounts-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"

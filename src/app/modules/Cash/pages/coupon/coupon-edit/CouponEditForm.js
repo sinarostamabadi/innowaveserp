@@ -20,8 +20,8 @@ export function CouponEditForm({ coupon, btnRef, saveCoupon }) {
   const [useLocations, setUseLocations] = useState([]);
   useEffect(() => {
     if (useLocations.length == 0)
-    getUseLocations().then(({ data }) =>
-    setUseLocations((useLocations) => [
+      getUseLocations().then(({ data }) =>
+        setUseLocations((useLocations) => [
           { UseLocationId: "", Title: t("Common.WithoutSelect") },
           ...data.Items,
         ])
@@ -34,7 +34,7 @@ export function CouponEditForm({ coupon, btnRef, saveCoupon }) {
       CouponNumber: dirty.CouponNumber,
       Price: +dirty.Price,
       UseLocationId: +dirty.UseLocationId,
-      IsUsed: dirty.IsUsed
+      IsUsed: dirty.IsUsed,
     };
   }
 
@@ -71,12 +71,15 @@ export function CouponEditForm({ coupon, btnRef, saveCoupon }) {
               </div>
               <div className="form-group row">
                 <div className="col-lg-6">
-                    <Select name="UseLocationId" label={t("Coupon.UseLocation")}>
-                      {useLocations.map((useLocation) => (
-                        <option key={useLocation.EntityId} value={useLocation.EntityId}>
-                          {useLocation.Title}
-                        </option>
-                      ))}
+                  <Select name="UseLocationId" label={t("Coupon.UseLocation")}>
+                    {useLocations.map((useLocation) => (
+                      <option
+                        key={useLocation.EntityId}
+                        value={useLocation.EntityId}
+                      >
+                        {useLocation.Title}
+                      </option>
+                    ))}
                   </Select>
                 </div>
                 <div className="col-lg-6">

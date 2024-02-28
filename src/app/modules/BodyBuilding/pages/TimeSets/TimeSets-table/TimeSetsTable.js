@@ -16,22 +16,19 @@ import * as columnFormatters from "./column-formatters";
 import { Pagination } from "src/core/_partials/controls";
 import { useTimeSetsUIContext } from "../TimeSetsUIContext";
 import { BodyBuildingTimeSetModel } from "src/core/_models/BodyBuilding/BodyBuildingTimeSetModel";
-import {
-  getConfig,
-  getFields,
-} from "src/core/_models/ModelDescriber";
+import { getConfig, getFields } from "src/core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
 
 export function TimeSetsTable() {
   const { t } = useTranslation();
   const days = {
-    7: t("Common.Saturday"), 
+    7: t("Common.Saturday"),
     1: t("Common.Sunday"),
     2: t("Common.Monday"),
     3: t("Common.Tuesday"),
     4: t("Common.Wednesday"),
     5: t("Common.Thursday"),
-    6: t("Common.Friday")
+    6: t("Common.Friday"),
   };
   const timeSetsUIContext = useTimeSetsUIContext();
 
@@ -76,7 +73,7 @@ export function TimeSetsTable() {
       sort: fields.Title.sortable,
       sortCaret: sortCaret,
       formatter: DataFormatter,
-      formatExtraData: {data: days}
+      formatExtraData: { data: days },
     },
     {
       dataField: fieldKey.Gender,
@@ -84,21 +81,21 @@ export function TimeSetsTable() {
       sort: fields.Title.sortable,
       sortCaret: sortCaret,
       formatter: DataFormatter,
-      formatExtraData: {data: {0: t("Common.Female"), 1: t("Common.Male")}}
+      formatExtraData: { data: { 0: t("Common.Female"), 1: t("Common.Male") } },
     },
     {
       dataField: fieldKey.FromTime,
       text: t("BodyBuildingTimeSet." + fields.FromTime.display),
       sort: fields.FromTime.sortable,
       sortCaret: sortCaret,
-      formatter: TimeColumnFormatter
+      formatter: TimeColumnFormatter,
     },
     {
       dataField: fieldKey.ToTime,
       text: t("BodyBuildingTimeSet." + fields.ToTime.display),
       sort: fields.Title.sortable,
       sortCaret: sortCaret,
-      formatter: TimeColumnFormatter
+      formatter: TimeColumnFormatter,
     },
     {
       dataField: "action",

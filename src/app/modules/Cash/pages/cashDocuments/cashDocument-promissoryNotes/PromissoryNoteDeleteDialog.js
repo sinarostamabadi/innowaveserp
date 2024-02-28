@@ -40,10 +40,10 @@ export function PromissoryNoteDeleteDialog() {
   }, [promissoryNotesUIProps.id]);
 
   // looking for loading/dispatch
-  useEffect(() => { }, [isLoading, dispatch]);
+  useEffect(() => {}, [isLoading, dispatch]);
 
   const deletePromissoryNote = () => {
-    promissoryNotesUIProps.removePromissoryNote(promissoryNotesUIProps.id)
+    promissoryNotesUIProps.removePromissoryNote(promissoryNotesUIProps.id);
     promissoryNotesUIProps.onHide();
   };
 
@@ -60,9 +60,7 @@ export function PromissoryNoteDeleteDialog() {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && (
-          <span>{t("Common.DeleteQuestion")}</span>
-        )}
+        {!isLoading && <span>{t("Common.DeleteQuestion")}</span>}
         {isLoading && <span>{t("Common.DeleteLoading")}</span>}
       </Modal.Body>
       <Modal.Footer>

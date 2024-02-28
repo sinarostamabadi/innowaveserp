@@ -3,7 +3,13 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
-import { Input, Select, SuggestionField, DatePickerField, TimePickerField } from "src/core/_partials/controls";
+import {
+  Input,
+  Select,
+  SuggestionField,
+  DatePickerField,
+  TimePickerField,
+} from "src/core/_partials/controls";
 import { getAll } from "../../../_redux/TimeSets/TimeSetsCrud";
 
 export function DiscountEditForm({ discount, btnRef, saveDiscount }) {
@@ -18,7 +24,7 @@ export function DiscountEditForm({ discount, btnRef, saveDiscount }) {
   const genders = [
     { text: t("Common.WithoutSelect"), value: null },
     { text: t("Common.Male"), value: 1 },
-    { text: t("Common.Female"), value: 0 }
+    { text: t("Common.Female"), value: 0 },
   ];
 
   useEffect(() => {
@@ -87,17 +93,23 @@ export function DiscountEditForm({ discount, btnRef, saveDiscount }) {
     return {
       BodyBuildingDiscountId: dirty.BodyBuildingDiscountId,
       Title: dirty.Title,
-      PersonId: !!dirty.PersonId? +dirty.PersonId: null,
-      PersonGroupId: !!dirty.PersonGroupId? +dirty.PersonGroupId: null,
-      BodyBuildingTimeSetId: !!dirty.BodyBuildingTimeSetId? +dirty.BodyBuildingTimeSetId: null,
+      PersonId: !!dirty.PersonId ? +dirty.PersonId : null,
+      PersonGroupId: !!dirty.PersonGroupId ? +dirty.PersonGroupId : null,
+      BodyBuildingTimeSetId: !!dirty.BodyBuildingTimeSetId
+        ? +dirty.BodyBuildingTimeSetId
+        : null,
       FromDate: dirty.FromDate,
       ToDate: dirty.ToDate,
       FromTime: dirty.FromTime,
       ToTime: dirty.ToTime,
-      Gender: !!dirty.Gender? +dirty.Gender: null,
-      BodyBuildingPackId: !!dirty.BodyBuildingPackId? +dirty.BodyBuildingPackId: null,
-      BodyBuildingServiceId: !!dirty.BodyBuildingServiceId? +dirty.BodyBuildingServiceId: null,
-      DiscountPercent: !!dirty.DiscountPercent? +dirty.DiscountPercent: null,
+      Gender: !!dirty.Gender ? +dirty.Gender : null,
+      BodyBuildingPackId: !!dirty.BodyBuildingPackId
+        ? +dirty.BodyBuildingPackId
+        : null,
+      BodyBuildingServiceId: !!dirty.BodyBuildingServiceId
+        ? +dirty.BodyBuildingServiceId
+        : null,
+      DiscountPercent: !!dirty.DiscountPercent ? +dirty.DiscountPercent : null,
     };
   }
 
@@ -157,10 +169,7 @@ export function DiscountEditForm({ discount, btnRef, saveDiscount }) {
                     placeHolder={t("msg.SelectBySuggestion")}
                     handleSearch={handleSuggestionPerson}
                     defaultValue={
-                      !!discount &&
-                        !!discount.Person
-                        ? [discount.Person]
-                        : []
+                      !!discount && !!discount.Person ? [discount.Person] : []
                     }
                     renderMenuItemChildren={(option, props) => (
                       <div>
@@ -186,8 +195,7 @@ export function DiscountEditForm({ discount, btnRef, saveDiscount }) {
                     placeHolder={t("msg.SelectBySuggestion")}
                     handleSearch={handleSuggestionPersonGroup}
                     defaultValue={
-                      !!discount &&
-                        !!discount.PersonGroup
+                      !!discount && !!discount.PersonGroup
                         ? [discount.PersonGroup]
                         : []
                     }
@@ -205,7 +213,10 @@ export function DiscountEditForm({ discount, btnRef, saveDiscount }) {
                     customFeedbackLabel=""
                   >
                     {timeSets.map((timeSet) => (
-                      <option key={timeSet.BodyBuildingTimeSetId} value={timeSet.BodyBuildingTimeSetId}>
+                      <option
+                        key={timeSet.BodyBuildingTimeSetId}
+                        value={timeSet.BodyBuildingTimeSetId}
+                      >
                         {timeSet.Title}
                       </option>
                     ))}
@@ -213,7 +224,7 @@ export function DiscountEditForm({ discount, btnRef, saveDiscount }) {
                 </div>
               </div>
               <div className="form-group row">
-              <div className="col-lg-3">
+                <div className="col-lg-3">
                   <DatePickerField
                     name="FromDate"
                     version={2}
@@ -261,8 +272,7 @@ export function DiscountEditForm({ discount, btnRef, saveDiscount }) {
                     placeHolder={t("msg.SelectBySuggestion")}
                     handleSearch={handleSuggestionPack}
                     defaultValue={
-                      !!discount &&
-                        !!discount.RestaurantMenuGroup
+                      !!discount && !!discount.RestaurantMenuGroup
                         ? [discount.RestaurantMenuGroup]
                         : []
                     }

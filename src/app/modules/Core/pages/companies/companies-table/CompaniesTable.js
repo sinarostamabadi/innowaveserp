@@ -19,11 +19,11 @@ import {
   getConfig,
   getFields,
 } from "../../../../../../core/_models/ModelDescriber";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export default function CompaniesTable() {
-  const {t} = useTranslation();
-  
+  const { t } = useTranslation();
+
   const companiesUIContext = useCompaniesUIContext();
   const companiesUIProps = useMemo(() => {
     return {
@@ -32,8 +32,7 @@ export default function CompaniesTable() {
       queryParams: companiesUIContext.queryParams,
       setQueryParams: companiesUIContext.setQueryParams,
       openEditCompanyPage: companiesUIContext.openEditCompanyPage,
-      openDeleteCompanyDialog:
-        companiesUIContext.openDeleteCompanyDialog,
+      openDeleteCompanyDialog: companiesUIContext.openDeleteCompanyDialog,
     };
   }, [companiesUIContext]);
 
@@ -99,12 +98,12 @@ export default function CompaniesTable() {
     },
     {
       dataField: "action",
-      text: "عملیات",
+      text: "Actions",
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditCompanyPage: companiesUIProps.openEditCompanyPage,
-        openDeleteCompanyDialog:companiesUIProps.openDeleteCompanyDialog,
-        t: t
+        openDeleteCompanyDialog: companiesUIProps.openDeleteCompanyDialog,
+        t: t,
       },
       classes: "text-right pr-0",
       headerClasses: "text-right pr-3",

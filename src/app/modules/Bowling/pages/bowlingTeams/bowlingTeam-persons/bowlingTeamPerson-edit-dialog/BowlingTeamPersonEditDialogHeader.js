@@ -13,9 +13,11 @@ export function BowlingTeamPersonEditDialogHeader({ id }) {
   const { actionsLoading, setActionsLoading } = useState();
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("BowlingTeamPerson.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("BowlingTeamPerson.Entity");
     if (id) {
-      _title = t("Common.Edit") + " " + t("BowlingTeamPerson.Entity") ;
+      _title = t("Common.Edit") + " " + t("BowlingTeamPerson.Entity");
     }
 
     setTitle(_title);

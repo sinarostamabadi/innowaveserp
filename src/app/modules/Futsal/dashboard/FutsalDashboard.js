@@ -11,7 +11,7 @@ export function FutsalDashboard() {
           position: "relative",
         }}
       >
-        <div className="col-12" style={{minHeight: "100%",}}>
+        <div className="col-12" style={{ minHeight: "100%" }}>
           <div
             className="card card-custom example example-compact gutter-b"
             style={{
@@ -24,7 +24,7 @@ export function FutsalDashboard() {
           >
             <div className="card-header">
               <div className="card-title">
-                <h3 className="card-label">اطلاعات فوتسال</h3>
+                <h3 className="card-label">Futsal information</h3>
               </div>
             </div>
             <div className="card-body">

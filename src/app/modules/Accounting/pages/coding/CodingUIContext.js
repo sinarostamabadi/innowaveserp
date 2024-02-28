@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { CodingModel } from "../../../../../core/_models/Accounting/CodingModel";
@@ -30,7 +29,7 @@ export function CodingUIProvider({ codingUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -46,6 +45,8 @@ export function CodingUIProvider({ codingUIEvents, children }) {
     openUpdateCodingStatusDialog: codingUIEvents.openUpdateCodingStatusDialog,
   };
   return (
-    <CodingUIContext.Provider value={value}>{children}</CodingUIContext.Provider>
+    <CodingUIContext.Provider value={value}>
+      {children}
+    </CodingUIContext.Provider>
   );
 }

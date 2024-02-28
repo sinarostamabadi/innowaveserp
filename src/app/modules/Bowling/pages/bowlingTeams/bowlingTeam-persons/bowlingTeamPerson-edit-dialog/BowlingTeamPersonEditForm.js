@@ -7,16 +7,23 @@ import {
   DatePickerField,
   Input,
   Select,
-  SuggestionField
+  SuggestionField,
 } from "../../../../../../../core/_partials/controls";
 import { useBowlingTeamPersonsUIContext } from "../BowlingTeamPersonsUIContext";
 import { suggestPerson } from "../../../../../Core/_redux/people/peopleCrud";
 
-export function BowlingTeamPersonEditForm({ saveBowlingTeamPerson, bowlingTeamPerson, actionsLoading, onHide }) {
+export function BowlingTeamPersonEditForm({
+  saveBowlingTeamPerson,
+  bowlingTeamPerson,
+  actionsLoading,
+  onHide,
+}) {
   const { t } = useTranslation();
   const BowlingTeamPersonEditSchema = Yup.object().shape({
-    PersonId: Yup.array().nullable().min(1, t("err.IsRequired", { 0: t("BowlingTeamPerson.Person") })),
-  }); 
+    PersonId: Yup.array()
+      .nullable()
+      .min(1, t("err.IsRequired", { 0: t("BowlingTeamPerson.Person") })),
+  });
 
   const bowlingTeamPersonsUIContext = useBowlingTeamPersonsUIContext();
   const bowlingTeamPersonsUIProps = useMemo(() => {
@@ -24,7 +31,8 @@ export function BowlingTeamPersonEditForm({ saveBowlingTeamPerson, bowlingTeamPe
       selectedId: bowlingTeamPersonsUIContext.selectedId,
       findBowlingTeamPerson: bowlingTeamPersonsUIContext.findBowlingTeamPerson,
       addBowlingTeamPerson: bowlingTeamPersonsUIContext.addBowlingTeamPerson,
-      updateBowlingTeamPerson: bowlingTeamPersonsUIContext.updateBowlingTeamPerson,
+      updateBowlingTeamPerson:
+        bowlingTeamPersonsUIContext.updateBowlingTeamPerson,
     };
   }, [bowlingTeamPersonsUIContext]);
 
@@ -41,11 +49,15 @@ export function BowlingTeamPersonEditForm({ saveBowlingTeamPerson, bowlingTeamPe
       Person:
         !!dirtyData.PersonId && dirtyData.PersonId.length == 1
           ? dirtyData.PersonId[0]
-          : (!!dirtyData.Person ? dirtyData.Person: null),
+          : !!dirtyData.Person
+          ? dirtyData.Person
+          : null,
       PersonId:
         !!dirtyData.PersonId && dirtyData.PersonId.length == 1
           ? +dirtyData.PersonId[0].PersonId
-          : (!!dirtyData.PersonId ? dirtyData.PersonId: null),
+          : !!dirtyData.PersonId
+          ? dirtyData.PersonId
+          : null,
       IsDeleted: false,
     };
   }
@@ -79,7 +91,11 @@ export function BowlingTeamPersonEditForm({ saveBowlingTeamPerson, bowlingTeamPe
                       label={t("BowlingTeamPerson.Person")}
                       placeHolder={t("msg.SelectBySuggestion")}
                       handleSearch={handleSuggestionPerson}
-                      defaultValue={bowlingTeamPerson && !!bowlingTeamPerson.Person ? [bowlingTeamPerson.Person] : []}
+                      defaultValue={
+                        bowlingTeamPerson && !!bowlingTeamPerson.Person
+                          ? [bowlingTeamPerson.Person]
+                          : []
+                      }
                       renderMenuItemChildren={(option, props) => (
                         <div>
                           <h6>{option.FullNameFa}</h6>
@@ -89,7 +105,7 @@ export function BowlingTeamPersonEditForm({ saveBowlingTeamPerson, bowlingTeamPe
                         {
                           icon: "far fa-plus",
                           title: t("RealPerson.Entity"),
-                          url: "/core/realPersons/new"
+                          url: "/core/realPersons/new",
                         },
                       ]}
                     />

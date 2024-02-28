@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { AccountFloatingModel } from "../../../../../core/_models/Accounting/AccountFloatingModel";
@@ -12,7 +11,10 @@ export function useAccountFloatingUIContext() {
 
 export const AccountFloatingUIConsumer = AccountFloatingUIContext.Consumer;
 
-export function AccountFloatingUIProvider({ accountFloatingUIEvents, children }) {
+export function AccountFloatingUIProvider({
+  accountFloatingUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(AccountFloatingModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function AccountFloatingUIProvider({ accountFloatingUIEvents, children })
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function AccountFloatingUIProvider({ accountFloatingUIEvents, children })
     setIds,
     setQueryParams,
     dataModel: AccountFloatingModel,
-    newAccountFloatingButtonClick: accountFloatingUIEvents.newAccountFloatingButtonClick,
-    openEditAccountFloatingPage: accountFloatingUIEvents.openEditAccountFloatingPage,
-    openDeleteAccountFloatingDialog: accountFloatingUIEvents.openDeleteAccountFloatingDialog,
-    openDeleteAccountFloatingsDialog: accountFloatingUIEvents.openDeleteAccountFloatingDialog,
-    openFetchAccountFloatingDialog: accountFloatingUIEvents.openFetchAccountFloatingDialog,
-    openUpdateAccountFloatingStatusDialog: accountFloatingUIEvents.openUpdateAccountFloatingStatusDialog,
+    newAccountFloatingButtonClick:
+      accountFloatingUIEvents.newAccountFloatingButtonClick,
+    openEditAccountFloatingPage:
+      accountFloatingUIEvents.openEditAccountFloatingPage,
+    openDeleteAccountFloatingDialog:
+      accountFloatingUIEvents.openDeleteAccountFloatingDialog,
+    openDeleteAccountFloatingsDialog:
+      accountFloatingUIEvents.openDeleteAccountFloatingDialog,
+    openFetchAccountFloatingDialog:
+      accountFloatingUIEvents.openFetchAccountFloatingDialog,
+    openUpdateAccountFloatingStatusDialog:
+      accountFloatingUIEvents.openUpdateAccountFloatingStatusDialog,
   };
   return (
-    <AccountFloatingUIContext.Provider value={value}>{children}</AccountFloatingUIContext.Provider>
+    <AccountFloatingUIContext.Provider value={value}>
+      {children}
+    </AccountFloatingUIContext.Provider>
   );
 }

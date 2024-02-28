@@ -1,17 +1,16 @@
-
 import * as requestFromServer from "./centersCrud";
 import { centersSlice, callTypes } from "./centersSlice";
 const { actions } = centersSlice;
 export const fetchCenters = (queryParams) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.list }));
-  return requestFromServer  
-    .findCenters(queryParams)  
+  return requestFromServer
+    .findCenters(queryParams)
     .then((response) => {
       const { Items, TotalCount } = response.data;
       dispatch(
-        actions.centersFetched({ totalCount: TotalCount, entities: Items })  
+        actions.centersFetched({ totalCount: TotalCount, entities: Items })
       );
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't find centers";
       dispatch(actions.catchError({ error, callType: callTypes.list }));
@@ -22,12 +21,12 @@ export const fetchCenter = (id) => (dispatch) => {
     return dispatch(actions.centerFetched({ centerForEdit: undefined }));
   }
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .getCenterById(id)  
+  return requestFromServer
+    .getCenterById(id)
     .then((response) => {
       const center = response.data;
       dispatch(actions.centerFetched({ centerForEdit: center }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't find center";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -35,11 +34,11 @@ export const fetchCenter = (id) => (dispatch) => {
 };
 export const deleteCenter = (id) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .deleteCenter(id)  
+  return requestFromServer
+    .deleteCenter(id)
     .then((response) => {
       dispatch(actions.centerDeleted({ id }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't delete center";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -48,12 +47,12 @@ export const deleteCenter = (id) => (dispatch) => {
 };
 export const createCenter = (centerForCreation) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .createCenter(centerForCreation)  
+  return requestFromServer
+    .createCenter(centerForCreation)
     .then((response) => {
       const center = response.data;
       dispatch(actions.centerCreated(center));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't create center";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -62,11 +61,11 @@ export const createCenter = (centerForCreation) => (dispatch) => {
 };
 export const updateCenter = (center) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .updateCenter(center)  
+  return requestFromServer
+    .updateCenter(center)
     .then((response) => {
       dispatch(actions.centerUpdated({ center }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't update center";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -75,11 +74,11 @@ export const updateCenter = (center) => (dispatch) => {
 };
 export const updateCentersStatus = (ids, status) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .updateStatusForCenters(ids, status)  
+  return requestFromServer
+    .updateStatusForCenters(ids, status)
     .then(() => {
       dispatch(actions.centersStatusUpdated({ ids, status }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't update centers status";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -87,14 +86,14 @@ export const updateCentersStatus = (ids, status) => (dispatch) => {
 };
 export const deleteCenters = (ids) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .deleteCenters(ids)  
+  return requestFromServer
+    .deleteCenters(ids)
     .then(() => {
       dispatch(actions.centersDeleted({ ids }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't delete centers";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

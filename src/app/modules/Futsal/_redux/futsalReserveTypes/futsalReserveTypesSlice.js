@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialFutsalReserveTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const futsalReserveTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getFutsalReserveTypeById  
+    // getFutsalReserveTypeById
     futsalReserveTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.futsalReserveTypeForEdit = action.payload.futsalReserveTypeForEdit;
       state.error = null;
     },
-    // findFutsalReserveTypes  
+    // findFutsalReserveTypes
     futsalReserveTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const futsalReserveTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createFutsalReserveType  
+    // createFutsalReserveType
     futsalReserveTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateFutsalReserveType  
+    // updateFutsalReserveType
     futsalReserveTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.FutsalReserveTypeId === action.payload.futsalReserveType.FutsalReserveTypeId) {
+        if (
+          entity.FutsalReserveTypeId ===
+          action.payload.futsalReserveType.FutsalReserveTypeId
+        ) {
           return action.payload.futsalReserveType;
         }
         return entity;
       });
     },
-    // deleteFutsalReserveType  
+    // deleteFutsalReserveType
     futsalReserveTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.FutsalReserveTypeId !== action.payload.FutsalReserveTypeId  
+        (el) => el.FutsalReserveTypeId !== action.payload.FutsalReserveTypeId
       );
     },
-    // deleteFutsalReserveTypes  
+    // deleteFutsalReserveTypes
     futsalReserveTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.FutsalReserveTypeId)  
+        (el) => !action.payload.ids.includes(el.FutsalReserveTypeId)
       );
     },
-    // futsalReserveTypesUpdateState  
+    // futsalReserveTypesUpdateState
     futsalReserveTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

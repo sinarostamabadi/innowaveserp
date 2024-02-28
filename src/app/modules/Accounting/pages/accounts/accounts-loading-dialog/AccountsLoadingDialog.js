@@ -4,8 +4,8 @@ import { LoadingDialog } from "../../../../../../core/_partials/controls";
 export function AccountsLoadingDialog() {
   const { isLoading } = useSelector(
     (state) => ({ isLoading: state.accounts.listLoading }),
-    shallowEqual  
+    shallowEqual
   );
-useEffect(() => {}, [isLoading]);
-  return <LoadingDialog isLoading={isLoading} text="در حال بارگذاری..." />;
+  useEffect(() => {}, [isLoading]);
+  return <LoadingDialog isLoading={isLoading} text="Loading..." />;
 }

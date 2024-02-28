@@ -6,6 +6,6 @@ export function AddressCategoriesLoadingDialog() {
     (state) => ({ isLoading: state.addressCategories.listLoading }),
     shallowEqual
   );
-  useEffect(() => { }, [isLoading]);
+  useEffect(() => {}, [isLoading]);
   return <LoadingDialog isLoading={isLoading} text="?? ??? ????????..." />;
 }

@@ -33,7 +33,8 @@ export function SettlementsTable() {
       queryParams: settlementsUIContext.queryParams,
       setQueryParams: settlementsUIContext.setQueryParams,
       openEditSettlementPage: settlementsUIContext.openEditSettlementPage,
-      openDeleteSettlementDialog: settlementsUIContext.openDeleteSettlementDialog,
+      openDeleteSettlementDialog:
+        settlementsUIContext.openDeleteSettlementDialog,
     };
   }, [settlementsUIContext]);
 
@@ -73,7 +74,8 @@ export function SettlementsTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditSettlementPage: settlementsUIProps.openEditSettlementPage,
-        openDeleteSettlementDialog: settlementsUIProps.openDeleteSettlementDialog,
+        openDeleteSettlementDialog:
+          settlementsUIProps.openDeleteSettlementDialog,
         t: t,
       },
       classes: "text-right pr-0",

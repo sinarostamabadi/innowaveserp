@@ -92,7 +92,7 @@ export function ReservesPage({ history }) {
           />
         )}
       </Route>
-      <ReservesCard history={history}/>
+      <ReservesCard history={history} />
     </ReservesUIProvider>
   );
 }

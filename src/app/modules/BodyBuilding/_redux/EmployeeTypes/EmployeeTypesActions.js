@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./EmployeeTypesCrud";
 import { employeeTypesSlice, callTypes } from "./EmployeeTypesSlice";
 
@@ -10,7 +9,10 @@ export const fetchEmployeeTypes = (queryParams) => (dispatch) => {
     .then((response) => {
       const { Items, TotalCount } = response.data;
       dispatch(
-        actions.employeeTypesFetched({ totalCount: TotalCount, entities: Items })
+        actions.employeeTypesFetched({
+          totalCount: TotalCount,
+          entities: Items,
+        })
       );
     })
     .catch((error) => {
@@ -20,14 +22,18 @@ export const fetchEmployeeTypes = (queryParams) => (dispatch) => {
 };
 export const fetchEmployeeType = (id) => (dispatch) => {
   if (!id) {
-    return dispatch(actions.employeeTypeFetched({ employeeTypeForEdit: undefined }));
+    return dispatch(
+      actions.employeeTypeFetched({ employeeTypeForEdit: undefined })
+    );
   }
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
     .getEmployeeTypeById(id)
     .then((response) => {
       const employeeType = response.data;
-      dispatch(actions.employeeTypeFetched({ employeeTypeForEdit: employeeType }));
+      dispatch(
+        actions.employeeTypeFetched({ employeeTypeForEdit: employeeType })
+      );
     })
     .catch((error) => {
       error.clientMessage = "Can't find employeeType";
@@ -98,4 +104,4 @@ export const deleteEmployeeTypes = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

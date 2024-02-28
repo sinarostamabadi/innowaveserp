@@ -31,13 +31,13 @@ export const addressesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getAddressById  
+    // getAddressById
     addressFetched: (state, action) => {
       state.actionsLoading = false;
       state.addressForEdit = action.payload.addressForEdit;
       state.error = null;
     },
-    // findAddresses  
+    // findAddresses
     addressesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -45,13 +45,13 @@ export const addressesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createAddress  
+    // createAddress
     addressCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateAddress  
+    // updateAddress
     addressUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -62,23 +62,23 @@ export const addressesSlice = createSlice({
         return entity;
       });
     },
-    // deleteAddress  
+    // deleteAddress
     addressDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.AddressId !== action.payload.AddressId  
+        (el) => el.AddressId !== action.payload.AddressId
       );
     },
-    // deleteAddresses  
+    // deleteAddresses
     addressesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.AddressId)  
+        (el) => !action.payload.ids.includes(el.AddressId)
       );
     },
-    // addressesUpdateState  
+    // addressesUpdateState
     addressesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -40,7 +40,7 @@ export function AddressDeleteDialog() {
   }, [addressesUIProps.id]);
 
   // looking for loading/dispatch
-  useEffect(() => { }, [isLoading, dispatch]);
+  useEffect(() => {}, [isLoading, dispatch]);
 
   const deleteAddress = () => {
     addressesUIProps.removeAddress(addressesUIProps.id);
@@ -60,9 +60,7 @@ export function AddressDeleteDialog() {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && (
-          <span>{t("Common.DeleteQuestion")}</span>
-        )}
+        {!isLoading && <span>{t("Common.DeleteQuestion")}</span>}
         {isLoading && <span>{t("Common.DeleteLoading")}</span>}
       </Modal.Body>
       <Modal.Footer>

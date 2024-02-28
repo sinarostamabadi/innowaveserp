@@ -32,8 +32,10 @@ export function EmployeeSpecialDatesTable() {
       setIds: employeeSpecialDatesUIContext.setIds,
       queryParams: employeeSpecialDatesUIContext.queryParams,
       setQueryParams: employeeSpecialDatesUIContext.setQueryParams,
-      openEditEmployeeSpecialDatePage: employeeSpecialDatesUIContext.openEditEmployeeSpecialDatePage,
-      openDeleteEmployeeSpecialDateDialog: employeeSpecialDatesUIContext.openDeleteEmployeeSpecialDateDialog,
+      openEditEmployeeSpecialDatePage:
+        employeeSpecialDatesUIContext.openEditEmployeeSpecialDatePage,
+      openDeleteEmployeeSpecialDateDialog:
+        employeeSpecialDatesUIContext.openDeleteEmployeeSpecialDateDialog,
     };
   }, [employeeSpecialDatesUIContext]);
 
@@ -50,7 +52,9 @@ export function EmployeeSpecialDatesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     employeeSpecialDatesUIProps.setIds([]);
-    dispatch(actions.fetchEmployeeSpecialDates(employeeSpecialDatesUIProps.queryParams));
+    dispatch(
+      actions.fetchEmployeeSpecialDates(employeeSpecialDatesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employeeSpecialDatesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function EmployeeSpecialDatesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmployeeSpecialDatePage: employeeSpecialDatesUIProps.openEditEmployeeSpecialDatePage,
-        openDeleteEmployeeSpecialDateDialog: employeeSpecialDatesUIProps.openDeleteEmployeeSpecialDateDialog,
+        openEditEmployeeSpecialDatePage:
+          employeeSpecialDatesUIProps.openEditEmployeeSpecialDatePage,
+        openDeleteEmployeeSpecialDateDialog:
+          employeeSpecialDatesUIProps.openDeleteEmployeeSpecialDateDialog,
         t: t,
       },
       classes: "text-right pr-0",

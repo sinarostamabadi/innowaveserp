@@ -12,7 +12,10 @@ import {
   getFields,
 } from "../../../../../core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
-import { MoneyColumnFormatter, NumberCommaSeparateFormatter } from "../../../../../core/_formatters";
+import {
+  MoneyColumnFormatter,
+  NumberCommaSeparateFormatter,
+} from "../../../../../core/_formatters";
 
 export function Table() {
   const { t } = useTranslation();

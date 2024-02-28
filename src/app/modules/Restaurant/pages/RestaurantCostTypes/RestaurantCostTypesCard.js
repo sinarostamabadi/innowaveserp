@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { RestaurantCostTypesTable } from "./restaurantCostTypes-table/RestaurantCostTypesTable";
-import { useRestaurantCostTypesUIContext, RestaurantCostTypesUIConsumer } from "./RestaurantCostTypesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useRestaurantCostTypesUIContext,
+  RestaurantCostTypesUIConsumer,
+} from "./RestaurantCostTypesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function RestaurantCostTypesCard() {
   const { t } = useTranslation();
@@ -21,24 +23,33 @@ export function RestaurantCostTypesCard() {
       ids: restaurantCostTypesUIContext.ids,
       queryParams: restaurantCostTypesUIContext.queryParams,
       setQueryParams: restaurantCostTypesUIContext.setQueryParams,
-      newRestaurantCostTypeButtonClick: restaurantCostTypesUIContext.newRestaurantCostTypeButtonClick,
-      openDeleteRestaurantCostTypesDialog: restaurantCostTypesUIContext.openDeleteRestaurantCostTypesDialog,
-      openEditRestaurantCostTypePage: restaurantCostTypesUIContext.openEditRestaurantCostTypePage,
-      openUpdateRestaurantCostTypesStatusDialog: restaurantCostTypesUIContext.openUpdateRestaurantCostTypesStatusDialog,
-      openFetchRestaurantCostTypesDialog: restaurantCostTypesUIContext.openFetchRestaurantCostTypesDialog,
+      newRestaurantCostTypeButtonClick:
+        restaurantCostTypesUIContext.newRestaurantCostTypeButtonClick,
+      openDeleteRestaurantCostTypesDialog:
+        restaurantCostTypesUIContext.openDeleteRestaurantCostTypesDialog,
+      openEditRestaurantCostTypePage:
+        restaurantCostTypesUIContext.openEditRestaurantCostTypePage,
+      openUpdateRestaurantCostTypesStatusDialog:
+        restaurantCostTypesUIContext.openUpdateRestaurantCostTypesStatusDialog,
+      openFetchRestaurantCostTypesDialog:
+        restaurantCostTypesUIContext.openFetchRestaurantCostTypesDialog,
     };
   }, [restaurantCostTypesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("RestaurantCostType.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("RestaurantCostType.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
-            onClick={restaurantCostTypesUIProps.newRestaurantCostTypeButtonClick}
+            onClick={
+              restaurantCostTypesUIProps.newRestaurantCostTypeButtonClick
+            }
           >
-            {t("RestaurantCostType.Entity")} {' '} {t("Common.New")}
+            {t("RestaurantCostType.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

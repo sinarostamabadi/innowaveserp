@@ -26,9 +26,11 @@ export function ImportXMLSettingPage({ history }) {
       history.push("/accounting/importXMLSetting/updateStatus");
     },
   };
-  
+
   return (
-    <ImportXMLSettingUIProvider importXMLSettingUIEvents={importXMLSettingUIEvents}>
+    <ImportXMLSettingUIProvider
+      importXMLSettingUIEvents={importXMLSettingUIEvents}
+    >
       <ImportXMLSettingLoadingDialog />
       <Route path="/accounting/importXMLSetting/:id/delete">
         {({ history, match }) => (

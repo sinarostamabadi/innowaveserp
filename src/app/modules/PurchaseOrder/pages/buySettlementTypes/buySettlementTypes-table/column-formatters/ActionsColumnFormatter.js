@@ -12,7 +12,13 @@ export const ActionsColumnFormatter = (
   { openEditBuySettlementTypePage, openDeleteBuySettlementTypeDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="buySettlementTypes-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="buySettlementTypes-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditBuySettlementTypePage(row.BuySettlementTypeId)}
@@ -26,11 +32,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="buySettlementTypes-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="buySettlementTypes-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteBuySettlementTypeDialog(row.BuySettlementTypeId)}
+        onClick={() =>
+          openDeleteBuySettlementTypeDialog(row.BuySettlementTypeId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

@@ -28,11 +28,12 @@ export function EmployeeTypeEditDialog() {
   const dispatch = useDispatch();
   const { actionsLoading, setActionsLoading } = useState(false);
 
-  const [editEmployeeType, setEditEmployeeType] = useState(uiProps.initEmployeeType);
+  const [editEmployeeType, setEditEmployeeType] = useState(
+    uiProps.initEmployeeType
+  );
 
   useEffect(() => {
-    if (!!uiProps.id)
-      setEditEmployeeType(uiProps.findEmployeeType(uiProps.id));
+    if (!!uiProps.id) setEditEmployeeType(uiProps.findEmployeeType(uiProps.id));
   }, [uiProps.id, dispatch]);
 
   const saveEmployeeType = (employeeType) => {
@@ -44,14 +45,17 @@ export function EmployeeTypeEditDialog() {
       uiProps.onHide();
     }
   };
-  
+
   return (
     <Modal
       show={uiProps.show}
       onHide={uiProps.onHide}
       aria-labelledby="example-modal-sizes-title-lg"
     >
-      <EmployeeTypeEditDialogHeader id={uiProps.id} isLoading={actionsLoading} />
+      <EmployeeTypeEditDialogHeader
+        id={uiProps.id}
+        isLoading={actionsLoading}
+      />
       <EmployeeTypeEditForm
         saveEmployeeType={saveEmployeeType}
         actionsLoading={actionsLoading}

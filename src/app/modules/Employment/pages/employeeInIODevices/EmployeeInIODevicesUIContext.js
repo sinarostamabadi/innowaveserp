@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmployeeInIODeviceModel } from "../../../../../core/_models/Employment/EmployeeInIODeviceModel";
@@ -10,9 +9,13 @@ export function useEmployeeInIODevicesUIContext() {
   return useContext(EmployeeInIODevicesUIContext);
 }
 
-export const EmployeeInIODevicesUIConsumer = EmployeeInIODevicesUIContext.Consumer;
+export const EmployeeInIODevicesUIConsumer =
+  EmployeeInIODevicesUIContext.Consumer;
 
-export function EmployeeInIODevicesUIProvider({ employeeInIODevicesUIEvents, children }) {
+export function EmployeeInIODevicesUIProvider({
+  employeeInIODevicesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(EmployeeInIODeviceModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function EmployeeInIODevicesUIProvider({ employeeInIODevicesUIEvents, chi
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function EmployeeInIODevicesUIProvider({ employeeInIODevicesUIEvents, chi
     setIds,
     setQueryParams,
     dataModel: EmployeeInIODeviceModel,
-    newEmployeeInIODeviceButtonClick: employeeInIODevicesUIEvents.newEmployeeInIODeviceButtonClick,
-    openEditEmployeeInIODevicePage: employeeInIODevicesUIEvents.openEditEmployeeInIODevicePage,
-    openDeleteEmployeeInIODeviceDialog: employeeInIODevicesUIEvents.openDeleteEmployeeInIODeviceDialog,
-    openDeleteEmployeeInIODevicesDialog: employeeInIODevicesUIEvents.openDeleteEmployeeInIODevicesDialog,
-    openFetchEmployeeInIODevicesDialog: employeeInIODevicesUIEvents.openFetchEmployeeInIODevicesDialog,
-    openUpdateEmployeeInIODevicesStatusDialog: employeeInIODevicesUIEvents.openUpdateEmployeeInIODevicesStatusDialog,
+    newEmployeeInIODeviceButtonClick:
+      employeeInIODevicesUIEvents.newEmployeeInIODeviceButtonClick,
+    openEditEmployeeInIODevicePage:
+      employeeInIODevicesUIEvents.openEditEmployeeInIODevicePage,
+    openDeleteEmployeeInIODeviceDialog:
+      employeeInIODevicesUIEvents.openDeleteEmployeeInIODeviceDialog,
+    openDeleteEmployeeInIODevicesDialog:
+      employeeInIODevicesUIEvents.openDeleteEmployeeInIODevicesDialog,
+    openFetchEmployeeInIODevicesDialog:
+      employeeInIODevicesUIEvents.openFetchEmployeeInIODevicesDialog,
+    openUpdateEmployeeInIODevicesStatusDialog:
+      employeeInIODevicesUIEvents.openUpdateEmployeeInIODevicesStatusDialog,
   };
   return (
-    <EmployeeInIODevicesUIContext.Provider value={value}>{children}</EmployeeInIODevicesUIContext.Provider>
+    <EmployeeInIODevicesUIContext.Provider value={value}>
+      {children}
+    </EmployeeInIODevicesUIContext.Provider>
   );
 }

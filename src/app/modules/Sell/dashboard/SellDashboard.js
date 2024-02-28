@@ -25,7 +25,7 @@ export function SellDashboard() {
           >
             <div className="card-header">
               <div className="card-title">
-                <h3 className="card-label">اطلاعات فروشگاه</h3>
+                <h3 className="card-label">Store information</h3>
               </div>
             </div>
             <div className="card-body">

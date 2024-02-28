@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BodyBuildingPriceingModel } from "../../../../../core/_models/BodyBuilding/BodyBuildingPriceingModel";
@@ -10,9 +9,13 @@ export function useBodyBuildingPriceingUIContext() {
   return useContext(BodyBuildingPriceingUIContext);
 }
 
-export const BodyBuildingPriceingUIConsumer = BodyBuildingPriceingUIContext.Consumer;
+export const BodyBuildingPriceingUIConsumer =
+  BodyBuildingPriceingUIContext.Consumer;
 
-export function BodyBuildingPriceingUIProvider({ bodyBuildingPriceingUIEvents, children }) {
+export function BodyBuildingPriceingUIProvider({
+  bodyBuildingPriceingUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(BodyBuildingPriceingModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function BodyBuildingPriceingUIProvider({ bodyBuildingPriceingUIEvents, c
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function BodyBuildingPriceingUIProvider({ bodyBuildingPriceingUIEvents, c
     setIds,
     setQueryParams,
     dataModel: BodyBuildingPriceingModel,
-    newBodyBuildingPriceingButtonClick: bodyBuildingPriceingUIEvents.newBodyBuildingPriceingButtonClick,
-    openEditBodyBuildingPriceingPage: bodyBuildingPriceingUIEvents.openEditBodyBuildingPriceingPage,
-    openDeleteBodyBuildingPriceingDialog: bodyBuildingPriceingUIEvents.openDeleteBodyBuildingPriceingDialog,
-    openDeleteBodyBuildingPriceingDialog: bodyBuildingPriceingUIEvents.openDeleteBodyBuildingPriceingDialog,
-    openFetchBodyBuildingPriceingDialog: bodyBuildingPriceingUIEvents.openFetchBodyBuildingPriceingDialog,
-    openUpdateBodyBuildingPriceingStatusDialog: bodyBuildingPriceingUIEvents.openUpdateBodyBuildingPriceingStatusDialog,
+    newBodyBuildingPriceingButtonClick:
+      bodyBuildingPriceingUIEvents.newBodyBuildingPriceingButtonClick,
+    openEditBodyBuildingPriceingPage:
+      bodyBuildingPriceingUIEvents.openEditBodyBuildingPriceingPage,
+    openDeleteBodyBuildingPriceingDialog:
+      bodyBuildingPriceingUIEvents.openDeleteBodyBuildingPriceingDialog,
+    openDeleteBodyBuildingPriceingDialog:
+      bodyBuildingPriceingUIEvents.openDeleteBodyBuildingPriceingDialog,
+    openFetchBodyBuildingPriceingDialog:
+      bodyBuildingPriceingUIEvents.openFetchBodyBuildingPriceingDialog,
+    openUpdateBodyBuildingPriceingStatusDialog:
+      bodyBuildingPriceingUIEvents.openUpdateBodyBuildingPriceingStatusDialog,
   };
   return (
-    <BodyBuildingPriceingUIContext.Provider value={value}>{children}</BodyBuildingPriceingUIContext.Provider>
+    <BodyBuildingPriceingUIContext.Provider value={value}>
+      {children}
+    </BodyBuildingPriceingUIContext.Provider>
   );
 }

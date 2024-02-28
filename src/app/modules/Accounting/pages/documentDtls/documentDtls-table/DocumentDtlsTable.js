@@ -33,7 +33,8 @@ export function DocumentDtlsTable() {
       queryParams: documentDtlsUIContext.queryParams,
       setQueryParams: documentDtlsUIContext.setQueryParams,
       openEditDocumentDtlPage: documentDtlsUIContext.openEditDocumentDtlPage,
-      openDeleteDocumentDtlDialog: documentDtlsUIContext.openDeleteDocumentDtlDialog,
+      openDeleteDocumentDtlDialog:
+        documentDtlsUIContext.openDeleteDocumentDtlDialog,
     };
   }, [documentDtlsUIContext]);
 
@@ -73,7 +74,8 @@ export function DocumentDtlsTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditDocumentDtlPage: documentDtlsUIProps.openEditDocumentDtlPage,
-        openDeleteDocumentDtlDialog: documentDtlsUIProps.openDeleteDocumentDtlDialog,
+        openDeleteDocumentDtlDialog:
+          documentDtlsUIProps.openDeleteDocumentDtlDialog,
         t: t,
       },
       classes: "text-right pr-0",

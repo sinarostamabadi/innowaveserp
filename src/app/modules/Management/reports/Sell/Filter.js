@@ -42,8 +42,8 @@ export const Filter = forwardRef(({ reserve, btnRef, saveReserve }, ref) => {
       setFilters: context.setFilters,
       readyToPrint: context.readyToPrint,
     };
-  }, [context]);  
-  
+  }, [context]);
+
   useEffect(() => {
     if (uiProps.readyToPrint) {
       setPrintModel(uiProps.items);
@@ -54,9 +54,11 @@ export const Filter = forwardRef(({ reserve, btnRef, saveReserve }, ref) => {
 
   const sellSchema = Yup.object().shape({
     FromDate: Yup.object()
-      .required(t("err.IsRequired", { 0: t("Reports.FromDate") })).nullable(),
+      .required(t("err.IsRequired", { 0: t("Reports.FromDate") }))
+      .nullable(),
     ToDate: Yup.object()
-      .required(t("err.IsRequired", { 0: t("Reports.ToDate") })).nullable(),
+      .required(t("err.IsRequired", { 0: t("Reports.ToDate") }))
+      .nullable(),
   });
 
   const handleSuggestionPerson = useCallback((query, fnCallback) => {
@@ -118,11 +120,11 @@ export const Filter = forwardRef(({ reserve, btnRef, saveReserve }, ref) => {
             filters.UserId = +values.UserId[0].UserId;
 
           if (!!values.FromDate)
-          filters.FromDate = FaObjToEnDateTime(values.FromDate);
+            filters.FromDate = FaObjToEnDateTime(values.FromDate);
 
           if (!!values.ToDate)
             filters.ToDate = FaObjToEnDateTime(values.ToDate);
-            
+
           uiProps.setFilters(filters);
         }}
       >
@@ -130,7 +132,7 @@ export const Filter = forwardRef(({ reserve, btnRef, saveReserve }, ref) => {
           <>
             <Form className="form form-label-right">
               <div className="form-group row">
-              <div className="col">
+                <div className="col">
                   <SuggestionField
                     name="UserId"
                     labelKey="UserName"
@@ -193,7 +195,7 @@ export const Filter = forwardRef(({ reserve, btnRef, saveReserve }, ref) => {
         )}
       </Formik>
       <div style={{ display: "none" }}>
-        <Print ref={componentRef} data={printModel} filters={uiProps.filters}/>
+        <Print ref={componentRef} data={printModel} filters={uiProps.filters} />
       </div>
     </>
   );

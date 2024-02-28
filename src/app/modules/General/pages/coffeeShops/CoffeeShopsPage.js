@@ -26,7 +26,7 @@ export function CoffeeShopsPage({ history }) {
       history.push("/general/coffeeShops/updateStatus");
     },
   };
-  
+
   return (
     <CoffeeShopsUIProvider coffeeShopsUIEvents={coffeeShopsUIEvents}>
       <CoffeeShopsLoadingDialog />

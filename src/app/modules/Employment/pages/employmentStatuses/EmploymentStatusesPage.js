@@ -26,9 +26,11 @@ export function EmploymentStatusesPage({ history }) {
       history.push("/employment/employmentStatuses/updateStatus");
     },
   };
-  
+
   return (
-    <EmploymentStatusesUIProvider employmentStatusesUIEvents={employmentStatusesUIEvents}>
+    <EmploymentStatusesUIProvider
+      employmentStatusesUIEvents={employmentStatusesUIEvents}
+    >
       <EmploymentStatusesLoadingDialog />
       <Route path="/employment/employmentStatuses/:id/delete">
         {({ history, match }) => (

@@ -4,7 +4,11 @@ import * as Yup from "yup";
 import { Input } from "../../../../../../core/_partials/controls";
 import { useTranslation } from "react-i18next";
 
-export function InquiryStatusEditForm({ inquiryStatus, btnRef, saveInquiryStatus }) {
+export function InquiryStatusEditForm({
+  inquiryStatus,
+  btnRef,
+  saveInquiryStatus,
+}) {
   const { t } = useTranslation();
 
   const InquiryStatusEditSchema = Yup.object().shape({

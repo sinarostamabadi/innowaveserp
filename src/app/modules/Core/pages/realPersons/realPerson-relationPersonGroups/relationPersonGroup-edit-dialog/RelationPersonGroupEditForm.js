@@ -6,7 +6,12 @@ import * as Yup from "yup";
 import { Select, Input } from "../../../../../../../core/_partials/controls";
 import { getAllPersonGroups } from "./../../../../../General/_redux/personGroups/personGroupsCrud";
 
-export function RelationPersonGroupEditForm({ saveRelationPersonGroup, relationPersonGroup, actionsLoading, onHide }) {
+export function RelationPersonGroupEditForm({
+  saveRelationPersonGroup,
+  relationPersonGroup,
+  actionsLoading,
+  onHide,
+}) {
   const { t } = useTranslation();
 
   const [personGroups, setPersonGroups] = useState([]);
@@ -22,8 +27,9 @@ export function RelationPersonGroupEditForm({ saveRelationPersonGroup, relationP
 
   // Validation schema
   const RelationPersonGroupEditSchema = Yup.object().shape({
-    PersonGroupId: Yup.string()
-      .required(t("err.IsRequired", { 0: t("PersonGroup.Entity") })),
+    PersonGroupId: Yup.string().required(
+      t("err.IsRequired", { 0: t("PersonGroup.Entity") })
+    ),
   });
 
   return (
@@ -56,7 +62,10 @@ export function RelationPersonGroupEditForm({ saveRelationPersonGroup, relationP
               <Form className="form form-label-right">
                 <div className="form-group row">
                   <div className="col-lg-12">
-                    <Select name="PersonGroupId" label={t("PersonGroup.Entity")}>
+                    <Select
+                      name="PersonGroupId"
+                      label={t("PersonGroup.Entity")}
+                    >
                       {personGroups.map((personGroup) => (
                         <option
                           key={personGroup.PersonGroupId}

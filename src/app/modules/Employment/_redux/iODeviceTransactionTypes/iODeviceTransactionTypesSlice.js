@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialIODeviceTransactionTypesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const iODeviceTransactionTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getIODeviceTransactionTypeById  
+    // getIODeviceTransactionTypeById
     iODeviceTransactionTypeFetched: (state, action) => {
       state.actionsLoading = false;
-      state.iODeviceTransactionTypeForEdit = action.payload.iODeviceTransactionTypeForEdit;
+      state.iODeviceTransactionTypeForEdit =
+        action.payload.iODeviceTransactionTypeForEdit;
       state.error = null;
     },
-    // findIODeviceTransactionTypes  
+    // findIODeviceTransactionTypes
     iODeviceTransactionTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,46 +47,53 @@ export const iODeviceTransactionTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createIODeviceTransactionType  
+    // createIODeviceTransactionType
     iODeviceTransactionTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateIODeviceTransactionType  
+    // updateIODeviceTransactionType
     iODeviceTransactionTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.IODeviceTransactionTypeId === action.payload.iODeviceTransactionType.IODeviceTransactionTypeId) {
+        if (
+          entity.IODeviceTransactionTypeId ===
+          action.payload.iODeviceTransactionType.IODeviceTransactionTypeId
+        ) {
           return action.payload.iODeviceTransactionType;
         }
         return entity;
       });
     },
-    // deleteIODeviceTransactionType  
+    // deleteIODeviceTransactionType
     iODeviceTransactionTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.IODeviceTransactionTypeId !== action.payload.IODeviceTransactionTypeId  
+        (el) =>
+          el.IODeviceTransactionTypeId !==
+          action.payload.IODeviceTransactionTypeId
       );
     },
-    // deleteIODeviceTransactionTypes  
+    // deleteIODeviceTransactionTypes
     iODeviceTransactionTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.IODeviceTransactionTypeId)  
+        (el) => !action.payload.ids.includes(el.IODeviceTransactionTypeId)
       );
     },
-    // iODeviceTransactionTypesUpdateState  
+    // iODeviceTransactionTypesUpdateState
     iODeviceTransactionTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       const { ids, status } = action.payload;
       state.entities = state.entities.map((entity) => {
-        if (ids.findIndex((id) => id === entity.IODeviceTransactionTypeId) > -1) {
+        if (
+          ids.findIndex((id) => id === entity.IODeviceTransactionTypeId) > -1
+        ) {
           entity.status = status;
         }
         return entity;

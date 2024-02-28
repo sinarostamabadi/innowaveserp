@@ -31,13 +31,13 @@ export const companiesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCompanyById  
+    // getCompanyById
     companyFetched: (state, action) => {
       state.actionsLoading = false;
       state.companyForEdit = action.payload.companyForEdit;
       state.error = null;
     },
-    // findCompanies  
+    // findCompanies
     companiesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -45,13 +45,13 @@ export const companiesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCompany  
+    // createCompany
     companyCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCompany  
+    // updateCompany
     companyUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -62,23 +62,23 @@ export const companiesSlice = createSlice({
         return entity;
       });
     },
-    // deleteCompany  
+    // deleteCompany
     companyDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CompanyId !== action.payload.CompanyId  
+        (el) => el.CompanyId !== action.payload.CompanyId
       );
     },
-    // deleteCompanies  
+    // deleteCompanies
     companiesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CompanyId)  
+        (el) => !action.payload.ids.includes(el.CompanyId)
       );
     },
-    // companiesUpdateState  
+    // companiesUpdateState
     companiesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialAccountFloatingGroupsState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const accountFloatingGroupsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getAccountFloatingGroupById  
+    // getAccountFloatingGroupById
     accountFloatingGroupFetched: (state, action) => {
       state.actionsLoading = false;
-      state.accountFloatingGroupForEdit = action.payload.accountFloatingGroupForEdit;
+      state.accountFloatingGroupForEdit =
+        action.payload.accountFloatingGroupForEdit;
       state.error = null;
     },
-    // findAccountFloatingGroups  
+    // findAccountFloatingGroups
     accountFloatingGroupsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,7 +47,7 @@ export const accountFloatingGroupsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createAccountFloatingGroup  
+    // createAccountFloatingGroup
     accountFloatingGroupCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
@@ -55,12 +55,15 @@ export const accountFloatingGroupsSlice = createSlice({
 
       return;
     },
-    // updateAccountFloatingGroup  
+    // updateAccountFloatingGroup
     accountFloatingGroupUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.AccountFloatingGroupId === action.payload.accountFloatingGroup.AccountFloatingGroupId) {
+        if (
+          entity.AccountFloatingGroupId ===
+          action.payload.accountFloatingGroup.AccountFloatingGroupId
+        ) {
           return action.payload.accountFloatingGroup;
         }
         return entity;
@@ -68,23 +71,24 @@ export const accountFloatingGroupsSlice = createSlice({
 
       return;
     },
-    // deleteAccountFloatingGroup  
+    // deleteAccountFloatingGroup
     accountFloatingGroupDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.AccountFloatingGroupId !== action.payload.AccountFloatingGroupId  
+        (el) =>
+          el.AccountFloatingGroupId !== action.payload.AccountFloatingGroupId
       );
     },
-    // deleteAccountFloatingGroups  
+    // deleteAccountFloatingGroups
     accountFloatingGroupsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.AccountFloatingGroupId)  
+        (el) => !action.payload.ids.includes(el.AccountFloatingGroupId)
       );
     },
-    // accountFloatingGroupsUpdateState  
+    // accountFloatingGroupsUpdateState
     accountFloatingGroupsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

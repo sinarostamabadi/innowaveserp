@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { EmployeesTable } from "./employees-table/EmployeesTable";
-import { useEmployeesUIContext, EmployeesUIConsumer } from "./EmployeesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useEmployeesUIContext,
+  EmployeesUIConsumer,
+} from "./EmployeesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function EmployeesCard() {
   const { t } = useTranslation();
@@ -24,21 +26,22 @@ export function EmployeesCard() {
       newEmployeeButtonClick: employeesUIContext.newEmployeeButtonClick,
       openDeleteEmployeesDialog: employeesUIContext.openDeleteEmployeesDialog,
       openEditEmployeePage: employeesUIContext.openEditEmployeePage,
-      openUpdateEmployeesStatusDialog: employeesUIContext.openUpdateEmployeesStatusDialog,
+      openUpdateEmployeesStatusDialog:
+        employeesUIContext.openUpdateEmployeesStatusDialog,
       openFetchEmployeesDialog: employeesUIContext.openFetchEmployeesDialog,
     };
   }, [employeesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Employee.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Employee.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={employeesUIProps.newEmployeeButtonClick}
           >
-            {t("Employee.Entity")} {' '} {t("Common.New")}
+            {t("Employee.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

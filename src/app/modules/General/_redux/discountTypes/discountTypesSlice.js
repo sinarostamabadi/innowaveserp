@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialDiscountTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const discountTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getDiscountTypeById  
+    // getDiscountTypeById
     discountTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.discountTypeForEdit = action.payload.discountTypeForEdit;
       state.error = null;
     },
-    // findDiscountTypes  
+    // findDiscountTypes
     discountTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,42 @@ export const discountTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createDiscountType  
+    // createDiscountType
     discountTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateDiscountType  
+    // updateDiscountType
     discountTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.DiscountTypeId === action.payload.discountType.DiscountTypeId) {
+        if (
+          entity.DiscountTypeId === action.payload.discountType.DiscountTypeId
+        ) {
           return action.payload.discountType;
         }
         return entity;
       });
     },
-    // deleteDiscountType  
+    // deleteDiscountType
     discountTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.DiscountTypeId !== action.payload.DiscountTypeId  
+        (el) => el.DiscountTypeId !== action.payload.DiscountTypeId
       );
     },
-    // deleteDiscountTypes  
+    // deleteDiscountTypes
     discountTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.DiscountTypeId)  
+        (el) => !action.payload.ids.includes(el.DiscountTypeId)
       );
     },
-    // discountTypesUpdateState  
+    // discountTypesUpdateState
     discountTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

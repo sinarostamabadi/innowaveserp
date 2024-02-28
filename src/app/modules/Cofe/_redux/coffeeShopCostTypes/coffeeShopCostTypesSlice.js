@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialCoffeeShopCostTypesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const coffeeShopCostTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCoffeeShopCostTypeById  
+    // getCoffeeShopCostTypeById
     coffeeShopCostTypeFetched: (state, action) => {
       state.actionsLoading = false;
-      state.coffeeShopCostTypeForEdit = action.payload.coffeeShopCostTypeForEdit;
+      state.coffeeShopCostTypeForEdit =
+        action.payload.coffeeShopCostTypeForEdit;
       state.error = null;
     },
-    // findCoffeeShopCostTypes  
+    // findCoffeeShopCostTypes
     coffeeShopCostTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,43 @@ export const coffeeShopCostTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCoffeeShopCostType  
+    // createCoffeeShopCostType
     coffeeShopCostTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCoffeeShopCostType  
+    // updateCoffeeShopCostType
     coffeeShopCostTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.CoffeeShopCostTypeId === action.payload.coffeeShopCostType.CoffeeShopCostTypeId) {
+        if (
+          entity.CoffeeShopCostTypeId ===
+          action.payload.coffeeShopCostType.CoffeeShopCostTypeId
+        ) {
           return action.payload.coffeeShopCostType;
         }
         return entity;
       });
     },
-    // deleteCoffeeShopCostType  
+    // deleteCoffeeShopCostType
     coffeeShopCostTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CoffeeShopCostTypeId !== action.payload.CoffeeShopCostTypeId  
+        (el) => el.CoffeeShopCostTypeId !== action.payload.CoffeeShopCostTypeId
       );
     },
-    // deleteCoffeeShopCostTypes  
+    // deleteCoffeeShopCostTypes
     coffeeShopCostTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CoffeeShopCostTypeId)  
+        (el) => !action.payload.ids.includes(el.CoffeeShopCostTypeId)
       );
     },
-    // coffeeShopCostTypesUpdateState  
+    // coffeeShopCostTypesUpdateState
     coffeeShopCostTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

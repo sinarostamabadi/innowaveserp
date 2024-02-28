@@ -12,7 +12,11 @@ export const ActionsColumnFormatter = (
   { openEditFutsalDiscountPage, openDeleteFutsalDiscountDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="futsalDiscounts-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="futsalDiscounts-edit-tooltip">{t("Common.Edit")}</Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditFutsalDiscountPage(row.FutsalDiscountId)}
@@ -26,7 +30,11 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="futsalDiscounts-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="futsalDiscounts-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"

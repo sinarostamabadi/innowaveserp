@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -48,7 +47,9 @@ export function EmployeeContractDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteEmployeeContract(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchEmployeeContracts(employeeContractsUIProps.queryParams));
+        dispatch(
+          actions.fetchEmployeeContracts(employeeContractsUIProps.queryParams)
+        );
         // clear selections list
         employeeContractsUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +68,12 @@ export function EmployeeContractDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("EmployeeContract.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("EmployeeContract.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

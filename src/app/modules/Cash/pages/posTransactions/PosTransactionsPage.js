@@ -26,9 +26,11 @@ export function PosTransactionsPage({ history }) {
       history.push("/cash/posTransactions/updateStatus");
     },
   };
-  
+
   return (
-    <PosTransactionsUIProvider posTransactionsUIEvents={posTransactionsUIEvents}>
+    <PosTransactionsUIProvider
+      posTransactionsUIEvents={posTransactionsUIEvents}
+    >
       <PosTransactionsLoadingDialog />
       <Route path="/cash/posTransactions/:id/delete">
         {({ history, match }) => (

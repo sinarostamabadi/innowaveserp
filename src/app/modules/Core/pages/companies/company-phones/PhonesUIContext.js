@@ -159,9 +159,7 @@ export const PhonesUIProvider = forwardRef(
 
     const removePhone = (phoneId) => {
       if (phoneId.toString().indexOf("temp_") > -1) {
-        setPhones((phones) =>
-          phones.filter((item) => item.PhoneId != phoneId)
-        );
+        setPhones((phones) => phones.filter((item) => item.PhoneId != phoneId));
       } else {
         setPhones((phones) =>
           phones.map((item) => {

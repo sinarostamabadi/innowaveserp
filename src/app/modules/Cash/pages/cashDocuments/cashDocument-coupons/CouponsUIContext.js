@@ -14,7 +14,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { CloneObject } from "src/core/_helpers";
 import { CouponTools } from "../quick/Dependency";
 import { getConfig } from "src/core/_models/ModelDescriber";
-import { CouponModel } from "src/core/_models/Cash/CouponModel"
+import { CouponModel } from "src/core/_models/Cash/CouponModel";
 
 const CouponsUIContext = createContext();
 
@@ -26,31 +26,35 @@ export const CouponsUIConsumer = CouponsUIContext.Consumer;
 
 export const CouponsUIProvider = forwardRef(
   ({ currentDocumentId, children, coupon, btnRef }, ref) => {
-    const [coupons, setCoupons] = useState(!!coupon? coupon.map(x=> CouponTools.Clean(x)): []);
+    const [coupons, setCoupons] = useState(
+      !!coupon ? coupon.map((x) => CouponTools.Clean(x)) : []
+    );
     const [selectedId, setSelectedId] = useState(null);
     const [documentId, setDocumentId] = useState(currentDocumentId);
-    const initCoupon = {...CouponTools.Model, DocumentId: currentDocumentId};
+    const initCoupon = { ...CouponTools.Model, DocumentId: currentDocumentId };
     const [selectedItem, setSelectedItem] = useState(initCoupon);
 
     useImperativeHandle(ref, () => ({
       Collect(fn) {
         console.log("coupons > ", coupons);
         fn(
-          !!coupons && coupons.length && coupons.map((coupon) => {
-            let tempDoc = CouponTools.Clean(coupon);
-            if (
-              !!tempDoc.CouponId &&
-              tempDoc.CouponId.toString().indexOf("temp_") > -1
-            ) {
-              tempDoc.CouponId = null;
-            }
+          !!coupons &&
+            coupons.length &&
+            coupons.map((coupon) => {
+              let tempDoc = CouponTools.Clean(coupon);
+              if (
+                !!tempDoc.CouponId &&
+                tempDoc.CouponId.toString().indexOf("temp_") > -1
+              ) {
+                tempDoc.CouponId = null;
+              }
 
-            return tempDoc;
-          })
+              return tempDoc;
+            })
         );
       },
     }));
-    
+
     const { actionsLoading, documentForEdit, error } = useSelector(
       (state) => ({
         actionsLoading: state.companies.actionsLoading,
@@ -60,7 +64,9 @@ export const CouponsUIProvider = forwardRef(
       shallowEqual
     );
 
-    const [queryParams, setQueryParamsBase] = useState(getConfig(CouponModel, "DocumentId", "desc").initialFilter);
+    const [queryParams, setQueryParamsBase] = useState(
+      getConfig(CouponModel, "DocumentId", "desc").initialFilter
+    );
 
     const setQueryParams = useCallback((nextQueryParams) => {
       setQueryParamsBase((prevQueryParams) => {
@@ -95,7 +101,7 @@ export const CouponsUIProvider = forwardRef(
       setSelectedItem(findCoupon(selectedId));
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedId]);
-    
+
     const [showEditCouponDialog, setShowEditCouponDialog] = useState(false);
     const openNewCouponDialog = () => {
       setSelectedId(undefined);
@@ -129,9 +135,8 @@ export const CouponsUIProvider = forwardRef(
       setShowDeleteCouponDialog(false);
     };
 
-    const [showDeleteCouponsDialog, setShowDeleteCouponsDialog] = useState(
-      false
-    );
+    const [showDeleteCouponsDialog, setShowDeleteCouponsDialog] =
+      useState(false);
     const openDeleteCouponsDialog = () => {
       setShowDeleteCouponsDialog(true);
     };

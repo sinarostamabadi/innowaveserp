@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { FutsalDiscountsTable } from "./futsalDiscounts-table/FutsalDiscountsTable";
-import { useFutsalDiscountsUIContext, FutsalDiscountsUIConsumer } from "./FutsalDiscountsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useFutsalDiscountsUIContext,
+  FutsalDiscountsUIConsumer,
+} from "./FutsalDiscountsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function FutsalDiscountsCard() {
   const { t } = useTranslation();
@@ -21,24 +23,29 @@ export function FutsalDiscountsCard() {
       ids: futsalDiscountsUIContext.ids,
       queryParams: futsalDiscountsUIContext.queryParams,
       setQueryParams: futsalDiscountsUIContext.setQueryParams,
-      newFutsalDiscountButtonClick: futsalDiscountsUIContext.newFutsalDiscountButtonClick,
-      openDeleteFutsalDiscountsDialog: futsalDiscountsUIContext.openDeleteFutsalDiscountsDialog,
-      openEditFutsalDiscountPage: futsalDiscountsUIContext.openEditFutsalDiscountPage,
-      openUpdateFutsalDiscountsStatusDialog: futsalDiscountsUIContext.openUpdateFutsalDiscountsStatusDialog,
-      openFetchFutsalDiscountsDialog: futsalDiscountsUIContext.openFetchFutsalDiscountsDialog,
+      newFutsalDiscountButtonClick:
+        futsalDiscountsUIContext.newFutsalDiscountButtonClick,
+      openDeleteFutsalDiscountsDialog:
+        futsalDiscountsUIContext.openDeleteFutsalDiscountsDialog,
+      openEditFutsalDiscountPage:
+        futsalDiscountsUIContext.openEditFutsalDiscountPage,
+      openUpdateFutsalDiscountsStatusDialog:
+        futsalDiscountsUIContext.openUpdateFutsalDiscountsStatusDialog,
+      openFetchFutsalDiscountsDialog:
+        futsalDiscountsUIContext.openFetchFutsalDiscountsDialog,
     };
   }, [futsalDiscountsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("FutsalDiscount.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("FutsalDiscount.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={futsalDiscountsUIProps.newFutsalDiscountButtonClick}
           >
-            {t("FutsalDiscount.Entity")} {' '} {t("Common.New")}
+            {t("FutsalDiscount.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

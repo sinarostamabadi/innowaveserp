@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { ImportXMLSettingModel } from "../../../../../core/_models/Accounting/ImportXMLSettingModel";
@@ -12,7 +11,10 @@ export function useImportXMLSettingUIContext() {
 
 export const ImportXMLSettingUIConsumer = ImportXMLSettingUIContext.Consumer;
 
-export function ImportXMLSettingUIProvider({ importXMLSettingUIEvents, children }) {
+export function ImportXMLSettingUIProvider({
+  importXMLSettingUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(ImportXMLSettingModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function ImportXMLSettingUIProvider({ importXMLSettingUIEvents, children 
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function ImportXMLSettingUIProvider({ importXMLSettingUIEvents, children 
     setIds,
     setQueryParams,
     dataModel: ImportXMLSettingModel,
-    newImportXMLSettingButtonClick: importXMLSettingUIEvents.newImportXMLSettingButtonClick,
-    openEditImportXMLSettingPage: importXMLSettingUIEvents.openEditImportXMLSettingPage,
-    openDeleteImportXMLSettingDialog: importXMLSettingUIEvents.openDeleteImportXMLSettingDialog,
-    openDeleteImportXMLSettingDialog: importXMLSettingUIEvents.openDeleteImportXMLSettingDialog,
-    openFetchImportXMLSettingDialog: importXMLSettingUIEvents.openFetchImportXMLSettingDialog,
-    openUpdateImportXMLSettingStatusDialog: importXMLSettingUIEvents.openUpdateImportXMLSettingStatusDialog,
+    newImportXMLSettingButtonClick:
+      importXMLSettingUIEvents.newImportXMLSettingButtonClick,
+    openEditImportXMLSettingPage:
+      importXMLSettingUIEvents.openEditImportXMLSettingPage,
+    openDeleteImportXMLSettingDialog:
+      importXMLSettingUIEvents.openDeleteImportXMLSettingDialog,
+    openDeleteImportXMLSettingDialog:
+      importXMLSettingUIEvents.openDeleteImportXMLSettingDialog,
+    openFetchImportXMLSettingDialog:
+      importXMLSettingUIEvents.openFetchImportXMLSettingDialog,
+    openUpdateImportXMLSettingStatusDialog:
+      importXMLSettingUIEvents.openUpdateImportXMLSettingStatusDialog,
   };
   return (
-    <ImportXMLSettingUIContext.Provider value={value}>{children}</ImportXMLSettingUIContext.Provider>
+    <ImportXMLSettingUIContext.Provider value={value}>
+      {children}
+    </ImportXMLSettingUIContext.Provider>
   );
 }

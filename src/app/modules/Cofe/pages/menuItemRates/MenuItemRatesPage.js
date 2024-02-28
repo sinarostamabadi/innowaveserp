@@ -26,7 +26,7 @@ export function MenuItemRatesPage({ history }) {
       history.push("/cofe/menuItemRates/updateStatus");
     },
   };
-  
+
   return (
     <MenuItemRatesUIProvider menuItemRatesUIEvents={menuItemRatesUIEvents}>
       <MenuItemRatesLoadingDialog />

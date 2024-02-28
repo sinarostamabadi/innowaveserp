@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { EmployeeContractsTable } from "./employeeContracts-table/EmployeeContractsTable";
-import { useEmployeeContractsUIContext, EmployeeContractsUIConsumer } from "./EmployeeContractsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useEmployeeContractsUIContext,
+  EmployeeContractsUIConsumer,
+} from "./EmployeeContractsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function EmployeeContractsCard() {
   const { t } = useTranslation();
@@ -21,24 +23,29 @@ export function EmployeeContractsCard() {
       ids: employeeContractsUIContext.ids,
       queryParams: employeeContractsUIContext.queryParams,
       setQueryParams: employeeContractsUIContext.setQueryParams,
-      newEmployeeContractButtonClick: employeeContractsUIContext.newEmployeeContractButtonClick,
-      openDeleteEmployeeContractsDialog: employeeContractsUIContext.openDeleteEmployeeContractsDialog,
-      openEditEmployeeContractPage: employeeContractsUIContext.openEditEmployeeContractPage,
-      openUpdateEmployeeContractsStatusDialog: employeeContractsUIContext.openUpdateEmployeeContractsStatusDialog,
-      openFetchEmployeeContractsDialog: employeeContractsUIContext.openFetchEmployeeContractsDialog,
+      newEmployeeContractButtonClick:
+        employeeContractsUIContext.newEmployeeContractButtonClick,
+      openDeleteEmployeeContractsDialog:
+        employeeContractsUIContext.openDeleteEmployeeContractsDialog,
+      openEditEmployeeContractPage:
+        employeeContractsUIContext.openEditEmployeeContractPage,
+      openUpdateEmployeeContractsStatusDialog:
+        employeeContractsUIContext.openUpdateEmployeeContractsStatusDialog,
+      openFetchEmployeeContractsDialog:
+        employeeContractsUIContext.openFetchEmployeeContractsDialog,
     };
   }, [employeeContractsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("EmployeeContract.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("EmployeeContract.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={employeeContractsUIProps.newEmployeeContractButtonClick}
           >
-            {t("EmployeeContract.Entity")} {' '} {t("Common.New")}
+            {t("EmployeeContract.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

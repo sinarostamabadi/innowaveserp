@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import {
   Input,
   Select,
-  CheckboxField
+  CheckboxField,
 } from "../../../../../../core/_partials/controls";
 import { useAccountsUIContext } from "../AccountsUIContext";
 import { getAllAccountTypes } from "../../../_redux/accountTypes/accountTypesCrud";
@@ -14,9 +14,7 @@ import { getAllAccountTypes } from "../../../_redux/accountTypes/accountTypesCru
 export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
   const { t } = useTranslation();
   const DetailEditSchema = Yup.object().shape({
-    Code: Yup.string().required(
-      t("err.IsRequired", { 0: t("Account.Code") })
-    ),
+    Code: Yup.string().required(t("err.IsRequired", { 0: t("Account.Code") })),
     Title: Yup.string().required(
       t("err.IsRequired", { 0: t("Account.Title") })
     ),
@@ -28,7 +26,7 @@ export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
     ),
     TarazSood: Yup.string().required(
       t("err.IsRequired", { 0: t("Account.TarazSood") })
-    )
+    ),
   });
 
   const detailsUIContext = useAccountsUIContext();
@@ -45,8 +43,8 @@ export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
   const [accountTypes, setAccountTypes] = useState([]);
   useEffect(() => {
     if (accountTypes.length == 0)
-    getAllAccountTypes().then(({ data }) =>
-    setAccountTypes((accountTypes) => [
+      getAllAccountTypes().then(({ data }) =>
+        setAccountTypes((accountTypes) => [
           { AccountTypeId: "", Title: t("Common.WithoutSelect") },
           ...data.Items,
         ])
@@ -55,12 +53,10 @@ export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
 
   useEffect(() => {
     if (!!detailsUIProps.selectedId) {
-      
     }
   }, [detail]);
 
   function cleanDetail(dirtyData) {
-    
     return {
       AccountId: dirtyData.AccountId,
       ParentId: detailsUIProps.selectedItem.parent,
@@ -70,7 +66,9 @@ export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
       FullTitle: dirtyData.Title,
       StartYearId: +dirtyData.StartYearId,
       AccountTypeId: +dirtyData.AccountTypeId,
-      AccountType: accountTypes.filter(x=>x.AccountTypeId == dirtyData.AccountTypeId)[0],
+      AccountType: accountTypes.filter(
+        (x) => x.AccountTypeId == dirtyData.AccountTypeId
+      )[0],
       Level: detailsUIProps.selectedItem.level,
       TarazSood: +dirtyData.TarazSood,
       Active: dirtyData.Active,
@@ -103,7 +101,7 @@ export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
                 </div>
               )}
               <Form className="form form-label-right">
-              <div className="form-group row">
+                <div className="form-group row">
                   <div className="col-lg-6">
                     <Field
                       name="Code"
@@ -130,9 +128,7 @@ export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
                           key={accountType.AccountTypeId}
                           value={accountType.AccountTypeId}
                         >
-                          {!!accountType 
-                            ? accountType.Title
-                            : ""}
+                          {!!accountType ? accountType.Title : ""}
                         </option>
                       ))}
                     </Select>

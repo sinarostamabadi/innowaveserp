@@ -12,7 +12,11 @@ export const ActionsColumnFormatter = (
   { openEditSetPricingPage, openDeleteSetPricingDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="setPricing-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="setPricing-edit-tooltip">{t("Common.Edit")}</Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditSetPricingPage(row.SetPricingId)}
@@ -26,7 +30,9 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="setPricing-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="setPricing-delete-tooltip">{t("Common.Delete")}</Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"

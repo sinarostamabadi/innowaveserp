@@ -32,8 +32,10 @@ export function ImportXMLKeiesTable() {
       setIds: importXMLKeiesUIContext.setIds,
       queryParams: importXMLKeiesUIContext.queryParams,
       setQueryParams: importXMLKeiesUIContext.setQueryParams,
-      openEditImportXMLKeyPage: importXMLKeiesUIContext.openEditImportXMLKeyPage,
-      openDeleteImportXMLKeyDialog: importXMLKeiesUIContext.openDeleteImportXMLKeyDialog,
+      openEditImportXMLKeyPage:
+        importXMLKeiesUIContext.openEditImportXMLKeyPage,
+      openDeleteImportXMLKeyDialog:
+        importXMLKeiesUIContext.openDeleteImportXMLKeyDialog,
     };
   }, [importXMLKeiesUIContext]);
 
@@ -72,8 +74,10 @@ export function ImportXMLKeiesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditImportXMLKeyPage: importXMLKeiesUIProps.openEditImportXMLKeyPage,
-        openDeleteImportXMLKeyDialog: importXMLKeiesUIProps.openDeleteImportXMLKeyDialog,
+        openEditImportXMLKeyPage:
+          importXMLKeiesUIProps.openEditImportXMLKeyPage,
+        openDeleteImportXMLKeyDialog:
+          importXMLKeiesUIProps.openDeleteImportXMLKeyDialog,
         t: t,
       },
       classes: "text-right pr-0",

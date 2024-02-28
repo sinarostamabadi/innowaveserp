@@ -26,9 +26,11 @@ export function SettlementTypesPage({ history }) {
       history.push("/cash/settlementTypes/updateStatus");
     },
   };
-  
+
   return (
-    <SettlementTypesUIProvider settlementTypesUIEvents={settlementTypesUIEvents}>
+    <SettlementTypesUIProvider
+      settlementTypesUIEvents={settlementTypesUIEvents}
+    >
       <SettlementTypesLoadingDialog />
       <Route path="/cash/settlementTypes/:id/delete">
         {({ history, match }) => (

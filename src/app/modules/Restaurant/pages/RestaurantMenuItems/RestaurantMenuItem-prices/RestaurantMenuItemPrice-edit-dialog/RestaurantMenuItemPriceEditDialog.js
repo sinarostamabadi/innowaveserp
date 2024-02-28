@@ -7,19 +7,25 @@ import { useRestaurantMenuItemPricesUIContext } from "../RestaurantMenuItemPrice
 
 export function RestaurantMenuItemPriceEditDialog() {
   // RestaurantMenuItemPrices UI Context
-  const restaurantMenuItemPricesUIContext = useRestaurantMenuItemPricesUIContext();
+  const restaurantMenuItemPricesUIContext =
+    useRestaurantMenuItemPricesUIContext();
   const restaurantMenuItemPricesUIProps = useMemo(() => {
     return {
       id: restaurantMenuItemPricesUIContext.selectedId,
       selectedItem: restaurantMenuItemPricesUIContext.selectedItem,
       show: restaurantMenuItemPricesUIContext.showEditRestaurantMenuItemPriceDialog,
-      onHide: restaurantMenuItemPricesUIContext.closeEditRestaurantMenuItemPriceDialog,
+      onHide:
+        restaurantMenuItemPricesUIContext.closeEditRestaurantMenuItemPriceDialog,
       personId: restaurantMenuItemPricesUIContext.personId,
       queryParams: restaurantMenuItemPricesUIContext.queryParams,
-      initRestaurantMenuItemPrice: restaurantMenuItemPricesUIContext.initRestaurantMenuItemPrice,
-      findRestaurantMenuItemPrice: restaurantMenuItemPricesUIContext.findRestaurantMenuItemPrice,
-      addRestaurantMenuItemPrice: restaurantMenuItemPricesUIContext.addRestaurantMenuItemPrice,
-      updateRestaurantMenuItemPrice: restaurantMenuItemPricesUIContext.updateRestaurantMenuItemPrice,
+      initRestaurantMenuItemPrice:
+        restaurantMenuItemPricesUIContext.initRestaurantMenuItemPrice,
+      findRestaurantMenuItemPrice:
+        restaurantMenuItemPricesUIContext.findRestaurantMenuItemPrice,
+      addRestaurantMenuItemPrice:
+        restaurantMenuItemPricesUIContext.addRestaurantMenuItemPrice,
+      updateRestaurantMenuItemPrice:
+        restaurantMenuItemPricesUIContext.updateRestaurantMenuItemPrice,
     };
   }, [restaurantMenuItemPricesUIContext]);
 
@@ -27,34 +33,48 @@ export function RestaurantMenuItemPriceEditDialog() {
   const dispatch = useDispatch();
   const { actionsLoading, setActionsLoading } = useState(false);
 
-  const [editRestaurantMenuItemPrice, setEditRestaurantMenuItemPrice] = useState(restaurantMenuItemPricesUIProps.initRestaurantMenuItemPrice);
+  const [editRestaurantMenuItemPrice, setEditRestaurantMenuItemPrice] =
+    useState(restaurantMenuItemPricesUIProps.initRestaurantMenuItemPrice);
 
   useEffect(() => {
     if (!!restaurantMenuItemPricesUIProps.id)
-      setEditRestaurantMenuItemPrice(restaurantMenuItemPricesUIProps.findRestaurantMenuItemPrice(restaurantMenuItemPricesUIProps.id));
+      setEditRestaurantMenuItemPrice(
+        restaurantMenuItemPricesUIProps.findRestaurantMenuItemPrice(
+          restaurantMenuItemPricesUIProps.id
+        )
+      );
   }, [restaurantMenuItemPricesUIProps.id, dispatch]);
 
   const saveRestaurantMenuItemPrice = (restaurantMenuItemPrice) => {
     if (!restaurantMenuItemPricesUIProps.id) {
-      restaurantMenuItemPricesUIProps.addRestaurantMenuItemPrice(restaurantMenuItemPrice);
+      restaurantMenuItemPricesUIProps.addRestaurantMenuItemPrice(
+        restaurantMenuItemPrice
+      );
       restaurantMenuItemPricesUIProps.onHide();
     } else {
-      restaurantMenuItemPricesUIProps.updateRestaurantMenuItemPrice(restaurantMenuItemPrice);
+      restaurantMenuItemPricesUIProps.updateRestaurantMenuItemPrice(
+        restaurantMenuItemPrice
+      );
       restaurantMenuItemPricesUIProps.onHide();
     }
   };
-  
+
   return (
     <Modal
       show={restaurantMenuItemPricesUIProps.show}
       onHide={restaurantMenuItemPricesUIProps.onHide}
       aria-labelledby="example-modal-sizes-title-lg"
     >
-      <RestaurantMenuItemPriceEditDialogHeader id={restaurantMenuItemPricesUIProps.id} />
+      <RestaurantMenuItemPriceEditDialogHeader
+        id={restaurantMenuItemPricesUIProps.id}
+      />
       <RestaurantMenuItemPriceEditForm
         saveRestaurantMenuItemPrice={saveRestaurantMenuItemPrice}
         actionsLoading={actionsLoading}
-        restaurantMenuItemPrice={restaurantMenuItemPricesUIProps.selectedItem || restaurantMenuItemPricesUIProps.initRestaurantMenuItemPrice}
+        restaurantMenuItemPrice={
+          restaurantMenuItemPricesUIProps.selectedItem ||
+          restaurantMenuItemPricesUIProps.initRestaurantMenuItemPrice
+        }
         onHide={restaurantMenuItemPricesUIProps.onHide}
       />
     </Modal>

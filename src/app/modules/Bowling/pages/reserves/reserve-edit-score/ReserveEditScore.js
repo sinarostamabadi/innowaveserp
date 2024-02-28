@@ -75,9 +75,19 @@ export function ReserveEditScore({
             ball2.roll = (index - 1) * 2 + ball2.ball;
             ball2.value = rp[`Ball${ball2.ball}Set${ball2.set}`];
 
-            if (ball1.value != null && lastShot.roll < ball1.roll || ball1.value != null && lastShot.roll == ball1.roll && lastShot.ReservePersonScoreId < ball1.ReservePersonScoreId)
+            if (
+              (ball1.value != null && lastShot.roll < ball1.roll) ||
+              (ball1.value != null &&
+                lastShot.roll == ball1.roll &&
+                lastShot.ReservePersonScoreId < ball1.ReservePersonScoreId)
+            )
               lastShot = ball1;
-            if (ball2.value != null && lastShot.roll < ball2.roll || ball2.value != null && lastShot.roll == ball2.roll && lastShot.ReservePersonScoreId < ball2.ReservePersonScoreId)
+            if (
+              (ball2.value != null && lastShot.roll < ball2.roll) ||
+              (ball2.value != null &&
+                lastShot.roll == ball2.roll &&
+                lastShot.ReservePersonScoreId < ball2.ReservePersonScoreId)
+            )
               lastShot = ball2;
           }
         });
@@ -140,39 +150,17 @@ export function ReserveEditScore({
     )
       return (
         <select defaultValue={lastShoot.value} onChange={updateScore}>
-          <option value="0">
-            0
-          </option>
-          <option value="1">
-            1
-          </option>
-          <option value="2">
-            2
-          </option>
-          <option value="3">
-            3
-          </option>
-          <option value="4">
-            4
-          </option>
-          <option value="5">
-            5
-          </option>
-          <option value="6">
-            6
-          </option>
-          <option value="7">
-            7
-          </option>
-          <option value="8">
-            8
-          </option>
-          <option value="9">
-            9
-          </option>
-          <option value="10">
-            10
-          </option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
         </select>
       );
     else return obj[`Ball${ball}Set${set}`];
@@ -194,7 +182,8 @@ export function ReserveEditScore({
           <Row>
             <Col xs="3">
               <Card.Title className="m-0">
-                {t("BowlingReserve.CountingPoints")} «{!!reserve && reserve.Line.Title}»
+                {t("BowlingReserve.CountingPoints")} «
+                {!!reserve && reserve.Line.Title}»
                 <br />
                 <div style={{ fontSize: "1.1rem", marginTop: "1rem" }}>
                   <b>{t("BowlingReserve.FromTime")}: </b>

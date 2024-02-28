@@ -73,9 +73,9 @@ export function ClosetsTable() {
       formatExtraData: {
         data: {
           true: t("BodyBuildingCloset.InUse"),
-          false: t("BodyBuildingCloset.NotInUse")
-        }
-      }
+          false: t("BodyBuildingCloset.NotInUse"),
+        },
+      },
     },
     {
       dataField: fieldKey.ConnectionInfo,

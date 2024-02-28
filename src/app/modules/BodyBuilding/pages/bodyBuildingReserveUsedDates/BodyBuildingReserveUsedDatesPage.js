@@ -17,7 +17,9 @@ export function BodyBuildingReserveUsedDatesPage({ history }) {
       history.push(`/bodyBuilding/bodyBuildingReserveUsedDates/${id}/delete`);
     },
     openDeleteBodyBuildingReserveUsedDatesDialog: () => {
-      history.push(`/bodyBuilding/bodyBuildingReserveUsedDates/deleteBodyBuildingReserveUsedDates`);
+      history.push(
+        `/bodyBuilding/bodyBuildingReserveUsedDates/deleteBodyBuildingReserveUsedDates`
+      );
     },
     openFetchBodyBuildingReserveUsedDatesDialog: () => {
       history.push(`/bodyBuilding/bodyBuildingReserveUsedDates/fetch`);
@@ -26,9 +28,13 @@ export function BodyBuildingReserveUsedDatesPage({ history }) {
       history.push("/bodyBuilding/bodyBuildingReserveUsedDates/updateStatus");
     },
   };
-  
+
   return (
-    <BodyBuildingReserveUsedDatesUIProvider bodyBuildingReserveUsedDatesUIEvents={bodyBuildingReserveUsedDatesUIEvents}>
+    <BodyBuildingReserveUsedDatesUIProvider
+      bodyBuildingReserveUsedDatesUIEvents={
+        bodyBuildingReserveUsedDatesUIEvents
+      }
+    >
       <BodyBuildingReserveUsedDatesLoadingDialog />
       <Route path="/bodyBuilding/bodyBuildingReserveUsedDates/:id/delete">
         {({ history, match }) => (

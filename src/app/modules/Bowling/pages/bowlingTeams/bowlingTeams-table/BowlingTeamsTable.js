@@ -20,7 +20,11 @@ import {
   getFields,
 } from "../../../../../../core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
-import { MoneyColumnFormatter, DateFaColumnFormatter, TimeColumnFormatter } from "../../../../../../core/_formatters";
+import {
+  MoneyColumnFormatter,
+  DateFaColumnFormatter,
+  TimeColumnFormatter,
+} from "../../../../../../core/_formatters";
 
 export function BowlingTeamsTable() {
   const { t } = useTranslation();
@@ -34,10 +38,13 @@ export function BowlingTeamsTable() {
       queryParams: bowlingTeamsUIContext.queryParams,
       setQueryParams: bowlingTeamsUIContext.setQueryParams,
       openEditBowlingTeamPage: bowlingTeamsUIContext.openEditBowlingTeamPage,
-      openDeleteBowlingTeamDialog: bowlingTeamsUIContext.openDeleteBowlingTeamDialog,
-      openDoneBowlingTeamDialog: bowlingTeamsUIContext.openDoneBowlingTeamDialog,
-      openAddTimeBowlingTeamDialog: bowlingTeamsUIContext.openAddTimeBowlingTeamDialog,
-      openRelocationDialog: bowlingTeamsUIContext.openRelocationDialog
+      openDeleteBowlingTeamDialog:
+        bowlingTeamsUIContext.openDeleteBowlingTeamDialog,
+      openDoneBowlingTeamDialog:
+        bowlingTeamsUIContext.openDoneBowlingTeamDialog,
+      openAddTimeBowlingTeamDialog:
+        bowlingTeamsUIContext.openAddTimeBowlingTeamDialog,
+      openRelocationDialog: bowlingTeamsUIContext.openRelocationDialog,
     };
   }, [bowlingTeamsUIContext]);
 
@@ -71,9 +78,12 @@ export function BowlingTeamsTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditBowlingTeamPage: bowlingTeamsUIProps.openEditBowlingTeamPage,
-        openDeleteBowlingTeamDialog: bowlingTeamsUIProps.openDeleteBowlingTeamDialog,
-        openDoneBowlingTeamDialog: bowlingTeamsUIProps.openDoneBowlingTeamDialog,
-        openAddTimeBowlingTeamDialog: bowlingTeamsUIProps.openAddTimeBowlingTeamDialog,
+        openDeleteBowlingTeamDialog:
+          bowlingTeamsUIProps.openDeleteBowlingTeamDialog,
+        openDoneBowlingTeamDialog:
+          bowlingTeamsUIProps.openDoneBowlingTeamDialog,
+        openAddTimeBowlingTeamDialog:
+          bowlingTeamsUIProps.openAddTimeBowlingTeamDialog,
         openRelocationDialog: bowlingTeamsUIProps.openRelocationDialog,
         t: t,
       },

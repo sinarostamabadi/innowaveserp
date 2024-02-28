@@ -45,7 +45,8 @@ export function BodyBuildingCenterEdit({
   const { actionsLoading, bodyBuildingCenterForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.bodyBuildingCenters.actionsLoading,
-      bodyBuildingCenterForEdit: state.bodyBuildingCenters.bodyBuildingCenterForEdit,
+      bodyBuildingCenterForEdit:
+        state.bodyBuildingCenters.bodyBuildingCenterForEdit,
       error: state.bodyBuildingCenters.error,
     }),
     shallowEqual
@@ -56,7 +57,9 @@ export function BodyBuildingCenterEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("BodyBuildingCenter.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("BodyBuildingCenter.Entity");
 
     if (bodyBuildingCenterForEdit && id) {
       _title = t("Common.Edit") + " " + bodyBuildingCenterForEdit.TitleFa;
@@ -125,14 +128,14 @@ export function BodyBuildingCenterEdit({
           </button>
           {`  `}
           <button
-              type="submit"
-              className="btn btn-primary ml-2"
-              onClick={saveBodyBuildingCenterClick}
-            >
-              <i className="fa fa-save"></i> {t("Common.Save")}
-            </button>
-          </CardHeaderToolbar>
-        </CardHeader>
+            type="submit"
+            className="btn btn-primary ml-2"
+            onClick={saveBodyBuildingCenterClick}
+          >
+            <i className="fa fa-save"></i> {t("Common.Save")}
+          </button>
+        </CardHeaderToolbar>
+      </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>

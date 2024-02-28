@@ -34,7 +34,8 @@ export function DocumentTypesTable() {
       queryParams: documentTypesUIContext.queryParams,
       setQueryParams: documentTypesUIContext.setQueryParams,
       openEditDocumentTypePage: documentTypesUIContext.openEditDocumentTypePage,
-      openDeleteDocumentTypeDialog: documentTypesUIContext.openDeleteDocumentTypeDialog,
+      openDeleteDocumentTypeDialog:
+        documentTypesUIContext.openDeleteDocumentTypeDialog,
     };
   }, [documentTypesUIContext]);
 
@@ -68,11 +69,11 @@ export function DocumentTypesTable() {
       sort: fields.IsEftetahie.sortable,
       sortCaret: sortCaret,
       formatter: CheckBoxFormatter,
-      formatExtraData: { 
+      formatExtraData: {
         t: t,
         positive: t("Common.Yes"),
-        negetive: t("Common.No")
-      }
+        negetive: t("Common.No"),
+      },
     },
     {
       dataField: fieldKey.IsEkhtetamie,
@@ -80,11 +81,11 @@ export function DocumentTypesTable() {
       sort: fields.IsEkhtetamie.sortable,
       sortCaret: sortCaret,
       formatter: CheckBoxFormatter,
-      formatExtraData: { 
+      formatExtraData: {
         t: t,
         positive: t("Common.Yes"),
-        negetive: t("Common.No")
-      }
+        negetive: t("Common.No"),
+      },
     },
     {
       dataField: "action",
@@ -92,7 +93,8 @@ export function DocumentTypesTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditDocumentTypePage: documentTypesUIProps.openEditDocumentTypePage,
-        openDeleteDocumentTypeDialog: documentTypesUIProps.openDeleteDocumentTypeDialog,
+        openDeleteDocumentTypeDialog:
+          documentTypesUIProps.openDeleteDocumentTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

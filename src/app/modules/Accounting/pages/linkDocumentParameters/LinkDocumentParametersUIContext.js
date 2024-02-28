@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { LinkDocumentParameterModel } from "../../../../../core/_models/Accounting/LinkDocumentParameterModel";
@@ -10,9 +9,13 @@ export function useLinkDocumentParametersUIContext() {
   return useContext(LinkDocumentParametersUIContext);
 }
 
-export const LinkDocumentParametersUIConsumer = LinkDocumentParametersUIContext.Consumer;
+export const LinkDocumentParametersUIConsumer =
+  LinkDocumentParametersUIContext.Consumer;
 
-export function LinkDocumentParametersUIProvider({ linkDocumentParametersUIEvents, children }) {
+export function LinkDocumentParametersUIProvider({
+  linkDocumentParametersUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(LinkDocumentParameterModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function LinkDocumentParametersUIProvider({ linkDocumentParametersUIEvent
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function LinkDocumentParametersUIProvider({ linkDocumentParametersUIEvent
     setIds,
     setQueryParams,
     dataModel: LinkDocumentParameterModel,
-    newLinkDocumentParameterButtonClick: linkDocumentParametersUIEvents.newLinkDocumentParameterButtonClick,
-    openEditLinkDocumentParameterPage: linkDocumentParametersUIEvents.openEditLinkDocumentParameterPage,
-    openDeleteLinkDocumentParameterDialog: linkDocumentParametersUIEvents.openDeleteLinkDocumentParameterDialog,
-    openDeleteLinkDocumentParametersDialog: linkDocumentParametersUIEvents.openDeleteLinkDocumentParametersDialog,
-    openFetchLinkDocumentParametersDialog: linkDocumentParametersUIEvents.openFetchLinkDocumentParametersDialog,
-    openUpdateLinkDocumentParametersStatusDialog: linkDocumentParametersUIEvents.openUpdateLinkDocumentParametersStatusDialog,
+    newLinkDocumentParameterButtonClick:
+      linkDocumentParametersUIEvents.newLinkDocumentParameterButtonClick,
+    openEditLinkDocumentParameterPage:
+      linkDocumentParametersUIEvents.openEditLinkDocumentParameterPage,
+    openDeleteLinkDocumentParameterDialog:
+      linkDocumentParametersUIEvents.openDeleteLinkDocumentParameterDialog,
+    openDeleteLinkDocumentParametersDialog:
+      linkDocumentParametersUIEvents.openDeleteLinkDocumentParametersDialog,
+    openFetchLinkDocumentParametersDialog:
+      linkDocumentParametersUIEvents.openFetchLinkDocumentParametersDialog,
+    openUpdateLinkDocumentParametersStatusDialog:
+      linkDocumentParametersUIEvents.openUpdateLinkDocumentParametersStatusDialog,
   };
   return (
-    <LinkDocumentParametersUIContext.Provider value={value}>{children}</LinkDocumentParametersUIContext.Provider>
+    <LinkDocumentParametersUIContext.Provider value={value}>
+      {children}
+    </LinkDocumentParametersUIContext.Provider>
   );
 }

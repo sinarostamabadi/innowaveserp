@@ -33,7 +33,8 @@ export function MassageTypesTable() {
       queryParams: massageTypesUIContext.queryParams,
       setQueryParams: massageTypesUIContext.setQueryParams,
       openEditMassageTypePage: massageTypesUIContext.openEditMassageTypePage,
-      openDeleteMassageTypeDialog: massageTypesUIContext.openDeleteMassageTypeDialog,
+      openDeleteMassageTypeDialog:
+        massageTypesUIContext.openDeleteMassageTypeDialog,
     };
   }, [massageTypesUIContext]);
 
@@ -73,7 +74,8 @@ export function MassageTypesTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditMassageTypePage: massageTypesUIProps.openEditMassageTypePage,
-        openDeleteMassageTypeDialog: massageTypesUIProps.openDeleteMassageTypeDialog,
+        openDeleteMassageTypeDialog:
+          massageTypesUIProps.openDeleteMassageTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

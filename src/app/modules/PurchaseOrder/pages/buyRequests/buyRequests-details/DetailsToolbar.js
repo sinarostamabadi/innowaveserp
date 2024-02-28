@@ -24,7 +24,7 @@ export function DetailsToolbar() {
             <h4>{t("BuyRequestDetail.Entity")}</h4>
           </div>
           <div className="col-md-3 ml-auto text-right margin-bottom-10-mobile">
-            {(detailsUIProps.mode == 0 || detailsUIProps.mode == 4)&& (
+            {(detailsUIProps.mode == 0 || detailsUIProps.mode == 4) && (
               <button
                 type="button"
                 className="btn btn-success"

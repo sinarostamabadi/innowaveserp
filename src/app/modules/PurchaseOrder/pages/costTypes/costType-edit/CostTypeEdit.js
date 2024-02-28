@@ -71,18 +71,18 @@ export function CostTypeEdit({
     const newValues = {
       CostTypeId: values.CostTypeId,
       Describtion: values.Describtion,
-      Title: values.Title
-    }
+      Title: values.Title,
+    };
     if (!id) {
       dispatch(actions.createCostType(newValues))
         .then((arg) => {
           backToCostTypesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateCostType(id, newValues))
         .then(() => backToCostTypesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { RequestsTable } from "./requests-table/RequestsTable";
 import { useRequestsUIContext, RequestsUIConsumer } from "./RequestsUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function RequestsCard() {
   const { t } = useTranslation();
@@ -24,21 +23,22 @@ export function RequestsCard() {
       newRequestButtonClick: requestsUIContext.newRequestButtonClick,
       openDeleteRequestsDialog: requestsUIContext.openDeleteRequestsDialog,
       openEditRequestPage: requestsUIContext.openEditRequestPage,
-      openUpdateRequestsStatusDialog: requestsUIContext.openUpdateRequestsStatusDialog,
+      openUpdateRequestsStatusDialog:
+        requestsUIContext.openUpdateRequestsStatusDialog,
       openFetchRequestsDialog: requestsUIContext.openFetchRequestsDialog,
     };
   }, [requestsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Request.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Request.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={requestsUIProps.newRequestButtonClick}
           >
-            {t("Request.Entity")} {' '} {t("Common.New")}
+            {t("Request.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

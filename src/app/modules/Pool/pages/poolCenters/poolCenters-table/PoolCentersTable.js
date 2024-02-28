@@ -33,7 +33,8 @@ export function PoolCentersTable() {
       queryParams: poolCentersUIContext.queryParams,
       setQueryParams: poolCentersUIContext.setQueryParams,
       openEditPoolCenterPage: poolCentersUIContext.openEditPoolCenterPage,
-      openDeletePoolCenterDialog: poolCentersUIContext.openDeletePoolCenterDialog,
+      openDeletePoolCenterDialog:
+        poolCentersUIContext.openDeletePoolCenterDialog,
     };
   }, [poolCentersUIContext]);
 
@@ -73,7 +74,8 @@ export function PoolCentersTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditPoolCenterPage: poolCentersUIProps.openEditPoolCenterPage,
-        openDeletePoolCenterDialog: poolCentersUIProps.openDeletePoolCenterDialog,
+        openDeletePoolCenterDialog:
+          poolCentersUIProps.openDeletePoolCenterDialog,
         t: t,
       },
       classes: "text-right pr-0",

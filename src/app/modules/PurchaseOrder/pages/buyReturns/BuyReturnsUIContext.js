@@ -42,11 +42,14 @@ export function BuyReturnsUIProvider({ buyReturnsUIEvents, children }) {
     openDeleteBuyReturnDialog: buyReturnsUIEvents.openDeleteBuyReturnDialog,
     openDeleteBuyReturnsDialog: buyReturnsUIEvents.openDeleteBuyReturnsDialog,
     openFetchBuyReturnsDialog: buyReturnsUIEvents.openFetchBuyReturnsDialog,
-    openUpdateBuyReturnsStatusDialog: buyReturnsUIEvents.openUpdateBuyReturnsStatusDialog,
+    openUpdateBuyReturnsStatusDialog:
+      buyReturnsUIEvents.openUpdateBuyReturnsStatusDialog,
     openCancelAndReturnDialog: buyReturnsUIEvents.openCancelAndReturnDialog,
     openAttachmentsDialog: buyReturnsUIEvents.openAttachmentsDialog,
   };
   return (
-    <BuyReturnsUIContext.Provider value={value}>{children}</BuyReturnsUIContext.Provider>
+    <BuyReturnsUIContext.Provider value={value}>
+      {children}
+    </BuyReturnsUIContext.Provider>
   );
 }

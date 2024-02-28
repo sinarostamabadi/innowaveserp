@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPhoneTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const phoneTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPhoneTypeById  
+    // getPhoneTypeById
     phoneTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.phoneTypeForEdit = action.payload.phoneTypeForEdit;
       state.error = null;
     },
-    // findPhoneTypes  
+    // findPhoneTypes
     phoneTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const phoneTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPhoneType  
+    // createPhoneType
     phoneTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePhoneType  
+    // updatePhoneType
     phoneTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const phoneTypesSlice = createSlice({
         return entity;
       });
     },
-    // deletePhoneType  
+    // deletePhoneType
     phoneTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PhoneTypeId !== action.payload.PhoneTypeId  
+        (el) => el.PhoneTypeId !== action.payload.PhoneTypeId
       );
     },
-    // deletePhoneTypes  
+    // deletePhoneTypes
     phoneTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PhoneTypeId)  
+        (el) => !action.payload.ids.includes(el.PhoneTypeId)
       );
     },
-    // phoneTypesUpdateState  
+    // phoneTypesUpdateState
     phoneTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

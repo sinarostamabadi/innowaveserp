@@ -20,7 +20,10 @@ import {
   getFields,
 } from "../../../../../../core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
-import { DateFaColumnFormatter, CheckBoxFormatter } from "../../../../../../core/_formatters";
+import {
+  DateFaColumnFormatter,
+  CheckBoxFormatter,
+} from "../../../../../../core/_formatters";
 
 export function DocumentsTable() {
   const { t } = useTranslation();
@@ -114,7 +117,7 @@ export function DocumentsTable() {
         t: t,
         positive: t("Common.Yes"),
         negetive: t("Common.No"),
-      }
+      },
     },
     {
       dataField: "Control",
@@ -126,7 +129,7 @@ export function DocumentsTable() {
         t: t,
         positive: t("Common.Yes"),
         negetive: t("Common.No"),
-      }
+      },
     },
     {
       dataField: "Archive",
@@ -138,7 +141,7 @@ export function DocumentsTable() {
         t: t,
         positive: t("Common.Yes"),
         negetive: t("Common.No"),
-      }
+      },
     },
     {
       dataField: "Empty",
@@ -150,7 +153,7 @@ export function DocumentsTable() {
         t: t,
         positive: t("Common.Yes"),
         negetive: t("Common.No"),
-      }
+      },
     },
     {
       dataField: "IsDraft",
@@ -162,14 +165,14 @@ export function DocumentsTable() {
         t: t,
         positive: t("Common.Yes"),
         negetive: t("Common.No"),
-      }
+      },
     },
     {
       dataField: "DocumentDate",
       text: t("Document.DocumentDate"),
       sort: true,
       sortCaret: sortCaret,
-      formatter: DateFaColumnFormatter
+      formatter: DateFaColumnFormatter,
     },
     {
       dataField: "action",

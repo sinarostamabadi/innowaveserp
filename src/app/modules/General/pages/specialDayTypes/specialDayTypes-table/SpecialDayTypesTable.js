@@ -32,8 +32,10 @@ export function SpecialDayTypesTable() {
       setIds: specialDayTypesUIContext.setIds,
       queryParams: specialDayTypesUIContext.queryParams,
       setQueryParams: specialDayTypesUIContext.setQueryParams,
-      openEditSpecialDayTypePage: specialDayTypesUIContext.openEditSpecialDayTypePage,
-      openDeleteSpecialDayTypeDialog: specialDayTypesUIContext.openDeleteSpecialDayTypeDialog,
+      openEditSpecialDayTypePage:
+        specialDayTypesUIContext.openEditSpecialDayTypePage,
+      openDeleteSpecialDayTypeDialog:
+        specialDayTypesUIContext.openDeleteSpecialDayTypeDialog,
     };
   }, [specialDayTypesUIContext]);
 
@@ -72,8 +74,10 @@ export function SpecialDayTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditSpecialDayTypePage: specialDayTypesUIProps.openEditSpecialDayTypePage,
-        openDeleteSpecialDayTypeDialog: specialDayTypesUIProps.openDeleteSpecialDayTypeDialog,
+        openEditSpecialDayTypePage:
+          specialDayTypesUIProps.openEditSpecialDayTypePage,
+        openDeleteSpecialDayTypeDialog:
+          specialDayTypesUIProps.openDeleteSpecialDayTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

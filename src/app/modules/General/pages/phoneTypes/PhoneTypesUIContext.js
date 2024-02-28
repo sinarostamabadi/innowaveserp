@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { PhoneTypeModel } from "../../../../../core/_models/General/PhoneTypeModel";
@@ -30,7 +29,7 @@ export function PhoneTypesUIProvider({ phoneTypesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function PhoneTypesUIProvider({ phoneTypesUIEvents, children }) {
     openDeletePhoneTypeDialog: phoneTypesUIEvents.openDeletePhoneTypeDialog,
     openDeletePhoneTypesDialog: phoneTypesUIEvents.openDeletePhoneTypesDialog,
     openFetchPhoneTypesDialog: phoneTypesUIEvents.openFetchPhoneTypesDialog,
-    openUpdatePhoneTypesStatusDialog: phoneTypesUIEvents.openUpdatePhoneTypesStatusDialog,
+    openUpdatePhoneTypesStatusDialog:
+      phoneTypesUIEvents.openUpdatePhoneTypesStatusDialog,
   };
   return (
-    <PhoneTypesUIContext.Provider value={value}>{children}</PhoneTypesUIContext.Provider>
+    <PhoneTypesUIContext.Provider value={value}>
+      {children}
+    </PhoneTypesUIContext.Provider>
   );
 }

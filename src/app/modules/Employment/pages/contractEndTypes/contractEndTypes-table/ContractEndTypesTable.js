@@ -32,8 +32,10 @@ export function ContractEndTypesTable() {
       setIds: contractEndTypesUIContext.setIds,
       queryParams: contractEndTypesUIContext.queryParams,
       setQueryParams: contractEndTypesUIContext.setQueryParams,
-      openEditContractEndTypePage: contractEndTypesUIContext.openEditContractEndTypePage,
-      openDeleteContractEndTypeDialog: contractEndTypesUIContext.openDeleteContractEndTypeDialog,
+      openEditContractEndTypePage:
+        contractEndTypesUIContext.openEditContractEndTypePage,
+      openDeleteContractEndTypeDialog:
+        contractEndTypesUIContext.openDeleteContractEndTypeDialog,
     };
   }, [contractEndTypesUIContext]);
 
@@ -50,7 +52,9 @@ export function ContractEndTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     contractEndTypesUIProps.setIds([]);
-    dispatch(actions.fetchContractEndTypes(contractEndTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchContractEndTypes(contractEndTypesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contractEndTypesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function ContractEndTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditContractEndTypePage: contractEndTypesUIProps.openEditContractEndTypePage,
-        openDeleteContractEndTypeDialog: contractEndTypesUIProps.openDeleteContractEndTypeDialog,
+        openEditContractEndTypePage:
+          contractEndTypesUIProps.openEditContractEndTypePage,
+        openDeleteContractEndTypeDialog:
+          contractEndTypesUIProps.openDeleteContractEndTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

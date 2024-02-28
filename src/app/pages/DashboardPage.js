@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ServiceAccessShow } from "../../core/_partials/custom/service-access-show/ServiceAccessShow";
+import { numberFaToEn } from "src/core/_helpers";
 
 export function DashboardPage() {
   const { t } = useTranslation();
@@ -21,9 +22,10 @@ export function DashboardPage() {
             <h3 className="card-label">
               <span>{t("App.Name")}</span>
               {"  "}
-              <i className="far fa-angle-right text-dark mx-2"></i>
+              <i className="fas fa-angle-right text-dark mx-2"></i>
               {"  "}
-              <span>{system}</span>
+              <span>{t("Common.AllSubSystems")}</span>
+              1234
             </h3>
           </div>
         </div>
@@ -31,11 +33,12 @@ export function DashboardPage() {
           <div>{ServiceAccessShow(0, setSystem)}</div>
           <img
             alt="logo"
-            src="/media/logos/logo-gold.png"
+            src="/media/logos/logo.png"
             className="end-1rem"
             style={{
               position: "absolute",
               bottom: "1rem",
+              right: "1rem",
               height: "130px",
             }}
           ></img>

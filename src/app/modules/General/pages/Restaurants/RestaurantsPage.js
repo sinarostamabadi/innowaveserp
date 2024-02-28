@@ -26,7 +26,7 @@ export function RestaurantsPage({ history }) {
       history.push("/restaurant/restaurants/updateStatus");
     },
   };
-  
+
   return (
     <RestaurantsUIProvider restaurantsUIEvents={restaurantsUIEvents}>
       <RestaurantsLoadingDialog />

@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialDocumentsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const documentsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getDocumentById  
+    // getDocumentById
     documentFetched: (state, action) => {
       state.actionsLoading = false;
       state.documentForEdit = action.payload.documentForEdit;
       state.error = null;
     },
-    // findDocuments  
+    // findDocuments
     documentsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const documentsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createDocument  
+    // createDocument
     documentCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateDocument  
+    // updateDocument
     documentUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const documentsSlice = createSlice({
         return entity;
       });
     },
-    // deleteDocument  
+    // deleteDocument
     documentDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.DocumentId !== action.payload.DocumentId  
+        (el) => el.DocumentId !== action.payload.DocumentId
       );
     },
-    // deleteDocuments  
+    // deleteDocuments
     documentsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.DocumentId)  
+        (el) => !action.payload.ids.includes(el.DocumentId)
       );
     },
-    // documentsUpdateState  
+    // documentsUpdateState
     documentsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

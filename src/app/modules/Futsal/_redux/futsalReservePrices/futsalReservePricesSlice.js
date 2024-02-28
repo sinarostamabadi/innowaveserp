@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialFutsalReservePricesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const futsalReservePricesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getFutsalReservePriceById  
+    // getFutsalReservePriceById
     futsalReservePriceFetched: (state, action) => {
       state.actionsLoading = false;
-      state.futsalReservePriceForEdit = action.payload.futsalReservePriceForEdit;
+      state.futsalReservePriceForEdit =
+        action.payload.futsalReservePriceForEdit;
       state.error = null;
     },
-    // findFutsalReservePrices  
+    // findFutsalReservePrices
     futsalReservePricesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,43 @@ export const futsalReservePricesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createFutsalReservePrice  
+    // createFutsalReservePrice
     futsalReservePriceCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateFutsalReservePrice  
+    // updateFutsalReservePrice
     futsalReservePriceUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.FutsalReservePriceId === action.payload.futsalReservePrice.FutsalReservePriceId) {
+        if (
+          entity.FutsalReservePriceId ===
+          action.payload.futsalReservePrice.FutsalReservePriceId
+        ) {
           return action.payload.futsalReservePrice;
         }
         return entity;
       });
     },
-    // deleteFutsalReservePrice  
+    // deleteFutsalReservePrice
     futsalReservePriceDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.FutsalReservePriceId !== action.payload.FutsalReservePriceId  
+        (el) => el.FutsalReservePriceId !== action.payload.FutsalReservePriceId
       );
     },
-    // deleteFutsalReservePrices  
+    // deleteFutsalReservePrices
     futsalReservePricesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.FutsalReservePriceId)  
+        (el) => !action.payload.ids.includes(el.FutsalReservePriceId)
       );
     },
-    // futsalReservePricesUpdateState  
+    // futsalReservePricesUpdateState
     futsalReservePricesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

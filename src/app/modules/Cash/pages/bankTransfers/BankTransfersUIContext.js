@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BankTransferModel } from "../../../../../core/_models/Cash/BankTransferModel";
@@ -30,7 +29,7 @@ export function BankTransfersUIProvider({ bankTransfersUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function BankTransfersUIProvider({ bankTransfersUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: BankTransferModel,
-    newBankTransferButtonClick: bankTransfersUIEvents.newBankTransferButtonClick,
+    newBankTransferButtonClick:
+      bankTransfersUIEvents.newBankTransferButtonClick,
     openEditBankTransferPage: bankTransfersUIEvents.openEditBankTransferPage,
-    openDeleteBankTransferDialog: bankTransfersUIEvents.openDeleteBankTransferDialog,
-    openDeleteBankTransfersDialog: bankTransfersUIEvents.openDeleteBankTransfersDialog,
-    openFetchBankTransfersDialog: bankTransfersUIEvents.openFetchBankTransfersDialog,
-    openUpdateBankTransfersStatusDialog: bankTransfersUIEvents.openUpdateBankTransfersStatusDialog,
+    openDeleteBankTransferDialog:
+      bankTransfersUIEvents.openDeleteBankTransferDialog,
+    openDeleteBankTransfersDialog:
+      bankTransfersUIEvents.openDeleteBankTransfersDialog,
+    openFetchBankTransfersDialog:
+      bankTransfersUIEvents.openFetchBankTransfersDialog,
+    openUpdateBankTransfersStatusDialog:
+      bankTransfersUIEvents.openUpdateBankTransfersStatusDialog,
   };
   return (
-    <BankTransfersUIContext.Provider value={value}>{children}</BankTransfersUIContext.Provider>
+    <BankTransfersUIContext.Provider value={value}>
+      {children}
+    </BankTransfersUIContext.Provider>
   );
 }

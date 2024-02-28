@@ -7,10 +7,8 @@ export function ChequePapersGrouping() {
   const specsUIProps = useMemo(() => {
     return {
       ids: specsUIContext.ids,
-      openDeleteChequePapersDialog:
-        specsUIContext.openDeleteChequePapersDialog,
-      openFetchChequePapersDialog:
-        specsUIContext.openFetchChequePapersDialog,
+      openDeleteChequePapersDialog: specsUIContext.openDeleteChequePapersDialog,
+      openFetchChequePapersDialog: specsUIContext.openFetchChequePapersDialog,
     };
   }, [specsUIContext]);
 

@@ -44,7 +44,8 @@ export function MonthlyEmployeeIOEdit({
   const { actionsLoading, monthlyEmployeeIOForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.monthlyEmployeeIOs.actionsLoading,
-      monthlyEmployeeIOForEdit: state.monthlyEmployeeIOs.monthlyEmployeeIOForEdit,
+      monthlyEmployeeIOForEdit:
+        state.monthlyEmployeeIOs.monthlyEmployeeIOForEdit,
       error: state.monthlyEmployeeIOs.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function MonthlyEmployeeIOEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("MonthlyEmployeeIO.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("MonthlyEmployeeIO.Entity");
 
     if (monthlyEmployeeIOForEdit && id) {
       _title = t("Common.Edit") + " " + monthlyEmployeeIOForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function MonthlyEmployeeIOEdit({
         .then((arg) => {
           backToMonthlyEmployeeIOsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateMonthlyEmployeeIO(id, values))
         .then(() => backToMonthlyEmployeeIOsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

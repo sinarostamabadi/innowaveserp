@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialInsuranceCompaniesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const insuranceCompaniesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getInsuranceCompanyById  
+    // getInsuranceCompanyById
     insuranceCompanyFetched: (state, action) => {
       state.actionsLoading = false;
       state.insuranceCompanyForEdit = action.payload.insuranceCompanyForEdit;
       state.error = null;
     },
-    // findInsuranceCompanies  
+    // findInsuranceCompanies
     insuranceCompaniesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const insuranceCompaniesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createInsuranceCompany  
+    // createInsuranceCompany
     insuranceCompanyCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateInsuranceCompany  
+    // updateInsuranceCompany
     insuranceCompanyUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.InsuranceCompanyId === action.payload.insuranceCompany.InsuranceCompanyId) {
+        if (
+          entity.InsuranceCompanyId ===
+          action.payload.insuranceCompany.InsuranceCompanyId
+        ) {
           return action.payload.insuranceCompany;
         }
         return entity;
       });
     },
-    // deleteInsuranceCompany  
+    // deleteInsuranceCompany
     insuranceCompanyDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.InsuranceCompanyId !== action.payload.InsuranceCompanyId  
+        (el) => el.InsuranceCompanyId !== action.payload.InsuranceCompanyId
       );
     },
-    // deleteInsuranceCompanies  
+    // deleteInsuranceCompanies
     insuranceCompaniesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.InsuranceCompanyId)  
+        (el) => !action.payload.ids.includes(el.InsuranceCompanyId)
       );
     },
-    // insuranceCompaniesUpdateState  
+    // insuranceCompaniesUpdateState
     insuranceCompaniesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

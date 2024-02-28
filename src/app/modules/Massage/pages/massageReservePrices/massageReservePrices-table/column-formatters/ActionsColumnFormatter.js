@@ -12,10 +12,18 @@ export const ActionsColumnFormatter = (
   { openEditMassageReservePricePage, openDeleteMassageReservePriceDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="massageReservePrices-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="massageReservePrices-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-        onClick={() => openEditMassageReservePricePage(row.MassageReservePriceId)}
+        onClick={() =>
+          openEditMassageReservePricePage(row.MassageReservePriceId)
+        }
       >
         <span className="svg-icon svg-icon-md svg-icon-primary">
           <SVG
@@ -26,11 +34,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="massageReservePrices-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="massageReservePrices-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteMassageReservePriceDialog(row.MassageReservePriceId)}
+        onClick={() =>
+          openDeleteMassageReservePriceDialog(row.MassageReservePriceId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

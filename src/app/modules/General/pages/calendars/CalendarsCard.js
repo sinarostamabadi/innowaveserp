@@ -19,10 +19,9 @@ export function CalendarsCard() {
       queryParams: calendarsUIContext.queryParams,
       setQueryParams: calendarsUIContext.setQueryParams,
       newCalendarButtonClick: calendarsUIContext.newCalendarButtonClick,
-      openDeleteCalendarsDialog:  
-        calendarsUIContext.openDeleteCalendarsDialog,
+      openDeleteCalendarsDialog: calendarsUIContext.openDeleteCalendarsDialog,
       openEditCalendarPage: calendarsUIContext.openEditCalendarPage,
-      openUpdateCalendarsStatusDialog:  
+      openUpdateCalendarsStatusDialog:
         calendarsUIContext.openUpdateCalendarsStatusDialog,
       openFetchCalendarsDialog: calendarsUIContext.openFetchCalendarsDialog,
     };
@@ -31,12 +30,12 @@ export function CalendarsCard() {
     <Card>
       <CardHeader title="EntityTitle">
         <CardHeaderToolbar>
-          <button  
-            type="button"  
-            className="btn btn-primary"  
+          <button
+            type="button"
+            className="btn btn-primary"
             onClick={calendarsUIProps.newCalendarButtonClick}
           >
-            EntityTitle  
+            EntityTitle
           </button>
         </CardHeaderToolbar>
       </CardHeader>

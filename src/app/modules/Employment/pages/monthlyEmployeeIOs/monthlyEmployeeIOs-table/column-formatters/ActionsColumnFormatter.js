@@ -12,7 +12,13 @@ export const ActionsColumnFormatter = (
   { openEditMonthlyEmployeeIOPage, openDeleteMonthlyEmployeeIODialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="monthlyEmployeeIOs-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="monthlyEmployeeIOs-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditMonthlyEmployeeIOPage(row.MonthlyEmployeeIOId)}
@@ -26,11 +32,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="monthlyEmployeeIOs-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="monthlyEmployeeIOs-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteMonthlyEmployeeIODialog(row.MonthlyEmployeeIOId)}
+        onClick={() =>
+          openDeleteMonthlyEmployeeIODialog(row.MonthlyEmployeeIOId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

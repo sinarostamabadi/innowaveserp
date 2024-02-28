@@ -18,9 +18,9 @@ import { BankAccountModel } from "../../../../../../core/_models/Core/BankAccoun
 import {
   getConfig,
   getFields,
-  initial
+  initial,
 } from "../../../../../../core/_models/ModelDescriber";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function BankAccountsTable() {
   const { t } = useTranslation();
@@ -33,7 +33,8 @@ export function BankAccountsTable() {
       queryParams: bankAccountsUIContext.queryParams,
       setQueryParams: bankAccountsUIContext.setQueryParams,
       openEditBankAccountPage: bankAccountsUIContext.openEditBankAccountPage,
-      openDeleteBankAccountDialog: bankAccountsUIContext.openDeleteBankAccountDialog,
+      openDeleteBankAccountDialog:
+        bankAccountsUIContext.openDeleteBankAccountDialog,
     };
   }, [bankAccountsUIContext]);
 
@@ -79,8 +80,9 @@ export function BankAccountsTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditBankAccountPage: bankAccountsUIProps.openEditBankAccountPage,
-        openDeleteBankAccountDialog: bankAccountsUIProps.openDeleteBankAccountDialog,
-        t: t
+        openDeleteBankAccountDialog:
+          bankAccountsUIProps.openDeleteBankAccountDialog,
+        t: t,
       },
       classes: "text-right pr-0",
       headerClasses: "text-right pr-3",
@@ -114,7 +116,7 @@ export function BankAccountsTable() {
                 bordered={false}
                 remote
                 keyField={configs.id}
-                data={!!entities ? entities: [] }
+                data={!!entities ? entities : []}
                 columns={columns}
                 defaultSorted={configs.defaultSorted}
                 onTableChange={getHandlerTableChange(
@@ -131,4 +133,4 @@ export function BankAccountsTable() {
       </PaginationProvider>
     </>
   );
-}  
+}

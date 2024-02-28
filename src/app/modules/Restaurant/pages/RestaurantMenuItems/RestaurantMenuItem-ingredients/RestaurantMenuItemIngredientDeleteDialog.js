@@ -10,23 +10,27 @@ export function RestaurantMenuItemIngredientDeleteDialog() {
   const { t } = useTranslation();
 
   // RestaurantMenuItemIngredients UI Context
-  const restaurantMenuItemIngredientsUIContext = useRestaurantMenuItemIngredientsUIContext();
+  const restaurantMenuItemIngredientsUIContext =
+    useRestaurantMenuItemIngredientsUIContext();
   const restaurantMenuItemIngredientsUIProps = useMemo(() => {
     return {
       id: restaurantMenuItemIngredientsUIContext.selectedId,
       personId: restaurantMenuItemIngredientsUIContext.personId,
       show: restaurantMenuItemIngredientsUIContext.showDeleteRestaurantMenuItemIngredientDialog,
-      onHide: restaurantMenuItemIngredientsUIContext.closeDeleteRestaurantMenuItemIngredientDialog,
+      onHide:
+        restaurantMenuItemIngredientsUIContext.closeDeleteRestaurantMenuItemIngredientDialog,
       queryParams: restaurantMenuItemIngredientsUIContext.queryParams,
       setIds: restaurantMenuItemIngredientsUIContext.setIds,
-      findRestaurantMenuItemIngredient: restaurantMenuItemIngredientsUIContext.findRestaurantMenuItemIngredient,
-      removeRestaurantMenuItemIngredient: restaurantMenuItemIngredientsUIContext.removeRestaurantMenuItemIngredient,
+      findRestaurantMenuItemIngredient:
+        restaurantMenuItemIngredientsUIContext.findRestaurantMenuItemIngredient,
+      removeRestaurantMenuItemIngredient:
+        restaurantMenuItemIngredientsUIContext.removeRestaurantMenuItemIngredient,
     };
   }, [restaurantMenuItemIngredientsUIContext]);
 
   // RestaurantMenuItemIngredients Redux state
   const dispatch = useDispatch();
-  const [ isLoading, setIsLoading ] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // if !id we should close modal
   useEffect(() => {
@@ -40,7 +44,9 @@ export function RestaurantMenuItemIngredientDeleteDialog() {
   useEffect(() => {}, [isLoading, dispatch]);
 
   const deleteRestaurantMenuItemIngredient = () => {
-    restaurantMenuItemIngredientsUIProps.removeRestaurantMenuItemIngredient(restaurantMenuItemIngredientsUIProps.id)
+    restaurantMenuItemIngredientsUIProps.removeRestaurantMenuItemIngredient(
+      restaurantMenuItemIngredientsUIProps.id
+    );
     restaurantMenuItemIngredientsUIProps.onHide();
   };
 
@@ -57,9 +63,7 @@ export function RestaurantMenuItemIngredientDeleteDialog() {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && (
-          <span>{t("Common.DeleteQuestion")}</span>
-        )}
+        {!isLoading && <span>{t("Common.DeleteQuestion")}</span>}
         {isLoading && <span>{t("Common.DeleteLoading")}</span>}
       </Modal.Body>
       <Modal.Footer>

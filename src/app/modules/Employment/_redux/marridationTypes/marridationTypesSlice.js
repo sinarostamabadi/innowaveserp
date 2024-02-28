@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialMarridationTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const marridationTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getMarridationTypeById  
+    // getMarridationTypeById
     marridationTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.marridationTypeForEdit = action.payload.marridationTypeForEdit;
       state.error = null;
     },
-    // findMarridationTypes  
+    // findMarridationTypes
     marridationTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const marridationTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createMarridationType  
+    // createMarridationType
     marridationTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateMarridationType  
+    // updateMarridationType
     marridationTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.MarridationTypeId === action.payload.marridationType.MarridationTypeId) {
+        if (
+          entity.MarridationTypeId ===
+          action.payload.marridationType.MarridationTypeId
+        ) {
           return action.payload.marridationType;
         }
         return entity;
       });
     },
-    // deleteMarridationType  
+    // deleteMarridationType
     marridationTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.MarridationTypeId !== action.payload.MarridationTypeId  
+        (el) => el.MarridationTypeId !== action.payload.MarridationTypeId
       );
     },
-    // deleteMarridationTypes  
+    // deleteMarridationTypes
     marridationTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.MarridationTypeId)  
+        (el) => !action.payload.ids.includes(el.MarridationTypeId)
       );
     },
-    // marridationTypesUpdateState  
+    // marridationTypesUpdateState
     marridationTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

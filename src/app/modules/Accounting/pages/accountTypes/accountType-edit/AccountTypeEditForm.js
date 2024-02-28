@@ -2,7 +2,10 @@ import React, { useCallback } from "react";
 import axios from "axios";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { Input, SuggestionField } from "../../../../../../core/_partials/controls";
+import {
+  Input,
+  SuggestionField,
+} from "../../../../../../core/_partials/controls";
 import { useTranslation } from "react-i18next";
 
 export function AccountTypeEditForm({ accountType, btnRef, saveAccountType }) {
@@ -16,30 +19,30 @@ export function AccountTypeEditForm({ accountType, btnRef, saveAccountType }) {
     Level: Yup.string()
       .min(1, t("err.Min", { 0: 2 }))
       .max(3, t("err.Max", { 0: 10 }))
-      .required(t("err.IsRequired", { 0: t("AccountType.Level") }))
+      .required(t("err.IsRequired", { 0: t("AccountType.Level") })),
   });
 
-  function clean (dirty) {
+  function clean(dirty) {
     return {
       AccountTypeId: dirty.AccountTypeId,
       Title: dirty.Title,
       Level: dirty.Level && +dirty.Level,
       ParentId: dirty.ParentId && +dirty.ParentId,
     };
-  };
+  }
 
-    const handleSuggestionAccountType = useCallback((query, fnCallback) => {
-      axios
-        .post("accountType/get", {
-          Filters: [{ Property: "Title", Operation: 7, Values: [query] }],
-          OrderBy: "Title asc",
-          PageNumber: 1,
-          PageSize: 10,
-        })
-        .then(({ data }) => {
-          fnCallback(data.Items);
-        });
-    });
+  const handleSuggestionAccountType = useCallback((query, fnCallback) => {
+    axios
+      .post("accountType/get", {
+        Filters: [{ Property: "Title", Operation: 7, Values: [query] }],
+        OrderBy: "Title asc",
+        PageNumber: 1,
+        PageSize: 10,
+      })
+      .then(({ data }) => {
+        fnCallback(data.Items);
+      });
+  });
 
   return (
     <>
@@ -72,7 +75,11 @@ export function AccountTypeEditForm({ accountType, btnRef, saveAccountType }) {
                     label={t("AccountType.Parent")}
                     placeHolder={t("msg.SelectBySuggestion")}
                     handleSearch={handleSuggestionAccountType}
-                    defaultValue={accountType && accountType.Parent ? [accountType.Parent] : []}
+                    defaultValue={
+                      accountType && accountType.Parent
+                        ? [accountType.Parent]
+                        : []
+                    }
                     renderMenuItemChildren={(option, props) => (
                       <div>
                         <h6>{option.Title}</h6>

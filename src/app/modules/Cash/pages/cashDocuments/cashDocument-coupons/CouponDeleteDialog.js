@@ -40,10 +40,10 @@ export function CouponDeleteDialog() {
   }, [couponsUIProps.id]);
 
   // looking for loading/dispatch
-  useEffect(() => { }, [isLoading, dispatch]);
+  useEffect(() => {}, [isLoading, dispatch]);
 
   const deleteCoupon = () => {
-    couponsUIProps.removeCoupon(couponsUIProps.id)
+    couponsUIProps.removeCoupon(couponsUIProps.id);
     couponsUIProps.onHide();
   };
 
@@ -60,9 +60,7 @@ export function CouponDeleteDialog() {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && (
-          <span>{t("Common.DeleteQuestion")}</span>
-        )}
+        {!isLoading && <span>{t("Common.DeleteQuestion")}</span>}
         {isLoading && <span>{t("Common.DeleteLoading")}</span>}
       </Modal.Body>
       <Modal.Footer>

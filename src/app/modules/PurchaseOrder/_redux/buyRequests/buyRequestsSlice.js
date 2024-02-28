@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBuyRequestsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const buyRequestsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBuyRequestById  
+    // getBuyRequestById
     buyRequestFetched: (state, action) => {
       state.actionsLoading = false;
       state.buyRequestForEdit = action.payload.buyRequestForEdit;
       state.error = null;
     },
-    // findBuyRequests  
+    // findBuyRequests
     buyRequestsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const buyRequestsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBuyRequest  
+    // createBuyRequest
     buyRequestCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBuyRequest  
+    // updateBuyRequest
     buyRequestUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const buyRequestsSlice = createSlice({
         return entity;
       });
     },
-    // deleteBuyRequest  
+    // deleteBuyRequest
     buyRequestDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BuyRequestId !== action.payload.BuyRequestId  
+        (el) => el.BuyRequestId !== action.payload.BuyRequestId
       );
     },
-    // deleteBuyRequests  
+    // deleteBuyRequests
     buyRequestsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BuyRequestId)  
+        (el) => !action.payload.ids.includes(el.BuyRequestId)
       );
     },
-    // buyRequestsUpdateState  
+    // buyRequestsUpdateState
     buyRequestsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -26,7 +26,7 @@ export function DocumentTypesPage({ history }) {
       history.push("/accounting/documentTypes/updateStatus");
     },
   };
-  
+
   return (
     <DocumentTypesUIProvider documentTypesUIEvents={documentTypesUIEvents}>
       <DocumentTypesLoadingDialog />

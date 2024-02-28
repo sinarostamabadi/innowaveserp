@@ -1,17 +1,19 @@
-
 import * as requestFromServer from "./poolDiscountsCrud";
 import { poolDiscountsSlice, callTypes } from "./poolDiscountsSlice";
 const { actions } = poolDiscountsSlice;
 export const fetchPoolDiscounts = (queryParams) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.list }));
-  return requestFromServer  
-    .findPoolDiscounts(queryParams)  
+  return requestFromServer
+    .findPoolDiscounts(queryParams)
     .then((response) => {
       const { Items, TotalCount } = response.data;
       dispatch(
-        actions.poolDiscountsFetched({ totalCount: TotalCount, entities: Items })  
+        actions.poolDiscountsFetched({
+          totalCount: TotalCount,
+          entities: Items,
+        })
       );
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't find poolDiscounts";
       dispatch(actions.catchError({ error, callType: callTypes.list }));
@@ -19,15 +21,19 @@ export const fetchPoolDiscounts = (queryParams) => (dispatch) => {
 };
 export const fetchPoolDiscount = (id) => (dispatch) => {
   if (!id) {
-    return dispatch(actions.poolDiscountFetched({ poolDiscountForEdit: undefined }));
+    return dispatch(
+      actions.poolDiscountFetched({ poolDiscountForEdit: undefined })
+    );
   }
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .getPoolDiscountById(id)  
+  return requestFromServer
+    .getPoolDiscountById(id)
     .then((response) => {
       const poolDiscount = response.data;
-      dispatch(actions.poolDiscountFetched({ poolDiscountForEdit: poolDiscount }));
-    })  
+      dispatch(
+        actions.poolDiscountFetched({ poolDiscountForEdit: poolDiscount })
+      );
+    })
     .catch((error) => {
       error.clientMessage = "Can't find poolDiscount";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -35,11 +41,11 @@ export const fetchPoolDiscount = (id) => (dispatch) => {
 };
 export const deletePoolDiscount = (id) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .deletePoolDiscount(id)  
+  return requestFromServer
+    .deletePoolDiscount(id)
     .then((response) => {
       dispatch(actions.poolDiscountDeleted({ id }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't delete poolDiscount";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -48,12 +54,12 @@ export const deletePoolDiscount = (id) => (dispatch) => {
 };
 export const createPoolDiscount = (poolDiscountForCreation) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .createPoolDiscount(poolDiscountForCreation)  
+  return requestFromServer
+    .createPoolDiscount(poolDiscountForCreation)
     .then((response) => {
       const poolDiscount = response.data;
       dispatch(actions.poolDiscountCreated(poolDiscount));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't create poolDiscount";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -62,11 +68,11 @@ export const createPoolDiscount = (poolDiscountForCreation) => (dispatch) => {
 };
 export const updatePoolDiscount = (poolDiscount) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .updatePoolDiscount(poolDiscount)  
+  return requestFromServer
+    .updatePoolDiscount(poolDiscount)
     .then((response) => {
       dispatch(actions.poolDiscountUpdated({ poolDiscount }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't update poolDiscount";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -75,11 +81,11 @@ export const updatePoolDiscount = (poolDiscount) => (dispatch) => {
 };
 export const updatePoolDiscountsStatus = (ids, status) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .updateStatusForPoolDiscounts(ids, status)  
+  return requestFromServer
+    .updateStatusForPoolDiscounts(ids, status)
     .then(() => {
       dispatch(actions.poolDiscountsStatusUpdated({ ids, status }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't update poolDiscounts status";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -87,14 +93,14 @@ export const updatePoolDiscountsStatus = (ids, status) => (dispatch) => {
 };
 export const deletePoolDiscounts = (ids) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .deletePoolDiscounts(ids)  
+  return requestFromServer
+    .deletePoolDiscounts(ids)
     .then(() => {
       dispatch(actions.poolDiscountsDeleted({ ids }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't delete poolDiscounts";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

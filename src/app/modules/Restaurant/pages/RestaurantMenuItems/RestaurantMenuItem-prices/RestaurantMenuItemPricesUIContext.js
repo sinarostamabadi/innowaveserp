@@ -22,10 +22,14 @@ export function useRestaurantMenuItemPricesUIContext() {
   return useContext(RestaurantMenuItemPricesUIContext);
 }
 
-export const RestaurantMenuItemPricesUIConsumer = RestaurantMenuItemPricesUIContext.Consumer;
+export const RestaurantMenuItemPricesUIConsumer =
+  RestaurantMenuItemPricesUIContext.Consumer;
 
 export const RestaurantMenuItemPricesUIProvider = forwardRef(
-  ({ currentRestaurantMenuItemId, children, restaurantMenuItemPrice, btnRef }, ref) => {
+  (
+    { currentRestaurantMenuItemId, children, restaurantMenuItemPrice, btnRef },
+    ref
+  ) => {
     const { t } = useTranslation();
     const [serialErrors, setSerialErrors] = useState("");
 
@@ -35,7 +39,10 @@ export const RestaurantMenuItemPricesUIProvider = forwardRef(
           fn(
             restaurantMenuItemPrices.map((d) => {
               let x = {
-                RestaurantMenuItemPriceId: d.RestaurantMenuItemPriceId.toString().indexOf("temp") > -1? null: +d.RestaurantMenuItemPriceId,
+                RestaurantMenuItemPriceId:
+                  d.RestaurantMenuItemPriceId.toString().indexOf("temp") > -1
+                    ? null
+                    : +d.RestaurantMenuItemPriceId,
                 Price: d.Price,
                 ActiveDate: d.ActiveDate,
                 IsDeleted: d.IsDeleted,
@@ -49,7 +56,9 @@ export const RestaurantMenuItemPricesUIProvider = forwardRef(
 
     const [selectedId, setSelectedId] = useState(null);
     const [selectedItem, setSelectedItem] = useState(null);
-    const [restaurantMenuItemId, setRestaurantMenuItemId] = useState(currentRestaurantMenuItemId);
+    const [restaurantMenuItemId, setRestaurantMenuItemId] = useState(
+      currentRestaurantMenuItemId
+    );
 
     const initRestaurantMenuItemPrice = {
       RestaurantMenuItemPriceId: "",
@@ -63,7 +72,8 @@ export const RestaurantMenuItemPricesUIProvider = forwardRef(
     const { actionsLoading, restaurantMenuItemForEdit, error } = useSelector(
       (state) => ({
         actionsLoading: state.restaurantMenuItems.actionsLoading,
-        restaurantMenuItemForEdit: state.restaurantMenuItems.restaurantMenuItemForEdit,
+        restaurantMenuItemForEdit:
+          state.restaurantMenuItems.restaurantMenuItemForEdit,
         error: state.restaurantMenuItems.error,
       }),
       shallowEqual
@@ -84,8 +94,11 @@ export const RestaurantMenuItemPricesUIProvider = forwardRef(
       });
     }, []);
 
-    const [restaurantMenuItemPrices, setRestaurantMenuItemPrices] = useState(restaurantMenuItemPrice);
-    const [activeRestaurantMenuItemPrices, setActiveRestaurantMenuItemPrices] = useState(restaurantMenuItemPrice);
+    const [restaurantMenuItemPrices, setRestaurantMenuItemPrices] = useState(
+      restaurantMenuItemPrice
+    );
+    const [activeRestaurantMenuItemPrices, setActiveRestaurantMenuItemPrices] =
+      useState(restaurantMenuItemPrice);
     const [totalCount, setTotalCount] = useState(0);
 
     useEffect(() => {
@@ -107,19 +120,25 @@ export const RestaurantMenuItemPricesUIProvider = forwardRef(
     }, [restaurantMenuItemForEdit]);
 
     useEffect(() => {
-      initRestaurantMenuItemPrice.RestaurantMenuItemId = currentRestaurantMenuItemId;
+      initRestaurantMenuItemPrice.RestaurantMenuItemId =
+        currentRestaurantMenuItemId;
 
       setRestaurantMenuItemId(currentRestaurantMenuItemId);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentRestaurantMenuItemId]);
 
     useEffect(() => {
-      setActiveRestaurantMenuItemPrices(restaurantMenuItemPrices.filter((x) => x.IsDeleted == false));
+      setActiveRestaurantMenuItemPrices(
+        restaurantMenuItemPrices.filter((x) => x.IsDeleted == false)
+      );
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [restaurantMenuItemPrices]);
 
     // Edit Dialog, New Dialog
-    const [showEditRestaurantMenuItemPriceDialog, setShowEditRestaurantMenuItemPriceDialog] = useState(false);
+    const [
+      showEditRestaurantMenuItemPriceDialog,
+      setShowEditRestaurantMenuItemPriceDialog,
+    ] = useState(false);
     const openNewRestaurantMenuItemPriceDialog = () => {
       setSelectedId(undefined);
       setShowEditRestaurantMenuItemPriceDialog(true);
@@ -134,7 +153,10 @@ export const RestaurantMenuItemPricesUIProvider = forwardRef(
       setShowEditRestaurantMenuItemPriceDialog(false);
     };
 
-    const [showDeleteRestaurantMenuItemPriceDialog, setShowDeleteRestaurantMenuItemPriceDialog] = useState(false);
+    const [
+      showDeleteRestaurantMenuItemPriceDialog,
+      setShowDeleteRestaurantMenuItemPriceDialog,
+    ] = useState(false);
     const openDeleteRestaurantMenuItemPriceDialog = (id) => {
       setSelectedId(id);
       setShowDeleteRestaurantMenuItemPriceDialog(true);
@@ -144,9 +166,10 @@ export const RestaurantMenuItemPricesUIProvider = forwardRef(
       setShowDeleteRestaurantMenuItemPriceDialog(false);
     };
 
-    const [showDeleteRestaurantMenuItemPricesDialog, setShowDeleteRestaurantMenuItemPricesDialog] = useState(
-      false
-    );
+    const [
+      showDeleteRestaurantMenuItemPricesDialog,
+      setShowDeleteRestaurantMenuItemPricesDialog,
+    ] = useState(false);
     const openDeleteRestaurantMenuItemPricesDialog = () => {
       setShowDeleteRestaurantMenuItemPricesDialog(true);
     };
@@ -154,7 +177,10 @@ export const RestaurantMenuItemPricesUIProvider = forwardRef(
       setShowDeleteRestaurantMenuItemPricesDialog(false);
     };
 
-    const [showFetchRestaurantMenuItemPricesDialog, setShowFetchRestaurantMenuItemPricesDialog] = useState(false);
+    const [
+      showFetchRestaurantMenuItemPricesDialog,
+      setShowFetchRestaurantMenuItemPricesDialog,
+    ] = useState(false);
     const openFetchRestaurantMenuItemPricesDialog = () => {
       setShowFetchRestaurantMenuItemPricesDialog(true);
     };
@@ -166,11 +192,14 @@ export const RestaurantMenuItemPricesUIProvider = forwardRef(
       if (!!restaurantMenuItemPriceId == false) return;
 
       const restaurantMenuItemPriceObj = restaurantMenuItemPrices.filter(
-        (restaurantMenuItemPrice) => restaurantMenuItemPrice.RestaurantMenuItemPriceId == restaurantMenuItemPriceId
+        (restaurantMenuItemPrice) =>
+          restaurantMenuItemPrice.RestaurantMenuItemPriceId ==
+          restaurantMenuItemPriceId
       )[0];
 
       return {
-        RestaurantMenuItemPriceId: restaurantMenuItemPriceObj.RestaurantMenuItemPriceId,
+        RestaurantMenuItemPriceId:
+          restaurantMenuItemPriceObj.RestaurantMenuItemPriceId,
         RestaurantMenuItemId: restaurantMenuItemPriceObj.RestaurantMenuItemId,
         RestaurantMenuItem: restaurantMenuItemPriceObj.RestaurantMenuItem,
         Price: restaurantMenuItemPriceObj.Price,
@@ -181,16 +210,26 @@ export const RestaurantMenuItemPricesUIProvider = forwardRef(
     };
 
     const addRestaurantMenuItemPrice = (restaurantMenuItemPrice) => {
-      restaurantMenuItemPrice.RestaurantMenuItemPriceId = "temp_" + Math.floor(Math.random() * 100);
+      restaurantMenuItemPrice.RestaurantMenuItemPriceId =
+        "temp_" + Math.floor(Math.random() * 100);
 
-      setRestaurantMenuItemPrices((restaurantMenuItemPrices) => [...restaurantMenuItemPrices, restaurantMenuItemPrice]);
+      setRestaurantMenuItemPrices((restaurantMenuItemPrices) => [
+        ...restaurantMenuItemPrices,
+        restaurantMenuItemPrice,
+      ]);
     };
 
     const removeRestaurantMenuItemPrice = (restaurantMenuItemPriceId) => {
       if (restaurantMenuItemPriceId.toString().indexOf("temp_") > -1)
-        setRestaurantMenuItemPrices(restaurantMenuItemPrices.filter((x) => x.RestaurantMenuItemPriceId != restaurantMenuItemPriceId));
+        setRestaurantMenuItemPrices(
+          restaurantMenuItemPrices.filter(
+            (x) => x.RestaurantMenuItemPriceId != restaurantMenuItemPriceId
+          )
+        );
       else {
-        let restaurantMenuItemPrice = findRestaurantMenuItemPrice(restaurantMenuItemPriceId);
+        let restaurantMenuItemPrice = findRestaurantMenuItemPrice(
+          restaurantMenuItemPriceId
+        );
         restaurantMenuItemPrice["IsDeleted"] = true;
         updateRestaurantMenuItemPrice(restaurantMenuItemPrice);
       }
@@ -200,7 +239,10 @@ export const RestaurantMenuItemPricesUIProvider = forwardRef(
       console.log("restaurantMenuItemPrice > ", restaurantMenuItemPrice);
       setRestaurantMenuItemPrices((restaurantMenuItemPrices) =>
         restaurantMenuItemPrices.map((item) =>
-          item.RestaurantMenuItemPriceId == restaurantMenuItemPrice.RestaurantMenuItemPriceId ? restaurantMenuItemPrice : item
+          item.RestaurantMenuItemPriceId ==
+          restaurantMenuItemPrice.RestaurantMenuItemPriceId
+            ? restaurantMenuItemPrice
+            : item
         )
       );
 

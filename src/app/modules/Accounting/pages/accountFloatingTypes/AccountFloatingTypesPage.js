@@ -17,7 +17,9 @@ export function AccountFloatingTypesPage({ history }) {
       history.push(`/accounting/accountFloatingTypes/${id}/delete`);
     },
     openDeleteAccountFloatingTypesDialog: () => {
-      history.push(`/accounting/accountFloatingTypes/deleteAccountFloatingTypes`);
+      history.push(
+        `/accounting/accountFloatingTypes/deleteAccountFloatingTypes`
+      );
     },
     openFetchAccountFloatingTypesDialog: () => {
       history.push(`/accounting/accountFloatingTypes/fetch`);
@@ -26,9 +28,11 @@ export function AccountFloatingTypesPage({ history }) {
       history.push("/accounting/accountFloatingTypes/updateStatus");
     },
   };
-  
+
   return (
-    <AccountFloatingTypesUIProvider accountFloatingTypesUIEvents={accountFloatingTypesUIEvents}>
+    <AccountFloatingTypesUIProvider
+      accountFloatingTypesUIEvents={accountFloatingTypesUIEvents}
+    >
       <AccountFloatingTypesLoadingDialog />
       <Route path="/accounting/accountFloatingTypes/:id/delete">
         {({ history, match }) => (

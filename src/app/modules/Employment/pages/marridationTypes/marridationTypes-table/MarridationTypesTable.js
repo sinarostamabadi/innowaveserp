@@ -32,8 +32,10 @@ export function MarridationTypesTable() {
       setIds: marridationTypesUIContext.setIds,
       queryParams: marridationTypesUIContext.queryParams,
       setQueryParams: marridationTypesUIContext.setQueryParams,
-      openEditMarridationTypePage: marridationTypesUIContext.openEditMarridationTypePage,
-      openDeleteMarridationTypeDialog: marridationTypesUIContext.openDeleteMarridationTypeDialog,
+      openEditMarridationTypePage:
+        marridationTypesUIContext.openEditMarridationTypePage,
+      openDeleteMarridationTypeDialog:
+        marridationTypesUIContext.openDeleteMarridationTypeDialog,
     };
   }, [marridationTypesUIContext]);
 
@@ -50,7 +52,9 @@ export function MarridationTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     marridationTypesUIProps.setIds([]);
-    dispatch(actions.fetchMarridationTypes(marridationTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchMarridationTypes(marridationTypesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [marridationTypesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function MarridationTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditMarridationTypePage: marridationTypesUIProps.openEditMarridationTypePage,
-        openDeleteMarridationTypeDialog: marridationTypesUIProps.openDeleteMarridationTypeDialog,
+        openEditMarridationTypePage:
+          marridationTypesUIProps.openEditMarridationTypePage,
+        openDeleteMarridationTypeDialog:
+          marridationTypesUIProps.openDeleteMarridationTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -26,7 +26,7 @@ export function CurrencyRatesPage({ history }) {
       history.push("/general/currencyRates/updateStatus");
     },
   };
-  
+
   return (
     <CurrencyRatesUIProvider currencyRatesUIEvents={currencyRatesUIEvents}>
       <CurrencyRatesLoadingDialog />

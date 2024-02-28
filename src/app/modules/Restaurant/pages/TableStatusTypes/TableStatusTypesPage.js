@@ -26,9 +26,11 @@ export function TableStatusTypesPage({ history }) {
       history.push("//tableStatusTypes/updateStatus");
     },
   };
-  
+
   return (
-    <TableStatusTypesUIProvider tableStatusTypesUIEvents={tableStatusTypesUIEvents}>
+    <TableStatusTypesUIProvider
+      tableStatusTypesUIEvents={tableStatusTypesUIEvents}
+    >
       <TableStatusTypesLoadingDialog />
       <Route path="//tableStatusTypes/:id/delete">
         {({ history, match }) => (

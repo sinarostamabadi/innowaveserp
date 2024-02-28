@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { SettlementModel } from "../../../../../core/_models/Cash/SettlementModel";
@@ -30,7 +29,7 @@ export function SettlementsUIProvider({ settlementsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -41,11 +40,15 @@ export function SettlementsUIProvider({ settlementsUIEvents, children }) {
     newSettlementButtonClick: settlementsUIEvents.newSettlementButtonClick,
     openEditSettlementPage: settlementsUIEvents.openEditSettlementPage,
     openDeleteSettlementDialog: settlementsUIEvents.openDeleteSettlementDialog,
-    openDeleteSettlementsDialog: settlementsUIEvents.openDeleteSettlementsDialog,
+    openDeleteSettlementsDialog:
+      settlementsUIEvents.openDeleteSettlementsDialog,
     openFetchSettlementsDialog: settlementsUIEvents.openFetchSettlementsDialog,
-    openUpdateSettlementsStatusDialog: settlementsUIEvents.openUpdateSettlementsStatusDialog,
+    openUpdateSettlementsStatusDialog:
+      settlementsUIEvents.openUpdateSettlementsStatusDialog,
   };
   return (
-    <SettlementsUIContext.Provider value={value}>{children}</SettlementsUIContext.Provider>
+    <SettlementsUIContext.Provider value={value}>
+      {children}
+    </SettlementsUIContext.Provider>
   );
 }

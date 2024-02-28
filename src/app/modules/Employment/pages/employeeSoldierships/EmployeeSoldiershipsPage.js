@@ -17,7 +17,9 @@ export function EmployeeSoldiershipsPage({ history }) {
       history.push(`/employment/employeeSoldierships/${id}/delete`);
     },
     openDeleteEmployeeSoldiershipsDialog: () => {
-      history.push(`/employment/employeeSoldierships/deleteEmployeeSoldierships`);
+      history.push(
+        `/employment/employeeSoldierships/deleteEmployeeSoldierships`
+      );
     },
     openFetchEmployeeSoldiershipsDialog: () => {
       history.push(`/employment/employeeSoldierships/fetch`);
@@ -26,9 +28,11 @@ export function EmployeeSoldiershipsPage({ history }) {
       history.push("/employment/employeeSoldierships/updateStatus");
     },
   };
-  
+
   return (
-    <EmployeeSoldiershipsUIProvider employeeSoldiershipsUIEvents={employeeSoldiershipsUIEvents}>
+    <EmployeeSoldiershipsUIProvider
+      employeeSoldiershipsUIEvents={employeeSoldiershipsUIEvents}
+    >
       <EmployeeSoldiershipsLoadingDialog />
       <Route path="/employment/employeeSoldierships/:id/delete">
         {({ history, match }) => (

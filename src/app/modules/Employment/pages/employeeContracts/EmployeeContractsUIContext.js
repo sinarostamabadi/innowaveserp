@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmployeeContractModel } from "../../../../../core/_models/Employment/EmployeeContractModel";
@@ -12,7 +11,10 @@ export function useEmployeeContractsUIContext() {
 
 export const EmployeeContractsUIConsumer = EmployeeContractsUIContext.Consumer;
 
-export function EmployeeContractsUIProvider({ employeeContractsUIEvents, children }) {
+export function EmployeeContractsUIProvider({
+  employeeContractsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(EmployeeContractModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function EmployeeContractsUIProvider({ employeeContractsUIEvents, childre
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function EmployeeContractsUIProvider({ employeeContractsUIEvents, childre
     setIds,
     setQueryParams,
     dataModel: EmployeeContractModel,
-    newEmployeeContractButtonClick: employeeContractsUIEvents.newEmployeeContractButtonClick,
-    openEditEmployeeContractPage: employeeContractsUIEvents.openEditEmployeeContractPage,
-    openDeleteEmployeeContractDialog: employeeContractsUIEvents.openDeleteEmployeeContractDialog,
-    openDeleteEmployeeContractsDialog: employeeContractsUIEvents.openDeleteEmployeeContractsDialog,
-    openFetchEmployeeContractsDialog: employeeContractsUIEvents.openFetchEmployeeContractsDialog,
-    openUpdateEmployeeContractsStatusDialog: employeeContractsUIEvents.openUpdateEmployeeContractsStatusDialog,
+    newEmployeeContractButtonClick:
+      employeeContractsUIEvents.newEmployeeContractButtonClick,
+    openEditEmployeeContractPage:
+      employeeContractsUIEvents.openEditEmployeeContractPage,
+    openDeleteEmployeeContractDialog:
+      employeeContractsUIEvents.openDeleteEmployeeContractDialog,
+    openDeleteEmployeeContractsDialog:
+      employeeContractsUIEvents.openDeleteEmployeeContractsDialog,
+    openFetchEmployeeContractsDialog:
+      employeeContractsUIEvents.openFetchEmployeeContractsDialog,
+    openUpdateEmployeeContractsStatusDialog:
+      employeeContractsUIEvents.openUpdateEmployeeContractsStatusDialog,
   };
   return (
-    <EmployeeContractsUIContext.Provider value={value}>{children}</EmployeeContractsUIContext.Provider>
+    <EmployeeContractsUIContext.Provider value={value}>
+      {children}
+    </EmployeeContractsUIContext.Provider>
   );
 }

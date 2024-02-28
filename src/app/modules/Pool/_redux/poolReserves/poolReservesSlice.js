@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPoolReservesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const poolReservesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPoolReserveById  
+    // getPoolReserveById
     poolReserveFetched: (state, action) => {
       state.actionsLoading = false;
       state.poolReserveForEdit = action.payload.poolReserveForEdit;
       state.error = null;
     },
-    // findPoolReserves  
+    // findPoolReserves
     poolReservesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const poolReservesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPoolReserve  
+    // createPoolReserve
     poolReserveCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePoolReserve  
+    // updatePoolReserve
     poolReserveUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const poolReservesSlice = createSlice({
         return entity;
       });
     },
-    // deletePoolReserve  
+    // deletePoolReserve
     poolReserveDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PoolReserveId !== action.payload.PoolReserveId  
+        (el) => el.PoolReserveId !== action.payload.PoolReserveId
       );
     },
-    // deletePoolReserves  
+    // deletePoolReserves
     poolReservesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PoolReserveId)  
+        (el) => !action.payload.ids.includes(el.PoolReserveId)
       );
     },
-    // poolReservesUpdateState  
+    // poolReservesUpdateState
     poolReservesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

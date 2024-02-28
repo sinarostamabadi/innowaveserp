@@ -9,10 +9,21 @@ export const ActionsColumnFormatter = (
   cellContent,
   row,
   rowIndex,
-  { openEditBowlingTeamPage, openDeleteBowlingTeamDialog, openDoneBowlingTeamDialog, openAddTimeBowlingTeamDialog, openRelocationDialog, t }
+  {
+    openEditBowlingTeamPage,
+    openDeleteBowlingTeamDialog,
+    openDoneBowlingTeamDialog,
+    openAddTimeBowlingTeamDialog,
+    openRelocationDialog,
+    t,
+  }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="bowlingTeams-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="bowlingTeams-edit-tooltip">{t("Common.Edit")}</Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm"
         onClick={() => openEditBowlingTeamPage(row.BowlingTeamId)}
@@ -26,7 +37,9 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="bowlingTeams-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="bowlingTeams-delete-tooltip">{t("Common.Delete")}</Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"

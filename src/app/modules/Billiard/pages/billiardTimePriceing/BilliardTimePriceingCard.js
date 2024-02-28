@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { BilliardTimePriceingTable } from "./billiardTimePriceing-table/BilliardTimePriceingTable";
-import { useBilliardTimePriceingUIContext, BilliardTimePriceingUIConsumer } from "./BilliardTimePriceingUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useBilliardTimePriceingUIContext,
+  BilliardTimePriceingUIConsumer,
+} from "./BilliardTimePriceingUIContext";
+import { useTranslation } from "react-i18next";
 
 export function BilliardTimePriceingCard() {
   const { t } = useTranslation();
@@ -21,24 +23,33 @@ export function BilliardTimePriceingCard() {
       ids: billiardTimePriceingUIContext.ids,
       queryParams: billiardTimePriceingUIContext.queryParams,
       setQueryParams: billiardTimePriceingUIContext.setQueryParams,
-      newBilliardTimePriceingButtonClick: billiardTimePriceingUIContext.newBilliardTimePriceingButtonClick,
-      openDeleteBilliardTimePriceingDialog: billiardTimePriceingUIContext.openDeleteBilliardTimePriceingDialog,
-      openEditBilliardTimePriceingPage: billiardTimePriceingUIContext.openEditBilliardTimePriceingPage,
-      openUpdateBilliardTimePriceingStatusDialog: billiardTimePriceingUIContext.openUpdateBilliardTimePriceingStatusDialog,
-      openFetchBilliardTimePriceingDialog: billiardTimePriceingUIContext.openFetchBilliardTimePriceingDialog,
+      newBilliardTimePriceingButtonClick:
+        billiardTimePriceingUIContext.newBilliardTimePriceingButtonClick,
+      openDeleteBilliardTimePriceingDialog:
+        billiardTimePriceingUIContext.openDeleteBilliardTimePriceingDialog,
+      openEditBilliardTimePriceingPage:
+        billiardTimePriceingUIContext.openEditBilliardTimePriceingPage,
+      openUpdateBilliardTimePriceingStatusDialog:
+        billiardTimePriceingUIContext.openUpdateBilliardTimePriceingStatusDialog,
+      openFetchBilliardTimePriceingDialog:
+        billiardTimePriceingUIContext.openFetchBilliardTimePriceingDialog,
     };
   }, [billiardTimePriceingUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("BilliardTimePriceing.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("BilliardTimePriceing.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
-            onClick={billiardTimePriceingUIProps.newBilliardTimePriceingButtonClick}
+            onClick={
+              billiardTimePriceingUIProps.newBilliardTimePriceingButtonClick
+            }
           >
-            {t("BilliardTimePriceing.Entity")} {' '} {t("Common.New")}
+            {t("BilliardTimePriceing.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

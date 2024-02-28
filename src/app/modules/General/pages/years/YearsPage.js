@@ -26,7 +26,7 @@ export function YearsPage({ history }) {
       history.push("/general/years/updateStatus");
     },
   };
-  
+
   return (
     <YearsUIProvider yearsUIEvents={yearsUIEvents}>
       <YearsLoadingDialog />

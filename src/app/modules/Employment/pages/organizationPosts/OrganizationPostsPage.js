@@ -26,9 +26,11 @@ export function OrganizationPostsPage({ history }) {
       history.push("/employment/organizationPosts/updateStatus");
     },
   };
-  
+
   return (
-    <OrganizationPostsUIProvider organizationPostsUIEvents={organizationPostsUIEvents}>
+    <OrganizationPostsUIProvider
+      organizationPostsUIEvents={organizationPostsUIEvents}
+    >
       <OrganizationPostsLoadingDialog />
       <Route path="/employment/organizationPosts/:id/delete">
         {({ history, match }) => (

@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -16,7 +15,8 @@ export function AccountFloatingGroupRelationDeleteDialog({ id, show, onHide }) {
   const { t } = useTranslation();
 
   // AccountFloatingGroupRelations UI Context
-  const accountFloatingGroupRelationsUIContext = useAccountFloatingGroupRelationsUIContext();
+  const accountFloatingGroupRelationsUIContext =
+    useAccountFloatingGroupRelationsUIContext();
   const [error, setError] = useState(null);
   const accountFloatingGroupRelationsUIProps = useMemo(() => {
     return {
@@ -29,7 +29,9 @@ export function AccountFloatingGroupRelationDeleteDialog({ id, show, onHide }) {
   const dispatch = useDispatch();
 
   const { isLoading } = useSelector(
-    (state) => ({ isLoading: state.accountFloatingGroupRelations.actionsLoading }),
+    (state) => ({
+      isLoading: state.accountFloatingGroupRelations.actionsLoading,
+    }),
     shallowEqual
   );
 
@@ -48,7 +50,11 @@ export function AccountFloatingGroupRelationDeleteDialog({ id, show, onHide }) {
     dispatch(actions.remove(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchAccountFloatingGroupRelations(accountFloatingGroupRelationsUIProps.queryParams));
+        dispatch(
+          actions.fetchAccountFloatingGroupRelations(
+            accountFloatingGroupRelationsUIProps.queryParams
+          )
+        );
         // clear selections list
         accountFloatingGroupRelationsUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +73,12 @@ export function AccountFloatingGroupRelationDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("AccountFloatingGroupRelation.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("AccountFloatingGroupRelation.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

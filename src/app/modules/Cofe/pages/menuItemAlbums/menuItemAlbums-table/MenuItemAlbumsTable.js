@@ -32,8 +32,10 @@ export function MenuItemAlbumsTable() {
       setIds: menuItemAlbumsUIContext.setIds,
       queryParams: menuItemAlbumsUIContext.queryParams,
       setQueryParams: menuItemAlbumsUIContext.setQueryParams,
-      openEditMenuItemAlbumPage: menuItemAlbumsUIContext.openEditMenuItemAlbumPage,
-      openDeleteMenuItemAlbumDialog: menuItemAlbumsUIContext.openDeleteMenuItemAlbumDialog,
+      openEditMenuItemAlbumPage:
+        menuItemAlbumsUIContext.openEditMenuItemAlbumPage,
+      openDeleteMenuItemAlbumDialog:
+        menuItemAlbumsUIContext.openDeleteMenuItemAlbumDialog,
     };
   }, [menuItemAlbumsUIContext]);
 
@@ -72,8 +74,10 @@ export function MenuItemAlbumsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditMenuItemAlbumPage: menuItemAlbumsUIProps.openEditMenuItemAlbumPage,
-        openDeleteMenuItemAlbumDialog: menuItemAlbumsUIProps.openDeleteMenuItemAlbumDialog,
+        openEditMenuItemAlbumPage:
+          menuItemAlbumsUIProps.openEditMenuItemAlbumPage,
+        openDeleteMenuItemAlbumDialog:
+          menuItemAlbumsUIProps.openDeleteMenuItemAlbumDialog,
         t: t,
       },
       classes: "text-right pr-0",

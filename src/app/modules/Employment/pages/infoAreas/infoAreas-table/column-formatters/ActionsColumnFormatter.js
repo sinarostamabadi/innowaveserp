@@ -12,7 +12,11 @@ export const ActionsColumnFormatter = (
   { openEditInfoAreaPage, openDeleteInfoAreaDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="infoAreas-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="infoAreas-edit-tooltip">{t("Common.Edit")}</Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditInfoAreaPage(row.InfoAreaId)}
@@ -26,7 +30,9 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="infoAreas-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="infoAreas-delete-tooltip">{t("Common.Delete")}</Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"

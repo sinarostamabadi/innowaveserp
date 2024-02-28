@@ -33,7 +33,8 @@ export function HomeStatusesTable() {
       queryParams: homeStatusesUIContext.queryParams,
       setQueryParams: homeStatusesUIContext.setQueryParams,
       openEditHomeStatusPage: homeStatusesUIContext.openEditHomeStatusPage,
-      openDeleteHomeStatusDialog: homeStatusesUIContext.openDeleteHomeStatusDialog,
+      openDeleteHomeStatusDialog:
+        homeStatusesUIContext.openDeleteHomeStatusDialog,
     };
   }, [homeStatusesUIContext]);
 
@@ -73,7 +74,8 @@ export function HomeStatusesTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditHomeStatusPage: homeStatusesUIProps.openEditHomeStatusPage,
-        openDeleteHomeStatusDialog: homeStatusesUIProps.openDeleteHomeStatusDialog,
+        openDeleteHomeStatusDialog:
+          homeStatusesUIProps.openDeleteHomeStatusDialog,
         t: t,
       },
       classes: "text-right pr-0",

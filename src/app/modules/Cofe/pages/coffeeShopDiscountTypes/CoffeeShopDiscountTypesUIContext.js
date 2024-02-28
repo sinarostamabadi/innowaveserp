@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { CoffeeShopDiscountTypeModel } from "../../../../../core/_models/Cofe/CoffeeShopDiscountTypeModel";
@@ -10,9 +9,13 @@ export function useCoffeeShopDiscountTypesUIContext() {
   return useContext(CoffeeShopDiscountTypesUIContext);
 }
 
-export const CoffeeShopDiscountTypesUIConsumer = CoffeeShopDiscountTypesUIContext.Consumer;
+export const CoffeeShopDiscountTypesUIConsumer =
+  CoffeeShopDiscountTypesUIContext.Consumer;
 
-export function CoffeeShopDiscountTypesUIProvider({ coffeeShopDiscountTypesUIEvents, children }) {
+export function CoffeeShopDiscountTypesUIProvider({
+  coffeeShopDiscountTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(CoffeeShopDiscountTypeModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function CoffeeShopDiscountTypesUIProvider({ coffeeShopDiscountTypesUIEve
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function CoffeeShopDiscountTypesUIProvider({ coffeeShopDiscountTypesUIEve
     setIds,
     setQueryParams,
     dataModel: CoffeeShopDiscountTypeModel,
-    newCoffeeShopDiscountTypeButtonClick: coffeeShopDiscountTypesUIEvents.newCoffeeShopDiscountTypeButtonClick,
-    openEditCoffeeShopDiscountTypePage: coffeeShopDiscountTypesUIEvents.openEditCoffeeShopDiscountTypePage,
-    openDeleteCoffeeShopDiscountTypeDialog: coffeeShopDiscountTypesUIEvents.openDeleteCoffeeShopDiscountTypeDialog,
-    openDeleteCoffeeShopDiscountTypesDialog: coffeeShopDiscountTypesUIEvents.openDeleteCoffeeShopDiscountTypesDialog,
-    openFetchCoffeeShopDiscountTypesDialog: coffeeShopDiscountTypesUIEvents.openFetchCoffeeShopDiscountTypesDialog,
-    openUpdateCoffeeShopDiscountTypesStatusDialog: coffeeShopDiscountTypesUIEvents.openUpdateCoffeeShopDiscountTypesStatusDialog,
+    newCoffeeShopDiscountTypeButtonClick:
+      coffeeShopDiscountTypesUIEvents.newCoffeeShopDiscountTypeButtonClick,
+    openEditCoffeeShopDiscountTypePage:
+      coffeeShopDiscountTypesUIEvents.openEditCoffeeShopDiscountTypePage,
+    openDeleteCoffeeShopDiscountTypeDialog:
+      coffeeShopDiscountTypesUIEvents.openDeleteCoffeeShopDiscountTypeDialog,
+    openDeleteCoffeeShopDiscountTypesDialog:
+      coffeeShopDiscountTypesUIEvents.openDeleteCoffeeShopDiscountTypesDialog,
+    openFetchCoffeeShopDiscountTypesDialog:
+      coffeeShopDiscountTypesUIEvents.openFetchCoffeeShopDiscountTypesDialog,
+    openUpdateCoffeeShopDiscountTypesStatusDialog:
+      coffeeShopDiscountTypesUIEvents.openUpdateCoffeeShopDiscountTypesStatusDialog,
   };
   return (
-    <CoffeeShopDiscountTypesUIContext.Provider value={value}>{children}</CoffeeShopDiscountTypesUIContext.Provider>
+    <CoffeeShopDiscountTypesUIContext.Provider value={value}>
+      {children}
+    </CoffeeShopDiscountTypesUIContext.Provider>
   );
 }

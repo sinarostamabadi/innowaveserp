@@ -26,9 +26,11 @@ export function ContractEndTypesPage({ history }) {
       history.push("/employment/contractEndTypes/updateStatus");
     },
   };
-  
+
   return (
-    <ContractEndTypesUIProvider contractEndTypesUIEvents={contractEndTypesUIEvents}>
+    <ContractEndTypesUIProvider
+      contractEndTypesUIEvents={contractEndTypesUIEvents}
+    >
       <ContractEndTypesLoadingDialog />
       <Route path="/employment/contractEndTypes/:id/delete">
         {({ history, match }) => (

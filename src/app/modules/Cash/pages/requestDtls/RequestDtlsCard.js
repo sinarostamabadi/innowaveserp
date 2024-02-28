@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { RequestDtlsTable } from "./requestDtls-table/RequestDtlsTable";
-import { useRequestDtlsUIContext, RequestDtlsUIConsumer } from "./RequestDtlsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useRequestDtlsUIContext,
+  RequestDtlsUIConsumer,
+} from "./RequestDtlsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function RequestDtlsCard() {
   const { t } = useTranslation();
@@ -22,23 +24,26 @@ export function RequestDtlsCard() {
       queryParams: requestDtlsUIContext.queryParams,
       setQueryParams: requestDtlsUIContext.setQueryParams,
       newRequestDtlButtonClick: requestDtlsUIContext.newRequestDtlButtonClick,
-      openDeleteRequestDtlsDialog: requestDtlsUIContext.openDeleteRequestDtlsDialog,
+      openDeleteRequestDtlsDialog:
+        requestDtlsUIContext.openDeleteRequestDtlsDialog,
       openEditRequestDtlPage: requestDtlsUIContext.openEditRequestDtlPage,
-      openUpdateRequestDtlsStatusDialog: requestDtlsUIContext.openUpdateRequestDtlsStatusDialog,
-      openFetchRequestDtlsDialog: requestDtlsUIContext.openFetchRequestDtlsDialog,
+      openUpdateRequestDtlsStatusDialog:
+        requestDtlsUIContext.openUpdateRequestDtlsStatusDialog,
+      openFetchRequestDtlsDialog:
+        requestDtlsUIContext.openFetchRequestDtlsDialog,
     };
   }, [requestDtlsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("RequestDtl.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("RequestDtl.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={requestDtlsUIProps.newRequestDtlButtonClick}
           >
-            {t("RequestDtl.Entity")} {' '} {t("Common.New")}
+            {t("RequestDtl.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

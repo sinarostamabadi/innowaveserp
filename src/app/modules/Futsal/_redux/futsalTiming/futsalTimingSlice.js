@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialFutsalTimingState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const futsalTimingSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getFutsalTimingById  
+    // getFutsalTimingById
     futsalTimingFetched: (state, action) => {
       state.actionsLoading = false;
       state.futsalTimingForEdit = action.payload.futsalTimingForEdit;
       state.error = null;
     },
-    // findFutsalTiming  
+    // findFutsalTiming
     futsalTimingsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,42 @@ export const futsalTimingSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createFutsalTiming  
+    // createFutsalTiming
     futsalTimingCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateFutsalTiming  
+    // updateFutsalTiming
     futsalTimingUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.FutsalTimingId === action.payload.futsalTiming.FutsalTimingId) {
+        if (
+          entity.FutsalTimingId === action.payload.futsalTiming.FutsalTimingId
+        ) {
           return action.payload.futsalTiming;
         }
         return entity;
       });
     },
-    // deleteFutsalTiming  
+    // deleteFutsalTiming
     futsalTimingDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.FutsalTimingId !== action.payload.FutsalTimingId  
+        (el) => el.FutsalTimingId !== action.payload.FutsalTimingId
       );
     },
-    // deleteFutsalTiming  
+    // deleteFutsalTiming
     futsalTimingsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.FutsalTimingId)  
+        (el) => !action.payload.ids.includes(el.FutsalTimingId)
       );
     },
-    // futsalTimingUpdateState  
+    // futsalTimingUpdateState
     futsalTimingStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

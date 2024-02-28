@@ -32,8 +32,10 @@ export function InsuranceTypesTable() {
       setIds: insuranceTypesUIContext.setIds,
       queryParams: insuranceTypesUIContext.queryParams,
       setQueryParams: insuranceTypesUIContext.setQueryParams,
-      openEditInsuranceTypePage: insuranceTypesUIContext.openEditInsuranceTypePage,
-      openDeleteInsuranceTypeDialog: insuranceTypesUIContext.openDeleteInsuranceTypeDialog,
+      openEditInsuranceTypePage:
+        insuranceTypesUIContext.openEditInsuranceTypePage,
+      openDeleteInsuranceTypeDialog:
+        insuranceTypesUIContext.openDeleteInsuranceTypeDialog,
     };
   }, [insuranceTypesUIContext]);
 
@@ -72,8 +74,10 @@ export function InsuranceTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditInsuranceTypePage: insuranceTypesUIProps.openEditInsuranceTypePage,
-        openDeleteInsuranceTypeDialog: insuranceTypesUIProps.openDeleteInsuranceTypeDialog,
+        openEditInsuranceTypePage:
+          insuranceTypesUIProps.openEditInsuranceTypePage,
+        openDeleteInsuranceTypeDialog:
+          insuranceTypesUIProps.openDeleteInsuranceTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -16,10 +16,7 @@ import { DataFormatter, DateFaColumnFormatter } from "src/core/_formatters";
 import { Pagination } from "src/core/_partials/controls";
 import { useEmployeesUIContext } from "../EmployeesUIContext";
 import { BodyBuildingEmployeeModel } from "src/core/_models/BodyBuilding/BodyBuildingEmployeeModel";
-import {
-  getConfig,
-  getFields,
-} from "src/core/_models/ModelDescriber";
+import { getConfig, getFields } from "src/core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
 
 export function EmployeesTable() {
@@ -52,15 +49,13 @@ export function EmployeesTable() {
 
   useEffect(() => {
     uiProps.setIds([]);
-    dispatch(
-      actions.fetchEmployees(uiProps.queryParams)
-    );
+    dispatch(actions.fetchEmployees(uiProps.queryParams));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uiProps.queryParams, dispatch]);
 
   const cooperationTypes = {
     1: t("Common.Male"),
-    2: t("Common.Female")
+    2: t("Common.Female"),
   };
 
   const columns = [
@@ -82,7 +77,7 @@ export function EmployeesTable() {
       sort: fields.CooperationType.sortable,
       sortCaret: sortCaret,
       formatter: DataFormatter,
-      formatExtraData: {data: cooperationTypes}
+      formatExtraData: { data: cooperationTypes },
     },
     {
       dataField: "action",
@@ -128,9 +123,7 @@ export function EmployeesTable() {
                 data={entities === null ? [] : entities}
                 columns={columns}
                 defaultSorted={configs.defaultSorted}
-                onTableChange={getHandlerTableChange(
-                  uiProps.setQueryParams
-                )}
+                onTableChange={getHandlerTableChange(uiProps.setQueryParams)}
                 {...paginationTableProps}
               >
                 <PleaseWaitMessage entities={entities} />

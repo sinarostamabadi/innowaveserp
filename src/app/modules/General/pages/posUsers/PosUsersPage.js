@@ -26,7 +26,7 @@ export function PosUsersPage({ history }) {
       history.push("/general/posUsers/updateStatus");
     },
   };
-  
+
   return (
     <PosUsersUIProvider posUsersUIEvents={posUsersUIEvents}>
       <PosUsersLoadingDialog />

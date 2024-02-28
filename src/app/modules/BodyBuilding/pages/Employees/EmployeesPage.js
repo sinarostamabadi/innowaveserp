@@ -25,7 +25,7 @@ export function EmployeesPage({ history }) {
       history.push("/BodyBuilding/Employees/updateStatus");
     },
   };
-  
+
   return (
     <EmployeesUIProvider employeesUIEvents={employeesUIEvents}>
       <EmployeesLoadingDialog />

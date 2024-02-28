@@ -47,6 +47,6 @@ export const dashboardsSlice = createSlice({
       state.error = null;
       state.entities = entities;
       state.totalCount = totalCount;
-    }
+    },
   },
 });

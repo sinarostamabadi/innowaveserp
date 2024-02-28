@@ -63,7 +63,7 @@ export function CostsTable() {
       },
     },
   ];
-  
+
   return (
     <>
       <BootstrapTable
@@ -73,11 +73,7 @@ export function CostsTable() {
         bootstrap4
         remote
         keyField="BuyReturnCostId"
-        data={
-          costsUIProps.activeCosts === null
-            ? []
-            : costsUIProps.activeCosts
-        }
+        data={costsUIProps.activeCosts === null ? [] : costsUIProps.activeCosts}
         columns={columns}
       >
         <PleaseWaitMessage entities={costsUIProps.activeCosts} />

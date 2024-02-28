@@ -10,7 +10,7 @@ export const PrintInvoice = React.forwardRef(({ data }, ref) => {
     setDataPrint(data);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
-  
+
   return (
     <div ref={ref}>
       <div
@@ -48,7 +48,14 @@ export const PrintInvoice = React.forwardRef(({ data }, ref) => {
               <tr>
                 <td className="head" style={{ width: "50vw" }}>
                   <b>شماره فاکتور:</b>{" "}
-                  {!!dataPrint == true ? dataPrint.InvoiceNumber + (!!dataPrint.InvoiceSeri ? (!!dataPrint.InvoiceSeri && dataPrint.InvoiceSeri > 1  ? "-" + dataPrint.InvoiceSeri: ""): "") : ""} 
+                  {!!dataPrint == true
+                    ? dataPrint.InvoiceNumber +
+                      (!!dataPrint.InvoiceSeri
+                        ? !!dataPrint.InvoiceSeri && dataPrint.InvoiceSeri > 1
+                          ? "-" + dataPrint.InvoiceSeri
+                          : ""
+                        : "")
+                    : ""}
                 </td>
               </tr>
               <tr>
@@ -57,9 +64,9 @@ export const PrintInvoice = React.forwardRef(({ data }, ref) => {
                   {!!dataPrint == true
                     ? moment(dataPrint.InvoiceDate)
                         .locale(process.env.REACT_APP_DATE)
-                        .format("YYYY/MM/DD") + " - " + 
-                        moment(dataPrint.CreationDate)
-                        .format("HH:mm")
+                        .format("YYYY/MM/DD") +
+                      " - " +
+                      moment(dataPrint.CreationDate).format("HH:mm")
                     : ""}
                 </td>
               </tr>

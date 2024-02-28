@@ -12,16 +12,21 @@ export const ActionsColumnFormatter = (
   { openDeleteRealPersonDialog, t }
 ) => {
   return (
-  <>
-    <OverlayTrigger
-      overlay={<Tooltip id="realPersons-delete-tooltip">{t("Common.Delete")}</Tooltip>}
-    >
-      <a
-        className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteRealPersonDialog(cellContent)}
+    <>
+      <OverlayTrigger
+        overlay={
+          <Tooltip id="realPersons-delete-tooltip">
+            {t("Common.Delete")}
+          </Tooltip>
+        }
       >
-        <i className="fas fa-trash-alt text-danger"></i>
-      </a>
-    </OverlayTrigger>
-  </>
-)};
+        <a
+          className="btn btn-icon btn-light btn-hover-danger btn-sm"
+          onClick={() => openDeleteRealPersonDialog(cellContent)}
+        >
+          <i className="fas fa-trash-alt text-danger"></i>
+        </a>
+      </OverlayTrigger>
+    </>
+  );
+};

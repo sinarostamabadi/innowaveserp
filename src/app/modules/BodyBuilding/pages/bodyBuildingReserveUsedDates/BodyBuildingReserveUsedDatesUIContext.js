@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BodyBuildingReserveUsedDateModel } from "../../../../../core/_models/BodyBuilding/BodyBuildingReserveUsedDateModel";
@@ -10,9 +9,13 @@ export function useBodyBuildingReserveUsedDatesUIContext() {
   return useContext(BodyBuildingReserveUsedDatesUIContext);
 }
 
-export const BodyBuildingReserveUsedDatesUIConsumer = BodyBuildingReserveUsedDatesUIContext.Consumer;
+export const BodyBuildingReserveUsedDatesUIConsumer =
+  BodyBuildingReserveUsedDatesUIContext.Consumer;
 
-export function BodyBuildingReserveUsedDatesUIProvider({ bodyBuildingReserveUsedDatesUIEvents, children }) {
+export function BodyBuildingReserveUsedDatesUIProvider({
+  bodyBuildingReserveUsedDatesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(BodyBuildingReserveUsedDateModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function BodyBuildingReserveUsedDatesUIProvider({ bodyBuildingReserveUsed
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function BodyBuildingReserveUsedDatesUIProvider({ bodyBuildingReserveUsed
     setIds,
     setQueryParams,
     dataModel: BodyBuildingReserveUsedDateModel,
-    newBodyBuildingReserveUsedDateButtonClick: bodyBuildingReserveUsedDatesUIEvents.newBodyBuildingReserveUsedDateButtonClick,
-    openEditBodyBuildingReserveUsedDatePage: bodyBuildingReserveUsedDatesUIEvents.openEditBodyBuildingReserveUsedDatePage,
-    openDeleteBodyBuildingReserveUsedDateDialog: bodyBuildingReserveUsedDatesUIEvents.openDeleteBodyBuildingReserveUsedDateDialog,
-    openDeleteBodyBuildingReserveUsedDatesDialog: bodyBuildingReserveUsedDatesUIEvents.openDeleteBodyBuildingReserveUsedDatesDialog,
-    openFetchBodyBuildingReserveUsedDatesDialog: bodyBuildingReserveUsedDatesUIEvents.openFetchBodyBuildingReserveUsedDatesDialog,
-    openUpdateBodyBuildingReserveUsedDatesStatusDialog: bodyBuildingReserveUsedDatesUIEvents.openUpdateBodyBuildingReserveUsedDatesStatusDialog,
+    newBodyBuildingReserveUsedDateButtonClick:
+      bodyBuildingReserveUsedDatesUIEvents.newBodyBuildingReserveUsedDateButtonClick,
+    openEditBodyBuildingReserveUsedDatePage:
+      bodyBuildingReserveUsedDatesUIEvents.openEditBodyBuildingReserveUsedDatePage,
+    openDeleteBodyBuildingReserveUsedDateDialog:
+      bodyBuildingReserveUsedDatesUIEvents.openDeleteBodyBuildingReserveUsedDateDialog,
+    openDeleteBodyBuildingReserveUsedDatesDialog:
+      bodyBuildingReserveUsedDatesUIEvents.openDeleteBodyBuildingReserveUsedDatesDialog,
+    openFetchBodyBuildingReserveUsedDatesDialog:
+      bodyBuildingReserveUsedDatesUIEvents.openFetchBodyBuildingReserveUsedDatesDialog,
+    openUpdateBodyBuildingReserveUsedDatesStatusDialog:
+      bodyBuildingReserveUsedDatesUIEvents.openUpdateBodyBuildingReserveUsedDatesStatusDialog,
   };
   return (
-    <BodyBuildingReserveUsedDatesUIContext.Provider value={value}>{children}</BodyBuildingReserveUsedDatesUIContext.Provider>
+    <BodyBuildingReserveUsedDatesUIContext.Provider value={value}>
+      {children}
+    </BodyBuildingReserveUsedDatesUIContext.Provider>
   );
 }

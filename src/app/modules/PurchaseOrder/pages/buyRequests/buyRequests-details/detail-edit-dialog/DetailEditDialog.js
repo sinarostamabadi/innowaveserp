@@ -42,7 +42,7 @@ export function DetailEditDialog() {
       detailsUIProps.onHide();
     }
   };
-  
+
   return (
     <Modal
       show={detailsUIProps.show}

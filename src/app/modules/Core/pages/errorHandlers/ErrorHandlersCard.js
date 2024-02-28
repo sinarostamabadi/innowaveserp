@@ -18,25 +18,27 @@ export function ErrorHandlersCard() {
       ids: errorHandlersUIContext.ids,
       queryParams: errorHandlersUIContext.queryParams,
       setQueryParams: errorHandlersUIContext.setQueryParams,
-      newErrorHandlerButtonClick: errorHandlersUIContext.newErrorHandlerButtonClick,
-      openDeleteErrorHandlersDialog:  
+      newErrorHandlerButtonClick:
+        errorHandlersUIContext.newErrorHandlerButtonClick,
+      openDeleteErrorHandlersDialog:
         errorHandlersUIContext.openDeleteErrorHandlersDialog,
       openEditErrorHandlerPage: errorHandlersUIContext.openEditErrorHandlerPage,
-      openUpdateErrorHandlersStatusDialog:  
+      openUpdateErrorHandlersStatusDialog:
         errorHandlersUIContext.openUpdateErrorHandlersStatusDialog,
-      openFetchErrorHandlersDialog: errorHandlersUIContext.openFetchErrorHandlersDialog,
+      openFetchErrorHandlersDialog:
+        errorHandlersUIContext.openFetchErrorHandlersDialog,
     };
   }, [errorHandlersUIContext]);
   return (
     <Card>
       <CardHeader title="EntityTitle">
         <CardHeaderToolbar>
-          <button  
-            type="button"  
-            className="btn btn-primary"  
+          <button
+            type="button"
+            className="btn btn-primary"
             onClick={errorHandlersUIProps.newErrorHandlerButtonClick}
           >
-            EntityTitle  
+            EntityTitle
           </button>
         </CardHeaderToolbar>
       </CardHeader>

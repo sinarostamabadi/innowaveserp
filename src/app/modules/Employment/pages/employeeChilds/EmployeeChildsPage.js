@@ -26,7 +26,7 @@ export function EmployeeChildsPage({ history }) {
       history.push("/employment/employeeChilds/updateStatus");
     },
   };
-  
+
   return (
     <EmployeeChildsUIProvider employeeChildsUIEvents={employeeChildsUIEvents}>
       <EmployeeChildsLoadingDialog />

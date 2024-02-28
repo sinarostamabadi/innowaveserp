@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialUserPermissionsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const userPermissionsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getUserPermissionById  
+    // getUserPermissionById
     userPermissionFetched: (state, action) => {
       state.actionsLoading = false;
       state.userPermissionForEdit = action.payload.userPermissionForEdit;
       state.error = null;
     },
-    // findUserPermissions  
+    // findUserPermissions
     userPermissionsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const userPermissionsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createUserPermission  
+    // createUserPermission
     userPermissionCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateUserPermission  
+    // updateUserPermission
     userPermissionUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.UserPermissionId === action.payload.userPermission.UserPermissionId) {
+        if (
+          entity.UserPermissionId ===
+          action.payload.userPermission.UserPermissionId
+        ) {
           return action.payload.userPermission;
         }
         return entity;
       });
     },
-    // deleteUserPermission  
+    // deleteUserPermission
     userPermissionDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.UserPermissionId !== action.payload.UserPermissionId  
+        (el) => el.UserPermissionId !== action.payload.UserPermissionId
       );
     },
-    // deleteUserPermissions  
+    // deleteUserPermissions
     userPermissionsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.UserPermissionId)  
+        (el) => !action.payload.ids.includes(el.UserPermissionId)
       );
     },
-    // userPermissionsUpdateState  
+    // userPermissionsUpdateState
     userPermissionsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

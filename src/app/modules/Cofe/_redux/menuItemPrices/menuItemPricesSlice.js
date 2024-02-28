@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialMenuItemPricesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const menuItemPricesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getMenuItemPriceById  
+    // getMenuItemPriceById
     menuItemPriceFetched: (state, action) => {
       state.actionsLoading = false;
       state.menuItemPriceForEdit = action.payload.menuItemPriceForEdit;
       state.error = null;
     },
-    // findMenuItemPrices  
+    // findMenuItemPrices
     menuItemPricesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const menuItemPricesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createMenuItemPrice  
+    // createMenuItemPrice
     menuItemPriceCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateMenuItemPrice  
+    // updateMenuItemPrice
     menuItemPriceUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.MenuItemPriceId === action.payload.menuItemPrice.MenuItemPriceId) {
+        if (
+          entity.MenuItemPriceId ===
+          action.payload.menuItemPrice.MenuItemPriceId
+        ) {
           return action.payload.menuItemPrice;
         }
         return entity;
       });
     },
-    // deleteMenuItemPrice  
+    // deleteMenuItemPrice
     menuItemPriceDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.MenuItemPriceId !== action.payload.MenuItemPriceId  
+        (el) => el.MenuItemPriceId !== action.payload.MenuItemPriceId
       );
     },
-    // deleteMenuItemPrices  
+    // deleteMenuItemPrices
     menuItemPricesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.MenuItemPriceId)  
+        (el) => !action.payload.ids.includes(el.MenuItemPriceId)
       );
     },
-    // menuItemPricesUpdateState  
+    // menuItemPricesUpdateState
     menuItemPricesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

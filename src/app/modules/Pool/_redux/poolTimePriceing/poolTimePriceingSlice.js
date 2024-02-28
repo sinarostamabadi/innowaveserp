@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPoolTimePriceingState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const poolTimePriceingSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPoolTimePriceingById  
+    // getPoolTimePriceingById
     poolTimePriceingFetched: (state, action) => {
       state.actionsLoading = false;
       state.poolTimePriceingForEdit = action.payload.poolTimePriceingForEdit;
       state.error = null;
     },
-    // findPoolTimePriceing  
+    // findPoolTimePriceing
     poolTimePriceingFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const poolTimePriceingSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPoolTimePriceing  
+    // createPoolTimePriceing
     poolTimePriceingCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePoolTimePriceing  
+    // updatePoolTimePriceing
     poolTimePriceingUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.PoolTimePriceingId === action.payload.poolTimePriceing.PoolTimePriceingId) {
+        if (
+          entity.PoolTimePriceingId ===
+          action.payload.poolTimePriceing.PoolTimePriceingId
+        ) {
           return action.payload.poolTimePriceing;
         }
         return entity;
       });
     },
-    // deletePoolTimePriceing  
+    // deletePoolTimePriceing
     poolTimePriceingDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PoolTimePriceingId !== action.payload.PoolTimePriceingId  
+        (el) => el.PoolTimePriceingId !== action.payload.PoolTimePriceingId
       );
     },
-    // deletePoolTimePriceing  
+    // deletePoolTimePriceing
     poolTimePriceingDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PoolTimePriceingId)  
+        (el) => !action.payload.ids.includes(el.PoolTimePriceingId)
       );
     },
-    // poolTimePriceingUpdateState  
+    // poolTimePriceingUpdateState
     poolTimePriceingStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

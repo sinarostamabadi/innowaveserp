@@ -59,7 +59,10 @@ export function DiscountsTable() {
       },
     },
   ];
-  console.log("discountsUIProps.activeDiscounts > ", discountsUIProps.activeDiscounts);
+  console.log(
+    "discountsUIProps.activeDiscounts > ",
+    discountsUIProps.activeDiscounts
+  );
   return (
     <>
       <BootstrapTable

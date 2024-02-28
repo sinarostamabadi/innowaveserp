@@ -3,7 +3,14 @@ import { useDispatch } from "react-redux";
 import { shallowEqual, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useSubheader } from "../../../../../../core/layout";
-import { Card, CardBody, CardHeader, CardHeaderToolbar, ModalProgressBar, Alerty } from "../../../../../../core/_partials/controls";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderToolbar,
+  ModalProgressBar,
+  Alerty,
+} from "../../../../../../core/_partials/controls";
 import { CloneObject } from "../../../../../../core/_helpers";
 import * as actions from "../../../_redux/bowlingTeams/bowlingTeamsActions";
 import { BowlingTeamEditForm } from "./BowlingTeamEditForm";
@@ -70,15 +77,15 @@ export function BowlingTeamEdit({
 
   const saveBowlingTeam = (values) => {
     if (!id) {
-      dispatch(actions.createBowlingTeam(values, (arg) => { }))
+      dispatch(actions.createBowlingTeam(values, (arg) => {}))
         .then((arg) => {
           backToBowlingTeamsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateBowlingTeam(id, values))
         .then(() => backToBowlingTeamsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

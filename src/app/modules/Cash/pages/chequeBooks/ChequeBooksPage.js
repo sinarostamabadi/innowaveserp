@@ -23,7 +23,7 @@ export function ChequeBooksPage({ history }) {
       history.push(`/cash/chequeBooks/fetch`);
     },
   };
-  
+
   return (
     <ChequeBooksUIProvider chequeBooksUIEvents={chequeBooksUIEvents}>
       <ChequeBooksLoadingDialog />

@@ -26,9 +26,11 @@ export function FutsalReserveTypesPage({ history }) {
       history.push("/futsal/futsalReserveTypes/updateStatus");
     },
   };
-  
+
   return (
-    <FutsalReserveTypesUIProvider futsalReserveTypesUIEvents={futsalReserveTypesUIEvents}>
+    <FutsalReserveTypesUIProvider
+      futsalReserveTypesUIEvents={futsalReserveTypesUIEvents}
+    >
       <FutsalReserveTypesLoadingDialog />
       <Route path="/futsal/futsalReserveTypes/:id/delete">
         {({ history, match }) => (

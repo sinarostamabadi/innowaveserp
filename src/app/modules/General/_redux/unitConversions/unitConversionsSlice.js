@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialUnitConversionsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const unitConversionsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getUnitConversionById  
+    // getUnitConversionById
     unitConversionFetched: (state, action) => {
       state.actionsLoading = false;
       state.unitConversionForEdit = action.payload.unitConversionForEdit;
       state.error = null;
     },
-    // findUnitConversions  
+    // findUnitConversions
     unitConversionsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const unitConversionsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createUnitConversion  
+    // createUnitConversion
     unitConversionCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateUnitConversion  
+    // updateUnitConversion
     unitConversionUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.UnitConversionId === action.payload.unitConversion.UnitConversionId) {
+        if (
+          entity.UnitConversionId ===
+          action.payload.unitConversion.UnitConversionId
+        ) {
           return action.payload.unitConversion;
         }
         return entity;
       });
     },
-    // deleteUnitConversion  
+    // deleteUnitConversion
     unitConversionDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.UnitConversionId !== action.payload.UnitConversionId  
+        (el) => el.UnitConversionId !== action.payload.UnitConversionId
       );
     },
-    // deleteUnitConversions  
+    // deleteUnitConversions
     unitConversionsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.UnitConversionId)  
+        (el) => !action.payload.ids.includes(el.UnitConversionId)
       );
     },
-    // unitConversionsUpdateState  
+    // unitConversionsUpdateState
     unitConversionsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

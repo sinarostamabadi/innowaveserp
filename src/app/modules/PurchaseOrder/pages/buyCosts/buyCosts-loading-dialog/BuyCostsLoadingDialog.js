@@ -4,8 +4,8 @@ import { LoadingDialog } from "../../../../../../core/_partials/controls";
 export function BuyCostsLoadingDialog() {
   const { isLoading } = useSelector(
     (state) => ({ isLoading: state.buyCosts.listLoading }),
-    shallowEqual  
+    shallowEqual
   );
-useEffect(() => {}, [isLoading]);
+  useEffect(() => {}, [isLoading]);
   return <LoadingDialog isLoading={isLoading} text="در حال بارگذاری..." />;
 }

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmployeeWorkShiftModel } from "../../../../../core/_models/Employment/EmployeeWorkShiftModel";
@@ -10,9 +9,13 @@ export function useEmployeeWorkShiftsUIContext() {
   return useContext(EmployeeWorkShiftsUIContext);
 }
 
-export const EmployeeWorkShiftsUIConsumer = EmployeeWorkShiftsUIContext.Consumer;
+export const EmployeeWorkShiftsUIConsumer =
+  EmployeeWorkShiftsUIContext.Consumer;
 
-export function EmployeeWorkShiftsUIProvider({ employeeWorkShiftsUIEvents, children }) {
+export function EmployeeWorkShiftsUIProvider({
+  employeeWorkShiftsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(EmployeeWorkShiftModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function EmployeeWorkShiftsUIProvider({ employeeWorkShiftsUIEvents, child
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function EmployeeWorkShiftsUIProvider({ employeeWorkShiftsUIEvents, child
     setIds,
     setQueryParams,
     dataModel: EmployeeWorkShiftModel,
-    newEmployeeWorkShiftButtonClick: employeeWorkShiftsUIEvents.newEmployeeWorkShiftButtonClick,
-    openEditEmployeeWorkShiftPage: employeeWorkShiftsUIEvents.openEditEmployeeWorkShiftPage,
-    openDeleteEmployeeWorkShiftDialog: employeeWorkShiftsUIEvents.openDeleteEmployeeWorkShiftDialog,
-    openDeleteEmployeeWorkShiftsDialog: employeeWorkShiftsUIEvents.openDeleteEmployeeWorkShiftsDialog,
-    openFetchEmployeeWorkShiftsDialog: employeeWorkShiftsUIEvents.openFetchEmployeeWorkShiftsDialog,
-    openUpdateEmployeeWorkShiftsStatusDialog: employeeWorkShiftsUIEvents.openUpdateEmployeeWorkShiftsStatusDialog,
+    newEmployeeWorkShiftButtonClick:
+      employeeWorkShiftsUIEvents.newEmployeeWorkShiftButtonClick,
+    openEditEmployeeWorkShiftPage:
+      employeeWorkShiftsUIEvents.openEditEmployeeWorkShiftPage,
+    openDeleteEmployeeWorkShiftDialog:
+      employeeWorkShiftsUIEvents.openDeleteEmployeeWorkShiftDialog,
+    openDeleteEmployeeWorkShiftsDialog:
+      employeeWorkShiftsUIEvents.openDeleteEmployeeWorkShiftsDialog,
+    openFetchEmployeeWorkShiftsDialog:
+      employeeWorkShiftsUIEvents.openFetchEmployeeWorkShiftsDialog,
+    openUpdateEmployeeWorkShiftsStatusDialog:
+      employeeWorkShiftsUIEvents.openUpdateEmployeeWorkShiftsStatusDialog,
   };
   return (
-    <EmployeeWorkShiftsUIContext.Provider value={value}>{children}</EmployeeWorkShiftsUIContext.Provider>
+    <EmployeeWorkShiftsUIContext.Provider value={value}>
+      {children}
+    </EmployeeWorkShiftsUIContext.Provider>
   );
 }

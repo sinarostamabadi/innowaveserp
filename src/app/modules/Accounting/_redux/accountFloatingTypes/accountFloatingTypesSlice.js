@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialAccountFloatingTypesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const accountFloatingTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getAccountFloatingTypeById  
+    // getAccountFloatingTypeById
     accountFloatingTypeFetched: (state, action) => {
       state.actionsLoading = false;
-      state.accountFloatingTypeForEdit = action.payload.accountFloatingTypeForEdit;
+      state.accountFloatingTypeForEdit =
+        action.payload.accountFloatingTypeForEdit;
       state.error = null;
     },
-    // findAccountFloatingTypes  
+    // findAccountFloatingTypes
     accountFloatingTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,7 +47,7 @@ export const accountFloatingTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createAccountFloatingType  
+    // createAccountFloatingType
     accountFloatingTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
@@ -55,12 +55,15 @@ export const accountFloatingTypesSlice = createSlice({
 
       return;
     },
-    // updateAccountFloatingType  
+    // updateAccountFloatingType
     accountFloatingTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.AccountFloatingTypeId === action.payload.accountFloatingType.AccountFloatingTypeId) {
+        if (
+          entity.AccountFloatingTypeId ===
+          action.payload.accountFloatingType.AccountFloatingTypeId
+        ) {
           return action.payload.accountFloatingType;
         }
         return entity;
@@ -68,23 +71,24 @@ export const accountFloatingTypesSlice = createSlice({
 
       return;
     },
-    // deleteAccountFloatingType  
+    // deleteAccountFloatingType
     accountFloatingTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.AccountFloatingTypeId !== action.payload.AccountFloatingTypeId  
+        (el) =>
+          el.AccountFloatingTypeId !== action.payload.AccountFloatingTypeId
       );
     },
-    // deleteAccountFloatingTypes  
+    // deleteAccountFloatingTypes
     accountFloatingTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.AccountFloatingTypeId)  
+        (el) => !action.payload.ids.includes(el.AccountFloatingTypeId)
       );
     },
-    // accountFloatingTypesUpdateState  
+    // accountFloatingTypesUpdateState
     accountFloatingTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -45,7 +45,8 @@ export function ImportDocumentTempEdit({
   const { actionsLoading, importDocumentTempForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.importDocumentTemps.actionsLoading,
-      importDocumentTempForEdit: state.importDocumentTemps.importDocumentTempForEdit,
+      importDocumentTempForEdit:
+        state.importDocumentTemps.importDocumentTempForEdit,
       error: state.importDocumentTemps.error,
     }),
     shallowEqual
@@ -56,7 +57,9 @@ export function ImportDocumentTempEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("ImportDocumentTemp.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("ImportDocumentTemp.Entity");
 
     if (importDocumentTempForEdit && id) {
       _title = t("Common.Edit") + " " + importDocumentTempForEdit.TitleFa;
@@ -125,14 +128,14 @@ export function ImportDocumentTempEdit({
           </button>
           {`  `}
           <button
-              type="submit"
-              className="btn btn-primary ml-2"
-              onClick={saveImportDocumentTempClick}
-            >
-              <i className="fa fa-save"></i> {t("Common.Save")}
-            </button>
-          </CardHeaderToolbar>
-        </CardHeader>
+            type="submit"
+            className="btn btn-primary ml-2"
+            onClick={saveImportDocumentTempClick}
+          >
+            <i className="fa fa-save"></i> {t("Common.Save")}
+          </button>
+        </CardHeaderToolbar>
+      </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>

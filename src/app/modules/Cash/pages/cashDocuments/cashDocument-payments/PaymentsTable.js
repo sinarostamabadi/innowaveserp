@@ -4,7 +4,10 @@ import { ActionsColumnFormatter } from "./column-formatters/ActionsColumnFormatt
 import { NoRecordsFoundMessage, PleaseWaitMessage } from "src/core/_helpers";
 import { usePaymentsUIContext } from "./PaymentsUIContext";
 import { useTranslation } from "react-i18next";
-import { MoneyColumnFormatter, DateFaColumnFormatter } from "src/core/_formatters";
+import {
+  MoneyColumnFormatter,
+  DateFaColumnFormatter,
+} from "src/core/_formatters";
 
 export function PaymentsTable() {
   const { t } = useTranslation();
@@ -15,7 +18,7 @@ export function PaymentsTable() {
     return {
       activePayments: paymentsUIContext.activePayments,
       openEditPaymentDialog: paymentsUIContext.openEditPaymentDialog,
-      openDeletePaymentDialog: paymentsUIContext.openDeletePaymentDialog
+      openDeletePaymentDialog: paymentsUIContext.openDeletePaymentDialog,
     };
   }, [paymentsUIContext]);
 
@@ -29,7 +32,7 @@ export function PaymentsTable() {
       dataField: "Price",
       text: t("CashDocument.Price"),
       sort: false,
-      formatter: MoneyColumnFormatter
+      formatter: MoneyColumnFormatter,
     },
     {
       dataField: "PaymentDate",

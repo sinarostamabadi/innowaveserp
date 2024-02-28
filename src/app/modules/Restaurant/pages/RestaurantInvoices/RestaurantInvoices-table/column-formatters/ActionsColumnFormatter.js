@@ -133,22 +133,22 @@ export const ActionsColumnFormatter = (
 
     {/* تسویه حساب */}
     {/* {[2, 4].indexOf(row.RestaurantInvoiceStatusId) > -1 ? ( */}
-      <OverlayTrigger
-        overlay={
-          <Tooltip id="restaurantInvoices-edit-tooltip">
-            {t("Common.Checkout")}
-          </Tooltip>
-        }
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="restaurantInvoices-edit-tooltip">
+          {t("Common.Checkout")}
+        </Tooltip>
+      }
+    >
+      <a
+        className="btn btn-icon btn-light btn-hover-success btn-sm"
+        onClick={() => openCheckoutDialog(row.RestaurantInvoiceId)}
       >
-        <a
-          className="btn btn-icon btn-light btn-hover-success btn-sm"
-          onClick={() => openCheckoutDialog(row.RestaurantInvoiceId)}
-        >
-          <span className="svg-icon svg-icon-md svg-icon-success">
-            <i className="fas fa-sack-dollar text-success"></i>
-          </span>
-        </a>
-      </OverlayTrigger>
+        <span className="svg-icon svg-icon-md svg-icon-success">
+          <i className="fas fa-sack-dollar text-success"></i>
+        </span>
+      </a>
+    </OverlayTrigger>
     {/* ) : (
       <></>
     )} */}

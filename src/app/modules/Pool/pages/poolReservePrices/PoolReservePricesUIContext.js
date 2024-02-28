@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { PoolReservePriceModel } from "../../../../../core/_models/Pool/PoolReservePriceModel";
@@ -12,7 +11,10 @@ export function usePoolReservePricesUIContext() {
 
 export const PoolReservePricesUIConsumer = PoolReservePricesUIContext.Consumer;
 
-export function PoolReservePricesUIProvider({ poolReservePricesUIEvents, children }) {
+export function PoolReservePricesUIProvider({
+  poolReservePricesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(PoolReservePriceModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function PoolReservePricesUIProvider({ poolReservePricesUIEvents, childre
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function PoolReservePricesUIProvider({ poolReservePricesUIEvents, childre
     setIds,
     setQueryParams,
     dataModel: PoolReservePriceModel,
-    newPoolReservePriceButtonClick: poolReservePricesUIEvents.newPoolReservePriceButtonClick,
-    openEditPoolReservePricePage: poolReservePricesUIEvents.openEditPoolReservePricePage,
-    openDeletePoolReservePriceDialog: poolReservePricesUIEvents.openDeletePoolReservePriceDialog,
-    openDeletePoolReservePricesDialog: poolReservePricesUIEvents.openDeletePoolReservePricesDialog,
-    openFetchPoolReservePricesDialog: poolReservePricesUIEvents.openFetchPoolReservePricesDialog,
-    openUpdatePoolReservePricesStatusDialog: poolReservePricesUIEvents.openUpdatePoolReservePricesStatusDialog,
+    newPoolReservePriceButtonClick:
+      poolReservePricesUIEvents.newPoolReservePriceButtonClick,
+    openEditPoolReservePricePage:
+      poolReservePricesUIEvents.openEditPoolReservePricePage,
+    openDeletePoolReservePriceDialog:
+      poolReservePricesUIEvents.openDeletePoolReservePriceDialog,
+    openDeletePoolReservePricesDialog:
+      poolReservePricesUIEvents.openDeletePoolReservePricesDialog,
+    openFetchPoolReservePricesDialog:
+      poolReservePricesUIEvents.openFetchPoolReservePricesDialog,
+    openUpdatePoolReservePricesStatusDialog:
+      poolReservePricesUIEvents.openUpdatePoolReservePricesStatusDialog,
   };
   return (
-    <PoolReservePricesUIContext.Provider value={value}>{children}</PoolReservePricesUIContext.Provider>
+    <PoolReservePricesUIContext.Provider value={value}>
+      {children}
+    </PoolReservePricesUIContext.Provider>
   );
 }

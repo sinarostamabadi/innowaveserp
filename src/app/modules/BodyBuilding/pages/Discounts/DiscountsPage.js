@@ -25,7 +25,7 @@ export function DiscountsPage({ history }) {
       history.push("/BodyBuilding/Discounts/updateStatus");
     },
   };
-  
+
   return (
     <DiscountsUIProvider discountsUIEvents={discountsUIEvents}>
       <DiscountsLoadingDialog />

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { CoffeeInvoiceDiscountModel } from "../../../../../core/_models/Cofe/CoffeeInvoiceDiscountModel";
@@ -10,9 +9,13 @@ export function useCoffeeInvoiceDiscountsUIContext() {
   return useContext(CoffeeInvoiceDiscountsUIContext);
 }
 
-export const CoffeeInvoiceDiscountsUIConsumer = CoffeeInvoiceDiscountsUIContext.Consumer;
+export const CoffeeInvoiceDiscountsUIConsumer =
+  CoffeeInvoiceDiscountsUIContext.Consumer;
 
-export function CoffeeInvoiceDiscountsUIProvider({ coffeeInvoiceDiscountsUIEvents, children }) {
+export function CoffeeInvoiceDiscountsUIProvider({
+  coffeeInvoiceDiscountsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(CoffeeInvoiceDiscountModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function CoffeeInvoiceDiscountsUIProvider({ coffeeInvoiceDiscountsUIEvent
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function CoffeeInvoiceDiscountsUIProvider({ coffeeInvoiceDiscountsUIEvent
     setIds,
     setQueryParams,
     dataModel: CoffeeInvoiceDiscountModel,
-    newCoffeeInvoiceDiscountButtonClick: coffeeInvoiceDiscountsUIEvents.newCoffeeInvoiceDiscountButtonClick,
-    openEditCoffeeInvoiceDiscountPage: coffeeInvoiceDiscountsUIEvents.openEditCoffeeInvoiceDiscountPage,
-    openDeleteCoffeeInvoiceDiscountDialog: coffeeInvoiceDiscountsUIEvents.openDeleteCoffeeInvoiceDiscountDialog,
-    openDeleteCoffeeInvoiceDiscountsDialog: coffeeInvoiceDiscountsUIEvents.openDeleteCoffeeInvoiceDiscountsDialog,
-    openFetchCoffeeInvoiceDiscountsDialog: coffeeInvoiceDiscountsUIEvents.openFetchCoffeeInvoiceDiscountsDialog,
-    openUpdateCoffeeInvoiceDiscountsStatusDialog: coffeeInvoiceDiscountsUIEvents.openUpdateCoffeeInvoiceDiscountsStatusDialog,
+    newCoffeeInvoiceDiscountButtonClick:
+      coffeeInvoiceDiscountsUIEvents.newCoffeeInvoiceDiscountButtonClick,
+    openEditCoffeeInvoiceDiscountPage:
+      coffeeInvoiceDiscountsUIEvents.openEditCoffeeInvoiceDiscountPage,
+    openDeleteCoffeeInvoiceDiscountDialog:
+      coffeeInvoiceDiscountsUIEvents.openDeleteCoffeeInvoiceDiscountDialog,
+    openDeleteCoffeeInvoiceDiscountsDialog:
+      coffeeInvoiceDiscountsUIEvents.openDeleteCoffeeInvoiceDiscountsDialog,
+    openFetchCoffeeInvoiceDiscountsDialog:
+      coffeeInvoiceDiscountsUIEvents.openFetchCoffeeInvoiceDiscountsDialog,
+    openUpdateCoffeeInvoiceDiscountsStatusDialog:
+      coffeeInvoiceDiscountsUIEvents.openUpdateCoffeeInvoiceDiscountsStatusDialog,
   };
   return (
-    <CoffeeInvoiceDiscountsUIContext.Provider value={value}>{children}</CoffeeInvoiceDiscountsUIContext.Provider>
+    <CoffeeInvoiceDiscountsUIContext.Provider value={value}>
+      {children}
+    </CoffeeInvoiceDiscountsUIContext.Provider>
   );
 }

@@ -32,8 +32,10 @@ export function TechnicalTypesTable() {
       setIds: technicalTypesUIContext.setIds,
       queryParams: technicalTypesUIContext.queryParams,
       setQueryParams: technicalTypesUIContext.setQueryParams,
-      openEditTechnicalTypePage: technicalTypesUIContext.openEditTechnicalTypePage,
-      openDeleteTechnicalTypeDialog: technicalTypesUIContext.openDeleteTechnicalTypeDialog,
+      openEditTechnicalTypePage:
+        technicalTypesUIContext.openEditTechnicalTypePage,
+      openDeleteTechnicalTypeDialog:
+        technicalTypesUIContext.openDeleteTechnicalTypeDialog,
     };
   }, [technicalTypesUIContext]);
 
@@ -72,8 +74,10 @@ export function TechnicalTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditTechnicalTypePage: technicalTypesUIProps.openEditTechnicalTypePage,
-        openDeleteTechnicalTypeDialog: technicalTypesUIProps.openDeleteTechnicalTypeDialog,
+        openEditTechnicalTypePage:
+          technicalTypesUIProps.openEditTechnicalTypePage,
+        openDeleteTechnicalTypeDialog:
+          technicalTypesUIProps.openDeleteTechnicalTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

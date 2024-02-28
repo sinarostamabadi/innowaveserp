@@ -1,7 +1,10 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { Input, DatePickerField } from "../../../../../../core/_partials/controls";
+import {
+  Input,
+  DatePickerField,
+} from "../../../../../../core/_partials/controls";
 import { useTranslation } from "react-i18next";
 import { FaObjToEnDateTime } from "../../../../../../core/_helpers";
 
@@ -21,14 +24,14 @@ export function YearEditForm({ year, btnRef, saveYear }) {
       .nullable(),
   });
 
-  function clean(dirty){
+  function clean(dirty) {
     console.log(dirty);
-    return{
-      YearId : dirty.YearId,
+    return {
+      YearId: dirty.YearId,
       Title: dirty.Title,
       FromDate: FaObjToEnDateTime(dirty.FromDateObj),
       ToDate: FaObjToEnDateTime(dirty.ToDateObj),
-    }
+    };
   }
 
   return (

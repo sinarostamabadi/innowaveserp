@@ -56,7 +56,9 @@ export function FutsalDiscountEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("FutsalDiscount.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("FutsalDiscount.Entity");
 
     if (futsalDiscountForEdit && id) {
       _title = t("Common.Edit") + " " + futsalDiscountForEdit.TitleFa;

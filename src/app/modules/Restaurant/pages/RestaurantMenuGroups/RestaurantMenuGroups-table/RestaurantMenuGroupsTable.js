@@ -32,8 +32,10 @@ export function RestaurantMenuGroupsTable() {
       setIds: restaurantMenuGroupsUIContext.setIds,
       queryParams: restaurantMenuGroupsUIContext.queryParams,
       setQueryParams: restaurantMenuGroupsUIContext.setQueryParams,
-      openEditRestaurantMenuGroupPage: restaurantMenuGroupsUIContext.openEditRestaurantMenuGroupPage,
-      openDeleteRestaurantMenuGroupDialog: restaurantMenuGroupsUIContext.openDeleteRestaurantMenuGroupDialog,
+      openEditRestaurantMenuGroupPage:
+        restaurantMenuGroupsUIContext.openEditRestaurantMenuGroupPage,
+      openDeleteRestaurantMenuGroupDialog:
+        restaurantMenuGroupsUIContext.openDeleteRestaurantMenuGroupDialog,
     };
   }, [restaurantMenuGroupsUIContext]);
 
@@ -50,7 +52,9 @@ export function RestaurantMenuGroupsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     restaurantMenuGroupsUIProps.setIds([]);
-    dispatch(actions.fetchRestaurantMenuGroups(restaurantMenuGroupsUIProps.queryParams));
+    dispatch(
+      actions.fetchRestaurantMenuGroups(restaurantMenuGroupsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restaurantMenuGroupsUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function RestaurantMenuGroupsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditRestaurantMenuGroupPage: restaurantMenuGroupsUIProps.openEditRestaurantMenuGroupPage,
-        openDeleteRestaurantMenuGroupDialog: restaurantMenuGroupsUIProps.openDeleteRestaurantMenuGroupDialog,
+        openEditRestaurantMenuGroupPage:
+          restaurantMenuGroupsUIProps.openEditRestaurantMenuGroupPage,
+        openDeleteRestaurantMenuGroupDialog:
+          restaurantMenuGroupsUIProps.openDeleteRestaurantMenuGroupDialog,
         t: t,
       },
       classes: "text-right pr-0",

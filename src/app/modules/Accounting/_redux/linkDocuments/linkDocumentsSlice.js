@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialLinkDocumentsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const linkDocumentsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getLinkDocumentById  
+    // getLinkDocumentById
     linkDocumentFetched: (state, action) => {
       state.actionsLoading = false;
       state.linkDocumentForEdit = action.payload.linkDocumentForEdit;
       state.error = null;
     },
-    // findLinkDocuments  
+    // findLinkDocuments
     linkDocumentsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,42 @@ export const linkDocumentsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createLinkDocument  
+    // createLinkDocument
     linkDocumentCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateLinkDocument  
+    // updateLinkDocument
     linkDocumentUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.LinkDocumentId === action.payload.linkDocument.LinkDocumentId) {
+        if (
+          entity.LinkDocumentId === action.payload.linkDocument.LinkDocumentId
+        ) {
           return action.payload.linkDocument;
         }
         return entity;
       });
     },
-    // deleteLinkDocument  
+    // deleteLinkDocument
     linkDocumentDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.LinkDocumentId !== action.payload.LinkDocumentId  
+        (el) => el.LinkDocumentId !== action.payload.LinkDocumentId
       );
     },
-    // deleteLinkDocuments  
+    // deleteLinkDocuments
     linkDocumentsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.LinkDocumentId)  
+        (el) => !action.payload.ids.includes(el.LinkDocumentId)
       );
     },
-    // linkDocumentsUpdateState  
+    // linkDocumentsUpdateState
     linkDocumentsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

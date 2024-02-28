@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { RestaurantInvoiceDtlsTable } from "./restaurantInvoiceDtls-table/RestaurantInvoiceDtlsTable";
-import { useRestaurantInvoiceDtlsUIContext, RestaurantInvoiceDtlsUIConsumer } from "./RestaurantInvoiceDtlsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useRestaurantInvoiceDtlsUIContext,
+  RestaurantInvoiceDtlsUIConsumer,
+} from "./RestaurantInvoiceDtlsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function RestaurantInvoiceDtlsCard() {
   const { t } = useTranslation();
@@ -21,24 +23,33 @@ export function RestaurantInvoiceDtlsCard() {
       ids: restaurantInvoiceDtlsUIContext.ids,
       queryParams: restaurantInvoiceDtlsUIContext.queryParams,
       setQueryParams: restaurantInvoiceDtlsUIContext.setQueryParams,
-      newRestaurantInvoiceDtlButtonClick: restaurantInvoiceDtlsUIContext.newRestaurantInvoiceDtlButtonClick,
-      openDeleteRestaurantInvoiceDtlsDialog: restaurantInvoiceDtlsUIContext.openDeleteRestaurantInvoiceDtlsDialog,
-      openEditRestaurantInvoiceDtlPage: restaurantInvoiceDtlsUIContext.openEditRestaurantInvoiceDtlPage,
-      openUpdateRestaurantInvoiceDtlsStatusDialog: restaurantInvoiceDtlsUIContext.openUpdateRestaurantInvoiceDtlsStatusDialog,
-      openFetchRestaurantInvoiceDtlsDialog: restaurantInvoiceDtlsUIContext.openFetchRestaurantInvoiceDtlsDialog,
+      newRestaurantInvoiceDtlButtonClick:
+        restaurantInvoiceDtlsUIContext.newRestaurantInvoiceDtlButtonClick,
+      openDeleteRestaurantInvoiceDtlsDialog:
+        restaurantInvoiceDtlsUIContext.openDeleteRestaurantInvoiceDtlsDialog,
+      openEditRestaurantInvoiceDtlPage:
+        restaurantInvoiceDtlsUIContext.openEditRestaurantInvoiceDtlPage,
+      openUpdateRestaurantInvoiceDtlsStatusDialog:
+        restaurantInvoiceDtlsUIContext.openUpdateRestaurantInvoiceDtlsStatusDialog,
+      openFetchRestaurantInvoiceDtlsDialog:
+        restaurantInvoiceDtlsUIContext.openFetchRestaurantInvoiceDtlsDialog,
     };
   }, [restaurantInvoiceDtlsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("RestaurantInvoiceDtl.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("RestaurantInvoiceDtl.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
-            onClick={restaurantInvoiceDtlsUIProps.newRestaurantInvoiceDtlButtonClick}
+            onClick={
+              restaurantInvoiceDtlsUIProps.newRestaurantInvoiceDtlButtonClick
+            }
           >
-            {t("RestaurantInvoiceDtl.Entity")} {' '} {t("Common.New")}
+            {t("RestaurantInvoiceDtl.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function BodyBuildingReserveUsedDatesTable() {
   const { t } = useTranslation();
 
-  const bodyBuildingReserveUsedDatesUIContext = useBodyBuildingReserveUsedDatesUIContext();
+  const bodyBuildingReserveUsedDatesUIContext =
+    useBodyBuildingReserveUsedDatesUIContext();
 
   const bodyBuildingReserveUsedDatesUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function BodyBuildingReserveUsedDatesTable() {
       setIds: bodyBuildingReserveUsedDatesUIContext.setIds,
       queryParams: bodyBuildingReserveUsedDatesUIContext.queryParams,
       setQueryParams: bodyBuildingReserveUsedDatesUIContext.setQueryParams,
-      openEditBodyBuildingReserveUsedDatePage: bodyBuildingReserveUsedDatesUIContext.openEditBodyBuildingReserveUsedDatePage,
-      openDeleteBodyBuildingReserveUsedDateDialog: bodyBuildingReserveUsedDatesUIContext.openDeleteBodyBuildingReserveUsedDateDialog,
+      openEditBodyBuildingReserveUsedDatePage:
+        bodyBuildingReserveUsedDatesUIContext.openEditBodyBuildingReserveUsedDatePage,
+      openDeleteBodyBuildingReserveUsedDateDialog:
+        bodyBuildingReserveUsedDatesUIContext.openDeleteBodyBuildingReserveUsedDateDialog,
     };
   }, [bodyBuildingReserveUsedDatesUIContext]);
 
@@ -50,7 +53,11 @@ export function BodyBuildingReserveUsedDatesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     bodyBuildingReserveUsedDatesUIProps.setIds([]);
-    dispatch(actions.fetchBodyBuildingReserveUsedDates(bodyBuildingReserveUsedDatesUIProps.queryParams));
+    dispatch(
+      actions.fetchBodyBuildingReserveUsedDates(
+        bodyBuildingReserveUsedDatesUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bodyBuildingReserveUsedDatesUIProps.queryParams, dispatch]);
 
@@ -72,8 +79,10 @@ export function BodyBuildingReserveUsedDatesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditBodyBuildingReserveUsedDatePage: bodyBuildingReserveUsedDatesUIProps.openEditBodyBuildingReserveUsedDatePage,
-        openDeleteBodyBuildingReserveUsedDateDialog: bodyBuildingReserveUsedDatesUIProps.openDeleteBodyBuildingReserveUsedDateDialog,
+        openEditBodyBuildingReserveUsedDatePage:
+          bodyBuildingReserveUsedDatesUIProps.openEditBodyBuildingReserveUsedDatePage,
+        openDeleteBodyBuildingReserveUsedDateDialog:
+          bodyBuildingReserveUsedDatesUIProps.openDeleteBodyBuildingReserveUsedDateDialog,
         t: t,
       },
       classes: "text-right pr-0",

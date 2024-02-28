@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialRestaurantCostTypesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const restaurantCostTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getRestaurantCostTypeById  
+    // getRestaurantCostTypeById
     restaurantCostTypeFetched: (state, action) => {
       state.actionsLoading = false;
-      state.restaurantCostTypeForEdit = action.payload.restaurantCostTypeForEdit;
+      state.restaurantCostTypeForEdit =
+        action.payload.restaurantCostTypeForEdit;
       state.error = null;
     },
-    // findRestaurantCostTypes  
+    // findRestaurantCostTypes
     restaurantCostTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,43 @@ export const restaurantCostTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createRestaurantCostType  
+    // createRestaurantCostType
     restaurantCostTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateRestaurantCostType  
+    // updateRestaurantCostType
     restaurantCostTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.RestaurantCostTypeId === action.payload.restaurantCostType.RestaurantCostTypeId) {
+        if (
+          entity.RestaurantCostTypeId ===
+          action.payload.restaurantCostType.RestaurantCostTypeId
+        ) {
           return action.payload.restaurantCostType;
         }
         return entity;
       });
     },
-    // deleteRestaurantCostType  
+    // deleteRestaurantCostType
     restaurantCostTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.RestaurantCostTypeId !== action.payload.RestaurantCostTypeId  
+        (el) => el.RestaurantCostTypeId !== action.payload.RestaurantCostTypeId
       );
     },
-    // deleteRestaurantCostTypes  
+    // deleteRestaurantCostTypes
     restaurantCostTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.RestaurantCostTypeId)  
+        (el) => !action.payload.ids.includes(el.RestaurantCostTypeId)
       );
     },
-    // restaurantCostTypesUpdateState  
+    // restaurantCostTypesUpdateState
     restaurantCostTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

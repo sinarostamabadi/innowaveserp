@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { InsuranceJobModel } from "../../../../../core/_models/Employment/InsuranceJobModel";
@@ -30,7 +29,7 @@ export function InsuranceJobsUIProvider({ insuranceJobsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function InsuranceJobsUIProvider({ insuranceJobsUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: InsuranceJobModel,
-    newInsuranceJobButtonClick: insuranceJobsUIEvents.newInsuranceJobButtonClick,
+    newInsuranceJobButtonClick:
+      insuranceJobsUIEvents.newInsuranceJobButtonClick,
     openEditInsuranceJobPage: insuranceJobsUIEvents.openEditInsuranceJobPage,
-    openDeleteInsuranceJobDialog: insuranceJobsUIEvents.openDeleteInsuranceJobDialog,
-    openDeleteInsuranceJobsDialog: insuranceJobsUIEvents.openDeleteInsuranceJobsDialog,
-    openFetchInsuranceJobsDialog: insuranceJobsUIEvents.openFetchInsuranceJobsDialog,
-    openUpdateInsuranceJobsStatusDialog: insuranceJobsUIEvents.openUpdateInsuranceJobsStatusDialog,
+    openDeleteInsuranceJobDialog:
+      insuranceJobsUIEvents.openDeleteInsuranceJobDialog,
+    openDeleteInsuranceJobsDialog:
+      insuranceJobsUIEvents.openDeleteInsuranceJobsDialog,
+    openFetchInsuranceJobsDialog:
+      insuranceJobsUIEvents.openFetchInsuranceJobsDialog,
+    openUpdateInsuranceJobsStatusDialog:
+      insuranceJobsUIEvents.openUpdateInsuranceJobsStatusDialog,
   };
   return (
-    <InsuranceJobsUIContext.Provider value={value}>{children}</InsuranceJobsUIContext.Provider>
+    <InsuranceJobsUIContext.Provider value={value}>
+      {children}
+    </InsuranceJobsUIContext.Provider>
   );
 }

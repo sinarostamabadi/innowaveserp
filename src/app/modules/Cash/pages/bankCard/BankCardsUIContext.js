@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BankCardModel } from "src/core/_models/Cash/BankCardModel";
@@ -30,7 +29,7 @@ export function BankCardsUIProvider({ bankCardsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function BankCardsUIProvider({ bankCardsUIEvents, children }) {
     openDeleteBankCardDialog: bankCardsUIEvents.openDeleteBankCardDialog,
     openDeleteBankCardsDialog: bankCardsUIEvents.openDeleteBankCardsDialog,
     openFetchBankCardsDialog: bankCardsUIEvents.openFetchBankCardsDialog,
-    openUpdateBankCardsStatusDialog: bankCardsUIEvents.openUpdateBankCardsStatusDialog,
+    openUpdateBankCardsStatusDialog:
+      bankCardsUIEvents.openUpdateBankCardsStatusDialog,
   };
   return (
-    <BankCardsUIContext.Provider value={value}>{children}</BankCardsUIContext.Provider>
+    <BankCardsUIContext.Provider value={value}>
+      {children}
+    </BankCardsUIContext.Provider>
   );
 }

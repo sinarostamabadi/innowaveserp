@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPoolCentersState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const poolCentersSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPoolCenterById  
+    // getPoolCenterById
     poolCenterFetched: (state, action) => {
       state.actionsLoading = false;
       state.poolCenterForEdit = action.payload.poolCenterForEdit;
       state.error = null;
     },
-    // findPoolCenters  
+    // findPoolCenters
     poolCentersFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const poolCentersSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPoolCenter  
+    // createPoolCenter
     poolCenterCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePoolCenter  
+    // updatePoolCenter
     poolCenterUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const poolCentersSlice = createSlice({
         return entity;
       });
     },
-    // deletePoolCenter  
+    // deletePoolCenter
     poolCenterDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PoolCenterId !== action.payload.PoolCenterId  
+        (el) => el.PoolCenterId !== action.payload.PoolCenterId
       );
     },
-    // deletePoolCenters  
+    // deletePoolCenters
     poolCentersDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PoolCenterId)  
+        (el) => !action.payload.ids.includes(el.PoolCenterId)
       );
     },
-    // poolCentersUpdateState  
+    // poolCentersUpdateState
     poolCentersStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

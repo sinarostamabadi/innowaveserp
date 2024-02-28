@@ -8,7 +8,11 @@ import * as actions from "../../../_redux/buys/buysActions";
 import { useBuysUIContext } from "../BuysUIContext";
 import { useTranslation } from "react-i18next";
 import { Attachments } from "src/core/_partials/controls/attachment/Attachments";
-import { EnToFaObjDate, FaObjToEnDateTime, ObjectToFormData } from "src/core/_helpers";
+import {
+  EnToFaObjDate,
+  FaObjToEnDateTime,
+  ObjectToFormData,
+} from "src/core/_helpers";
 
 export function BuyAttachments({ id, show, onHide }) {
   const { t } = useTranslation();
@@ -35,7 +39,7 @@ export function BuyAttachments({ id, show, onHide }) {
   }, [id]);
 
   useEffect(() => {
-    setBuyObj({...buyObj, EntityAttachments: entityAttachmentsObj});
+    setBuyObj({ ...buyObj, EntityAttachments: entityAttachmentsObj });
   }, [entityAttachmentsObj]);
 
   useEffect(() => {
@@ -47,7 +51,7 @@ export function BuyAttachments({ id, show, onHide }) {
           buyForEdit.FactorDate && EnToFaObjDate(buyForEdit.FactorDate),
       });
       setEntityAttachmentsObj(buyForEdit.EntityAttachments);
-    }else {
+    } else {
       setBuyObj(null);
       setEntityAttachmentsObj([]);
     }

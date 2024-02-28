@@ -32,8 +32,10 @@ export function ImportXMLSettingTable() {
       setIds: importXMLSettingUIContext.setIds,
       queryParams: importXMLSettingUIContext.queryParams,
       setQueryParams: importXMLSettingUIContext.setQueryParams,
-      openEditImportXMLSettingPage: importXMLSettingUIContext.openEditImportXMLSettingPage,
-      openDeleteImportXMLSettingDialog: importXMLSettingUIContext.openDeleteImportXMLSettingDialog,
+      openEditImportXMLSettingPage:
+        importXMLSettingUIContext.openEditImportXMLSettingPage,
+      openDeleteImportXMLSettingDialog:
+        importXMLSettingUIContext.openDeleteImportXMLSettingDialog,
     };
   }, [importXMLSettingUIContext]);
 
@@ -50,7 +52,9 @@ export function ImportXMLSettingTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     importXMLSettingUIProps.setIds([]);
-    dispatch(actions.fetchImportXMLSetting(importXMLSettingUIProps.queryParams));
+    dispatch(
+      actions.fetchImportXMLSetting(importXMLSettingUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [importXMLSettingUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function ImportXMLSettingTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditImportXMLSettingPage: importXMLSettingUIProps.openEditImportXMLSettingPage,
-        openDeleteImportXMLSettingDialog: importXMLSettingUIProps.openDeleteImportXMLSettingDialog,
+        openEditImportXMLSettingPage:
+          importXMLSettingUIProps.openEditImportXMLSettingPage,
+        openDeleteImportXMLSettingDialog:
+          importXMLSettingUIProps.openDeleteImportXMLSettingDialog,
         t: t,
       },
       classes: "text-right pr-0",

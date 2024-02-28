@@ -28,7 +28,12 @@ export const PersonSpecialDaysUIProvider = forwardRef(
           !!personSpecialDays && personSpecialDays.length > 0
             ? personSpecialDays.map((personSpecialDay) => {
                 return {
-                  PersonSpecialDayId: personSpecialDay.PersonSpecialDayId.toString().indexOf("temp_") > -1? null: personSpecialDay.PersonSpecialDayId,
+                  PersonSpecialDayId:
+                    personSpecialDay.PersonSpecialDayId.toString().indexOf(
+                      "temp_"
+                    ) > -1
+                      ? null
+                      : personSpecialDay.PersonSpecialDayId,
                   SpecialDayTypeId: personSpecialDay.SpecialDayTypeId,
                   PersonId: +personId,
                   PersonSpecialDayDate: personSpecialDay.PersonSpecialDayDate,
@@ -76,7 +81,8 @@ export const PersonSpecialDaysUIProvider = forwardRef(
       });
     }, []);
 
-    const [personSpecialDays, setPersonSpecialDays] = useState(personSpecialDay);
+    const [personSpecialDays, setPersonSpecialDays] =
+      useState(personSpecialDay);
     const [active, setActive] = useState([]);
     const [totalCount, setTotalCount] = useState(0);
     useEffect(() => {
@@ -99,14 +105,12 @@ export const PersonSpecialDaysUIProvider = forwardRef(
     }, [currentPersonId]);
 
     useEffect(() => {
-      if(personSpecialDays.length > 0)
-        setActive(personSpecialDays.filter(x=> !x.IsDeleted));
+      if (personSpecialDays.length > 0)
+        setActive(personSpecialDays.filter((x) => !x.IsDeleted));
     }, [personSpecialDays]);
 
-    const [
-      showEditPersonSpecialDayDialog,
-      setShowEditPersonSpecialDayDialog,
-    ] = useState(false);
+    const [showEditPersonSpecialDayDialog, setShowEditPersonSpecialDayDialog] =
+      useState(false);
     const openNewPersonSpecialDayDialog = () => {
       setSelectedId(undefined);
       setShowEditPersonSpecialDayDialog(true);
@@ -182,7 +186,10 @@ export const PersonSpecialDaysUIProvider = forwardRef(
 
       setPersonSpecialDays((personSpecialDays) =>
         personSpecialDays.map((item) => {
-          console.log("item.PersonSpecialDayId > ", item.PersonSpecialDayId == personSpecialDayId);
+          console.log(
+            "item.PersonSpecialDayId > ",
+            item.PersonSpecialDayId == personSpecialDayId
+          );
           return item.PersonSpecialDayId == personSpecialDayId
             ? { ...personSpecialDay, IsDeleted: true }
             : item;

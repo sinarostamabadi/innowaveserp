@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmployeeMissionModel } from "../../../../../core/_models/Employment/EmployeeMissionModel";
@@ -12,7 +11,10 @@ export function useEmployeeMissionsUIContext() {
 
 export const EmployeeMissionsUIConsumer = EmployeeMissionsUIContext.Consumer;
 
-export function EmployeeMissionsUIProvider({ employeeMissionsUIEvents, children }) {
+export function EmployeeMissionsUIProvider({
+  employeeMissionsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(EmployeeMissionModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function EmployeeMissionsUIProvider({ employeeMissionsUIEvents, children 
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function EmployeeMissionsUIProvider({ employeeMissionsUIEvents, children 
     setIds,
     setQueryParams,
     dataModel: EmployeeMissionModel,
-    newEmployeeMissionButtonClick: employeeMissionsUIEvents.newEmployeeMissionButtonClick,
-    openEditEmployeeMissionPage: employeeMissionsUIEvents.openEditEmployeeMissionPage,
-    openDeleteEmployeeMissionDialog: employeeMissionsUIEvents.openDeleteEmployeeMissionDialog,
-    openDeleteEmployeeMissionsDialog: employeeMissionsUIEvents.openDeleteEmployeeMissionsDialog,
-    openFetchEmployeeMissionsDialog: employeeMissionsUIEvents.openFetchEmployeeMissionsDialog,
-    openUpdateEmployeeMissionsStatusDialog: employeeMissionsUIEvents.openUpdateEmployeeMissionsStatusDialog,
+    newEmployeeMissionButtonClick:
+      employeeMissionsUIEvents.newEmployeeMissionButtonClick,
+    openEditEmployeeMissionPage:
+      employeeMissionsUIEvents.openEditEmployeeMissionPage,
+    openDeleteEmployeeMissionDialog:
+      employeeMissionsUIEvents.openDeleteEmployeeMissionDialog,
+    openDeleteEmployeeMissionsDialog:
+      employeeMissionsUIEvents.openDeleteEmployeeMissionsDialog,
+    openFetchEmployeeMissionsDialog:
+      employeeMissionsUIEvents.openFetchEmployeeMissionsDialog,
+    openUpdateEmployeeMissionsStatusDialog:
+      employeeMissionsUIEvents.openUpdateEmployeeMissionsStatusDialog,
   };
   return (
-    <EmployeeMissionsUIContext.Provider value={value}>{children}</EmployeeMissionsUIContext.Provider>
+    <EmployeeMissionsUIContext.Provider value={value}>
+      {children}
+    </EmployeeMissionsUIContext.Provider>
   );
 }

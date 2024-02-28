@@ -26,7 +26,7 @@ export function SettingPage({ history }) {
       history.push("/general/setting/updateStatus");
     },
   };
-  
+
   return (
     <SettingUIProvider settingUIEvents={settingUIEvents}>
       <SettingLoadingDialog />

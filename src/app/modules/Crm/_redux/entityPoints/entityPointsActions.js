@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./entityPointsCrud";
 import { entityPointsSlice, callTypes } from "./entityPointsSlice";
 const { actions } = entityPointsSlice;
@@ -19,7 +18,9 @@ export const fetchEntityPoints = (queryParams) => (dispatch) => {
 };
 export const fetchEntityPoint = (id) => (dispatch) => {
   if (!id) {
-    return dispatch(actions.entityPointFetched({ entityPointForEdit: undefined }));
+    return dispatch(
+      actions.entityPointFetched({ entityPointForEdit: undefined })
+    );
   }
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
@@ -97,4 +98,4 @@ export const deleteEntityPoints = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

@@ -17,7 +17,9 @@ export function BodyBuildingAccountTypesPage({ history }) {
       history.push(`/bodyBuilding/bodyBuildingAccountTypes/${id}/delete`);
     },
     openDeleteBodyBuildingAccountTypesDialog: () => {
-      history.push(`/bodyBuilding/bodyBuildingAccountTypes/deleteBodyBuildingAccountTypes`);
+      history.push(
+        `/bodyBuilding/bodyBuildingAccountTypes/deleteBodyBuildingAccountTypes`
+      );
     },
     openFetchBodyBuildingAccountTypesDialog: () => {
       history.push(`/bodyBuilding/bodyBuildingAccountTypes/fetch`);
@@ -26,9 +28,11 @@ export function BodyBuildingAccountTypesPage({ history }) {
       history.push("/bodyBuilding/bodyBuildingAccountTypes/updateStatus");
     },
   };
-  
+
   return (
-    <BodyBuildingAccountTypesUIProvider bodyBuildingAccountTypesUIEvents={bodyBuildingAccountTypesUIEvents}>
+    <BodyBuildingAccountTypesUIProvider
+      bodyBuildingAccountTypesUIEvents={bodyBuildingAccountTypesUIEvents}
+    >
       <BodyBuildingAccountTypesLoadingDialog />
       <Route path="/bodyBuilding/bodyBuildingAccountTypes/:id/delete">
         {({ history, match }) => (

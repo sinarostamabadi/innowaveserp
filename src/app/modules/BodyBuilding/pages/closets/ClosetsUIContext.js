@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BodyBuildingClosetModel } from "../../../../../core/_models/BodyBuilding/BodyBuildingClosetModel";
@@ -30,7 +29,7 @@ export function ClosetsUIProvider({ closetsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -45,9 +44,12 @@ export function ClosetsUIProvider({ closetsUIEvents, children }) {
     openClosetFreeDialog: closetsUIEvents.openClosetFreeDialog,
     openDeleteClosetsDialog: closetsUIEvents.openDeleteClosetsDialog,
     openFetchClosetsDialog: closetsUIEvents.openFetchClosetsDialog,
-    openUpdateClosetsStatusDialog: closetsUIEvents.openUpdateClosetsStatusDialog,
+    openUpdateClosetsStatusDialog:
+      closetsUIEvents.openUpdateClosetsStatusDialog,
   };
   return (
-    <ClosetsUIContext.Provider value={value}>{children}</ClosetsUIContext.Provider>
+    <ClosetsUIContext.Provider value={value}>
+      {children}
+    </ClosetsUIContext.Provider>
   );
 }

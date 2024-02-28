@@ -29,7 +29,7 @@ export function EducationsUIProvider({ educationsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -42,9 +42,12 @@ export function EducationsUIProvider({ educationsUIEvents, children }) {
     openDeleteEducationDialog: educationsUIEvents.openDeleteEducationDialog,
     openDeleteEducationsDialog: educationsUIEvents.openDeleteEducationsDialog,
     openFetchEducationsDialog: educationsUIEvents.openFetchEducationsDialog,
-    openUpdateEducationsStatusDialog: educationsUIEvents.openUpdateEducationsStatusDialog,
+    openUpdateEducationsStatusDialog:
+      educationsUIEvents.openUpdateEducationsStatusDialog,
   };
   return (
-    <EducationsUIContext.Provider value={value}>{children}</EducationsUIContext.Provider>
+    <EducationsUIContext.Provider value={value}>
+      {children}
+    </EducationsUIContext.Provider>
   );
 }

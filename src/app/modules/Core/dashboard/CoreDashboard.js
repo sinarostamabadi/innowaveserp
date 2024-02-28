@@ -11,7 +11,7 @@ export function CoreDashboard() {
           position: "relative",
         }}
       >
-        <div className="col-12" style={{minHeight: "100%",}}>
+        <div className="col-12" style={{ minHeight: "100%" }}>
           <div
             className="card card-custom example example-compact gutter-b"
             style={{
@@ -24,7 +24,7 @@ export function CoreDashboard() {
           >
             <div className="card-header">
               <div className="card-title">
-                <h3 className="card-label">اطلاعات پایه</h3>
+                <h3 className="card-label">Base information</h3>
               </div>
             </div>
             <div className="card-body">

@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { BuyReturnsTable } from "./buyReturns-table/BuyReturnsTable";
-import { useBuyReturnsUIContext, BuyReturnsUIConsumer } from "./BuyReturnsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useBuyReturnsUIContext,
+  BuyReturnsUIConsumer,
+} from "./BuyReturnsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function BuyReturnsCard() {
   const { t } = useTranslation();
@@ -22,9 +24,11 @@ export function BuyReturnsCard() {
       queryParams: buyReturnsUIContext.queryParams,
       setQueryParams: buyReturnsUIContext.setQueryParams,
       newBuyReturnButtonClick: buyReturnsUIContext.newBuyReturnButtonClick,
-      openDeleteBuyReturnsDialog: buyReturnsUIContext.openDeleteBuyReturnsDialog,
+      openDeleteBuyReturnsDialog:
+        buyReturnsUIContext.openDeleteBuyReturnsDialog,
       openEditBuyReturnPage: buyReturnsUIContext.openEditBuyReturnPage,
-      openUpdateBuyReturnsStatusDialog: buyReturnsUIContext.openUpdateBuyReturnsStatusDialog,
+      openUpdateBuyReturnsStatusDialog:
+        buyReturnsUIContext.openUpdateBuyReturnsStatusDialog,
       openFetchBuyReturnsDialog: buyReturnsUIContext.openFetchBuyReturnsDialog,
     };
   }, [buyReturnsUIContext]);

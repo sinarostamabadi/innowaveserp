@@ -25,7 +25,7 @@ export function ServicesPage({ history }) {
       history.push("/BodyBuilding/Services/updateStatus");
     },
   };
-  
+
   return (
     <ServicesUIProvider servicesUIEvents={servicesUIEvents}>
       <ServicesLoadingDialog />

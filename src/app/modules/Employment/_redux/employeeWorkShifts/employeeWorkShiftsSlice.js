@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmployeeWorkShiftsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const employeeWorkShiftsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmployeeWorkShiftById  
+    // getEmployeeWorkShiftById
     employeeWorkShiftFetched: (state, action) => {
       state.actionsLoading = false;
       state.employeeWorkShiftForEdit = action.payload.employeeWorkShiftForEdit;
       state.error = null;
     },
-    // findEmployeeWorkShifts  
+    // findEmployeeWorkShifts
     employeeWorkShiftsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const employeeWorkShiftsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmployeeWorkShift  
+    // createEmployeeWorkShift
     employeeWorkShiftCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmployeeWorkShift  
+    // updateEmployeeWorkShift
     employeeWorkShiftUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.EmployeeWorkShiftId === action.payload.employeeWorkShift.EmployeeWorkShiftId) {
+        if (
+          entity.EmployeeWorkShiftId ===
+          action.payload.employeeWorkShift.EmployeeWorkShiftId
+        ) {
           return action.payload.employeeWorkShift;
         }
         return entity;
       });
     },
-    // deleteEmployeeWorkShift  
+    // deleteEmployeeWorkShift
     employeeWorkShiftDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EmployeeWorkShiftId !== action.payload.EmployeeWorkShiftId  
+        (el) => el.EmployeeWorkShiftId !== action.payload.EmployeeWorkShiftId
       );
     },
-    // deleteEmployeeWorkShifts  
+    // deleteEmployeeWorkShifts
     employeeWorkShiftsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EmployeeWorkShiftId)  
+        (el) => !action.payload.ids.includes(el.EmployeeWorkShiftId)
       );
     },
-    // employeeWorkShiftsUpdateState  
+    // employeeWorkShiftsUpdateState
     employeeWorkShiftsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

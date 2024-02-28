@@ -56,7 +56,9 @@ export function PersonSpecialDayEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("PersonSpecialDay.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("PersonSpecialDay.Entity");
 
     if (personSpecialDayForEdit && id) {
       _title = t("Common.Edit") + " " + personSpecialDayForEdit.TitleFa;
@@ -107,10 +109,10 @@ export function PersonSpecialDayEdit({
       )}
       <CardHeader title={title}>
         <CardHeaderToolbar>
-          <button  
-            type="button"  
+          <button
+            type="button"
             onClick={backToPersonSpecialDaysList}
-            className="btn btn-light"  
+            className="btn btn-light"
           >
             <i className="fa fa-arrow-left"></i> {t("Common.Back")}
           </button>
@@ -131,7 +133,7 @@ export function PersonSpecialDayEdit({
             <i className="fa fa-save"></i> {t("Common.Save")}
           </button>
         </CardHeaderToolbar>
-        </CardHeader>        
+      </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>

@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPosesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const posesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPosById  
+    // getPosById
     posFetched: (state, action) => {
       state.actionsLoading = false;
       state.posForEdit = action.payload.posForEdit;
       state.error = null;
     },
-    // findPoses  
+    // findPoses
     posesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,7 +46,7 @@ export const posesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPos  
+    // createPos
     posCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
@@ -55,7 +54,7 @@ export const posesSlice = createSlice({
 
       return;
     },
-    // updatePos  
+    // updatePos
     posUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -68,23 +67,23 @@ export const posesSlice = createSlice({
 
       return;
     },
-    // deletePos  
+    // deletePos
     posDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PosId !== action.payload.PosId  
+        (el) => el.PosId !== action.payload.PosId
       );
     },
-    // deletePoses  
+    // deletePoses
     posesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PosId)  
+        (el) => !action.payload.ids.includes(el.PosId)
       );
     },
-    // posesUpdateState  
+    // posesUpdateState
     posesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

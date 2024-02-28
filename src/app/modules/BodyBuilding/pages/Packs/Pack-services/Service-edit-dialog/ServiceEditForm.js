@@ -17,18 +17,22 @@ export function ServiceEditForm({
   const { t } = useTranslation();
   const ServiceEditSchema = Yup.object().shape({
     BodyBuildingServiceId: Yup.number().required(
-      t("err.IsRequired", { 0: t("BodyBuildingPackService.BodyBuildingService") })
+      t("err.IsRequired", {
+        0: t("BodyBuildingPackService.BodyBuildingService"),
+      })
     ),
     ServiceCount: Yup.number().required(
       t("err.IsRequired", { 0: t("BodyBuildingService.ServiceCount") })
     ),
   });
 
-  const handleSuggestionBodyBuildingService = useCallback((query, fnCallback) => {
-    suggestion(query).then(({ data }) => {
-      fnCallback(data.Items);
-    });
-  });
+  const handleSuggestionBodyBuildingService = useCallback(
+    (query, fnCallback) => {
+      suggestion(query).then(({ data }) => {
+        fnCallback(data.Items);
+      });
+    }
+  );
 
   function cleanDetail(dirtyData) {
     return {
@@ -61,7 +65,7 @@ export function ServiceEditForm({
                 </div>
               )}
               <Form className="form form-label-right">
-              <div className="form-group row">
+                <div className="form-group row">
                   <div className="col-lg-9">
                     <SuggestionField
                       name="BodyBuildingServiceId"
@@ -73,7 +77,9 @@ export function ServiceEditForm({
                       placeHolder={t("msg.SelectBySuggestion")}
                       handleSearch={handleSuggestionBodyBuildingService}
                       defaultValue={
-                        service && !!service.BodyBuildingService ? [service.BodyBuildingService] : []
+                        service && !!service.BodyBuildingService
+                          ? [service.BodyBuildingService]
+                          : []
                       }
                       renderMenuItemChildren={(option, props) => (
                         <div>

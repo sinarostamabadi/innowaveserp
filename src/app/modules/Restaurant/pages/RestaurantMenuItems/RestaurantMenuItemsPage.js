@@ -26,9 +26,11 @@ export function RestaurantMenuItemsPage({ history }) {
       history.push("/restaurant/RestaurantMenuItems/updateStatus");
     },
   };
-  
+
   return (
-    <RestaurantMenuItemsUIProvider restaurantMenuItemsUIEvents={restaurantMenuItemsUIEvents}>
+    <RestaurantMenuItemsUIProvider
+      restaurantMenuItemsUIEvents={restaurantMenuItemsUIEvents}
+    >
       <RestaurantMenuItemsLoadingDialog />
       <Route path="/restaurant/RestaurantMenuItems/:id/delete">
         {({ history, match }) => (

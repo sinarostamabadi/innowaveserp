@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { MassageTimePriceingTable } from "./massageTimePriceing-table/MassageTimePriceingTable";
-import { useMassageTimePriceingUIContext, MassageTimePriceingUIConsumer } from "./MassageTimePriceingUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useMassageTimePriceingUIContext,
+  MassageTimePriceingUIConsumer,
+} from "./MassageTimePriceingUIContext";
+import { useTranslation } from "react-i18next";
 
 export function MassageTimePriceingCard() {
   const { t } = useTranslation();
@@ -21,24 +23,33 @@ export function MassageTimePriceingCard() {
       ids: massageTimePriceingUIContext.ids,
       queryParams: massageTimePriceingUIContext.queryParams,
       setQueryParams: massageTimePriceingUIContext.setQueryParams,
-      newMassageTimePriceingButtonClick: massageTimePriceingUIContext.newMassageTimePriceingButtonClick,
-      openDeleteMassageTimePriceingDialog: massageTimePriceingUIContext.openDeleteMassageTimePriceingDialog,
-      openEditMassageTimePriceingPage: massageTimePriceingUIContext.openEditMassageTimePriceingPage,
-      openUpdateMassageTimePriceingStatusDialog: massageTimePriceingUIContext.openUpdateMassageTimePriceingStatusDialog,
-      openFetchMassageTimePriceingDialog: massageTimePriceingUIContext.openFetchMassageTimePriceingDialog,
+      newMassageTimePriceingButtonClick:
+        massageTimePriceingUIContext.newMassageTimePriceingButtonClick,
+      openDeleteMassageTimePriceingDialog:
+        massageTimePriceingUIContext.openDeleteMassageTimePriceingDialog,
+      openEditMassageTimePriceingPage:
+        massageTimePriceingUIContext.openEditMassageTimePriceingPage,
+      openUpdateMassageTimePriceingStatusDialog:
+        massageTimePriceingUIContext.openUpdateMassageTimePriceingStatusDialog,
+      openFetchMassageTimePriceingDialog:
+        massageTimePriceingUIContext.openFetchMassageTimePriceingDialog,
     };
   }, [massageTimePriceingUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("MassageTimePriceing.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("MassageTimePriceing.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
-            onClick={massageTimePriceingUIProps.newMassageTimePriceingButtonClick}
+            onClick={
+              massageTimePriceingUIProps.newMassageTimePriceingButtonClick
+            }
           >
-            {t("MassageTimePriceing.Entity")} {' '} {t("Common.New")}
+            {t("MassageTimePriceing.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

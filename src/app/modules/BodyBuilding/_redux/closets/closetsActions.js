@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./closetsCrud";
 import { closetsSlice, callTypes } from "./closetsSlice";
 const { actions } = closetsSlice;
@@ -123,4 +122,4 @@ export const deleteClosets = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

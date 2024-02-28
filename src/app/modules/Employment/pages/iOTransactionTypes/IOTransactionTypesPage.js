@@ -26,9 +26,11 @@ export function IOTransactionTypesPage({ history }) {
       history.push("/employment/iOTransactionTypes/updateStatus");
     },
   };
-  
+
   return (
-    <IOTransactionTypesUIProvider iOTransactionTypesUIEvents={iOTransactionTypesUIEvents}>
+    <IOTransactionTypesUIProvider
+      iOTransactionTypesUIEvents={iOTransactionTypesUIEvents}
+    >
       <IOTransactionTypesLoadingDialog />
       <Route path="/employment/iOTransactionTypes/:id/delete">
         {({ history, match }) => (

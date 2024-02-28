@@ -27,64 +27,70 @@ export function ReserveScore({
   const handle = useFullScreenHandle();
 
   useEffect(() => {
-      getReserveById(id).then((x) => {
-        setReserve(x.data);
-        
-        if (!!x.data && !!x.data.ReservePersonScores && x.data.ReservePersonScores.length) {
-          let persons = x.data.ReservePersonScores.map(rp=> ({PersonId: rp.PersonId, Score: 0}));
-          for (let index = 1; index < 11; index++) {
-            persons = persons.map(p=> {
-              const curScore = x.data.ReservePersonScores.filter(rp => {
-                return rp.PersonId == p.PersonId
-              })[0][`Set${index}Score`];
-              return {PersonId: p.PersonId, Score: p.Score + (+curScore)};
-            });
+    getReserveById(id).then((x) => {
+      setReserve(x.data);
 
+      if (
+        !!x.data &&
+        !!x.data.ReservePersonScores &&
+        x.data.ReservePersonScores.length
+      ) {
+        let persons = x.data.ReservePersonScores.map((rp) => ({
+          PersonId: rp.PersonId,
+          Score: 0,
+        }));
+        for (let index = 1; index < 11; index++) {
+          persons = persons.map((p) => {
+            const curScore = x.data.ReservePersonScores.filter((rp) => {
+              return rp.PersonId == p.PersonId;
+            })[0][`Set${index}Score`];
+            return { PersonId: p.PersonId, Score: p.Score + +curScore };
+          });
 
-            if (
-              index < 10 && x.data.ReservePersonScores.some(
+          if (
+            index < 10 &&
+            x.data.ReservePersonScores.some(
+              (x) => x["Ball2Set" + index] == null
+            )
+          ) {
+            setActiveSet(index);
+            setActivePerson(
+              x.data.ReservePersonScores.filter(
                 (x) => x["Ball2Set" + index] == null
-              )
-            ) {
-              setActiveSet(index);
-              setActivePerson(
-                x.data.ReservePersonScores.filter(
-                  (x) => x["Ball2Set" + index] == null
-                )[0]
-              );
+              )[0]
+            );
 
-              break;
-            }
-
-            if (
-              index == 10 && x.data.ReservePersonScores.some(
-                (x) => x["Ball3Set" + index] == null
-              )
-            ) {
-              setActiveSet(index);
-              setActivePerson(
-                x.data.ReservePersonScores.filter(
-                  (x) => x["Ball3Set" + index] == null
-                )[0]
-              );
-
-              break;
-            }
+            break;
           }
 
+          if (
+            index == 10 &&
+            x.data.ReservePersonScores.some(
+              (x) => x["Ball3Set" + index] == null
+            )
+          ) {
+            setActiveSet(index);
+            setActivePerson(
+              x.data.ReservePersonScores.filter(
+                (x) => x["Ball3Set" + index] == null
+              )[0]
+            );
 
-          const maxScore = persons.reduce((p, c) => p.Score > c.Score ? p : c);
-          if(!!maxScore) setWiner(maxScore.PersonId);
-          else setWiner(null);
+            break;
+          }
         }
-        else {
-          setActivePerson(null);
-          setActiveSet(1);
-          setWiner(null);
-        }
-      });
+
+        const maxScore = persons.reduce((p, c) => (p.Score > c.Score ? p : c));
+        if (!!maxScore) setWiner(maxScore.PersonId);
+        else setWiner(null);
+      } else {
+        setActivePerson(null);
+        setActiveSet(1);
+        setWiner(null);
+      }
+    });
   }, []);
-console.log("activePerson > ", activePerson);
+  console.log("activePerson > ", activePerson);
   return (
     <FullScreen handle={handle}>
       <Card
@@ -101,7 +107,8 @@ console.log("activePerson > ", activePerson);
           <Row>
             <Col xs="3">
               <Card.Title className="m-0">
-              {t("BowlingReserve.CountingPoints")} «{!!reserve && reserve.Line.Title}»
+                {t("BowlingReserve.CountingPoints")} «
+                {!!reserve && reserve.Line.Title}»
                 <br />
                 <div style={{ fontSize: "1.1rem", marginTop: "1rem" }}>
                   <b>{t("BowlingReserve.FromTime")}: </b>
@@ -114,9 +121,7 @@ console.log("activePerson > ", activePerson);
               </Card.Title>
             </Col>
             <Col xs="6" className="pt-5 text-center">
-              <h1>
-                {!!activePerson? activePerson.Person.FullNameEn: ""}
-              </h1>
+              <h1>{!!activePerson ? activePerson.Person.FullNameEn : ""}</h1>
             </Col>
             <Col xs="3">
               {!handle.active && (
@@ -185,23 +190,35 @@ console.log("activePerson > ", activePerson);
                   </tr>
                 </thead>
                 <tbody className="">
-                  {!!reserve && reserve.ReservePersonScores && reserve.ReservePersonScores.length && 
+                  {!!reserve &&
+                    reserve.ReservePersonScores &&
+                    reserve.ReservePersonScores.length &&
                     reserve.ReservePersonScores.map((x, i) => (
                       <tr
                         key={x.PersonId}
                         className={
-                          (!!activePerson && activePerson.length > 0 &&
-                            activePerson.PersonId == x.PersonId)
+                          !!activePerson &&
+                          activePerson.length > 0 &&
+                          activePerson.PersonId == x.PersonId
                             ? "active"
                             : ""
                         }
                       >
-                        <td className={
-                          x.Person.RealPerson.GenderId == 1 ? "man" + " box-name"
-                            : "woman" + " box-name"
-                        }>{winer == x.PersonId && (
-                          <i className="fas fa-crown ml-2" style={{color: "yellow"}}></i>
-                        )}{x.Person.FullNameEn || x.Person.FullNameFa}</td>
+                        <td
+                          className={
+                            x.Person.RealPerson.GenderId == 1
+                              ? "man" + " box-name"
+                              : "woman" + " box-name"
+                          }
+                        >
+                          {winer == x.PersonId && (
+                            <i
+                              className="fas fa-crown ml-2"
+                              style={{ color: "yellow" }}
+                            ></i>
+                          )}
+                          {x.Person.FullNameEn || x.Person.FullNameFa}
+                        </td>
                         <td>
                           <div className="d-inline-block set-box">
                             <div className="float-right set-box-50">
@@ -325,9 +342,7 @@ console.log("activePerson > ", activePerson);
                             <div className="set-box-total">{x.Set10Score}</div>
                           </div>
                         </td>
-                        <td className="total-score">
-                          {x.TotalScore}
-                        </td>
+                        <td className="total-score">{x.TotalScore}</td>
                       </tr>
                     ))}
                 </tbody>

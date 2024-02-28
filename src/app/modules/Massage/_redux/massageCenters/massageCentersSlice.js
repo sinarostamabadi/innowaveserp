@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialMassageCentersState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const massageCentersSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getMassageCenterById  
+    // getMassageCenterById
     massageCenterFetched: (state, action) => {
       state.actionsLoading = false;
       state.massageCenterForEdit = action.payload.massageCenterForEdit;
       state.error = null;
     },
-    // findMassageCenters  
+    // findMassageCenters
     massageCentersFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const massageCentersSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createMassageCenter  
+    // createMassageCenter
     massageCenterCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateMassageCenter  
+    // updateMassageCenter
     massageCenterUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.MassageCenterId === action.payload.massageCenter.MassageCenterId) {
+        if (
+          entity.MassageCenterId ===
+          action.payload.massageCenter.MassageCenterId
+        ) {
           return action.payload.massageCenter;
         }
         return entity;
       });
     },
-    // deleteMassageCenter  
+    // deleteMassageCenter
     massageCenterDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.MassageCenterId !== action.payload.MassageCenterId  
+        (el) => el.MassageCenterId !== action.payload.MassageCenterId
       );
     },
-    // deleteMassageCenters  
+    // deleteMassageCenters
     massageCentersDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.MassageCenterId)  
+        (el) => !action.payload.ids.includes(el.MassageCenterId)
       );
     },
-    // massageCentersUpdateState  
+    // massageCentersUpdateState
     massageCentersStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

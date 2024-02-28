@@ -80,9 +80,8 @@ export const PersonSpecialDaysUIProvider = forwardRef(
       });
     }, []);
 
-    const [personSpecialDays, setPersonSpecialDays] = useState(
-      personSpecialDay
-    );
+    const [personSpecialDays, setPersonSpecialDays] =
+      useState(personSpecialDay);
     const [totalCount, setTotalCount] = useState(0);
     useEffect(() => {
       if (
@@ -103,10 +102,8 @@ export const PersonSpecialDaysUIProvider = forwardRef(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPersonId]);
 
-    const [
-      showEditPersonSpecialDayDialog,
-      setShowEditPersonSpecialDayDialog,
-    ] = useState(false);
+    const [showEditPersonSpecialDayDialog, setShowEditPersonSpecialDayDialog] =
+      useState(false);
     const openNewPersonSpecialDayDialog = () => {
       setSelectedId(undefined);
       setShowEditPersonSpecialDayDialog(true);

@@ -8,7 +8,8 @@ export function PersonSpecialDaysFilter() {
   const personSpecialDaysUIContext = usePersonSpecialDaysUIContext();
   const personSpecialDaysUIProps = useMemo(() => {
     return {
-      openNewPersonSpecialDayDialog: personSpecialDaysUIContext.openNewPersonSpecialDayDialog,
+      openNewPersonSpecialDayDialog:
+        personSpecialDaysUIContext.openNewPersonSpecialDayDialog,
     };
   }, [personSpecialDaysUIContext]);
 
@@ -20,7 +21,9 @@ export function PersonSpecialDaysFilter() {
             <button
               type="button"
               className="btn btn-success"
-              onClick={() => personSpecialDaysUIProps.openNewPersonSpecialDayDialog()}
+              onClick={() =>
+                personSpecialDaysUIProps.openNewPersonSpecialDayDialog()
+              }
             >
               {t("PersonSpecialDay.Entity")} {t("Common.New")}
             </button>

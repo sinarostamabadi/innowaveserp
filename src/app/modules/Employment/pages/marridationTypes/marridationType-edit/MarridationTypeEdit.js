@@ -55,7 +55,9 @@ export function MarridationTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("MarridationType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("MarridationType.Entity");
 
     if (marridationTypeForEdit && id) {
       _title = t("Common.Edit") + " " + marridationTypeForEdit.TitleFa;
@@ -73,11 +75,11 @@ export function MarridationTypeEdit({
         .then((arg) => {
           backToMarridationTypesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateMarridationType(id, values))
         .then(() => backToMarridationTypesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

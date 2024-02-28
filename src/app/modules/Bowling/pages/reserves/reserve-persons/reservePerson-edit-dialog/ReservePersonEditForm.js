@@ -71,8 +71,8 @@ export function ReservePersonEditForm({
       RealPerson: {
         FirstNameFa: data.NameFa,
         LastNameFa: " ",
-        BirthDate: moment.from().format("YYYY-MM-DD")
-      }
+        BirthDate: moment.from().format("YYYY-MM-DD"),
+      },
     }).then(({ data }) =>
       saveReservePerson(
         cleanReservePerson({
@@ -93,7 +93,8 @@ export function ReservePersonEditForm({
         initialValues={reservePerson}
         validationSchema={ReservePersonEditSchema}
         onSubmit={(values) => {
-          uiProps.version === 1 && saveReservePerson(cleanReservePerson(values));
+          uiProps.version === 1 &&
+            saveReservePerson(cleanReservePerson(values));
           uiProps.version === 2 && addNewPerson(values);
         }}
       >

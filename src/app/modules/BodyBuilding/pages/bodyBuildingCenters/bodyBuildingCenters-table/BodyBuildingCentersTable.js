@@ -32,8 +32,10 @@ export function BodyBuildingCentersTable() {
       setIds: bodyBuildingCentersUIContext.setIds,
       queryParams: bodyBuildingCentersUIContext.queryParams,
       setQueryParams: bodyBuildingCentersUIContext.setQueryParams,
-      openEditBodyBuildingCenterPage: bodyBuildingCentersUIContext.openEditBodyBuildingCenterPage,
-      openDeleteBodyBuildingCenterDialog: bodyBuildingCentersUIContext.openDeleteBodyBuildingCenterDialog,
+      openEditBodyBuildingCenterPage:
+        bodyBuildingCentersUIContext.openEditBodyBuildingCenterPage,
+      openDeleteBodyBuildingCenterDialog:
+        bodyBuildingCentersUIContext.openDeleteBodyBuildingCenterDialog,
     };
   }, [bodyBuildingCentersUIContext]);
 
@@ -50,7 +52,9 @@ export function BodyBuildingCentersTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     bodyBuildingCentersUIProps.setIds([]);
-    dispatch(actions.fetchBodyBuildingCenters(bodyBuildingCentersUIProps.queryParams));
+    dispatch(
+      actions.fetchBodyBuildingCenters(bodyBuildingCentersUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bodyBuildingCentersUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function BodyBuildingCentersTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditBodyBuildingCenterPage: bodyBuildingCentersUIProps.openEditBodyBuildingCenterPage,
-        openDeleteBodyBuildingCenterDialog: bodyBuildingCentersUIProps.openDeleteBodyBuildingCenterDialog,
+        openEditBodyBuildingCenterPage:
+          bodyBuildingCentersUIProps.openEditBodyBuildingCenterPage,
+        openDeleteBodyBuildingCenterDialog:
+          bodyBuildingCentersUIProps.openDeleteBodyBuildingCenterDialog,
         t: t,
       },
       classes: "text-right pr-0",

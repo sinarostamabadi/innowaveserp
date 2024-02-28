@@ -21,7 +21,7 @@ export function AccountsPage({ history }) {
       history.push(`/accounting/accounts/deleteAccounts`);
     },
   };
-  
+
   return (
     <AccountsUIProvider accountsUIEvents={accountsUIEvents}>
       <AccountsLoadingDialog />

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { IODeviceTypeModel } from "../../../../../core/_models/Employment/IODeviceTypeModel";
@@ -30,7 +29,7 @@ export function IODeviceTypesUIProvider({ iODeviceTypesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function IODeviceTypesUIProvider({ iODeviceTypesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: IODeviceTypeModel,
-    newIODeviceTypeButtonClick: iODeviceTypesUIEvents.newIODeviceTypeButtonClick,
+    newIODeviceTypeButtonClick:
+      iODeviceTypesUIEvents.newIODeviceTypeButtonClick,
     openEditIODeviceTypePage: iODeviceTypesUIEvents.openEditIODeviceTypePage,
-    openDeleteIODeviceTypeDialog: iODeviceTypesUIEvents.openDeleteIODeviceTypeDialog,
-    openDeleteIODeviceTypesDialog: iODeviceTypesUIEvents.openDeleteIODeviceTypesDialog,
-    openFetchIODeviceTypesDialog: iODeviceTypesUIEvents.openFetchIODeviceTypesDialog,
-    openUpdateIODeviceTypesStatusDialog: iODeviceTypesUIEvents.openUpdateIODeviceTypesStatusDialog,
+    openDeleteIODeviceTypeDialog:
+      iODeviceTypesUIEvents.openDeleteIODeviceTypeDialog,
+    openDeleteIODeviceTypesDialog:
+      iODeviceTypesUIEvents.openDeleteIODeviceTypesDialog,
+    openFetchIODeviceTypesDialog:
+      iODeviceTypesUIEvents.openFetchIODeviceTypesDialog,
+    openUpdateIODeviceTypesStatusDialog:
+      iODeviceTypesUIEvents.openUpdateIODeviceTypesStatusDialog,
   };
   return (
-    <IODeviceTypesUIContext.Provider value={value}>{children}</IODeviceTypesUIContext.Provider>
+    <IODeviceTypesUIContext.Provider value={value}>
+      {children}
+    </IODeviceTypesUIContext.Provider>
   );
 }

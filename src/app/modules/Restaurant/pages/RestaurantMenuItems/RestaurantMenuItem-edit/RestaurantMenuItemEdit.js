@@ -30,12 +30,12 @@ export function RestaurantMenuItemEdit({
 }) {
   const { t } = useTranslation();
   const defaultRestaurant = !!getStorage("defaultRestaurant")
-  ? JSON.parse(getStorage("defaultRestaurant"))
-  : null;
+    ? JSON.parse(getStorage("defaultRestaurant"))
+    : null;
 
   const initModel = {
-		RestaurantMenuItemId: undefined,
-    RestaurantId: !!defaultRestaurant ? defaultRestaurant.RestaurantId: "",
+    RestaurantMenuItemId: undefined,
+    RestaurantId: !!defaultRestaurant ? defaultRestaurant.RestaurantId : "",
     Restaurant: defaultRestaurant,
     RestaurantMenuGroupId: "",
     RestaurantMenuGroup: null,
@@ -65,15 +65,17 @@ export function RestaurantMenuItemEdit({
   const [title, setTitle] = useState("");
   const dispatch = useDispatch();
   const [restaurantMenuItemObj, setRestaurantMenuItemObj] = useState(copyModel);
-  const [restaurantMenuItemIngredientObj, setRestaurantMenuItemIngredientObj] = useState(
-    copyModel.RestaurantMenuItemIngredients
+  const [restaurantMenuItemIngredientObj, setRestaurantMenuItemIngredientObj] =
+    useState(copyModel.RestaurantMenuItemIngredients);
+  const [restaurantMenuItemPriceObj, setRestaurantMenuItemPriceObj] = useState(
+    copyModel.RestaurantMenuItemPrices
   );
-  const [restaurantMenuItemPriceObj, setRestaurantMenuItemPriceObj] = useState(copyModel.RestaurantMenuItemPrices);
 
   const { actionsLoading, restaurantMenuItemForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.restaurantMenuItems.actionsLoading,
-      restaurantMenuItemForEdit: state.restaurantMenuItems.restaurantMenuItemForEdit,
+      restaurantMenuItemForEdit:
+        state.restaurantMenuItems.restaurantMenuItemForEdit,
       error: state.restaurantMenuItems.error,
     }),
     shallowEqual
@@ -88,13 +90,22 @@ export function RestaurantMenuItemEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("RestaurantMenuItem.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("RestaurantMenuItem.Entity");
 
     if (restaurantMenuItemForEdit && id) {
       _title = t("Common.Edit") + " " + restaurantMenuItemForEdit.NameFa;
-      setRestaurantMenuItemObj({...restaurantMenuItemForEdit, RestaurantMenuGroupId: [restaurantMenuItemForEdit.RestaurantMenuGroup]});
-      setRestaurantMenuItemIngredientObj(restaurantMenuItemForEdit.RestaurantMenuItemIngredients);
-      setRestaurantMenuItemPriceObj(restaurantMenuItemForEdit.RestaurantMenuItemPrices);
+      setRestaurantMenuItemObj({
+        ...restaurantMenuItemForEdit,
+        RestaurantMenuGroupId: [restaurantMenuItemForEdit.RestaurantMenuGroup],
+      });
+      setRestaurantMenuItemIngredientObj(
+        restaurantMenuItemForEdit.RestaurantMenuItemIngredients
+      );
+      setRestaurantMenuItemPriceObj(
+        restaurantMenuItemForEdit.RestaurantMenuItemPrices
+      );
     }
 
     setTitle(_title);
@@ -145,12 +156,18 @@ export function RestaurantMenuItemEdit({
         restaurantMenuItemIngredientObj["RestaurantMenuItemIngredients"] = [];
         restaurantMenuItemIngredientObj["RestaurantMenuItemPrices"] = [];
 
-        btnRefRestaurantMenuItemIngredients.current.Collect((restaurantMenuItemIngredientsData) => {
-          restaurantMenuItemIngredientObj.RestaurantMenuItemIngredients = restaurantMenuItemIngredientsData;
-        });
-        btnRefRestaurantMenuItemPrices.current.Collect((restaurantMenuItemPricesData) => {
-          restaurantMenuItemIngredientObj.RestaurantMenuItemPrices = restaurantMenuItemPricesData;
-        });
+        btnRefRestaurantMenuItemIngredients.current.Collect(
+          (restaurantMenuItemIngredientsData) => {
+            restaurantMenuItemIngredientObj.RestaurantMenuItemIngredients =
+              restaurantMenuItemIngredientsData;
+          }
+        );
+        btnRefRestaurantMenuItemPrices.current.Collect(
+          (restaurantMenuItemPricesData) => {
+            restaurantMenuItemIngredientObj.RestaurantMenuItemPrices =
+              restaurantMenuItemPricesData;
+          }
+        );
 
         setTimeout(() => {
           saveRestaurantMenuItem(restaurantMenuItemIngredientObj);
@@ -226,13 +243,13 @@ export function RestaurantMenuItemEdit({
                 eventKey="warehouse"
                 title={t("RestaurantMenuItemIngredient.Entity")}
                 className="nav-item"
-                >
+              >
                 <RestaurantMenuItemIngredientsUIProvider
                   currentPersonId={id}
                   actionsLoading={actionsLoading}
                   restaurantMenuItemIngredient={restaurantMenuItemIngredientObj}
                   ref={btnRefRestaurantMenuItemIngredients}
-                  >
+                >
                   <RestaurantMenuItemIngredients />
                 </RestaurantMenuItemIngredientsUIProvider>
               </Tab>

@@ -39,13 +39,17 @@ export function Cheque({ data, setData, receivable, goBack }) {
     });
   });
 
-  let cashDocument = {...ChequeTools.Model, Price: receivable};
+  let cashDocument = { ...ChequeTools.Model, Price: receivable };
 
   function saveCashDocument(dirty) {
     let obj = { ...ChequeTools.Clean(dirty) };
     let tranObj = { ...ChequeTools.CleanTran(dirty, t) };
 
-    setData({ ...data, Cheques: [...data.Cheques, obj], Transactions: [...data.Transactions, tranObj] });
+    setData({
+      ...data,
+      Cheques: [...data.Cheques, obj],
+      Transactions: [...data.Transactions, tranObj],
+    });
     goBack();
   }
 
@@ -109,7 +113,7 @@ export function Cheque({ data, setData, receivable, goBack }) {
                   />
                 </div>
                 <div className="col-lg-6">
-                <SuggestionField
+                  <SuggestionField
                     name="BankId"
                     labelKey="TitleFa"
                     customFeedbackLabel=""
@@ -185,7 +189,7 @@ export function Cheque({ data, setData, receivable, goBack }) {
               </div>
               <div className="row mt-2">
                 <div className="col-6">
-                <Field
+                  <Field
                     name="ChequePayable"
                     component={Input}
                     customFeedbackLabel=""
@@ -219,7 +223,7 @@ export function Cheque({ data, setData, receivable, goBack }) {
               </div>
               <div className="row mt-5">
                 <div className="col ">
-                <ButtonGroup className="mr-2" aria-label="Second group">
+                  <ButtonGroup className="mr-2" aria-label="Second group">
                     <button
                       type="button"
                       onClick={goBack}

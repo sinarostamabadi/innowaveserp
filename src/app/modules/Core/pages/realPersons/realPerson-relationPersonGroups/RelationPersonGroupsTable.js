@@ -29,8 +29,10 @@ export function RelationPersonGroupsTable() {
       actionsLoading: uiContext.actionsLoading,
       queryParams: uiContext.queryParams,
       setQueryParams: uiContext.setQueryParams,
-      openEditRelationPersonGroupDialog: uiContext.openEditRelationPersonGroupDialog,
-      openDeleteRelationPersonGroupDialog: uiContext.openDeleteRelationPersonGroupDialog,
+      openEditRelationPersonGroupDialog:
+        uiContext.openEditRelationPersonGroupDialog,
+      openDeleteRelationPersonGroupDialog:
+        uiContext.openDeleteRelationPersonGroupDialog,
       ids: uiContext.ids,
       setIds: uiContext.setIds,
       personId: uiContext.personId,
@@ -48,8 +50,10 @@ export function RelationPersonGroupsTable() {
       text: t("Common.Action"),
       formatter: ActionsColumnFormatter,
       formatExtraData: {
-        openEditRelationPersonGroupDialog: uiProps.openEditRelationPersonGroupDialog,
-        openDeleteRelationPersonGroupDialog: uiProps.openDeleteRelationPersonGroupDialog,
+        openEditRelationPersonGroupDialog:
+          uiProps.openEditRelationPersonGroupDialog,
+        openDeleteRelationPersonGroupDialog:
+          uiProps.openDeleteRelationPersonGroupDialog,
         t: t,
       },
       classes: "text-right pr-0",
@@ -83,12 +87,18 @@ export function RelationPersonGroupsTable() {
                 bootstrap4
                 remote
                 keyField="RelationPersonGroupId"
-                data={uiProps.relationPersonGroups === null ? [] : uiProps.relationPersonGroups}
+                data={
+                  uiProps.relationPersonGroups === null
+                    ? []
+                    : uiProps.relationPersonGroups
+                }
                 columns={columns}
                 {...paginationTableProps}
               >
                 <PleaseWaitMessage entities={uiProps.relationPersonGroups} />
-                <NoRecordsFoundMessage entities={uiProps.relationPersonGroups} />
+                <NoRecordsFoundMessage
+                  entities={uiProps.relationPersonGroups}
+                />
               </BootstrapTable>
             </Pagination>
           );

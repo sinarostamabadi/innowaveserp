@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "src/core/_partials/custom/advanced-filter/AdvancedFilter";
 import { PosesTable } from "./poses-table/PosesTable";
 import { usePosesUIContext, PosesUIConsumer } from "./PosesUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function PosesCard() {
   const { t } = useTranslation();
@@ -31,7 +30,7 @@ export function PosesCard() {
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Pos.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Pos.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"

@@ -143,7 +143,7 @@ export function ProductShow({
                 textShadow: "0 0 1px #ffe300",
               }}
             >
-              مشاهده قیمت کالا
+              View the price of goods
             </CardHeaderTitle>
           </CardHeader>
           <CardBody>

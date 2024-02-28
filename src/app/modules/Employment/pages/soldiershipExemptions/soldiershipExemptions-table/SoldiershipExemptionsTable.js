@@ -32,8 +32,10 @@ export function SoldiershipExemptionsTable() {
       setIds: soldiershipExemptionsUIContext.setIds,
       queryParams: soldiershipExemptionsUIContext.queryParams,
       setQueryParams: soldiershipExemptionsUIContext.setQueryParams,
-      openEditSoldiershipExemptionPage: soldiershipExemptionsUIContext.openEditSoldiershipExemptionPage,
-      openDeleteSoldiershipExemptionDialog: soldiershipExemptionsUIContext.openDeleteSoldiershipExemptionDialog,
+      openEditSoldiershipExemptionPage:
+        soldiershipExemptionsUIContext.openEditSoldiershipExemptionPage,
+      openDeleteSoldiershipExemptionDialog:
+        soldiershipExemptionsUIContext.openDeleteSoldiershipExemptionDialog,
     };
   }, [soldiershipExemptionsUIContext]);
 
@@ -50,7 +52,11 @@ export function SoldiershipExemptionsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     soldiershipExemptionsUIProps.setIds([]);
-    dispatch(actions.fetchSoldiershipExemptions(soldiershipExemptionsUIProps.queryParams));
+    dispatch(
+      actions.fetchSoldiershipExemptions(
+        soldiershipExemptionsUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [soldiershipExemptionsUIProps.queryParams, dispatch]);
 
@@ -72,8 +78,10 @@ export function SoldiershipExemptionsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditSoldiershipExemptionPage: soldiershipExemptionsUIProps.openEditSoldiershipExemptionPage,
-        openDeleteSoldiershipExemptionDialog: soldiershipExemptionsUIProps.openDeleteSoldiershipExemptionDialog,
+        openEditSoldiershipExemptionPage:
+          soldiershipExemptionsUIProps.openEditSoldiershipExemptionPage,
+        openDeleteSoldiershipExemptionDialog:
+          soldiershipExemptionsUIProps.openDeleteSoldiershipExemptionDialog,
         t: t,
       },
       classes: "text-right pr-0",

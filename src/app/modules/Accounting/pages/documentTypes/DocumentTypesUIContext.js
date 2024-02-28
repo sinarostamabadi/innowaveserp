@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { DocumentTypeModel } from "../../../../../core/_models/Accounting/DocumentTypeModel";
@@ -30,7 +29,7 @@ export function DocumentTypesUIProvider({ documentTypesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function DocumentTypesUIProvider({ documentTypesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: DocumentTypeModel,
-    newDocumentTypeButtonClick: documentTypesUIEvents.newDocumentTypeButtonClick,
+    newDocumentTypeButtonClick:
+      documentTypesUIEvents.newDocumentTypeButtonClick,
     openEditDocumentTypePage: documentTypesUIEvents.openEditDocumentTypePage,
-    openDeleteDocumentTypeDialog: documentTypesUIEvents.openDeleteDocumentTypeDialog,
-    openDeleteDocumentTypesDialog: documentTypesUIEvents.openDeleteDocumentTypesDialog,
-    openFetchDocumentTypesDialog: documentTypesUIEvents.openFetchDocumentTypesDialog,
-    openUpdateDocumentTypesStatusDialog: documentTypesUIEvents.openUpdateDocumentTypesStatusDialog,
+    openDeleteDocumentTypeDialog:
+      documentTypesUIEvents.openDeleteDocumentTypeDialog,
+    openDeleteDocumentTypesDialog:
+      documentTypesUIEvents.openDeleteDocumentTypesDialog,
+    openFetchDocumentTypesDialog:
+      documentTypesUIEvents.openFetchDocumentTypesDialog,
+    openUpdateDocumentTypesStatusDialog:
+      documentTypesUIEvents.openUpdateDocumentTypesStatusDialog,
   };
   return (
-    <DocumentTypesUIContext.Provider value={value}>{children}</DocumentTypesUIContext.Provider>
+    <DocumentTypesUIContext.Provider value={value}>
+      {children}
+    </DocumentTypesUIContext.Provider>
   );
 }

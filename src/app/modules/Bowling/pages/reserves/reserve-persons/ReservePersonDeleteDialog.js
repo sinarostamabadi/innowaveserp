@@ -26,7 +26,7 @@ export function ReservePersonDeleteDialog() {
 
   // ReservePersons Redux state
   const dispatch = useDispatch();
-  const [ isLoading, setIsLoading ] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // if !id we should close modal
   useEffect(() => {
@@ -40,7 +40,7 @@ export function ReservePersonDeleteDialog() {
   useEffect(() => {}, [isLoading, dispatch]);
 
   const deleteReservePerson = () => {
-    reservePersonsUIProps.removeReservePerson(reservePersonsUIProps.id)
+    reservePersonsUIProps.removeReservePerson(reservePersonsUIProps.id);
     reservePersonsUIProps.onHide();
   };
 
@@ -57,9 +57,7 @@ export function ReservePersonDeleteDialog() {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && (
-          <span>{t("Common.DeleteQuestion")}</span>
-        )}
+        {!isLoading && <span>{t("Common.DeleteQuestion")}</span>}
         {isLoading && <span>{t("Common.DeleteLoading")}</span>}
       </Modal.Body>
       <Modal.Footer>

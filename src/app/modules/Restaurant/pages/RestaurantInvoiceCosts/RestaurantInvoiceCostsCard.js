@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { RestaurantInvoiceCostsTable } from "./restaurantInvoiceCosts-table/RestaurantInvoiceCostsTable";
-import { useRestaurantInvoiceCostsUIContext, RestaurantInvoiceCostsUIConsumer } from "./RestaurantInvoiceCostsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useRestaurantInvoiceCostsUIContext,
+  RestaurantInvoiceCostsUIConsumer,
+} from "./RestaurantInvoiceCostsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function RestaurantInvoiceCostsCard() {
   const { t } = useTranslation();
@@ -21,24 +23,33 @@ export function RestaurantInvoiceCostsCard() {
       ids: restaurantInvoiceCostsUIContext.ids,
       queryParams: restaurantInvoiceCostsUIContext.queryParams,
       setQueryParams: restaurantInvoiceCostsUIContext.setQueryParams,
-      newRestaurantInvoiceCostButtonClick: restaurantInvoiceCostsUIContext.newRestaurantInvoiceCostButtonClick,
-      openDeleteRestaurantInvoiceCostsDialog: restaurantInvoiceCostsUIContext.openDeleteRestaurantInvoiceCostsDialog,
-      openEditRestaurantInvoiceCostPage: restaurantInvoiceCostsUIContext.openEditRestaurantInvoiceCostPage,
-      openUpdateRestaurantInvoiceCostsStatusDialog: restaurantInvoiceCostsUIContext.openUpdateRestaurantInvoiceCostsStatusDialog,
-      openFetchRestaurantInvoiceCostsDialog: restaurantInvoiceCostsUIContext.openFetchRestaurantInvoiceCostsDialog,
+      newRestaurantInvoiceCostButtonClick:
+        restaurantInvoiceCostsUIContext.newRestaurantInvoiceCostButtonClick,
+      openDeleteRestaurantInvoiceCostsDialog:
+        restaurantInvoiceCostsUIContext.openDeleteRestaurantInvoiceCostsDialog,
+      openEditRestaurantInvoiceCostPage:
+        restaurantInvoiceCostsUIContext.openEditRestaurantInvoiceCostPage,
+      openUpdateRestaurantInvoiceCostsStatusDialog:
+        restaurantInvoiceCostsUIContext.openUpdateRestaurantInvoiceCostsStatusDialog,
+      openFetchRestaurantInvoiceCostsDialog:
+        restaurantInvoiceCostsUIContext.openFetchRestaurantInvoiceCostsDialog,
     };
   }, [restaurantInvoiceCostsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("RestaurantInvoiceCost.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("RestaurantInvoiceCost.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
-            onClick={restaurantInvoiceCostsUIProps.newRestaurantInvoiceCostButtonClick}
+            onClick={
+              restaurantInvoiceCostsUIProps.newRestaurantInvoiceCostButtonClick
+            }
           >
-            {t("RestaurantInvoiceCost.Entity")} {' '} {t("Common.New")}
+            {t("RestaurantInvoiceCost.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

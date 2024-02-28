@@ -6,16 +6,20 @@ import { useTranslation } from "react-i18next";
 export function DetailEditDialogHeader({ id, isLoading }) {
   const { t } = useTranslation();
   const [title, setTitle] = useState("");
-  const [ actionsLoading, setActionsLoading ] = useState(isLoading);
+  const [actionsLoading, setActionsLoading] = useState(isLoading);
 
   useEffect(() => {
     setActionsLoading(isLoading);
   }, [isLoading]);
 
   useEffect(() => {
-    id 
-      ? setTitle(t("Common.Edit") + " " + t("BodyBuildingContractDetail.Entity"))
-      : setTitle(t("Common.Create") + " " + t("BodyBuildingContractDetail.Entity"));    
+    id
+      ? setTitle(
+          t("Common.Edit") + " " + t("BodyBuildingContractDetail.Entity")
+        )
+      : setTitle(
+          t("Common.Create") + " " + t("BodyBuildingContractDetail.Entity")
+        );
   }, [id, t]);
 
   return (

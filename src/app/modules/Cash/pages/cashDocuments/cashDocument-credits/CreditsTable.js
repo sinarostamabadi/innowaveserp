@@ -4,7 +4,10 @@ import { ActionsColumnFormatter } from "./column-formatters/ActionsColumnFormatt
 import { NoRecordsFoundMessage, PleaseWaitMessage } from "src/core/_helpers";
 import { useCreditsUIContext } from "./CreditsUIContext";
 import { useTranslation } from "react-i18next";
-import { MoneyColumnFormatter, DateFaColumnFormatter } from "src/core/_formatters";
+import {
+  MoneyColumnFormatter,
+  DateFaColumnFormatter,
+} from "src/core/_formatters";
 
 export function CreditsTable() {
   const { t } = useTranslation();
@@ -15,7 +18,7 @@ export function CreditsTable() {
     return {
       activeCredits: creditsUIContext.activeCredits,
       openEditCreditDialog: creditsUIContext.openEditCreditDialog,
-      openDeleteCreditDialog: creditsUIContext.openDeleteCreditDialog
+      openDeleteCreditDialog: creditsUIContext.openDeleteCreditDialog,
     };
   }, [creditsUIContext]);
 
@@ -34,7 +37,7 @@ export function CreditsTable() {
       dataField: "Price",
       text: t("CashDocument.Price"),
       sort: false,
-      formatter: MoneyColumnFormatter
+      formatter: MoneyColumnFormatter,
     },
     {
       dataField: "Description",

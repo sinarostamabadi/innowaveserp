@@ -34,7 +34,7 @@ export function YearEdit({
     FromDateObj: "",
     FromDate: "",
     ToDateObj: "",
-    ToDate: ""
+    ToDate: "",
   };
   let copyModel = CloneObject(initModel);
 
@@ -46,7 +46,6 @@ export function YearEdit({
   const [title, setTitle] = useState("");
   const dispatch = useDispatch();
   const [yearObj, setYearObj] = useState(copyModel);
-
 
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
   const { actionsLoading, yearForEdit, error } = useSelector(
@@ -69,8 +68,14 @@ export function YearEdit({
       _title = t("Common.Edit") + " " + yearForEdit.Title;
       setYearObj({
         ...yearForEdit,
-        FromDateObj: !!yearForEdit.FromDate == false? null: EnToFaObjDate(yearForEdit.FromDate),
-        ToDateObj: !!yearForEdit.ToDate == false? null: EnToFaObjDate(yearForEdit.ToDate)
+        FromDateObj:
+          !!yearForEdit.FromDate == false
+            ? null
+            : EnToFaObjDate(yearForEdit.FromDate),
+        ToDateObj:
+          !!yearForEdit.ToDate == false
+            ? null
+            : EnToFaObjDate(yearForEdit.ToDate),
       });
     }
 

@@ -3,7 +3,7 @@ import _ from "lodash";
 import {
   numberWithCommas,
   EnToFaDateSlash,
-  Num2Persian
+  Num2Persian,
 } from "../../../../../../core/_helpers";
 
 export const PrintFactor = React.forwardRef(({ data }, ref) => {
@@ -115,14 +115,12 @@ export const PrintFactor = React.forwardRef(({ data }, ref) => {
                   style={{ flex: "1", marginRight: "-48px", padding: "0 1rem" }}
                 >
                   <div style={{ display: "flex", margin: "1rem 0" }}>
-                    <div style={{ flex: "1" }}>
-                      کد اقتصادی:{" "} 411657917514
-                    </div>
+                    <div style={{ flex: "1" }}>کد اقتصادی: 411657917514</div>
                     <div style={{ flex: "1", textAlign: "center" }}>
-                      کد پستی:{" "} 51516767573
+                      کد پستی: 51516767573
                     </div>
                     <div style={{ flex: "1", textAlign: "left" }}>
-                      تلفن:{" "} 04136606800
+                      تلفن: 04136606800
                     </div>
                   </div>
                   <div
@@ -132,12 +130,12 @@ export const PrintFactor = React.forwardRef(({ data }, ref) => {
                       marginBottom: "2rem",
                     }}
                   >
-                    نشانی:{" "}
-                    تبريز ضلع جنوب غربي ميدان فهميده مجتمع مسكوني جهان ساتراپ  
+                    نشانی: تبريز ضلع جنوب غربي ميدان فهميده مجتمع مسكوني جهان
+                    ساتراپ
                   </div>
                 </div>
               </div>
-              <table className="buy-table" style={{width: "100%"}}>
+              <table className="buy-table" style={{ width: "100%" }}>
                 <thead>
                   <tr>
                     <th>ردیف</th>
@@ -192,30 +190,74 @@ export const PrintFactor = React.forwardRef(({ data }, ref) => {
                     </td>
                   </tr>
                   <tr>
-                    <td colSpan="2" rowSpan="3" style={{verticalAlign: "top"}}>توضیحات: </td>
-                    <td colSpan="2" style={{textAlign: "left"}}>تخفیف</td>
-                    <td colSpan="3">{numberWithCommas(dataPrint.SumDiscount)}</td>
+                    <td
+                      colSpan="2"
+                      rowSpan="3"
+                      style={{ verticalAlign: "top" }}
+                    >
+                      توضیحات:{" "}
+                    </td>
+                    <td colSpan="2" style={{ textAlign: "left" }}>
+                      تخفیف
+                    </td>
+                    <td colSpan="3">
+                      {numberWithCommas(dataPrint.SumDiscount)}
+                    </td>
                   </tr>
                   <tr>
-                    <td colSpan="2" style={{textAlign: "left"}}>هزینه</td>
+                    <td colSpan="2" style={{ textAlign: "left" }}>
+                      هزینه
+                    </td>
                     <td colSpan="3">{numberWithCommas(dataPrint.SumCost)}</td>
                   </tr>
                   <tr>
-                    <td colSpan="2" style={{textAlign: "left"}}>قابل پرداخت</td>
-                    <td colSpan="3">{numberWithCommas(
-                      +dataPrint.SumPayable - +dataPrint.SumDiscount + +dataPrint.SumCost
-                    )}</td>
+                    <td colSpan="2" style={{ textAlign: "left" }}>
+                      قابل پرداخت
+                    </td>
+                    <td colSpan="3">
+                      {numberWithCommas(
+                        +dataPrint.SumPayable -
+                          +dataPrint.SumDiscount +
+                          +dataPrint.SumCost
+                      )}
+                    </td>
                   </tr>
                   <tr>
-                    <td colSpan="7" style={{fontSize: "0.9rem", textAlign: "left"}}>
-                      {Num2Persian(+dataPrint.SumPayable - +dataPrint.SumDiscount + +dataPrint.SumCost)} ریال
+                    <td
+                      colSpan="7"
+                      style={{ fontSize: "0.9rem", textAlign: "left" }}
+                    >
+                      {Num2Persian(
+                        +dataPrint.SumPayable -
+                          +dataPrint.SumDiscount +
+                          +dataPrint.SumCost
+                      )}{" "}
+                      ریال
                     </td>
                   </tr>
                 </tbody>
               </table>
-              <div style={{display: "flex", height: "150px", marginTop: "2rem"}}>
-                <div style={{flex: "1", textAlign: "center", verticalAlign: "top"}}>امضا فروشنده</div>
-                <div style={{flex: "1", textAlign: "center", verticalAlign: "top"}}>امضا خریدار</div>
+              <div
+                style={{ display: "flex", height: "150px", marginTop: "2rem" }}
+              >
+                <div
+                  style={{
+                    flex: "1",
+                    textAlign: "center",
+                    verticalAlign: "top",
+                  }}
+                >
+                  امضا فروشنده
+                </div>
+                <div
+                  style={{
+                    flex: "1",
+                    textAlign: "center",
+                    verticalAlign: "top",
+                  }}
+                >
+                  امضا خریدار
+                </div>
               </div>
             </>
           ) : (

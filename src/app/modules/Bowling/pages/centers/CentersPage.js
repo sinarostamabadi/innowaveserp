@@ -26,7 +26,7 @@ export function CentersPage({ history }) {
       history.push("/bowling/centers/updateStatus");
     },
   };
-  
+
   return (
     <CentersUIProvider centersUIEvents={centersUIEvents}>
       <CentersLoadingDialog />

@@ -44,7 +44,8 @@ export function OrganizationChartEdit({
   const { actionsLoading, organizationChartForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.organizationCharts.actionsLoading,
-      organizationChartForEdit: state.organizationCharts.organizationChartForEdit,
+      organizationChartForEdit:
+        state.organizationCharts.organizationChartForEdit,
       error: state.organizationCharts.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function OrganizationChartEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("OrganizationChart.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("OrganizationChart.Entity");
 
     if (organizationChartForEdit && id) {
       _title = t("Common.Edit") + " " + organizationChartForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function OrganizationChartEdit({
         .then((arg) => {
           backToOrganizationChartsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateOrganizationChart(id, values))
         .then(() => backToOrganizationChartsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

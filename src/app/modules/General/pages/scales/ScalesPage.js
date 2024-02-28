@@ -26,7 +26,7 @@ export function ScalesPage({ history }) {
       history.push("/general/scales/updateStatus");
     },
   };
-  
+
   return (
     <ScalesUIProvider scalesUIEvents={scalesUIEvents}>
       <ScalesLoadingDialog />

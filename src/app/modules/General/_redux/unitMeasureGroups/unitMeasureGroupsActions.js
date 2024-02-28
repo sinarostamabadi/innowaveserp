@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./unitMeasureGroupsCrud";
 import { unitMeasureGroupsSlice, callTypes } from "./unitMeasureGroupsSlice";
 const { actions } = unitMeasureGroupsSlice;
@@ -9,7 +8,10 @@ export const fetchUnitMeasureGroups = (queryParams) => (dispatch) => {
     .then((response) => {
       const { Items, TotalCount } = response.data;
       dispatch(
-        actions.unitMeasureGroupsFetched({ totalCount: TotalCount, entities: Items })
+        actions.unitMeasureGroupsFetched({
+          totalCount: TotalCount,
+          entities: Items,
+        })
       );
     })
     .catch((error) => {
@@ -19,14 +21,20 @@ export const fetchUnitMeasureGroups = (queryParams) => (dispatch) => {
 };
 export const fetchUnitMeasureGroup = (id) => (dispatch) => {
   if (!id) {
-    return dispatch(actions.unitMeasureGroupFetched({ unitMeasureGroupForEdit: undefined }));
+    return dispatch(
+      actions.unitMeasureGroupFetched({ unitMeasureGroupForEdit: undefined })
+    );
   }
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
     .getUnitMeasureGroupById(id)
     .then((response) => {
       const unitMeasureGroup = response.data;
-      dispatch(actions.unitMeasureGroupFetched({ unitMeasureGroupForEdit: unitMeasureGroup }));
+      dispatch(
+        actions.unitMeasureGroupFetched({
+          unitMeasureGroupForEdit: unitMeasureGroup,
+        })
+      );
     })
     .catch((error) => {
       error.clientMessage = "Can't find unitMeasureGroup";
@@ -46,20 +54,21 @@ export const deleteUnitMeasureGroup = (id) => (dispatch) => {
       throw error;
     });
 };
-export const createUnitMeasureGroup = (unitMeasureGroupForCreation) => (dispatch) => {
-  dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer
-    .createUnitMeasureGroup(unitMeasureGroupForCreation)
-    .then((response) => {
-      const unitMeasureGroup = response.data;
-      dispatch(actions.unitMeasureGroupCreated(unitMeasureGroup));
-    })
-    .catch((error) => {
-      error.clientMessage = "Can't create unitMeasureGroup";
-      dispatch(actions.catchError({ error, callType: callTypes.action }));
-      throw error;
-    });
-};
+export const createUnitMeasureGroup =
+  (unitMeasureGroupForCreation) => (dispatch) => {
+    dispatch(actions.startCall({ callType: callTypes.action }));
+    return requestFromServer
+      .createUnitMeasureGroup(unitMeasureGroupForCreation)
+      .then((response) => {
+        const unitMeasureGroup = response.data;
+        dispatch(actions.unitMeasureGroupCreated(unitMeasureGroup));
+      })
+      .catch((error) => {
+        error.clientMessage = "Can't create unitMeasureGroup";
+        dispatch(actions.catchError({ error, callType: callTypes.action }));
+        throw error;
+      });
+  };
 export const updateUnitMeasureGroup = (id, unitMeasureGroup) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
@@ -97,4 +106,4 @@ export const deleteUnitMeasureGroups = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

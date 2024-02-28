@@ -26,9 +26,11 @@ export function ServiceActionsesPage({ history }) {
       history.push("/security/serviceActionses/updateStatus");
     },
   };
-  
+
   return (
-    <ServiceActionsesUIProvider serviceActionsesUIEvents={serviceActionsesUIEvents}>
+    <ServiceActionsesUIProvider
+      serviceActionsesUIEvents={serviceActionsesUIEvents}
+    >
       <ServiceActionsesLoadingDialog />
       <Route path="/security/serviceActionses/:id/delete">
         {({ history, match }) => (

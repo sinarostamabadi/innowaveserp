@@ -38,7 +38,7 @@ export function WarehouseEdit({
   const [tab, setTab] = useState("basic");
   const [title, setTitle] = useState("");
   const [editMode, setEditMode] = useState(false);
-  
+
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
   const { actionsLoading, warehouseForEdit, error } = useSelector(
     (state) => ({
@@ -47,11 +47,12 @@ export function WarehouseEdit({
       error: state.warehouses.error,
     }),
     shallowEqual
-    );
-    
+  );
+
   const dispatch = useDispatch();
   useEffect(() => {
-    !!id && dispatch(actions.fetchWarehouse(id)).then((res) => setEditMode(true));
+    !!id &&
+      dispatch(actions.fetchWarehouse(id)).then((res) => setEditMode(true));
   }, [id, dispatch]);
 
   useEffect(() => {
@@ -68,17 +69,17 @@ export function WarehouseEdit({
   }, [warehouseForEdit, id]);
 
   const saveWarehouse = (values) => {
-    console.log(values)
+    console.log(values);
     if (!id) {
       dispatch(actions.createWarehouse(values))
         .then((arg) => {
           backToWarehousesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateWarehouse(id, values))
         .then(() => backToWarehousesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

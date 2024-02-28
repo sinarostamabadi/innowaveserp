@@ -44,7 +44,8 @@ export function RewardOrPenaltyTypeEdit({
   const { actionsLoading, rewardOrPenaltyTypeForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.rewardOrPenaltyTypes.actionsLoading,
-      rewardOrPenaltyTypeForEdit: state.rewardOrPenaltyTypes.rewardOrPenaltyTypeForEdit,
+      rewardOrPenaltyTypeForEdit:
+        state.rewardOrPenaltyTypes.rewardOrPenaltyTypeForEdit,
       error: state.rewardOrPenaltyTypes.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function RewardOrPenaltyTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("RewardOrPenaltyType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("RewardOrPenaltyType.Entity");
 
     if (rewardOrPenaltyTypeForEdit && id) {
       _title = t("Common.Edit") + " " + rewardOrPenaltyTypeForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function RewardOrPenaltyTypeEdit({
         .then((arg) => {
           backToRewardOrPenaltyTypesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateRewardOrPenaltyType(id, values))
         .then(() => backToRewardOrPenaltyTypesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

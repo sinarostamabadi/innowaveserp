@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { RestaurantMenuGroupModel } from "../../../../../core/_models/Restaurant/RestaurantMenuGroupModel";
@@ -10,9 +9,13 @@ export function useRestaurantMenuGroupsUIContext() {
   return useContext(RestaurantMenuGroupsUIContext);
 }
 
-export const RestaurantMenuGroupsUIConsumer = RestaurantMenuGroupsUIContext.Consumer;
+export const RestaurantMenuGroupsUIConsumer =
+  RestaurantMenuGroupsUIContext.Consumer;
 
-export function RestaurantMenuGroupsUIProvider({ restaurantMenuGroupsUIEvents, children }) {
+export function RestaurantMenuGroupsUIProvider({
+  restaurantMenuGroupsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(RestaurantMenuGroupModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function RestaurantMenuGroupsUIProvider({ restaurantMenuGroupsUIEvents, c
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function RestaurantMenuGroupsUIProvider({ restaurantMenuGroupsUIEvents, c
     setIds,
     setQueryParams,
     dataModel: RestaurantMenuGroupModel,
-    newRestaurantMenuGroupButtonClick: restaurantMenuGroupsUIEvents.newRestaurantMenuGroupButtonClick,
-    openEditRestaurantMenuGroupPage: restaurantMenuGroupsUIEvents.openEditRestaurantMenuGroupPage,
-    openDeleteRestaurantMenuGroupDialog: restaurantMenuGroupsUIEvents.openDeleteRestaurantMenuGroupDialog,
-    openDeleteRestaurantMenuGroupsDialog: restaurantMenuGroupsUIEvents.openDeleteRestaurantMenuGroupsDialog,
-    openFetchRestaurantMenuGroupsDialog: restaurantMenuGroupsUIEvents.openFetchRestaurantMenuGroupsDialog,
-    openUpdateRestaurantMenuGroupsStatusDialog: restaurantMenuGroupsUIEvents.openUpdateRestaurantMenuGroupsStatusDialog,
+    newRestaurantMenuGroupButtonClick:
+      restaurantMenuGroupsUIEvents.newRestaurantMenuGroupButtonClick,
+    openEditRestaurantMenuGroupPage:
+      restaurantMenuGroupsUIEvents.openEditRestaurantMenuGroupPage,
+    openDeleteRestaurantMenuGroupDialog:
+      restaurantMenuGroupsUIEvents.openDeleteRestaurantMenuGroupDialog,
+    openDeleteRestaurantMenuGroupsDialog:
+      restaurantMenuGroupsUIEvents.openDeleteRestaurantMenuGroupsDialog,
+    openFetchRestaurantMenuGroupsDialog:
+      restaurantMenuGroupsUIEvents.openFetchRestaurantMenuGroupsDialog,
+    openUpdateRestaurantMenuGroupsStatusDialog:
+      restaurantMenuGroupsUIEvents.openUpdateRestaurantMenuGroupsStatusDialog,
   };
   return (
-    <RestaurantMenuGroupsUIContext.Provider value={value}>{children}</RestaurantMenuGroupsUIContext.Provider>
+    <RestaurantMenuGroupsUIContext.Provider value={value}>
+      {children}
+    </RestaurantMenuGroupsUIContext.Provider>
   );
 }

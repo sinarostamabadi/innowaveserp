@@ -14,7 +14,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { CloneObject } from "src/core/_helpers";
 import { PromissoryNoteTools } from "../quick/Dependency";
 import { getConfig } from "src/core/_models/ModelDescriber";
-import { PromissoryNoteModel } from "src/core/_models/Cash/PromissoryNoteModel"
+import { PromissoryNoteModel } from "src/core/_models/Cash/PromissoryNoteModel";
 
 const PromissoryNotesUIContext = createContext();
 
@@ -46,7 +46,10 @@ export const PromissoryNotesUIProvider = forwardRef(
 
     const [selectedId, setSelectedId] = useState(null);
     const [documentId, setDocumentId] = useState(currentDocumentId);
-    const initPromissoryNote = {...PromissoryNoteTools.Model, DocumentId: currentDocumentId};
+    const initPromissoryNote = {
+      ...PromissoryNoteTools.Model,
+      DocumentId: currentDocumentId,
+    };
     const [selectedItem, setSelectedItem] = useState(initPromissoryNote);
     const { actionsLoading, documentForEdit, error } = useSelector(
       (state) => ({
@@ -57,7 +60,9 @@ export const PromissoryNotesUIProvider = forwardRef(
       shallowEqual
     );
 
-    const [queryParams, setQueryParamsBase] = useState(getConfig(PromissoryNoteModel, "DocumentId", "desc").initialFilter);
+    const [queryParams, setQueryParamsBase] = useState(
+      getConfig(PromissoryNoteModel, "DocumentId", "desc").initialFilter
+    );
 
     const setQueryParams = useCallback((nextQueryParams) => {
       setQueryParamsBase((prevQueryParams) => {
@@ -73,12 +78,16 @@ export const PromissoryNotesUIProvider = forwardRef(
       });
     }, []);
 
-    const [promissoryNotes, setPromissoryNotes] = useState(promissoryNote.map(x=> PromissoryNoteTools.Clean(x)));
+    const [promissoryNotes, setPromissoryNotes] = useState(
+      promissoryNote.map((x) => PromissoryNoteTools.Clean(x))
+    );
     const [activePromissoryNotes, setActivePromissoryNotes] = useState([]);
     const [totalCount, setTotalCount] = useState(0);
 
     useEffect(() => {
-      setActivePromissoryNotes(promissoryNotes.filter((x) => x.IsDeleted == false));
+      setActivePromissoryNotes(
+        promissoryNotes.filter((x) => x.IsDeleted == false)
+      );
       setTotalCount(promissoryNotes.filter((x) => x.IsDeleted == false).length);
     }, [promissoryNotes]);
 
@@ -93,8 +102,9 @@ export const PromissoryNotesUIProvider = forwardRef(
       setSelectedItem(findPromissoryNote(selectedId));
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedId]);
-    
-    const [showEditPromissoryNoteDialog, setShowEditPromissoryNoteDialog] = useState(false);
+
+    const [showEditPromissoryNoteDialog, setShowEditPromissoryNoteDialog] =
+      useState(false);
     const openNewPromissoryNoteDialog = () => {
       setSelectedId(undefined);
       setSelectedItem(CloneObject(initPromissoryNote));
@@ -116,7 +126,8 @@ export const PromissoryNotesUIProvider = forwardRef(
       setShowEditPromissoryNoteDialog(false);
     };
 
-    const [showDeletePromissoryNoteDialog, setShowDeletePromissoryNoteDialog] = useState(false);
+    const [showDeletePromissoryNoteDialog, setShowDeletePromissoryNoteDialog] =
+      useState(false);
     const openDeletePromissoryNoteDialog = (id) => {
       setSelectedId(id);
       setShowDeletePromissoryNoteDialog(true);
@@ -127,9 +138,10 @@ export const PromissoryNotesUIProvider = forwardRef(
       setShowDeletePromissoryNoteDialog(false);
     };
 
-    const [showDeletePromissoryNotesDialog, setShowDeletePromissoryNotesDialog] = useState(
-      false
-    );
+    const [
+      showDeletePromissoryNotesDialog,
+      setShowDeletePromissoryNotesDialog,
+    ] = useState(false);
     const openDeletePromissoryNotesDialog = () => {
       setShowDeletePromissoryNotesDialog(true);
     };
@@ -137,7 +149,8 @@ export const PromissoryNotesUIProvider = forwardRef(
       setShowDeletePromissoryNotesDialog(false);
     };
 
-    const [showFetchPromissoryNotesDialog, setShowFetchPromissoryNotesDialog] = useState(false);
+    const [showFetchPromissoryNotesDialog, setShowFetchPromissoryNotesDialog] =
+      useState(false);
     const openFetchPromissoryNotesDialog = () => {
       setShowFetchPromissoryNotesDialog(true);
     };
@@ -146,26 +159,35 @@ export const PromissoryNotesUIProvider = forwardRef(
     };
 
     const findPromissoryNote = (promissoryNoteId) => {
-      return promissoryNotes.filter((promissoryNote) => promissoryNote.PromissoryNoteId == promissoryNoteId)[0];
+      return promissoryNotes.filter(
+        (promissoryNote) => promissoryNote.PromissoryNoteId == promissoryNoteId
+      )[0];
     };
 
     const addPromissoryNote = (promissoryNote) => {
-      promissoryNote.PromissoryNoteId = "temp_" + Math.floor(Math.random() * 100);
+      promissoryNote.PromissoryNoteId =
+        "temp_" + Math.floor(Math.random() * 100);
       promissoryNote.DocumentId = +promissoryNote.DocumentId;
 
-      setPromissoryNotes((promissoryNotes) => [...promissoryNotes, promissoryNote]);
+      setPromissoryNotes((promissoryNotes) => [
+        ...promissoryNotes,
+        promissoryNote,
+      ]);
     };
 
     const removePromissoryNote = (promissoryNoteId) => {
       if (promissoryNoteId.toString().indexOf("temp_") > -1) {
         setPromissoryNotes((promissoryNotes) =>
-          promissoryNotes.filter((item) => item.PromissoryNoteId != promissoryNoteId)
+          promissoryNotes.filter(
+            (item) => item.PromissoryNoteId != promissoryNoteId
+          )
         );
       } else {
         setPromissoryNotes((promissoryNotes) =>
           promissoryNotes.map((item) => {
             let copyPromissoryNote = CloneObject(item);
-            if (copyPromissoryNote.PromissoryNoteId == promissoryNoteId) copyPromissoryNote.IsDeleted = true;
+            if (copyPromissoryNote.PromissoryNoteId == promissoryNoteId)
+              copyPromissoryNote.IsDeleted = true;
 
             return copyPromissoryNote;
           })
@@ -177,7 +199,9 @@ export const PromissoryNotesUIProvider = forwardRef(
       promissoryNote.DocumentId = +promissoryNote.DocumentId;
       setPromissoryNotes((promissoryNotes) =>
         promissoryNotes.map((item) =>
-          item.PromissoryNoteId === promissoryNote.PromissoryNoteId ? promissoryNote : item
+          item.PromissoryNoteId === promissoryNote.PromissoryNoteId
+            ? promissoryNote
+            : item
         )
       );
     };

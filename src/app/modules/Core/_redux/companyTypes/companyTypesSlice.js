@@ -31,13 +31,13 @@ export const companyTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCompanyTypeById  
+    // getCompanyTypeById
     companyTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.companyTypeForEdit = action.payload.companyTypeForEdit;
       state.error = null;
     },
-    // findCompanyTypes  
+    // findCompanyTypes
     companyTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -45,13 +45,13 @@ export const companyTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCompanyType  
+    // createCompanyType
     companyTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCompanyType  
+    // updateCompanyType
     companyTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -62,23 +62,23 @@ export const companyTypesSlice = createSlice({
         return entity;
       });
     },
-    // deleteCompanyType  
+    // deleteCompanyType
     companyTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CompanyTypeId !== action.payload.CompanyTypeId  
+        (el) => el.CompanyTypeId !== action.payload.CompanyTypeId
       );
     },
-    // deleteCompanyTypes  
+    // deleteCompanyTypes
     companyTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CompanyTypeId)  
+        (el) => !action.payload.ids.includes(el.CompanyTypeId)
       );
     },
-    // companyTypesUpdateState  
+    // companyTypesUpdateState
     companyTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

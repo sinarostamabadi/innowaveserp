@@ -8,10 +8,10 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { ScalesTable } from "./scales-table/ScalesTable";
 import { useScalesUIContext, ScalesUIConsumer } from "./ScalesUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function ScalesCard() {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const scalesUIContext = useScalesUIContext();
 
@@ -23,7 +23,8 @@ export function ScalesCard() {
       newScaleButtonClick: scalesUIContext.newScaleButtonClick,
       openDeleteScalesDialog: scalesUIContext.openDeleteScalesDialog,
       openEditScalePage: scalesUIContext.openEditScalePage,
-      openUpdateScalesStatusDialog: scalesUIContext.openUpdateScalesStatusDialog,
+      openUpdateScalesStatusDialog:
+        scalesUIContext.openUpdateScalesStatusDialog,
       openFetchScalesDialog: scalesUIContext.openFetchScalesDialog,
     };
   }, [scalesUIContext]);

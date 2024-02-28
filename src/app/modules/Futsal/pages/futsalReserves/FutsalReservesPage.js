@@ -26,7 +26,7 @@ export function FutsalReservesPage({ history }) {
       history.push("/futsal/futsalReserves/updateStatus");
     },
   };
-  
+
   return (
     <FutsalReservesUIProvider futsalReservesUIEvents={futsalReservesUIEvents}>
       <FutsalReservesLoadingDialog />

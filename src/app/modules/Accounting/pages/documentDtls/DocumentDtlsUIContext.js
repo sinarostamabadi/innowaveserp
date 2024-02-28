@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { DocumentDtlModel } from "../../../../../core/_models/Accounting/DocumentDtlModel";
@@ -30,7 +29,7 @@ export function DocumentDtlsUIProvider({ documentDtlsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -40,12 +39,18 @@ export function DocumentDtlsUIProvider({ documentDtlsUIEvents, children }) {
     dataModel: DocumentDtlModel,
     newDocumentDtlButtonClick: documentDtlsUIEvents.newDocumentDtlButtonClick,
     openEditDocumentDtlPage: documentDtlsUIEvents.openEditDocumentDtlPage,
-    openDeleteDocumentDtlDialog: documentDtlsUIEvents.openDeleteDocumentDtlDialog,
-    openDeleteDocumentDtlsDialog: documentDtlsUIEvents.openDeleteDocumentDtlsDialog,
-    openFetchDocumentDtlsDialog: documentDtlsUIEvents.openFetchDocumentDtlsDialog,
-    openUpdateDocumentDtlsStatusDialog: documentDtlsUIEvents.openUpdateDocumentDtlsStatusDialog,
+    openDeleteDocumentDtlDialog:
+      documentDtlsUIEvents.openDeleteDocumentDtlDialog,
+    openDeleteDocumentDtlsDialog:
+      documentDtlsUIEvents.openDeleteDocumentDtlsDialog,
+    openFetchDocumentDtlsDialog:
+      documentDtlsUIEvents.openFetchDocumentDtlsDialog,
+    openUpdateDocumentDtlsStatusDialog:
+      documentDtlsUIEvents.openUpdateDocumentDtlsStatusDialog,
   };
   return (
-    <DocumentDtlsUIContext.Provider value={value}>{children}</DocumentDtlsUIContext.Provider>
+    <DocumentDtlsUIContext.Provider value={value}>
+      {children}
+    </DocumentDtlsUIContext.Provider>
   );
 }

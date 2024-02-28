@@ -26,7 +26,7 @@ export function InfoAreasPage({ history }) {
       history.push("/employment/infoAreas/updateStatus");
     },
   };
-  
+
   return (
     <InfoAreasUIProvider infoAreasUIEvents={infoAreasUIEvents}>
       <InfoAreasLoadingDialog />

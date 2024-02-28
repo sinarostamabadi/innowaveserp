@@ -37,7 +37,7 @@ export function RestaurantInvoiceDetailDeleteDialog() {
 
   const deleteDetail = () => {
     console.log("detailsUIProps.id > ", detailsUIProps.id);
-    detailsUIProps.removeDetail(detailsUIProps.id)
+    detailsUIProps.removeDetail(detailsUIProps.id);
     detailsUIProps.onHide();
   };
 
@@ -53,7 +53,7 @@ export function RestaurantInvoiceDetailDeleteDialog() {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-          <span>{t("Common.DeleteQuestion")}</span>
+        <span>{t("Common.DeleteQuestion")}</span>
       </Modal.Body>
       <Modal.Footer>
         <div>

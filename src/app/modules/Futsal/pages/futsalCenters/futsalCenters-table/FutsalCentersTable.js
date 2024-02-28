@@ -33,7 +33,8 @@ export function FutsalCentersTable() {
       queryParams: futsalCentersUIContext.queryParams,
       setQueryParams: futsalCentersUIContext.setQueryParams,
       openEditFutsalCenterPage: futsalCentersUIContext.openEditFutsalCenterPage,
-      openDeleteFutsalCenterDialog: futsalCentersUIContext.openDeleteFutsalCenterDialog,
+      openDeleteFutsalCenterDialog:
+        futsalCentersUIContext.openDeleteFutsalCenterDialog,
     };
   }, [futsalCentersUIContext]);
 
@@ -73,7 +74,8 @@ export function FutsalCentersTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditFutsalCenterPage: futsalCentersUIProps.openEditFutsalCenterPage,
-        openDeleteFutsalCenterDialog: futsalCentersUIProps.openDeleteFutsalCenterDialog,
+        openDeleteFutsalCenterDialog:
+          futsalCentersUIProps.openDeleteFutsalCenterDialog,
         t: t,
       },
       classes: "text-right pr-0",

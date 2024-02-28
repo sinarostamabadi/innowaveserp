@@ -19,9 +19,11 @@ export function PromissoryNoteEditDialogHeader({ id }) {
   );
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("CashDocument.PromissoryNote");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("CashDocument.PromissoryNote");
     if (id) {
-      _title = t("Common.Edit") + " " + t("CashDocument.PromissoryNote") ;
+      _title = t("Common.Edit") + " " + t("CashDocument.PromissoryNote");
     }
 
     setTitle(_title);

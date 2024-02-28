@@ -21,7 +21,7 @@ export function RelationPersonGroupEditDialogHeader({ id }) {
   useEffect(() => {
     let _title = id ? "" : t("Common.Create") + " " + t("PersonGroup.Entity");
     if (relationPersonGroupForEdit && id) {
-      _title = t("Common.Edit") + " " + t("PersonGroup.Entity") ;
+      _title = t("Common.Edit") + " " + t("PersonGroup.Entity");
     }
 
     setTitle(_title);

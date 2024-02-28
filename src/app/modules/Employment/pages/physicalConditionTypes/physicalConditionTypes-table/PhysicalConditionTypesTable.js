@@ -32,8 +32,10 @@ export function PhysicalConditionTypesTable() {
       setIds: physicalConditionTypesUIContext.setIds,
       queryParams: physicalConditionTypesUIContext.queryParams,
       setQueryParams: physicalConditionTypesUIContext.setQueryParams,
-      openEditPhysicalConditionTypePage: physicalConditionTypesUIContext.openEditPhysicalConditionTypePage,
-      openDeletePhysicalConditionTypeDialog: physicalConditionTypesUIContext.openDeletePhysicalConditionTypeDialog,
+      openEditPhysicalConditionTypePage:
+        physicalConditionTypesUIContext.openEditPhysicalConditionTypePage,
+      openDeletePhysicalConditionTypeDialog:
+        physicalConditionTypesUIContext.openDeletePhysicalConditionTypeDialog,
     };
   }, [physicalConditionTypesUIContext]);
 
@@ -50,7 +52,11 @@ export function PhysicalConditionTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     physicalConditionTypesUIProps.setIds([]);
-    dispatch(actions.fetchPhysicalConditionTypes(physicalConditionTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchPhysicalConditionTypes(
+        physicalConditionTypesUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [physicalConditionTypesUIProps.queryParams, dispatch]);
 
@@ -72,8 +78,10 @@ export function PhysicalConditionTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditPhysicalConditionTypePage: physicalConditionTypesUIProps.openEditPhysicalConditionTypePage,
-        openDeletePhysicalConditionTypeDialog: physicalConditionTypesUIProps.openDeletePhysicalConditionTypeDialog,
+        openEditPhysicalConditionTypePage:
+          physicalConditionTypesUIProps.openEditPhysicalConditionTypePage,
+        openDeletePhysicalConditionTypeDialog:
+          physicalConditionTypesUIProps.openDeletePhysicalConditionTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

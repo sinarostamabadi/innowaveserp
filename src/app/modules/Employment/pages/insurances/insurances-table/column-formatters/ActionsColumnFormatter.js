@@ -12,7 +12,11 @@ export const ActionsColumnFormatter = (
   { openEditInsurancePage, openDeleteInsuranceDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="insurances-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="insurances-edit-tooltip">{t("Common.Edit")}</Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditInsurancePage(row.InsuranceId)}
@@ -26,7 +30,9 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="insurances-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="insurances-delete-tooltip">{t("Common.Delete")}</Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"

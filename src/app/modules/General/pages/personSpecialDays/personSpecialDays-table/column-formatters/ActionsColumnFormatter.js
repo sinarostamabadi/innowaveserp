@@ -17,7 +17,7 @@ export const ActionsColumnFormatter = (
         </Tooltip>
       }
     >
-      <a 
+      <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditPersonSpecialDayPage(row.PersonSpecialDayId)}
       >

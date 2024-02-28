@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function EmployeePhysicalConditionsTable() {
   const { t } = useTranslation();
 
-  const employeePhysicalConditionsUIContext = useEmployeePhysicalConditionsUIContext();
+  const employeePhysicalConditionsUIContext =
+    useEmployeePhysicalConditionsUIContext();
 
   const employeePhysicalConditionsUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function EmployeePhysicalConditionsTable() {
       setIds: employeePhysicalConditionsUIContext.setIds,
       queryParams: employeePhysicalConditionsUIContext.queryParams,
       setQueryParams: employeePhysicalConditionsUIContext.setQueryParams,
-      openEditEmployeePhysicalConditionPage: employeePhysicalConditionsUIContext.openEditEmployeePhysicalConditionPage,
-      openDeleteEmployeePhysicalConditionDialog: employeePhysicalConditionsUIContext.openDeleteEmployeePhysicalConditionDialog,
+      openEditEmployeePhysicalConditionPage:
+        employeePhysicalConditionsUIContext.openEditEmployeePhysicalConditionPage,
+      openDeleteEmployeePhysicalConditionDialog:
+        employeePhysicalConditionsUIContext.openDeleteEmployeePhysicalConditionDialog,
     };
   }, [employeePhysicalConditionsUIContext]);
 
@@ -50,7 +53,11 @@ export function EmployeePhysicalConditionsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     employeePhysicalConditionsUIProps.setIds([]);
-    dispatch(actions.fetchEmployeePhysicalConditions(employeePhysicalConditionsUIProps.queryParams));
+    dispatch(
+      actions.fetchEmployeePhysicalConditions(
+        employeePhysicalConditionsUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employeePhysicalConditionsUIProps.queryParams, dispatch]);
 
@@ -72,8 +79,10 @@ export function EmployeePhysicalConditionsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmployeePhysicalConditionPage: employeePhysicalConditionsUIProps.openEditEmployeePhysicalConditionPage,
-        openDeleteEmployeePhysicalConditionDialog: employeePhysicalConditionsUIProps.openDeleteEmployeePhysicalConditionDialog,
+        openEditEmployeePhysicalConditionPage:
+          employeePhysicalConditionsUIProps.openEditEmployeePhysicalConditionPage,
+        openDeleteEmployeePhysicalConditionDialog:
+          employeePhysicalConditionsUIProps.openDeleteEmployeePhysicalConditionDialog,
         t: t,
       },
       classes: "text-right pr-0",

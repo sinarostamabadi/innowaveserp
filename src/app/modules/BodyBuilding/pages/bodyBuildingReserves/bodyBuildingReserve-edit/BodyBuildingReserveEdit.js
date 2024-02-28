@@ -45,7 +45,8 @@ export function BodyBuildingReserveEdit({
   const { actionsLoading, bodyBuildingReserveForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.bodyBuildingReserves.actionsLoading,
-      bodyBuildingReserveForEdit: state.bodyBuildingReserves.bodyBuildingReserveForEdit,
+      bodyBuildingReserveForEdit:
+        state.bodyBuildingReserves.bodyBuildingReserveForEdit,
       error: state.bodyBuildingReserves.error,
     }),
     shallowEqual
@@ -56,7 +57,9 @@ export function BodyBuildingReserveEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("BodyBuildingReserve.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("BodyBuildingReserve.Entity");
 
     if (bodyBuildingReserveForEdit && id) {
       _title = t("Common.Edit") + " " + bodyBuildingReserveForEdit.TitleFa;
@@ -125,14 +128,14 @@ export function BodyBuildingReserveEdit({
           </button>
           {`  `}
           <button
-              type="submit"
-              className="btn btn-primary ml-2"
-              onClick={saveBodyBuildingReserveClick}
-            >
-              <i className="fa fa-save"></i> {t("Common.Save")}
-            </button>
-          </CardHeaderToolbar>
-        </CardHeader>
+            type="submit"
+            className="btn btn-primary ml-2"
+            onClick={saveBodyBuildingReserveClick}
+          >
+            <i className="fa fa-save"></i> {t("Common.Save")}
+          </button>
+        </CardHeaderToolbar>
+      </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>

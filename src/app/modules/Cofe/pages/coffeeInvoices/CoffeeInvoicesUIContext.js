@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { CoffeeInvoiceModel } from "../../../../../core/_models/Cofe/CoffeeInvoiceModel";
@@ -30,7 +29,7 @@ export function CoffeeInvoicesUIProvider({ coffeeInvoicesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function CoffeeInvoicesUIProvider({ coffeeInvoicesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: CoffeeInvoiceModel,
-    newCoffeeInvoiceButtonClick: coffeeInvoicesUIEvents.newCoffeeInvoiceButtonClick,
+    newCoffeeInvoiceButtonClick:
+      coffeeInvoicesUIEvents.newCoffeeInvoiceButtonClick,
     openEditCoffeeInvoicePage: coffeeInvoicesUIEvents.openEditCoffeeInvoicePage,
-    openDeleteCoffeeInvoiceDialog: coffeeInvoicesUIEvents.openDeleteCoffeeInvoiceDialog,
-    openDeleteCoffeeInvoicesDialog: coffeeInvoicesUIEvents.openDeleteCoffeeInvoicesDialog,
-    openFetchCoffeeInvoicesDialog: coffeeInvoicesUIEvents.openFetchCoffeeInvoicesDialog,
-    openUpdateCoffeeInvoicesStatusDialog: coffeeInvoicesUIEvents.openUpdateCoffeeInvoicesStatusDialog,
+    openDeleteCoffeeInvoiceDialog:
+      coffeeInvoicesUIEvents.openDeleteCoffeeInvoiceDialog,
+    openDeleteCoffeeInvoicesDialog:
+      coffeeInvoicesUIEvents.openDeleteCoffeeInvoicesDialog,
+    openFetchCoffeeInvoicesDialog:
+      coffeeInvoicesUIEvents.openFetchCoffeeInvoicesDialog,
+    openUpdateCoffeeInvoicesStatusDialog:
+      coffeeInvoicesUIEvents.openUpdateCoffeeInvoicesStatusDialog,
   };
   return (
-    <CoffeeInvoicesUIContext.Provider value={value}>{children}</CoffeeInvoicesUIContext.Provider>
+    <CoffeeInvoicesUIContext.Provider value={value}>
+      {children}
+    </CoffeeInvoicesUIContext.Provider>
   );
 }

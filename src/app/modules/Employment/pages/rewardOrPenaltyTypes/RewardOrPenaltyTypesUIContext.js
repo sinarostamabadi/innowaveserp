@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { RewardOrPenaltyTypeModel } from "../../../../../core/_models/Employment/RewardOrPenaltyTypeModel";
@@ -10,9 +9,13 @@ export function useRewardOrPenaltyTypesUIContext() {
   return useContext(RewardOrPenaltyTypesUIContext);
 }
 
-export const RewardOrPenaltyTypesUIConsumer = RewardOrPenaltyTypesUIContext.Consumer;
+export const RewardOrPenaltyTypesUIConsumer =
+  RewardOrPenaltyTypesUIContext.Consumer;
 
-export function RewardOrPenaltyTypesUIProvider({ rewardOrPenaltyTypesUIEvents, children }) {
+export function RewardOrPenaltyTypesUIProvider({
+  rewardOrPenaltyTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(RewardOrPenaltyTypeModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function RewardOrPenaltyTypesUIProvider({ rewardOrPenaltyTypesUIEvents, c
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function RewardOrPenaltyTypesUIProvider({ rewardOrPenaltyTypesUIEvents, c
     setIds,
     setQueryParams,
     dataModel: RewardOrPenaltyTypeModel,
-    newRewardOrPenaltyTypeButtonClick: rewardOrPenaltyTypesUIEvents.newRewardOrPenaltyTypeButtonClick,
-    openEditRewardOrPenaltyTypePage: rewardOrPenaltyTypesUIEvents.openEditRewardOrPenaltyTypePage,
-    openDeleteRewardOrPenaltyTypeDialog: rewardOrPenaltyTypesUIEvents.openDeleteRewardOrPenaltyTypeDialog,
-    openDeleteRewardOrPenaltyTypesDialog: rewardOrPenaltyTypesUIEvents.openDeleteRewardOrPenaltyTypesDialog,
-    openFetchRewardOrPenaltyTypesDialog: rewardOrPenaltyTypesUIEvents.openFetchRewardOrPenaltyTypesDialog,
-    openUpdateRewardOrPenaltyTypesStatusDialog: rewardOrPenaltyTypesUIEvents.openUpdateRewardOrPenaltyTypesStatusDialog,
+    newRewardOrPenaltyTypeButtonClick:
+      rewardOrPenaltyTypesUIEvents.newRewardOrPenaltyTypeButtonClick,
+    openEditRewardOrPenaltyTypePage:
+      rewardOrPenaltyTypesUIEvents.openEditRewardOrPenaltyTypePage,
+    openDeleteRewardOrPenaltyTypeDialog:
+      rewardOrPenaltyTypesUIEvents.openDeleteRewardOrPenaltyTypeDialog,
+    openDeleteRewardOrPenaltyTypesDialog:
+      rewardOrPenaltyTypesUIEvents.openDeleteRewardOrPenaltyTypesDialog,
+    openFetchRewardOrPenaltyTypesDialog:
+      rewardOrPenaltyTypesUIEvents.openFetchRewardOrPenaltyTypesDialog,
+    openUpdateRewardOrPenaltyTypesStatusDialog:
+      rewardOrPenaltyTypesUIEvents.openUpdateRewardOrPenaltyTypesStatusDialog,
   };
   return (
-    <RewardOrPenaltyTypesUIContext.Provider value={value}>{children}</RewardOrPenaltyTypesUIContext.Provider>
+    <RewardOrPenaltyTypesUIContext.Provider value={value}>
+      {children}
+    </RewardOrPenaltyTypesUIContext.Provider>
   );
 }

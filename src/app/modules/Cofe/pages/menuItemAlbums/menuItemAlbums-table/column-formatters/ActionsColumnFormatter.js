@@ -12,7 +12,11 @@ export const ActionsColumnFormatter = (
   { openEditMenuItemAlbumPage, openDeleteMenuItemAlbumDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="menuItemAlbums-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="menuItemAlbums-edit-tooltip">{t("Common.Edit")}</Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditMenuItemAlbumPage(row.MenuItemAlbumId)}
@@ -26,7 +30,11 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="menuItemAlbums-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="menuItemAlbums-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"

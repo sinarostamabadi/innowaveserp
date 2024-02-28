@@ -22,7 +22,8 @@ export function useBowlingTeamPersonsUIContext() {
   return useContext(BowlingTeamPersonsUIContext);
 }
 
-export const BowlingTeamPersonsUIConsumer = BowlingTeamPersonsUIContext.Consumer;
+export const BowlingTeamPersonsUIConsumer =
+  BowlingTeamPersonsUIContext.Consumer;
 
 export const BowlingTeamPersonsUIProvider = forwardRef(
   ({ currentBowlingTeamId, children, bowlingTeamPerson, btnRef }, ref) => {
@@ -80,10 +81,10 @@ export const BowlingTeamPersonsUIProvider = forwardRef(
       });
     }, []);
 
-    const [bowlingTeamPersons, setBowlingTeamPersons] = useState(bowlingTeamPerson);
-    const [activeBowlingTeamPersons, setActiveBowlingTeamPersons] = useState(
-      bowlingTeamPerson
-    );
+    const [bowlingTeamPersons, setBowlingTeamPersons] =
+      useState(bowlingTeamPerson);
+    const [activeBowlingTeamPersons, setActiveBowlingTeamPersons] =
+      useState(bowlingTeamPerson);
     const [totalCount, setTotalCount] = useState(0);
 
     useEffect(() => {
@@ -190,7 +191,10 @@ export const BowlingTeamPersonsUIProvider = forwardRef(
       bowlingTeamPerson.BowlingTeamPersonScoreId =
         "temp_" + Math.floor(Math.random() * 100);
 
-      setBowlingTeamPersons((bowlingTeamPersons) => [...bowlingTeamPersons, bowlingTeamPerson]);
+      setBowlingTeamPersons((bowlingTeamPersons) => [
+        ...bowlingTeamPersons,
+        bowlingTeamPerson,
+      ]);
     };
 
     const removeBowlingTeamPerson = (bowlingTeamPersonScoreId) => {
@@ -214,7 +218,8 @@ export const BowlingTeamPersonsUIProvider = forwardRef(
     const updateBowlingTeamPerson = (bowlingTeamPerson) => {
       setBowlingTeamPersons((bowlingTeamPersons) =>
         bowlingTeamPersons.map((item) =>
-          item.BowlingTeamPersonScoreId == bowlingTeamPerson.BowlingTeamPersonScoreId
+          item.BowlingTeamPersonScoreId ==
+          bowlingTeamPerson.BowlingTeamPersonScoreId
             ? bowlingTeamPerson
             : item
         )

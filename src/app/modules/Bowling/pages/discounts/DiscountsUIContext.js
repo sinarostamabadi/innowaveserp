@@ -1,9 +1,7 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { DiscountModel } from "../../../../../core/_models/Bowling/DiscountModel";
 import { getConfig } from "../../../../../core/_models/ModelDescriber";
-
 
 const DiscountsUIContext = createContext();
 
@@ -14,8 +12,9 @@ export function useDiscountsUIContext() {
 export const DiscountsUIConsumer = DiscountsUIContext.Consumer;
 
 export function DiscountsUIProvider({ discountsUIEvents, children }) {
-
-  const [queryParams, setQueryParamsBase] = useState(getConfig(DiscountModel).initialFilter);
+  const [queryParams, setQueryParamsBase] = useState(
+    getConfig(DiscountModel).initialFilter
+  );
 
   const [ids, setIds] = useState([]);
 
@@ -30,7 +29,7 @@ export function DiscountsUIProvider({ discountsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function DiscountsUIProvider({ discountsUIEvents, children }) {
     openDeleteDiscountDialog: discountsUIEvents.openDeleteDiscountDialog,
     openDeleteDiscountsDialog: discountsUIEvents.openDeleteDiscountsDialog,
     openFetchDiscountsDialog: discountsUIEvents.openFetchDiscountsDialog,
-    openUpdateDiscountsStatusDialog: discountsUIEvents.openUpdateDiscountsStatusDialog,
+    openUpdateDiscountsStatusDialog:
+      discountsUIEvents.openUpdateDiscountsStatusDialog,
   };
   return (
-    <DiscountsUIContext.Provider value={value}>{children}</DiscountsUIContext.Provider>
+    <DiscountsUIContext.Provider value={value}>
+      {children}
+    </DiscountsUIContext.Provider>
   );
 }

@@ -4,8 +4,8 @@ import { LoadingDialog } from "../../../../../../core/_partials/controls";
 export function LinkDocumentParametersLoadingDialog() {
   const { isLoading } = useSelector(
     (state) => ({ isLoading: state.linkDocumentParameters.listLoading }),
-    shallowEqual  
+    shallowEqual
   );
-useEffect(() => {}, [isLoading]);
+  useEffect(() => {}, [isLoading]);
   return <LoadingDialog isLoading={isLoading} text="در حال بارگذاری..." />;
 }

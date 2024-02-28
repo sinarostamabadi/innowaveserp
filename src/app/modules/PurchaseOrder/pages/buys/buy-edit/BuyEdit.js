@@ -1,11 +1,16 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import {  Row,Col, Dropdown, Tabs, Tab } from "react-bootstrap";
+import { Row, Col, Dropdown, Tabs, Tab } from "react-bootstrap";
 import { shallowEqual, useSelector } from "react-redux";
 import moment from "jalali-moment";
 import axios from "axios";
 import * as actions from "../../../_redux/buys/buysActions";
-import { Card, CardBody, CardHeader, CardHeaderToolbar } from "src/core/_partials/controls";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderToolbar,
+} from "src/core/_partials/controls";
 import { BuyEditForm } from "./BuyEditForm";
 import { useSubheader } from "src/core/layout";
 import { ModalProgressBar, Alerty } from "src/core/_partials/controls";
@@ -19,7 +24,12 @@ import { DiscountsUIProvider } from "../buys-discounts/DiscountsUIContext";
 import { Discounts } from "../buys-discounts/Discounts";
 import { PrintFactor } from "../print/PrintFactor";
 import { PrintOfficial } from "../print/PrintOfficial";
-import { EnToFaObjDate, CloneObject, getStorage, numberWithCommas } from "src/core/_helpers";
+import {
+  EnToFaObjDate,
+  CloneObject,
+  getStorage,
+  numberWithCommas,
+} from "src/core/_helpers";
 import { Attachments } from "src/core/_partials/controls/attachment/Attachments";
 import { ObjectToFormData } from "src/core/_helpers";
 
@@ -33,7 +43,7 @@ export function BuyEdit({
   const { t } = useTranslation();
   const initModel = {
     BuyId: undefined,
-    BuyNumber: "اوتوماتیک توسط سیستم ایجاد می‌گردد",
+    BuyNumber: "It is created automatically by the system",
     FactorNumber: "",
     ProviderId: "",
     BuySettlementTypeId: 1,
@@ -43,10 +53,7 @@ export function BuyEdit({
     FactorDate: "",
     FactorDateObj: "",
     BuyDateObj: EnToFaObjDate(new Date()),
-    BuyDate: moment
-      .from()
-      .locale("en")
-      .format("YYYY-MM-DDTHH:mm:ss"),
+    BuyDate: moment.from().locale("en").format("YYYY-MM-DDTHH:mm:ss"),
     IsClosed: false,
     IsTemp: true,
     BuyDetails: [],
@@ -64,7 +71,9 @@ export function BuyEdit({
   const dispatch = useDispatch();
   const [buyObj, setBuyObj] = useState(copyModel);
   const [buyDtlObj, setBuyDetailObj] = useState(copyModel.BuyDetails);
-  const [entityAttachmentsObj, setEntityAttachmentsObj] = useState(copyModel.EntityAttachments);
+  const [entityAttachmentsObj, setEntityAttachmentsObj] = useState(
+    copyModel.EntityAttachments
+  );
   const [buyRequestDetailsObj, setBuyRequestDetailsObj] = useState([]);
   const [buyCostObj, setBuyCostObj] = useState(copyModel.BuyCosts);
   const [buyDiscountObj, setBuyDiscountObj] = useState(copyModel.BuyDiscounts);
@@ -99,7 +108,7 @@ export function BuyEdit({
         for (let index = 0; index < ids.length; index++) {
           const element = ids[index];
 
-          (function(el) {
+          (function (el) {
             axios
               .get(`BuyRequestDetail/get/${el}`)
               .then(({ data }) => {
@@ -221,22 +230,29 @@ export function BuyEdit({
         buyObj["BuyDetails"] = [];
         buyObj["BuyCosts"] = [];
         buyObj["BuyDiscounts"] = [];
-        buyObj["EntityAttachments"] = entityAttachmentsObj.map(x=> {return{
-          EntityAttachmentId: x.EntityAttachmentId.toString().indexOf("temp_") > -1? null: x.EntityAttachmentId,
-          EntityId: x.EntityId,
-          EntityPKId: x.EntityPKId,
-          AttachmentId: x.AttachmentId,
-          Title: x.Title,
-          Description: x.Description,
-          Reference1: x.Reference1,
-          Reference2: x.Reference2,
-          Reference3: x.Reference3,
-          Reference4: x.Reference4,
-          IsDeleted: x.IsDeleted || false,
-          Attachment: x.Attachment.FormFile? {
-            FormFile: x.Attachment.FormFile,
-          }: null,
-        }});
+        buyObj["EntityAttachments"] = entityAttachmentsObj.map((x) => {
+          return {
+            EntityAttachmentId:
+              x.EntityAttachmentId.toString().indexOf("temp_") > -1
+                ? null
+                : x.EntityAttachmentId,
+            EntityId: x.EntityId,
+            EntityPKId: x.EntityPKId,
+            AttachmentId: x.AttachmentId,
+            Title: x.Title,
+            Description: x.Description,
+            Reference1: x.Reference1,
+            Reference2: x.Reference2,
+            Reference3: x.Reference3,
+            Reference4: x.Reference4,
+            IsDeleted: x.IsDeleted || false,
+            Attachment: x.Attachment.FormFile
+              ? {
+                  FormFile: x.Attachment.FormFile,
+                }
+              : null,
+          };
+        });
 
         btnRefDetails.current.Collect((detailsData) => {
           buyObj.BuyDetails = detailsData;
@@ -377,7 +393,7 @@ export function BuyEdit({
             </CardHeaderToolbar>
           </CardHeader>
           <CardBody className="py-0">
-          <Tabs
+            <Tabs
               defaultActiveKey="buy"
               transition={false}
               className="nav nav-tabs nav-tabs-line"
@@ -387,100 +403,116 @@ export function BuyEdit({
                 title={t("Common.BasicInfo")}
                 className="nav-item"
               >
-            <BuyEditForm
-              actionsLoading={actionsLoading}
-              buy={buyObj}
-              ref={btnRefBuy}
-            />
-            <table className="table table-bordered">
-              <tbody>
-                <tr>
-                  <td className="font-weight-bold">
-                    تعداد کالا: {numberWithCommas(Math.ceil(buySum.DetailCount))}
-                  </td>
-                  <td className="font-weight-bold">
-                    جمع کل: {numberWithCommas(Math.ceil(+buySum.SumPayable))}
-                  </td>
-                  <td className="font-weight-bold">
-                    جمع تخفیف‌های پای فاکتور: {numberWithCommas(Math.ceil(buySumDiscount))}
-                  </td>
-                  <td className="font-weight-bold">
-                    جمع هزینه‌های پای فاکتور: {numberWithCommas(Math.ceil(buySumCost))}
-                  </td>
-                  <td className="font-weight-bold">
-                    قابل پرداخت:{" "}
-                    {numberWithCommas(
-                      Math.ceil(+buySum.SumPayable - +buySumDiscount + +buySumCost)
-                    )}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <DetailsUIProvider
-              currentBuyId={id}
-              actionsLoading={actionsLoading}
-              detail={buyDtlObj}
-              updateBuy={updateBuySum}
-              buySum={buySum}
-              editable={!!id == false || (!!id == true && buyObj.IsTemp)}
-              ref={btnRefDetails}
-            >
-              <Details />
-            </DetailsUIProvider>
-            <table className="table table-bordered">
-              <tbody>
-                <tr>
-                  <td className="font-weight-bold">
-                    تعداد کالا: {numberWithCommas(Math.ceil(buySum.DetailCount))}
-                  </td>
-                  <td className="font-weight-bold">
-                    جمع کل: {numberWithCommas(Math.ceil(+buySum.SumPayable))}
-                  </td>
-                  <td className="font-weight-bold">
-                    جمع تخفیف‌های پای فاکتور: {numberWithCommas(Math.ceil(buySumDiscount))}
-                  </td>
-                  <td className="font-weight-bold">
-                    جمع هزینه‌های پای فاکتور: {numberWithCommas(Math.ceil(buySumCost))}
-                  </td>
-                  <td className="font-weight-bold">
-                    قابل پرداخت:{" "}
-                    {numberWithCommas(
-                      Math.ceil(+buySum.SumPayable - +buySumDiscount + +buySumCost)
-                    )}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <Row className="mt-5">
-              <Col lg="6" md="12">
-                <CostsUIProvider
+                <BuyEditForm
+                  actionsLoading={actionsLoading}
+                  buy={buyObj}
+                  ref={btnRefBuy}
+                />
+                <table className="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <td className="font-weight-bold">
+                        Number of goods:{" "}
+                        {numberWithCommas(Math.ceil(buySum.DetailCount))}
+                      </td>
+                      <td className="font-weight-bold">
+                        Total:{" "}
+                        {numberWithCommas(Math.ceil(+buySum.SumPayable))}
+                      </td>
+                      <td className="font-weight-bold">
+                        Sum of invoice discounts:{" "}
+                        {numberWithCommas(Math.ceil(buySumDiscount))}
+                      </td>
+                      <td className="font-weight-bold">
+                        Sum of invoice costs:{" "}
+                        {numberWithCommas(Math.ceil(buySumCost))}
+                      </td>
+                      <td className="font-weight-bold">
+                        Payable:{" "}
+                        {numberWithCommas(
+                          Math.ceil(
+                            +buySum.SumPayable - +buySumDiscount + +buySumCost
+                          )
+                        )}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <DetailsUIProvider
                   currentBuyId={id}
                   actionsLoading={actionsLoading}
-                  cost={buyCostObj}
-                  updateBuy={updateBuySumCost}
+                  detail={buyDtlObj}
+                  updateBuy={updateBuySum}
                   buySum={buySum}
                   editable={!!id == false || (!!id == true && buyObj.IsTemp)}
-                  ref={btnRefCosts}
+                  ref={btnRefDetails}
                 >
-                  <Costs />
-                </CostsUIProvider>
-              </Col>
-              <Col lg="6" md="12">
-                <DiscountsUIProvider
-                  currentBuyId={id}
-                  actionsLoading={actionsLoading}
-                  discount={buyDiscountObj}
-                  updateBuy={updateBuySumDiscount}
-                  buySum={buySum}
-                  editable={!!id == false || (!!id == true && buyObj.IsTemp)}
-                  ref={btnRefDiscounts}
-                >
-                  <Discounts />
-                </DiscountsUIProvider>
-              </Col>
-            </Row>
-            </Tab>
-            <Tab
+                  <Details />
+                </DetailsUIProvider>
+                <table className="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <td className="font-weight-bold">
+                        Number of goods:{" "}
+                        {numberWithCommas(Math.ceil(buySum.DetailCount))}
+                      </td>
+                      <td className="font-weight-bold">
+                        Total:{" "}
+                        {numberWithCommas(Math.ceil(+buySum.SumPayable))}
+                      </td>
+                      <td className="font-weight-bold">
+                        Sum of invoice discount:{" "}
+                        {numberWithCommas(Math.ceil(buySumDiscount))}
+                      </td>
+                      <td className="font-weight-bold">
+                        Sum of invoice cost:{" "}
+                        {numberWithCommas(Math.ceil(buySumCost))}
+                      </td>
+                      <td className="font-weight-bold">
+                        Payable:{" "}
+                        {numberWithCommas(
+                          Math.ceil(
+                            +buySum.SumPayable - +buySumDiscount + +buySumCost
+                          )
+                        )}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <Row className="mt-5">
+                  <Col lg="6" md="12">
+                    <CostsUIProvider
+                      currentBuyId={id}
+                      actionsLoading={actionsLoading}
+                      cost={buyCostObj}
+                      updateBuy={updateBuySumCost}
+                      buySum={buySum}
+                      editable={
+                        !!id == false || (!!id == true && buyObj.IsTemp)
+                      }
+                      ref={btnRefCosts}
+                    >
+                      <Costs />
+                    </CostsUIProvider>
+                  </Col>
+                  <Col lg="6" md="12">
+                    <DiscountsUIProvider
+                      currentBuyId={id}
+                      actionsLoading={actionsLoading}
+                      discount={buyDiscountObj}
+                      updateBuy={updateBuySumDiscount}
+                      buySum={buySum}
+                      editable={
+                        !!id == false || (!!id == true && buyObj.IsTemp)
+                      }
+                      ref={btnRefDiscounts}
+                    >
+                      <Discounts />
+                    </DiscountsUIProvider>
+                  </Col>
+                </Row>
+              </Tab>
+              <Tab
                 eventKey="attachments"
                 title={t("Common.Attachments")}
                 className="nav-item"

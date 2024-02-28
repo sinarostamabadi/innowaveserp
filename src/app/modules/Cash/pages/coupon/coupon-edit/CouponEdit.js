@@ -12,10 +12,7 @@ import {
 } from "src/core/_partials/controls";
 import { CouponEditForm } from "./CouponEditForm";
 import { useSubheader } from "src/core/layout";
-import {
-  ModalProgressBar,
-  Alerty,
-} from "src/core/_partials/controls";
+import { ModalProgressBar, Alerty } from "src/core/_partials/controls";
 import { useReactToPrint } from "react-to-print";
 import { useTranslation } from "react-i18next";
 

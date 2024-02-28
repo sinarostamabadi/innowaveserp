@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { JobModel } from "../../../../../core/_models/Employment/JobModel";
@@ -30,7 +29,7 @@ export function JobsUIProvider({ jobsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,

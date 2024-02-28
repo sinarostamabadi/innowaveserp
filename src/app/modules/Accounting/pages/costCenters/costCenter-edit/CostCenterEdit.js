@@ -31,14 +31,14 @@ export function CostCenterEdit({
     Title: "",
     Level: null,
     ParentId: null,
-    Code: null
+    Code: null,
   };
 
   // Subheader
   const suhbeader = useSubheader();
 
   // Tabs
-  let copyModel = {...initModel};
+  let copyModel = { ...initModel };
   const [costCenterObj, setCostCenterObj] = useState(copyModel);
   const [tab, setTab] = useState("basic");
   const [title, setTitle] = useState("");

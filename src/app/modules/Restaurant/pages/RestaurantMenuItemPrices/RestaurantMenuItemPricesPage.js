@@ -17,7 +17,9 @@ export function RestaurantMenuItemPricesPage({ history }) {
       history.push(`/restaurant/restaurantMenuItemPrices/${id}/delete`);
     },
     openDeleteRestaurantMenuItemPricesDialog: () => {
-      history.push(`/restaurant/restaurantMenuItemPrices/deleteRestaurantMenuItemPrices`);
+      history.push(
+        `/restaurant/restaurantMenuItemPrices/deleteRestaurantMenuItemPrices`
+      );
     },
     openFetchRestaurantMenuItemPricesDialog: () => {
       history.push(`/restaurant/restaurantMenuItemPrices/fetch`);
@@ -26,9 +28,11 @@ export function RestaurantMenuItemPricesPage({ history }) {
       history.push("/restaurant/restaurantMenuItemPrices/updateStatus");
     },
   };
-  
+
   return (
-    <RestaurantMenuItemPricesUIProvider restaurantMenuItemPricesUIEvents={restaurantMenuItemPricesUIEvents}>
+    <RestaurantMenuItemPricesUIProvider
+      restaurantMenuItemPricesUIEvents={restaurantMenuItemPricesUIEvents}
+    >
       <RestaurantMenuItemPricesLoadingDialog />
       <Route path="/restaurant/restaurantMenuItemPrices/:id/delete">
         {({ history, match }) => (

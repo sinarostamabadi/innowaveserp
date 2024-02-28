@@ -26,7 +26,7 @@ export function LinkDocumentsPage({ history }) {
       history.push("/accounting/linkDocuments/updateStatus");
     },
   };
-  
+
   return (
     <LinkDocumentsUIProvider linkDocumentsUIEvents={linkDocumentsUIEvents}>
       <LinkDocumentsLoadingDialog />

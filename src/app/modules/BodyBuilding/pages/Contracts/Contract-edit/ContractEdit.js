@@ -20,7 +20,6 @@ import { Tabs, Tab } from "react-bootstrap";
 import { DetailsUIProvider } from "../Contract-details/DetailsUIContext";
 import { Details } from "../Contract-details/Details";
 
-
 export function ContractEdit({
   history,
   match: {
@@ -29,11 +28,11 @@ export function ContractEdit({
 }) {
   const { t } = useTranslation();
   const defaultRestaurant = !!getStorage("defaultRestaurant")
-  ? JSON.parse(getStorage("defaultRestaurant"))
-  : null;
+    ? JSON.parse(getStorage("defaultRestaurant"))
+    : null;
 
   const initModel = {
-		BodyBuildingContractId: undefined,
+    BodyBuildingContractId: undefined,
     PersonId: undefined,
     Weight: undefined,
     Height: undefined,
@@ -41,7 +40,7 @@ export function ContractEdit({
     SensorInfo: undefined,
     FromDate: undefined,
     ToDate: undefined,
-    BodyBuildingContractDetails: []
+    BodyBuildingContractDetails: [],
   };
   let copyModel = CloneObject(initModel);
 
@@ -75,10 +74,18 @@ export function ContractEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " «" + t("BodyBuildingContract.Entity") + "»";
+    let _title = id
+      ? ""
+      : t("Common.Create") + " «" + t("BodyBuildingContract.Entity") + "»";
 
     if (contractForEdit && id) {
-      _title = t("Common.Edit") + " " + t("BodyBuildingContract.Entity") + " «" + contractForEdit.Person.FullNameFa + "»";
+      _title =
+        t("Common.Edit") +
+        " " +
+        t("BodyBuildingContract.Entity") +
+        " «" +
+        contractForEdit.Person.FullNameFa +
+        "»";
       setContractObj(contractForEdit);
       setDetailObj(contractForEdit.BodyBuildingContractDetails);
     }
@@ -207,13 +214,13 @@ export function ContractEdit({
                 eventKey="details"
                 title={t("BodyBuildingContractDetail.Entity")}
                 className="nav-item"
-                >
+              >
                 <DetailsUIProvider
                   currentPersonId={id}
                   actionsLoading={actionsLoading}
                   detail={detailObj}
                   ref={btnRefDetails}
-                  >
+                >
                   <Details />
                 </DetailsUIProvider>
               </Tab>

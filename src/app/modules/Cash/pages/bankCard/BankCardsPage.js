@@ -26,7 +26,7 @@ export function BankCardsPage({ history }) {
       history.push("/cash/bankCards/updateStatus");
     },
   };
-  
+
   return (
     <BankCardsUIProvider bankCardsUIEvents={bankCardsUIEvents}>
       <BankCardsLoadingDialog />

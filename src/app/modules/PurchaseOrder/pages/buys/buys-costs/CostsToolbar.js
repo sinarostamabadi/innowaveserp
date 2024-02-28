@@ -30,7 +30,7 @@ export function CostsToolbar() {
                 type="button"
                 className="btn btn-success"
                 onClick={() => costsUIProps.openNewCostDialog()}
-                >
+              >
                 {t("BuyCost.Entity")} {t("Common.New")}
               </button>
             )}

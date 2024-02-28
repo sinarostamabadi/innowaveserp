@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { MassageReserveModel } from "../../../../../core/_models/Massage/MassageReserveModel";
@@ -12,7 +11,10 @@ export function useMassageReservesUIContext() {
 
 export const MassageReservesUIConsumer = MassageReservesUIContext.Consumer;
 
-export function MassageReservesUIProvider({ massageReservesUIEvents, children }) {
+export function MassageReservesUIProvider({
+  massageReservesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(MassageReserveModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function MassageReservesUIProvider({ massageReservesUIEvents, children })
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function MassageReservesUIProvider({ massageReservesUIEvents, children })
     setIds,
     setQueryParams,
     dataModel: MassageReserveModel,
-    newMassageReserveButtonClick: massageReservesUIEvents.newMassageReserveButtonClick,
-    openEditMassageReservePage: massageReservesUIEvents.openEditMassageReservePage,
-    openDeleteMassageReserveDialog: massageReservesUIEvents.openDeleteMassageReserveDialog,
-    openDeleteMassageReservesDialog: massageReservesUIEvents.openDeleteMassageReservesDialog,
-    openFetchMassageReservesDialog: massageReservesUIEvents.openFetchMassageReservesDialog,
-    openUpdateMassageReservesStatusDialog: massageReservesUIEvents.openUpdateMassageReservesStatusDialog,
+    newMassageReserveButtonClick:
+      massageReservesUIEvents.newMassageReserveButtonClick,
+    openEditMassageReservePage:
+      massageReservesUIEvents.openEditMassageReservePage,
+    openDeleteMassageReserveDialog:
+      massageReservesUIEvents.openDeleteMassageReserveDialog,
+    openDeleteMassageReservesDialog:
+      massageReservesUIEvents.openDeleteMassageReservesDialog,
+    openFetchMassageReservesDialog:
+      massageReservesUIEvents.openFetchMassageReservesDialog,
+    openUpdateMassageReservesStatusDialog:
+      massageReservesUIEvents.openUpdateMassageReservesStatusDialog,
   };
   return (
-    <MassageReservesUIContext.Provider value={value}>{children}</MassageReservesUIContext.Provider>
+    <MassageReservesUIContext.Provider value={value}>
+      {children}
+    </MassageReservesUIContext.Provider>
   );
 }

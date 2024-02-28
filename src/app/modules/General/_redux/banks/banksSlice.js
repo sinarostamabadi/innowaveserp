@@ -32,13 +32,13 @@ export const banksSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBankById  
+    // getBankById
     bankFetched: (state, action) => {
       state.actionsLoading = false;
       state.bankForEdit = action.payload.bankForEdit;
       state.error = null;
     },
-    // findBanks  
+    // findBanks
     banksFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -46,13 +46,13 @@ export const banksSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBank  
+    // createBank
     bankCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBank  
+    // updateBank
     bankUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -63,23 +63,23 @@ export const banksSlice = createSlice({
         return entity;
       });
     },
-    // deleteBank  
+    // deleteBank
     bankDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BankId !== action.payload.BankId  
+        (el) => el.BankId !== action.payload.BankId
       );
     },
-    // deleteBanks  
+    // deleteBanks
     banksDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BankId)  
+        (el) => !action.payload.ids.includes(el.BankId)
       );
     },
-    // banksUpdateState  
+    // banksUpdateState
     banksStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

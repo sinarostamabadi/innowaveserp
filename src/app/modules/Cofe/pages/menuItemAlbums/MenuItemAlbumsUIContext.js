@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { MenuItemAlbumModel } from "../../../../../core/_models/Cofe/MenuItemAlbumModel";
@@ -30,7 +29,7 @@ export function MenuItemAlbumsUIProvider({ menuItemAlbumsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function MenuItemAlbumsUIProvider({ menuItemAlbumsUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: MenuItemAlbumModel,
-    newMenuItemAlbumButtonClick: menuItemAlbumsUIEvents.newMenuItemAlbumButtonClick,
+    newMenuItemAlbumButtonClick:
+      menuItemAlbumsUIEvents.newMenuItemAlbumButtonClick,
     openEditMenuItemAlbumPage: menuItemAlbumsUIEvents.openEditMenuItemAlbumPage,
-    openDeleteMenuItemAlbumDialog: menuItemAlbumsUIEvents.openDeleteMenuItemAlbumDialog,
-    openDeleteMenuItemAlbumsDialog: menuItemAlbumsUIEvents.openDeleteMenuItemAlbumsDialog,
-    openFetchMenuItemAlbumsDialog: menuItemAlbumsUIEvents.openFetchMenuItemAlbumsDialog,
-    openUpdateMenuItemAlbumsStatusDialog: menuItemAlbumsUIEvents.openUpdateMenuItemAlbumsStatusDialog,
+    openDeleteMenuItemAlbumDialog:
+      menuItemAlbumsUIEvents.openDeleteMenuItemAlbumDialog,
+    openDeleteMenuItemAlbumsDialog:
+      menuItemAlbumsUIEvents.openDeleteMenuItemAlbumsDialog,
+    openFetchMenuItemAlbumsDialog:
+      menuItemAlbumsUIEvents.openFetchMenuItemAlbumsDialog,
+    openUpdateMenuItemAlbumsStatusDialog:
+      menuItemAlbumsUIEvents.openUpdateMenuItemAlbumsStatusDialog,
   };
   return (
-    <MenuItemAlbumsUIContext.Provider value={value}>{children}</MenuItemAlbumsUIContext.Provider>
+    <MenuItemAlbumsUIContext.Provider value={value}>
+      {children}
+    </MenuItemAlbumsUIContext.Provider>
   );
 }

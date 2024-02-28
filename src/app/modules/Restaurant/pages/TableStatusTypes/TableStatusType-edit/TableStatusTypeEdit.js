@@ -56,7 +56,9 @@ export function TableStatusTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("TableStatusType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("TableStatusType.Entity");
 
     if (tableStatusTypeForEdit && id) {
       _title = t("Common.Edit") + " " + tableStatusTypeForEdit.TitleFa;

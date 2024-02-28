@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialTimePriceingState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const timePriceingSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getTimePriceingById  
+    // getTimePriceingById
     timePriceingFetched: (state, action) => {
       state.actionsLoading = false;
       state.timePriceingForEdit = action.payload.timePriceingForEdit;
       state.error = null;
     },
-    // findTimePriceing  
+    // findTimePriceing
     timePriceingsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,42 @@ export const timePriceingSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createTimePriceing  
+    // createTimePriceing
     timePriceingCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateTimePriceing  
+    // updateTimePriceing
     timePriceingUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.TimePriceingId === action.payload.timePriceing.TimePriceingId) {
+        if (
+          entity.TimePriceingId === action.payload.timePriceing.TimePriceingId
+        ) {
           return action.payload.timePriceing;
         }
         return entity;
       });
     },
-    // deleteTimePriceing  
+    // deleteTimePriceing
     timePriceingDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.TimePriceingId !== action.payload.TimePriceingId  
+        (el) => el.TimePriceingId !== action.payload.TimePriceingId
       );
     },
-    // deleteTimePriceing  
+    // deleteTimePriceing
     timePriceingsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.TimePriceingId)  
+        (el) => !action.payload.ids.includes(el.TimePriceingId)
       );
     },
-    // timePriceingUpdateState  
+    // timePriceingUpdateState
     timePriceingStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPosUsersState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const posUsersSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPosUserById  
+    // getPosUserById
     posUserFetched: (state, action) => {
       state.actionsLoading = false;
       state.posUserForEdit = action.payload.posUserForEdit;
       state.error = null;
     },
-    // findPosUsers  
+    // findPosUsers
     posUsersFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const posUsersSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPosUser  
+    // createPosUser
     posUserCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePosUser  
+    // updatePosUser
     posUserUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const posUsersSlice = createSlice({
         return entity;
       });
     },
-    // deletePosUser  
+    // deletePosUser
     posUserDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PosUserId !== action.payload.PosUserId  
+        (el) => el.PosUserId !== action.payload.PosUserId
       );
     },
-    // deletePosUsers  
+    // deletePosUsers
     posUsersDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PosUserId)  
+        (el) => !action.payload.ids.includes(el.PosUserId)
       );
     },
-    // posUsersUpdateState  
+    // posUsersUpdateState
     posUsersStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

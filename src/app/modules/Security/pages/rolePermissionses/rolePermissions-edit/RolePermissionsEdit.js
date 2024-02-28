@@ -55,7 +55,9 @@ export function RolePermissionsEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("RolePermissions.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("RolePermissions.Entity");
 
     if (rolePermissionsForEdit && id) {
       _title = t("Common.Edit") + " " + rolePermissionsForEdit.TitleFa;
@@ -73,11 +75,11 @@ export function RolePermissionsEdit({
         .then((arg) => {
           backToRolePermissionsesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateRolePermissions(id, values))
         .then(() => backToRolePermissionsesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

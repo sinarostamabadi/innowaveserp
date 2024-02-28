@@ -6,6 +6,6 @@ export function BanksLoadingDialog() {
     (state) => ({ isLoading: state.banks.listLoading }),
     shallowEqual
   );
-  useEffect(() => { }, [isLoading]);
+  useEffect(() => {}, [isLoading]);
   return <LoadingDialog isLoading={isLoading} text="در حال بارگذاری..." />;
 }

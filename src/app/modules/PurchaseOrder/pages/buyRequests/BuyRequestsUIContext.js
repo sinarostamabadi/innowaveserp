@@ -6,20 +6,22 @@ import { getStorage } from "src/core/_helpers";
 
 const BuyRequestsUIContext = createContext();
 const defaultWarehouse = !!getStorage("defaultWarehouse")
-? JSON.parse(getStorage("defaultWarehouse"))
-: null;
+  ? JSON.parse(getStorage("defaultWarehouse"))
+  : null;
 
-const defaultFilter = [{
-  Property: "WarehouseId",
-  Operation: 5,
-  Values: [!!defaultWarehouse? defaultWarehouse.WarehouseId: null],
-}];
+const defaultFilter = [
+  {
+    Property: "WarehouseId",
+    Operation: 5,
+    Values: [!!defaultWarehouse ? defaultWarehouse.WarehouseId : null],
+  },
+];
 export const BuyRequestStatus = {
-  "1": "درخواست ثبت شده",
-  "2": "کارتابل مدیر",
-  "3": "کارتابل انبار",
-  "4": "در دست تامین",
-  "5": "درخواست به اتمام رسیده",
+  1: "Request registered",
+  2: "Manager folder",
+  3: "Cartable warehouse",
+  4: "Supplying",
+  5: "Request completed",
 };
 
 export function useBuyRequestsUIContext() {
@@ -31,11 +33,11 @@ export const BuyRequestsUIConsumer = BuyRequestsUIContext.Consumer;
 export function BuyRequestsUIProvider({ buyRequestsUIEvents, children }) {
   const [queryParams, setQueryParamsBase] = useState(
     !!defaultWarehouse
-    ? {
-        ...getConfig(BuyRequestModel, "BuyRequestDate", "desc").initialFilter,
-        Filters: [...defaultFilter],
-      }
-    : getConfig(BuyRequestModel, "BuyRequestDate", "desc").initialFilter,
+      ? {
+          ...getConfig(BuyRequestModel, "BuyRequestDate", "desc").initialFilter,
+          Filters: [...defaultFilter],
+        }
+      : getConfig(BuyRequestModel, "BuyRequestDate", "desc").initialFilter
   );
 
   const [ids, setIds] = useState([]);

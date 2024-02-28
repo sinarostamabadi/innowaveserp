@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialOrganizationChartsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const organizationChartsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getOrganizationChartById  
+    // getOrganizationChartById
     organizationChartFetched: (state, action) => {
       state.actionsLoading = false;
       state.organizationChartForEdit = action.payload.organizationChartForEdit;
       state.error = null;
     },
-    // findOrganizationCharts  
+    // findOrganizationCharts
     organizationChartsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const organizationChartsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createOrganizationChart  
+    // createOrganizationChart
     organizationChartCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateOrganizationChart  
+    // updateOrganizationChart
     organizationChartUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.OrganizationChartId === action.payload.organizationChart.OrganizationChartId) {
+        if (
+          entity.OrganizationChartId ===
+          action.payload.organizationChart.OrganizationChartId
+        ) {
           return action.payload.organizationChart;
         }
         return entity;
       });
     },
-    // deleteOrganizationChart  
+    // deleteOrganizationChart
     organizationChartDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.OrganizationChartId !== action.payload.OrganizationChartId  
+        (el) => el.OrganizationChartId !== action.payload.OrganizationChartId
       );
     },
-    // deleteOrganizationCharts  
+    // deleteOrganizationCharts
     organizationChartsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.OrganizationChartId)  
+        (el) => !action.payload.ids.includes(el.OrganizationChartId)
       );
     },
-    // organizationChartsUpdateState  
+    // organizationChartsUpdateState
     organizationChartsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

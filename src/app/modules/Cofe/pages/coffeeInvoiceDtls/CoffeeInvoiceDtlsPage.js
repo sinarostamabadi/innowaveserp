@@ -26,9 +26,11 @@ export function CoffeeInvoiceDtlsPage({ history }) {
       history.push("/cofe/coffeeInvoiceDtls/updateStatus");
     },
   };
-  
+
   return (
-    <CoffeeInvoiceDtlsUIProvider coffeeInvoiceDtlsUIEvents={coffeeInvoiceDtlsUIEvents}>
+    <CoffeeInvoiceDtlsUIProvider
+      coffeeInvoiceDtlsUIEvents={coffeeInvoiceDtlsUIEvents}
+    >
       <CoffeeInvoiceDtlsLoadingDialog />
       <Route path="/cofe/coffeeInvoiceDtls/:id/delete">
         {({ history, match }) => (

@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { MasseursTable } from "./masseurs-table/MasseursTable";
 import { useMasseursUIContext, MasseursUIConsumer } from "./MasseursUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function MasseursCard() {
   const { t } = useTranslation();
@@ -24,21 +23,22 @@ export function MasseursCard() {
       newMasseurButtonClick: masseursUIContext.newMasseurButtonClick,
       openDeleteMasseursDialog: masseursUIContext.openDeleteMasseursDialog,
       openEditMasseurPage: masseursUIContext.openEditMasseurPage,
-      openUpdateMasseursStatusDialog: masseursUIContext.openUpdateMasseursStatusDialog,
+      openUpdateMasseursStatusDialog:
+        masseursUIContext.openUpdateMasseursStatusDialog,
       openFetchMasseursDialog: masseursUIContext.openFetchMasseursDialog,
     };
   }, [masseursUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Masseur.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Masseur.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={masseursUIProps.newMasseurButtonClick}
           >
-            {t("Masseur.Entity")} {' '} {t("Common.New")}
+            {t("Masseur.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

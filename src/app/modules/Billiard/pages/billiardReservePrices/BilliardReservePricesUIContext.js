@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BilliardReservePriceModel } from "../../../../../core/_models/Billiard/BilliardReservePriceModel";
@@ -10,9 +9,13 @@ export function useBilliardReservePricesUIContext() {
   return useContext(BilliardReservePricesUIContext);
 }
 
-export const BilliardReservePricesUIConsumer = BilliardReservePricesUIContext.Consumer;
+export const BilliardReservePricesUIConsumer =
+  BilliardReservePricesUIContext.Consumer;
 
-export function BilliardReservePricesUIProvider({ billiardReservePricesUIEvents, children }) {
+export function BilliardReservePricesUIProvider({
+  billiardReservePricesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(BilliardReservePriceModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function BilliardReservePricesUIProvider({ billiardReservePricesUIEvents,
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function BilliardReservePricesUIProvider({ billiardReservePricesUIEvents,
     setIds,
     setQueryParams,
     dataModel: BilliardReservePriceModel,
-    newBilliardReservePriceButtonClick: billiardReservePricesUIEvents.newBilliardReservePriceButtonClick,
-    openEditBilliardReservePricePage: billiardReservePricesUIEvents.openEditBilliardReservePricePage,
-    openDeleteBilliardReservePriceDialog: billiardReservePricesUIEvents.openDeleteBilliardReservePriceDialog,
-    openDeleteBilliardReservePricesDialog: billiardReservePricesUIEvents.openDeleteBilliardReservePricesDialog,
-    openFetchBilliardReservePricesDialog: billiardReservePricesUIEvents.openFetchBilliardReservePricesDialog,
-    openUpdateBilliardReservePricesStatusDialog: billiardReservePricesUIEvents.openUpdateBilliardReservePricesStatusDialog,
+    newBilliardReservePriceButtonClick:
+      billiardReservePricesUIEvents.newBilliardReservePriceButtonClick,
+    openEditBilliardReservePricePage:
+      billiardReservePricesUIEvents.openEditBilliardReservePricePage,
+    openDeleteBilliardReservePriceDialog:
+      billiardReservePricesUIEvents.openDeleteBilliardReservePriceDialog,
+    openDeleteBilliardReservePricesDialog:
+      billiardReservePricesUIEvents.openDeleteBilliardReservePricesDialog,
+    openFetchBilliardReservePricesDialog:
+      billiardReservePricesUIEvents.openFetchBilliardReservePricesDialog,
+    openUpdateBilliardReservePricesStatusDialog:
+      billiardReservePricesUIEvents.openUpdateBilliardReservePricesStatusDialog,
   };
   return (
-    <BilliardReservePricesUIContext.Provider value={value}>{children}</BilliardReservePricesUIContext.Provider>
+    <BilliardReservePricesUIContext.Provider value={value}>
+      {children}
+    </BilliardReservePricesUIContext.Provider>
   );
 }

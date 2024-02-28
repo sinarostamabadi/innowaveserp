@@ -55,7 +55,9 @@ export function EmploymentStatusEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("EmploymentStatus.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("EmploymentStatus.Entity");
 
     if (employmentStatusForEdit && id) {
       _title = t("Common.Edit") + " " + employmentStatusForEdit.TitleFa;
@@ -73,11 +75,11 @@ export function EmploymentStatusEdit({
         .then((arg) => {
           backToEmploymentStatusesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateEmploymentStatus(id, values))
         .then(() => backToEmploymentStatusesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

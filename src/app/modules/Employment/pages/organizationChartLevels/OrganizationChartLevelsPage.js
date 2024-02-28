@@ -17,7 +17,9 @@ export function OrganizationChartLevelsPage({ history }) {
       history.push(`/employment/organizationChartLevels/${id}/delete`);
     },
     openDeleteOrganizationChartLevelsDialog: () => {
-      history.push(`/employment/organizationChartLevels/deleteOrganizationChartLevels`);
+      history.push(
+        `/employment/organizationChartLevels/deleteOrganizationChartLevels`
+      );
     },
     openFetchOrganizationChartLevelsDialog: () => {
       history.push(`/employment/organizationChartLevels/fetch`);
@@ -26,9 +28,11 @@ export function OrganizationChartLevelsPage({ history }) {
       history.push("/employment/organizationChartLevels/updateStatus");
     },
   };
-  
+
   return (
-    <OrganizationChartLevelsUIProvider organizationChartLevelsUIEvents={organizationChartLevelsUIEvents}>
+    <OrganizationChartLevelsUIProvider
+      organizationChartLevelsUIEvents={organizationChartLevelsUIEvents}
+    >
       <OrganizationChartLevelsLoadingDialog />
       <Route path="/employment/organizationChartLevels/:id/delete">
         {({ history, match }) => (

@@ -7,10 +7,8 @@ export function CreditsGrouping() {
   const specsUIProps = useMemo(() => {
     return {
       ids: specsUIContext.ids,
-      openDeleteCreditsDialog:
-        specsUIContext.openDeleteCreditsDialog,
-      openFetchCreditsDialog:
-        specsUIContext.openFetchCreditsDialog,
+      openDeleteCreditsDialog: specsUIContext.openDeleteCreditsDialog,
+      openFetchCreditsDialog: specsUIContext.openFetchCreditsDialog,
     };
   }, [specsUIContext]);
 

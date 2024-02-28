@@ -34,7 +34,7 @@ export function BuysPage({ history }) {
       history.push(`/PurchaseOrder/buys/${id}/attachments`);
     },
   };
-  
+
   return (
     <BuysUIProvider buysUIEvents={buysUIEvents}>
       <BuysLoadingDialog />
@@ -55,10 +55,13 @@ export function BuysPage({ history }) {
             show={match != null}
             id={match && match.params.id}
             onHide={(isCanceled) => {
-              if(isCanceled == true)
-                !!match && !!match.params.id && history.push(`/PurchaseOrder/buyReturns/${match.params.id}/new`);
-              else
-                history.push("/PurchaseOrder/buys");
+              if (isCanceled == true)
+                !!match &&
+                  !!match.params.id &&
+                  history.push(
+                    `/PurchaseOrder/buyReturns/${match.params.id}/new`
+                  );
+              else history.push("/PurchaseOrder/buys");
             }}
           />
         )}
@@ -69,7 +72,7 @@ export function BuysPage({ history }) {
             show={match != null}
             id={match && match.params.id}
             onHide={() => {
-                history.push("/PurchaseOrder/buys");
+              history.push("/PurchaseOrder/buys");
             }}
           />
         )}

@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -48,7 +47,9 @@ export function EmploymentTypeDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteEmploymentType(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchEmploymentTypes(employmentTypesUIProps.queryParams));
+        dispatch(
+          actions.fetchEmploymentTypes(employmentTypesUIProps.queryParams)
+        );
         // clear selections list
         employmentTypesUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +68,12 @@ export function EmploymentTypeDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("EmploymentType.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("EmploymentType.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

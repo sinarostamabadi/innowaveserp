@@ -31,13 +31,13 @@ export const coreTransactionsesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCoreTransactionsById  
+    // getCoreTransactionsById
     coreTransactionsFetched: (state, action) => {
       state.actionsLoading = false;
       state.coreTransactionsForEdit = action.payload.coreTransactionsForEdit;
       state.error = null;
     },
-    // findCoreTransactionses  
+    // findCoreTransactionses
     coreTransactionsesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -45,40 +45,43 @@ export const coreTransactionsesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCoreTransactions  
+    // createCoreTransactions
     coreTransactionsCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCoreTransactions  
+    // updateCoreTransactions
     coreTransactionsUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.CoreTransactionsId === action.payload.coreTransactions.CoreTransactionsId) {
+        if (
+          entity.CoreTransactionsId ===
+          action.payload.coreTransactions.CoreTransactionsId
+        ) {
           return action.payload.coreTransactions;
         }
         return entity;
       });
     },
-    // deleteCoreTransactions  
+    // deleteCoreTransactions
     coreTransactionsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CoreTransactionsId !== action.payload.CoreTransactionsId  
+        (el) => el.CoreTransactionsId !== action.payload.CoreTransactionsId
       );
     },
-    // deleteCoreTransactionses  
+    // deleteCoreTransactionses
     coreTransactionsesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CoreTransactionsId)  
+        (el) => !action.payload.ids.includes(el.CoreTransactionsId)
       );
     },
-    // coreTransactionsesUpdateState  
+    // coreTransactionsesUpdateState
     coreTransactionsesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

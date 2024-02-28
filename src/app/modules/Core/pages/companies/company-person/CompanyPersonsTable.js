@@ -33,8 +33,10 @@ export function CompanyPersonsTable() {
       actionsLoading: companyPersonsUIContext.actionsLoading,
       queryParams: companyPersonsUIContext.queryParams,
       setQueryParams: companyPersonsUIContext.setQueryParams,
-      openEditCompanyPersonDialog: companyPersonsUIContext.openEditCompanyPersonDialog,
-      openDeleteCompanyPersonDialog: companyPersonsUIContext.openDeleteCompanyPersonDialog,
+      openEditCompanyPersonDialog:
+        companyPersonsUIContext.openEditCompanyPersonDialog,
+      openDeleteCompanyPersonDialog:
+        companyPersonsUIContext.openDeleteCompanyPersonDialog,
       ids: companyPersonsUIContext.ids,
       setIds: companyPersonsUIContext.setIds,
       personId: companyPersonsUIContext.personId,
@@ -57,8 +59,10 @@ export function CompanyPersonsTable() {
       text: t("Common.Action"),
       formatter: ActionsColumnFormatter,
       formatExtraData: {
-        openEditCompanyPersonDialog: companyPersonsUIProps.openEditCompanyPersonDialog,
-        openDeleteCompanyPersonDialog: companyPersonsUIProps.openDeleteCompanyPersonDialog,
+        openEditCompanyPersonDialog:
+          companyPersonsUIProps.openEditCompanyPersonDialog,
+        openDeleteCompanyPersonDialog:
+          companyPersonsUIProps.openDeleteCompanyPersonDialog,
         t: t,
       },
       classes: "text-right pr-0",
@@ -92,12 +96,20 @@ export function CompanyPersonsTable() {
                 bootstrap4
                 remote
                 keyField="CompanyPersonId"
-                data={companyPersonsUIProps.companyPersons === null ? [] : companyPersonsUIProps.companyPersons}
+                data={
+                  companyPersonsUIProps.companyPersons === null
+                    ? []
+                    : companyPersonsUIProps.companyPersons
+                }
                 columns={columns}
                 {...paginationTableProps}
               >
-                <PleaseWaitMessage entities={companyPersonsUIProps.companyPersons} />
-                <NoRecordsFoundMessage entities={companyPersonsUIProps.companyPersons} />
+                <PleaseWaitMessage
+                  entities={companyPersonsUIProps.companyPersons}
+                />
+                <NoRecordsFoundMessage
+                  entities={companyPersonsUIProps.companyPersons}
+                />
               </BootstrapTable>
             </Pagination>
           );

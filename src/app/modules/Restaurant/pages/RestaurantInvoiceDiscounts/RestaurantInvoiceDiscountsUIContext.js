@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { RestaurantInvoiceDiscountModel } from "../../../../../core/_models/Restaurant/RestaurantInvoiceDiscountModel";
@@ -10,9 +9,13 @@ export function useRestaurantInvoiceDiscountsUIContext() {
   return useContext(RestaurantInvoiceDiscountsUIContext);
 }
 
-export const RestaurantInvoiceDiscountsUIConsumer = RestaurantInvoiceDiscountsUIContext.Consumer;
+export const RestaurantInvoiceDiscountsUIConsumer =
+  RestaurantInvoiceDiscountsUIContext.Consumer;
 
-export function RestaurantInvoiceDiscountsUIProvider({ restaurantInvoiceDiscountsUIEvents, children }) {
+export function RestaurantInvoiceDiscountsUIProvider({
+  restaurantInvoiceDiscountsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(RestaurantInvoiceDiscountModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function RestaurantInvoiceDiscountsUIProvider({ restaurantInvoiceDiscount
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function RestaurantInvoiceDiscountsUIProvider({ restaurantInvoiceDiscount
     setIds,
     setQueryParams,
     dataModel: RestaurantInvoiceDiscountModel,
-    newRestaurantInvoiceDiscountButtonClick: restaurantInvoiceDiscountsUIEvents.newRestaurantInvoiceDiscountButtonClick,
-    openEditRestaurantInvoiceDiscountPage: restaurantInvoiceDiscountsUIEvents.openEditRestaurantInvoiceDiscountPage,
-    openDeleteRestaurantInvoiceDiscountDialog: restaurantInvoiceDiscountsUIEvents.openDeleteRestaurantInvoiceDiscountDialog,
-    openDeleteRestaurantInvoiceDiscountsDialog: restaurantInvoiceDiscountsUIEvents.openDeleteRestaurantInvoiceDiscountsDialog,
-    openFetchRestaurantInvoiceDiscountsDialog: restaurantInvoiceDiscountsUIEvents.openFetchRestaurantInvoiceDiscountsDialog,
-    openUpdateRestaurantInvoiceDiscountsStatusDialog: restaurantInvoiceDiscountsUIEvents.openUpdateRestaurantInvoiceDiscountsStatusDialog,
+    newRestaurantInvoiceDiscountButtonClick:
+      restaurantInvoiceDiscountsUIEvents.newRestaurantInvoiceDiscountButtonClick,
+    openEditRestaurantInvoiceDiscountPage:
+      restaurantInvoiceDiscountsUIEvents.openEditRestaurantInvoiceDiscountPage,
+    openDeleteRestaurantInvoiceDiscountDialog:
+      restaurantInvoiceDiscountsUIEvents.openDeleteRestaurantInvoiceDiscountDialog,
+    openDeleteRestaurantInvoiceDiscountsDialog:
+      restaurantInvoiceDiscountsUIEvents.openDeleteRestaurantInvoiceDiscountsDialog,
+    openFetchRestaurantInvoiceDiscountsDialog:
+      restaurantInvoiceDiscountsUIEvents.openFetchRestaurantInvoiceDiscountsDialog,
+    openUpdateRestaurantInvoiceDiscountsStatusDialog:
+      restaurantInvoiceDiscountsUIEvents.openUpdateRestaurantInvoiceDiscountsStatusDialog,
   };
   return (
-    <RestaurantInvoiceDiscountsUIContext.Provider value={value}>{children}</RestaurantInvoiceDiscountsUIContext.Provider>
+    <RestaurantInvoiceDiscountsUIContext.Provider value={value}>
+      {children}
+    </RestaurantInvoiceDiscountsUIContext.Provider>
   );
 }

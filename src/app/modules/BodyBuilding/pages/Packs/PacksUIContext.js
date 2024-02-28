@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BodyBuildingPackModel } from "../../../../../core/_models/BodyBuilding/BodyBuildingPackModel";
@@ -13,7 +12,9 @@ export function usePacksUIContext() {
 export const PacksUIConsumer = PacksUIContext.Consumer;
 
 export function PacksUIProvider({ packsUIEvents, children }) {
-  const [queryParams, setQueryParamsBase] = useState(getConfig(BodyBuildingPackModel).initialFilter);
+  const [queryParams, setQueryParamsBase] = useState(
+    getConfig(BodyBuildingPackModel).initialFilter
+  );
 
   const [ids, setIds] = useState([]);
 
@@ -28,7 +29,7 @@ export function PacksUIProvider({ packsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,

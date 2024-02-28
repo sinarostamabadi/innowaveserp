@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { MasseurMassageTypeModel } from "../../../../../core/_models/Massage/MasseurMassageTypeModel";
@@ -10,9 +9,13 @@ export function useMasseurMassageTypesUIContext() {
   return useContext(MasseurMassageTypesUIContext);
 }
 
-export const MasseurMassageTypesUIConsumer = MasseurMassageTypesUIContext.Consumer;
+export const MasseurMassageTypesUIConsumer =
+  MasseurMassageTypesUIContext.Consumer;
 
-export function MasseurMassageTypesUIProvider({ masseurMassageTypesUIEvents, children }) {
+export function MasseurMassageTypesUIProvider({
+  masseurMassageTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(MasseurMassageTypeModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function MasseurMassageTypesUIProvider({ masseurMassageTypesUIEvents, chi
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function MasseurMassageTypesUIProvider({ masseurMassageTypesUIEvents, chi
     setIds,
     setQueryParams,
     dataModel: MasseurMassageTypeModel,
-    newMasseurMassageTypeButtonClick: masseurMassageTypesUIEvents.newMasseurMassageTypeButtonClick,
-    openEditMasseurMassageTypePage: masseurMassageTypesUIEvents.openEditMasseurMassageTypePage,
-    openDeleteMasseurMassageTypeDialog: masseurMassageTypesUIEvents.openDeleteMasseurMassageTypeDialog,
-    openDeleteMasseurMassageTypesDialog: masseurMassageTypesUIEvents.openDeleteMasseurMassageTypesDialog,
-    openFetchMasseurMassageTypesDialog: masseurMassageTypesUIEvents.openFetchMasseurMassageTypesDialog,
-    openUpdateMasseurMassageTypesStatusDialog: masseurMassageTypesUIEvents.openUpdateMasseurMassageTypesStatusDialog,
+    newMasseurMassageTypeButtonClick:
+      masseurMassageTypesUIEvents.newMasseurMassageTypeButtonClick,
+    openEditMasseurMassageTypePage:
+      masseurMassageTypesUIEvents.openEditMasseurMassageTypePage,
+    openDeleteMasseurMassageTypeDialog:
+      masseurMassageTypesUIEvents.openDeleteMasseurMassageTypeDialog,
+    openDeleteMasseurMassageTypesDialog:
+      masseurMassageTypesUIEvents.openDeleteMasseurMassageTypesDialog,
+    openFetchMasseurMassageTypesDialog:
+      masseurMassageTypesUIEvents.openFetchMasseurMassageTypesDialog,
+    openUpdateMasseurMassageTypesStatusDialog:
+      masseurMassageTypesUIEvents.openUpdateMasseurMassageTypesStatusDialog,
   };
   return (
-    <MasseurMassageTypesUIContext.Provider value={value}>{children}</MasseurMassageTypesUIContext.Provider>
+    <MasseurMassageTypesUIContext.Provider value={value}>
+      {children}
+    </MasseurMassageTypesUIContext.Provider>
   );
 }

@@ -26,9 +26,11 @@ export function MassageTimePriceingPage({ history }) {
       history.push("/massage/massageTimePriceing/updateStatus");
     },
   };
-  
+
   return (
-    <MassageTimePriceingUIProvider massageTimePriceingUIEvents={massageTimePriceingUIEvents}>
+    <MassageTimePriceingUIProvider
+      massageTimePriceingUIEvents={massageTimePriceingUIEvents}
+    >
       <MassageTimePriceingLoadingDialog />
       <Route path="/massage/massageTimePriceing/:id/delete">
         {({ history, match }) => (

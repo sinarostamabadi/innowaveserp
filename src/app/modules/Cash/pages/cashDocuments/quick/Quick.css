@@ -1,23 +1,26 @@
 .cash-box {
-    border: 1px solid #DADCE5;
-    box-shadow: 0 3px 6px #00000017;
-    color: #334FAF;
-    width: 120px;
-    height: 120px;
+  border: 1px solid #dadce5;
+  box-shadow: 0 3px 6px #00000017;
+  color: #334faf;
+  width: 120px;
+  height: 120px;
 }
 
 .cash-box:hover {
-    border: 1px solid #bcbdc4;
-    box-shadow: 0 3px 6px #0000002f;
+  border: 1px solid #bcbdc4;
+  box-shadow: 0 3px 6px #0000002f;
 }
 
-.svg-icon-primary path{transition:fill .3s ease;fill:#334FAF!important}
+.svg-icon-primary path {
+  transition: fill 0.3s ease;
+  fill: #334faf !important;
+}
 
 .row-status {
 }
 .row-status-1 {
-    background-color: rgb(204, 255, 224)
+  background-color: rgb(204, 255, 224);
 }
 .row-status-2 {
-    background-color: rgb(254, 241, 255);
+  background-color: rgb(254, 241, 255);
 }

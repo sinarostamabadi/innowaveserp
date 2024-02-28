@@ -1,4 +1,3 @@
-
 import React, { useEffect, useMemo } from "react";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory, {
@@ -33,8 +32,10 @@ export function AddressCategoriesTable() {
       setIds: addressCategoriesUIContext.setIds,
       queryParams: addressCategoriesUIContext.queryParams,
       setQueryParams: addressCategoriesUIContext.setQueryParams,
-      openEditAddressCategoryPage: addressCategoriesUIContext.openEditAddressCategoryPage,
-      openDeleteAddressCategoryDialog: addressCategoriesUIContext.openDeleteAddressCategoryDialog,
+      openEditAddressCategoryPage:
+        addressCategoriesUIContext.openEditAddressCategoryPage,
+      openDeleteAddressCategoryDialog:
+        addressCategoriesUIContext.openDeleteAddressCategoryDialog,
     };
   }, [addressCategoriesUIContext]);
 
@@ -51,7 +52,9 @@ export function AddressCategoriesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     addressCategoriesUIProps.setIds([]);
-    dispatch(actions.fetchAddressCategories(addressCategoriesUIProps.queryParams));
+    dispatch(
+      actions.fetchAddressCategories(addressCategoriesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addressCategoriesUIProps.queryParams, dispatch]);
 
@@ -67,8 +70,10 @@ export function AddressCategoriesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditAddressCategoryPage: addressCategoriesUIProps.openEditAddressCategoryPage,
-        openDeleteAddressCategoryDialog: addressCategoriesUIProps.openDeleteAddressCategoryDialog,
+        openEditAddressCategoryPage:
+          addressCategoriesUIProps.openEditAddressCategoryPage,
+        openDeleteAddressCategoryDialog:
+          addressCategoriesUIProps.openDeleteAddressCategoryDialog,
         t: t,
       },
       classes: "text-right pr-0",
@@ -86,7 +91,7 @@ export function AddressCategoriesTable() {
     sizePerPage: addressCategoriesUIProps.queryParams.PageSize,
     page: addressCategoriesUIProps.queryParams.PageNumber,
   };
-  
+
   return (
     <>
       <PaginationProvider pagination={paginationFactory(paginationOptions)}>

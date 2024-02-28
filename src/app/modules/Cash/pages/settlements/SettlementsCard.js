@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { SettlementsTable } from "./settlements-table/SettlementsTable";
-import { useSettlementsUIContext, SettlementsUIConsumer } from "./SettlementsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useSettlementsUIContext,
+  SettlementsUIConsumer,
+} from "./SettlementsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function SettlementsCard() {
   const { t } = useTranslation();
@@ -22,23 +24,26 @@ export function SettlementsCard() {
       queryParams: settlementsUIContext.queryParams,
       setQueryParams: settlementsUIContext.setQueryParams,
       newSettlementButtonClick: settlementsUIContext.newSettlementButtonClick,
-      openDeleteSettlementsDialog: settlementsUIContext.openDeleteSettlementsDialog,
+      openDeleteSettlementsDialog:
+        settlementsUIContext.openDeleteSettlementsDialog,
       openEditSettlementPage: settlementsUIContext.openEditSettlementPage,
-      openUpdateSettlementsStatusDialog: settlementsUIContext.openUpdateSettlementsStatusDialog,
-      openFetchSettlementsDialog: settlementsUIContext.openFetchSettlementsDialog,
+      openUpdateSettlementsStatusDialog:
+        settlementsUIContext.openUpdateSettlementsStatusDialog,
+      openFetchSettlementsDialog:
+        settlementsUIContext.openFetchSettlementsDialog,
     };
   }, [settlementsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Settlement.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Settlement.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={settlementsUIProps.newSettlementButtonClick}
           >
-            {t("Settlement.Entity")} {' '} {t("Common.New")}
+            {t("Settlement.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

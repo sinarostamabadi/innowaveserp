@@ -34,7 +34,7 @@ export function ClosetsPage({ history }) {
       history.push("/BodyBuilding/closets/updateStatus");
     },
   };
-  
+
   return (
     <ClosetsUIProvider closetsUIEvents={closetsUIEvents}>
       <ClosetsLoadingDialog />

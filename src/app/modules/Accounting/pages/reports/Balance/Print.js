@@ -20,14 +20,14 @@ export const Print = React.forwardRef(({ data, filters, product }, ref) => {
   return (
     <>
       <div ref={ref} style={{ margin: "1rem" }}>
-          <h3 className="text-center">گزارش كاردكس</h3>
+        <h3 className="text-center">گزارش كاردكس</h3>
 
-          <h4>{`${moment().format('jYYYY/jMM/jDD')} :تاریخ گزارش`}</h4>
+        <h4>{`${moment().format("jYYYY/jMM/jDD")} :تاریخ گزارش`}</h4>
 
-        <div style={{display: "flex", justifyContent: "right"}}>
+        <div style={{ display: "flex", justifyContent: "right" }}>
           <h4>{`نام کالا: ${product}`}</h4>
-          <h4 style={{marginLeft: "5rem"}}>
-            {!!filterPrint && (`کد کالا: ${filterPrint.ProductId}`)}
+          <h4 style={{ marginLeft: "5rem" }}>
+            {!!filterPrint && `کد کالا: ${filterPrint.ProductId}`}
           </h4>
         </div>
 
@@ -72,7 +72,6 @@ export const Print = React.forwardRef(({ data, filters, product }, ref) => {
             {!!dataPrint &&
               dataPrint.Items.length > 0 &&
               dataPrint.Items.map((x, i) => (
-                
                 <>
                   <tr key={x.Date}>
                     <td className="border-dark ltr text-center">
@@ -89,12 +88,10 @@ export const Print = React.forwardRef(({ data, filters, product }, ref) => {
                     <td className="border-dark ltr text-center">
                       {x.RemainingAmount}
                     </td>
-                    <td className="border-dark ltr text-center"> 
+                    <td className="border-dark ltr text-center">
                       {x.ProductUnit}
                     </td>
-                    <td className="border-dark ltr text-center">
-                      {x.Des}
-                    </td>
+                    <td className="border-dark ltr text-center">{x.Des}</td>
                   </tr>
                 </>
               ))}

@@ -15,7 +15,7 @@ export function SerialEditDialogHeader({ id }) {
   useEffect(() => {
     let _title = id ? "" : t("Common.Create") + " " + t("BuyDetail.Entity");
     if (id) {
-      _title = t("Common.Edit") + " " + t("BuyDetail.Entity") ;
+      _title = t("Common.Edit") + " " + t("BuyDetail.Entity");
     }
 
     setTitle(_title);

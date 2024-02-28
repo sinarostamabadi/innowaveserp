@@ -29,24 +29,38 @@ export const GroupsUIProvider = forwardRef(
   ({ currentBowlingCompetitionId, children, group, btnRef }, ref) => {
     const { t } = useTranslation();
     const [teamErrors, setTeamErrors] = useState("");
-console.log("group > ", group);
+    console.log("group > ", group);
     useImperativeHandle(ref, () => ({
       Collect(fn) {
         !!teamErrors == false &&
           fn(
             groups.map((d) => {
               let xx = {
-                BowlingCompetitionGroupId: d.BowlingCompetitionGroupId.toString().indexOf("temp") > -1? null: +d.BowlingCompetitionGroupId,
-                BowlingCompetitionId: d.BowlingCompetitionId == ""? null: +d.BowlingCompetitionId,
+                BowlingCompetitionGroupId:
+                  d.BowlingCompetitionGroupId.toString().indexOf("temp") > -1
+                    ? null
+                    : +d.BowlingCompetitionGroupId,
+                BowlingCompetitionId:
+                  d.BowlingCompetitionId == "" ? null : +d.BowlingCompetitionId,
                 Title: d.Title,
                 IsDeleted: d.IsDeleted,
-                BowlingCompetitionGroupTeams: d.BowlingCompetitionGroupTeams.map((s) => {
-                  return {
-                    BowlingCompetitionGroupTeamId: s.BowlingCompetitionGroupTeamId.toString().indexOf("temp") > -1? null: +s.BowlingCompetitionGroupTeamId,
-                    BowlingCompetitionGroupId: s.BowlingCompetitionGroupId.toString().indexOf("temp") > -1? null: +s.BowlingCompetitionGroupId,
-                    BowlingTeamId: +s.BowlingTeamId,
-                  };
-                }),
+                BowlingCompetitionGroupTeams:
+                  d.BowlingCompetitionGroupTeams.map((s) => {
+                    return {
+                      BowlingCompetitionGroupTeamId:
+                        s.BowlingCompetitionGroupTeamId.toString().indexOf(
+                          "temp"
+                        ) > -1
+                          ? null
+                          : +s.BowlingCompetitionGroupTeamId,
+                      BowlingCompetitionGroupId:
+                        s.BowlingCompetitionGroupId.toString().indexOf("temp") >
+                        -1
+                          ? null
+                          : +s.BowlingCompetitionGroupId,
+                      BowlingTeamId: +s.BowlingTeamId,
+                    };
+                  }),
               };
 
               return xx;
@@ -57,7 +71,9 @@ console.log("group > ", group);
 
     const [selectedId, setSelectedId] = useState(null);
     const [selectedItem, setSelectedItem] = useState(null);
-    const [bowlingCompetitionId, setBowlingCompetitionId] = useState(currentBowlingCompetitionId);
+    const [bowlingCompetitionId, setBowlingCompetitionId] = useState(
+      currentBowlingCompetitionId
+    );
 
     const initGroup = {
       BowlingCompetitionGroupId: "",
@@ -100,7 +116,8 @@ console.log("group > ", group);
       setGroups(
         !!realPersonForEdit &&
           !!realPersonForEdit.BowlingCompetitionGroups &&
-          realPersonForEdit.BowlingCompetitionGroups.length > 0 && realPersonForEdit.BowlingCompetitionId == currentBowlingCompetitionId
+          realPersonForEdit.BowlingCompetitionGroups.length > 0 &&
+          realPersonForEdit.BowlingCompetitionId == currentBowlingCompetitionId
           ? realPersonForEdit.BowlingCompetitionGroups
           : []
       );
@@ -165,9 +182,7 @@ console.log("group > ", group);
       setShowDeleteGroupDialog(false);
     };
 
-    const [showDeleteGroupsDialog, setShowDeleteGroupsDialog] = useState(
-      false
-    );
+    const [showDeleteGroupsDialog, setShowDeleteGroupsDialog] = useState(false);
     const openDeleteGroupsDialog = () => {
       setShowDeleteGroupsDialog(true);
     };
@@ -186,9 +201,9 @@ console.log("group > ", group);
     const findGroup = (groupId) => {
       if (!!groupId == false) return;
 
-      const groupObj = CloneObject(groups.filter(
-        (group) => group.BowlingCompetitionGroupId == groupId
-      )[0]);
+      const groupObj = CloneObject(
+        groups.filter((group) => group.BowlingCompetitionGroupId == groupId)[0]
+      );
 
       return {
         BowlingCompetitionGroupId: groupObj.BowlingCompetitionGroupId,
@@ -196,12 +211,14 @@ console.log("group > ", group);
         Title: groupObj.Title,
         IsDeleted: false,
         TeamCount: groupObj.BowlingCompetitionGroupTeams.length,
-        BowlingCompetitionGroupTeams: groupObj.BowlingCompetitionGroupTeams || [],
+        BowlingCompetitionGroupTeams:
+          groupObj.BowlingCompetitionGroupTeams || [],
       };
     };
 
     const addGroup = (group) => {
-      group.BowlingCompetitionGroupId = "temp_" + Math.floor(Math.random() * 100);
+      group.BowlingCompetitionGroupId =
+        "temp_" + Math.floor(Math.random() * 100);
 
       setGroups((groups) => [...groups, group]);
     };
@@ -219,7 +236,9 @@ console.log("group > ", group);
     const updateGroup = (group) => {
       setGroups((groups) =>
         groups.map((item) =>
-          item.BowlingCompetitionGroupId == group.BowlingCompetitionGroupId ? group : item
+          item.BowlingCompetitionGroupId == group.BowlingCompetitionGroupId
+            ? group
+            : item
         )
       );
 
@@ -229,13 +248,21 @@ console.log("group > ", group);
     };
 
     const addTeam = (team) => {
-      team.BowlingCompetitionGroupTeamId = "temps_" + Math.floor(Math.random() * 1000);
+      team.BowlingCompetitionGroupTeamId =
+        "temps_" + Math.floor(Math.random() * 1000);
       let groupObj = CloneObject(findGroup(team.BowlingCompetitionGroupId));
       console.log("team > ", team);
-      console.log("groupObj.BowlingCompetitionGroupTeams.length > ", groupObj.BowlingCompetitionGroupTeams.length);
-      groupObj = {...groupObj, 
-        BowlingCompetitionGroupTeams: [...groupObj.BowlingCompetitionGroupTeams, team],
-        TeamCount: groupObj.BowlingCompetitionGroupTeams + 1
+      console.log(
+        "groupObj.BowlingCompetitionGroupTeams.length > ",
+        groupObj.BowlingCompetitionGroupTeams.length
+      );
+      groupObj = {
+        ...groupObj,
+        BowlingCompetitionGroupTeams: [
+          ...groupObj.BowlingCompetitionGroupTeams,
+          team,
+        ],
+        TeamCount: groupObj.BowlingCompetitionGroupTeams + 1,
       };
 
       updateGroup(groupObj);
@@ -247,9 +274,12 @@ console.log("group > ", group);
 
     const removeTeam = (team) => {
       let groupObj = findGroup(team.BowlingCompetitionGroupId);
-      groupObj.BowlingCompetitionGroupTeams = groupObj.BowlingCompetitionGroupTeams.filter(
-        (x) => x.BowlingCompetitionGroupTeamId != team.BowlingCompetitionGroupTeamId
-      );
+      groupObj.BowlingCompetitionGroupTeams =
+        groupObj.BowlingCompetitionGroupTeams.filter(
+          (x) =>
+            x.BowlingCompetitionGroupTeamId !=
+            team.BowlingCompetitionGroupTeamId
+        );
       groupObj.TeamCount = groupObj.BowlingCompetitionGroupTeams.length;
 
       updateGroup(groupObj);
@@ -262,7 +292,8 @@ console.log("group > ", group);
     const checkTeam = (team) => {
       group = findGroup(selectedItem.BowlingCompetitionGroupId);
       return (
-        group.BowlingCompetitionGroupTeams.filter((x) => x.TeamNumber == team).length > 0
+        group.BowlingCompetitionGroupTeams.filter((x) => x.TeamNumber == team)
+          .length > 0
       );
     };
 

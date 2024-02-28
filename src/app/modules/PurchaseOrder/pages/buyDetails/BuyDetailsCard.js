@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { BuyDetailsTable } from "./buyDetails-table/BuyDetailsTable";
-import { useBuyDetailsUIContext, BuyDetailsUIConsumer } from "./BuyDetailsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useBuyDetailsUIContext,
+  BuyDetailsUIConsumer,
+} from "./BuyDetailsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function BuyDetailsCard() {
   const { t } = useTranslation();
@@ -22,23 +24,25 @@ export function BuyDetailsCard() {
       queryParams: buyDetailsUIContext.queryParams,
       setQueryParams: buyDetailsUIContext.setQueryParams,
       newBuyDetailButtonClick: buyDetailsUIContext.newBuyDetailButtonClick,
-      openDeleteBuyDetailsDialog: buyDetailsUIContext.openDeleteBuyDetailsDialog,
+      openDeleteBuyDetailsDialog:
+        buyDetailsUIContext.openDeleteBuyDetailsDialog,
       openEditBuyDetailPage: buyDetailsUIContext.openEditBuyDetailPage,
-      openUpdateBuyDetailsStatusDialog: buyDetailsUIContext.openUpdateBuyDetailsStatusDialog,
+      openUpdateBuyDetailsStatusDialog:
+        buyDetailsUIContext.openUpdateBuyDetailsStatusDialog,
       openFetchBuyDetailsDialog: buyDetailsUIContext.openFetchBuyDetailsDialog,
     };
   }, [buyDetailsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("BuyDetail.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("BuyDetail.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={buyDetailsUIProps.newBuyDetailButtonClick}
           >
-            {t("BuyDetail.Entity")} {' '} {t("Common.New")}
+            {t("BuyDetail.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

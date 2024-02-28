@@ -57,7 +57,9 @@ export function FutsalReserveEdit({
     shallowEqual
   );
 
-  const [futsalReserveDatesObj, setFutsalReserveDatesObj] = useState(initModel.FutsalReserveDates);
+  const [futsalReserveDatesObj, setFutsalReserveDatesObj] = useState(
+    initModel.FutsalReserveDates
+  );
   useEffect(() => {
     dispatch(actions.fetchFutsalReserve(id));
   }, [id, dispatch]);

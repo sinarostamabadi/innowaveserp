@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { RequestModel } from "../../../../../core/_models/Cash/RequestModel";
@@ -30,7 +29,7 @@ export function RequestsUIProvider({ requestsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function RequestsUIProvider({ requestsUIEvents, children }) {
     openDeleteRequestDialog: requestsUIEvents.openDeleteRequestDialog,
     openDeleteRequestsDialog: requestsUIEvents.openDeleteRequestsDialog,
     openFetchRequestsDialog: requestsUIEvents.openFetchRequestsDialog,
-    openUpdateRequestsStatusDialog: requestsUIEvents.openUpdateRequestsStatusDialog,
+    openUpdateRequestsStatusDialog:
+      requestsUIEvents.openUpdateRequestsStatusDialog,
   };
   return (
-    <RequestsUIContext.Provider value={value}>{children}</RequestsUIContext.Provider>
+    <RequestsUIContext.Provider value={value}>
+      {children}
+    </RequestsUIContext.Provider>
   );
 }

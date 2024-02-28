@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialRestaurantMenuItemsState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const restaurantMenuItemsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getRestaurantMenuItemById  
+    // getRestaurantMenuItemById
     restaurantMenuItemFetched: (state, action) => {
       state.actionsLoading = false;
-      state.restaurantMenuItemForEdit = action.payload.restaurantMenuItemForEdit;
+      state.restaurantMenuItemForEdit =
+        action.payload.restaurantMenuItemForEdit;
       state.error = null;
     },
-    // findRestaurantMenuItems  
+    // findRestaurantMenuItems
     restaurantMenuItemsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,43 @@ export const restaurantMenuItemsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createRestaurantMenuItem  
+    // createRestaurantMenuItem
     restaurantMenuItemCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateRestaurantMenuItem  
+    // updateRestaurantMenuItem
     restaurantMenuItemUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.RestaurantMenuItemId === action.payload.restaurantMenuItem.RestaurantMenuItemId) {
+        if (
+          entity.RestaurantMenuItemId ===
+          action.payload.restaurantMenuItem.RestaurantMenuItemId
+        ) {
           return action.payload.restaurantMenuItem;
         }
         return entity;
       });
     },
-    // deleteRestaurantMenuItem  
+    // deleteRestaurantMenuItem
     restaurantMenuItemDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.RestaurantMenuItemId !== action.payload.RestaurantMenuItemId  
+        (el) => el.RestaurantMenuItemId !== action.payload.RestaurantMenuItemId
       );
     },
-    // deleteRestaurantMenuItems  
+    // deleteRestaurantMenuItems
     restaurantMenuItemsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.RestaurantMenuItemId)  
+        (el) => !action.payload.ids.includes(el.RestaurantMenuItemId)
       );
     },
-    // restaurantMenuItemsUpdateState  
+    // restaurantMenuItemsUpdateState
     restaurantMenuItemsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

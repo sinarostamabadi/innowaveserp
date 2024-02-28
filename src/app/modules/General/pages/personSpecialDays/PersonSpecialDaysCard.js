@@ -18,25 +18,28 @@ export function PersonSpecialDaysCard() {
       ids: personSpecialDaysUIContext.ids,
       queryParams: personSpecialDaysUIContext.queryParams,
       setQueryParams: personSpecialDaysUIContext.setQueryParams,
-      newPersonSpecialDayButtonClick: personSpecialDaysUIContext.newPersonSpecialDayButtonClick,
-      openDeletePersonSpecialDaysDialog:  
+      newPersonSpecialDayButtonClick:
+        personSpecialDaysUIContext.newPersonSpecialDayButtonClick,
+      openDeletePersonSpecialDaysDialog:
         personSpecialDaysUIContext.openDeletePersonSpecialDaysDialog,
-      openEditPersonSpecialDayPage: personSpecialDaysUIContext.openEditPersonSpecialDayPage,
-      openUpdatePersonSpecialDaysStatusDialog:  
+      openEditPersonSpecialDayPage:
+        personSpecialDaysUIContext.openEditPersonSpecialDayPage,
+      openUpdatePersonSpecialDaysStatusDialog:
         personSpecialDaysUIContext.openUpdatePersonSpecialDaysStatusDialog,
-      openFetchPersonSpecialDaysDialog: personSpecialDaysUIContext.openFetchPersonSpecialDaysDialog,
+      openFetchPersonSpecialDaysDialog:
+        personSpecialDaysUIContext.openFetchPersonSpecialDaysDialog,
     };
   }, [personSpecialDaysUIContext]);
   return (
     <Card>
       <CardHeader title="EntityTitle">
         <CardHeaderToolbar>
-          <button  
-            type="button"  
-            className="btn btn-primary"  
+          <button
+            type="button"
+            className="btn btn-primary"
             onClick={personSpecialDaysUIProps.newPersonSpecialDayButtonClick}
           >
-            EntityTitle  
+            EntityTitle
           </button>
         </CardHeaderToolbar>
       </CardHeader>

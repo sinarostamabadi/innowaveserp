@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { IOTransactionTypeModel } from "../../../../../core/_models/Employment/IOTransactionTypeModel";
@@ -10,9 +9,13 @@ export function useIOTransactionTypesUIContext() {
   return useContext(IOTransactionTypesUIContext);
 }
 
-export const IOTransactionTypesUIConsumer = IOTransactionTypesUIContext.Consumer;
+export const IOTransactionTypesUIConsumer =
+  IOTransactionTypesUIContext.Consumer;
 
-export function IOTransactionTypesUIProvider({ iOTransactionTypesUIEvents, children }) {
+export function IOTransactionTypesUIProvider({
+  iOTransactionTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(IOTransactionTypeModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function IOTransactionTypesUIProvider({ iOTransactionTypesUIEvents, child
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function IOTransactionTypesUIProvider({ iOTransactionTypesUIEvents, child
     setIds,
     setQueryParams,
     dataModel: IOTransactionTypeModel,
-    newIOTransactionTypeButtonClick: iOTransactionTypesUIEvents.newIOTransactionTypeButtonClick,
-    openEditIOTransactionTypePage: iOTransactionTypesUIEvents.openEditIOTransactionTypePage,
-    openDeleteIOTransactionTypeDialog: iOTransactionTypesUIEvents.openDeleteIOTransactionTypeDialog,
-    openDeleteIOTransactionTypesDialog: iOTransactionTypesUIEvents.openDeleteIOTransactionTypesDialog,
-    openFetchIOTransactionTypesDialog: iOTransactionTypesUIEvents.openFetchIOTransactionTypesDialog,
-    openUpdateIOTransactionTypesStatusDialog: iOTransactionTypesUIEvents.openUpdateIOTransactionTypesStatusDialog,
+    newIOTransactionTypeButtonClick:
+      iOTransactionTypesUIEvents.newIOTransactionTypeButtonClick,
+    openEditIOTransactionTypePage:
+      iOTransactionTypesUIEvents.openEditIOTransactionTypePage,
+    openDeleteIOTransactionTypeDialog:
+      iOTransactionTypesUIEvents.openDeleteIOTransactionTypeDialog,
+    openDeleteIOTransactionTypesDialog:
+      iOTransactionTypesUIEvents.openDeleteIOTransactionTypesDialog,
+    openFetchIOTransactionTypesDialog:
+      iOTransactionTypesUIEvents.openFetchIOTransactionTypesDialog,
+    openUpdateIOTransactionTypesStatusDialog:
+      iOTransactionTypesUIEvents.openUpdateIOTransactionTypesStatusDialog,
   };
   return (
-    <IOTransactionTypesUIContext.Provider value={value}>{children}</IOTransactionTypesUIContext.Provider>
+    <IOTransactionTypesUIContext.Provider value={value}>
+      {children}
+    </IOTransactionTypesUIContext.Provider>
   );
 }

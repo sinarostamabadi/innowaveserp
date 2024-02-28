@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialWorkShiftsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const workShiftsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getWorkShiftById  
+    // getWorkShiftById
     workShiftFetched: (state, action) => {
       state.actionsLoading = false;
       state.workShiftForEdit = action.payload.workShiftForEdit;
       state.error = null;
     },
-    // findWorkShifts  
+    // findWorkShifts
     workShiftsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const workShiftsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createWorkShift  
+    // createWorkShift
     workShiftCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateWorkShift  
+    // updateWorkShift
     workShiftUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const workShiftsSlice = createSlice({
         return entity;
       });
     },
-    // deleteWorkShift  
+    // deleteWorkShift
     workShiftDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.WorkShiftId !== action.payload.WorkShiftId  
+        (el) => el.WorkShiftId !== action.payload.WorkShiftId
       );
     },
-    // deleteWorkShifts  
+    // deleteWorkShifts
     workShiftsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.WorkShiftId)  
+        (el) => !action.payload.ids.includes(el.WorkShiftId)
       );
     },
-    // workShiftsUpdateState  
+    // workShiftsUpdateState
     workShiftsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

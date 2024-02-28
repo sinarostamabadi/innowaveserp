@@ -32,8 +32,10 @@ export function ImportDocumentTempsTable() {
       setIds: importDocumentTempsUIContext.setIds,
       queryParams: importDocumentTempsUIContext.queryParams,
       setQueryParams: importDocumentTempsUIContext.setQueryParams,
-      openEditImportDocumentTempPage: importDocumentTempsUIContext.openEditImportDocumentTempPage,
-      openDeleteImportDocumentTempDialog: importDocumentTempsUIContext.openDeleteImportDocumentTempDialog,
+      openEditImportDocumentTempPage:
+        importDocumentTempsUIContext.openEditImportDocumentTempPage,
+      openDeleteImportDocumentTempDialog:
+        importDocumentTempsUIContext.openDeleteImportDocumentTempDialog,
     };
   }, [importDocumentTempsUIContext]);
 
@@ -50,7 +52,9 @@ export function ImportDocumentTempsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     importDocumentTempsUIProps.setIds([]);
-    dispatch(actions.fetchImportDocumentTemps(importDocumentTempsUIProps.queryParams));
+    dispatch(
+      actions.fetchImportDocumentTemps(importDocumentTempsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [importDocumentTempsUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function ImportDocumentTempsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditImportDocumentTempPage: importDocumentTempsUIProps.openEditImportDocumentTempPage,
-        openDeleteImportDocumentTempDialog: importDocumentTempsUIProps.openDeleteImportDocumentTempDialog,
+        openEditImportDocumentTempPage:
+          importDocumentTempsUIProps.openEditImportDocumentTempPage,
+        openDeleteImportDocumentTempDialog:
+          importDocumentTempsUIProps.openDeleteImportDocumentTempDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -32,7 +32,7 @@ export function ProductLifeCycleProvider({ events, children }) {
   useEffect(() => {
     setItems([]);
 
-    if(!!filters.ProductId)
+    if (!!filters.ProductId)
       get(filters).then(({ data }) => {
         setItems(data.Items);
       });

@@ -1,4 +1,3 @@
-
 import axios from "axios";
 export const URL = "BankCard";
 // CREATE = add a new bankCards to the server
@@ -27,7 +26,7 @@ export function remove(id) {
 }
 // DELETE BankCards by ids
 export function removeIds(ids) {
-return axios.post(`${URL}/deleteBankCards`, ids);
+  return axios.post(`${URL}/deleteBankCards`, ids);
 }
 
 export function suggest(query) {

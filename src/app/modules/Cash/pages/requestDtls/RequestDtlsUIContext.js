@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { RequestDtlModel } from "../../../../../core/_models/Cash/RequestDtlModel";
@@ -30,7 +29,7 @@ export function RequestDtlsUIProvider({ requestDtlsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -41,11 +40,15 @@ export function RequestDtlsUIProvider({ requestDtlsUIEvents, children }) {
     newRequestDtlButtonClick: requestDtlsUIEvents.newRequestDtlButtonClick,
     openEditRequestDtlPage: requestDtlsUIEvents.openEditRequestDtlPage,
     openDeleteRequestDtlDialog: requestDtlsUIEvents.openDeleteRequestDtlDialog,
-    openDeleteRequestDtlsDialog: requestDtlsUIEvents.openDeleteRequestDtlsDialog,
+    openDeleteRequestDtlsDialog:
+      requestDtlsUIEvents.openDeleteRequestDtlsDialog,
     openFetchRequestDtlsDialog: requestDtlsUIEvents.openFetchRequestDtlsDialog,
-    openUpdateRequestDtlsStatusDialog: requestDtlsUIEvents.openUpdateRequestDtlsStatusDialog,
+    openUpdateRequestDtlsStatusDialog:
+      requestDtlsUIEvents.openUpdateRequestDtlsStatusDialog,
   };
   return (
-    <RequestDtlsUIContext.Provider value={value}>{children}</RequestDtlsUIContext.Provider>
+    <RequestDtlsUIContext.Provider value={value}>
+      {children}
+    </RequestDtlsUIContext.Provider>
   );
 }

@@ -33,7 +33,8 @@ export function AccountTypesTable() {
       queryParams: accountTypesUIContext.queryParams,
       setQueryParams: accountTypesUIContext.setQueryParams,
       openEditAccountTypePage: accountTypesUIContext.openEditAccountTypePage,
-      openDeleteAccountTypeDialog: accountTypesUIContext.openDeleteAccountTypeDialog,
+      openDeleteAccountTypeDialog:
+        accountTypesUIContext.openDeleteAccountTypeDialog,
     };
   }, [accountTypesUIContext]);
 
@@ -79,7 +80,8 @@ export function AccountTypesTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditAccountTypePage: accountTypesUIProps.openEditAccountTypePage,
-        openDeleteAccountTypeDialog: accountTypesUIProps.openDeleteAccountTypeDialog,
+        openDeleteAccountTypeDialog:
+          accountTypesUIProps.openDeleteAccountTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

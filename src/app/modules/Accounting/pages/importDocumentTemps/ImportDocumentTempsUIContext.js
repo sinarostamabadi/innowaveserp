@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { ImportDocumentTempModel } from "../../../../../core/_models/Accounting/ImportDocumentTempModel";
@@ -10,9 +9,13 @@ export function useImportDocumentTempsUIContext() {
   return useContext(ImportDocumentTempsUIContext);
 }
 
-export const ImportDocumentTempsUIConsumer = ImportDocumentTempsUIContext.Consumer;
+export const ImportDocumentTempsUIConsumer =
+  ImportDocumentTempsUIContext.Consumer;
 
-export function ImportDocumentTempsUIProvider({ importDocumentTempsUIEvents, children }) {
+export function ImportDocumentTempsUIProvider({
+  importDocumentTempsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(ImportDocumentTempModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function ImportDocumentTempsUIProvider({ importDocumentTempsUIEvents, chi
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function ImportDocumentTempsUIProvider({ importDocumentTempsUIEvents, chi
     setIds,
     setQueryParams,
     dataModel: ImportDocumentTempModel,
-    newImportDocumentTempButtonClick: importDocumentTempsUIEvents.newImportDocumentTempButtonClick,
-    openEditImportDocumentTempPage: importDocumentTempsUIEvents.openEditImportDocumentTempPage,
-    openDeleteImportDocumentTempDialog: importDocumentTempsUIEvents.openDeleteImportDocumentTempDialog,
-    openDeleteImportDocumentTempsDialog: importDocumentTempsUIEvents.openDeleteImportDocumentTempsDialog,
-    openFetchImportDocumentTempsDialog: importDocumentTempsUIEvents.openFetchImportDocumentTempsDialog,
-    openUpdateImportDocumentTempsStatusDialog: importDocumentTempsUIEvents.openUpdateImportDocumentTempsStatusDialog,
+    newImportDocumentTempButtonClick:
+      importDocumentTempsUIEvents.newImportDocumentTempButtonClick,
+    openEditImportDocumentTempPage:
+      importDocumentTempsUIEvents.openEditImportDocumentTempPage,
+    openDeleteImportDocumentTempDialog:
+      importDocumentTempsUIEvents.openDeleteImportDocumentTempDialog,
+    openDeleteImportDocumentTempsDialog:
+      importDocumentTempsUIEvents.openDeleteImportDocumentTempsDialog,
+    openFetchImportDocumentTempsDialog:
+      importDocumentTempsUIEvents.openFetchImportDocumentTempsDialog,
+    openUpdateImportDocumentTempsStatusDialog:
+      importDocumentTempsUIEvents.openUpdateImportDocumentTempsStatusDialog,
   };
   return (
-    <ImportDocumentTempsUIContext.Provider value={value}>{children}</ImportDocumentTempsUIContext.Provider>
+    <ImportDocumentTempsUIContext.Provider value={value}>
+      {children}
+    </ImportDocumentTempsUIContext.Provider>
   );
 }

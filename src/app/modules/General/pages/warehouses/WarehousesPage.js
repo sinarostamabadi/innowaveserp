@@ -26,7 +26,7 @@ export function WarehousesPage({ history }) {
       history.push("/general/warehouses/updateStatus");
     },
   };
-  
+
   return (
     <WarehousesUIProvider warehousesUIEvents={warehousesUIEvents}>
       <WarehousesLoadingDialog />

@@ -30,7 +30,7 @@ export function DocumentTypeEdit({
     DocumentTypeId: undefined,
     Title: "",
     IsEftetahie: false,
-    IsEkhtetamie: false
+    IsEkhtetamie: false,
   };
 
   // Subheader

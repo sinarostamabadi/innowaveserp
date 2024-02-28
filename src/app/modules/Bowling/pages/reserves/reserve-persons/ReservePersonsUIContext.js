@@ -25,7 +25,17 @@ export function useReservePersonsUIContext() {
 export const ReservePersonsUIConsumer = ReservePersonsUIContext.Consumer;
 
 export const ReservePersonsUIProvider = forwardRef(
-  ({ currentReserveId, children, reservePerson, setReservePerson, btnRef, version = 1 }, ref) => {
+  (
+    {
+      currentReserveId,
+      children,
+      reservePerson,
+      setReservePerson,
+      btnRef,
+      version = 1,
+    },
+    ref
+  ) => {
     const { t } = useTranslation();
     const [serialErrors, setSerialErrors] = useState("");
 
@@ -54,7 +64,7 @@ export const ReservePersonsUIProvider = forwardRef(
       ReserveId: reserveId,
       PersonId: "",
       Person: null,
-      NameFa:""
+      NameFa: "",
     };
 
     const { actionsLoading, reserveForEdit, error } = useSelector(
@@ -82,9 +92,8 @@ export const ReservePersonsUIProvider = forwardRef(
     }, []);
 
     const [reservePersons, setReservePersons] = useState(reservePerson);
-    const [activeReservePersons, setActiveReservePersons] = useState(
-      reservePerson
-    );
+    const [activeReservePersons, setActiveReservePersons] =
+      useState(reservePerson);
     const [totalCount, setTotalCount] = useState(0);
 
     useEffect(() => {
@@ -122,10 +131,8 @@ export const ReservePersonsUIProvider = forwardRef(
     }, [reservePersons]);
 
     // Edit Dialog, New Dialog
-    const [
-      showEditReservePersonDialog,
-      setShowEditReservePersonDialog,
-    ] = useState(false);
+    const [showEditReservePersonDialog, setShowEditReservePersonDialog] =
+      useState(false);
     const openNewReservePersonDialog = () => {
       setSelectedId(undefined);
       setShowEditReservePersonDialog(true);
@@ -140,10 +147,8 @@ export const ReservePersonsUIProvider = forwardRef(
       setShowEditReservePersonDialog(false);
     };
 
-    const [
-      showDeleteReservePersonDialog,
-      setShowDeleteReservePersonDialog,
-    ] = useState(false);
+    const [showDeleteReservePersonDialog, setShowDeleteReservePersonDialog] =
+      useState(false);
     const openDeleteReservePersonDialog = (id) => {
       setSelectedId(id);
       setShowDeleteReservePersonDialog(true);
@@ -153,10 +158,8 @@ export const ReservePersonsUIProvider = forwardRef(
       setShowDeleteReservePersonDialog(false);
     };
 
-    const [
-      showDeleteReservePersonsDialog,
-      setShowDeleteReservePersonsDialog,
-    ] = useState(false);
+    const [showDeleteReservePersonsDialog, setShowDeleteReservePersonsDialog] =
+      useState(false);
     const openDeleteReservePersonsDialog = () => {
       setShowDeleteReservePersonsDialog(true);
     };
@@ -164,10 +167,8 @@ export const ReservePersonsUIProvider = forwardRef(
       setShowDeleteReservePersonsDialog(false);
     };
 
-    const [
-      showFetchReservePersonsDialog,
-      setShowFetchReservePersonsDialog,
-    ] = useState(false);
+    const [showFetchReservePersonsDialog, setShowFetchReservePersonsDialog] =
+      useState(false);
     const openFetchReservePersonsDialog = () => {
       setShowFetchReservePersonsDialog(true);
     };

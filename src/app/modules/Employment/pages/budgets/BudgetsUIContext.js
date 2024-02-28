@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BudgetModel } from "../../../../../core/_models/Employment/BudgetModel";
@@ -30,7 +29,7 @@ export function BudgetsUIProvider({ budgetsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function BudgetsUIProvider({ budgetsUIEvents, children }) {
     openDeleteBudgetDialog: budgetsUIEvents.openDeleteBudgetDialog,
     openDeleteBudgetsDialog: budgetsUIEvents.openDeleteBudgetsDialog,
     openFetchBudgetsDialog: budgetsUIEvents.openFetchBudgetsDialog,
-    openUpdateBudgetsStatusDialog: budgetsUIEvents.openUpdateBudgetsStatusDialog,
+    openUpdateBudgetsStatusDialog:
+      budgetsUIEvents.openUpdateBudgetsStatusDialog,
   };
   return (
-    <BudgetsUIContext.Provider value={value}>{children}</BudgetsUIContext.Provider>
+    <BudgetsUIContext.Provider value={value}>
+      {children}
+    </BudgetsUIContext.Provider>
   );
 }

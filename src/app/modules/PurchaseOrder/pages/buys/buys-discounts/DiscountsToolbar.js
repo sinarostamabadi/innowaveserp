@@ -25,15 +25,15 @@ export function DiscountsToolbar() {
             <h4>{t("BuyDiscount.Plural")}</h4>
           </div>
           <div className="col-md-3 ml-auto text-right margin-bottom-10-mobile">
-          {discountsUIProps.editable && (
-            <button
-              type="button"
-              className="btn btn-success"
-              onClick={() => discountsUIProps.openNewDiscountDialog()}
+            {discountsUIProps.editable && (
+              <button
+                type="button"
+                className="btn btn-success"
+                onClick={() => discountsUIProps.openNewDiscountDialog()}
               >
                 {t("BuyDiscount.Entity")} {t("Common.New")}
-            </button>
-          )}
+              </button>
+            )}
           </div>
         </div>
       </div>

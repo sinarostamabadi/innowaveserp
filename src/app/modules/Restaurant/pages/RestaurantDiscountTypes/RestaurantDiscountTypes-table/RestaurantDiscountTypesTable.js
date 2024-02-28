@@ -20,12 +20,16 @@ import {
   getFields,
 } from "../../../../../../core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
-import { DateFaColumnFormatter, TimeColumnFormatter } from "../../../../../../core/_formatters";
+import {
+  DateFaColumnFormatter,
+  TimeColumnFormatter,
+} from "../../../../../../core/_formatters";
 
 export function RestaurantDiscountTypesTable() {
   const { t } = useTranslation();
 
-  const restaurantDiscountTypesUIContext = useRestaurantDiscountTypesUIContext();
+  const restaurantDiscountTypesUIContext =
+    useRestaurantDiscountTypesUIContext();
 
   const restaurantDiscountTypesUIProps = useMemo(() => {
     return {
@@ -33,8 +37,10 @@ export function RestaurantDiscountTypesTable() {
       setIds: restaurantDiscountTypesUIContext.setIds,
       queryParams: restaurantDiscountTypesUIContext.queryParams,
       setQueryParams: restaurantDiscountTypesUIContext.setQueryParams,
-      openEditRestaurantDiscountTypePage: restaurantDiscountTypesUIContext.openEditRestaurantDiscountTypePage,
-      openDeleteRestaurantDiscountTypeDialog: restaurantDiscountTypesUIContext.openDeleteRestaurantDiscountTypeDialog,
+      openEditRestaurantDiscountTypePage:
+        restaurantDiscountTypesUIContext.openEditRestaurantDiscountTypePage,
+      openDeleteRestaurantDiscountTypeDialog:
+        restaurantDiscountTypesUIContext.openDeleteRestaurantDiscountTypeDialog,
     };
   }, [restaurantDiscountTypesUIContext]);
 
@@ -51,10 +57,14 @@ export function RestaurantDiscountTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     restaurantDiscountTypesUIProps.setIds([]);
-    dispatch(actions.fetchRestaurantDiscountTypes(restaurantDiscountTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchRestaurantDiscountTypes(
+        restaurantDiscountTypesUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restaurantDiscountTypesUIProps.queryParams, dispatch]);
-  
+
   const columns = [
     {
       dataField: fieldKey.Title,
@@ -91,28 +101,28 @@ export function RestaurantDiscountTypesTable() {
       text: t("RestaurantDiscountType." + fields.FromDate.display),
       sort: fields.FromDate.sortable,
       sortCaret: sortCaret,
-      formatter: DateFaColumnFormatter
+      formatter: DateFaColumnFormatter,
     },
     {
       dataField: fieldKey.ToDate,
       text: t("RestaurantDiscountType." + fields.ToDate.display),
       sort: fields.ToDate.sortable,
       sortCaret: sortCaret,
-      formatter: DateFaColumnFormatter
+      formatter: DateFaColumnFormatter,
     },
     {
       dataField: fieldKey.FromTime,
       text: t("RestaurantDiscountType." + fields.FromTime.display),
       sort: fields.FromTime.sortable,
       sortCaret: sortCaret,
-      formatter: TimeColumnFormatter
-    },            
+      formatter: TimeColumnFormatter,
+    },
     {
       dataField: fieldKey.ToTime,
       text: t("RestaurantDiscountType." + fields.ToTime.display),
       sort: fields.ToTime.sortable,
       sortCaret: sortCaret,
-      formatter: TimeColumnFormatter
+      formatter: TimeColumnFormatter,
     },
     {
       dataField: "Person.FullNameFa",
@@ -131,8 +141,10 @@ export function RestaurantDiscountTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditRestaurantDiscountTypePage: restaurantDiscountTypesUIProps.openEditRestaurantDiscountTypePage,
-        openDeleteRestaurantDiscountTypeDialog: restaurantDiscountTypesUIProps.openDeleteRestaurantDiscountTypeDialog,
+        openEditRestaurantDiscountTypePage:
+          restaurantDiscountTypesUIProps.openEditRestaurantDiscountTypePage,
+        openDeleteRestaurantDiscountTypeDialog:
+          restaurantDiscountTypesUIProps.openDeleteRestaurantDiscountTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -31,13 +31,13 @@ export const walletsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getWalletById  
+    // getWalletById
     walletFetched: (state, action) => {
       state.actionsLoading = false;
       state.walletForEdit = action.payload.walletForEdit;
       state.error = null;
     },
-    // findWallets  
+    // findWallets
     walletsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -45,13 +45,13 @@ export const walletsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createWallet  
+    // createWallet
     walletCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateWallet  
+    // updateWallet
     walletUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -62,23 +62,23 @@ export const walletsSlice = createSlice({
         return entity;
       });
     },
-    // deleteWallet  
+    // deleteWallet
     walletDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.WalletId !== action.payload.WalletId  
+        (el) => el.WalletId !== action.payload.WalletId
       );
     },
-    // deleteWallets  
+    // deleteWallets
     walletsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.WalletId)  
+        (el) => !action.payload.ids.includes(el.WalletId)
       );
     },
-    // walletsUpdateState  
+    // walletsUpdateState
     walletsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -26,7 +26,9 @@ export function DiscountEditDialog() {
   const dispatch = useDispatch();
   const { actionsLoading, setActionsLoading } = useState(false);
 
-  const [editDiscount, setEditDiscount] = useState(discountsUIProps.initDiscount);
+  const [editDiscount, setEditDiscount] = useState(
+    discountsUIProps.initDiscount
+  );
 
   useEffect(() => {
     if (!!discountsUIProps.id)
@@ -42,7 +44,7 @@ export function DiscountEditDialog() {
       discountsUIProps.onHide();
     }
   };
-  
+
   return (
     <Modal
       show={discountsUIProps.show}
@@ -53,7 +55,9 @@ export function DiscountEditDialog() {
       <DiscountEditForm
         saveDiscount={saveDiscount}
         actionsLoading={actionsLoading}
-        discount={discountsUIProps.selectedItem || discountsUIProps.initDiscount}
+        discount={
+          discountsUIProps.selectedItem || discountsUIProps.initDiscount
+        }
         onHide={discountsUIProps.onHide}
       />
     </Modal>

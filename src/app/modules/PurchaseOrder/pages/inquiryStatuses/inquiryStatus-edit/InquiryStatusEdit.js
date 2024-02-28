@@ -71,17 +71,17 @@ export function InquiryStatusEdit({
     const newValues = {
       InquiryStatusId: values.InquiryStatusId,
       Title: values.Title,
-    }
+    };
     if (!id) {
       dispatch(actions.createInquiryStatus(newValues))
         .then((arg) => {
           backToInquiryStatusesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateInquiryStatus(id, newValues))
         .then(() => backToInquiryStatusesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

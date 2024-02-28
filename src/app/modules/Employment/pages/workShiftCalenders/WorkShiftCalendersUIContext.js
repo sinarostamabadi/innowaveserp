@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { WorkShiftCalenderModel } from "../../../../../core/_models/Employment/WorkShiftCalenderModel";
@@ -10,9 +9,13 @@ export function useWorkShiftCalendersUIContext() {
   return useContext(WorkShiftCalendersUIContext);
 }
 
-export const WorkShiftCalendersUIConsumer = WorkShiftCalendersUIContext.Consumer;
+export const WorkShiftCalendersUIConsumer =
+  WorkShiftCalendersUIContext.Consumer;
 
-export function WorkShiftCalendersUIProvider({ workShiftCalendersUIEvents, children }) {
+export function WorkShiftCalendersUIProvider({
+  workShiftCalendersUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(WorkShiftCalenderModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function WorkShiftCalendersUIProvider({ workShiftCalendersUIEvents, child
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function WorkShiftCalendersUIProvider({ workShiftCalendersUIEvents, child
     setIds,
     setQueryParams,
     dataModel: WorkShiftCalenderModel,
-    newWorkShiftCalenderButtonClick: workShiftCalendersUIEvents.newWorkShiftCalenderButtonClick,
-    openEditWorkShiftCalenderPage: workShiftCalendersUIEvents.openEditWorkShiftCalenderPage,
-    openDeleteWorkShiftCalenderDialog: workShiftCalendersUIEvents.openDeleteWorkShiftCalenderDialog,
-    openDeleteWorkShiftCalendersDialog: workShiftCalendersUIEvents.openDeleteWorkShiftCalendersDialog,
-    openFetchWorkShiftCalendersDialog: workShiftCalendersUIEvents.openFetchWorkShiftCalendersDialog,
-    openUpdateWorkShiftCalendersStatusDialog: workShiftCalendersUIEvents.openUpdateWorkShiftCalendersStatusDialog,
+    newWorkShiftCalenderButtonClick:
+      workShiftCalendersUIEvents.newWorkShiftCalenderButtonClick,
+    openEditWorkShiftCalenderPage:
+      workShiftCalendersUIEvents.openEditWorkShiftCalenderPage,
+    openDeleteWorkShiftCalenderDialog:
+      workShiftCalendersUIEvents.openDeleteWorkShiftCalenderDialog,
+    openDeleteWorkShiftCalendersDialog:
+      workShiftCalendersUIEvents.openDeleteWorkShiftCalendersDialog,
+    openFetchWorkShiftCalendersDialog:
+      workShiftCalendersUIEvents.openFetchWorkShiftCalendersDialog,
+    openUpdateWorkShiftCalendersStatusDialog:
+      workShiftCalendersUIEvents.openUpdateWorkShiftCalendersStatusDialog,
   };
   return (
-    <WorkShiftCalendersUIContext.Provider value={value}>{children}</WorkShiftCalendersUIContext.Provider>
+    <WorkShiftCalendersUIContext.Provider value={value}>
+      {children}
+    </WorkShiftCalendersUIContext.Provider>
   );
 }

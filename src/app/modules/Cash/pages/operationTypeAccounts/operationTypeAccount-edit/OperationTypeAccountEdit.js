@@ -44,7 +44,8 @@ export function OperationTypeAccountEdit({
   const { actionsLoading, operationTypeAccountForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.operationTypeAccounts.actionsLoading,
-      operationTypeAccountForEdit: state.operationTypeAccounts.operationTypeAccountForEdit,
+      operationTypeAccountForEdit:
+        state.operationTypeAccounts.operationTypeAccountForEdit,
       error: state.operationTypeAccounts.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function OperationTypeAccountEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("OperationTypeAccount.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("OperationTypeAccount.Entity");
 
     if (operationTypeAccountForEdit && id) {
       _title = t("Common.Edit") + " " + operationTypeAccountForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function OperationTypeAccountEdit({
         .then((arg) => {
           backToOperationTypeAccountsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateOperationTypeAccount(id, values))
         .then(() => backToOperationTypeAccountsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

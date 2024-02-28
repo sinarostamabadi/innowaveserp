@@ -1,17 +1,19 @@
-
 import * as requestFromServer from "./futsalCentersCrud";
 import { futsalCentersSlice, callTypes } from "./futsalCentersSlice";
 const { actions } = futsalCentersSlice;
 export const fetchFutsalCenters = (queryParams) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.list }));
-  return requestFromServer  
-    .findFutsalCenters(queryParams)  
+  return requestFromServer
+    .findFutsalCenters(queryParams)
     .then((response) => {
       const { Items, TotalCount } = response.data;
       dispatch(
-        actions.futsalCentersFetched({ totalCount: TotalCount, entities: Items })  
+        actions.futsalCentersFetched({
+          totalCount: TotalCount,
+          entities: Items,
+        })
       );
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't find futsalCenters";
       dispatch(actions.catchError({ error, callType: callTypes.list }));
@@ -19,15 +21,19 @@ export const fetchFutsalCenters = (queryParams) => (dispatch) => {
 };
 export const fetchFutsalCenter = (id) => (dispatch) => {
   if (!id) {
-    return dispatch(actions.futsalCenterFetched({ futsalCenterForEdit: undefined }));
+    return dispatch(
+      actions.futsalCenterFetched({ futsalCenterForEdit: undefined })
+    );
   }
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .getFutsalCenterById(id)  
+  return requestFromServer
+    .getFutsalCenterById(id)
     .then((response) => {
       const futsalCenter = response.data;
-      dispatch(actions.futsalCenterFetched({ futsalCenterForEdit: futsalCenter }));
-    })  
+      dispatch(
+        actions.futsalCenterFetched({ futsalCenterForEdit: futsalCenter })
+      );
+    })
     .catch((error) => {
       error.clientMessage = "Can't find futsalCenter";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -35,11 +41,11 @@ export const fetchFutsalCenter = (id) => (dispatch) => {
 };
 export const deleteFutsalCenter = (id) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .deleteFutsalCenter(id)  
+  return requestFromServer
+    .deleteFutsalCenter(id)
     .then((response) => {
       dispatch(actions.futsalCenterDeleted({ id }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't delete futsalCenter";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -48,12 +54,12 @@ export const deleteFutsalCenter = (id) => (dispatch) => {
 };
 export const createFutsalCenter = (futsalCenterForCreation) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .createFutsalCenter(futsalCenterForCreation)  
+  return requestFromServer
+    .createFutsalCenter(futsalCenterForCreation)
     .then((response) => {
       const futsalCenter = response.data;
       dispatch(actions.futsalCenterCreated(futsalCenter));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't create futsalCenter";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -62,11 +68,11 @@ export const createFutsalCenter = (futsalCenterForCreation) => (dispatch) => {
 };
 export const updateFutsalCenter = (futsalCenter) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .updateFutsalCenter(futsalCenter)  
+  return requestFromServer
+    .updateFutsalCenter(futsalCenter)
     .then((response) => {
       dispatch(actions.futsalCenterUpdated({ futsalCenter }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't update futsalCenter";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -75,11 +81,11 @@ export const updateFutsalCenter = (futsalCenter) => (dispatch) => {
 };
 export const updateFutsalCentersStatus = (ids, status) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .updateStatusForFutsalCenters(ids, status)  
+  return requestFromServer
+    .updateStatusForFutsalCenters(ids, status)
     .then(() => {
       dispatch(actions.futsalCentersStatusUpdated({ ids, status }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't update futsalCenters status";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -87,14 +93,14 @@ export const updateFutsalCentersStatus = (ids, status) => (dispatch) => {
 };
 export const deleteFutsalCenters = (ids) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .deleteFutsalCenters(ids)  
+  return requestFromServer
+    .deleteFutsalCenters(ids)
     .then(() => {
       dispatch(actions.futsalCentersDeleted({ ids }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't delete futsalCenters";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

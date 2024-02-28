@@ -56,7 +56,9 @@ export function ServiceActionsEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("ServiceActions.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("ServiceActions.Entity");
 
     if (serviceActionsForEdit && id) {
       _title = t("Common.Edit") + " " + serviceActionsForEdit.TitleFa;

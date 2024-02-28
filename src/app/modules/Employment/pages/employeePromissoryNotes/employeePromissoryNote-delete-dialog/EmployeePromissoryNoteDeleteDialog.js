@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -16,7 +15,8 @@ export function EmployeePromissoryNoteDeleteDialog({ id, show, onHide }) {
   const { t } = useTranslation();
 
   // EmployeePromissoryNotes UI Context
-  const employeePromissoryNotesUIContext = useEmployeePromissoryNotesUIContext();
+  const employeePromissoryNotesUIContext =
+    useEmployeePromissoryNotesUIContext();
   const [error, setError] = useState(null);
   const employeePromissoryNotesUIProps = useMemo(() => {
     return {
@@ -48,7 +48,11 @@ export function EmployeePromissoryNoteDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteEmployeePromissoryNote(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchEmployeePromissoryNotes(employeePromissoryNotesUIProps.queryParams));
+        dispatch(
+          actions.fetchEmployeePromissoryNotes(
+            employeePromissoryNotesUIProps.queryParams
+          )
+        );
         // clear selections list
         employeePromissoryNotesUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +71,12 @@ export function EmployeePromissoryNoteDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("EmployeePromissoryNote.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("EmployeePromissoryNote.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

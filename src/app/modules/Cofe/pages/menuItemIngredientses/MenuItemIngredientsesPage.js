@@ -26,9 +26,11 @@ export function MenuItemIngredientsesPage({ history }) {
       history.push("/cofe/menuItemIngredientses/updateStatus");
     },
   };
-  
+
   return (
-    <MenuItemIngredientsesUIProvider menuItemIngredientsesUIEvents={menuItemIngredientsesUIEvents}>
+    <MenuItemIngredientsesUIProvider
+      menuItemIngredientsesUIEvents={menuItemIngredientsesUIEvents}
+    >
       <MenuItemIngredientsesLoadingDialog />
       <Route path="/cofe/menuItemIngredientses/:id/delete">
         {({ history, match }) => (

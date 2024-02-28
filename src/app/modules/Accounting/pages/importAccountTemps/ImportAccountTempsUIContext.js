@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { ImportAccountTempModel } from "../../../../../core/_models/Accounting/ImportAccountTempModel";
@@ -10,9 +9,13 @@ export function useImportAccountTempsUIContext() {
   return useContext(ImportAccountTempsUIContext);
 }
 
-export const ImportAccountTempsUIConsumer = ImportAccountTempsUIContext.Consumer;
+export const ImportAccountTempsUIConsumer =
+  ImportAccountTempsUIContext.Consumer;
 
-export function ImportAccountTempsUIProvider({ importAccountTempsUIEvents, children }) {
+export function ImportAccountTempsUIProvider({
+  importAccountTempsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(ImportAccountTempModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function ImportAccountTempsUIProvider({ importAccountTempsUIEvents, child
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function ImportAccountTempsUIProvider({ importAccountTempsUIEvents, child
     setIds,
     setQueryParams,
     dataModel: ImportAccountTempModel,
-    newImportAccountTempButtonClick: importAccountTempsUIEvents.newImportAccountTempButtonClick,
-    openEditImportAccountTempPage: importAccountTempsUIEvents.openEditImportAccountTempPage,
-    openDeleteImportAccountTempDialog: importAccountTempsUIEvents.openDeleteImportAccountTempDialog,
-    openDeleteImportAccountTempsDialog: importAccountTempsUIEvents.openDeleteImportAccountTempsDialog,
-    openFetchImportAccountTempsDialog: importAccountTempsUIEvents.openFetchImportAccountTempsDialog,
-    openUpdateImportAccountTempsStatusDialog: importAccountTempsUIEvents.openUpdateImportAccountTempsStatusDialog,
+    newImportAccountTempButtonClick:
+      importAccountTempsUIEvents.newImportAccountTempButtonClick,
+    openEditImportAccountTempPage:
+      importAccountTempsUIEvents.openEditImportAccountTempPage,
+    openDeleteImportAccountTempDialog:
+      importAccountTempsUIEvents.openDeleteImportAccountTempDialog,
+    openDeleteImportAccountTempsDialog:
+      importAccountTempsUIEvents.openDeleteImportAccountTempsDialog,
+    openFetchImportAccountTempsDialog:
+      importAccountTempsUIEvents.openFetchImportAccountTempsDialog,
+    openUpdateImportAccountTempsStatusDialog:
+      importAccountTempsUIEvents.openUpdateImportAccountTempsStatusDialog,
   };
   return (
-    <ImportAccountTempsUIContext.Provider value={value}>{children}</ImportAccountTempsUIContext.Provider>
+    <ImportAccountTempsUIContext.Provider value={value}>
+      {children}
+    </ImportAccountTempsUIContext.Provider>
   );
 }

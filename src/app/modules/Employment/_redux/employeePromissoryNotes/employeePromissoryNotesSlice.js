@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmployeePromissoryNotesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const employeePromissoryNotesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmployeePromissoryNoteById  
+    // getEmployeePromissoryNoteById
     employeePromissoryNoteFetched: (state, action) => {
       state.actionsLoading = false;
-      state.employeePromissoryNoteForEdit = action.payload.employeePromissoryNoteForEdit;
+      state.employeePromissoryNoteForEdit =
+        action.payload.employeePromissoryNoteForEdit;
       state.error = null;
     },
-    // findEmployeePromissoryNotes  
+    // findEmployeePromissoryNotes
     employeePromissoryNotesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,46 +47,53 @@ export const employeePromissoryNotesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmployeePromissoryNote  
+    // createEmployeePromissoryNote
     employeePromissoryNoteCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmployeePromissoryNote  
+    // updateEmployeePromissoryNote
     employeePromissoryNoteUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.EmployeePromissoryNoteId === action.payload.employeePromissoryNote.EmployeePromissoryNoteId) {
+        if (
+          entity.EmployeePromissoryNoteId ===
+          action.payload.employeePromissoryNote.EmployeePromissoryNoteId
+        ) {
           return action.payload.employeePromissoryNote;
         }
         return entity;
       });
     },
-    // deleteEmployeePromissoryNote  
+    // deleteEmployeePromissoryNote
     employeePromissoryNoteDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EmployeePromissoryNoteId !== action.payload.EmployeePromissoryNoteId  
+        (el) =>
+          el.EmployeePromissoryNoteId !==
+          action.payload.EmployeePromissoryNoteId
       );
     },
-    // deleteEmployeePromissoryNotes  
+    // deleteEmployeePromissoryNotes
     employeePromissoryNotesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EmployeePromissoryNoteId)  
+        (el) => !action.payload.ids.includes(el.EmployeePromissoryNoteId)
       );
     },
-    // employeePromissoryNotesUpdateState  
+    // employeePromissoryNotesUpdateState
     employeePromissoryNotesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       const { ids, status } = action.payload;
       state.entities = state.entities.map((entity) => {
-        if (ids.findIndex((id) => id === entity.EmployeePromissoryNoteId) > -1) {
+        if (
+          ids.findIndex((id) => id === entity.EmployeePromissoryNoteId) > -1
+        ) {
           entity.status = status;
         }
         return entity;

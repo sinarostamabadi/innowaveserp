@@ -46,7 +46,7 @@ export const CreditsUIProvider = forwardRef(
 
     const [selectedId, setSelectedId] = useState(null);
     const [documentId, setDocumentId] = useState(currentDocumentId);
-    const initCredit = {...CreditTools.Model, DocumentId: currentDocumentId};
+    const initCredit = { ...CreditTools.Model, DocumentId: currentDocumentId };
     const [selectedItem, setSelectedItem] = useState(initCredit);
     const { actionsLoading, documentForEdit, error } = useSelector(
       (state) => ({
@@ -57,7 +57,9 @@ export const CreditsUIProvider = forwardRef(
       shallowEqual
     );
 
-    const [queryParams, setQueryParamsBase] = useState(getConfig(CreditModel, "Price", "desc").initialFilter);
+    const [queryParams, setQueryParamsBase] = useState(
+      getConfig(CreditModel, "Price", "desc").initialFilter
+    );
 
     const setQueryParams = useCallback((nextQueryParams) => {
       setQueryParamsBase((prevQueryParams) => {
@@ -73,7 +75,9 @@ export const CreditsUIProvider = forwardRef(
       });
     }, []);
 
-    const [credits, setCredits] = useState(credit.map(x=> CreditTools.Clean(x)));
+    const [credits, setCredits] = useState(
+      credit.map((x) => CreditTools.Clean(x))
+    );
     const [activeCredits, setActiveCredits] = useState([]);
     const [totalCount, setTotalCount] = useState(0);
 
@@ -93,7 +97,7 @@ export const CreditsUIProvider = forwardRef(
       setSelectedItem(findCredit(selectedId));
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedId]);
-    
+
     const [showEditCreditDialog, setShowEditCreditDialog] = useState(false);
     const openNewCreditDialog = () => {
       setSelectedId(undefined);
@@ -127,9 +131,8 @@ export const CreditsUIProvider = forwardRef(
       setShowDeleteCreditDialog(false);
     };
 
-    const [showDeleteCreditsDialog, setShowDeleteCreditsDialog] = useState(
-      false
-    );
+    const [showDeleteCreditsDialog, setShowDeleteCreditsDialog] =
+      useState(false);
     const openDeleteCreditsDialog = () => {
       setShowDeleteCreditsDialog(true);
     };

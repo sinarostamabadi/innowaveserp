@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmployeeLeaveModel } from "../../../../../core/_models/Employment/EmployeeLeaveModel";
@@ -30,7 +29,7 @@ export function EmployeeLeavesUIProvider({ employeeLeavesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function EmployeeLeavesUIProvider({ employeeLeavesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: EmployeeLeaveModel,
-    newEmployeeLeaveButtonClick: employeeLeavesUIEvents.newEmployeeLeaveButtonClick,
+    newEmployeeLeaveButtonClick:
+      employeeLeavesUIEvents.newEmployeeLeaveButtonClick,
     openEditEmployeeLeavePage: employeeLeavesUIEvents.openEditEmployeeLeavePage,
-    openDeleteEmployeeLeaveDialog: employeeLeavesUIEvents.openDeleteEmployeeLeaveDialog,
-    openDeleteEmployeeLeavesDialog: employeeLeavesUIEvents.openDeleteEmployeeLeavesDialog,
-    openFetchEmployeeLeavesDialog: employeeLeavesUIEvents.openFetchEmployeeLeavesDialog,
-    openUpdateEmployeeLeavesStatusDialog: employeeLeavesUIEvents.openUpdateEmployeeLeavesStatusDialog,
+    openDeleteEmployeeLeaveDialog:
+      employeeLeavesUIEvents.openDeleteEmployeeLeaveDialog,
+    openDeleteEmployeeLeavesDialog:
+      employeeLeavesUIEvents.openDeleteEmployeeLeavesDialog,
+    openFetchEmployeeLeavesDialog:
+      employeeLeavesUIEvents.openFetchEmployeeLeavesDialog,
+    openUpdateEmployeeLeavesStatusDialog:
+      employeeLeavesUIEvents.openUpdateEmployeeLeavesStatusDialog,
   };
   return (
-    <EmployeeLeavesUIContext.Provider value={value}>{children}</EmployeeLeavesUIContext.Provider>
+    <EmployeeLeavesUIContext.Provider value={value}>
+      {children}
+    </EmployeeLeavesUIContext.Provider>
   );
 }

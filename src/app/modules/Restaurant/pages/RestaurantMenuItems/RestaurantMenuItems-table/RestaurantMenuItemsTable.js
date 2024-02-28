@@ -124,7 +124,7 @@ export function RestaurantMenuItemsTable() {
       text: t("RestaurantMenuItem." + fields.AcceptedDate.display),
       sort: fields.AcceptedDate.sortable,
       sortCaret: sortCaret,
-      formatter: DateFaColumnFormatter
+      formatter: DateFaColumnFormatter,
     },
     {
       dataField: "action",

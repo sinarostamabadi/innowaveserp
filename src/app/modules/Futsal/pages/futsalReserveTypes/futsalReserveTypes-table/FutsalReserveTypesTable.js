@@ -32,8 +32,10 @@ export function FutsalReserveTypesTable() {
       setIds: futsalReserveTypesUIContext.setIds,
       queryParams: futsalReserveTypesUIContext.queryParams,
       setQueryParams: futsalReserveTypesUIContext.setQueryParams,
-      openEditFutsalReserveTypePage: futsalReserveTypesUIContext.openEditFutsalReserveTypePage,
-      openDeleteFutsalReserveTypeDialog: futsalReserveTypesUIContext.openDeleteFutsalReserveTypeDialog,
+      openEditFutsalReserveTypePage:
+        futsalReserveTypesUIContext.openEditFutsalReserveTypePage,
+      openDeleteFutsalReserveTypeDialog:
+        futsalReserveTypesUIContext.openDeleteFutsalReserveTypeDialog,
     };
   }, [futsalReserveTypesUIContext]);
 
@@ -50,7 +52,9 @@ export function FutsalReserveTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     futsalReserveTypesUIProps.setIds([]);
-    dispatch(actions.fetchFutsalReserveTypes(futsalReserveTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchFutsalReserveTypes(futsalReserveTypesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [futsalReserveTypesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function FutsalReserveTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditFutsalReserveTypePage: futsalReserveTypesUIProps.openEditFutsalReserveTypePage,
-        openDeleteFutsalReserveTypeDialog: futsalReserveTypesUIProps.openDeleteFutsalReserveTypeDialog,
+        openEditFutsalReserveTypePage:
+          futsalReserveTypesUIProps.openEditFutsalReserveTypePage,
+        openDeleteFutsalReserveTypeDialog:
+          futsalReserveTypesUIProps.openDeleteFutsalReserveTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

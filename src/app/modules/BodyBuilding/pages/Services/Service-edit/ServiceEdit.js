@@ -24,7 +24,7 @@ export function ServiceEdit({
     Title: "",
     BodyBuildingEmployeeTypeId: null,
     UseIPAddress: "",
-    Price: ""
+    Price: "",
   };
 
   const suhbeader = useSubheader();
@@ -45,7 +45,9 @@ export function ServiceEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " «" + t("BodyBuildingService.Entity") + "»";
+    let _title = id
+      ? ""
+      : t("Common.Create") + " «" + t("BodyBuildingService.Entity") + "»";
 
     if (serviceForEdit && serviceForEdit.BodyBuildingServiceId == id) {
       _title = t("Common.Edit") + " «" + serviceForEdit.Title + "»";
@@ -59,16 +61,15 @@ export function ServiceEdit({
 
   const saveService = (values) => {
     if (!id) {
-      dispatch(actions.createService(values, ()=> backToServicesList()));
+      dispatch(actions.createService(values, () => backToServicesList()));
     } else {
-      dispatch(actions.updateService(id, values, ()=> backToServicesList()));
+      dispatch(actions.updateService(id, values, () => backToServicesList()));
     }
   };
 
   const btnRef = useRef();
   const saveServiceClick = () => {
-    if (btnRef && btnRef.current) 
-      btnRef.current.click();
+    if (btnRef && btnRef.current) btnRef.current.click();
   };
 
   const backToServicesList = () => history.push(`/BodyBuilding/services`);

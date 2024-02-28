@@ -40,10 +40,10 @@ export function ChequePaperDeleteDialog() {
   }, [chequePapersUIProps.id]);
 
   // looking for loading/dispatch
-  useEffect(() => { }, [isLoading, dispatch]);
+  useEffect(() => {}, [isLoading, dispatch]);
 
   const deleteChequePaper = () => {
-    chequePapersUIProps.removeChequePaper(chequePapersUIProps.id)
+    chequePapersUIProps.removeChequePaper(chequePapersUIProps.id);
     chequePapersUIProps.onHide();
   };
 
@@ -60,9 +60,7 @@ export function ChequePaperDeleteDialog() {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && (
-          <span>{t("Common.DeleteQuestion")}</span>
-        )}
+        {!isLoading && <span>{t("Common.DeleteQuestion")}</span>}
         {isLoading && <span>{t("Common.DeleteLoading")}</span>}
       </Modal.Body>
       <Modal.Footer>

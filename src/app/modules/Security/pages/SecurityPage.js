@@ -1,4 +1,3 @@
-
 import React, { Suspense } from "react";
 import { Redirect, Switch } from "react-router-dom";
 import { LayoutSplashScreen, ContentRoute } from "../../../../core/layout";
@@ -36,84 +35,166 @@ export default function GeneralPage() {
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
         {<Redirect exact={true} from="/Security" to="/Security/dashboard" />}
-        
+
         {/* begin SecurityDashboard */}
-        <ContentRoute path="/Security/dashboard" component={SecurityDashboard} />
-        {/* end SecurityDashboard */}  
-		
+        <ContentRoute
+          path="/Security/dashboard"
+          component={SecurityDashboard}
+        />
+        {/* end SecurityDashboard */}
 
-			{/* begin Actions */}
-			<ContentRoute path="/Security/actions/new" component={ActionEdit} />
-			<ContentRoute path="/Security/actions/:id/edit" component={ActionEdit} />
-			<ContentRoute path="/Security/actions" component={ActionsPage} />
-			{/* end Actions */}
+        {/* begin Actions */}
+        <ContentRoute path="/Security/actions/new" component={ActionEdit} />
+        <ContentRoute
+          path="/Security/actions/:id/edit"
+          component={ActionEdit}
+        />
+        <ContentRoute path="/Security/actions" component={ActionsPage} />
+        {/* end Actions */}
 
-			{/* begin LoginHistories */}
-			<ContentRoute path="/Security/loginHistories/new" component={LoginHistoryEdit} />
-			<ContentRoute path="/Security/loginHistories/:id/edit" component={LoginHistoryEdit} />
-			<ContentRoute path="/Security/loginHistories" component={LoginHistoriesPage} />
-			{/* end LoginHistories */}
+        {/* begin LoginHistories */}
+        <ContentRoute
+          path="/Security/loginHistories/new"
+          component={LoginHistoryEdit}
+        />
+        <ContentRoute
+          path="/Security/loginHistories/:id/edit"
+          component={LoginHistoryEdit}
+        />
+        <ContentRoute
+          path="/Security/loginHistories"
+          component={LoginHistoriesPage}
+        />
+        {/* end LoginHistories */}
 
-			{/* begin LoginStatuses */}
-			<ContentRoute path="/Security/loginStatuses/new" component={LoginStatusEdit} />
-			<ContentRoute path="/Security/loginStatuses/:id/edit" component={LoginStatusEdit} />
-			<ContentRoute path="/Security/loginStatuses" component={LoginStatusesPage} />
-			{/* end LoginStatuses */}
+        {/* begin LoginStatuses */}
+        <ContentRoute
+          path="/Security/loginStatuses/new"
+          component={LoginStatusEdit}
+        />
+        <ContentRoute
+          path="/Security/loginStatuses/:id/edit"
+          component={LoginStatusEdit}
+        />
+        <ContentRoute
+          path="/Security/loginStatuses"
+          component={LoginStatusesPage}
+        />
+        {/* end LoginStatuses */}
 
-			{/* begin RolePermissionses */}
-			<ContentRoute path="/Security/rolePermissionses/new" component={RolePermissionsEdit} />
-			<ContentRoute path="/Security/rolePermissionses/:id/edit" component={RolePermissionsEdit} />
-			<ContentRoute path="/Security/rolePermissionses" component={RolePermissionsesPage} />
-			{/* end RolePermissionses */}
+        {/* begin RolePermissionses */}
+        <ContentRoute
+          path="/Security/rolePermissionses/new"
+          component={RolePermissionsEdit}
+        />
+        <ContentRoute
+          path="/Security/rolePermissionses/:id/edit"
+          component={RolePermissionsEdit}
+        />
+        <ContentRoute
+          path="/Security/rolePermissionses"
+          component={RolePermissionsesPage}
+        />
+        {/* end RolePermissionses */}
 
-			{/* begin Roleses */}
-			<ContentRoute path="/Security/roleses/new" component={RolesEdit} />
-			<ContentRoute path="/Security/roleses/:id/edit" component={RolesEdit} />
-			<ContentRoute path="/Security/roleses" component={RolesesPage} />
-			{/* end Roleses */}
+        {/* begin Roleses */}
+        <ContentRoute path="/Security/roleses/new" component={RolesEdit} />
+        <ContentRoute path="/Security/roleses/:id/edit" component={RolesEdit} />
+        <ContentRoute path="/Security/roleses" component={RolesesPage} />
+        {/* end Roleses */}
 
-			{/* begin ServiceActionses */}
-			<ContentRoute path="/Security/serviceActionses/new" component={ServiceActionsEdit} />
-			<ContentRoute path="/Security/serviceActionses/:id/edit" component={ServiceActionsEdit} />
-			<ContentRoute path="/Security/serviceActionses" component={ServiceActionsesPage} />
-			{/* end ServiceActionses */}
+        {/* begin ServiceActionses */}
+        <ContentRoute
+          path="/Security/serviceActionses/new"
+          component={ServiceActionsEdit}
+        />
+        <ContentRoute
+          path="/Security/serviceActionses/:id/edit"
+          component={ServiceActionsEdit}
+        />
+        <ContentRoute
+          path="/Security/serviceActionses"
+          component={ServiceActionsesPage}
+        />
+        {/* end ServiceActionses */}
 
-			{/* begin ServiceItems */}
-			<ContentRoute path="/Security/serviceItems/new" component={ServiceItemEdit} />
-			<ContentRoute path="/Security/serviceItems/:id/edit" component={ServiceItemEdit} />
-			<ContentRoute path="/Security/serviceItems" component={ServiceItemsPage} />
-			{/* end ServiceItems */}
+        {/* begin ServiceItems */}
+        <ContentRoute
+          path="/Security/serviceItems/new"
+          component={ServiceItemEdit}
+        />
+        <ContentRoute
+          path="/Security/serviceItems/:id/edit"
+          component={ServiceItemEdit}
+        />
+        <ContentRoute
+          path="/Security/serviceItems"
+          component={ServiceItemsPage}
+        />
+        {/* end ServiceItems */}
 
-			{/* begin Serviceses */}
-			<ContentRoute path="/Security/serviceses/new" component={ServicesEdit} />
-			<ContentRoute path="/Security/serviceses/:id/edit" component={ServicesEdit} />
-			<ContentRoute path="/Security/serviceses" component={ServicesesPage} />
-			{/* end Serviceses */}
+        {/* begin Serviceses */}
+        <ContentRoute
+          path="/Security/serviceses/new"
+          component={ServicesEdit}
+        />
+        <ContentRoute
+          path="/Security/serviceses/:id/edit"
+          component={ServicesEdit}
+        />
+        <ContentRoute path="/Security/serviceses" component={ServicesesPage} />
+        {/* end Serviceses */}
 
-			{/* begin Users */}
-			<ContentRoute path="/Security/users/new" component={UserEdit} />
-			<ContentRoute path="/Security/users/:id/edit" component={UserEdit} />
-			<ContentRoute path="/Security/users" component={UsersPage} />
-			{/* end Users */}
+        {/* begin Users */}
+        <ContentRoute path="/Security/users/new" component={UserEdit} />
+        <ContentRoute path="/Security/users/:id/edit" component={UserEdit} />
+        <ContentRoute path="/Security/users" component={UsersPage} />
+        {/* end Users */}
 
-			{/* begin UserInRoleses */}
-			<ContentRoute path="/Security/userInRoleses/new" component={UserInRolesEdit} />
-			<ContentRoute path="/Security/userInRoleses/:id/edit" component={UserInRolesEdit} />
-			<ContentRoute path="/Security/userInRoleses" component={UserInRolesesPage} />
-			{/* end UserInRoleses */}
+        {/* begin UserInRoleses */}
+        <ContentRoute
+          path="/Security/userInRoleses/new"
+          component={UserInRolesEdit}
+        />
+        <ContentRoute
+          path="/Security/userInRoleses/:id/edit"
+          component={UserInRolesEdit}
+        />
+        <ContentRoute
+          path="/Security/userInRoleses"
+          component={UserInRolesesPage}
+        />
+        {/* end UserInRoleses */}
 
-			{/* begin UserPermissions */}
-			<ContentRoute path="/Security/userPermissions/new" component={UserPermissionEdit} />
-			<ContentRoute path="/Security/userPermissions/:id/edit" component={UserPermissionEdit} />
-			<ContentRoute path="/Security/userPermissions" component={UserPermissionsPage} />
-			{/* end UserPermissions */}
+        {/* begin UserPermissions */}
+        <ContentRoute
+          path="/Security/userPermissions/new"
+          component={UserPermissionEdit}
+        />
+        <ContentRoute
+          path="/Security/userPermissions/:id/edit"
+          component={UserPermissionEdit}
+        />
+        <ContentRoute
+          path="/Security/userPermissions"
+          component={UserPermissionsPage}
+        />
+        {/* end UserPermissions */}
 
-			{/* begin UserServiceItems */}
-			<ContentRoute path="/Security/userServiceItems/new" component={UserServiceItemEdit} />
-			<ContentRoute path="/Security/userServiceItems/:id/edit" component={UserServiceItemEdit} />
-			<ContentRoute path="/Security/userServiceItems" component={UserServiceItemsPage} />
-			{/* end UserServiceItems */}
-
+        {/* begin UserServiceItems */}
+        <ContentRoute
+          path="/Security/userServiceItems/new"
+          component={UserServiceItemEdit}
+        />
+        <ContentRoute
+          path="/Security/userServiceItems/:id/edit"
+          component={UserServiceItemEdit}
+        />
+        <ContentRoute
+          path="/Security/userServiceItems"
+          component={UserServiceItemsPage}
+        />
+        {/* end UserServiceItems */}
       </Switch>
     </Suspense>
   );

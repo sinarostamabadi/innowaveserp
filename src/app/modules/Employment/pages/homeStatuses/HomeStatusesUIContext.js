@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { HomeStatusModel } from "../../../../../core/_models/Employment/HomeStatusModel";
@@ -30,7 +29,7 @@ export function HomeStatusesUIProvider({ homeStatusesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -41,11 +40,16 @@ export function HomeStatusesUIProvider({ homeStatusesUIEvents, children }) {
     newHomeStatusButtonClick: homeStatusesUIEvents.newHomeStatusButtonClick,
     openEditHomeStatusPage: homeStatusesUIEvents.openEditHomeStatusPage,
     openDeleteHomeStatusDialog: homeStatusesUIEvents.openDeleteHomeStatusDialog,
-    openDeleteHomeStatusesDialog: homeStatusesUIEvents.openDeleteHomeStatusesDialog,
-    openFetchHomeStatusesDialog: homeStatusesUIEvents.openFetchHomeStatusesDialog,
-    openUpdateHomeStatusesStatusDialog: homeStatusesUIEvents.openUpdateHomeStatusesStatusDialog,
+    openDeleteHomeStatusesDialog:
+      homeStatusesUIEvents.openDeleteHomeStatusesDialog,
+    openFetchHomeStatusesDialog:
+      homeStatusesUIEvents.openFetchHomeStatusesDialog,
+    openUpdateHomeStatusesStatusDialog:
+      homeStatusesUIEvents.openUpdateHomeStatusesStatusDialog,
   };
   return (
-    <HomeStatusesUIContext.Provider value={value}>{children}</HomeStatusesUIContext.Provider>
+    <HomeStatusesUIContext.Provider value={value}>
+      {children}
+    </HomeStatusesUIContext.Provider>
   );
 }

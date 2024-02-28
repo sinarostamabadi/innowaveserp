@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { InquiryModel } from "../../../../../core/_models/PurchaseOrder/InquiryModel";
@@ -30,7 +29,7 @@ export function InquiriesUIProvider({ inquiriesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function InquiriesUIProvider({ inquiriesUIEvents, children }) {
     openDeleteInquiryDialog: inquiriesUIEvents.openDeleteInquiryDialog,
     openDeleteInquiriesDialog: inquiriesUIEvents.openDeleteInquiriesDialog,
     openFetchInquiriesDialog: inquiriesUIEvents.openFetchInquiriesDialog,
-    openUpdateInquiriesStatusDialog: inquiriesUIEvents.openUpdateInquiriesStatusDialog,
+    openUpdateInquiriesStatusDialog:
+      inquiriesUIEvents.openUpdateInquiriesStatusDialog,
   };
   return (
-    <InquiriesUIContext.Provider value={value}>{children}</InquiriesUIContext.Provider>
+    <InquiriesUIContext.Provider value={value}>
+      {children}
+    </InquiriesUIContext.Provider>
   );
 }

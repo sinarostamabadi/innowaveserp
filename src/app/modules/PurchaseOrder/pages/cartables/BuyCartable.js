@@ -13,9 +13,18 @@ import {
   PleaseWaitMessage,
   sortCaret,
 } from "../../../../../core/_helpers";
-import {ActionsColumnFormatter} from "./actions/ActionsColumnFormatter";
-import {DateFaColumnFormatter, MoneyColumnFormatter} from "../../../../../core/_formatters";
-import { Pagination, Card, CardBody, CardHeader, CardHeaderToolbar } from "../../../../../core/_partials/controls";
+import { ActionsColumnFormatter } from "./actions/ActionsColumnFormatter";
+import {
+  DateFaColumnFormatter,
+  MoneyColumnFormatter,
+} from "../../../../../core/_formatters";
+import {
+  Pagination,
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderToolbar,
+} from "../../../../../core/_partials/controls";
 import { useBuyRequestsUIContext } from "../buyRequests/BuyRequestsUIContext";
 import { BuyRequestDetailModel } from "../../../../../core/_models/PurchaseOrder/BuyRequestDetailModel";
 import {
@@ -25,21 +34,26 @@ import {
 import { useTranslation } from "react-i18next";
 import { setStorage } from "../../../../../core/_helpers";
 
-export default function BuyCartable({
-  history
-}) {
+export default function BuyCartable({ history }) {
   const { t } = useTranslation();
   const defaultFilter = {
     Property: "BuyRequestStatusId",
     Operation: 5,
-    Values: ["1"]
+    Values: ["1"],
   };
   const [ids, setIds] = useState([]);
   const [entities, setEntities] = useState([]);
   const [totalCount, setTotalCount] = useState([]);
   const [listLoading, setListLoading] = useState(false);
-  const configs = getConfig(BuyRequestDetailModel, "BuyRequestDetailId", "desc");
-  const [queryParams, setQueryParams] = useState({...configs.initialFilter, Filters: [defaultFilter]});
+  const configs = getConfig(
+    BuyRequestDetailModel,
+    "BuyRequestDetailId",
+    "desc"
+  );
+  const [queryParams, setQueryParams] = useState({
+    ...configs.initialFilter,
+    Filters: [defaultFilter],
+  });
   const fieldKey = getFields(BuyRequestDetailModel);
   const fields = BuyRequestDetailModel;
 
@@ -47,21 +61,23 @@ export default function BuyCartable({
   useEffect(() => {
     setListLoading(true);
 
-    axios.post("BuyRequestDetail/get", {
-      Filters: [], //{ Property: "FullNameFa", Operation: 7, Values: [query] }
-      OrderBy: "BuyRequestDetailId asc",
-      PageNumber: 1,
-      PageSize: 10,
-    })
-    .then(({ data }) => {
-      setListLoading(false);
-      setEntities(data.Items);
-      setTotalCount(data.TotalCount);
-    }).catch(()=> {
-      setListLoading(false);
-    });
+    axios
+      .post("BuyRequestDetail/get", {
+        Filters: [], //{ Property: "FullNameFa", Operation: 7, Values: [query] }
+        OrderBy: "BuyRequestDetailId asc",
+        PageNumber: 1,
+        PageSize: 10,
+      })
+      .then(({ data }) => {
+        setListLoading(false);
+        setEntities(data.Items);
+        setTotalCount(data.TotalCount);
+      })
+      .catch(() => {
+        setListLoading(false);
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [entities.length , dispatch]);
+  }, [entities.length, dispatch]);
 
   useEffect(() => {
     console.log("ids > ", ids);
@@ -144,15 +160,15 @@ export default function BuyCartable({
     <>
       <Card>
         <CardHeader title={t("Common.BuyCartable")}>
-        <CardHeaderToolbar>
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={createBuyByRequestDetail}
-          >
-            {t("Common.Register")} {' '} {t("Buy.Entity")}
-          </button>
-        </CardHeaderToolbar>
+          <CardHeaderToolbar>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={createBuyByRequestDetail}
+            >
+              {t("Common.Register")} {t("Buy.Entity")}
+            </button>
+          </CardHeaderToolbar>
         </CardHeader>
         <CardBody>
           <PaginationProvider pagination={paginationFactory(paginationOptions)}>
@@ -177,7 +193,7 @@ export default function BuyCartable({
                       entities,
                       ids: ids,
                       setIds: setIds,
-                      keyField: configs.id
+                      keyField: configs.id,
                     })}
                     {...paginationTableProps}
                   >

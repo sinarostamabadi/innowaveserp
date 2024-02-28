@@ -31,13 +31,13 @@ export const creditsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCreditById  
+    // getCreditById
     creditFetched: (state, action) => {
       state.actionsLoading = false;
       state.creditForEdit = action.payload.creditForEdit;
       state.error = null;
     },
-    // findCredits  
+    // findCredits
     creditsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -45,13 +45,13 @@ export const creditsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCredit  
+    // createCredit
     creditCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCredit  
+    // updateCredit
     creditUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -62,23 +62,23 @@ export const creditsSlice = createSlice({
         return entity;
       });
     },
-    // deleteCredit  
+    // deleteCredit
     creditDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CreditId !== action.payload.CreditId  
+        (el) => el.CreditId !== action.payload.CreditId
       );
     },
-    // deleteCredits  
+    // deleteCredits
     creditsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CreditId)  
+        (el) => !action.payload.ids.includes(el.CreditId)
       );
     },
-    // creditsUpdateState  
+    // creditsUpdateState
     creditsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

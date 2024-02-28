@@ -57,7 +57,7 @@ export function InquiryEdit({
     if (!!id) {
       dispatch(actions.fetchInquiry(id)).then((res) => {
         setEditMode(true);
-      });;
+      });
     }
   }, [id, dispatch]);
 
@@ -76,8 +76,12 @@ export function InquiryEdit({
   }, [inquiryForEdit, id]);
 
   const saveInquiry = (values) => {
-    const PersonId = values.PersonId[0] ? values.PersonId[0].PersonId : values.Person.PersonId;
-    const InquiryStatusId = values.InquiryStatusId[0] ? values.InquiryStatusId[0].InquiryStatusId : values.InquiryStatus.InquiryStatusId;
+    const PersonId = values.PersonId[0]
+      ? values.PersonId[0].PersonId
+      : values.Person.PersonId;
+    const InquiryStatusId = values.InquiryStatusId[0]
+      ? values.InquiryStatusId[0].InquiryStatusId
+      : values.InquiryStatus.InquiryStatusId;
     const newValue = {
       InquiryId: values.InquiryId,
       PersonId,
@@ -89,11 +93,11 @@ export function InquiryEdit({
         .then((arg) => {
           backToInquiriesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateInquiry(id, newValue))
         .then(() => backToInquiriesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

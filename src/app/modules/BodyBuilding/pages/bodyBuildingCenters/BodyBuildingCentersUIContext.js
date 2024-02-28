@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BodyBuildingCenterModel } from "../../../../../core/_models/BodyBuilding/BodyBuildingCenterModel";
@@ -10,9 +9,13 @@ export function useBodyBuildingCentersUIContext() {
   return useContext(BodyBuildingCentersUIContext);
 }
 
-export const BodyBuildingCentersUIConsumer = BodyBuildingCentersUIContext.Consumer;
+export const BodyBuildingCentersUIConsumer =
+  BodyBuildingCentersUIContext.Consumer;
 
-export function BodyBuildingCentersUIProvider({ bodyBuildingCentersUIEvents, children }) {
+export function BodyBuildingCentersUIProvider({
+  bodyBuildingCentersUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(BodyBuildingCenterModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function BodyBuildingCentersUIProvider({ bodyBuildingCentersUIEvents, chi
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function BodyBuildingCentersUIProvider({ bodyBuildingCentersUIEvents, chi
     setIds,
     setQueryParams,
     dataModel: BodyBuildingCenterModel,
-    newBodyBuildingCenterButtonClick: bodyBuildingCentersUIEvents.newBodyBuildingCenterButtonClick,
-    openEditBodyBuildingCenterPage: bodyBuildingCentersUIEvents.openEditBodyBuildingCenterPage,
-    openDeleteBodyBuildingCenterDialog: bodyBuildingCentersUIEvents.openDeleteBodyBuildingCenterDialog,
-    openDeleteBodyBuildingCentersDialog: bodyBuildingCentersUIEvents.openDeleteBodyBuildingCentersDialog,
-    openFetchBodyBuildingCentersDialog: bodyBuildingCentersUIEvents.openFetchBodyBuildingCentersDialog,
-    openUpdateBodyBuildingCentersStatusDialog: bodyBuildingCentersUIEvents.openUpdateBodyBuildingCentersStatusDialog,
+    newBodyBuildingCenterButtonClick:
+      bodyBuildingCentersUIEvents.newBodyBuildingCenterButtonClick,
+    openEditBodyBuildingCenterPage:
+      bodyBuildingCentersUIEvents.openEditBodyBuildingCenterPage,
+    openDeleteBodyBuildingCenterDialog:
+      bodyBuildingCentersUIEvents.openDeleteBodyBuildingCenterDialog,
+    openDeleteBodyBuildingCentersDialog:
+      bodyBuildingCentersUIEvents.openDeleteBodyBuildingCentersDialog,
+    openFetchBodyBuildingCentersDialog:
+      bodyBuildingCentersUIEvents.openFetchBodyBuildingCentersDialog,
+    openUpdateBodyBuildingCentersStatusDialog:
+      bodyBuildingCentersUIEvents.openUpdateBodyBuildingCentersStatusDialog,
   };
   return (
-    <BodyBuildingCentersUIContext.Provider value={value}>{children}</BodyBuildingCentersUIContext.Provider>
+    <BodyBuildingCentersUIContext.Provider value={value}>
+      {children}
+    </BodyBuildingCentersUIContext.Provider>
   );
 }

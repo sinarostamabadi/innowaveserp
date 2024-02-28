@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BuySettlementTypeModel } from "../../../../../core/_models/PurchaseOrder/BuySettlementTypeModel";
@@ -10,9 +9,13 @@ export function useBuySettlementTypesUIContext() {
   return useContext(BuySettlementTypesUIContext);
 }
 
-export const BuySettlementTypesUIConsumer = BuySettlementTypesUIContext.Consumer;
+export const BuySettlementTypesUIConsumer =
+  BuySettlementTypesUIContext.Consumer;
 
-export function BuySettlementTypesUIProvider({ buySettlementTypesUIEvents, children }) {
+export function BuySettlementTypesUIProvider({
+  buySettlementTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(BuySettlementTypeModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function BuySettlementTypesUIProvider({ buySettlementTypesUIEvents, child
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function BuySettlementTypesUIProvider({ buySettlementTypesUIEvents, child
     setIds,
     setQueryParams,
     dataModel: BuySettlementTypeModel,
-    newBuySettlementTypeButtonClick: buySettlementTypesUIEvents.newBuySettlementTypeButtonClick,
-    openEditBuySettlementTypePage: buySettlementTypesUIEvents.openEditBuySettlementTypePage,
-    openDeleteBuySettlementTypeDialog: buySettlementTypesUIEvents.openDeleteBuySettlementTypeDialog,
-    openDeleteBuySettlementTypesDialog: buySettlementTypesUIEvents.openDeleteBuySettlementTypesDialog,
-    openFetchBuySettlementTypesDialog: buySettlementTypesUIEvents.openFetchBuySettlementTypesDialog,
-    openUpdateBuySettlementTypesStatusDialog: buySettlementTypesUIEvents.openUpdateBuySettlementTypesStatusDialog,
+    newBuySettlementTypeButtonClick:
+      buySettlementTypesUIEvents.newBuySettlementTypeButtonClick,
+    openEditBuySettlementTypePage:
+      buySettlementTypesUIEvents.openEditBuySettlementTypePage,
+    openDeleteBuySettlementTypeDialog:
+      buySettlementTypesUIEvents.openDeleteBuySettlementTypeDialog,
+    openDeleteBuySettlementTypesDialog:
+      buySettlementTypesUIEvents.openDeleteBuySettlementTypesDialog,
+    openFetchBuySettlementTypesDialog:
+      buySettlementTypesUIEvents.openFetchBuySettlementTypesDialog,
+    openUpdateBuySettlementTypesStatusDialog:
+      buySettlementTypesUIEvents.openUpdateBuySettlementTypesStatusDialog,
   };
   return (
-    <BuySettlementTypesUIContext.Provider value={value}>{children}</BuySettlementTypesUIContext.Provider>
+    <BuySettlementTypesUIContext.Provider value={value}>
+      {children}
+    </BuySettlementTypesUIContext.Provider>
   );
 }

@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialUnitsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const unitsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getUnitById  
+    // getUnitById
     unitFetched: (state, action) => {
       state.actionsLoading = false;
       state.unitForEdit = action.payload.unitForEdit;
       state.error = null;
     },
-    // findUnits  
+    // findUnits
     unitsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const unitsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createUnit  
+    // createUnit
     unitCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateUnit  
+    // updateUnit
     unitUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const unitsSlice = createSlice({
         return entity;
       });
     },
-    // deleteUnit  
+    // deleteUnit
     unitDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.UnitId !== action.payload.UnitId  
+        (el) => el.UnitId !== action.payload.UnitId
       );
     },
-    // deleteUnits  
+    // deleteUnits
     unitsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.UnitId)  
+        (el) => !action.payload.ids.includes(el.UnitId)
       );
     },
-    // unitsUpdateState  
+    // unitsUpdateState
     unitsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -55,7 +55,9 @@ export function DocumentRequestEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("DocumentRequest.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("DocumentRequest.Entity");
 
     if (documentRequestForEdit && id) {
       _title = t("Common.Edit") + " " + documentRequestForEdit.TitleFa;
@@ -73,11 +75,11 @@ export function DocumentRequestEdit({
         .then((arg) => {
           backToDocumentRequestsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateDocumentRequest(id, values))
         .then(() => backToDocumentRequestsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

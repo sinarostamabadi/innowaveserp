@@ -17,7 +17,9 @@ export function EmployeeSpecialDatesPage({ history }) {
       history.push(`/employment/employeeSpecialDates/${id}/delete`);
     },
     openDeleteEmployeeSpecialDatesDialog: () => {
-      history.push(`/employment/employeeSpecialDates/deleteEmployeeSpecialDates`);
+      history.push(
+        `/employment/employeeSpecialDates/deleteEmployeeSpecialDates`
+      );
     },
     openFetchEmployeeSpecialDatesDialog: () => {
       history.push(`/employment/employeeSpecialDates/fetch`);
@@ -26,9 +28,11 @@ export function EmployeeSpecialDatesPage({ history }) {
       history.push("/employment/employeeSpecialDates/updateStatus");
     },
   };
-  
+
   return (
-    <EmployeeSpecialDatesUIProvider employeeSpecialDatesUIEvents={employeeSpecialDatesUIEvents}>
+    <EmployeeSpecialDatesUIProvider
+      employeeSpecialDatesUIEvents={employeeSpecialDatesUIEvents}
+    >
       <EmployeeSpecialDatesLoadingDialog />
       <Route path="/employment/employeeSpecialDates/:id/delete">
         {({ history, match }) => (

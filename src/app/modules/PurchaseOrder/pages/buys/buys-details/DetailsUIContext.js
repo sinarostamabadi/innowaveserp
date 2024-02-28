@@ -35,9 +35,10 @@ export const DetailsUIProvider = forwardRef(
           fn(
             details.map((d) => {
               let xx = {
-                BuyDetailId: d.BuyDetailId.toString().indexOf("temp") > -1
-                  ? null
-                  : d.BuyDetailId,
+                BuyDetailId:
+                  d.BuyDetailId.toString().indexOf("temp") > -1
+                    ? null
+                    : d.BuyDetailId,
                 ProductId: d.ProductId,
                 ProductUnitId: d.ProductUnitId,
                 Amount: d.Amount && +d.Amount,
@@ -135,18 +136,24 @@ export const DetailsUIProvider = forwardRef(
 
       updateBuy({
         DetailCount:
-          !!details && details.length > 0 && details.filter((x) => x.IsDeleted == false).length > 0 
+          !!details &&
+          details.length > 0 &&
+          details.filter((x) => x.IsDeleted == false).length > 0
             ? details.filter((x) => x.IsDeleted == false).length
             : 0,
         SumPrice:
-          !!details && details.length > 0 && details.filter((x) => x.IsDeleted == false).length > 0
+          !!details &&
+          details.length > 0 &&
+          details.filter((x) => x.IsDeleted == false).length > 0
             ? details
                 .filter((x) => x.IsDeleted == false)
                 .map((x) => +x.Amount * +x.Price)
                 .reduce((a, b) => a + b)
             : 0,
         SumPayable:
-          !!details && details.length > 0 && details.filter((x) => x.IsDeleted == false).length > 0 
+          !!details &&
+          details.length > 0 &&
+          details.filter((x) => x.IsDeleted == false).length > 0
             ? details
                 .filter((x) => x.IsDeleted == false)
                 .map(
@@ -210,9 +217,8 @@ export const DetailsUIProvider = forwardRef(
       setShowDeleteDetailDialog(false);
     };
 
-    const [showDeleteDetailsDialog, setShowDeleteDetailsDialog] = useState(
-      false
-    );
+    const [showDeleteDetailsDialog, setShowDeleteDetailsDialog] =
+      useState(false);
     const openDeleteDetailsDialog = () => {
       setShowDeleteDetailsDialog(true);
     };

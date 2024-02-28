@@ -10,7 +10,11 @@ export const ActionsColumnFormatter = (
   { openEditContractPage, openDeleteContractDialog, openShowContractDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="contracts-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="contracts-edit-tooltip">{t("Common.Edit")}</Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm"
         onClick={() => openEditContractPage(row.BodyBuildingContractId)}
@@ -24,7 +28,9 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="contracts-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="contracts-delete-tooltip">{t("Common.Delete")}</Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm mr-1"
@@ -35,7 +41,9 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="contracts-delete-tooltip">{t("Common.Show")}</Tooltip>}
+      overlay={
+        <Tooltip id="contracts-delete-tooltip">{t("Common.Show")}</Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-info btn-sm mr-1"

@@ -45,7 +45,8 @@ export function FutsalReserveDateEdit({
   const { actionsLoading, futsalReserveDateForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.futsalReserveDates.actionsLoading,
-      futsalReserveDateForEdit: state.futsalReserveDates.futsalReserveDateForEdit,
+      futsalReserveDateForEdit:
+        state.futsalReserveDates.futsalReserveDateForEdit,
       error: state.futsalReserveDates.error,
     }),
     shallowEqual
@@ -56,7 +57,9 @@ export function FutsalReserveDateEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("FutsalReserveDate.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("FutsalReserveDate.Entity");
 
     if (futsalReserveDateForEdit && id) {
       _title = t("Common.Edit") + " " + futsalReserveDateForEdit.TitleFa;

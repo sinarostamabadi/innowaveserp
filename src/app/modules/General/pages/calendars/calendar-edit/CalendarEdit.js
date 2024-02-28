@@ -1,4 +1,4 @@
-/* eslint-disable no-script-url,jsx-a11y/anchor-is-valid,jsx-a11y/role-supports-aria-props */  
+/* eslint-disable no-script-url,jsx-a11y/anchor-is-valid,jsx-a11y/role-supports-aria-props */
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { shallowEqual, useSelector } from "react-redux";
@@ -12,7 +12,7 @@ import {
 import { CalendarEditForm } from "./CalendarEditForm";
 import { useSubheader } from "../../../../../../core/layout";
 import { ModalProgressBar } from "../../../../../../core/_partials/controls";
-import { useReactToPrint } from 'react-to-print';
+import { useReactToPrint } from "react-to-print";
 const initCalendar = {
   CalendarId: undefined,
   TitleFa: "",
@@ -24,9 +24,9 @@ export function CalendarEdit({
     params: { id },
   },
 }) {
-  // Subheader  
+  // Subheader
   const suhbeader = useSubheader();
-  // Tabs  
+  // Tabs
   const [tab, setTab] = useState("basic");
   const [title, setTitle] = useState("");
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ export function CalendarEdit({
       actionsLoading: state.calendars.actionsLoading,
       calendarForEdit: state.calendars.calendarForEdit,
     }),
-    shallowEqual  
+    shallowEqual
   );
   useEffect(() => {
     dispatch(actions.fetchCalendar(id));
@@ -48,7 +48,7 @@ export function CalendarEdit({
     }
     setTitle(_title);
     suhbeader.setTitle(_title);
-    // eslint-disable-next-line react-hooks/exhaustive-deps  
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [calendarForEdit, id]);
   const saveCalendar = (values) => {
     if (!id) {
@@ -57,7 +57,7 @@ export function CalendarEdit({
       });
     } else {
       dispatch(actions.updateCalendar(values)).then(() =>
-        backToCalendarsList()  
+        backToCalendarsList()
       );
     }
   };
@@ -75,50 +75,47 @@ export function CalendarEdit({
       {actionsLoading && <ModalProgressBar />}
       <CardHeader title={title}>
         <CardHeaderToolbar>
-          <button  
-            type="button"  
+          <button
+            type="button"
             onClick={backToCalendarsList}
-            className="btn btn-light"  
+            className="btn btn-light"
           >
-            <i className="fa fa-arrow-left"></i> Exit  
+            <i className="fa fa-arrow-left"></i> Exit
           </button>
           {`  `}
           <button className="btn btn-light ml-2">
-            <i className="fa fa-redo"></i> ReValue  
+            <i className="fa fa-redo"></i> ReValue
           </button>
           {`  `}
-          <button  
-            type="submit"  
-            className="btn btn-light ml-2"  
-          >
-            <i className="fa fa-print"></i> PrintInfo  
+          <button type="submit" className="btn btn-light ml-2">
+            <i className="fa fa-print"></i> PrintInfo
           </button>
           {`  `}
-          <button  
-            type="submit"  
-            className="btn btn-primary ml-2"  
+          <button
+            type="submit"
+            className="btn btn-primary ml-2"
             onClick={saveCalendarClick}
           >
-            <i className="fa fa-save"></i> SaveInfo  
+            <i className="fa fa-save"></i> SaveInfo
           </button>
         </CardHeaderToolbar>
       </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>
-            <a  
+            <a
               className={`nav-link ${tab === "basic" && "active"}`}
-              data-toggle="tab"  
-              role="tab"  
+              data-toggle="tab"
+              role="tab"
               aria-selected={(tab === "basic").toString()}
             >
-              MenuName  
+              MenuName
             </a>
           </li>
         </ul>
         <div className="mt-5">
           {tab === "basic" && (
-            <CalendarEditForm  
+            <CalendarEditForm
               actionsLoading={actionsLoading}
               calendar={calendarForEdit || initCalendar}
               btnRef={btnRef}

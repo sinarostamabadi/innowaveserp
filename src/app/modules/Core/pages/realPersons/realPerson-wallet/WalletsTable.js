@@ -74,7 +74,7 @@ export function WalletsTable() {
     sizePerPage: uiProps.queryParams.PageSize,
     page: uiProps.queryParams.PageNumber,
   };
-  
+
   return (
     <>
       <PaginationProvider pagination={paginationFactory(paginationOptions)}>

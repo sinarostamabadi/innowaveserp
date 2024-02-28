@@ -9,13 +9,25 @@ export const ActionsColumnFormatter = (
   cellContent,
   row,
   rowIndex,
-  { openEditEmployeeMonthlyCalculatedPage, openDeleteEmployeeMonthlyCalculatedDialog, t }
+  {
+    openEditEmployeeMonthlyCalculatedPage,
+    openDeleteEmployeeMonthlyCalculatedDialog,
+    t,
+  }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="employeeMonthlyCalculateds-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="employeeMonthlyCalculateds-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-        onClick={() => openEditEmployeeMonthlyCalculatedPage(row.EmployeeMonthlyCalculatedId)}
+        onClick={() =>
+          openEditEmployeeMonthlyCalculatedPage(row.EmployeeMonthlyCalculatedId)
+        }
       >
         <span className="svg-icon svg-icon-md svg-icon-primary">
           <SVG
@@ -26,11 +38,19 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="employeeMonthlyCalculateds-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="employeeMonthlyCalculateds-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteEmployeeMonthlyCalculatedDialog(row.EmployeeMonthlyCalculatedId)}
+        onClick={() =>
+          openDeleteEmployeeMonthlyCalculatedDialog(
+            row.EmployeeMonthlyCalculatedId
+          )
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

@@ -3,7 +3,11 @@ import { ButtonGroup } from "react-bootstrap";
 import { Formik, Form, Field } from "formik";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
-import { Input, DatePickerField, SuggestionField } from "src/core/_partials/controls";
+import {
+  Input,
+  DatePickerField,
+  SuggestionField,
+} from "src/core/_partials/controls";
 import { getAll } from "../../../../_redux/cashTransactionTypes/cashTransactionTypesCrud";
 import { suggest } from "../../../../_redux/coupons/couponsCrud";
 import { CouponTools } from "../Dependency";
@@ -33,13 +37,17 @@ export function Coupon({ data, setData, receivable, goBack }) {
     });
   });
 
-  let cashDocument = {...CouponTools.Model, Price: receivable};
+  let cashDocument = { ...CouponTools.Model, Price: receivable };
 
   function saveCashDocument(dirty) {
-    let obj = {...CouponTools.Clean(dirty)};
-    let tranObj = {...CouponTools.CleanTran(dirty, t)};
+    let obj = { ...CouponTools.Clean(dirty) };
+    let tranObj = { ...CouponTools.CleanTran(dirty, t) };
 
-    setData({ ...data, CouponTransactions: [...data.CouponTransactions, obj], Transactions: [...data.Transactions, tranObj] });
+    setData({
+      ...data,
+      CouponTransactions: [...data.CouponTransactions, obj],
+      Transactions: [...data.Transactions, tranObj],
+    });
     goBack();
   }
 
@@ -84,10 +92,8 @@ export function Coupon({ data, setData, receivable, goBack }) {
                     placeholder={t("msg.SelectBySuggestion")}
                     handleSearch={handleSuggestionCoupon}
                     handleOnChange={(val, obj) => {
-                      if(!!obj)
-                        setFieldValue("Price", obj.Price)
-                      else
-                      setFieldValue("Price", null)
+                      if (!!obj) setFieldValue("Price", obj.Price);
+                      else setFieldValue("Price", null);
                     }}
                     defaultValue={
                       cashDocument && cashDocument.Coupon
@@ -108,9 +114,9 @@ export function Coupon({ data, setData, receivable, goBack }) {
                     )}
                   />
                 </div>
-                </div>
+              </div>
               <div className="row mt-2">
-              <div className="col-6">
+                <div className="col-6">
                   <Field
                     name="Price"
                     type="number"
@@ -141,7 +147,7 @@ export function Coupon({ data, setData, receivable, goBack }) {
               </div>
               <div className="row mt-5">
                 <div className="col ">
-                <ButtonGroup className="mr-2" aria-label="Second group">
+                  <ButtonGroup className="mr-2" aria-label="Second group">
                     <button
                       type="button"
                       onClick={goBack}
@@ -157,7 +163,8 @@ export function Coupon({ data, setData, receivable, goBack }) {
                         handleSubmit();
                       }}
                     >
-                      <i className="fa fa-arrow-down"></i> {t("CashDocument.Receipt")}
+                      <i className="fa fa-arrow-down"></i>{" "}
+                      {t("CashDocument.Receipt")}
                     </button>
                     {/* <button
                       type="button"

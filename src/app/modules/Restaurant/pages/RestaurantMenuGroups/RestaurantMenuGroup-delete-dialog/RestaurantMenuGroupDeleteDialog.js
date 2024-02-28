@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -48,7 +47,11 @@ export function RestaurantMenuGroupDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteRestaurantMenuGroup(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchRestaurantMenuGroups(restaurantMenuGroupsUIProps.queryParams));
+        dispatch(
+          actions.fetchRestaurantMenuGroups(
+            restaurantMenuGroupsUIProps.queryParams
+          )
+        );
         // clear selections list
         restaurantMenuGroupsUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +70,12 @@ export function RestaurantMenuGroupDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("RestaurantMenuGroup.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("RestaurantMenuGroup.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

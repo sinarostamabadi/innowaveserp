@@ -26,7 +26,7 @@ export function TownshipsPage({ history }) {
       history.push("/general/townships/updateStatus");
     },
   };
-  
+
   return (
     <TownshipsUIProvider townshipsUIEvents={townshipsUIEvents}>
       <TownshipsLoadingDialog />

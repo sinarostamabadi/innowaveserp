@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function ImportAccountFloatingTempsTable() {
   const { t } = useTranslation();
 
-  const importAccountFloatingTempsUIContext = useImportAccountFloatingTempsUIContext();
+  const importAccountFloatingTempsUIContext =
+    useImportAccountFloatingTempsUIContext();
 
   const importAccountFloatingTempsUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function ImportAccountFloatingTempsTable() {
       setIds: importAccountFloatingTempsUIContext.setIds,
       queryParams: importAccountFloatingTempsUIContext.queryParams,
       setQueryParams: importAccountFloatingTempsUIContext.setQueryParams,
-      openEditImportAccountFloatingTempPage: importAccountFloatingTempsUIContext.openEditImportAccountFloatingTempPage,
-      openDeleteImportAccountFloatingTempDialog: importAccountFloatingTempsUIContext.openDeleteImportAccountFloatingTempDialog,
+      openEditImportAccountFloatingTempPage:
+        importAccountFloatingTempsUIContext.openEditImportAccountFloatingTempPage,
+      openDeleteImportAccountFloatingTempDialog:
+        importAccountFloatingTempsUIContext.openDeleteImportAccountFloatingTempDialog,
     };
   }, [importAccountFloatingTempsUIContext]);
 
@@ -50,7 +53,11 @@ export function ImportAccountFloatingTempsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     importAccountFloatingTempsUIProps.setIds([]);
-    dispatch(actions.fetchImportAccountFloatingTemps(importAccountFloatingTempsUIProps.queryParams));
+    dispatch(
+      actions.fetchImportAccountFloatingTemps(
+        importAccountFloatingTempsUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [importAccountFloatingTempsUIProps.queryParams, dispatch]);
 
@@ -72,8 +79,10 @@ export function ImportAccountFloatingTempsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditImportAccountFloatingTempPage: importAccountFloatingTempsUIProps.openEditImportAccountFloatingTempPage,
-        openDeleteImportAccountFloatingTempDialog: importAccountFloatingTempsUIProps.openDeleteImportAccountFloatingTempDialog,
+        openEditImportAccountFloatingTempPage:
+          importAccountFloatingTempsUIProps.openEditImportAccountFloatingTempPage,
+        openDeleteImportAccountFloatingTempDialog:
+          importAccountFloatingTempsUIProps.openDeleteImportAccountFloatingTempDialog,
         t: t,
       },
       classes: "text-right pr-0",

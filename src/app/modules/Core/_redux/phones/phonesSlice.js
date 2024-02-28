@@ -31,13 +31,13 @@ export const phonesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPhoneById  
+    // getPhoneById
     phoneFetched: (state, action) => {
       state.actionsLoading = false;
       state.phoneForEdit = action.payload.phoneForEdit;
       state.error = null;
     },
-    // findPhones  
+    // findPhones
     phonesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -45,13 +45,13 @@ export const phonesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPhone  
+    // createPhone
     phoneCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePhone  
+    // updatePhone
     phoneUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -62,23 +62,23 @@ export const phonesSlice = createSlice({
         return entity;
       });
     },
-    // deletePhone  
+    // deletePhone
     phoneDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PhoneId !== action.payload.PhoneId  
+        (el) => el.PhoneId !== action.payload.PhoneId
       );
     },
-    // deletePhones  
+    // deletePhones
     phonesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PhoneId)  
+        (el) => !action.payload.ids.includes(el.PhoneId)
       );
     },
-    // phonesUpdateState  
+    // phonesUpdateState
     phonesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

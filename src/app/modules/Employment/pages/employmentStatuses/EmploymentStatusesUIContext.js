@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmploymentStatusModel } from "../../../../../core/_models/Employment/EmploymentStatusModel";
@@ -10,9 +9,13 @@ export function useEmploymentStatusesUIContext() {
   return useContext(EmploymentStatusesUIContext);
 }
 
-export const EmploymentStatusesUIConsumer = EmploymentStatusesUIContext.Consumer;
+export const EmploymentStatusesUIConsumer =
+  EmploymentStatusesUIContext.Consumer;
 
-export function EmploymentStatusesUIProvider({ employmentStatusesUIEvents, children }) {
+export function EmploymentStatusesUIProvider({
+  employmentStatusesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(EmploymentStatusModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function EmploymentStatusesUIProvider({ employmentStatusesUIEvents, child
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function EmploymentStatusesUIProvider({ employmentStatusesUIEvents, child
     setIds,
     setQueryParams,
     dataModel: EmploymentStatusModel,
-    newEmploymentStatusButtonClick: employmentStatusesUIEvents.newEmploymentStatusButtonClick,
-    openEditEmploymentStatusPage: employmentStatusesUIEvents.openEditEmploymentStatusPage,
-    openDeleteEmploymentStatusDialog: employmentStatusesUIEvents.openDeleteEmploymentStatusDialog,
-    openDeleteEmploymentStatusesDialog: employmentStatusesUIEvents.openDeleteEmploymentStatusesDialog,
-    openFetchEmploymentStatusesDialog: employmentStatusesUIEvents.openFetchEmploymentStatusesDialog,
-    openUpdateEmploymentStatusesStatusDialog: employmentStatusesUIEvents.openUpdateEmploymentStatusesStatusDialog,
+    newEmploymentStatusButtonClick:
+      employmentStatusesUIEvents.newEmploymentStatusButtonClick,
+    openEditEmploymentStatusPage:
+      employmentStatusesUIEvents.openEditEmploymentStatusPage,
+    openDeleteEmploymentStatusDialog:
+      employmentStatusesUIEvents.openDeleteEmploymentStatusDialog,
+    openDeleteEmploymentStatusesDialog:
+      employmentStatusesUIEvents.openDeleteEmploymentStatusesDialog,
+    openFetchEmploymentStatusesDialog:
+      employmentStatusesUIEvents.openFetchEmploymentStatusesDialog,
+    openUpdateEmploymentStatusesStatusDialog:
+      employmentStatusesUIEvents.openUpdateEmploymentStatusesStatusDialog,
   };
   return (
-    <EmploymentStatusesUIContext.Provider value={value}>{children}</EmploymentStatusesUIContext.Provider>
+    <EmploymentStatusesUIContext.Provider value={value}>
+      {children}
+    </EmploymentStatusesUIContext.Provider>
   );
 }

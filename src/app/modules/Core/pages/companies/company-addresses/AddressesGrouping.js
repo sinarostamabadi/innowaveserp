@@ -7,10 +7,8 @@ export function AddressesGrouping() {
   const specsUIProps = useMemo(() => {
     return {
       ids: specsUIContext.ids,
-      openDeleteAddressesDialog:
-        specsUIContext.openDeleteAddressesDialog,
-      openFetchAddressesDialog:
-        specsUIContext.openFetchAddressesDialog,
+      openDeleteAddressesDialog: specsUIContext.openDeleteAddressesDialog,
+      openFetchAddressesDialog: specsUIContext.openFetchAddressesDialog,
     };
   }, [specsUIContext]);
 

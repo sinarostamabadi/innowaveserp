@@ -11,15 +11,16 @@ import {
   PleaseWaitMessage,
   sortCaret,
 } from "src/core/_helpers";
-import { MoneyColumnFormatter, TimeColumnFormatter, DateFaColumnFormatter } from "src/core/_formatters";
+import {
+  MoneyColumnFormatter,
+  TimeColumnFormatter,
+  DateFaColumnFormatter,
+} from "src/core/_formatters";
 import * as columnFormatters from "./column-formatters";
 import { Pagination } from "src/core/_partials/controls";
 import { useDiscountsUIContext } from "../DiscountsUIContext";
 import { BodyBuildingDiscountModel } from "src/core/_models/BodyBuilding/BodyBuildingDiscountModel";
-import {
-  getConfig,
-  getFields,
-} from "src/core/_models/ModelDescriber";
+import { getConfig, getFields } from "src/core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
 
 export function DiscountsTable() {
@@ -59,53 +60,53 @@ export function DiscountsTable() {
       dataField: "Title",
       text: t("BodyBuildingDiscount.Title"),
       sort: fields.Title.sortable,
-      sortCaret: sortCaret
+      sortCaret: sortCaret,
     },
     {
       dataField: "Person.FullNameFa",
       text: t("BodyBuildingDiscount.Person"),
       sort: fields.PersonId.sortable,
-      sortCaret: sortCaret
+      sortCaret: sortCaret,
     },
     {
       dataField: "PersonGroup.Title",
       text: t("BodyBuildingDiscount.PersonGroup"),
       sort: fields.PersonGroupId.sortable,
-      sortCaret: sortCaret
+      sortCaret: sortCaret,
     },
     {
       dataField: "BodyBuildingTimeSet.Title",
       text: t("BodyBuildingDiscount.BodyBuildingTimeSet"),
       sort: fields.BodyBuildingTimeSetId.sortable,
-      sortCaret: sortCaret
+      sortCaret: sortCaret,
     },
     {
       dataField: "FromDate",
       text: t("BodyBuildingDiscount.FromDate"),
       sort: fields.FromDate.sortable,
       sortCaret: sortCaret,
-      formatter: DateFaColumnFormatter
+      formatter: DateFaColumnFormatter,
     },
     {
       dataField: "ToDate",
       text: t("BodyBuildingDiscount.ToDate"),
       sort: fields.ToDate.sortable,
       sortCaret: sortCaret,
-      formatter: DateFaColumnFormatter
+      formatter: DateFaColumnFormatter,
     },
     {
       dataField: "FromTime",
       text: t("BodyBuildingDiscount.FromTime"),
       sort: fields.FromTime.sortable,
       sortCaret: sortCaret,
-      formatter: TimeColumnFormatter
+      formatter: TimeColumnFormatter,
     },
     {
       dataField: "ToTime",
       text: t("BodyBuildingDiscount.ToTime"),
       sort: fields.ToTime.sortable,
       sortCaret: sortCaret,
-      formatter: TimeColumnFormatter
+      formatter: TimeColumnFormatter,
     },
     {
       dataField: "BodyBuildingPack.Title",
@@ -149,7 +150,7 @@ export function DiscountsTable() {
     sizePerPage: discountsUIProps.queryParams.PageSize,
     page: discountsUIProps.queryParams.PageNumber,
   };
-  
+
   return (
     <>
       <PaginationProvider pagination={paginationFactory(paginationOptions)}>

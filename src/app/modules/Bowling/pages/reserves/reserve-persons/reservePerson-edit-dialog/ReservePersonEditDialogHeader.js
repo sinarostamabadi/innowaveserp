@@ -15,7 +15,7 @@ export function ReservePersonEditDialogHeader({ id }) {
   useEffect(() => {
     let _title = id ? "" : t("Common.Create") + " " + t("ReservePerson.Entity");
     if (id) {
-      _title = t("Common.Edit") + " " + t("ReservePerson.Entity") ;
+      _title = t("Common.Edit") + " " + t("ReservePerson.Entity");
     }
 
     setTitle(_title);

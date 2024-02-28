@@ -33,7 +33,8 @@ export function PoolDiscountsTable() {
       queryParams: poolDiscountsUIContext.queryParams,
       setQueryParams: poolDiscountsUIContext.setQueryParams,
       openEditPoolDiscountPage: poolDiscountsUIContext.openEditPoolDiscountPage,
-      openDeletePoolDiscountDialog: poolDiscountsUIContext.openDeletePoolDiscountDialog,
+      openDeletePoolDiscountDialog:
+        poolDiscountsUIContext.openDeletePoolDiscountDialog,
     };
   }, [poolDiscountsUIContext]);
 
@@ -73,7 +74,8 @@ export function PoolDiscountsTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditPoolDiscountPage: poolDiscountsUIProps.openEditPoolDiscountPage,
-        openDeletePoolDiscountDialog: poolDiscountsUIProps.openDeletePoolDiscountDialog,
+        openDeletePoolDiscountDialog:
+          poolDiscountsUIProps.openDeletePoolDiscountDialog,
         t: t,
       },
       classes: "text-right pr-0",

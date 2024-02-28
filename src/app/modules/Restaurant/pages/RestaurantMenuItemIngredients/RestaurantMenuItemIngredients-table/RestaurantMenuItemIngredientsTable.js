@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function RestaurantMenuItemIngredientsTable() {
   const { t } = useTranslation();
 
-  const restaurantMenuItemIngredientsUIContext = useRestaurantMenuItemIngredientsUIContext();
+  const restaurantMenuItemIngredientsUIContext =
+    useRestaurantMenuItemIngredientsUIContext();
 
   const restaurantMenuItemIngredientsUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function RestaurantMenuItemIngredientsTable() {
       setIds: restaurantMenuItemIngredientsUIContext.setIds,
       queryParams: restaurantMenuItemIngredientsUIContext.queryParams,
       setQueryParams: restaurantMenuItemIngredientsUIContext.setQueryParams,
-      openEditRestaurantMenuItemIngredientPage: restaurantMenuItemIngredientsUIContext.openEditRestaurantMenuItemIngredientPage,
-      openDeleteRestaurantMenuItemIngredientDialog: restaurantMenuItemIngredientsUIContext.openDeleteRestaurantMenuItemIngredientDialog,
+      openEditRestaurantMenuItemIngredientPage:
+        restaurantMenuItemIngredientsUIContext.openEditRestaurantMenuItemIngredientPage,
+      openDeleteRestaurantMenuItemIngredientDialog:
+        restaurantMenuItemIngredientsUIContext.openDeleteRestaurantMenuItemIngredientDialog,
     };
   }, [restaurantMenuItemIngredientsUIContext]);
 
@@ -50,7 +53,11 @@ export function RestaurantMenuItemIngredientsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     restaurantMenuItemIngredientsUIProps.setIds([]);
-    dispatch(actions.fetchRestaurantMenuItemIngredients(restaurantMenuItemIngredientsUIProps.queryParams));
+    dispatch(
+      actions.fetchRestaurantMenuItemIngredients(
+        restaurantMenuItemIngredientsUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restaurantMenuItemIngredientsUIProps.queryParams, dispatch]);
 
@@ -72,8 +79,10 @@ export function RestaurantMenuItemIngredientsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditRestaurantMenuItemIngredientPage: restaurantMenuItemIngredientsUIProps.openEditRestaurantMenuItemIngredientPage,
-        openDeleteRestaurantMenuItemIngredientDialog: restaurantMenuItemIngredientsUIProps.openDeleteRestaurantMenuItemIngredientDialog,
+        openEditRestaurantMenuItemIngredientPage:
+          restaurantMenuItemIngredientsUIProps.openEditRestaurantMenuItemIngredientPage,
+        openDeleteRestaurantMenuItemIngredientDialog:
+          restaurantMenuItemIngredientsUIProps.openDeleteRestaurantMenuItemIngredientDialog,
         t: t,
       },
       classes: "text-right pr-0",

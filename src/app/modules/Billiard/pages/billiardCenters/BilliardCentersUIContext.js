@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BilliardCenterModel } from "../../../../../core/_models/Billiard/BilliardCenterModel";
@@ -12,7 +11,10 @@ export function useBilliardCentersUIContext() {
 
 export const BilliardCentersUIConsumer = BilliardCentersUIContext.Consumer;
 
-export function BilliardCentersUIProvider({ billiardCentersUIEvents, children }) {
+export function BilliardCentersUIProvider({
+  billiardCentersUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(BilliardCenterModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function BilliardCentersUIProvider({ billiardCentersUIEvents, children })
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function BilliardCentersUIProvider({ billiardCentersUIEvents, children })
     setIds,
     setQueryParams,
     dataModel: BilliardCenterModel,
-    newBilliardCenterButtonClick: billiardCentersUIEvents.newBilliardCenterButtonClick,
-    openEditBilliardCenterPage: billiardCentersUIEvents.openEditBilliardCenterPage,
-    openDeleteBilliardCenterDialog: billiardCentersUIEvents.openDeleteBilliardCenterDialog,
-    openDeleteBilliardCentersDialog: billiardCentersUIEvents.openDeleteBilliardCentersDialog,
-    openFetchBilliardCentersDialog: billiardCentersUIEvents.openFetchBilliardCentersDialog,
-    openUpdateBilliardCentersStatusDialog: billiardCentersUIEvents.openUpdateBilliardCentersStatusDialog,
+    newBilliardCenterButtonClick:
+      billiardCentersUIEvents.newBilliardCenterButtonClick,
+    openEditBilliardCenterPage:
+      billiardCentersUIEvents.openEditBilliardCenterPage,
+    openDeleteBilliardCenterDialog:
+      billiardCentersUIEvents.openDeleteBilliardCenterDialog,
+    openDeleteBilliardCentersDialog:
+      billiardCentersUIEvents.openDeleteBilliardCentersDialog,
+    openFetchBilliardCentersDialog:
+      billiardCentersUIEvents.openFetchBilliardCentersDialog,
+    openUpdateBilliardCentersStatusDialog:
+      billiardCentersUIEvents.openUpdateBilliardCentersStatusDialog,
   };
   return (
-    <BilliardCentersUIContext.Provider value={value}>{children}</BilliardCentersUIContext.Provider>
+    <BilliardCentersUIContext.Provider value={value}>
+      {children}
+    </BilliardCentersUIContext.Provider>
   );
 }

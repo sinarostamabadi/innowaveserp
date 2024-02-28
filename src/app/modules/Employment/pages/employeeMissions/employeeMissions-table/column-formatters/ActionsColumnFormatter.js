@@ -12,7 +12,11 @@ export const ActionsColumnFormatter = (
   { openEditEmployeeMissionPage, openDeleteEmployeeMissionDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="employeeMissions-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="employeeMissions-edit-tooltip">{t("Common.Edit")}</Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditEmployeeMissionPage(row.EmployeeMissionId)}
@@ -26,7 +30,11 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="employeeMissions-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="employeeMissions-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"

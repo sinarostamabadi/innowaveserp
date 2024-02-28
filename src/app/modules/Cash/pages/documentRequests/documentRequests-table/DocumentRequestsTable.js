@@ -32,8 +32,10 @@ export function DocumentRequestsTable() {
       setIds: documentRequestsUIContext.setIds,
       queryParams: documentRequestsUIContext.queryParams,
       setQueryParams: documentRequestsUIContext.setQueryParams,
-      openEditDocumentRequestPage: documentRequestsUIContext.openEditDocumentRequestPage,
-      openDeleteDocumentRequestDialog: documentRequestsUIContext.openDeleteDocumentRequestDialog,
+      openEditDocumentRequestPage:
+        documentRequestsUIContext.openEditDocumentRequestPage,
+      openDeleteDocumentRequestDialog:
+        documentRequestsUIContext.openDeleteDocumentRequestDialog,
     };
   }, [documentRequestsUIContext]);
 
@@ -50,7 +52,9 @@ export function DocumentRequestsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     documentRequestsUIProps.setIds([]);
-    dispatch(actions.fetchDocumentRequests(documentRequestsUIProps.queryParams));
+    dispatch(
+      actions.fetchDocumentRequests(documentRequestsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [documentRequestsUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function DocumentRequestsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditDocumentRequestPage: documentRequestsUIProps.openEditDocumentRequestPage,
-        openDeleteDocumentRequestDialog: documentRequestsUIProps.openDeleteDocumentRequestDialog,
+        openEditDocumentRequestPage:
+          documentRequestsUIProps.openEditDocumentRequestPage,
+        openDeleteDocumentRequestDialog:
+          documentRequestsUIProps.openDeleteDocumentRequestDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { IODeviceTransactionTypeModel } from "../../../../../core/_models/Employment/IODeviceTransactionTypeModel";
@@ -10,9 +9,13 @@ export function useIODeviceTransactionTypesUIContext() {
   return useContext(IODeviceTransactionTypesUIContext);
 }
 
-export const IODeviceTransactionTypesUIConsumer = IODeviceTransactionTypesUIContext.Consumer;
+export const IODeviceTransactionTypesUIConsumer =
+  IODeviceTransactionTypesUIContext.Consumer;
 
-export function IODeviceTransactionTypesUIProvider({ iODeviceTransactionTypesUIEvents, children }) {
+export function IODeviceTransactionTypesUIProvider({
+  iODeviceTransactionTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(IODeviceTransactionTypeModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function IODeviceTransactionTypesUIProvider({ iODeviceTransactionTypesUIE
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function IODeviceTransactionTypesUIProvider({ iODeviceTransactionTypesUIE
     setIds,
     setQueryParams,
     dataModel: IODeviceTransactionTypeModel,
-    newIODeviceTransactionTypeButtonClick: iODeviceTransactionTypesUIEvents.newIODeviceTransactionTypeButtonClick,
-    openEditIODeviceTransactionTypePage: iODeviceTransactionTypesUIEvents.openEditIODeviceTransactionTypePage,
-    openDeleteIODeviceTransactionTypeDialog: iODeviceTransactionTypesUIEvents.openDeleteIODeviceTransactionTypeDialog,
-    openDeleteIODeviceTransactionTypesDialog: iODeviceTransactionTypesUIEvents.openDeleteIODeviceTransactionTypesDialog,
-    openFetchIODeviceTransactionTypesDialog: iODeviceTransactionTypesUIEvents.openFetchIODeviceTransactionTypesDialog,
-    openUpdateIODeviceTransactionTypesStatusDialog: iODeviceTransactionTypesUIEvents.openUpdateIODeviceTransactionTypesStatusDialog,
+    newIODeviceTransactionTypeButtonClick:
+      iODeviceTransactionTypesUIEvents.newIODeviceTransactionTypeButtonClick,
+    openEditIODeviceTransactionTypePage:
+      iODeviceTransactionTypesUIEvents.openEditIODeviceTransactionTypePage,
+    openDeleteIODeviceTransactionTypeDialog:
+      iODeviceTransactionTypesUIEvents.openDeleteIODeviceTransactionTypeDialog,
+    openDeleteIODeviceTransactionTypesDialog:
+      iODeviceTransactionTypesUIEvents.openDeleteIODeviceTransactionTypesDialog,
+    openFetchIODeviceTransactionTypesDialog:
+      iODeviceTransactionTypesUIEvents.openFetchIODeviceTransactionTypesDialog,
+    openUpdateIODeviceTransactionTypesStatusDialog:
+      iODeviceTransactionTypesUIEvents.openUpdateIODeviceTransactionTypesStatusDialog,
   };
   return (
-    <IODeviceTransactionTypesUIContext.Provider value={value}>{children}</IODeviceTransactionTypesUIContext.Provider>
+    <IODeviceTransactionTypesUIContext.Provider value={value}>
+      {children}
+    </IODeviceTransactionTypesUIContext.Provider>
   );
 }

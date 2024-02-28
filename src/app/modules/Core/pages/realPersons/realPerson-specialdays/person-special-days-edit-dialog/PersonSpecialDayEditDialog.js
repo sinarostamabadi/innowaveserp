@@ -35,10 +35,13 @@ export function PersonSpecialDayEditDialog() {
   const [editPersonSpecialDay, setEditPersonSpecialDay] = useState(null);
 
   useEffect(() => {
-    if(!!uiProps.id == false) return;
+    if (!!uiProps.id == false) return;
     let dataObj = uiProps.findPersonSpecialDay(uiProps.id);
-    
-    setEditPersonSpecialDay({...dataObj, PersonSpecialDayDate: EnToFaObjDate(dataObj.PersonSpecialDayDate)});
+
+    setEditPersonSpecialDay({
+      ...dataObj,
+      PersonSpecialDayDate: EnToFaObjDate(dataObj.PersonSpecialDayDate),
+    });
   }, [uiProps.id, dispatch]);
 
   const savePersonSpecialDay = (personSpecialDay) => {

@@ -26,11 +26,13 @@ export function CoreTransactionTypesPage({ history }) {
     },
   };
   return (
-    <CoreTransactionTypesUIProvider coreTransactionTypesUIEvents={coreTransactionTypesUIEvents}>
+    <CoreTransactionTypesUIProvider
+      coreTransactionTypesUIEvents={coreTransactionTypesUIEvents}
+    >
       <CoreTransactionTypesLoadingDialog />
       <Route path="/Core/coreTransactionTypes/:id/delete">
         {({ history, match }) => (
-          <CoreTransactionTypeDeleteDialog  
+          <CoreTransactionTypeDeleteDialog
             show={match != null}
             id={match && match.params.id}
             onHide={() => {

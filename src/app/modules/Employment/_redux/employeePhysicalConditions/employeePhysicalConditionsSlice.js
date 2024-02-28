@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmployeePhysicalConditionsState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const employeePhysicalConditionsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmployeePhysicalConditionById  
+    // getEmployeePhysicalConditionById
     employeePhysicalConditionFetched: (state, action) => {
       state.actionsLoading = false;
-      state.employeePhysicalConditionForEdit = action.payload.employeePhysicalConditionForEdit;
+      state.employeePhysicalConditionForEdit =
+        action.payload.employeePhysicalConditionForEdit;
       state.error = null;
     },
-    // findEmployeePhysicalConditions  
+    // findEmployeePhysicalConditions
     employeePhysicalConditionsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,46 +47,53 @@ export const employeePhysicalConditionsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmployeePhysicalCondition  
+    // createEmployeePhysicalCondition
     employeePhysicalConditionCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmployeePhysicalCondition  
+    // updateEmployeePhysicalCondition
     employeePhysicalConditionUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.EmployeePhysicalConditionId === action.payload.employeePhysicalCondition.EmployeePhysicalConditionId) {
+        if (
+          entity.EmployeePhysicalConditionId ===
+          action.payload.employeePhysicalCondition.EmployeePhysicalConditionId
+        ) {
           return action.payload.employeePhysicalCondition;
         }
         return entity;
       });
     },
-    // deleteEmployeePhysicalCondition  
+    // deleteEmployeePhysicalCondition
     employeePhysicalConditionDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EmployeePhysicalConditionId !== action.payload.EmployeePhysicalConditionId  
+        (el) =>
+          el.EmployeePhysicalConditionId !==
+          action.payload.EmployeePhysicalConditionId
       );
     },
-    // deleteEmployeePhysicalConditions  
+    // deleteEmployeePhysicalConditions
     employeePhysicalConditionsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EmployeePhysicalConditionId)  
+        (el) => !action.payload.ids.includes(el.EmployeePhysicalConditionId)
       );
     },
-    // employeePhysicalConditionsUpdateState  
+    // employeePhysicalConditionsUpdateState
     employeePhysicalConditionsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       const { ids, status } = action.payload;
       state.entities = state.entities.map((entity) => {
-        if (ids.findIndex((id) => id === entity.EmployeePhysicalConditionId) > -1) {
+        if (
+          ids.findIndex((id) => id === entity.EmployeePhysicalConditionId) > -1
+        ) {
           entity.status = status;
         }
         return entity;

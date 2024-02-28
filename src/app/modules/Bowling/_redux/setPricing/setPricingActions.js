@@ -1,6 +1,4 @@
-import {
-  EnToFaObject,
-} from "src/core/_helpers";
+import { EnToFaObject } from "src/core/_helpers";
 import * as requestFromServer from "./setPricingCrud";
 import { setPricingSlice, callTypes } from "./setPricingSlice";
 
@@ -32,7 +30,7 @@ export const fetchSetPricing = (id) => (dispatch) => {
     .then((response) => {
       const setPricing = response.data;
       setPricing.Title = setPricing.Center.Title;
-     
+
       let fromDateObj = EnToFaObject(setPricing.FromDate).split("-");
       let toDateObj = EnToFaObject(setPricing.ToDateObj).split("-");
       setPricing.FromDateObj = {
@@ -79,11 +77,11 @@ export const createSetPricing = (setPricingForCreation) => (dispatch) => {
       throw error;
     });
 };
-export const updateSetPricing = (id,setPricing) => (dispatch) => {
-  console.log("params",setPricing)
+export const updateSetPricing = (id, setPricing) => (dispatch) => {
+  console.log("params", setPricing);
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
-    .updateSetPricing(id,setPricing)
+    .updateSetPricing(id, setPricing)
     .then((response) => {
       dispatch(actions.setPricingUpdated({ setPricing }));
     })

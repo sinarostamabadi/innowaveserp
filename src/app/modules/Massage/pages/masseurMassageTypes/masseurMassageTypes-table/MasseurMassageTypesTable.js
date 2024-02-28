@@ -32,8 +32,10 @@ export function MasseurMassageTypesTable() {
       setIds: masseurMassageTypesUIContext.setIds,
       queryParams: masseurMassageTypesUIContext.queryParams,
       setQueryParams: masseurMassageTypesUIContext.setQueryParams,
-      openEditMasseurMassageTypePage: masseurMassageTypesUIContext.openEditMasseurMassageTypePage,
-      openDeleteMasseurMassageTypeDialog: masseurMassageTypesUIContext.openDeleteMasseurMassageTypeDialog,
+      openEditMasseurMassageTypePage:
+        masseurMassageTypesUIContext.openEditMasseurMassageTypePage,
+      openDeleteMasseurMassageTypeDialog:
+        masseurMassageTypesUIContext.openDeleteMasseurMassageTypeDialog,
     };
   }, [masseurMassageTypesUIContext]);
 
@@ -50,7 +52,9 @@ export function MasseurMassageTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     masseurMassageTypesUIProps.setIds([]);
-    dispatch(actions.fetchMasseurMassageTypes(masseurMassageTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchMasseurMassageTypes(masseurMassageTypesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [masseurMassageTypesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function MasseurMassageTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditMasseurMassageTypePage: masseurMassageTypesUIProps.openEditMasseurMassageTypePage,
-        openDeleteMasseurMassageTypeDialog: masseurMassageTypesUIProps.openDeleteMasseurMassageTypeDialog,
+        openEditMasseurMassageTypePage:
+          masseurMassageTypesUIProps.openEditMasseurMassageTypePage,
+        openDeleteMasseurMassageTypeDialog:
+          masseurMassageTypesUIProps.openDeleteMasseurMassageTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -56,7 +56,9 @@ export function PromissoryNoteEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("PromissoryNote.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("PromissoryNote.Entity");
 
     if (promissoryNoteForEdit && id) {
       _title = t("Common.Edit") + " " + promissoryNoteForEdit.TitleFa;

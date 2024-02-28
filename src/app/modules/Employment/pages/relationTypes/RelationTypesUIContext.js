@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { RelationTypeModel } from "../../../../../core/_models/Employment/RelationTypeModel";
@@ -30,7 +29,7 @@ export function RelationTypesUIProvider({ relationTypesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function RelationTypesUIProvider({ relationTypesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: RelationTypeModel,
-    newRelationTypeButtonClick: relationTypesUIEvents.newRelationTypeButtonClick,
+    newRelationTypeButtonClick:
+      relationTypesUIEvents.newRelationTypeButtonClick,
     openEditRelationTypePage: relationTypesUIEvents.openEditRelationTypePage,
-    openDeleteRelationTypeDialog: relationTypesUIEvents.openDeleteRelationTypeDialog,
-    openDeleteRelationTypesDialog: relationTypesUIEvents.openDeleteRelationTypesDialog,
-    openFetchRelationTypesDialog: relationTypesUIEvents.openFetchRelationTypesDialog,
-    openUpdateRelationTypesStatusDialog: relationTypesUIEvents.openUpdateRelationTypesStatusDialog,
+    openDeleteRelationTypeDialog:
+      relationTypesUIEvents.openDeleteRelationTypeDialog,
+    openDeleteRelationTypesDialog:
+      relationTypesUIEvents.openDeleteRelationTypesDialog,
+    openFetchRelationTypesDialog:
+      relationTypesUIEvents.openFetchRelationTypesDialog,
+    openUpdateRelationTypesStatusDialog:
+      relationTypesUIEvents.openUpdateRelationTypesStatusDialog,
   };
   return (
-    <RelationTypesUIContext.Provider value={value}>{children}</RelationTypesUIContext.Provider>
+    <RelationTypesUIContext.Provider value={value}>
+      {children}
+    </RelationTypesUIContext.Provider>
   );
 }

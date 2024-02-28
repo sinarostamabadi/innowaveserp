@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialRestaurantMenuGroupsState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const restaurantMenuGroupsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getRestaurantMenuGroupById  
+    // getRestaurantMenuGroupById
     restaurantMenuGroupFetched: (state, action) => {
       state.actionsLoading = false;
-      state.restaurantMenuGroupForEdit = action.payload.restaurantMenuGroupForEdit;
+      state.restaurantMenuGroupForEdit =
+        action.payload.restaurantMenuGroupForEdit;
       state.error = null;
     },
-    // findRestaurantMenuGroups  
+    // findRestaurantMenuGroups
     restaurantMenuGroupsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const restaurantMenuGroupsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createRestaurantMenuGroup  
+    // createRestaurantMenuGroup
     restaurantMenuGroupCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateRestaurantMenuGroup  
+    // updateRestaurantMenuGroup
     restaurantMenuGroupUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.RestaurantMenuGroupId === action.payload.restaurantMenuGroup.RestaurantMenuGroupId) {
+        if (
+          entity.RestaurantMenuGroupId ===
+          action.payload.restaurantMenuGroup.RestaurantMenuGroupId
+        ) {
           return action.payload.restaurantMenuGroup;
         }
         return entity;
       });
     },
-    // deleteRestaurantMenuGroup  
+    // deleteRestaurantMenuGroup
     restaurantMenuGroupDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.RestaurantMenuGroupId !== action.payload.RestaurantMenuGroupId  
+        (el) =>
+          el.RestaurantMenuGroupId !== action.payload.RestaurantMenuGroupId
       );
     },
-    // deleteRestaurantMenuGroups  
+    // deleteRestaurantMenuGroups
     restaurantMenuGroupsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.RestaurantMenuGroupId)  
+        (el) => !action.payload.ids.includes(el.RestaurantMenuGroupId)
       );
     },
-    // restaurantMenuGroupsUpdateState  
+    // restaurantMenuGroupsUpdateState
     restaurantMenuGroupsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

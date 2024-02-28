@@ -32,8 +32,10 @@ export function FutsalReserveDatesTable() {
       setIds: futsalReserveDatesUIContext.setIds,
       queryParams: futsalReserveDatesUIContext.queryParams,
       setQueryParams: futsalReserveDatesUIContext.setQueryParams,
-      openEditFutsalReserveDatePage: futsalReserveDatesUIContext.openEditFutsalReserveDatePage,
-      openDeleteFutsalReserveDateDialog: futsalReserveDatesUIContext.openDeleteFutsalReserveDateDialog,
+      openEditFutsalReserveDatePage:
+        futsalReserveDatesUIContext.openEditFutsalReserveDatePage,
+      openDeleteFutsalReserveDateDialog:
+        futsalReserveDatesUIContext.openDeleteFutsalReserveDateDialog,
     };
   }, [futsalReserveDatesUIContext]);
 
@@ -50,7 +52,9 @@ export function FutsalReserveDatesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     futsalReserveDatesUIProps.setIds([]);
-    dispatch(actions.fetchFutsalReserveDates(futsalReserveDatesUIProps.queryParams));
+    dispatch(
+      actions.fetchFutsalReserveDates(futsalReserveDatesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [futsalReserveDatesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function FutsalReserveDatesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditFutsalReserveDatePage: futsalReserveDatesUIProps.openEditFutsalReserveDatePage,
-        openDeleteFutsalReserveDateDialog: futsalReserveDatesUIProps.openDeleteFutsalReserveDateDialog,
+        openEditFutsalReserveDatePage:
+          futsalReserveDatesUIProps.openEditFutsalReserveDatePage,
+        openDeleteFutsalReserveDateDialog:
+          futsalReserveDatesUIProps.openDeleteFutsalReserveDateDialog,
         t: t,
       },
       classes: "text-right pr-0",

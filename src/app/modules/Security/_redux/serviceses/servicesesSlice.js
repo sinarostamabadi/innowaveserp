@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialServicesesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const servicesesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getServicesById  
+    // getServicesById
     servicesFetched: (state, action) => {
       state.actionsLoading = false;
       state.servicesForEdit = action.payload.servicesForEdit;
       state.error = null;
     },
-    // findServiceses  
+    // findServiceses
     servicesesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const servicesesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createServices  
+    // createServices
     servicesCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateServices  
+    // updateServices
     servicesUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const servicesesSlice = createSlice({
         return entity;
       });
     },
-    // deleteServices  
+    // deleteServices
     servicesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.ServicesId !== action.payload.ServicesId  
+        (el) => el.ServicesId !== action.payload.ServicesId
       );
     },
-    // deleteServiceses  
+    // deleteServiceses
     servicesesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ServicesId)  
+        (el) => !action.payload.ids.includes(el.ServicesId)
       );
     },
-    // servicesesUpdateState  
+    // servicesesUpdateState
     servicesesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -16,16 +16,21 @@ export function EmployeeTypeEditForm({
   const { t } = useTranslation();
   const EmployeeTypeEditSchema = Yup.object().shape({
     BodyBuildingEmployeeTypeExpertiseId: Yup.number().required(
-      t("err.IsRequired", { 0: t("BodyBuildingEmployeeExpertise.BodyBuildingEmployeeTypeExpertise") })
+      t("err.IsRequired", {
+        0: t("BodyBuildingEmployeeExpertise.BodyBuildingEmployeeTypeExpertise"),
+      })
     ),
   });
 
   const [employeeTypes, setEmployeeTypes] = useState([]);
   useEffect(() => {
     if (employeeTypes.length == 0)
-    getAllExpertises(selectedEmployeeType).then(({ data }) =>
+      getAllExpertises(selectedEmployeeType).then(({ data }) =>
         setEmployeeTypes((expertises) => [
-          { BodyBuildingEmployeeTypeExpertiseId: "", Title: t("Common.WithoutSelect") },
+          {
+            BodyBuildingEmployeeTypeExpertiseId: "",
+            Title: t("Common.WithoutSelect"),
+          },
           ...data.Items,
         ])
       );
@@ -33,9 +38,20 @@ export function EmployeeTypeEditForm({
 
   function cleanDetail(dirtyData) {
     return {
-      BodyBuildingEmployeeExpertiseId: dirtyData.BodyBuildingEmployeeExpertiseId,
-      BodyBuildingEmployeeTypeExpertiseId: !!dirtyData.BodyBuildingEmployeeTypeExpertiseId? +dirtyData.BodyBuildingEmployeeTypeExpertiseId: null,
-      BodyBuildingEmployeeTypeExpertise: !!dirtyData.BodyBuildingEmployeeTypeExpertiseId? employeeTypes.find(x=> x.BodyBuildingEmployeeTypeExpertiseId == dirtyData.BodyBuildingEmployeeTypeExpertiseId): null,
+      BodyBuildingEmployeeExpertiseId:
+        dirtyData.BodyBuildingEmployeeExpertiseId,
+      BodyBuildingEmployeeTypeExpertiseId:
+        !!dirtyData.BodyBuildingEmployeeTypeExpertiseId
+          ? +dirtyData.BodyBuildingEmployeeTypeExpertiseId
+          : null,
+      BodyBuildingEmployeeTypeExpertise:
+        !!dirtyData.BodyBuildingEmployeeTypeExpertiseId
+          ? employeeTypes.find(
+              (x) =>
+                x.BodyBuildingEmployeeTypeExpertiseId ==
+                dirtyData.BodyBuildingEmployeeTypeExpertiseId
+            )
+          : null,
       Grade: dirtyData.Grade,
       IsDeleted: false,
     };
@@ -61,15 +77,22 @@ export function EmployeeTypeEditForm({
                 </div>
               )}
               <Form className="form form-label-right">
-              <div className="form-group row">
-              <div className="col-lg-6">
+                <div className="form-group row">
+                  <div className="col-lg-6">
                     <Select
                       name="BodyBuildingEmployeeTypeExpertiseId"
-                      label={t("BodyBuildingEmployeeExpertise.BodyBuildingEmployeeTypeExpertise")}
+                      label={t(
+                        "BodyBuildingEmployeeExpertise.BodyBuildingEmployeeTypeExpertise"
+                      )}
                       customFeedbackLabel=""
                     >
                       {employeeTypes.map((employeeType) => (
-                        <option key={employeeType.BodyBuildingEmployeeTypeExpertiseId} value={employeeType.BodyBuildingEmployeeTypeExpertiseId}>
+                        <option
+                          key={employeeType.BodyBuildingEmployeeTypeExpertiseId}
+                          value={
+                            employeeType.BodyBuildingEmployeeTypeExpertiseId
+                          }
+                        >
                           {employeeType.Title}
                         </option>
                       ))}

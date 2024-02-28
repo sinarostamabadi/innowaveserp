@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./EmployeesCrud";
 import { employeesSlice, callTypes } from "./EmployeesSlice";
 const { actions } = employeesSlice;
@@ -46,24 +45,25 @@ export const deleteEmployee = (id) => (dispatch) => {
       throw error;
     });
 };
-export const createEmployee = (employeeForCreation, fnCallBack) => (dispatch) => {
-  dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer
-    .createEmployee(employeeForCreation)
-    .then((response) => {
-      const employee = response.data;
-      fnCallBack(employee);
-      
-      dispatch(actions.employeeCreated(employee));
+export const createEmployee =
+  (employeeForCreation, fnCallBack) => (dispatch) => {
+    dispatch(actions.startCall({ callType: callTypes.action }));
+    return requestFromServer
+      .createEmployee(employeeForCreation)
+      .then((response) => {
+        const employee = response.data;
+        fnCallBack(employee);
 
-      return employee;
-    })
-    .catch((error) => {
-      error.clientMessage = "Can't create employee";
-      dispatch(actions.catchError({ error, callType: callTypes.action }));
-      throw error;
-    });
-};
+        dispatch(actions.employeeCreated(employee));
+
+        return employee;
+      })
+      .catch((error) => {
+        error.clientMessage = "Can't create employee";
+        dispatch(actions.catchError({ error, callType: callTypes.action }));
+        throw error;
+      });
+  };
 export const updateEmployee = (id, employee, fnCallBack) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
@@ -105,4 +105,4 @@ export const deleteEmployees = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

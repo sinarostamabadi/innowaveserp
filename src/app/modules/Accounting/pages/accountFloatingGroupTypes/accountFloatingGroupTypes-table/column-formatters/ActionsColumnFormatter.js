@@ -9,13 +9,25 @@ export const ActionsColumnFormatter = (
   cellContent,
   row,
   rowIndex,
-  { openEditAccountFloatingGroupTypePage, openDeleteAccountFloatingGroupTypeDialog, t }
+  {
+    openEditAccountFloatingGroupTypePage,
+    openDeleteAccountFloatingGroupTypeDialog,
+    t,
+  }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="accountFloatingGroupTypes-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="accountFloatingGroupTypes-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-        onClick={() => openEditAccountFloatingGroupTypePage(row.AccountFloatingGroupTypeId)}
+        onClick={() =>
+          openEditAccountFloatingGroupTypePage(row.AccountFloatingGroupTypeId)
+        }
       >
         <span className="svg-icon svg-icon-md svg-icon-primary">
           <SVG
@@ -26,11 +38,19 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="accountFloatingGroupTypes-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="accountFloatingGroupTypes-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteAccountFloatingGroupTypeDialog(row.AccountFloatingGroupTypeId)}
+        onClick={() =>
+          openDeleteAccountFloatingGroupTypeDialog(
+            row.AccountFloatingGroupTypeId
+          )
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

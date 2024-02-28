@@ -2,7 +2,10 @@ import React, { useMemo } from "react";
 import BootstrapTable from "react-bootstrap-table-next";
 import * as columnFormatters from "./column-formatters";
 import * as uiHelpers from "./ChequePapersUIHelper";
-import { NoRecordsFoundMessage, PleaseWaitMessage } from "../../../../../../core/_helpers";
+import {
+  NoRecordsFoundMessage,
+  PleaseWaitMessage,
+} from "../../../../../../core/_helpers";
 import { useChequePapersUIContext } from "./ChequePapersUIContext";
 import { useTranslation } from "react-i18next";
 import { DataFormatter } from "src/core/_formatters/DataFormatter";
@@ -15,11 +18,12 @@ export function ChequePapersTable() {
   const chequePapersUIProps = useMemo(() => {
     return {
       activeChequePapers: chequePapersUIContext.activeChequePapers,
-      openEditChequePaperDialog: chequePapersUIContext.openEditChequePaperDialog,
-      openDeleteChequePaperDialog: chequePapersUIContext.openDeleteChequePaperDialog
+      openEditChequePaperDialog:
+        chequePapersUIContext.openEditChequePaperDialog,
+      openDeleteChequePaperDialog:
+        chequePapersUIContext.openDeleteChequePaperDialog,
     };
   }, [chequePapersUIContext]);
-
 
   const columns = [
     {
@@ -37,8 +41,8 @@ export function ChequePapersTable() {
           t: t,
           1: t("ChequePaper.ChequeStatus.Exist"),
           2: t("ChequePaper.ChequeStatus.Invalid"),
-          3: t("ChequePaper.ChequeStatus.Issue")
-        }
+          3: t("ChequePaper.ChequeStatus.Issue"),
+        },
       },
     },
     {
@@ -51,8 +55,10 @@ export function ChequePapersTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditChequePaperDialog: chequePapersUIProps.openEditChequePaperDialog,
-        openDeleteChequePaperDialog: chequePapersUIProps.openDeleteChequePaperDialog,
+        openEditChequePaperDialog:
+          chequePapersUIProps.openEditChequePaperDialog,
+        openDeleteChequePaperDialog:
+          chequePapersUIProps.openDeleteChequePaperDialog,
         t: t,
       },
       classes: "text-right pr-0",
@@ -79,7 +85,9 @@ export function ChequePapersTable() {
       columns={columns}
     >
       <PleaseWaitMessage entities={chequePapersUIProps.activeChequePapers} />
-      <NoRecordsFoundMessage entities={chequePapersUIProps.activeChequePapers} />
+      <NoRecordsFoundMessage
+        entities={chequePapersUIProps.activeChequePapers}
+      />
     </BootstrapTable>
   );
 }

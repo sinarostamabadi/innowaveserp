@@ -1,4 +1,6 @@
-export const defaultSorted = [{ dataField: "PersonSpecialDayId", order: "asc" }];
+export const defaultSorted = [
+  { dataField: "PersonSpecialDayId", order: "asc" },
+];
 export const sizePerPageList = [
   { text: "10", value: 10 },
   { text: "50", value: 50 },
@@ -17,5 +19,4 @@ export const initialFilter = {
 export const SPECIFICATIONS_DICTIONARY = [
   { SpecialDayTypeId: null, TitleFa: "بدون انتخاب" },
   { SpecialDayTypeId: 1, TitleFa: "روز تولد" },
-
 ];

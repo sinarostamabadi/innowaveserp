@@ -32,13 +32,13 @@ export const educationsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEducationById  
+    // getEducationById
     educationFetched: (state, action) => {
       state.actionsLoading = false;
       state.educationForEdit = action.payload.educationForEdit;
       state.error = null;
     },
-    // findEducations  
+    // findEducations
     educationsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -46,13 +46,13 @@ export const educationsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEducation  
+    // createEducation
     educationCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEducation  
+    // updateEducation
     educationUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -63,23 +63,23 @@ export const educationsSlice = createSlice({
         return entity;
       });
     },
-    // deleteEducation  
+    // deleteEducation
     educationDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EducationId !== action.payload.EducationId  
+        (el) => el.EducationId !== action.payload.EducationId
       );
     },
-    // deleteEducations  
+    // deleteEducations
     educationsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EducationId)  
+        (el) => !action.payload.ids.includes(el.EducationId)
       );
     },
-    // educationsUpdateState  
+    // educationsUpdateState
     educationsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

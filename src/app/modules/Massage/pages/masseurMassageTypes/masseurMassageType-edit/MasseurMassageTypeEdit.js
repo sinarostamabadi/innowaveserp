@@ -44,7 +44,8 @@ export function MasseurMassageTypeEdit({
   const { actionsLoading, masseurMassageTypeForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.masseurMassageTypes.actionsLoading,
-      masseurMassageTypeForEdit: state.masseurMassageTypes.masseurMassageTypeForEdit,
+      masseurMassageTypeForEdit:
+        state.masseurMassageTypes.masseurMassageTypeForEdit,
       error: state.masseurMassageTypes.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function MasseurMassageTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("MasseurMassageType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("MasseurMassageType.Entity");
 
     if (masseurMassageTypeForEdit && id) {
       _title = t("Common.Edit") + " " + masseurMassageTypeForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function MasseurMassageTypeEdit({
         .then((arg) => {
           backToMasseurMassageTypesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateMasseurMassageType(id, values))
         .then(() => backToMasseurMassageTypesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

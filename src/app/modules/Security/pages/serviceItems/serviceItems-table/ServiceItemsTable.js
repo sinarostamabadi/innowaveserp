@@ -33,7 +33,8 @@ export function ServiceItemsTable() {
       queryParams: serviceItemsUIContext.queryParams,
       setQueryParams: serviceItemsUIContext.setQueryParams,
       openEditServiceItemPage: serviceItemsUIContext.openEditServiceItemPage,
-      openDeleteServiceItemDialog: serviceItemsUIContext.openDeleteServiceItemDialog,
+      openDeleteServiceItemDialog:
+        serviceItemsUIContext.openDeleteServiceItemDialog,
     };
   }, [serviceItemsUIContext]);
 
@@ -73,7 +74,8 @@ export function ServiceItemsTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditServiceItemPage: serviceItemsUIProps.openEditServiceItemPage,
-        openDeleteServiceItemDialog: serviceItemsUIProps.openDeleteServiceItemDialog,
+        openDeleteServiceItemDialog:
+          serviceItemsUIProps.openDeleteServiceItemDialog,
         t: t,
       },
       classes: "text-right pr-0",

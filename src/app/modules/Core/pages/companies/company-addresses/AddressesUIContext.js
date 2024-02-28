@@ -96,7 +96,8 @@ export const AddressesUIProvider = forwardRef(
       if (
         !!companyForEdit &&
         !!companyForEdit.Addresses &&
-        companyForEdit.Addresses.length > 0 && companyForEdit.PersonId == currentPersonId
+        companyForEdit.Addresses.length > 0 &&
+        companyForEdit.PersonId == currentPersonId
       ) {
         setAddresses(companyForEdit.Addresses);
         setTotalCount(companyForEdit.Addresses.length);
@@ -105,7 +106,7 @@ export const AddressesUIProvider = forwardRef(
     }, [companyForEdit]);
 
     useEffect(() => {
-      setActiveAddresses(addresses.filter(x => x.IsDeleted == false))
+      setActiveAddresses(addresses.filter((x) => x.IsDeleted == false));
     }, [addresses]);
 
     useEffect(() => {
@@ -142,9 +143,8 @@ export const AddressesUIProvider = forwardRef(
       setShowEditAddressDialog(false);
     };
 
-    const [showDeleteAddressDialog, setShowDeleteAddressDialog] = useState(
-      false
-    );
+    const [showDeleteAddressDialog, setShowDeleteAddressDialog] =
+      useState(false);
     const openDeleteAddressDialog = (id) => {
       setSelectedId(id);
       setShowDeleteAddressDialog(true);
@@ -156,9 +156,8 @@ export const AddressesUIProvider = forwardRef(
       setShowDeleteAddressDialog(false);
     };
 
-    const [showDeleteAddressesDialog, setShowDeleteAddressesDialog] = useState(
-      false
-    );
+    const [showDeleteAddressesDialog, setShowDeleteAddressesDialog] =
+      useState(false);
     const openDeleteAddressesDialog = () => {
       setShowDeleteAddressesDialog(true);
     };
@@ -166,9 +165,8 @@ export const AddressesUIProvider = forwardRef(
       setShowDeleteAddressesDialog(false);
     };
 
-    const [showFetchAddressesDialog, setShowFetchAddressesDialog] = useState(
-      false
-    );
+    const [showFetchAddressesDialog, setShowFetchAddressesDialog] =
+      useState(false);
     const openFetchAddressesDialog = () => {
       setShowFetchAddressesDialog(true);
     };
@@ -178,7 +176,10 @@ export const AddressesUIProvider = forwardRef(
 
     const findAddress = (addressId) => {
       if (!!addressId == false) return null;
-      console.log("Finder > ", addresses.filter((address) => address.AddressId == addressId));
+      console.log(
+        "Finder > ",
+        addresses.filter((address) => address.AddressId == addressId)
+      );
       return addresses.filter((address) => address.AddressId == addressId)[0];
     };
 
@@ -197,8 +198,9 @@ export const AddressesUIProvider = forwardRef(
         setAddresses((addresses) =>
           addresses.map((item) => {
             let copyAddress = CloneObject(item);
-            if (copyAddress.AddressId == addressId) copyAddress.IsDeleted = true;
-  
+            if (copyAddress.AddressId == addressId)
+              copyAddress.IsDeleted = true;
+
             return copyAddress;
           })
         );

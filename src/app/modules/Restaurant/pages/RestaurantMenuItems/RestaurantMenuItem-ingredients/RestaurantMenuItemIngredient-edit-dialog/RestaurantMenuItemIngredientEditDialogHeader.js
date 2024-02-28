@@ -13,9 +13,12 @@ export function RestaurantMenuItemIngredientEditDialogHeader({ id }) {
   const { actionsLoading, setActionsLoading } = useState();
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("RestaurantMenuItemIngredient.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("RestaurantMenuItemIngredient.Entity");
     if (id) {
-      _title = t("Common.Edit") + " " + t("RestaurantMenuItemIngredient.Entity") ;
+      _title =
+        t("Common.Edit") + " " + t("RestaurantMenuItemIngredient.Entity");
     }
 
     setTitle(_title);

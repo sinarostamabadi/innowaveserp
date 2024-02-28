@@ -17,7 +17,9 @@ export function BodyBuildingDiscountsPage({ history }) {
       history.push(`/bodyBuilding/bodyBuildingDiscounts/${id}/delete`);
     },
     openDeleteBodyBuildingDiscountsDialog: () => {
-      history.push(`/bodyBuilding/bodyBuildingDiscounts/deleteBodyBuildingDiscounts`);
+      history.push(
+        `/bodyBuilding/bodyBuildingDiscounts/deleteBodyBuildingDiscounts`
+      );
     },
     openFetchBodyBuildingDiscountsDialog: () => {
       history.push(`/bodyBuilding/bodyBuildingDiscounts/fetch`);
@@ -26,9 +28,11 @@ export function BodyBuildingDiscountsPage({ history }) {
       history.push("/bodyBuilding/bodyBuildingDiscounts/updateStatus");
     },
   };
-  
+
   return (
-    <BodyBuildingDiscountsUIProvider bodyBuildingDiscountsUIEvents={bodyBuildingDiscountsUIEvents}>
+    <BodyBuildingDiscountsUIProvider
+      bodyBuildingDiscountsUIEvents={bodyBuildingDiscountsUIEvents}
+    >
       <BodyBuildingDiscountsLoadingDialog />
       <Route path="/bodyBuilding/bodyBuildingDiscounts/:id/delete">
         {({ history, match }) => (

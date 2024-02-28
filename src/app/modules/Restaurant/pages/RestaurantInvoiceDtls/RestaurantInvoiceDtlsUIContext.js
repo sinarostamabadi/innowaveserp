@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { RestaurantInvoiceDtlModel } from "../../../../../core/_models/Restaurant/RestaurantInvoiceDtlModel";
@@ -10,9 +9,13 @@ export function useRestaurantInvoiceDtlsUIContext() {
   return useContext(RestaurantInvoiceDtlsUIContext);
 }
 
-export const RestaurantInvoiceDtlsUIConsumer = RestaurantInvoiceDtlsUIContext.Consumer;
+export const RestaurantInvoiceDtlsUIConsumer =
+  RestaurantInvoiceDtlsUIContext.Consumer;
 
-export function RestaurantInvoiceDtlsUIProvider({ restaurantInvoiceDtlsUIEvents, children }) {
+export function RestaurantInvoiceDtlsUIProvider({
+  restaurantInvoiceDtlsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(RestaurantInvoiceDtlModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function RestaurantInvoiceDtlsUIProvider({ restaurantInvoiceDtlsUIEvents,
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function RestaurantInvoiceDtlsUIProvider({ restaurantInvoiceDtlsUIEvents,
     setIds,
     setQueryParams,
     dataModel: RestaurantInvoiceDtlModel,
-    newRestaurantInvoiceDtlButtonClick: restaurantInvoiceDtlsUIEvents.newRestaurantInvoiceDtlButtonClick,
-    openEditRestaurantInvoiceDtlPage: restaurantInvoiceDtlsUIEvents.openEditRestaurantInvoiceDtlPage,
-    openDeleteRestaurantInvoiceDtlDialog: restaurantInvoiceDtlsUIEvents.openDeleteRestaurantInvoiceDtlDialog,
-    openDeleteRestaurantInvoiceDtlsDialog: restaurantInvoiceDtlsUIEvents.openDeleteRestaurantInvoiceDtlsDialog,
-    openFetchRestaurantInvoiceDtlsDialog: restaurantInvoiceDtlsUIEvents.openFetchRestaurantInvoiceDtlsDialog,
-    openUpdateRestaurantInvoiceDtlsStatusDialog: restaurantInvoiceDtlsUIEvents.openUpdateRestaurantInvoiceDtlsStatusDialog,
+    newRestaurantInvoiceDtlButtonClick:
+      restaurantInvoiceDtlsUIEvents.newRestaurantInvoiceDtlButtonClick,
+    openEditRestaurantInvoiceDtlPage:
+      restaurantInvoiceDtlsUIEvents.openEditRestaurantInvoiceDtlPage,
+    openDeleteRestaurantInvoiceDtlDialog:
+      restaurantInvoiceDtlsUIEvents.openDeleteRestaurantInvoiceDtlDialog,
+    openDeleteRestaurantInvoiceDtlsDialog:
+      restaurantInvoiceDtlsUIEvents.openDeleteRestaurantInvoiceDtlsDialog,
+    openFetchRestaurantInvoiceDtlsDialog:
+      restaurantInvoiceDtlsUIEvents.openFetchRestaurantInvoiceDtlsDialog,
+    openUpdateRestaurantInvoiceDtlsStatusDialog:
+      restaurantInvoiceDtlsUIEvents.openUpdateRestaurantInvoiceDtlsStatusDialog,
   };
   return (
-    <RestaurantInvoiceDtlsUIContext.Provider value={value}>{children}</RestaurantInvoiceDtlsUIContext.Provider>
+    <RestaurantInvoiceDtlsUIContext.Provider value={value}>
+      {children}
+    </RestaurantInvoiceDtlsUIContext.Provider>
   );
 }

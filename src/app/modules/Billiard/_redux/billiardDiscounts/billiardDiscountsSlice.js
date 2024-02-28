@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBilliardDiscountsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const billiardDiscountsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBilliardDiscountById  
+    // getBilliardDiscountById
     billiardDiscountFetched: (state, action) => {
       state.actionsLoading = false;
       state.billiardDiscountForEdit = action.payload.billiardDiscountForEdit;
       state.error = null;
     },
-    // findBilliardDiscounts  
+    // findBilliardDiscounts
     billiardDiscountsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const billiardDiscountsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBilliardDiscount  
+    // createBilliardDiscount
     billiardDiscountCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBilliardDiscount  
+    // updateBilliardDiscount
     billiardDiscountUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BilliardDiscountId === action.payload.billiardDiscount.BilliardDiscountId) {
+        if (
+          entity.BilliardDiscountId ===
+          action.payload.billiardDiscount.BilliardDiscountId
+        ) {
           return action.payload.billiardDiscount;
         }
         return entity;
       });
     },
-    // deleteBilliardDiscount  
+    // deleteBilliardDiscount
     billiardDiscountDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BilliardDiscountId !== action.payload.BilliardDiscountId  
+        (el) => el.BilliardDiscountId !== action.payload.BilliardDiscountId
       );
     },
-    // deleteBilliardDiscounts  
+    // deleteBilliardDiscounts
     billiardDiscountsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BilliardDiscountId)  
+        (el) => !action.payload.ids.includes(el.BilliardDiscountId)
       );
     },
-    // billiardDiscountsUpdateState  
+    // billiardDiscountsUpdateState
     billiardDiscountsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

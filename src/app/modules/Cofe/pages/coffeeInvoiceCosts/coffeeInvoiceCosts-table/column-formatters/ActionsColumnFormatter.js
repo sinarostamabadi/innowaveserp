@@ -12,7 +12,13 @@ export const ActionsColumnFormatter = (
   { openEditCoffeeInvoiceCostPage, openDeleteCoffeeInvoiceCostDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="coffeeInvoiceCosts-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="coffeeInvoiceCosts-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditCoffeeInvoiceCostPage(row.CoffeeInvoiceCostId)}
@@ -26,11 +32,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="coffeeInvoiceCosts-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="coffeeInvoiceCosts-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteCoffeeInvoiceCostDialog(row.CoffeeInvoiceCostId)}
+        onClick={() =>
+          openDeleteCoffeeInvoiceCostDialog(row.CoffeeInvoiceCostId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

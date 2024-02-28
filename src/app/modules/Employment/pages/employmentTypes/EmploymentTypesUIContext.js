@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmploymentTypeModel } from "../../../../../core/_models/Employment/EmploymentTypeModel";
@@ -12,7 +11,10 @@ export function useEmploymentTypesUIContext() {
 
 export const EmploymentTypesUIConsumer = EmploymentTypesUIContext.Consumer;
 
-export function EmploymentTypesUIProvider({ employmentTypesUIEvents, children }) {
+export function EmploymentTypesUIProvider({
+  employmentTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(EmploymentTypeModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function EmploymentTypesUIProvider({ employmentTypesUIEvents, children })
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function EmploymentTypesUIProvider({ employmentTypesUIEvents, children })
     setIds,
     setQueryParams,
     dataModel: EmploymentTypeModel,
-    newEmploymentTypeButtonClick: employmentTypesUIEvents.newEmploymentTypeButtonClick,
-    openEditEmploymentTypePage: employmentTypesUIEvents.openEditEmploymentTypePage,
-    openDeleteEmploymentTypeDialog: employmentTypesUIEvents.openDeleteEmploymentTypeDialog,
-    openDeleteEmploymentTypesDialog: employmentTypesUIEvents.openDeleteEmploymentTypesDialog,
-    openFetchEmploymentTypesDialog: employmentTypesUIEvents.openFetchEmploymentTypesDialog,
-    openUpdateEmploymentTypesStatusDialog: employmentTypesUIEvents.openUpdateEmploymentTypesStatusDialog,
+    newEmploymentTypeButtonClick:
+      employmentTypesUIEvents.newEmploymentTypeButtonClick,
+    openEditEmploymentTypePage:
+      employmentTypesUIEvents.openEditEmploymentTypePage,
+    openDeleteEmploymentTypeDialog:
+      employmentTypesUIEvents.openDeleteEmploymentTypeDialog,
+    openDeleteEmploymentTypesDialog:
+      employmentTypesUIEvents.openDeleteEmploymentTypesDialog,
+    openFetchEmploymentTypesDialog:
+      employmentTypesUIEvents.openFetchEmploymentTypesDialog,
+    openUpdateEmploymentTypesStatusDialog:
+      employmentTypesUIEvents.openUpdateEmploymentTypesStatusDialog,
   };
   return (
-    <EmploymentTypesUIContext.Provider value={value}>{children}</EmploymentTypesUIContext.Provider>
+    <EmploymentTypesUIContext.Provider value={value}>
+      {children}
+    </EmploymentTypesUIContext.Provider>
   );
 }

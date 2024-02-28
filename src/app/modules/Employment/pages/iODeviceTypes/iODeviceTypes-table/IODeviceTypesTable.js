@@ -33,7 +33,8 @@ export function IODeviceTypesTable() {
       queryParams: iODeviceTypesUIContext.queryParams,
       setQueryParams: iODeviceTypesUIContext.setQueryParams,
       openEditIODeviceTypePage: iODeviceTypesUIContext.openEditIODeviceTypePage,
-      openDeleteIODeviceTypeDialog: iODeviceTypesUIContext.openDeleteIODeviceTypeDialog,
+      openDeleteIODeviceTypeDialog:
+        iODeviceTypesUIContext.openDeleteIODeviceTypeDialog,
     };
   }, [iODeviceTypesUIContext]);
 
@@ -73,7 +74,8 @@ export function IODeviceTypesTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditIODeviceTypePage: iODeviceTypesUIProps.openEditIODeviceTypePage,
-        openDeleteIODeviceTypeDialog: iODeviceTypesUIProps.openDeleteIODeviceTypeDialog,
+        openDeleteIODeviceTypeDialog:
+          iODeviceTypesUIProps.openDeleteIODeviceTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

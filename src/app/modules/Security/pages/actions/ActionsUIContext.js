@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { ActionModel } from "../../../../../core/_models/Security/ActionModel";
@@ -30,7 +29,7 @@ export function ActionsUIProvider({ actionsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function ActionsUIProvider({ actionsUIEvents, children }) {
     openDeleteActionDialog: actionsUIEvents.openDeleteActionDialog,
     openDeleteActionsDialog: actionsUIEvents.openDeleteActionsDialog,
     openFetchActionsDialog: actionsUIEvents.openFetchActionsDialog,
-    openUpdateActionsStatusDialog: actionsUIEvents.openUpdateActionsStatusDialog,
+    openUpdateActionsStatusDialog:
+      actionsUIEvents.openUpdateActionsStatusDialog,
   };
   return (
-    <ActionsUIContext.Provider value={value}>{children}</ActionsUIContext.Provider>
+    <ActionsUIContext.Provider value={value}>
+      {children}
+    </ActionsUIContext.Provider>
   );
 }

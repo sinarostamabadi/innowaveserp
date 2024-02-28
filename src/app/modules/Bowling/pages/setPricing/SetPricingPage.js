@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { SetPricingLoadingDialog } from "./setPricing-loading-dialog/SetPricingLoadingDialog";
-import { SetPricingDeleteDialog } from "./setPricing-delete-dialog/SetPricingDeleteDialog"
+import { SetPricingDeleteDialog } from "./setPricing-delete-dialog/SetPricingDeleteDialog";
 import { SetPricingCard } from "./SetPricingCard";
 import { SetPricingUIProvider } from "./SetPricingUIContext";
 
@@ -16,7 +16,7 @@ export function SetPricingPage({ history }) {
     openDeleteSetPricingDialog: (id) => {
       history.push(`/bowling/setPricing/${id}/delete`);
     },
-  /*   openDeleteSetPricingDialog: () => {
+    /*   openDeleteSetPricingDialog: () => {
       history.push(`/bowling/setPricing/deleteSetPricing`);
     }, */
     openFetchSetPricingDialog: () => {

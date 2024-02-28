@@ -66,9 +66,7 @@ export function GroupsTable() {
         remote
         keyField="BowlingCompetitionGroupId"
         data={
-          groupsUIProps.activeGroups === null
-            ? []
-            : groupsUIProps.activeGroups
+          groupsUIProps.activeGroups === null ? [] : groupsUIProps.activeGroups
         }
         columns={columns}
       >

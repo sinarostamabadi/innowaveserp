@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -16,7 +15,8 @@ export function EmployeePhysicalConditionDeleteDialog({ id, show, onHide }) {
   const { t } = useTranslation();
 
   // EmployeePhysicalConditions UI Context
-  const employeePhysicalConditionsUIContext = useEmployeePhysicalConditionsUIContext();
+  const employeePhysicalConditionsUIContext =
+    useEmployeePhysicalConditionsUIContext();
   const [error, setError] = useState(null);
   const employeePhysicalConditionsUIProps = useMemo(() => {
     return {
@@ -48,7 +48,11 @@ export function EmployeePhysicalConditionDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteEmployeePhysicalCondition(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchEmployeePhysicalConditions(employeePhysicalConditionsUIProps.queryParams));
+        dispatch(
+          actions.fetchEmployeePhysicalConditions(
+            employeePhysicalConditionsUIProps.queryParams
+          )
+        );
         // clear selections list
         employeePhysicalConditionsUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +71,12 @@ export function EmployeePhysicalConditionDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("EmployeePhysicalCondition.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("EmployeePhysicalCondition.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

@@ -39,12 +39,12 @@ export function RestaurantMenuItemIngredientEditForm({
 
   const [units, setUnits] = useState([]);
   useEffect(() => {
-      getAllUnits().then(({ data }) => {
-        setUnits((units) => [
-          { UnitId: null, Title: t("Common.WithoutSelect") },
-          ...data.Items,
-        ]);
-      });
+    getAllUnits().then(({ data }) => {
+      setUnits((units) => [
+        { UnitId: null, Title: t("Common.WithoutSelect") },
+        ...data.Items,
+      ]);
+    });
   }, [units.length]);
 
   function cleanDetail(dirtyData) {
@@ -54,16 +54,18 @@ export function RestaurantMenuItemIngredientEditForm({
       ProductGroup:
         !!dirtyData.ProductGroupId && dirtyData.ProductGroupId.length == 1
           ? dirtyData.ProductGroupId[0]
-          : (!!dirtyData.ProductGroup ? dirtyData.ProductGroup: null),
+          : !!dirtyData.ProductGroup
+          ? dirtyData.ProductGroup
+          : null,
       ProductGroupId:
         !!dirtyData.ProductGroupId && dirtyData.ProductGroupId.length == 1
           ? +dirtyData.ProductGroupId[0].ProductGroupId
-          : (!!dirtyData.ProductGroupId ? dirtyData.ProductGroupId: null),
+          : !!dirtyData.ProductGroupId
+          ? dirtyData.ProductGroupId
+          : null,
       UnitId: +dirtyData.UnitId,
       Unit: !!dirtyData.UnitId
-        ? units.filter(
-            (x) => x.UnitId == dirtyData.UnitId
-          )[0]
+        ? units.filter((x) => x.UnitId == dirtyData.UnitId)[0]
         : null,
       Amount: +dirtyData.Amount,
       Description: dirtyData.Description,
@@ -91,7 +93,7 @@ export function RestaurantMenuItemIngredientEditForm({
                 </div>
               )}
               <Form className="form form-label-right">
-              <div className="form-group row">
+                <div className="form-group row">
                   <div className="col-lg-12">
                     <SuggestionField
                       name="ProductGroupId"
@@ -101,7 +103,10 @@ export function RestaurantMenuItemIngredientEditForm({
                       placeHolder={t("msg.SelectBySuggestion")}
                       handleSearch={handleSuggestionProductGroup}
                       defaultValue={
-                        restaurantMenuItemIngredient && !!restaurantMenuItemIngredient.ProductGroup ? [restaurantMenuItemIngredient.ProductGroup] : []
+                        restaurantMenuItemIngredient &&
+                        !!restaurantMenuItemIngredient.ProductGroup
+                          ? [restaurantMenuItemIngredient.ProductGroup]
+                          : []
                       }
                       renderMenuItemChildren={(option, props) => (
                         <div>
@@ -118,13 +123,8 @@ export function RestaurantMenuItemIngredientEditForm({
                       label={t("RestaurantMenuItemIngredient.Unit")}
                     >
                       {units.map((unit) => (
-                        <option
-                          key={unit.UnitId}
-                          value={unit.UnitId}
-                        >
-                          {!!unit 
-                            ? unit.Name
-                            : ""}
+                        <option key={unit.UnitId} value={unit.UnitId}>
+                          {!!unit ? unit.Name : ""}
                         </option>
                       ))}
                     </Select>

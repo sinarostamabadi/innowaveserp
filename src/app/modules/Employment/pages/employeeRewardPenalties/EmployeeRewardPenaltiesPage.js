@@ -17,7 +17,9 @@ export function EmployeeRewardPenaltiesPage({ history }) {
       history.push(`/employment/employeeRewardPenalties/${id}/delete`);
     },
     openDeleteEmployeeRewardPenaltiesDialog: () => {
-      history.push(`/employment/employeeRewardPenalties/deleteEmployeeRewardPenalties`);
+      history.push(
+        `/employment/employeeRewardPenalties/deleteEmployeeRewardPenalties`
+      );
     },
     openFetchEmployeeRewardPenaltiesDialog: () => {
       history.push(`/employment/employeeRewardPenalties/fetch`);
@@ -26,9 +28,11 @@ export function EmployeeRewardPenaltiesPage({ history }) {
       history.push("/employment/employeeRewardPenalties/updateStatus");
     },
   };
-  
+
   return (
-    <EmployeeRewardPenaltiesUIProvider employeeRewardPenaltiesUIEvents={employeeRewardPenaltiesUIEvents}>
+    <EmployeeRewardPenaltiesUIProvider
+      employeeRewardPenaltiesUIEvents={employeeRewardPenaltiesUIEvents}
+    >
       <EmployeeRewardPenaltiesLoadingDialog />
       <Route path="/employment/employeeRewardPenalties/:id/delete">
         {({ history, match }) => (

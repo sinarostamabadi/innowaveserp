@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialCashTransactionTypesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const cashTransactionTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCashTransactionTypeById  
+    // getCashTransactionTypeById
     cashTransactionTypeFetched: (state, action) => {
       state.actionsLoading = false;
-      state.cashTransactionTypeForEdit = action.payload.cashTransactionTypeForEdit;
+      state.cashTransactionTypeForEdit =
+        action.payload.cashTransactionTypeForEdit;
       state.error = null;
     },
-    // findCashTransactionTypes  
+    // findCashTransactionTypes
     cashTransactionTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const cashTransactionTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCashTransactionType  
+    // createCashTransactionType
     cashTransactionTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCashTransactionType  
+    // updateCashTransactionType
     cashTransactionTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.CashTransactionTypeId === action.payload.cashTransactionType.CashTransactionTypeId) {
+        if (
+          entity.CashTransactionTypeId ===
+          action.payload.cashTransactionType.CashTransactionTypeId
+        ) {
           return action.payload.cashTransactionType;
         }
         return entity;
       });
     },
-    // deleteCashTransactionType  
+    // deleteCashTransactionType
     cashTransactionTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CashTransactionTypeId !== action.payload.CashTransactionTypeId  
+        (el) =>
+          el.CashTransactionTypeId !== action.payload.CashTransactionTypeId
       );
     },
-    // deleteCashTransactionTypes  
+    // deleteCashTransactionTypes
     cashTransactionTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CashTransactionTypeId)  
+        (el) => !action.payload.ids.includes(el.CashTransactionTypeId)
       );
     },
-    // cashTransactionTypesUpdateState  
+    // cashTransactionTypesUpdateState
     cashTransactionTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

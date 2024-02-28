@@ -7,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { CostCentersTable } from "./costCenters-table/CostCentersTable";
-import { useCostCentersUIContext, CostCentersUIConsumer } from "./CostCentersUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useCostCentersUIContext,
+  CostCentersUIConsumer,
+} from "./CostCentersUIContext";
+import { useTranslation } from "react-i18next";
 
 export function CostCentersCard() {
   const { t } = useTranslation();
@@ -21,16 +24,19 @@ export function CostCentersCard() {
       queryParams: costCentersUIContext.queryParams,
       setQueryParams: costCentersUIContext.setQueryParams,
       newCostCenterButtonClick: costCentersUIContext.newCostCenterButtonClick,
-      openDeleteCostCentersDialog: costCentersUIContext.openDeleteCostCentersDialog,
+      openDeleteCostCentersDialog:
+        costCentersUIContext.openDeleteCostCentersDialog,
       openEditCostCenterPage: costCentersUIContext.openEditCostCenterPage,
-      openUpdateCostCentersStatusDialog: costCentersUIContext.openUpdateCostCentersStatusDialog,
-      openFetchCostCentersDialog: costCentersUIContext.openFetchCostCentersDialog,
+      openUpdateCostCentersStatusDialog:
+        costCentersUIContext.openUpdateCostCentersStatusDialog,
+      openFetchCostCentersDialog:
+        costCentersUIContext.openFetchCostCentersDialog,
     };
   }, [costCentersUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("CostCenter.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("CostCenter.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"

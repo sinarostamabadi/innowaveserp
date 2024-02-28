@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { EmploymentTypesTable } from "./employmentTypes-table/EmploymentTypesTable";
-import { useEmploymentTypesUIContext, EmploymentTypesUIConsumer } from "./EmploymentTypesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useEmploymentTypesUIContext,
+  EmploymentTypesUIConsumer,
+} from "./EmploymentTypesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function EmploymentTypesCard() {
   const { t } = useTranslation();
@@ -21,24 +23,29 @@ export function EmploymentTypesCard() {
       ids: employmentTypesUIContext.ids,
       queryParams: employmentTypesUIContext.queryParams,
       setQueryParams: employmentTypesUIContext.setQueryParams,
-      newEmploymentTypeButtonClick: employmentTypesUIContext.newEmploymentTypeButtonClick,
-      openDeleteEmploymentTypesDialog: employmentTypesUIContext.openDeleteEmploymentTypesDialog,
-      openEditEmploymentTypePage: employmentTypesUIContext.openEditEmploymentTypePage,
-      openUpdateEmploymentTypesStatusDialog: employmentTypesUIContext.openUpdateEmploymentTypesStatusDialog,
-      openFetchEmploymentTypesDialog: employmentTypesUIContext.openFetchEmploymentTypesDialog,
+      newEmploymentTypeButtonClick:
+        employmentTypesUIContext.newEmploymentTypeButtonClick,
+      openDeleteEmploymentTypesDialog:
+        employmentTypesUIContext.openDeleteEmploymentTypesDialog,
+      openEditEmploymentTypePage:
+        employmentTypesUIContext.openEditEmploymentTypePage,
+      openUpdateEmploymentTypesStatusDialog:
+        employmentTypesUIContext.openUpdateEmploymentTypesStatusDialog,
+      openFetchEmploymentTypesDialog:
+        employmentTypesUIContext.openFetchEmploymentTypesDialog,
     };
   }, [employmentTypesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("EmploymentType.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("EmploymentType.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={employmentTypesUIProps.newEmploymentTypeButtonClick}
           >
-            {t("EmploymentType.Entity")} {' '} {t("Common.New")}
+            {t("EmploymentType.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

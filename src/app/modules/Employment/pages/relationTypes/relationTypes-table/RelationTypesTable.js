@@ -33,7 +33,8 @@ export function RelationTypesTable() {
       queryParams: relationTypesUIContext.queryParams,
       setQueryParams: relationTypesUIContext.setQueryParams,
       openEditRelationTypePage: relationTypesUIContext.openEditRelationTypePage,
-      openDeleteRelationTypeDialog: relationTypesUIContext.openDeleteRelationTypeDialog,
+      openDeleteRelationTypeDialog:
+        relationTypesUIContext.openDeleteRelationTypeDialog,
     };
   }, [relationTypesUIContext]);
 
@@ -73,7 +74,8 @@ export function RelationTypesTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditRelationTypePage: relationTypesUIProps.openEditRelationTypePage,
-        openDeleteRelationTypeDialog: relationTypesUIProps.openDeleteRelationTypeDialog,
+        openDeleteRelationTypeDialog:
+          relationTypesUIProps.openDeleteRelationTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -32,13 +32,13 @@ export const citiesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCityById  
+    // getCityById
     cityFetched: (state, action) => {
       state.actionsLoading = false;
       state.cityForEdit = action.payload.cityForEdit;
       state.error = null;
     },
-    // findCities  
+    // findCities
     citiesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -46,13 +46,13 @@ export const citiesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCity  
+    // createCity
     cityCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCity  
+    // updateCity
     cityUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -63,23 +63,23 @@ export const citiesSlice = createSlice({
         return entity;
       });
     },
-    // deleteCity  
+    // deleteCity
     cityDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CityId !== action.payload.CityId  
+        (el) => el.CityId !== action.payload.CityId
       );
     },
-    // deleteCities  
+    // deleteCities
     citiesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CityId)  
+        (el) => !action.payload.ids.includes(el.CityId)
       );
     },
-    // citiesUpdateState  
+    // citiesUpdateState
     citiesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

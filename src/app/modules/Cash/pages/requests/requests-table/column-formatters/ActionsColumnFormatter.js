@@ -12,7 +12,9 @@ export const ActionsColumnFormatter = (
   { openEditRequestPage, openDeleteRequestDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="requests-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={<Tooltip id="requests-edit-tooltip">{t("Common.Edit")}</Tooltip>}
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditRequestPage(row.RequestId)}
@@ -26,7 +28,9 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="requests-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="requests-delete-tooltip">{t("Common.Delete")}</Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"

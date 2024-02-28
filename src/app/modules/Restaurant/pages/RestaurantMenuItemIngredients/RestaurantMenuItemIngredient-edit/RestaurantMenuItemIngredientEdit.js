@@ -41,24 +41,30 @@ export function RestaurantMenuItemIngredientEdit({
   const dispatch = useDispatch();
 
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
-  const { actionsLoading, restaurantMenuItemIngredientForEdit, error } = useSelector(
-    (state) => ({
-      actionsLoading: state.restaurantMenuItemIngredients.actionsLoading,
-      restaurantMenuItemIngredientForEdit: state.restaurantMenuItemIngredients.restaurantMenuItemIngredientForEdit,
-      error: state.restaurantMenuItemIngredients.error,
-    }),
-    shallowEqual
-  );
+  const { actionsLoading, restaurantMenuItemIngredientForEdit, error } =
+    useSelector(
+      (state) => ({
+        actionsLoading: state.restaurantMenuItemIngredients.actionsLoading,
+        restaurantMenuItemIngredientForEdit:
+          state.restaurantMenuItemIngredients
+            .restaurantMenuItemIngredientForEdit,
+        error: state.restaurantMenuItemIngredients.error,
+      }),
+      shallowEqual
+    );
 
   useEffect(() => {
     dispatch(actions.fetchRestaurantMenuItemIngredient(id));
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("RestaurantMenuItemIngredient.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("RestaurantMenuItemIngredient.Entity");
 
     if (restaurantMenuItemIngredientForEdit && id) {
-      _title = t("Common.Edit") + " " + restaurantMenuItemIngredientForEdit.TitleFa;
+      _title =
+        t("Common.Edit") + " " + restaurantMenuItemIngredientForEdit.TitleFa;
     }
 
     setTitle(_title);
@@ -73,11 +79,11 @@ export function RestaurantMenuItemIngredientEdit({
         .then((arg) => {
           backToRestaurantMenuItemIngredientsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateRestaurantMenuItemIngredient(id, values))
         .then(() => backToRestaurantMenuItemIngredientsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 
@@ -149,9 +155,13 @@ export function RestaurantMenuItemIngredientEdit({
           {tab === "basic" && (
             <RestaurantMenuItemIngredientEditForm
               actionsLoading={actionsLoading}
-              restaurantMenuItemIngredient={restaurantMenuItemIngredientForEdit || initModel}
+              restaurantMenuItemIngredient={
+                restaurantMenuItemIngredientForEdit || initModel
+              }
               btnRef={btnRef}
-              saveRestaurantMenuItemIngredient={saveRestaurantMenuItemIngredient}
+              saveRestaurantMenuItemIngredient={
+                saveRestaurantMenuItemIngredient
+              }
             />
           )}
         </div>

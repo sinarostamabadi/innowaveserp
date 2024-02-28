@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialFutsalCentersState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const futsalCentersSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getFutsalCenterById  
+    // getFutsalCenterById
     futsalCenterFetched: (state, action) => {
       state.actionsLoading = false;
       state.futsalCenterForEdit = action.payload.futsalCenterForEdit;
       state.error = null;
     },
-    // findFutsalCenters  
+    // findFutsalCenters
     futsalCentersFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,42 @@ export const futsalCentersSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createFutsalCenter  
+    // createFutsalCenter
     futsalCenterCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateFutsalCenter  
+    // updateFutsalCenter
     futsalCenterUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.FutsalCenterId === action.payload.futsalCenter.FutsalCenterId) {
+        if (
+          entity.FutsalCenterId === action.payload.futsalCenter.FutsalCenterId
+        ) {
           return action.payload.futsalCenter;
         }
         return entity;
       });
     },
-    // deleteFutsalCenter  
+    // deleteFutsalCenter
     futsalCenterDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.FutsalCenterId !== action.payload.FutsalCenterId  
+        (el) => el.FutsalCenterId !== action.payload.FutsalCenterId
       );
     },
-    // deleteFutsalCenters  
+    // deleteFutsalCenters
     futsalCentersDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.FutsalCenterId)  
+        (el) => !action.payload.ids.includes(el.FutsalCenterId)
       );
     },
-    // futsalCentersUpdateState  
+    // futsalCentersUpdateState
     futsalCentersStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

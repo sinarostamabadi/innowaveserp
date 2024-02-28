@@ -33,7 +33,8 @@ export function CurrencyRatesTable() {
       queryParams: currencyRatesUIContext.queryParams,
       setQueryParams: currencyRatesUIContext.setQueryParams,
       openEditCurrencyRatePage: currencyRatesUIContext.openEditCurrencyRatePage,
-      openDeleteCurrencyRateDialog: currencyRatesUIContext.openDeleteCurrencyRateDialog,
+      openDeleteCurrencyRateDialog:
+        currencyRatesUIContext.openDeleteCurrencyRateDialog,
     };
   }, [currencyRatesUIContext]);
 
@@ -73,7 +74,8 @@ export function CurrencyRatesTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditCurrencyRatePage: currencyRatesUIProps.openEditCurrencyRatePage,
-        openDeleteCurrencyRateDialog: currencyRatesUIProps.openDeleteCurrencyRateDialog,
+        openDeleteCurrencyRateDialog:
+          currencyRatesUIProps.openDeleteCurrencyRateDialog,
         t: t,
       },
       classes: "text-right pr-0",

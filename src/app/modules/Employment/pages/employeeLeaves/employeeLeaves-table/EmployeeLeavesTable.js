@@ -32,8 +32,10 @@ export function EmployeeLeavesTable() {
       setIds: employeeLeavesUIContext.setIds,
       queryParams: employeeLeavesUIContext.queryParams,
       setQueryParams: employeeLeavesUIContext.setQueryParams,
-      openEditEmployeeLeavePage: employeeLeavesUIContext.openEditEmployeeLeavePage,
-      openDeleteEmployeeLeaveDialog: employeeLeavesUIContext.openDeleteEmployeeLeaveDialog,
+      openEditEmployeeLeavePage:
+        employeeLeavesUIContext.openEditEmployeeLeavePage,
+      openDeleteEmployeeLeaveDialog:
+        employeeLeavesUIContext.openDeleteEmployeeLeaveDialog,
     };
   }, [employeeLeavesUIContext]);
 
@@ -72,8 +74,10 @@ export function EmployeeLeavesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmployeeLeavePage: employeeLeavesUIProps.openEditEmployeeLeavePage,
-        openDeleteEmployeeLeaveDialog: employeeLeavesUIProps.openDeleteEmployeeLeaveDialog,
+        openEditEmployeeLeavePage:
+          employeeLeavesUIProps.openEditEmployeeLeavePage,
+        openDeleteEmployeeLeaveDialog:
+          employeeLeavesUIProps.openDeleteEmployeeLeaveDialog,
         t: t,
       },
       classes: "text-right pr-0",

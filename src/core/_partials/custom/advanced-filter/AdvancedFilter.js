@@ -124,7 +124,7 @@ export function AdvancedFilter({ listLoading, uiActions, extraFilter }) {
                     <Card.Title
                       style={{ color: "grey", fontSize: "0.9rem !important" }}
                     >
-                      <i className="fad fa-search"></i> {t("Common.AdvancedSearch")}
+                      <i className="fas fa-search"></i> {t("Common.AdvancedSearch")}
                     </Card.Title>
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">

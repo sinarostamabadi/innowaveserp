@@ -32,8 +32,10 @@ export function EmployeeInIODevicesTable() {
       setIds: employeeInIODevicesUIContext.setIds,
       queryParams: employeeInIODevicesUIContext.queryParams,
       setQueryParams: employeeInIODevicesUIContext.setQueryParams,
-      openEditEmployeeInIODevicePage: employeeInIODevicesUIContext.openEditEmployeeInIODevicePage,
-      openDeleteEmployeeInIODeviceDialog: employeeInIODevicesUIContext.openDeleteEmployeeInIODeviceDialog,
+      openEditEmployeeInIODevicePage:
+        employeeInIODevicesUIContext.openEditEmployeeInIODevicePage,
+      openDeleteEmployeeInIODeviceDialog:
+        employeeInIODevicesUIContext.openDeleteEmployeeInIODeviceDialog,
     };
   }, [employeeInIODevicesUIContext]);
 
@@ -50,7 +52,9 @@ export function EmployeeInIODevicesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     employeeInIODevicesUIProps.setIds([]);
-    dispatch(actions.fetchEmployeeInIODevices(employeeInIODevicesUIProps.queryParams));
+    dispatch(
+      actions.fetchEmployeeInIODevices(employeeInIODevicesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employeeInIODevicesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function EmployeeInIODevicesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmployeeInIODevicePage: employeeInIODevicesUIProps.openEditEmployeeInIODevicePage,
-        openDeleteEmployeeInIODeviceDialog: employeeInIODevicesUIProps.openDeleteEmployeeInIODeviceDialog,
+        openEditEmployeeInIODevicePage:
+          employeeInIODevicesUIProps.openEditEmployeeInIODevicePage,
+        openDeleteEmployeeInIODeviceDialog:
+          employeeInIODevicesUIProps.openDeleteEmployeeInIODeviceDialog,
         t: t,
       },
       classes: "text-right pr-0",

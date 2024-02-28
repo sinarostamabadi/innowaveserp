@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { ServiceActionsesTable } from "./serviceActionses-table/ServiceActionsesTable";
-import { useServiceActionsesUIContext, ServiceActionsesUIConsumer } from "./ServiceActionsesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useServiceActionsesUIContext,
+  ServiceActionsesUIConsumer,
+} from "./ServiceActionsesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function ServiceActionsesCard() {
   const { t } = useTranslation();
@@ -21,24 +23,29 @@ export function ServiceActionsesCard() {
       ids: serviceActionsesUIContext.ids,
       queryParams: serviceActionsesUIContext.queryParams,
       setQueryParams: serviceActionsesUIContext.setQueryParams,
-      newServiceActionsButtonClick: serviceActionsesUIContext.newServiceActionsButtonClick,
-      openDeleteServiceActionsesDialog: serviceActionsesUIContext.openDeleteServiceActionsesDialog,
-      openEditServiceActionsPage: serviceActionsesUIContext.openEditServiceActionsPage,
-      openUpdateServiceActionsesStatusDialog: serviceActionsesUIContext.openUpdateServiceActionsesStatusDialog,
-      openFetchServiceActionsesDialog: serviceActionsesUIContext.openFetchServiceActionsesDialog,
+      newServiceActionsButtonClick:
+        serviceActionsesUIContext.newServiceActionsButtonClick,
+      openDeleteServiceActionsesDialog:
+        serviceActionsesUIContext.openDeleteServiceActionsesDialog,
+      openEditServiceActionsPage:
+        serviceActionsesUIContext.openEditServiceActionsPage,
+      openUpdateServiceActionsesStatusDialog:
+        serviceActionsesUIContext.openUpdateServiceActionsesStatusDialog,
+      openFetchServiceActionsesDialog:
+        serviceActionsesUIContext.openFetchServiceActionsesDialog,
     };
   }, [serviceActionsesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("ServiceActions.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("ServiceActions.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={serviceActionsesUIProps.newServiceActionsButtonClick}
           >
-            {t("ServiceActions.Entity")} {' '} {t("Common.New")}
+            {t("ServiceActions.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

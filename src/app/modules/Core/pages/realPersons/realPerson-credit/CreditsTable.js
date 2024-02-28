@@ -74,7 +74,7 @@ export function CreditsTable() {
     sizePerPage: uiProps.queryParams.PageSize,
     page: uiProps.queryParams.PageNumber,
   };
-  
+
   return (
     <>
       <PaginationProvider pagination={paginationFactory(paginationOptions)}>

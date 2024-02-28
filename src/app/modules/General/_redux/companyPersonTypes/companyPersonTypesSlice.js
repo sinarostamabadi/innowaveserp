@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialCompanyPersonTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const companyPersonTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCompanyPersonTypeById  
+    // getCompanyPersonTypeById
     companyPersonTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.companyPersonTypeForEdit = action.payload.companyPersonTypeForEdit;
       state.error = null;
     },
-    // findCompanyPersonTypes  
+    // findCompanyPersonTypes
     companyPersonTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const companyPersonTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCompanyPersonType  
+    // createCompanyPersonType
     companyPersonTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCompanyPersonType  
+    // updateCompanyPersonType
     companyPersonTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.CompanyPersonTypeId === action.payload.companyPersonType.CompanyPersonTypeId) {
+        if (
+          entity.CompanyPersonTypeId ===
+          action.payload.companyPersonType.CompanyPersonTypeId
+        ) {
           return action.payload.companyPersonType;
         }
         return entity;
       });
     },
-    // deleteCompanyPersonType  
+    // deleteCompanyPersonType
     companyPersonTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CompanyPersonTypeId !== action.payload.CompanyPersonTypeId  
+        (el) => el.CompanyPersonTypeId !== action.payload.CompanyPersonTypeId
       );
     },
-    // deleteCompanyPersonTypes  
+    // deleteCompanyPersonTypes
     companyPersonTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CompanyPersonTypeId)  
+        (el) => !action.payload.ids.includes(el.CompanyPersonTypeId)
       );
     },
-    // companyPersonTypesUpdateState  
+    // companyPersonTypesUpdateState
     companyPersonTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

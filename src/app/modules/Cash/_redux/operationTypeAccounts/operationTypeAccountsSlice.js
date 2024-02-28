@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialOperationTypeAccountsState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const operationTypeAccountsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getOperationTypeAccountById  
+    // getOperationTypeAccountById
     operationTypeAccountFetched: (state, action) => {
       state.actionsLoading = false;
-      state.operationTypeAccountForEdit = action.payload.operationTypeAccountForEdit;
+      state.operationTypeAccountForEdit =
+        action.payload.operationTypeAccountForEdit;
       state.error = null;
     },
-    // findOperationTypeAccounts  
+    // findOperationTypeAccounts
     operationTypeAccountsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const operationTypeAccountsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createOperationTypeAccount  
+    // createOperationTypeAccount
     operationTypeAccountCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateOperationTypeAccount  
+    // updateOperationTypeAccount
     operationTypeAccountUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.OperationTypeAccountId === action.payload.operationTypeAccount.OperationTypeAccountId) {
+        if (
+          entity.OperationTypeAccountId ===
+          action.payload.operationTypeAccount.OperationTypeAccountId
+        ) {
           return action.payload.operationTypeAccount;
         }
         return entity;
       });
     },
-    // deleteOperationTypeAccount  
+    // deleteOperationTypeAccount
     operationTypeAccountDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.OperationTypeAccountId !== action.payload.OperationTypeAccountId  
+        (el) =>
+          el.OperationTypeAccountId !== action.payload.OperationTypeAccountId
       );
     },
-    // deleteOperationTypeAccounts  
+    // deleteOperationTypeAccounts
     operationTypeAccountsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.OperationTypeAccountId)  
+        (el) => !action.payload.ids.includes(el.OperationTypeAccountId)
       );
     },
-    // operationTypeAccountsUpdateState  
+    // operationTypeAccountsUpdateState
     operationTypeAccountsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

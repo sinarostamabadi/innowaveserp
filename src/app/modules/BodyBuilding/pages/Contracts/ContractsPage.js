@@ -20,7 +20,7 @@ export function ContractsPage({ history }) {
       history.push(`/BodyBuilding/Contracts/${id}/show`);
     },
   };
-  
+
   return (
     <ContractsUIProvider contractsUIEvents={contractsUIEvents}>
       <ContractsLoadingDialog />

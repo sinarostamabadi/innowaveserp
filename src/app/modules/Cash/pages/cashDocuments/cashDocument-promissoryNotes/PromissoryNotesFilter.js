@@ -8,7 +8,8 @@ export function PromissoryNotesFilter() {
   const promissoryNotesUIContext = usePromissoryNotesUIContext();
   const promissoryNotesUIProps = useMemo(() => {
     return {
-      openNewPromissoryNoteDialog: promissoryNotesUIContext.openNewPromissoryNoteDialog,
+      openNewPromissoryNoteDialog:
+        promissoryNotesUIContext.openNewPromissoryNoteDialog,
     };
   }, [promissoryNotesUIContext]);
 
@@ -20,7 +21,9 @@ export function PromissoryNotesFilter() {
             <button
               type="button"
               className="btn btn-success"
-              onClick={() => promissoryNotesUIProps.openNewPromissoryNoteDialog()}
+              onClick={() =>
+                promissoryNotesUIProps.openNewPromissoryNoteDialog()
+              }
             >
               {t("CashDocument.PromissoryNote")} {t("Common.New")}
             </button>

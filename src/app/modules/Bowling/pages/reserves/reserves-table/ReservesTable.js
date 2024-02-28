@@ -116,7 +116,7 @@ export function ReservesTable({ history }) {
       formatter: TimeColumnFormatter,
       sortCaret: sortCaret,
     });
-    columns.push(
+  columns.push(
     {
       dataField: "ClosetNumber",
       text: t("BowlingReserve.ClosetNumber"),
@@ -151,7 +151,7 @@ export function ReservesTable({ history }) {
       style: {
         minWidth: "40px",
       },
-    },
+    }
   );
 
   const paginationOptions = {

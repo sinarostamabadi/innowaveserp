@@ -44,7 +44,8 @@ export function CashTransactionTypeEdit({
   const { actionsLoading, cashTransactionTypeForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.cashTransactionTypes.actionsLoading,
-      cashTransactionTypeForEdit: state.cashTransactionTypes.cashTransactionTypeForEdit,
+      cashTransactionTypeForEdit:
+        state.cashTransactionTypes.cashTransactionTypeForEdit,
       error: state.cashTransactionTypes.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function CashTransactionTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("CashTransactionType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("CashTransactionType.Entity");
 
     if (cashTransactionTypeForEdit && id) {
       _title = t("Common.Edit") + " " + cashTransactionTypeForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function CashTransactionTypeEdit({
         .then((arg) => {
           backToCashTransactionTypesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateCashTransactionType(id, values))
         .then(() => backToCashTransactionTypesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

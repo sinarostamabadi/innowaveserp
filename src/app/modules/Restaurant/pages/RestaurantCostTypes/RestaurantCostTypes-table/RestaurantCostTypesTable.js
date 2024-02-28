@@ -32,8 +32,10 @@ export function RestaurantCostTypesTable() {
       setIds: restaurantCostTypesUIContext.setIds,
       queryParams: restaurantCostTypesUIContext.queryParams,
       setQueryParams: restaurantCostTypesUIContext.setQueryParams,
-      openEditRestaurantCostTypePage: restaurantCostTypesUIContext.openEditRestaurantCostTypePage,
-      openDeleteRestaurantCostTypeDialog: restaurantCostTypesUIContext.openDeleteRestaurantCostTypeDialog,
+      openEditRestaurantCostTypePage:
+        restaurantCostTypesUIContext.openEditRestaurantCostTypePage,
+      openDeleteRestaurantCostTypeDialog:
+        restaurantCostTypesUIContext.openDeleteRestaurantCostTypeDialog,
     };
   }, [restaurantCostTypesUIContext]);
 
@@ -50,7 +52,9 @@ export function RestaurantCostTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     restaurantCostTypesUIProps.setIds([]);
-    dispatch(actions.fetchRestaurantCostTypes(restaurantCostTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchRestaurantCostTypes(restaurantCostTypesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restaurantCostTypesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function RestaurantCostTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditRestaurantCostTypePage: restaurantCostTypesUIProps.openEditRestaurantCostTypePage,
-        openDeleteRestaurantCostTypeDialog: restaurantCostTypesUIProps.openDeleteRestaurantCostTypeDialog,
+        openEditRestaurantCostTypePage:
+          restaurantCostTypesUIProps.openEditRestaurantCostTypePage,
+        openDeleteRestaurantCostTypeDialog:
+          restaurantCostTypesUIProps.openDeleteRestaurantCostTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

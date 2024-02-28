@@ -3,7 +3,10 @@ import { useTranslation } from "react-i18next";
 import { Modal } from "react-bootstrap";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { Input, DatePickerField } from "../../../../../../../core/_partials/controls";
+import {
+  Input,
+  DatePickerField,
+} from "../../../../../../../core/_partials/controls";
 import { FaObjToEnDateTime } from "../../../../../../../core/_helpers";
 
 export function RestaurantMenuItemPriceEditForm({
@@ -17,9 +20,11 @@ export function RestaurantMenuItemPriceEditForm({
     Price: Yup.number().required(
       t("err.IsRequired", { 0: t("RestaurantMenuItemPrice.Price") })
     ),
-    ActiveDateObj: Yup.object().required(
-      t("err.IsRequired", { 0: t("RestaurantMenuItemPrice.ActiveDate") })
-    ).nullable()
+    ActiveDateObj: Yup.object()
+      .required(
+        t("err.IsRequired", { 0: t("RestaurantMenuItemPrice.ActiveDate") })
+      )
+      .nullable(),
   });
 
   function cleanRestaurantMenuItemPrice(dirtyData) {

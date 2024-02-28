@@ -37,7 +37,7 @@ export function AccountsTable() {
       setQueryParams: accountsUIContext.setQueryParams,
       openEditAccountPage: accountsUIContext.openEditAccountPage,
       openDeleteAccountDialog: accountsUIContext.openDeleteAccountDialog,
-      openEditDetailDialog: accountsUIContext.openEditDetailDialog
+      openEditDetailDialog: accountsUIContext.openEditDetailDialog,
     };
   }, [accountsUIContext]);
 
@@ -102,45 +102,93 @@ export function AccountsTable() {
 
   let buttons = [
     {
-      Level:1,
-      cond: (node) => node.children.length == 0 ,
-      btn: (node)=> <button className="btn btn-link p-0 mr-2" /* onClick={()=>accountsUIProps.openDeleteAccountDialog(node.object.AccountId)} */><i className="p-0 fas fa-times text-danger"></i></button>
+      Level: 1,
+      cond: (node) => node.children.length == 0,
+      btn: (node) => (
+        <button
+          className="btn btn-link p-0 mr-2" /* onClick={()=>accountsUIProps.openDeleteAccountDialog(node.object.AccountId)} */
+        >
+          <i className="p-0 fas fa-times text-danger"></i>
+        </button>
+      ),
     },
     {
-      Level:1,
-      cond: (node) => node.children.length == 0 ,
-      btn: (node)=> <button className="btn btn-link p-0 mr-2" /* onClick={()=>accountsUIProps.openEditDetailDialog(node.object)} */><i className="p-0 fas fa-pen text-info"></i></button>
+      Level: 1,
+      cond: (node) => node.children.length == 0,
+      btn: (node) => (
+        <button
+          className="btn btn-link p-0 mr-2" /* onClick={()=>accountsUIProps.openEditDetailDialog(node.object)} */
+        >
+          <i className="p-0 fas fa-pen text-info"></i>
+        </button>
+      ),
     },
     {
-      Level:1,
-      cond: (node) => true ,
-      btn: (node)=> <button className="btn btn-link p-0 mr-2" /* onClick={()=>accountsUIProps.openEditDetailDialog(null, node.object.AccountId, 2)} */><i className="p-0 fas fa-plus text-success"></i></button>
+      Level: 1,
+      cond: (node) => true,
+      btn: (node) => (
+        <button
+          className="btn btn-link p-0 mr-2" /* onClick={()=>accountsUIProps.openEditDetailDialog(null, node.object.AccountId, 2)} */
+        >
+          <i className="p-0 fas fa-plus text-success"></i>
+        </button>
+      ),
     },
     {
-      Level:2,
-      cond: (node) => node.children.length == 0 ,
-      btn: (node)=> <button className="btn btn-link p-0 mr-2" /* onClick={()=>accountsUIProps.openDeleteAccountDialog(node.object.AccountId)} */><i className="p-0 fas fa-times text-danger"></i></button>
+      Level: 2,
+      cond: (node) => node.children.length == 0,
+      btn: (node) => (
+        <button
+          className="btn btn-link p-0 mr-2" /* onClick={()=>accountsUIProps.openDeleteAccountDialog(node.object.AccountId)} */
+        >
+          <i className="p-0 fas fa-times text-danger"></i>
+        </button>
+      ),
     },
     {
-      Level:2,
-      cond: (node) => node.children.length == 0 ,
-      btn: (node)=> <button className="btn btn-link p-0 mr-2" /* onClick={()=>accountsUIProps.openEditDetailDialog(node.object)} */><i className="p-0 fas fa-pen text-info"></i></button>
+      Level: 2,
+      cond: (node) => node.children.length == 0,
+      btn: (node) => (
+        <button
+          className="btn btn-link p-0 mr-2" /* onClick={()=>accountsUIProps.openEditDetailDialog(node.object)} */
+        >
+          <i className="p-0 fas fa-pen text-info"></i>
+        </button>
+      ),
     },
     {
-      Level:2,
-      cond: (node) => true ,
-      btn: (node)=> <button className="btn btn-link p-0 mr-2" /* onClick={()=>accountsUIProps.openEditDetailDialog(null, node.object.AccountId, 3)} */><i className="p-0 fas fa-plus text-success"></i></button>
+      Level: 2,
+      cond: (node) => true,
+      btn: (node) => (
+        <button
+          className="btn btn-link p-0 mr-2" /* onClick={()=>accountsUIProps.openEditDetailDialog(null, node.object.AccountId, 3)} */
+        >
+          <i className="p-0 fas fa-plus text-success"></i>
+        </button>
+      ),
     },
     {
-      Level:3,
-      cond: (node) => node.children.length == 0 ,
-      btn: (node)=> <button className="btn btn-link p-0 mr-2" /* onClick={()=>accountsUIProps.openDeleteAccountDialog(node.object.AccountId)} */><i className="p-0 fas fa-times text-danger"></i></button>
+      Level: 3,
+      cond: (node) => node.children.length == 0,
+      btn: (node) => (
+        <button
+          className="btn btn-link p-0 mr-2" /* onClick={()=>accountsUIProps.openDeleteAccountDialog(node.object.AccountId)} */
+        >
+          <i className="p-0 fas fa-times text-danger"></i>
+        </button>
+      ),
     },
     {
-      Level:3,
-      cond: (node) => node.children.length == 0 ,
-      btn: (node)=> <button className="btn btn-link p-0 mr-2" /* onClick={()=>accountsUIProps.openEditDetailDialog(node.object)} */><i className="p-0 fas fa-pen text-info"></i></button>
-    }
+      Level: 3,
+      cond: (node) => node.children.length == 0,
+      btn: (node) => (
+        <button
+          className="btn btn-link p-0 mr-2" /* onClick={()=>accountsUIProps.openEditDetailDialog(node.object)} */
+        >
+          <i className="p-0 fas fa-pen text-info"></i>
+        </button>
+      ),
+    },
   ];
 
   return (
@@ -153,7 +201,7 @@ export function AccountsTable() {
           rowDirection="rtl"
           isVirtualized={false}
           nodeContentRenderer={(props) => (
-            <NodeRendererDefault {...props} buttons={buttons}/>
+            <NodeRendererDefault {...props} buttons={buttons} />
           )}
           //key="AccountId"
           onChange={(e) => setTree(e)}

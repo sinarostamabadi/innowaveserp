@@ -26,7 +26,7 @@ export function TimePriceingPage({ history }) {
       history.push("/bowling/timePriceing/updateStatus");
     },
   };
-  
+
   return (
     <TimePriceingUIProvider timePriceingUIEvents={timePriceingUIEvents}>
       <TimePriceingLoadingDialog />

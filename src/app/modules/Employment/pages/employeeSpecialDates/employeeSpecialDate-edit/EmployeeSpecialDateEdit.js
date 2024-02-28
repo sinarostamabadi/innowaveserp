@@ -44,7 +44,8 @@ export function EmployeeSpecialDateEdit({
   const { actionsLoading, employeeSpecialDateForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.employeeSpecialDates.actionsLoading,
-      employeeSpecialDateForEdit: state.employeeSpecialDates.employeeSpecialDateForEdit,
+      employeeSpecialDateForEdit:
+        state.employeeSpecialDates.employeeSpecialDateForEdit,
       error: state.employeeSpecialDates.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function EmployeeSpecialDateEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("EmployeeSpecialDate.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("EmployeeSpecialDate.Entity");
 
     if (employeeSpecialDateForEdit && id) {
       _title = t("Common.Edit") + " " + employeeSpecialDateForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function EmployeeSpecialDateEdit({
         .then((arg) => {
           backToEmployeeSpecialDatesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateEmployeeSpecialDate(id, values))
         .then(() => backToEmployeeSpecialDatesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

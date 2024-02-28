@@ -26,9 +26,11 @@ export function CashTransactionTypesPage({ history }) {
       history.push("/cash/cashTransactionTypes/updateStatus");
     },
   };
-  
+
   return (
-    <CashTransactionTypesUIProvider cashTransactionTypesUIEvents={cashTransactionTypesUIEvents}>
+    <CashTransactionTypesUIProvider
+      cashTransactionTypesUIEvents={cashTransactionTypesUIEvents}
+    >
       <CashTransactionTypesLoadingDialog />
       <Route path="/cash/cashTransactionTypes/:id/delete">
         {({ history, match }) => (

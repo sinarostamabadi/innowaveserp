@@ -1,5 +1,5 @@
 import React from "react";
-import {toAbsoluteUrl} from "../../../core/_helpers";
+import { toAbsoluteUrl } from "../../../core/_helpers";
 import "../../../core/_assets/sass/pages/error/error-3.scss";
 
 export function ErrorPage3() {
@@ -8,7 +8,7 @@ export function ErrorPage3() {
       <div
         className="error error-3 d-flex flex-row-fluid bgi-size-cover bgi-position-center"
         style={{
-          backgroundImage: `url(${toAbsoluteUrl("/media/error/bg3.jpg")})`
+          backgroundImage: `url(${toAbsoluteUrl("/media/error/bg3.jpg")})`,
         }}
       >
         <div className="px-10 px-md-30 py-10 py-md-0 d-flex flex-column justify-content-md-center">

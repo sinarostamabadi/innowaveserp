@@ -32,8 +32,10 @@ export function EmployeeChildsTable() {
       setIds: employeeChildsUIContext.setIds,
       queryParams: employeeChildsUIContext.queryParams,
       setQueryParams: employeeChildsUIContext.setQueryParams,
-      openEditEmployeeChildPage: employeeChildsUIContext.openEditEmployeeChildPage,
-      openDeleteEmployeeChildDialog: employeeChildsUIContext.openDeleteEmployeeChildDialog,
+      openEditEmployeeChildPage:
+        employeeChildsUIContext.openEditEmployeeChildPage,
+      openDeleteEmployeeChildDialog:
+        employeeChildsUIContext.openDeleteEmployeeChildDialog,
     };
   }, [employeeChildsUIContext]);
 
@@ -72,8 +74,10 @@ export function EmployeeChildsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmployeeChildPage: employeeChildsUIProps.openEditEmployeeChildPage,
-        openDeleteEmployeeChildDialog: employeeChildsUIProps.openDeleteEmployeeChildDialog,
+        openEditEmployeeChildPage:
+          employeeChildsUIProps.openEditEmployeeChildPage,
+        openDeleteEmployeeChildDialog:
+          employeeChildsUIProps.openDeleteEmployeeChildDialog,
         t: t,
       },
       classes: "text-right pr-0",

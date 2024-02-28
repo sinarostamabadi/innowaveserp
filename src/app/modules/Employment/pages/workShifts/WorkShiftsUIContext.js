@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { WorkShiftModel } from "../../../../../core/_models/Employment/WorkShiftModel";
@@ -30,7 +29,7 @@ export function WorkShiftsUIProvider({ workShiftsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function WorkShiftsUIProvider({ workShiftsUIEvents, children }) {
     openDeleteWorkShiftDialog: workShiftsUIEvents.openDeleteWorkShiftDialog,
     openDeleteWorkShiftsDialog: workShiftsUIEvents.openDeleteWorkShiftsDialog,
     openFetchWorkShiftsDialog: workShiftsUIEvents.openFetchWorkShiftsDialog,
-    openUpdateWorkShiftsStatusDialog: workShiftsUIEvents.openUpdateWorkShiftsStatusDialog,
+    openUpdateWorkShiftsStatusDialog:
+      workShiftsUIEvents.openUpdateWorkShiftsStatusDialog,
   };
   return (
-    <WorkShiftsUIContext.Provider value={value}>{children}</WorkShiftsUIContext.Provider>
+    <WorkShiftsUIContext.Provider value={value}>
+      {children}
+    </WorkShiftsUIContext.Provider>
   );
 }

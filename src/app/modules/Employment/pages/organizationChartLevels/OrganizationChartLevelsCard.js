@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,37 +7,50 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { OrganizationChartLevelsTable } from "./organizationChartLevels-table/OrganizationChartLevelsTable";
-import { useOrganizationChartLevelsUIContext, OrganizationChartLevelsUIConsumer } from "./OrganizationChartLevelsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useOrganizationChartLevelsUIContext,
+  OrganizationChartLevelsUIConsumer,
+} from "./OrganizationChartLevelsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function OrganizationChartLevelsCard() {
   const { t } = useTranslation();
 
-  const organizationChartLevelsUIContext = useOrganizationChartLevelsUIContext();
+  const organizationChartLevelsUIContext =
+    useOrganizationChartLevelsUIContext();
 
   const organizationChartLevelsUIProps = useMemo(() => {
     return {
       ids: organizationChartLevelsUIContext.ids,
       queryParams: organizationChartLevelsUIContext.queryParams,
       setQueryParams: organizationChartLevelsUIContext.setQueryParams,
-      newOrganizationChartLevelButtonClick: organizationChartLevelsUIContext.newOrganizationChartLevelButtonClick,
-      openDeleteOrganizationChartLevelsDialog: organizationChartLevelsUIContext.openDeleteOrganizationChartLevelsDialog,
-      openEditOrganizationChartLevelPage: organizationChartLevelsUIContext.openEditOrganizationChartLevelPage,
-      openUpdateOrganizationChartLevelsStatusDialog: organizationChartLevelsUIContext.openUpdateOrganizationChartLevelsStatusDialog,
-      openFetchOrganizationChartLevelsDialog: organizationChartLevelsUIContext.openFetchOrganizationChartLevelsDialog,
+      newOrganizationChartLevelButtonClick:
+        organizationChartLevelsUIContext.newOrganizationChartLevelButtonClick,
+      openDeleteOrganizationChartLevelsDialog:
+        organizationChartLevelsUIContext.openDeleteOrganizationChartLevelsDialog,
+      openEditOrganizationChartLevelPage:
+        organizationChartLevelsUIContext.openEditOrganizationChartLevelPage,
+      openUpdateOrganizationChartLevelsStatusDialog:
+        organizationChartLevelsUIContext.openUpdateOrganizationChartLevelsStatusDialog,
+      openFetchOrganizationChartLevelsDialog:
+        organizationChartLevelsUIContext.openFetchOrganizationChartLevelsDialog,
     };
   }, [organizationChartLevelsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("OrganizationChartLevel.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("OrganizationChartLevel.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
-            onClick={organizationChartLevelsUIProps.newOrganizationChartLevelButtonClick}
+            onClick={
+              organizationChartLevelsUIProps.newOrganizationChartLevelButtonClick
+            }
           >
-            {t("OrganizationChartLevel.Entity")} {' '} {t("Common.New")}
+            {t("OrganizationChartLevel.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

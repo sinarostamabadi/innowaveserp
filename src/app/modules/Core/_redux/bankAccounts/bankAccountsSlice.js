@@ -31,13 +31,13 @@ export const bankAccountsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBankAccountById  
+    // getBankAccountById
     bankAccountFetched: (state, action) => {
       state.actionsLoading = false;
       state.bankAccountForEdit = action.payload.bankAccountForEdit;
       state.error = null;
     },
-    // findBankAccounts  
+    // findBankAccounts
     bankAccountsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -45,15 +45,15 @@ export const bankAccountsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBankAccount  
+    // createBankAccount
     bankAccountCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
-      
+
       return;
     },
-    // updateBankAccount  
+    // updateBankAccount
     bankAccountUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -66,23 +66,23 @@ export const bankAccountsSlice = createSlice({
 
       return;
     },
-    // deleteBankAccount  
+    // deleteBankAccount
     bankAccountDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BankAccountId !== action.payload.BankAccountId  
+        (el) => el.BankAccountId !== action.payload.BankAccountId
       );
     },
-    // deleteBankAccounts  
+    // deleteBankAccounts
     bankAccountsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BankAccountId)  
+        (el) => !action.payload.ids.includes(el.BankAccountId)
       );
     },
-    // bankAccountsUpdateState  
+    // bankAccountsUpdateState
     bankAccountsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

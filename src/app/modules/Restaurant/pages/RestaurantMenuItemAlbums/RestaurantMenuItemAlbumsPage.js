@@ -17,7 +17,9 @@ export function RestaurantMenuItemAlbumsPage({ history }) {
       history.push(`/restaurant/restaurantMenuItemAlbums/${id}/delete`);
     },
     openDeleteRestaurantMenuItemAlbumsDialog: () => {
-      history.push(`/restaurant/restaurantMenuItemAlbums/deleteRestaurantMenuItemAlbums`);
+      history.push(
+        `/restaurant/restaurantMenuItemAlbums/deleteRestaurantMenuItemAlbums`
+      );
     },
     openFetchRestaurantMenuItemAlbumsDialog: () => {
       history.push(`/restaurant/restaurantMenuItemAlbums/fetch`);
@@ -26,9 +28,11 @@ export function RestaurantMenuItemAlbumsPage({ history }) {
       history.push("/restaurant/restaurantMenuItemAlbums/updateStatus");
     },
   };
-  
+
   return (
-    <RestaurantMenuItemAlbumsUIProvider restaurantMenuItemAlbumsUIEvents={restaurantMenuItemAlbumsUIEvents}>
+    <RestaurantMenuItemAlbumsUIProvider
+      restaurantMenuItemAlbumsUIEvents={restaurantMenuItemAlbumsUIEvents}
+    >
       <RestaurantMenuItemAlbumsLoadingDialog />
       <Route path="/restaurant/restaurantMenuItemAlbums/:id/delete">
         {({ history, match }) => (

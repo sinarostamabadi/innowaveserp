@@ -1,5 +1,5 @@
 import React from "react";
-import { ServiceAccessShow } from '../../../../core/_partials/custom/service-access-show/ServiceAccessShow'
+import { ServiceAccessShow } from "../../../../core/_partials/custom/service-access-show/ServiceAccessShow";
 
 export function BiliardDashboard() {
   return (

@@ -1,17 +1,16 @@
-
 import * as requestFromServer from "./documentDtlsCrud";
 import { documentDtlsSlice, callTypes } from "./documentDtlsSlice";
 const { actions } = documentDtlsSlice;
 export const fetchDocumentDtls = (queryParams) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.list }));
-  return requestFromServer  
-    .findDocumentDtls(queryParams)  
+  return requestFromServer
+    .findDocumentDtls(queryParams)
     .then((response) => {
       const { Items, TotalCount } = response.data;
       dispatch(
-        actions.documentDtlsFetched({ totalCount: TotalCount, entities: Items })  
+        actions.documentDtlsFetched({ totalCount: TotalCount, entities: Items })
       );
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't find documentDtls";
       dispatch(actions.catchError({ error, callType: callTypes.list }));
@@ -19,15 +18,17 @@ export const fetchDocumentDtls = (queryParams) => (dispatch) => {
 };
 export const fetchDocumentDtl = (id) => (dispatch) => {
   if (!id) {
-    return dispatch(actions.documentDtlFetched({ documentDtlForEdit: undefined }));
+    return dispatch(
+      actions.documentDtlFetched({ documentDtlForEdit: undefined })
+    );
   }
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .getDocumentDtlById(id)  
+  return requestFromServer
+    .getDocumentDtlById(id)
     .then((response) => {
       const documentDtl = response.data;
       dispatch(actions.documentDtlFetched({ documentDtlForEdit: documentDtl }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't find documentDtl";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -35,43 +36,43 @@ export const fetchDocumentDtl = (id) => (dispatch) => {
 };
 export const deleteDocumentDtl = (id) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .deleteDocumentDtl(id)  
+  return requestFromServer
+    .deleteDocumentDtl(id)
     .then((response) => {
       dispatch(actions.documentDtlDeleted({ id }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't delete documentDtl";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
 };
-export const createDocumentDtl = (documentDtlForCreation, fnCallback) => (dispatch) => {
-  dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .createDocumentDtl(documentDtlForCreation)  
-    .then((response) => {
-      const documentDtl = response.data;
-      fnCallback(documentDtl);
-      
-      dispatch(actions.documentDtlCreated(documentDtl));
-    })  
-    .catch((error) => {
-      error.clientMessage = "Can't create documentDtl";
-      dispatch(actions.catchError({ error, callType: callTypes.action }));
-      throw error;
-    });
-};
+export const createDocumentDtl =
+  (documentDtlForCreation, fnCallback) => (dispatch) => {
+    dispatch(actions.startCall({ callType: callTypes.action }));
+    return requestFromServer
+      .createDocumentDtl(documentDtlForCreation)
+      .then((response) => {
+        const documentDtl = response.data;
+        fnCallback(documentDtl);
+
+        dispatch(actions.documentDtlCreated(documentDtl));
+      })
+      .catch((error) => {
+        error.clientMessage = "Can't create documentDtl";
+        dispatch(actions.catchError({ error, callType: callTypes.action }));
+        throw error;
+      });
+  };
 export const updateDocumentDtl = (documentDtl, fnCallback) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .updateDocumentDtl(documentDtl)  
+  return requestFromServer
+    .updateDocumentDtl(documentDtl)
     .then((response) => {
       dispatch(actions.documentDtlUpdated({ documentDtl }));
 
       fnCallback(response);
-
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't update documentDtl";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -80,11 +81,11 @@ export const updateDocumentDtl = (documentDtl, fnCallback) => (dispatch) => {
 };
 export const updateDocumentDtlsStatus = (ids, status) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .updateStatusForDocumentDtls(ids, status)  
+  return requestFromServer
+    .updateStatusForDocumentDtls(ids, status)
     .then(() => {
       dispatch(actions.documentDtlsStatusUpdated({ ids, status }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't update documentDtls status";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -92,14 +93,14 @@ export const updateDocumentDtlsStatus = (ids, status) => (dispatch) => {
 };
 export const deleteDocumentDtls = (ids) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .deleteDocumentDtls(ids)  
+  return requestFromServer
+    .deleteDocumentDtls(ids)
     .then(() => {
       dispatch(actions.documentDtlsDeleted({ ids }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't delete documentDtls";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

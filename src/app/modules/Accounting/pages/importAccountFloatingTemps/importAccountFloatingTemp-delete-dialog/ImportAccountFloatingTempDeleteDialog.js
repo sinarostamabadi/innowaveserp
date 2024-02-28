@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -16,7 +15,8 @@ export function ImportAccountFloatingTempDeleteDialog({ id, show, onHide }) {
   const { t } = useTranslation();
 
   // ImportAccountFloatingTemps UI Context
-  const importAccountFloatingTempsUIContext = useImportAccountFloatingTempsUIContext();
+  const importAccountFloatingTempsUIContext =
+    useImportAccountFloatingTempsUIContext();
   const [error, setError] = useState(null);
   const importAccountFloatingTempsUIProps = useMemo(() => {
     return {
@@ -48,7 +48,11 @@ export function ImportAccountFloatingTempDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteImportAccountFloatingTemp(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchImportAccountFloatingTemps(importAccountFloatingTempsUIProps.queryParams));
+        dispatch(
+          actions.fetchImportAccountFloatingTemps(
+            importAccountFloatingTempsUIProps.queryParams
+          )
+        );
         // clear selections list
         importAccountFloatingTempsUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +71,12 @@ export function ImportAccountFloatingTempDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("ImportAccountFloatingTemp.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("ImportAccountFloatingTemp.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

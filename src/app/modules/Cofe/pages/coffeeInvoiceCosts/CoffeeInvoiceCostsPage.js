@@ -26,9 +26,11 @@ export function CoffeeInvoiceCostsPage({ history }) {
       history.push("/cofe/coffeeInvoiceCosts/updateStatus");
     },
   };
-  
+
   return (
-    <CoffeeInvoiceCostsUIProvider coffeeInvoiceCostsUIEvents={coffeeInvoiceCostsUIEvents}>
+    <CoffeeInvoiceCostsUIProvider
+      coffeeInvoiceCostsUIEvents={coffeeInvoiceCostsUIEvents}
+    >
       <CoffeeInvoiceCostsLoadingDialog />
       <Route path="/cofe/coffeeInvoiceCosts/:id/delete">
         {({ history, match }) => (

@@ -17,7 +17,9 @@ export function EmployeeLeaveChangesPage({ history }) {
       history.push(`/employment/employeeLeaveChanges/${id}/delete`);
     },
     openDeleteEmployeeLeaveChangesDialog: () => {
-      history.push(`/employment/employeeLeaveChanges/deleteEmployeeLeaveChanges`);
+      history.push(
+        `/employment/employeeLeaveChanges/deleteEmployeeLeaveChanges`
+      );
     },
     openFetchEmployeeLeaveChangesDialog: () => {
       history.push(`/employment/employeeLeaveChanges/fetch`);
@@ -26,9 +28,11 @@ export function EmployeeLeaveChangesPage({ history }) {
       history.push("/employment/employeeLeaveChanges/updateStatus");
     },
   };
-  
+
   return (
-    <EmployeeLeaveChangesUIProvider employeeLeaveChangesUIEvents={employeeLeaveChangesUIEvents}>
+    <EmployeeLeaveChangesUIProvider
+      employeeLeaveChangesUIEvents={employeeLeaveChangesUIEvents}
+    >
       <EmployeeLeaveChangesLoadingDialog />
       <Route path="/employment/employeeLeaveChanges/:id/delete">
         {({ history, match }) => (

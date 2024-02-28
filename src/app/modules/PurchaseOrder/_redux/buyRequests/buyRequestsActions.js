@@ -47,26 +47,25 @@ export const deleteBuyRequest = (id) => (dispatch) => {
       throw error;
     });
 };
-export const createBuyRequest = (buyRequestForCreation, fnCallback) => (
-  dispatch
-) => {
-  dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer
-    .createBuyRequest(buyRequestForCreation)
-    .then((response) => {
-      const buyRequest = response.data;
-      fnCallback(buyRequest);
+export const createBuyRequest =
+  (buyRequestForCreation, fnCallback) => (dispatch) => {
+    dispatch(actions.startCall({ callType: callTypes.action }));
+    return requestFromServer
+      .createBuyRequest(buyRequestForCreation)
+      .then((response) => {
+        const buyRequest = response.data;
+        fnCallback(buyRequest);
 
-      dispatch(actions.buyRequestCreated(buyRequest));
+        dispatch(actions.buyRequestCreated(buyRequest));
 
-      return buyRequest;
-    })
-    .catch((error) => {
-      error.clientMessage = "Can't create buyRequest";
-      dispatch(actions.catchError({ error, callType: callTypes.action }));
-      throw error;
-    });
-};
+        return buyRequest;
+      })
+      .catch((error) => {
+        error.clientMessage = "Can't create buyRequest";
+        dispatch(actions.catchError({ error, callType: callTypes.action }));
+        throw error;
+      });
+  };
 export const updateBuyRequest = (id, buyRequest, fnCallback) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer

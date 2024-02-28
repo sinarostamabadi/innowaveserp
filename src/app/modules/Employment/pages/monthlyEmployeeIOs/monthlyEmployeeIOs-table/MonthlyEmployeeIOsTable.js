@@ -32,8 +32,10 @@ export function MonthlyEmployeeIOsTable() {
       setIds: monthlyEmployeeIOsUIContext.setIds,
       queryParams: monthlyEmployeeIOsUIContext.queryParams,
       setQueryParams: monthlyEmployeeIOsUIContext.setQueryParams,
-      openEditMonthlyEmployeeIOPage: monthlyEmployeeIOsUIContext.openEditMonthlyEmployeeIOPage,
-      openDeleteMonthlyEmployeeIODialog: monthlyEmployeeIOsUIContext.openDeleteMonthlyEmployeeIODialog,
+      openEditMonthlyEmployeeIOPage:
+        monthlyEmployeeIOsUIContext.openEditMonthlyEmployeeIOPage,
+      openDeleteMonthlyEmployeeIODialog:
+        monthlyEmployeeIOsUIContext.openDeleteMonthlyEmployeeIODialog,
     };
   }, [monthlyEmployeeIOsUIContext]);
 
@@ -50,7 +52,9 @@ export function MonthlyEmployeeIOsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     monthlyEmployeeIOsUIProps.setIds([]);
-    dispatch(actions.fetchMonthlyEmployeeIOs(monthlyEmployeeIOsUIProps.queryParams));
+    dispatch(
+      actions.fetchMonthlyEmployeeIOs(monthlyEmployeeIOsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [monthlyEmployeeIOsUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function MonthlyEmployeeIOsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditMonthlyEmployeeIOPage: monthlyEmployeeIOsUIProps.openEditMonthlyEmployeeIOPage,
-        openDeleteMonthlyEmployeeIODialog: monthlyEmployeeIOsUIProps.openDeleteMonthlyEmployeeIODialog,
+        openEditMonthlyEmployeeIOPage:
+          monthlyEmployeeIOsUIProps.openEditMonthlyEmployeeIOPage,
+        openDeleteMonthlyEmployeeIODialog:
+          monthlyEmployeeIOsUIProps.openDeleteMonthlyEmployeeIODialog,
         t: t,
       },
       classes: "text-right pr-0",

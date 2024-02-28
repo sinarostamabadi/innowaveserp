@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { OperationTypeAccountModel } from "../../../../../core/_models/Cash/OperationTypeAccountModel";
@@ -10,9 +9,13 @@ export function useOperationTypeAccountsUIContext() {
   return useContext(OperationTypeAccountsUIContext);
 }
 
-export const OperationTypeAccountsUIConsumer = OperationTypeAccountsUIContext.Consumer;
+export const OperationTypeAccountsUIConsumer =
+  OperationTypeAccountsUIContext.Consumer;
 
-export function OperationTypeAccountsUIProvider({ operationTypeAccountsUIEvents, children }) {
+export function OperationTypeAccountsUIProvider({
+  operationTypeAccountsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(OperationTypeAccountModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function OperationTypeAccountsUIProvider({ operationTypeAccountsUIEvents,
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function OperationTypeAccountsUIProvider({ operationTypeAccountsUIEvents,
     setIds,
     setQueryParams,
     dataModel: OperationTypeAccountModel,
-    newOperationTypeAccountButtonClick: operationTypeAccountsUIEvents.newOperationTypeAccountButtonClick,
-    openEditOperationTypeAccountPage: operationTypeAccountsUIEvents.openEditOperationTypeAccountPage,
-    openDeleteOperationTypeAccountDialog: operationTypeAccountsUIEvents.openDeleteOperationTypeAccountDialog,
-    openDeleteOperationTypeAccountsDialog: operationTypeAccountsUIEvents.openDeleteOperationTypeAccountsDialog,
-    openFetchOperationTypeAccountsDialog: operationTypeAccountsUIEvents.openFetchOperationTypeAccountsDialog,
-    openUpdateOperationTypeAccountsStatusDialog: operationTypeAccountsUIEvents.openUpdateOperationTypeAccountsStatusDialog,
+    newOperationTypeAccountButtonClick:
+      operationTypeAccountsUIEvents.newOperationTypeAccountButtonClick,
+    openEditOperationTypeAccountPage:
+      operationTypeAccountsUIEvents.openEditOperationTypeAccountPage,
+    openDeleteOperationTypeAccountDialog:
+      operationTypeAccountsUIEvents.openDeleteOperationTypeAccountDialog,
+    openDeleteOperationTypeAccountsDialog:
+      operationTypeAccountsUIEvents.openDeleteOperationTypeAccountsDialog,
+    openFetchOperationTypeAccountsDialog:
+      operationTypeAccountsUIEvents.openFetchOperationTypeAccountsDialog,
+    openUpdateOperationTypeAccountsStatusDialog:
+      operationTypeAccountsUIEvents.openUpdateOperationTypeAccountsStatusDialog,
   };
   return (
-    <OperationTypeAccountsUIContext.Provider value={value}>{children}</OperationTypeAccountsUIContext.Provider>
+    <OperationTypeAccountsUIContext.Provider value={value}>
+      {children}
+    </OperationTypeAccountsUIContext.Provider>
   );
 }

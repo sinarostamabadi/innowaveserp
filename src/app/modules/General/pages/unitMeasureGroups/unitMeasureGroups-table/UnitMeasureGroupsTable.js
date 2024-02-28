@@ -32,8 +32,10 @@ export function UnitMeasureGroupsTable() {
       setIds: unitMeasureGroupsUIContext.setIds,
       queryParams: unitMeasureGroupsUIContext.queryParams,
       setQueryParams: unitMeasureGroupsUIContext.setQueryParams,
-      openEditUnitMeasureGroupPage: unitMeasureGroupsUIContext.openEditUnitMeasureGroupPage,
-      openDeleteUnitMeasureGroupDialog: unitMeasureGroupsUIContext.openDeleteUnitMeasureGroupDialog,
+      openEditUnitMeasureGroupPage:
+        unitMeasureGroupsUIContext.openEditUnitMeasureGroupPage,
+      openDeleteUnitMeasureGroupDialog:
+        unitMeasureGroupsUIContext.openDeleteUnitMeasureGroupDialog,
     };
   }, [unitMeasureGroupsUIContext]);
 
@@ -50,7 +52,9 @@ export function UnitMeasureGroupsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     unitMeasureGroupsUIProps.setIds([]);
-    dispatch(actions.fetchUnitMeasureGroups(unitMeasureGroupsUIProps.queryParams));
+    dispatch(
+      actions.fetchUnitMeasureGroups(unitMeasureGroupsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [unitMeasureGroupsUIProps.queryParams, dispatch]);
 
@@ -66,8 +70,10 @@ export function UnitMeasureGroupsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditUnitMeasureGroupPage: unitMeasureGroupsUIProps.openEditUnitMeasureGroupPage,
-        openDeleteUnitMeasureGroupDialog: unitMeasureGroupsUIProps.openDeleteUnitMeasureGroupDialog,
+        openEditUnitMeasureGroupPage:
+          unitMeasureGroupsUIProps.openEditUnitMeasureGroupPage,
+        openDeleteUnitMeasureGroupDialog:
+          unitMeasureGroupsUIProps.openDeleteUnitMeasureGroupDialog,
         t: t,
       },
       classes: "text-right pr-0",

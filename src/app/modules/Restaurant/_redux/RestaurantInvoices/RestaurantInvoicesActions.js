@@ -68,42 +68,40 @@ export const deleteRestaurantInvoice = (id) => (dispatch) => {
       throw error;
     });
 };
-export const createRestaurantInvoice = (restaurantInvoiceForCreation, fn) => (
-  dispatch
-) => {
-  dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer
-    .createRestaurantInvoice(restaurantInvoiceForCreation)
-    .then((response) => {
-      const restaurantInvoice = response.data;
-      fn(restaurantInvoice);
-      
-      dispatch(actions.restaurantInvoiceCreated(restaurantInvoice));
+export const createRestaurantInvoice =
+  (restaurantInvoiceForCreation, fn) => (dispatch) => {
+    dispatch(actions.startCall({ callType: callTypes.action }));
+    return requestFromServer
+      .createRestaurantInvoice(restaurantInvoiceForCreation)
+      .then((response) => {
+        const restaurantInvoice = response.data;
+        fn(restaurantInvoice);
 
-      return restaurantInvoice;
-    })
-    .catch((error) => {
-      error.clientMessage = "Can't create restaurantInvoice";
-      dispatch(actions.catchError({ error, callType: callTypes.action }));
+        dispatch(actions.restaurantInvoiceCreated(restaurantInvoice));
 
-      throw error;
-    });
-};
-export const updateRestaurantInvoice = (id, restaurantInvoice) => (
-  dispatch
-) => {
-  dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer
-    .updateRestaurantInvoice(id, restaurantInvoice)
-    .then((response) => {
-      dispatch(actions.restaurantInvoiceUpdated({ restaurantInvoice }));
-    })
-    .catch((error) => {
-      error.clientMessage = "Can't update restaurantInvoice";
-      dispatch(actions.catchError({ error, callType: callTypes.action }));
-      throw error;
-    });
-};
+        return restaurantInvoice;
+      })
+      .catch((error) => {
+        error.clientMessage = "Can't create restaurantInvoice";
+        dispatch(actions.catchError({ error, callType: callTypes.action }));
+
+        throw error;
+      });
+  };
+export const updateRestaurantInvoice =
+  (id, restaurantInvoice) => (dispatch) => {
+    dispatch(actions.startCall({ callType: callTypes.action }));
+    return requestFromServer
+      .updateRestaurantInvoice(id, restaurantInvoice)
+      .then((response) => {
+        dispatch(actions.restaurantInvoiceUpdated({ restaurantInvoice }));
+      })
+      .catch((error) => {
+        error.clientMessage = "Can't update restaurantInvoice";
+        dispatch(actions.catchError({ error, callType: callTypes.action }));
+        throw error;
+      });
+  };
 export const updateRestaurantInvoicesStatus = (ids, status) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer

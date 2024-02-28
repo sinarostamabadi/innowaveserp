@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialSettlementsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const settlementsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getSettlementById  
+    // getSettlementById
     settlementFetched: (state, action) => {
       state.actionsLoading = false;
       state.settlementForEdit = action.payload.settlementForEdit;
       state.error = null;
     },
-    // findSettlements  
+    // findSettlements
     settlementsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const settlementsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createSettlement  
+    // createSettlement
     settlementCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateSettlement  
+    // updateSettlement
     settlementUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const settlementsSlice = createSlice({
         return entity;
       });
     },
-    // deleteSettlement  
+    // deleteSettlement
     settlementDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.SettlementId !== action.payload.SettlementId  
+        (el) => el.SettlementId !== action.payload.SettlementId
       );
     },
-    // deleteSettlements  
+    // deleteSettlements
     settlementsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.SettlementId)  
+        (el) => !action.payload.ids.includes(el.SettlementId)
       );
     },
-    // settlementsUpdateState  
+    // settlementsUpdateState
     settlementsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

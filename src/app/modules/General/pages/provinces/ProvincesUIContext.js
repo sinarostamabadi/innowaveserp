@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { ProvinceModel } from "../../../../../core/_models/General/ProvinceModel";
@@ -30,7 +29,7 @@ export function ProvincesUIProvider({ provincesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function ProvincesUIProvider({ provincesUIEvents, children }) {
     openDeleteProvinceDialog: provincesUIEvents.openDeleteProvinceDialog,
     openDeleteProvincesDialog: provincesUIEvents.openDeleteProvincesDialog,
     openFetchProvincesDialog: provincesUIEvents.openFetchProvincesDialog,
-    openUpdateProvincesStatusDialog: provincesUIEvents.openUpdateProvincesStatusDialog,
+    openUpdateProvincesStatusDialog:
+      provincesUIEvents.openUpdateProvincesStatusDialog,
   };
   return (
-    <ProvincesUIContext.Provider value={value}>{children}</ProvincesUIContext.Provider>
+    <ProvincesUIContext.Provider value={value}>
+      {children}
+    </ProvincesUIContext.Provider>
   );
 }

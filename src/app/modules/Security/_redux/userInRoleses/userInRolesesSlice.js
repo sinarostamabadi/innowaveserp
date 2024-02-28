@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialUserInRolesesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const userInRolesesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getUserInRolesById  
+    // getUserInRolesById
     userInRolesFetched: (state, action) => {
       state.actionsLoading = false;
       state.userInRolesForEdit = action.payload.userInRolesForEdit;
       state.error = null;
     },
-    // findUserInRoleses  
+    // findUserInRoleses
     userInRolesesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const userInRolesesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createUserInRoles  
+    // createUserInRoles
     userInRolesCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateUserInRoles  
+    // updateUserInRoles
     userInRolesUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const userInRolesesSlice = createSlice({
         return entity;
       });
     },
-    // deleteUserInRoles  
+    // deleteUserInRoles
     userInRolesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.UserInRolesId !== action.payload.UserInRolesId  
+        (el) => el.UserInRolesId !== action.payload.UserInRolesId
       );
     },
-    // deleteUserInRoleses  
+    // deleteUserInRoleses
     userInRolesesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.UserInRolesId)  
+        (el) => !action.payload.ids.includes(el.UserInRolesId)
       );
     },
-    // userInRolesesUpdateState  
+    // userInRolesesUpdateState
     userInRolesesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

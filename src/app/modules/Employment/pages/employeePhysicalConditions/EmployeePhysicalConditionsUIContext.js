@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmployeePhysicalConditionModel } from "../../../../../core/_models/Employment/EmployeePhysicalConditionModel";
@@ -10,9 +9,13 @@ export function useEmployeePhysicalConditionsUIContext() {
   return useContext(EmployeePhysicalConditionsUIContext);
 }
 
-export const EmployeePhysicalConditionsUIConsumer = EmployeePhysicalConditionsUIContext.Consumer;
+export const EmployeePhysicalConditionsUIConsumer =
+  EmployeePhysicalConditionsUIContext.Consumer;
 
-export function EmployeePhysicalConditionsUIProvider({ employeePhysicalConditionsUIEvents, children }) {
+export function EmployeePhysicalConditionsUIProvider({
+  employeePhysicalConditionsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(EmployeePhysicalConditionModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function EmployeePhysicalConditionsUIProvider({ employeePhysicalCondition
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function EmployeePhysicalConditionsUIProvider({ employeePhysicalCondition
     setIds,
     setQueryParams,
     dataModel: EmployeePhysicalConditionModel,
-    newEmployeePhysicalConditionButtonClick: employeePhysicalConditionsUIEvents.newEmployeePhysicalConditionButtonClick,
-    openEditEmployeePhysicalConditionPage: employeePhysicalConditionsUIEvents.openEditEmployeePhysicalConditionPage,
-    openDeleteEmployeePhysicalConditionDialog: employeePhysicalConditionsUIEvents.openDeleteEmployeePhysicalConditionDialog,
-    openDeleteEmployeePhysicalConditionsDialog: employeePhysicalConditionsUIEvents.openDeleteEmployeePhysicalConditionsDialog,
-    openFetchEmployeePhysicalConditionsDialog: employeePhysicalConditionsUIEvents.openFetchEmployeePhysicalConditionsDialog,
-    openUpdateEmployeePhysicalConditionsStatusDialog: employeePhysicalConditionsUIEvents.openUpdateEmployeePhysicalConditionsStatusDialog,
+    newEmployeePhysicalConditionButtonClick:
+      employeePhysicalConditionsUIEvents.newEmployeePhysicalConditionButtonClick,
+    openEditEmployeePhysicalConditionPage:
+      employeePhysicalConditionsUIEvents.openEditEmployeePhysicalConditionPage,
+    openDeleteEmployeePhysicalConditionDialog:
+      employeePhysicalConditionsUIEvents.openDeleteEmployeePhysicalConditionDialog,
+    openDeleteEmployeePhysicalConditionsDialog:
+      employeePhysicalConditionsUIEvents.openDeleteEmployeePhysicalConditionsDialog,
+    openFetchEmployeePhysicalConditionsDialog:
+      employeePhysicalConditionsUIEvents.openFetchEmployeePhysicalConditionsDialog,
+    openUpdateEmployeePhysicalConditionsStatusDialog:
+      employeePhysicalConditionsUIEvents.openUpdateEmployeePhysicalConditionsStatusDialog,
   };
   return (
-    <EmployeePhysicalConditionsUIContext.Provider value={value}>{children}</EmployeePhysicalConditionsUIContext.Provider>
+    <EmployeePhysicalConditionsUIContext.Provider value={value}>
+      {children}
+    </EmployeePhysicalConditionsUIContext.Provider>
   );
 }

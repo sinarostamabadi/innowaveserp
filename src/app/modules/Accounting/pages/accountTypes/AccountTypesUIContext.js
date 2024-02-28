@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { AccountTypeModel } from "../../../../../core/_models/Accounting/AccountTypeModel";
@@ -30,7 +29,7 @@ export function AccountTypesUIProvider({ accountTypesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -40,12 +39,18 @@ export function AccountTypesUIProvider({ accountTypesUIEvents, children }) {
     dataModel: AccountTypeModel,
     newAccountTypeButtonClick: accountTypesUIEvents.newAccountTypeButtonClick,
     openEditAccountTypePage: accountTypesUIEvents.openEditAccountTypePage,
-    openDeleteAccountTypeDialog: accountTypesUIEvents.openDeleteAccountTypeDialog,
-    openDeleteAccountTypesDialog: accountTypesUIEvents.openDeleteAccountTypesDialog,
-    openFetchAccountTypesDialog: accountTypesUIEvents.openFetchAccountTypesDialog,
-    openUpdateAccountTypesStatusDialog: accountTypesUIEvents.openUpdateAccountTypesStatusDialog,
+    openDeleteAccountTypeDialog:
+      accountTypesUIEvents.openDeleteAccountTypeDialog,
+    openDeleteAccountTypesDialog:
+      accountTypesUIEvents.openDeleteAccountTypesDialog,
+    openFetchAccountTypesDialog:
+      accountTypesUIEvents.openFetchAccountTypesDialog,
+    openUpdateAccountTypesStatusDialog:
+      accountTypesUIEvents.openUpdateAccountTypesStatusDialog,
   };
   return (
-    <AccountTypesUIContext.Provider value={value}>{children}</AccountTypesUIContext.Provider>
+    <AccountTypesUIContext.Provider value={value}>
+      {children}
+    </AccountTypesUIContext.Provider>
   );
 }

@@ -21,7 +21,7 @@ export function PaymentEditDialogHeader({ id }) {
   useEffect(() => {
     let _title = id ? "" : t("Common.Create") + " " + t("CashDocument.Money");
     if (id) {
-      _title = t("Common.Edit") + " " + t("CashDocument.Money") ;
+      _title = t("Common.Edit") + " " + t("CashDocument.Money");
     }
 
     setTitle(_title);

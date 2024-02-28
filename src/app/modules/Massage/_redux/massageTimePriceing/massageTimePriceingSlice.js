@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialMassageTimePriceingState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const massageTimePriceingSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getMassageTimePriceingById  
+    // getMassageTimePriceingById
     massageTimePriceingFetched: (state, action) => {
       state.actionsLoading = false;
-      state.massageTimePriceingForEdit = action.payload.massageTimePriceingForEdit;
+      state.massageTimePriceingForEdit =
+        action.payload.massageTimePriceingForEdit;
       state.error = null;
     },
-    // findMassageTimePriceing  
+    // findMassageTimePriceing
     massageTimePriceingFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const massageTimePriceingSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createMassageTimePriceing  
+    // createMassageTimePriceing
     massageTimePriceingCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateMassageTimePriceing  
+    // updateMassageTimePriceing
     massageTimePriceingUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.MassageTimePriceingId === action.payload.massageTimePriceing.MassageTimePriceingId) {
+        if (
+          entity.MassageTimePriceingId ===
+          action.payload.massageTimePriceing.MassageTimePriceingId
+        ) {
           return action.payload.massageTimePriceing;
         }
         return entity;
       });
     },
-    // deleteMassageTimePriceing  
+    // deleteMassageTimePriceing
     massageTimePriceingDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.MassageTimePriceingId !== action.payload.MassageTimePriceingId  
+        (el) =>
+          el.MassageTimePriceingId !== action.payload.MassageTimePriceingId
       );
     },
-    // deleteMassageTimePriceing  
+    // deleteMassageTimePriceing
     massageTimePriceingDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.MassageTimePriceingId)  
+        (el) => !action.payload.ids.includes(el.MassageTimePriceingId)
       );
     },
-    // massageTimePriceingUpdateState  
+    // massageTimePriceingUpdateState
     massageTimePriceingStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

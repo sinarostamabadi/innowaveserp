@@ -12,7 +12,13 @@ export const ActionsColumnFormatter = (
   { openEditPoolReservePricePage, openDeletePoolReservePriceDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="poolReservePrices-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="poolReservePrices-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditPoolReservePricePage(row.PoolReservePriceId)}
@@ -26,7 +32,11 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="poolReservePrices-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="poolReservePrices-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"

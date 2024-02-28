@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialReservesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const reservesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getReserveById  
+    // getReserveById
     reserveFetched: (state, action) => {
       state.actionsLoading = false;
       state.reserveForEdit = action.payload.reserveForEdit;
       state.error = null;
     },
-    // findReserves  
+    // findReserves
     reservesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,14 +46,14 @@ export const reservesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createReserve  
+    // createReserve
     reserveCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
-      if(!!state.entities == !1) state.entities = [];
+      if (!!state.entities == !1) state.entities = [];
       state.entities.push(action.payload);
     },
-    // updateReserve  
+    // updateReserve
     reserveUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -65,20 +64,20 @@ export const reservesSlice = createSlice({
         return entity;
       });
     },
-    // deleteReserve  
+    // deleteReserve
     reserveDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.ReserveId !== action.payload.ReserveId  
+        (el) => el.ReserveId !== action.payload.ReserveId
       );
     },
-    // deleteReserves  
+    // deleteReserves
     reservesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ReserveId)  
+        (el) => !action.payload.ids.includes(el.ReserveId)
       );
     },
     // reserveDone
@@ -86,7 +85,7 @@ export const reservesSlice = createSlice({
       state.error = null;
       state.actionsLoading = false;
     },
-    // reservesUpdateState  
+    // reservesUpdateState
     reservesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

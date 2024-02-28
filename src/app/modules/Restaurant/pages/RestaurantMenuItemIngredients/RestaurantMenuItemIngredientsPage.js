@@ -17,7 +17,9 @@ export function RestaurantMenuItemIngredientsPage({ history }) {
       history.push(`/restaurant/restaurantMenuItemIngredients/${id}/delete`);
     },
     openDeleteRestaurantMenuItemIngredientsDialog: () => {
-      history.push(`/restaurant/restaurantMenuItemIngredients/deleteRestaurantMenuItemIngredients`);
+      history.push(
+        `/restaurant/restaurantMenuItemIngredients/deleteRestaurantMenuItemIngredients`
+      );
     },
     openFetchRestaurantMenuItemIngredientsDialog: () => {
       history.push(`/restaurant/restaurantMenuItemIngredients/fetch`);
@@ -26,9 +28,13 @@ export function RestaurantMenuItemIngredientsPage({ history }) {
       history.push("/restaurant/restaurantMenuItemIngredients/updateStatus");
     },
   };
-  
+
   return (
-    <RestaurantMenuItemIngredientsUIProvider restaurantMenuItemIngredientsUIEvents={restaurantMenuItemIngredientsUIEvents}>
+    <RestaurantMenuItemIngredientsUIProvider
+      restaurantMenuItemIngredientsUIEvents={
+        restaurantMenuItemIngredientsUIEvents
+      }
+    >
       <RestaurantMenuItemIngredientsLoadingDialog />
       <Route path="/restaurant/restaurantMenuItemIngredients/:id/delete">
         {({ history, match }) => (

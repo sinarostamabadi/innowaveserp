@@ -20,7 +20,6 @@ import { Tabs, Tab } from "react-bootstrap";
 import { EmployeeTypesUIProvider } from "../Employee-employeeTypes/EmployeeTypesUIContext";
 import { EmployeeTypes } from "../Employee-employeeTypes/EmployeeTypes";
 
-
 export function EmployeeEdit({
   history,
   match: {
@@ -31,11 +30,11 @@ export function EmployeeEdit({
   const [employeeType, setEmployeeType] = useState(null);
 
   const initModel = {
-		BodyBuildingEmployeeId: undefined,
+    BodyBuildingEmployeeId: undefined,
     BodyBuildingEmployeeTypeId: null,
     RealPersonId: null,
     CooperationType: null,
-    BodyBuildingEmployeeExpertises: []
+    BodyBuildingEmployeeExpertises: [],
   };
   let copyModel = CloneObject(initModel);
 
@@ -69,7 +68,9 @@ export function EmployeeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " «" + t("BodyBuildingEmployee.Entity") + "»";
+    let _title = id
+      ? ""
+      : t("Common.Create") + " «" + t("BodyBuildingEmployee.Entity") + "»";
 
     if (employeeForEdit && id) {
       _title = t("Common.Edit") + " «" + t("BodyBuildingEmployee.Entity") + "»";
@@ -203,14 +204,14 @@ export function EmployeeEdit({
                 eventKey="employeeExpertises"
                 title={t("BodyBuildingEmployeeExpertise.Entity")}
                 className="nav-item"
-                >
+              >
                 <EmployeeTypesUIProvider
                   currentPersonId={id}
                   actionsLoading={actionsLoading}
                   employeeType={employeeTypeObj}
                   selectedEmployeeType={employeeType}
                   ref={btnRefEmployeeTypes}
-                  >
+                >
                   <EmployeeTypes />
                 </EmployeeTypesUIProvider>
               </Tab>

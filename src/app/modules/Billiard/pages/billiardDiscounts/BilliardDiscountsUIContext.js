@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BilliardDiscountModel } from "../../../../../core/_models/Billiard/BilliardDiscountModel";
@@ -12,7 +11,10 @@ export function useBilliardDiscountsUIContext() {
 
 export const BilliardDiscountsUIConsumer = BilliardDiscountsUIContext.Consumer;
 
-export function BilliardDiscountsUIProvider({ billiardDiscountsUIEvents, children }) {
+export function BilliardDiscountsUIProvider({
+  billiardDiscountsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(BilliardDiscountModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function BilliardDiscountsUIProvider({ billiardDiscountsUIEvents, childre
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function BilliardDiscountsUIProvider({ billiardDiscountsUIEvents, childre
     setIds,
     setQueryParams,
     dataModel: BilliardDiscountModel,
-    newBilliardDiscountButtonClick: billiardDiscountsUIEvents.newBilliardDiscountButtonClick,
-    openEditBilliardDiscountPage: billiardDiscountsUIEvents.openEditBilliardDiscountPage,
-    openDeleteBilliardDiscountDialog: billiardDiscountsUIEvents.openDeleteBilliardDiscountDialog,
-    openDeleteBilliardDiscountsDialog: billiardDiscountsUIEvents.openDeleteBilliardDiscountsDialog,
-    openFetchBilliardDiscountsDialog: billiardDiscountsUIEvents.openFetchBilliardDiscountsDialog,
-    openUpdateBilliardDiscountsStatusDialog: billiardDiscountsUIEvents.openUpdateBilliardDiscountsStatusDialog,
+    newBilliardDiscountButtonClick:
+      billiardDiscountsUIEvents.newBilliardDiscountButtonClick,
+    openEditBilliardDiscountPage:
+      billiardDiscountsUIEvents.openEditBilliardDiscountPage,
+    openDeleteBilliardDiscountDialog:
+      billiardDiscountsUIEvents.openDeleteBilliardDiscountDialog,
+    openDeleteBilliardDiscountsDialog:
+      billiardDiscountsUIEvents.openDeleteBilliardDiscountsDialog,
+    openFetchBilliardDiscountsDialog:
+      billiardDiscountsUIEvents.openFetchBilliardDiscountsDialog,
+    openUpdateBilliardDiscountsStatusDialog:
+      billiardDiscountsUIEvents.openUpdateBilliardDiscountsStatusDialog,
   };
   return (
-    <BilliardDiscountsUIContext.Provider value={value}>{children}</BilliardDiscountsUIContext.Provider>
+    <BilliardDiscountsUIContext.Provider value={value}>
+      {children}
+    </BilliardDiscountsUIContext.Provider>
   );
 }

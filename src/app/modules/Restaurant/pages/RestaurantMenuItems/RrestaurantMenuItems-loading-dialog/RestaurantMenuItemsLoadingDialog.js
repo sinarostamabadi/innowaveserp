@@ -5,8 +5,8 @@ import { LoadingDialog } from "../../../../../../core/_partials/controls";
 export function RestaurantMenuItemsLoadingDialog() {
   const { isLoading } = useSelector(
     (state) => ({ isLoading: state.restaurantMenuItems.listLoading }),
-    shallowEqual  
+    shallowEqual
   );
-useEffect(() => {}, [isLoading]);
+  useEffect(() => {}, [isLoading]);
   return <LoadingDialog isLoading={isLoading} text="در حال بارگذاری..." />;
 }

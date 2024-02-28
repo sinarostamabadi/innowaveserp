@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { OrganizationChartModel } from "../../../../../core/_models/Employment/OrganizationChartModel";
@@ -10,9 +9,13 @@ export function useOrganizationChartsUIContext() {
   return useContext(OrganizationChartsUIContext);
 }
 
-export const OrganizationChartsUIConsumer = OrganizationChartsUIContext.Consumer;
+export const OrganizationChartsUIConsumer =
+  OrganizationChartsUIContext.Consumer;
 
-export function OrganizationChartsUIProvider({ organizationChartsUIEvents, children }) {
+export function OrganizationChartsUIProvider({
+  organizationChartsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(OrganizationChartModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function OrganizationChartsUIProvider({ organizationChartsUIEvents, child
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function OrganizationChartsUIProvider({ organizationChartsUIEvents, child
     setIds,
     setQueryParams,
     dataModel: OrganizationChartModel,
-    newOrganizationChartButtonClick: organizationChartsUIEvents.newOrganizationChartButtonClick,
-    openEditOrganizationChartPage: organizationChartsUIEvents.openEditOrganizationChartPage,
-    openDeleteOrganizationChartDialog: organizationChartsUIEvents.openDeleteOrganizationChartDialog,
-    openDeleteOrganizationChartsDialog: organizationChartsUIEvents.openDeleteOrganizationChartsDialog,
-    openFetchOrganizationChartsDialog: organizationChartsUIEvents.openFetchOrganizationChartsDialog,
-    openUpdateOrganizationChartsStatusDialog: organizationChartsUIEvents.openUpdateOrganizationChartsStatusDialog,
+    newOrganizationChartButtonClick:
+      organizationChartsUIEvents.newOrganizationChartButtonClick,
+    openEditOrganizationChartPage:
+      organizationChartsUIEvents.openEditOrganizationChartPage,
+    openDeleteOrganizationChartDialog:
+      organizationChartsUIEvents.openDeleteOrganizationChartDialog,
+    openDeleteOrganizationChartsDialog:
+      organizationChartsUIEvents.openDeleteOrganizationChartsDialog,
+    openFetchOrganizationChartsDialog:
+      organizationChartsUIEvents.openFetchOrganizationChartsDialog,
+    openUpdateOrganizationChartsStatusDialog:
+      organizationChartsUIEvents.openUpdateOrganizationChartsStatusDialog,
   };
   return (
-    <OrganizationChartsUIContext.Provider value={value}>{children}</OrganizationChartsUIContext.Provider>
+    <OrganizationChartsUIContext.Provider value={value}>
+      {children}
+    </OrganizationChartsUIContext.Provider>
   );
 }

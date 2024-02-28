@@ -8,7 +8,11 @@ import * as actions from "../../../_redux/buyReturns/buyReturnsActions";
 import { useBuyReturnsUIContext } from "../BuyReturnsUIContext";
 import { useTranslation } from "react-i18next";
 import { Attachments } from "src/core/_partials/controls/attachment/Attachments";
-import { EnToFaObjDate, FaObjToEnDateTime, ObjectToFormData } from "src/core/_helpers";
+import {
+  EnToFaObjDate,
+  FaObjToEnDateTime,
+  ObjectToFormData,
+} from "src/core/_helpers";
 
 export function BuyReturnAttachments({ id, show, onHide }) {
   const { t } = useTranslation();
@@ -35,7 +39,10 @@ export function BuyReturnAttachments({ id, show, onHide }) {
   }, [id]);
 
   useEffect(() => {
-    setBuyReturnObj({...buyReturnObj, EntityAttachments: entityAttachmentsObj});
+    setBuyReturnObj({
+      ...buyReturnObj,
+      EntityAttachments: entityAttachmentsObj,
+    });
   }, [entityAttachmentsObj]);
 
   useEffect(() => {
@@ -44,10 +51,11 @@ export function BuyReturnAttachments({ id, show, onHide }) {
         ...buyReturnForEdit,
         BuyReturnDateObj: EnToFaObjDate(buyReturnForEdit.BuyReturnDate),
         FactorDateObj:
-          buyReturnForEdit.FactorDate && EnToFaObjDate(buyReturnForEdit.FactorDate),
+          buyReturnForEdit.FactorDate &&
+          EnToFaObjDate(buyReturnForEdit.FactorDate),
       });
       setEntityAttachmentsObj(buyReturnForEdit.EntityAttachments);
-    }else {
+    } else {
       setBuyReturnObj(null);
       setEntityAttachmentsObj([]);
     }
@@ -100,7 +108,9 @@ export function BuyReturnAttachments({ id, show, onHide }) {
     buyReturnObject.BuyReturnDetails = dirty.BuyReturnDetails.map((d) => {
       let xx = {
         BuyReturnDetailId:
-          d.BuyReturnDetailId.toString().indexOf("temp") > -1 ? null : d.BuyReturnDetailId,
+          d.BuyReturnDetailId.toString().indexOf("temp") > -1
+            ? null
+            : d.BuyReturnDetailId,
         ProductId: d.ProductId,
         ProductUnitId: d.ProductUnitId,
         Amount: d.Amount && +d.Amount,
@@ -122,7 +132,9 @@ export function BuyReturnAttachments({ id, show, onHide }) {
     buyReturnObject.BuyReturnCosts = dirty.BuyReturnCosts.map((d) => {
       let xx = {
         BuyReturnCostId:
-          d.BuyReturnCostId.toString().indexOf("temp") > -1 ? null : d.BuyReturnCostId,
+          d.BuyReturnCostId.toString().indexOf("temp") > -1
+            ? null
+            : d.BuyReturnCostId,
         CostTypeId: d.CostTypeId,
         Price: d.Price,
         CostPercent: d.CostPercent,
@@ -165,9 +177,13 @@ export function BuyReturnAttachments({ id, show, onHide }) {
   useEffect(() => {}, [isLoading, dispatch]);
   const updateBuyReturn = () => {
     dispatch(
-      actions.updateBuyReturn(id, ObjectToFormData(cleanFull(buyReturnObj)), () => {
-        onHide(true);
-      })
+      actions.updateBuyReturn(
+        id,
+        ObjectToFormData(cleanFull(buyReturnObj)),
+        () => {
+          onHide(true);
+        }
+      )
     )
       .then(() => {
         // refresh list after deletion

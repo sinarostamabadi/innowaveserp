@@ -28,13 +28,16 @@ export function RelationPersonGroupsTable() {
   const relationPersonGroupsUIProps = useMemo(() => {
     return {
       relationPersonGroups: relationPersonGroupsUIContext.relationPersonGroups,
-      addRelationPersonGroup: relationPersonGroupsUIContext.addRelationPersonGroup,
+      addRelationPersonGroup:
+        relationPersonGroupsUIContext.addRelationPersonGroup,
       totalCount: relationPersonGroupsUIContext.totalCount,
       actionsLoading: relationPersonGroupsUIContext.actionsLoading,
       queryParams: relationPersonGroupsUIContext.queryParams,
       setQueryParams: relationPersonGroupsUIContext.setQueryParams,
-      openEditRelationPersonGroupDialog: relationPersonGroupsUIContext.openEditRelationPersonGroupDialog,
-      openDeleteRelationPersonGroupDialog: relationPersonGroupsUIContext.openDeleteRelationPersonGroupDialog,
+      openEditRelationPersonGroupDialog:
+        relationPersonGroupsUIContext.openEditRelationPersonGroupDialog,
+      openDeleteRelationPersonGroupDialog:
+        relationPersonGroupsUIContext.openDeleteRelationPersonGroupDialog,
       ids: relationPersonGroupsUIContext.ids,
       setIds: relationPersonGroupsUIContext.setIds,
       personId: relationPersonGroupsUIContext.personId,
@@ -52,8 +55,10 @@ export function RelationPersonGroupsTable() {
       text: t("Common.Action"),
       formatter: ActionsColumnFormatter,
       formatExtraData: {
-        openEditRelationPersonGroupDialog: relationPersonGroupsUIProps.openEditRelationPersonGroupDialog,
-        openDeleteRelationPersonGroupDialog: relationPersonGroupsUIProps.openDeleteRelationPersonGroupDialog,
+        openEditRelationPersonGroupDialog:
+          relationPersonGroupsUIProps.openEditRelationPersonGroupDialog,
+        openDeleteRelationPersonGroupDialog:
+          relationPersonGroupsUIProps.openDeleteRelationPersonGroupDialog,
         t: t,
       },
       classes: "text-right pr-0",
@@ -87,12 +92,20 @@ export function RelationPersonGroupsTable() {
                 bootstrap4
                 remote
                 keyField="RelationPersonGroupId"
-                data={relationPersonGroupsUIProps.relationPersonGroups === null ? [] : relationPersonGroupsUIProps.relationPersonGroups}
+                data={
+                  relationPersonGroupsUIProps.relationPersonGroups === null
+                    ? []
+                    : relationPersonGroupsUIProps.relationPersonGroups
+                }
                 columns={columns}
                 {...paginationTableProps}
               >
-                <PleaseWaitMessage entities={relationPersonGroupsUIProps.relationPersonGroups} />
-                <NoRecordsFoundMessage entities={relationPersonGroupsUIProps.relationPersonGroups} />
+                <PleaseWaitMessage
+                  entities={relationPersonGroupsUIProps.relationPersonGroups}
+                />
+                <NoRecordsFoundMessage
+                  entities={relationPersonGroupsUIProps.relationPersonGroups}
+                />
               </BootstrapTable>
             </Pagination>
           );

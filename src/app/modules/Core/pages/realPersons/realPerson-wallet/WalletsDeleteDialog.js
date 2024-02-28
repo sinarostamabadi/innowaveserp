@@ -69,9 +69,7 @@ export function WalletsDeleteDialog() {
       </Modal.Header>
       <Modal.Body>
         {!isLoading && (
-          <span>
-            Are you sure to permanently delete selected wallets?
-          </span>
+          <span>Are you sure to permanently delete selected wallets?</span>
         )}
         {isLoading && <span>Wallets are deleting...</span>}
       </Modal.Body>

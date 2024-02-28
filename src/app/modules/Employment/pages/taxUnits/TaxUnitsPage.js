@@ -26,7 +26,7 @@ export function TaxUnitsPage({ history }) {
       history.push("/employment/taxUnits/updateStatus");
     },
   };
-  
+
   return (
     <TaxUnitsUIProvider taxUnitsUIEvents={taxUnitsUIEvents}>
       <TaxUnitsLoadingDialog />

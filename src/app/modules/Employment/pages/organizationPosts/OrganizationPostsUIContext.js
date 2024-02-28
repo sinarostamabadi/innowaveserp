@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { OrganizationPostModel } from "../../../../../core/_models/Employment/OrganizationPostModel";
@@ -12,7 +11,10 @@ export function useOrganizationPostsUIContext() {
 
 export const OrganizationPostsUIConsumer = OrganizationPostsUIContext.Consumer;
 
-export function OrganizationPostsUIProvider({ organizationPostsUIEvents, children }) {
+export function OrganizationPostsUIProvider({
+  organizationPostsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(OrganizationPostModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function OrganizationPostsUIProvider({ organizationPostsUIEvents, childre
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function OrganizationPostsUIProvider({ organizationPostsUIEvents, childre
     setIds,
     setQueryParams,
     dataModel: OrganizationPostModel,
-    newOrganizationPostButtonClick: organizationPostsUIEvents.newOrganizationPostButtonClick,
-    openEditOrganizationPostPage: organizationPostsUIEvents.openEditOrganizationPostPage,
-    openDeleteOrganizationPostDialog: organizationPostsUIEvents.openDeleteOrganizationPostDialog,
-    openDeleteOrganizationPostsDialog: organizationPostsUIEvents.openDeleteOrganizationPostsDialog,
-    openFetchOrganizationPostsDialog: organizationPostsUIEvents.openFetchOrganizationPostsDialog,
-    openUpdateOrganizationPostsStatusDialog: organizationPostsUIEvents.openUpdateOrganizationPostsStatusDialog,
+    newOrganizationPostButtonClick:
+      organizationPostsUIEvents.newOrganizationPostButtonClick,
+    openEditOrganizationPostPage:
+      organizationPostsUIEvents.openEditOrganizationPostPage,
+    openDeleteOrganizationPostDialog:
+      organizationPostsUIEvents.openDeleteOrganizationPostDialog,
+    openDeleteOrganizationPostsDialog:
+      organizationPostsUIEvents.openDeleteOrganizationPostsDialog,
+    openFetchOrganizationPostsDialog:
+      organizationPostsUIEvents.openFetchOrganizationPostsDialog,
+    openUpdateOrganizationPostsStatusDialog:
+      organizationPostsUIEvents.openUpdateOrganizationPostsStatusDialog,
   };
   return (
-    <OrganizationPostsUIContext.Provider value={value}>{children}</OrganizationPostsUIContext.Provider>
+    <OrganizationPostsUIContext.Provider value={value}>
+      {children}
+    </OrganizationPostsUIContext.Provider>
   );
 }

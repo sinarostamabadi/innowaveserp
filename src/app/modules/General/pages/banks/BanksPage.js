@@ -26,7 +26,7 @@ export function BanksPage({ history }) {
       history.push("/general/banks/updateStatus");
     },
   };
-  
+
   return (
     <BanksUIProvider banksUIEvents={banksUIEvents}>
       <BanksLoadingDialog />

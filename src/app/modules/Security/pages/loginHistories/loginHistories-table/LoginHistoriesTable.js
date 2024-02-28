@@ -32,8 +32,10 @@ export function LoginHistoriesTable() {
       setIds: loginHistoriesUIContext.setIds,
       queryParams: loginHistoriesUIContext.queryParams,
       setQueryParams: loginHistoriesUIContext.setQueryParams,
-      openEditLoginHistoryPage: loginHistoriesUIContext.openEditLoginHistoryPage,
-      openDeleteLoginHistoryDialog: loginHistoriesUIContext.openDeleteLoginHistoryDialog,
+      openEditLoginHistoryPage:
+        loginHistoriesUIContext.openEditLoginHistoryPage,
+      openDeleteLoginHistoryDialog:
+        loginHistoriesUIContext.openDeleteLoginHistoryDialog,
     };
   }, [loginHistoriesUIContext]);
 
@@ -72,8 +74,10 @@ export function LoginHistoriesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditLoginHistoryPage: loginHistoriesUIProps.openEditLoginHistoryPage,
-        openDeleteLoginHistoryDialog: loginHistoriesUIProps.openDeleteLoginHistoryDialog,
+        openEditLoginHistoryPage:
+          loginHistoriesUIProps.openEditLoginHistoryPage,
+        openDeleteLoginHistoryDialog:
+          loginHistoriesUIProps.openDeleteLoginHistoryDialog,
         t: t,
       },
       classes: "text-right pr-0",

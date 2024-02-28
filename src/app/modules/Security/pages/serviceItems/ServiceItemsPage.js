@@ -26,7 +26,7 @@ export function ServiceItemsPage({ history }) {
       history.push("/security/serviceItems/updateStatus");
     },
   };
-  
+
   return (
     <ServiceItemsUIProvider serviceItemsUIEvents={serviceItemsUIEvents}>
       <ServiceItemsLoadingDialog />

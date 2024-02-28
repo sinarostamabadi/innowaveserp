@@ -36,7 +36,9 @@ export function CompanyPersonEditDialog() {
 
   useEffect(() => {
     // server request for getting companyPerson by seleted id
-    setEditCompanyPerson(companyPersonsUIProps.findCompanyPerson(companyPersonsUIProps.id));
+    setEditCompanyPerson(
+      companyPersonsUIProps.findCompanyPerson(companyPersonsUIProps.id)
+    );
   }, [companyPersonsUIProps.id, dispatch]);
 
   const saveCompanyPerson = (companyPerson) => {
@@ -62,7 +64,9 @@ export function CompanyPersonEditDialog() {
       <CompanyPersonEditForm
         saveCompanyPerson={saveCompanyPerson}
         actionsLoading={actionsLoading}
-        companyPerson={editCompanyPerson || companyPersonsUIProps.initCompanyPerson}
+        companyPerson={
+          editCompanyPerson || companyPersonsUIProps.initCompanyPerson
+        }
         onHide={companyPersonsUIProps.onHide}
       />
     </Modal>

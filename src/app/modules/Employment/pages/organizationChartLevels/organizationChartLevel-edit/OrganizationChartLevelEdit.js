@@ -44,7 +44,8 @@ export function OrganizationChartLevelEdit({
   const { actionsLoading, organizationChartLevelForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.organizationChartLevels.actionsLoading,
-      organizationChartLevelForEdit: state.organizationChartLevels.organizationChartLevelForEdit,
+      organizationChartLevelForEdit:
+        state.organizationChartLevels.organizationChartLevelForEdit,
       error: state.organizationChartLevels.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function OrganizationChartLevelEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("OrganizationChartLevel.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("OrganizationChartLevel.Entity");
 
     if (organizationChartLevelForEdit && id) {
       _title = t("Common.Edit") + " " + organizationChartLevelForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function OrganizationChartLevelEdit({
         .then((arg) => {
           backToOrganizationChartLevelsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateOrganizationChartLevel(id, values))
         .then(() => backToOrganizationChartLevelsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 
@@ -149,7 +152,9 @@ export function OrganizationChartLevelEdit({
           {tab === "basic" && (
             <OrganizationChartLevelEditForm
               actionsLoading={actionsLoading}
-              organizationChartLevel={organizationChartLevelForEdit || initModel}
+              organizationChartLevel={
+                organizationChartLevelForEdit || initModel
+              }
               btnRef={btnRef}
               saveOrganizationChartLevel={saveOrganizationChartLevel}
             />

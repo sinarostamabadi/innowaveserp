@@ -8,7 +8,11 @@ export function ActionsColumnFormatter(
   cellContent,
   row,
   rowIndex,
-  { openEditRestaurantMenuItemIngredientDialog, openDeleteRestaurantMenuItemIngredientDialog, t }
+  {
+    openEditRestaurantMenuItemIngredientDialog,
+    openDeleteRestaurantMenuItemIngredientDialog,
+    t,
+  }
 ) {
   return (
     <>
@@ -17,7 +21,11 @@ export function ActionsColumnFormatter(
       >
         <a
           className="btn btn-icon btn-light btn-hover-primary btn-sm mx-1"
-          onClick={() => openEditRestaurantMenuItemIngredientDialog(row.RestaurantMenuItemIngredientId)}
+          onClick={() =>
+            openEditRestaurantMenuItemIngredientDialog(
+              row.RestaurantMenuItemIngredientId
+            )
+          }
         >
           <span className="svg-icon svg-icon-md svg-icon-primary">
             <SVG
@@ -36,7 +44,9 @@ export function ActionsColumnFormatter(
         <a
           className="btn btn-icon btn-light btn-hover-danger btn-sm"
           onClick={() => {
-            openDeleteRestaurantMenuItemIngredientDialog(row.RestaurantMenuItemIngredientId);
+            openDeleteRestaurantMenuItemIngredientDialog(
+              row.RestaurantMenuItemIngredientId
+            );
           }}
         >
           <span className="svg-icon svg-icon-md svg-icon-danger">

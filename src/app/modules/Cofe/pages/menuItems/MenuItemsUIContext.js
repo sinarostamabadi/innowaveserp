@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { MenuItemModel } from "../../../../../core/_models/Cofe/MenuItemModel";
@@ -30,7 +29,7 @@ export function MenuItemsUIProvider({ menuItemsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function MenuItemsUIProvider({ menuItemsUIEvents, children }) {
     openDeleteMenuItemDialog: menuItemsUIEvents.openDeleteMenuItemDialog,
     openDeleteMenuItemsDialog: menuItemsUIEvents.openDeleteMenuItemsDialog,
     openFetchMenuItemsDialog: menuItemsUIEvents.openFetchMenuItemsDialog,
-    openUpdateMenuItemsStatusDialog: menuItemsUIEvents.openUpdateMenuItemsStatusDialog,
+    openUpdateMenuItemsStatusDialog:
+      menuItemsUIEvents.openUpdateMenuItemsStatusDialog,
   };
   return (
-    <MenuItemsUIContext.Provider value={value}>{children}</MenuItemsUIContext.Provider>
+    <MenuItemsUIContext.Provider value={value}>
+      {children}
+    </MenuItemsUIContext.Provider>
   );
 }

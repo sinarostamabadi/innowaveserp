@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmployeeLeaveChangesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const employeeLeaveChangesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmployeeLeaveChangeById  
+    // getEmployeeLeaveChangeById
     employeeLeaveChangeFetched: (state, action) => {
       state.actionsLoading = false;
-      state.employeeLeaveChangeForEdit = action.payload.employeeLeaveChangeForEdit;
+      state.employeeLeaveChangeForEdit =
+        action.payload.employeeLeaveChangeForEdit;
       state.error = null;
     },
-    // findEmployeeLeaveChanges  
+    // findEmployeeLeaveChanges
     employeeLeaveChangesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const employeeLeaveChangesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmployeeLeaveChange  
+    // createEmployeeLeaveChange
     employeeLeaveChangeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmployeeLeaveChange  
+    // updateEmployeeLeaveChange
     employeeLeaveChangeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.EmployeeLeaveChangeId === action.payload.employeeLeaveChange.EmployeeLeaveChangeId) {
+        if (
+          entity.EmployeeLeaveChangeId ===
+          action.payload.employeeLeaveChange.EmployeeLeaveChangeId
+        ) {
           return action.payload.employeeLeaveChange;
         }
         return entity;
       });
     },
-    // deleteEmployeeLeaveChange  
+    // deleteEmployeeLeaveChange
     employeeLeaveChangeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EmployeeLeaveChangeId !== action.payload.EmployeeLeaveChangeId  
+        (el) =>
+          el.EmployeeLeaveChangeId !== action.payload.EmployeeLeaveChangeId
       );
     },
-    // deleteEmployeeLeaveChanges  
+    // deleteEmployeeLeaveChanges
     employeeLeaveChangesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EmployeeLeaveChangeId)  
+        (el) => !action.payload.ids.includes(el.EmployeeLeaveChangeId)
       );
     },
-    // employeeLeaveChangesUpdateState  
+    // employeeLeaveChangesUpdateState
     employeeLeaveChangesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

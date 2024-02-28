@@ -56,7 +56,9 @@ export function CoffeeInvoiceDtlEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("CoffeeInvoiceDtl.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("CoffeeInvoiceDtl.Entity");
 
     if (coffeeInvoiceDtlForEdit && id) {
       _title = t("Common.Edit") + " " + coffeeInvoiceDtlForEdit.TitleFa;
@@ -74,11 +76,11 @@ export function CoffeeInvoiceDtlEdit({
         .then((arg) => {
           backToCoffeeInvoiceDtlsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateCoffeeInvoiceDtl(id, values))
         .then(() => backToCoffeeInvoiceDtlsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

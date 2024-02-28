@@ -46,7 +46,9 @@ export function TimeSetEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " «" + t("BodyBuildingTimeSet.Entity") + "»";
+    let _title = id
+      ? ""
+      : t("Common.Create") + " «" + t("BodyBuildingTimeSet.Entity") + "»";
 
     if (timeSetForEdit && timeSetForEdit.BodyBuildingTimeSetId == id) {
       _title = t("Common.Edit") + " «" + timeSetForEdit.Title + "»";
@@ -74,8 +76,7 @@ export function TimeSetEdit({
 
   const btnRef = useRef();
   const saveTimeSetClick = () => {
-    if (btnRef && btnRef.current) 
-      btnRef.current.click();
+    if (btnRef && btnRef.current) btnRef.current.click();
   };
 
   const backToTimeSetsList = () => history.push(`/BodyBuilding/timeSets`);

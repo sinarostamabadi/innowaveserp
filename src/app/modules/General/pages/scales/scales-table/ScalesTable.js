@@ -91,7 +91,7 @@ export function ScalesTable() {
     sizePerPage: scalesUIProps.queryParams.PageSize,
     page: scalesUIProps.queryParams.PageNumber,
   };
-  
+
   return (
     <>
       <PaginationProvider pagination={paginationFactory(paginationOptions)}>

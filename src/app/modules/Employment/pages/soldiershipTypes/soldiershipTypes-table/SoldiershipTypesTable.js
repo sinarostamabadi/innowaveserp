@@ -32,8 +32,10 @@ export function SoldiershipTypesTable() {
       setIds: soldiershipTypesUIContext.setIds,
       queryParams: soldiershipTypesUIContext.queryParams,
       setQueryParams: soldiershipTypesUIContext.setQueryParams,
-      openEditSoldiershipTypePage: soldiershipTypesUIContext.openEditSoldiershipTypePage,
-      openDeleteSoldiershipTypeDialog: soldiershipTypesUIContext.openDeleteSoldiershipTypeDialog,
+      openEditSoldiershipTypePage:
+        soldiershipTypesUIContext.openEditSoldiershipTypePage,
+      openDeleteSoldiershipTypeDialog:
+        soldiershipTypesUIContext.openDeleteSoldiershipTypeDialog,
     };
   }, [soldiershipTypesUIContext]);
 
@@ -50,7 +52,9 @@ export function SoldiershipTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     soldiershipTypesUIProps.setIds([]);
-    dispatch(actions.fetchSoldiershipTypes(soldiershipTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchSoldiershipTypes(soldiershipTypesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [soldiershipTypesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function SoldiershipTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditSoldiershipTypePage: soldiershipTypesUIProps.openEditSoldiershipTypePage,
-        openDeleteSoldiershipTypeDialog: soldiershipTypesUIProps.openDeleteSoldiershipTypeDialog,
+        openEditSoldiershipTypePage:
+          soldiershipTypesUIProps.openEditSoldiershipTypePage,
+        openDeleteSoldiershipTypeDialog:
+          soldiershipTypesUIProps.openDeleteSoldiershipTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

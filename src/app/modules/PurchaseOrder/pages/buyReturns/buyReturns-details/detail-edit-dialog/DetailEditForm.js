@@ -94,8 +94,11 @@ export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
       DiscountPrice: Math.ceil(+dirtyData.DiscountPrice),
       DiscountPercent: +dirtyData.DiscountPercent,
       CostPrice: +dirtyData.CostPrice,
-      PayablePrice: Math.ceil((+dirtyData.Price * +dirtyData.Amount) - 
-      +dirtyData.DiscountPrice + +dirtyData.CostPrice),
+      PayablePrice: Math.ceil(
+        +dirtyData.Price * +dirtyData.Amount -
+          +dirtyData.DiscountPrice +
+          +dirtyData.CostPrice
+      ),
       IsDeleted: false,
       BuyReturnSerials: [],
     };
@@ -169,7 +172,12 @@ export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
                         setFieldValue("Amount", val.target.value);
                         setFieldValue(
                           "DiscountPrice",
-                          Math.ceil((+values.Price * +val.target.value) * +values.DiscountPercent / 100)
+                          Math.ceil(
+                            (+values.Price *
+                              +val.target.value *
+                              +values.DiscountPercent) /
+                              100
+                          )
                         );
                       }}
                     />
@@ -185,7 +193,12 @@ export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
                         setFieldValue("Price", +val.target.value);
                         setFieldValue(
                           "DiscountPrice",
-                          Math.ceil((+val.target.value * +values.Amount) * +values.DiscountPercent / 100)
+                          Math.ceil(
+                            (+val.target.value *
+                              +values.Amount *
+                              +values.DiscountPercent) /
+                              100
+                          )
                         );
                       }}
                     />
@@ -193,7 +206,9 @@ export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
                   <div className="col-lg-6">
                     <label>{t("BuyReturnDetail.TotalPrice")}</label>
                     <label className="form-control">
-                      {numberWithCommas(Math.ceil(+values.Amount * +values.Price))}
+                      {numberWithCommas(
+                        Math.ceil(+values.Amount * +values.Price)
+                      )}
                     </label>
                   </div>
                 </div>
@@ -214,7 +229,12 @@ export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
                         setFieldValue("DiscountPercent", val.target.value);
                         setFieldValue(
                           "DiscountPrice",
-                          Math.ceil((+values.Price * +values.Amount) * +val.target.value / 100)
+                          Math.ceil(
+                            (+values.Price *
+                              +values.Amount *
+                              +val.target.value) /
+                              100
+                          )
                         );
                       }}
                     />
@@ -237,7 +257,13 @@ export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
                   <div className="col-lg-6">
                     <label>{t("BuyReturnDetail.PayablePrice")}</label>
                     <label className="form-control">
-                      {numberWithCommas(Math.ceil((+values.Amount * +values.Price) - +values.DiscountPrice + +values.CostPrice))}
+                      {numberWithCommas(
+                        Math.ceil(
+                          +values.Amount * +values.Price -
+                            +values.DiscountPrice +
+                            +values.CostPrice
+                        )
+                      )}
                     </label>
                   </div>
                 </div>

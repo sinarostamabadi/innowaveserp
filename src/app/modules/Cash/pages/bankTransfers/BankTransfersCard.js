@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { BankTransfersTable } from "./bankTransfers-table/BankTransfersTable";
-import { useBankTransfersUIContext, BankTransfersUIConsumer } from "./BankTransfersUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useBankTransfersUIContext,
+  BankTransfersUIConsumer,
+} from "./BankTransfersUIContext";
+import { useTranslation } from "react-i18next";
 
 export function BankTransfersCard() {
   const { t } = useTranslation();
@@ -21,24 +23,28 @@ export function BankTransfersCard() {
       ids: bankTransfersUIContext.ids,
       queryParams: bankTransfersUIContext.queryParams,
       setQueryParams: bankTransfersUIContext.setQueryParams,
-      newBankTransferButtonClick: bankTransfersUIContext.newBankTransferButtonClick,
-      openDeleteBankTransfersDialog: bankTransfersUIContext.openDeleteBankTransfersDialog,
+      newBankTransferButtonClick:
+        bankTransfersUIContext.newBankTransferButtonClick,
+      openDeleteBankTransfersDialog:
+        bankTransfersUIContext.openDeleteBankTransfersDialog,
       openEditBankTransferPage: bankTransfersUIContext.openEditBankTransferPage,
-      openUpdateBankTransfersStatusDialog: bankTransfersUIContext.openUpdateBankTransfersStatusDialog,
-      openFetchBankTransfersDialog: bankTransfersUIContext.openFetchBankTransfersDialog,
+      openUpdateBankTransfersStatusDialog:
+        bankTransfersUIContext.openUpdateBankTransfersStatusDialog,
+      openFetchBankTransfersDialog:
+        bankTransfersUIContext.openFetchBankTransfersDialog,
     };
   }, [bankTransfersUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("BankTransfer.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("BankTransfer.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={bankTransfersUIProps.newBankTransferButtonClick}
           >
-            {t("BankTransfer.Entity")} {' '} {t("Common.New")}
+            {t("BankTransfer.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

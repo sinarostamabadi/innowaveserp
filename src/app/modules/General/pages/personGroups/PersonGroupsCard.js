@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { PersonGroupsTable } from "./personGroups-table/PersonGroupsTable";
-import { usePersonGroupsUIContext, PersonGroupsUIConsumer } from "./PersonGroupsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  usePersonGroupsUIContext,
+  PersonGroupsUIConsumer,
+} from "./PersonGroupsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function PersonGroupsCard() {
   const { t } = useTranslation();
@@ -21,11 +23,15 @@ export function PersonGroupsCard() {
       ids: personGroupsUIContext.ids,
       queryParams: personGroupsUIContext.queryParams,
       setQueryParams: personGroupsUIContext.setQueryParams,
-      newPersonGroupButtonClick: personGroupsUIContext.newPersonGroupButtonClick,
-      openDeletePersonGroupsDialog: personGroupsUIContext.openDeletePersonGroupsDialog,
+      newPersonGroupButtonClick:
+        personGroupsUIContext.newPersonGroupButtonClick,
+      openDeletePersonGroupsDialog:
+        personGroupsUIContext.openDeletePersonGroupsDialog,
       openEditPersonGroupPage: personGroupsUIContext.openEditPersonGroupPage,
-      openUpdatePersonGroupsStatusDialog: personGroupsUIContext.openUpdatePersonGroupsStatusDialog,
-      openFetchPersonGroupsDialog: personGroupsUIContext.openFetchPersonGroupsDialog,
+      openUpdatePersonGroupsStatusDialog:
+        personGroupsUIContext.openUpdatePersonGroupsStatusDialog,
+      openFetchPersonGroupsDialog:
+        personGroupsUIContext.openFetchPersonGroupsDialog,
     };
   }, [personGroupsUIContext]);
 

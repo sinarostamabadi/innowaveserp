@@ -26,7 +26,7 @@ export function BankTransfersPage({ history }) {
       history.push("/cash/bankTransfers/updateStatus");
     },
   };
-  
+
   return (
     <BankTransfersUIProvider bankTransfersUIEvents={bankTransfersUIEvents}>
       <BankTransfersLoadingDialog />

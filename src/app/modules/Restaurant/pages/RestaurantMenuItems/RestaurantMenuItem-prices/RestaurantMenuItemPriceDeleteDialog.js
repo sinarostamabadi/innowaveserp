@@ -10,22 +10,26 @@ export function RestaurantMenuItemPriceDeleteDialog() {
   const { t } = useTranslation();
 
   // RestaurantMenuItemPrices UI Context
-  const restaurantMenuItemPricesUIContext = useRestaurantMenuItemPricesUIContext();
+  const restaurantMenuItemPricesUIContext =
+    useRestaurantMenuItemPricesUIContext();
   const restaurantMenuItemPricesUIProps = useMemo(() => {
     return {
       id: restaurantMenuItemPricesUIContext.selectedId,
       show: restaurantMenuItemPricesUIContext.showDeleteRestaurantMenuItemPriceDialog,
-      onHide: restaurantMenuItemPricesUIContext.closeDeleteRestaurantMenuItemPriceDialog,
+      onHide:
+        restaurantMenuItemPricesUIContext.closeDeleteRestaurantMenuItemPriceDialog,
       queryParams: restaurantMenuItemPricesUIContext.queryParams,
       setIds: restaurantMenuItemPricesUIContext.setIds,
-      findRestaurantMenuItemPrice: restaurantMenuItemPricesUIContext.findRestaurantMenuItemPrice,
-      removeRestaurantMenuItemPrice: restaurantMenuItemPricesUIContext.removeRestaurantMenuItemPrice,
+      findRestaurantMenuItemPrice:
+        restaurantMenuItemPricesUIContext.findRestaurantMenuItemPrice,
+      removeRestaurantMenuItemPrice:
+        restaurantMenuItemPricesUIContext.removeRestaurantMenuItemPrice,
     };
   }, [restaurantMenuItemPricesUIContext]);
 
   // RestaurantMenuItemPrices Redux state
   const dispatch = useDispatch();
-  const [ isLoading, setIsLoading ] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // if !id we should close modal
   useEffect(() => {
@@ -39,7 +43,9 @@ export function RestaurantMenuItemPriceDeleteDialog() {
   useEffect(() => {}, [isLoading, dispatch]);
 
   const deleteRestaurantMenuItemPrice = () => {
-    restaurantMenuItemPricesUIProps.removeRestaurantMenuItemPrice(restaurantMenuItemPricesUIProps.id)
+    restaurantMenuItemPricesUIProps.removeRestaurantMenuItemPrice(
+      restaurantMenuItemPricesUIProps.id
+    );
     restaurantMenuItemPricesUIProps.onHide();
   };
 
@@ -56,9 +62,7 @@ export function RestaurantMenuItemPriceDeleteDialog() {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && (
-          <span>{t("Common.DeleteQuestion")}</span>
-        )}
+        {!isLoading && <span>{t("Common.DeleteQuestion")}</span>}
         {isLoading && <span>{t("Common.DeleteLoading")}</span>}
       </Modal.Body>
       <Modal.Footer>

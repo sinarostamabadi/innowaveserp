@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { MenuItemPriceModel } from "../../../../../core/_models/Cofe/MenuItemPriceModel";
@@ -30,7 +29,7 @@ export function MenuItemPricesUIProvider({ menuItemPricesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function MenuItemPricesUIProvider({ menuItemPricesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: MenuItemPriceModel,
-    newMenuItemPriceButtonClick: menuItemPricesUIEvents.newMenuItemPriceButtonClick,
+    newMenuItemPriceButtonClick:
+      menuItemPricesUIEvents.newMenuItemPriceButtonClick,
     openEditMenuItemPricePage: menuItemPricesUIEvents.openEditMenuItemPricePage,
-    openDeleteMenuItemPriceDialog: menuItemPricesUIEvents.openDeleteMenuItemPriceDialog,
-    openDeleteMenuItemPricesDialog: menuItemPricesUIEvents.openDeleteMenuItemPricesDialog,
-    openFetchMenuItemPricesDialog: menuItemPricesUIEvents.openFetchMenuItemPricesDialog,
-    openUpdateMenuItemPricesStatusDialog: menuItemPricesUIEvents.openUpdateMenuItemPricesStatusDialog,
+    openDeleteMenuItemPriceDialog:
+      menuItemPricesUIEvents.openDeleteMenuItemPriceDialog,
+    openDeleteMenuItemPricesDialog:
+      menuItemPricesUIEvents.openDeleteMenuItemPricesDialog,
+    openFetchMenuItemPricesDialog:
+      menuItemPricesUIEvents.openFetchMenuItemPricesDialog,
+    openUpdateMenuItemPricesStatusDialog:
+      menuItemPricesUIEvents.openUpdateMenuItemPricesStatusDialog,
   };
   return (
-    <MenuItemPricesUIContext.Provider value={value}>{children}</MenuItemPricesUIContext.Provider>
+    <MenuItemPricesUIContext.Provider value={value}>
+      {children}
+    </MenuItemPricesUIContext.Provider>
   );
 }

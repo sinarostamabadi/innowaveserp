@@ -22,32 +22,47 @@ export function useEmployeeTypesUIContext() {
 export const EmployeeTypesUIConsumer = EmployeeTypesUIContext.Consumer;
 
 export const EmployeeTypesUIProvider = forwardRef(
-  ({ currentBodyBuildingEmployeeId, children, employeeType, selectedEmployeeType, btnRef }, ref) => {
+  (
+    {
+      currentBodyBuildingEmployeeId,
+      children,
+      employeeType,
+      selectedEmployeeType,
+      btnRef,
+    },
+    ref
+  ) => {
     const { t } = useTranslation();
 
     useImperativeHandle(ref, () => ({
       Collect(fn) {
-          fn(
-            employeeTypes.map((d) => {
-              let x = {
-                BodyBuildingEmployeeExpertiseId:
-                  d.BodyBuildingEmployeeExpertiseId.toString().indexOf("temp") > -1
-                    ? null
-                    : +d.BodyBuildingEmployeeExpertiseId,
-                    BodyBuildingEmployeeTypeExpertiseId: !!d.BodyBuildingEmployeeTypeExpertiseId? +d.BodyBuildingEmployeeTypeExpertiseId: null,
-                    Grade: d.Grade,
-                    IsDeleted: d.IsDeleted,
-              };
+        fn(
+          employeeTypes.map((d) => {
+            let x = {
+              BodyBuildingEmployeeExpertiseId:
+                d.BodyBuildingEmployeeExpertiseId.toString().indexOf("temp") >
+                -1
+                  ? null
+                  : +d.BodyBuildingEmployeeExpertiseId,
+              BodyBuildingEmployeeTypeExpertiseId:
+                !!d.BodyBuildingEmployeeTypeExpertiseId
+                  ? +d.BodyBuildingEmployeeTypeExpertiseId
+                  : null,
+              Grade: d.Grade,
+              IsDeleted: d.IsDeleted,
+            };
 
-              return x;
-            })
-          );
+            return x;
+          })
+        );
       },
     }));
 
     const [selectedId, setSelectedId] = useState(null);
     const [selectedItem, setSelectedItem] = useState(null);
-    const [bodyBuildingEmployeeId, setBodyBuildingEmployeeId] = useState(currentBodyBuildingEmployeeId);
+    const [bodyBuildingEmployeeId, setBodyBuildingEmployeeId] = useState(
+      currentBodyBuildingEmployeeId
+    );
 
     const initEmployeeType = {
       BodyBuildingEmployeeExpertiseId: "",
@@ -80,12 +95,15 @@ export const EmployeeTypesUIProvider = forwardRef(
     }, []);
 
     const [employeeTypes, setEmployeeTypes] = useState(employeeType);
-    const [activeEmployeeTypes, setActiveEmployeeTypes] = useState(employeeType);
+    const [activeEmployeeTypes, setActiveEmployeeTypes] =
+      useState(employeeType);
     const [totalCount, setTotalCount] = useState(0);
 
     useEffect(() => {
       setEmployeeTypes(employeeType);
-      setTotalCount(!!employeeType && employeeType.length > 0 ? employeeType.length : 0);
+      setTotalCount(
+        !!employeeType && employeeType.length > 0 ? employeeType.length : 0
+      );
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [employeeType]);
 
@@ -102,7 +120,8 @@ export const EmployeeTypesUIProvider = forwardRef(
     }, [employeeTypes]);
 
     // Edit Dialog, New Dialog
-    const [showEditEmployeeTypeDialog, setShowEditEmployeeTypeDialog] = useState(false);
+    const [showEditEmployeeTypeDialog, setShowEditEmployeeTypeDialog] =
+      useState(false);
     const openNewEmployeeTypeDialog = () => {
       setSelectedId(undefined);
       setSelectedItem(undefined);
@@ -155,21 +174,26 @@ export const EmployeeTypesUIProvider = forwardRef(
 
       const employeeTypeObj = employeeTypes.filter(
         (employeeType) =>
-          employeeType.BodyBuildingEmployeeExpertiseId == bodyBuildingEmployeeExpertiseId
+          employeeType.BodyBuildingEmployeeExpertiseId ==
+          bodyBuildingEmployeeExpertiseId
       )[0];
 
       return {
-        BodyBuildingEmployeeExpertiseId: employeeTypeObj.BodyBuildingEmployeeExpertiseId,
+        BodyBuildingEmployeeExpertiseId:
+          employeeTypeObj.BodyBuildingEmployeeExpertiseId,
         BodyBuildingEmployeeId: employeeTypeObj.BodyBuildingEmployeeId,
-        BodyBuildingEmployeeTypeExpertiseId: employeeTypeObj.BodyBuildingEmployeeTypeExpertiseId,
-        BodyBuildingEmployeeTypeExpertise: employeeTypeObj.BodyBuildingEmployeeTypeExpertise,
+        BodyBuildingEmployeeTypeExpertiseId:
+          employeeTypeObj.BodyBuildingEmployeeTypeExpertiseId,
+        BodyBuildingEmployeeTypeExpertise:
+          employeeTypeObj.BodyBuildingEmployeeTypeExpertise,
         Grade: employeeTypeObj.Grade,
         IsDeleted: false,
       };
     };
 
     const addEmployeeType = (employeeType) => {
-      employeeType.BodyBuildingEmployeeExpertiseId = "temp_" + Math.floor(Math.random() * 100);
+      employeeType.BodyBuildingEmployeeExpertiseId =
+        "temp_" + Math.floor(Math.random() * 100);
 
       setEmployeeTypes((employeeTypes) => [...employeeTypes, employeeType]);
     };
@@ -178,7 +202,9 @@ export const EmployeeTypesUIProvider = forwardRef(
       if (bodyBuildingEmployeeExpertiseId.toString().indexOf("temp_") > -1)
         setEmployeeTypes(
           employeeTypes.filter(
-            (x) => x.BodyBuildingEmployeeExpertiseId != bodyBuildingEmployeeExpertiseId
+            (x) =>
+              x.BodyBuildingEmployeeExpertiseId !=
+              bodyBuildingEmployeeExpertiseId
           )
         );
       else {
@@ -191,7 +217,8 @@ export const EmployeeTypesUIProvider = forwardRef(
     const updateEmployeeType = (employeeType) => {
       setEmployeeTypes((employeeTypes) =>
         employeeTypes.map((item) =>
-          item.BodyBuildingEmployeeExpertiseId == employeeType.BodyBuildingEmployeeExpertiseId
+          item.BodyBuildingEmployeeExpertiseId ==
+          employeeType.BodyBuildingEmployeeExpertiseId
             ? employeeType
             : item
         )
@@ -240,9 +267,9 @@ export const EmployeeTypesUIProvider = forwardRef(
     };
 
     return (
-        <EmployeeTypesUIContext.Provider value={value}>
-          {children}
-        </EmployeeTypesUIContext.Provider>
+      <EmployeeTypesUIContext.Provider value={value}>
+        {children}
+      </EmployeeTypesUIContext.Provider>
     );
   }
 );

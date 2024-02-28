@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,23 +7,28 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { SetPricingTable } from "./setPricing-table/SetPricingTable";
-import { useSetPricingUIContext, SetPricingUIConsumer } from "./SetPricingUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useSetPricingUIContext,
+  SetPricingUIConsumer,
+} from "./SetPricingUIContext";
+import { useTranslation } from "react-i18next";
 
 export function SetPricingCard() {
   const { t } = useTranslation();
 
   const setPricingUIContext = useSetPricingUIContext();
- 
+
   const setPricingUIProps = useMemo(() => {
     return {
       ids: setPricingUIContext.ids,
       queryParams: setPricingUIContext.queryParams,
       setQueryParams: setPricingUIContext.setQueryParams,
       newSetPricingButtonClick: setPricingUIContext.newSetPricingButtonClick,
-      openDeleteSetPricingDialog: setPricingUIContext.openDeleteSetPricingDialog,
+      openDeleteSetPricingDialog:
+        setPricingUIContext.openDeleteSetPricingDialog,
       openEditSetPricingPage: setPricingUIContext.openEditSetPricingPage,
-      openUpdateSetPricingStatusDialog: setPricingUIContext.openUpdateSetPricingStatusDialog,
+      openUpdateSetPricingStatusDialog:
+        setPricingUIContext.openUpdateSetPricingStatusDialog,
       openFetchSetPricingDialog: setPricingUIContext.openFetchSetPricingDialog,
     };
   }, [setPricingUIContext]);

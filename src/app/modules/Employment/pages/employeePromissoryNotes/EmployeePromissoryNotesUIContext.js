@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmployeePromissoryNoteModel } from "../../../../../core/_models/Employment/EmployeePromissoryNoteModel";
@@ -10,9 +9,13 @@ export function useEmployeePromissoryNotesUIContext() {
   return useContext(EmployeePromissoryNotesUIContext);
 }
 
-export const EmployeePromissoryNotesUIConsumer = EmployeePromissoryNotesUIContext.Consumer;
+export const EmployeePromissoryNotesUIConsumer =
+  EmployeePromissoryNotesUIContext.Consumer;
 
-export function EmployeePromissoryNotesUIProvider({ employeePromissoryNotesUIEvents, children }) {
+export function EmployeePromissoryNotesUIProvider({
+  employeePromissoryNotesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(EmployeePromissoryNoteModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function EmployeePromissoryNotesUIProvider({ employeePromissoryNotesUIEve
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function EmployeePromissoryNotesUIProvider({ employeePromissoryNotesUIEve
     setIds,
     setQueryParams,
     dataModel: EmployeePromissoryNoteModel,
-    newEmployeePromissoryNoteButtonClick: employeePromissoryNotesUIEvents.newEmployeePromissoryNoteButtonClick,
-    openEditEmployeePromissoryNotePage: employeePromissoryNotesUIEvents.openEditEmployeePromissoryNotePage,
-    openDeleteEmployeePromissoryNoteDialog: employeePromissoryNotesUIEvents.openDeleteEmployeePromissoryNoteDialog,
-    openDeleteEmployeePromissoryNotesDialog: employeePromissoryNotesUIEvents.openDeleteEmployeePromissoryNotesDialog,
-    openFetchEmployeePromissoryNotesDialog: employeePromissoryNotesUIEvents.openFetchEmployeePromissoryNotesDialog,
-    openUpdateEmployeePromissoryNotesStatusDialog: employeePromissoryNotesUIEvents.openUpdateEmployeePromissoryNotesStatusDialog,
+    newEmployeePromissoryNoteButtonClick:
+      employeePromissoryNotesUIEvents.newEmployeePromissoryNoteButtonClick,
+    openEditEmployeePromissoryNotePage:
+      employeePromissoryNotesUIEvents.openEditEmployeePromissoryNotePage,
+    openDeleteEmployeePromissoryNoteDialog:
+      employeePromissoryNotesUIEvents.openDeleteEmployeePromissoryNoteDialog,
+    openDeleteEmployeePromissoryNotesDialog:
+      employeePromissoryNotesUIEvents.openDeleteEmployeePromissoryNotesDialog,
+    openFetchEmployeePromissoryNotesDialog:
+      employeePromissoryNotesUIEvents.openFetchEmployeePromissoryNotesDialog,
+    openUpdateEmployeePromissoryNotesStatusDialog:
+      employeePromissoryNotesUIEvents.openUpdateEmployeePromissoryNotesStatusDialog,
   };
   return (
-    <EmployeePromissoryNotesUIContext.Provider value={value}>{children}</EmployeePromissoryNotesUIContext.Provider>
+    <EmployeePromissoryNotesUIContext.Provider value={value}>
+      {children}
+    </EmployeePromissoryNotesUIContext.Provider>
   );
 }

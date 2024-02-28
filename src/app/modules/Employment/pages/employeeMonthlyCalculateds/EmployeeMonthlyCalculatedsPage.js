@@ -17,7 +17,9 @@ export function EmployeeMonthlyCalculatedsPage({ history }) {
       history.push(`/employment/employeeMonthlyCalculateds/${id}/delete`);
     },
     openDeleteEmployeeMonthlyCalculatedsDialog: () => {
-      history.push(`/employment/employeeMonthlyCalculateds/deleteEmployeeMonthlyCalculateds`);
+      history.push(
+        `/employment/employeeMonthlyCalculateds/deleteEmployeeMonthlyCalculateds`
+      );
     },
     openFetchEmployeeMonthlyCalculatedsDialog: () => {
       history.push(`/employment/employeeMonthlyCalculateds/fetch`);
@@ -26,9 +28,11 @@ export function EmployeeMonthlyCalculatedsPage({ history }) {
       history.push("/employment/employeeMonthlyCalculateds/updateStatus");
     },
   };
-  
+
   return (
-    <EmployeeMonthlyCalculatedsUIProvider employeeMonthlyCalculatedsUIEvents={employeeMonthlyCalculatedsUIEvents}>
+    <EmployeeMonthlyCalculatedsUIProvider
+      employeeMonthlyCalculatedsUIEvents={employeeMonthlyCalculatedsUIEvents}
+    >
       <EmployeeMonthlyCalculatedsLoadingDialog />
       <Route path="/employment/employeeMonthlyCalculateds/:id/delete">
         {({ history, match }) => (

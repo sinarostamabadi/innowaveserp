@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { TableStatusTypeModel } from "../../../../../core/_models//TableStatusTypeModel";
@@ -12,7 +11,10 @@ export function useTableStatusTypesUIContext() {
 
 export const TableStatusTypesUIConsumer = TableStatusTypesUIContext.Consumer;
 
-export function TableStatusTypesUIProvider({ tableStatusTypesUIEvents, children }) {
+export function TableStatusTypesUIProvider({
+  tableStatusTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(TableStatusTypeModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function TableStatusTypesUIProvider({ tableStatusTypesUIEvents, children 
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function TableStatusTypesUIProvider({ tableStatusTypesUIEvents, children 
     setIds,
     setQueryParams,
     dataModel: TableStatusTypeModel,
-    newTableStatusTypeButtonClick: tableStatusTypesUIEvents.newTableStatusTypeButtonClick,
-    openEditTableStatusTypePage: tableStatusTypesUIEvents.openEditTableStatusTypePage,
-    openDeleteTableStatusTypeDialog: tableStatusTypesUIEvents.openDeleteTableStatusTypeDialog,
-    openDeleteTableStatusTypesDialog: tableStatusTypesUIEvents.openDeleteTableStatusTypesDialog,
-    openFetchTableStatusTypesDialog: tableStatusTypesUIEvents.openFetchTableStatusTypesDialog,
-    openUpdateTableStatusTypesStatusDialog: tableStatusTypesUIEvents.openUpdateTableStatusTypesStatusDialog,
+    newTableStatusTypeButtonClick:
+      tableStatusTypesUIEvents.newTableStatusTypeButtonClick,
+    openEditTableStatusTypePage:
+      tableStatusTypesUIEvents.openEditTableStatusTypePage,
+    openDeleteTableStatusTypeDialog:
+      tableStatusTypesUIEvents.openDeleteTableStatusTypeDialog,
+    openDeleteTableStatusTypesDialog:
+      tableStatusTypesUIEvents.openDeleteTableStatusTypesDialog,
+    openFetchTableStatusTypesDialog:
+      tableStatusTypesUIEvents.openFetchTableStatusTypesDialog,
+    openUpdateTableStatusTypesStatusDialog:
+      tableStatusTypesUIEvents.openUpdateTableStatusTypesStatusDialog,
   };
   return (
-    <TableStatusTypesUIContext.Provider value={value}>{children}</TableStatusTypesUIContext.Provider>
+    <TableStatusTypesUIContext.Provider value={value}>
+      {children}
+    </TableStatusTypesUIContext.Provider>
   );
 }

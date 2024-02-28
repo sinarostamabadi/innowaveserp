@@ -12,7 +12,9 @@ export const ActionsColumnFormatter = (
   { openEditPosUserPage, openDeletePosUserDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="posUsers-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={<Tooltip id="posUsers-edit-tooltip">{t("Common.Edit")}</Tooltip>}
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditPosUserPage(row.PosUserId)}
@@ -26,7 +28,9 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="posUsers-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="posUsers-delete-tooltip">{t("Common.Delete")}</Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"

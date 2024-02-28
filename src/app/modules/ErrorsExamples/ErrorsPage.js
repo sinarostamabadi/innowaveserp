@@ -1,8 +1,8 @@
 import React from "react";
-import {Redirect, Route, Switch} from "react-router-dom";
-import {ErrorPage1} from "./ErrorPage1";
-import {ErrorPage2} from "./ErrorPage2";
-import {ErrorPage3} from "./ErrorPage3";
+import { Redirect, Route, Switch } from "react-router-dom";
+import { ErrorPage1 } from "./ErrorPage1";
+import { ErrorPage2 } from "./ErrorPage2";
+import { ErrorPage3 } from "./ErrorPage3";
 
 export default function ErrorsPage() {
   return (

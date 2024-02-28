@@ -17,7 +17,9 @@ export function LinkDocumentParametersPage({ history }) {
       history.push(`/accounting/linkDocumentParameters/${id}/delete`);
     },
     openDeleteLinkDocumentParametersDialog: () => {
-      history.push(`/accounting/linkDocumentParameters/deleteLinkDocumentParameters`);
+      history.push(
+        `/accounting/linkDocumentParameters/deleteLinkDocumentParameters`
+      );
     },
     openFetchLinkDocumentParametersDialog: () => {
       history.push(`/accounting/linkDocumentParameters/fetch`);
@@ -26,9 +28,11 @@ export function LinkDocumentParametersPage({ history }) {
       history.push("/accounting/linkDocumentParameters/updateStatus");
     },
   };
-  
+
   return (
-    <LinkDocumentParametersUIProvider linkDocumentParametersUIEvents={linkDocumentParametersUIEvents}>
+    <LinkDocumentParametersUIProvider
+      linkDocumentParametersUIEvents={linkDocumentParametersUIEvents}
+    >
       <LinkDocumentParametersLoadingDialog />
       <Route path="/accounting/linkDocumentParameters/:id/delete">
         {({ history, match }) => (

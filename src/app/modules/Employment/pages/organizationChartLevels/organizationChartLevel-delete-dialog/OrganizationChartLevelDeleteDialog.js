@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -16,7 +15,8 @@ export function OrganizationChartLevelDeleteDialog({ id, show, onHide }) {
   const { t } = useTranslation();
 
   // OrganizationChartLevels UI Context
-  const organizationChartLevelsUIContext = useOrganizationChartLevelsUIContext();
+  const organizationChartLevelsUIContext =
+    useOrganizationChartLevelsUIContext();
   const [error, setError] = useState(null);
   const organizationChartLevelsUIProps = useMemo(() => {
     return {
@@ -48,7 +48,11 @@ export function OrganizationChartLevelDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteOrganizationChartLevel(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchOrganizationChartLevels(organizationChartLevelsUIProps.queryParams));
+        dispatch(
+          actions.fetchOrganizationChartLevels(
+            organizationChartLevelsUIProps.queryParams
+          )
+        );
         // clear selections list
         organizationChartLevelsUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +71,12 @@ export function OrganizationChartLevelDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("OrganizationChartLevel.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("OrganizationChartLevel.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

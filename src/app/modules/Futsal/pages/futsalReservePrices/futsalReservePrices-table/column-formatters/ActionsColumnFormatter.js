@@ -12,7 +12,13 @@ export const ActionsColumnFormatter = (
   { openEditFutsalReservePricePage, openDeleteFutsalReservePriceDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="futsalReservePrices-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="futsalReservePrices-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditFutsalReservePricePage(row.FutsalReservePriceId)}
@@ -26,11 +32,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="futsalReservePrices-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="futsalReservePrices-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteFutsalReservePriceDialog(row.FutsalReservePriceId)}
+        onClick={() =>
+          openDeleteFutsalReservePriceDialog(row.FutsalReservePriceId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

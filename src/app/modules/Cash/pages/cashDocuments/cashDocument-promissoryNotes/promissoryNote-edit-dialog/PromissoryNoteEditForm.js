@@ -20,12 +20,12 @@ export function PromissoryNoteEditForm({
     { text: "پرداخت", value: 2 },
   ];
 
-  let cashDocument = {...PromissoryNoteTools.Model};
+  let cashDocument = { ...PromissoryNoteTools.Model };
 
   const PromissoryNoteEditSchema = Yup.object().shape({
-    TransactionTypeId: Yup.number().nullable().required(
-      t("err.IsRequired", { 0: t("CashDocument.TransactionType") })
-    ),
+    TransactionTypeId: Yup.number()
+      .nullable()
+      .required(t("err.IsRequired", { 0: t("CashDocument.TransactionType") })),
     Price: Yup.string().required(
       t("err.IsRequired", { 0: t("CashDocument.Price") })
     ),
@@ -70,62 +70,61 @@ export function PromissoryNoteEditForm({
                         ))}
                       </Select>
                     </div>
+                  </div>
+                  <div className="row mt-2"></div>
+                  <div className="row mt-2">
+                    <div className="col-lg-6">
+                      <Field
+                        name="Price"
+                        type="number"
+                        component={Input}
+                        isLtr={true}
+                        customFeedbackLabel=""
+                        label={t("CashDocument.Price")}
+                      />
                     </div>
-                    <div className="row mt-2">
+                    <div className="col-lg-6">
+                      <Field
+                        name="MaxPrice"
+                        type="number"
+                        component={Input}
+                        isLtr={true}
+                        customFeedbackLabel=""
+                        label={t("CashDocument.MaxPrice")}
+                      />
                     </div>
-                    <div className="row mt-2">
-                      <div className="col-lg-6">
-                        <Field
-                          name="Price"
-                          type="number"
-                          component={Input}
-                          isLtr={true}
-                          customFeedbackLabel=""
-                          label={t("CashDocument.Price")}
-                        />
-                      </div>
-                      <div className="col-lg-6">
-                        <Field
-                          name="MaxPrice"
-                          type="number"
-                          component={Input}
-                          isLtr={true}
-                          customFeedbackLabel=""
-                          label={t("CashDocument.MaxPrice")}
-                        />
-                      </div>
+                  </div>
+                  <div className="row mt-2">
+                    <div className="col-lg-6">
+                      <Field
+                        name="PromissoryNumber"
+                        component={Input}
+                        isLtr={true}
+                        customFeedbackLabel=""
+                        label={t("CashDocument.PromissoryNumber")}
+                      />
                     </div>
-                    <div className="row mt-2">
-                      <div className="col-lg-6">
-                        <Field
-                          name="PromissoryNumber"
-                          component={Input}
-                          isLtr={true}
-                          customFeedbackLabel=""
-                          label={t("CashDocument.PromissoryNumber")}
-                        />
-                      </div>
-                      <div className="col-lg-6">
-                        <DatePickerField
-                          name="PromissoryDateObj"
-                          customFeedbackLabel=""
-                          label={t("CashDocument.Date")}
-                          value={cashDocument.PromissoryDateObj}
-                        />
-                      </div>
+                    <div className="col-lg-6">
+                      <DatePickerField
+                        name="PromissoryDateObj"
+                        customFeedbackLabel=""
+                        label={t("CashDocument.Date")}
+                        value={cashDocument.PromissoryDateObj}
+                      />
                     </div>
-                    <div className="row mt-2">
-                      <div className="col">
-                        <Field
-                          name="Description"
-                          component={Input}
-                          customFeedbackLabel=""
-                          label={t("CashDocument.Description")}
-                        />
-                      </div>
+                  </div>
+                  <div className="row mt-2">
+                    <div className="col">
+                      <Field
+                        name="Description"
+                        component={Input}
+                        customFeedbackLabel=""
+                        label={t("CashDocument.Description")}
+                      />
                     </div>
-                  </Form>
-                </Modal.Body>
+                  </div>
+                </Form>
+              </Modal.Body>
               <Modal.Footer>
                 <button
                   type="button"

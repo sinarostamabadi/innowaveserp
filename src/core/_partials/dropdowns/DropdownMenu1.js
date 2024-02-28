@@ -8,7 +8,7 @@ export function DropdownMenu1() {
       {/*begin::Navigation*/}
       <ul className="navi navi-hover">
         <li className="navi-header font-weight-bold py-5">
-          <span className="font-size-lg">ایجاد سریع:</span>
+          <span className="font-size-lg">Quick creation</span>
           <i
             className="flaticon2-information icon-md text-muted"
             data-toggle="tooltip"
@@ -21,7 +21,7 @@ export function DropdownMenu1() {
           <Link to="/bowling/reserves/new" className="navi-link">
             <span className="navi-text">
               <span className="label label-xl label-inline label-light-success">
-                رزرو بولینگ
+                Bowling reservation
               </span>
             </span>
           </Link>
@@ -30,7 +30,7 @@ export function DropdownMenu1() {
           <Link to="/restaurant/restaurantInvoices/new" className="navi-link">
             <span className="navi-text">
               <span className="label label-xl label-inline label-light-danger">
-                سفارش رستوران
+                Restaurant order
               </span>
             </span>
           </Link>
@@ -39,7 +39,7 @@ export function DropdownMenu1() {
           <Link to="/sell/sellDocuments/new" className="navi-link">
             <span className="navi-text">
               <span className="label label-xl label-inline label-light-warning">
-                فروش هایپر
+                Hyper sale
               </span>
             </span>
           </Link>

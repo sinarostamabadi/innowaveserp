@@ -30,28 +30,28 @@ export const DetailsUIProvider = forwardRef(
 
     useImperativeHandle(ref, () => ({
       Collect(fn) {
-          fn(
-            activeDetails.map((d) => {
-              let xx = {
-                DocumentDtlId: null,
-                ProductId: d.ProductId,
-                ProductUnitId: d.ProductUnitId,
-                Amount: +d.Amount,
-                UseDate: !!d.UseDate ? d.UseDate : null,
-                ExpireDate: !!d.ExpireDate ? d.ExpireDate : null,
-                IsDeleted: false,
-              };
+        fn(
+          activeDetails.map((d) => {
+            let xx = {
+              DocumentDtlId: null,
+              ProductId: d.ProductId,
+              ProductUnitId: d.ProductUnitId,
+              Amount: +d.Amount,
+              UseDate: !!d.UseDate ? d.UseDate : null,
+              ExpireDate: !!d.ExpireDate ? d.ExpireDate : null,
+              IsDeleted: false,
+            };
 
-              return xx;
-            })
-          );
+            return xx;
+          })
+        );
       },
     }));
 
     const [selectedId, setSelectedId] = useState(null);
     const [selectedItem, setSelectedItem] = useState(null);
     const [documentId, setDocumentId] = useState(currentDocumentId);
-    
+
     const initDetail = {
       DocumentDtlId: undefined,
       DocumentId: documentId,
@@ -83,7 +83,7 @@ export const DetailsUIProvider = forwardRef(
       Atf2: "",
       Atf3: "",
       Atf4: "",
-      IsDeleted: false
+      IsDeleted: false,
     };
 
     const { actionsLoading, realPersonForEdit, error } = useSelector(
@@ -126,14 +126,16 @@ export const DetailsUIProvider = forwardRef(
       setDetails(
         !!realPersonForEdit &&
           !!realPersonForEdit.DocumentDtls &&
-          realPersonForEdit.DocumentDtls.length > 0 && realPersonForEdit.DocumentId == documentId
+          realPersonForEdit.DocumentDtls.length > 0 &&
+          realPersonForEdit.DocumentId == documentId
           ? realPersonForEdit.DocumentDtls
           : []
       );
       setTotalCount(
         !!realPersonForEdit &&
           !!realPersonForEdit.DocumentDtls &&
-          realPersonForEdit.DocumentDtls.length > 0 && realPersonForEdit.DocumentId == documentId
+          realPersonForEdit.DocumentDtls.length > 0 &&
+          realPersonForEdit.DocumentId == documentId
           ? realPersonForEdit.DocumentDtls.length
           : 0
       );
@@ -178,9 +180,8 @@ export const DetailsUIProvider = forwardRef(
       setShowDeleteDetailDialog(false);
     };
 
-    const [showDeleteDetailsDialog, setShowDeleteDetailsDialog] = useState(
-      false
-    );
+    const [showDeleteDetailsDialog, setShowDeleteDetailsDialog] =
+      useState(false);
     const openDeleteDetailsDialog = () => {
       setShowDeleteDetailsDialog(true);
     };
@@ -222,11 +223,13 @@ export const DetailsUIProvider = forwardRef(
     };
 
     const dispatch = useDispatch();
-    
+
     const addDetail = (detail) => {
-      dispatch(createDocumentDtl(detail, (res)=> {
-        setDetails((details) => [...details, res]);
-      }));
+      dispatch(
+        createDocumentDtl(detail, (res) => {
+          setDetails((details) => [...details, res]);
+        })
+      );
     };
 
     const removeDetail = (detailId) => {
@@ -250,7 +253,7 @@ export const DetailsUIProvider = forwardRef(
         setSelectedItem(detail);
       }, 200);
     };
-    
+
     const value = {
       details,
       activeDetails,

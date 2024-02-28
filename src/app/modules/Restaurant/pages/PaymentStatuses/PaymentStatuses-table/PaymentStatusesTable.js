@@ -32,8 +32,10 @@ export function PaymentStatusesTable() {
       setIds: paymentStatusesUIContext.setIds,
       queryParams: paymentStatusesUIContext.queryParams,
       setQueryParams: paymentStatusesUIContext.setQueryParams,
-      openEditPaymentStatusPage: paymentStatusesUIContext.openEditPaymentStatusPage,
-      openDeletePaymentStatusDialog: paymentStatusesUIContext.openDeletePaymentStatusDialog,
+      openEditPaymentStatusPage:
+        paymentStatusesUIContext.openEditPaymentStatusPage,
+      openDeletePaymentStatusDialog:
+        paymentStatusesUIContext.openDeletePaymentStatusDialog,
     };
   }, [paymentStatusesUIContext]);
 
@@ -72,8 +74,10 @@ export function PaymentStatusesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditPaymentStatusPage: paymentStatusesUIProps.openEditPaymentStatusPage,
-        openDeletePaymentStatusDialog: paymentStatusesUIProps.openDeletePaymentStatusDialog,
+        openEditPaymentStatusPage:
+          paymentStatusesUIProps.openEditPaymentStatusPage,
+        openDeletePaymentStatusDialog:
+          paymentStatusesUIProps.openDeletePaymentStatusDialog,
         t: t,
       },
       classes: "text-right pr-0",

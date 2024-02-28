@@ -49,7 +49,7 @@ export function SellDocumentsCard({ history }) {
             <Form.Check
               type="switch"
               id="custom-switch"
-              label="نمایش فاکتورهای موقت"
+              label="Show temporary invoices"
               defaultChecked={true}
               className="ml-5 d-inline-block opacity-90"
               style={{ fontSize: "0.9rem" }}

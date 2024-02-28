@@ -1,9 +1,8 @@
-
 import axios from "axios";
 export const url = "AccountFloatingGroupRelation";
 
-export function create(data) { 
-  return axios.post(`${url}/post`, data); 
+export function create(data) {
+  return axios.post(`${url}/post`, data);
 }
 
 export function getAll() {
@@ -32,4 +31,4 @@ export function remove(id) {
 
 export function removeIds(ids) {
   return axios.post(`${url}/delete`, ids);
-  }
+}

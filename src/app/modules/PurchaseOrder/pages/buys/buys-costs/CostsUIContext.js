@@ -25,25 +25,31 @@ export function useCostsUIContext() {
 export const CostsUIConsumer = CostsUIContext.Consumer;
 
 export const CostsUIProvider = forwardRef(
-  ({ currentBuyId, children, cost, btnRef, updateBuy, editable, buySum }, ref) => {
+  (
+    { currentBuyId, children, cost, btnRef, updateBuy, editable, buySum },
+    ref
+  ) => {
     const { t } = useTranslation();
 
     useImperativeHandle(ref, () => ({
       Collect(fn) {
-          fn(
-            costs.map((d) => {
-              let xx = {
-                BuyCostId: d.BuyCostId.toString().indexOf("temp") > -1? null: d.BuyCostId,
-                CostTypeId: d.CostTypeId,
-                Price: d.Price,
-                CostPercent: d.CostPercent,
-                Describtion: d.Describtion,
-                IsDeleted: d.IsDeleted
-              };
+        fn(
+          costs.map((d) => {
+            let xx = {
+              BuyCostId:
+                d.BuyCostId.toString().indexOf("temp") > -1
+                  ? null
+                  : d.BuyCostId,
+              CostTypeId: d.CostTypeId,
+              Price: d.Price,
+              CostPercent: d.CostPercent,
+              Describtion: d.Describtion,
+              IsDeleted: d.IsDeleted,
+            };
 
-              return xx;
-            })
-          );
+            return xx;
+          })
+        );
       },
     }));
 
@@ -57,7 +63,7 @@ export const CostsUIProvider = forwardRef(
       CostTypeId: "",
       Price: "",
       CostPercent: "",
-      Describtion: ""
+      Describtion: "",
     };
 
     const { actionsLoading, realPersonForEdit, error } = useSelector(
@@ -92,7 +98,8 @@ export const CostsUIProvider = forwardRef(
       setCosts(
         !!realPersonForEdit &&
           !!realPersonForEdit.BuyCosts &&
-          realPersonForEdit.BuyCosts.length > 0 && realPersonForEdit.BuyId == currentBuyId
+          realPersonForEdit.BuyCosts.length > 0 &&
+          realPersonForEdit.BuyId == currentBuyId
           ? realPersonForEdit.BuyCosts
           : []
       );
@@ -117,7 +124,9 @@ export const CostsUIProvider = forwardRef(
       setActiveCosts(costs.filter((x) => x.IsDeleted == false));
 
       updateBuy(
-        !!costs && costs.length > 0 && costs.filter((x) => x.IsDeleted == false).length > 0 
+        !!costs &&
+          costs.length > 0 &&
+          costs.filter((x) => x.IsDeleted == false).length > 0
           ? costs
               .filter((x) => x.IsDeleted == false)
               .map((x) => x.Price)
@@ -156,9 +165,7 @@ export const CostsUIProvider = forwardRef(
       setShowDeleteCostDialog(false);
     };
 
-    const [showDeleteCostsDialog, setShowDeleteCostsDialog] = useState(
-      false
-    );
+    const [showDeleteCostsDialog, setShowDeleteCostsDialog] = useState(false);
     const openDeleteCostsDialog = () => {
       setShowDeleteCostsDialog(true);
     };
@@ -177,9 +184,7 @@ export const CostsUIProvider = forwardRef(
     const findCost = (costId) => {
       if (!!costId == false) return;
 
-      const costObj = costs.filter(
-        (cost) => cost.BuyCostId == costId
-      )[0];
+      const costObj = costs.filter((cost) => cost.BuyCostId == costId)[0];
 
       return {
         BuyCostId: costObj.BuyCostId,
@@ -194,7 +199,7 @@ export const CostsUIProvider = forwardRef(
 
     const addCost = (cost) => {
       cost.BuyCostId = "temp_" + Math.floor(Math.random() * 100);
-      if(+cost.CostPercent > 0)
+      if (+cost.CostPercent > 0)
         cost.Price = (+buySum.SumPayable * +cost.CostPercent) / 100;
 
       setCosts((costs) => [...costs, cost]);
@@ -211,13 +216,11 @@ export const CostsUIProvider = forwardRef(
     };
 
     const updateCost = (cost) => {
-      if(+cost.CostPercent > 0)
+      if (+cost.CostPercent > 0)
         cost.Price = (+buySum.SumPayable * +cost.CostPercent) / 100;
 
       setCosts((costs) =>
-        costs.map((item) =>
-          item.BuyCostId == cost.BuyCostId ? cost : item
-        )
+        costs.map((item) => (item.BuyCostId == cost.BuyCostId ? cost : item))
       );
 
       setTimeout(() => {
@@ -264,9 +267,9 @@ export const CostsUIProvider = forwardRef(
     };
 
     return (
-        <CostsUIContext.Provider value={value}>
-          {children}
-        </CostsUIContext.Provider>
+      <CostsUIContext.Provider value={value}>
+        {children}
+      </CostsUIContext.Provider>
     );
   }
 );

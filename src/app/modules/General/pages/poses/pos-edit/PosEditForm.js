@@ -10,9 +10,15 @@ export function PosEditForm({ pos, btnRef, savePos }) {
   const { t } = useTranslation();
 
   const PosEditSchema = Yup.object().shape({
-    SerialNo: Yup.string().required(t("err.IsRequired", { 0: t("Pos.SerialNo") })),
-    PosIpAddress: Yup.string().required(t("err.IsRequired", { 0: t("Pos.PosIpAddress") })),
-    TerminalId: Yup.string().required(t("err.IsRequired", { 0: t("Pos.TerminalId") })),
+    SerialNo: Yup.string().required(
+      t("err.IsRequired", { 0: t("Pos.SerialNo") })
+    ),
+    PosIpAddress: Yup.string().required(
+      t("err.IsRequired", { 0: t("Pos.PosIpAddress") })
+    ),
+    TerminalId: Yup.string().required(
+      t("err.IsRequired", { 0: t("Pos.TerminalId") })
+    ),
   });
 
   const [banks, setBanks] = useState([]);
@@ -44,14 +50,16 @@ export function PosEditForm({ pos, btnRef, savePos }) {
       PosId: dirty.PosId,
       BankId: +dirty.BankId,
       SerialNo: dirty.SerialNo,
-      DefaultBankAccountId: Array.isArray(dirty.DefaultBankAccountId) &&
-      dirty.DefaultBankAccountId.length == 1
-        ? dirty.DefaultBankAccountId[0].BankAccountId
-        : !Array.isArray(dirty.DefaultBankAccountId) && !!dirty.DefaultBankAccountId
-        ? dirty.DefaultBankAccountId
-        : null,
+      DefaultBankAccountId:
+        Array.isArray(dirty.DefaultBankAccountId) &&
+        dirty.DefaultBankAccountId.length == 1
+          ? dirty.DefaultBankAccountId[0].BankAccountId
+          : !Array.isArray(dirty.DefaultBankAccountId) &&
+            !!dirty.DefaultBankAccountId
+          ? dirty.DefaultBankAccountId
+          : null,
       PosIpAddress: dirty.PosIpAddress,
-      TerminalId: dirty.TerminalId        
+      TerminalId: dirty.TerminalId,
     };
   }
 
@@ -98,9 +106,7 @@ export function PosEditForm({ pos, btnRef, savePos }) {
                     placeHolder={t("msg.SelectBySuggestion")}
                     handleSearch={handleSuggestion}
                     defaultValue={
-                      pos.DefaultBankAccount
-                        ? [pos.DefaultBankAccount]
-                        : []
+                      pos.DefaultBankAccount ? [pos.DefaultBankAccount] : []
                     }
                   />
                 </div>

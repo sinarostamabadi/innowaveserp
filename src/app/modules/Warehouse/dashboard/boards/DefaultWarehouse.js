@@ -42,9 +42,9 @@ export default function DefaultWarehouse() {
           <Row>
             <Col xs="12">
               <p className="text-center font-weight-normal font-size-lg pb-7">
-                توجه: انتخاب انبار پیشفرض الزامی می‌باشد
+              Note: It is mandatory to select the default warehouse
                 <br />
-                لطفا انبار مربوطه را انتخاب نمایید.
+                Please select the relevant warehouse.
               </p>
               <select
                 id="WarehouseId"

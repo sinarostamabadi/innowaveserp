@@ -26,9 +26,11 @@ export function EmployeeInIODevicesPage({ history }) {
       history.push("/employment/employeeInIODevices/updateStatus");
     },
   };
-  
+
   return (
-    <EmployeeInIODevicesUIProvider employeeInIODevicesUIEvents={employeeInIODevicesUIEvents}>
+    <EmployeeInIODevicesUIProvider
+      employeeInIODevicesUIEvents={employeeInIODevicesUIEvents}
+    >
       <EmployeeInIODevicesLoadingDialog />
       <Route path="/employment/employeeInIODevices/:id/delete">
         {({ history, match }) => (

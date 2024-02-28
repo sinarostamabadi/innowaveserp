@@ -24,7 +24,9 @@ export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
   const { t } = useTranslation();
   const [resetingForm, setResetingForm] = useState(false);
   const DetailEditSchema = Yup.object().shape({
-    AccountId: Yup.array().nullable().min(1, t("err.IsRequired", { 0: t("DocumentDtl.Account") })),
+    AccountId: Yup.array()
+      .nullable()
+      .min(1, t("err.IsRequired", { 0: t("DocumentDtl.Account") })),
   });
 
   const detailsUIContext = useDetailsUIContext();
@@ -77,8 +79,12 @@ export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
 
   function cleanDetail(dirtyData) {
     return {
-      DocumentDtlId: !!dirtyData.DocumentDtlId? +dirtyData.DocumentDtlId: null,
-      DocumentId: !!detailsUIProps.initDetail.DocumentId? +detailsUIProps.initDetail.DocumentId: null,
+      DocumentDtlId: !!dirtyData.DocumentDtlId
+        ? +dirtyData.DocumentDtlId
+        : null,
+      DocumentId: !!detailsUIProps.initDetail.DocumentId
+        ? +detailsUIProps.initDetail.DocumentId
+        : null,
       AccountId:
         !!dirtyData.AccountId && dirtyData.AccountId.length == 1
           ? +dirtyData.AccountId[0].AccountId
@@ -139,197 +145,197 @@ export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
     }, 100);
   }
   return (
-    
     <>
-    {!resetingForm && (      
-      <Formik
-        key="RealPersonDetail"
-        enableReinitialize={true}
-        initialValues={editDetail}
-        validationSchema={DetailEditSchema}
-        onSubmit={(
-          values,
-          { setSubmitting, setErrors, setStatus, resetForm }
-        ) => {
-          detailsUIProps.addDetail(cleanDetail(values));
-          resetForm();
-          resetFormHard();
-        }}
-      >
-        {({ handleSubmit, resetForm }) => (
-          <>
-            <Form className="form form-label-right">
-              <div className="form-group row">
-                <div className="col-lg-4">
-                  <SuggestionField
-                    name="AccountId"
-                    labelKey="FullTitle"
-                    customFeedbackLabel=""
-                    label={t("DocumentDtl.Account")}
-                    placeHolder={t("msg.SelectBySuggestion")}
-                    handleSearch={handleSuggestionAccount}
-                    handleOnChange={(val, obj) => {
-                      setAccountSelected(obj);
-                    }}
-                    defaultValue={
-                      detail && !!detail.Account ? [detail.Account] : []
-                    }
-                    renderMenuItemChildren={(option, props) => (
-                      <div>
-                        <h6>{option.FullTitle}</h6>
-                        <span>کدکامل: {option.FullCode}</span>
-                      </div>
-                    )}
-                  />
-                </div>
-                {accountSelected != null && accountSelected.HasAccountFloating && (
+      {!resetingForm && (
+        <Formik
+          key="RealPersonDetail"
+          enableReinitialize={true}
+          initialValues={editDetail}
+          validationSchema={DetailEditSchema}
+          onSubmit={(
+            values,
+            { setSubmitting, setErrors, setStatus, resetForm }
+          ) => {
+            detailsUIProps.addDetail(cleanDetail(values));
+            resetForm();
+            resetFormHard();
+          }}
+        >
+          {({ handleSubmit, resetForm }) => (
+            <>
+              <Form className="form form-label-right">
+                <div className="form-group row">
                   <div className="col-lg-4">
                     <SuggestionField
-                      name="AccountFloatingId"
-                      labelKey="Title"
+                      name="AccountId"
+                      labelKey="FullTitle"
                       customFeedbackLabel=""
-                      label={t("DocumentDtl.AccountFloating")}
+                      label={t("DocumentDtl.Account")}
                       placeHolder={t("msg.SelectBySuggestion")}
-                      handleSearch={handleSuggestionAccountFloating}
+                      handleSearch={handleSuggestionAccount}
+                      handleOnChange={(val, obj) => {
+                        setAccountSelected(obj);
+                      }}
                       defaultValue={
-                        detail && !!detail.AccountFloating
-                          ? [detail.AccountFloating]
-                          : []
+                        detail && !!detail.Account ? [detail.Account] : []
                       }
                       renderMenuItemChildren={(option, props) => (
                         <div>
-                          <h6>{option.Title}</h6>
-                          <span>کدکامل: {option.Code}</span>
+                          <h6>{option.FullTitle}</h6>
+                          <span>کدکامل: {option.FullCode}</span>
                         </div>
                       )}
                     />
                   </div>
-                )}
-                <div className="col-lg-4">
-                  <Field
-                    name="Bed"
-                    type="number"
-                    component={Input}
-                    label={t("DocumentDtl.Bed")}
-                  />
-                </div>
-                <div className="col-lg-4">
-                  <Field
-                    name="Bes"
-                    type="number"
-                    component={Input}
-                    label={t("DocumentDtl.Bes")}
-                  />
-                </div>
-                <div className="col">
-                  <Field
-                    name="Des"
-                    type="text"
-                    component={Input}
-                    label={t("DocumentDtl.Des")}
-                  />
-                </div>
-              </div>
-              <Accordion className="detail-according" defaultActiveKey="0">
-                <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                  <i className="fa fa-chevron-circle-down"></i>
-                </Accordion.Toggle>
-                <Accordion.Collapse className="hide" eventKey="1">
-                  <div className="form-group row">
-                    <div className="col-lg-6">
-                      <Select
-                        name="CostCenterId"
-                        label={t("DocumentDtl.CostCenter")}
-                      >
-                        {costCenters.map((costCenter) => (
-                          <option
-                            key={costCenter.CostCenterId}
-                            value={costCenter.CostCenterId}
-                          >
-                            {!!costCenter ? costCenter.Title : ""}
-                          </option>
-                        ))}
-                      </Select>
-                    </div>
-                    <div className="col-lg-6">
-                      <Field
-                        name="Atf1"
-                        component={Input}
-                        label={t("DocumentDtl.Atf1")}
-                      />
-                    </div>
-                    {accountSelected != null &&
-                      accountSelected.HasAccountFloating && (
-                        <>
-                          <div className="col-lg-6">
-                            <SuggestionField
-                              name="AccountFloatingId2"
-                              fieldKey="AccountFloatingId"
-                              labelKey="Title"
-                              customFeedbackLabel=""
-                              label={t("DocumentDtl.AccountFloating2")}
-                              placeHolder={t("msg.SelectBySuggestion")}
-                              handleSearch={handleSuggestionAccountFloating}
-                              defaultValue={
-                                detail && !!detail.AccountFloating2
-                                  ? [detail.AccountFloating2]
-                                  : []
-                              }
-                              renderMenuItemChildren={(option, props) => (
-                                <div>
-                                  <h6>{option.Title}</h6>
-                                  <span>کدکامل: {option.Code}</span>
-                                </div>
-                              )}
-                            />
-                          </div>
-                          <div className="col-lg-6">
-                            <SuggestionField
-                              name="AccountFloatingId3"
-                              fieldKey="AccountFloatingId"
-                              labelKey="Title"
-                              customFeedbackLabel=""
-                              label={t("DocumentDtl.AccountFloating3")}
-                              placeHolder={t("msg.SelectBySuggestion")}
-                              handleSearch={handleSuggestionAccountFloating}
-                              defaultValue={
-                                detail && !!detail.AccountFloating3
-                                  ? [detail.AccountFloating3]
-                                  : []
-                              }
-                              renderMenuItemChildren={(option, props) => (
-                                <div>
-                                  <h6>{option.Title}</h6>
-                                  <span>کدکامل: {option.Code}</span>
-                                </div>
-                              )}
-                            />
-                          </div>
-                        </>
-                      )}
+                  {accountSelected != null &&
+                    accountSelected.HasAccountFloating && (
+                      <div className="col-lg-4">
+                        <SuggestionField
+                          name="AccountFloatingId"
+                          labelKey="Title"
+                          customFeedbackLabel=""
+                          label={t("DocumentDtl.AccountFloating")}
+                          placeHolder={t("msg.SelectBySuggestion")}
+                          handleSearch={handleSuggestionAccountFloating}
+                          defaultValue={
+                            detail && !!detail.AccountFloating
+                              ? [detail.AccountFloating]
+                              : []
+                          }
+                          renderMenuItemChildren={(option, props) => (
+                            <div>
+                              <h6>{option.Title}</h6>
+                              <span>کدکامل: {option.Code}</span>
+                            </div>
+                          )}
+                        />
+                      </div>
+                    )}
+                  <div className="col-lg-4">
+                    <Field
+                      name="Bed"
+                      type="number"
+                      component={Input}
+                      label={t("DocumentDtl.Bed")}
+                    />
                   </div>
-                </Accordion.Collapse>
-              </Accordion>
-              <button
-                type="button"
-                onClick={() => resetFormHard()}
-                className="btn btn-light btn-elevate"
-              >
-                {t("Common.Cancel")}
-              </button>
-              <> </>
-              <button
-                type="button"
-                onClick={() => handleSubmit()}
-                className="btn btn-primary btn-elevate"
-              >
-                {t("Common.Save")}
-              </button>
-            </Form>
-          </>
-        )}
-      </Formik>
-    )}
+                  <div className="col-lg-4">
+                    <Field
+                      name="Bes"
+                      type="number"
+                      component={Input}
+                      label={t("DocumentDtl.Bes")}
+                    />
+                  </div>
+                  <div className="col">
+                    <Field
+                      name="Des"
+                      type="text"
+                      component={Input}
+                      label={t("DocumentDtl.Des")}
+                    />
+                  </div>
+                </div>
+                <Accordion className="detail-according" defaultActiveKey="0">
+                  <Accordion.Toggle as={Button} variant="link" eventKey="1">
+                    <i className="fa fa-chevron-circle-down"></i>
+                  </Accordion.Toggle>
+                  <Accordion.Collapse className="hide" eventKey="1">
+                    <div className="form-group row">
+                      <div className="col-lg-6">
+                        <Select
+                          name="CostCenterId"
+                          label={t("DocumentDtl.CostCenter")}
+                        >
+                          {costCenters.map((costCenter) => (
+                            <option
+                              key={costCenter.CostCenterId}
+                              value={costCenter.CostCenterId}
+                            >
+                              {!!costCenter ? costCenter.Title : ""}
+                            </option>
+                          ))}
+                        </Select>
+                      </div>
+                      <div className="col-lg-6">
+                        <Field
+                          name="Atf1"
+                          component={Input}
+                          label={t("DocumentDtl.Atf1")}
+                        />
+                      </div>
+                      {accountSelected != null &&
+                        accountSelected.HasAccountFloating && (
+                          <>
+                            <div className="col-lg-6">
+                              <SuggestionField
+                                name="AccountFloatingId2"
+                                fieldKey="AccountFloatingId"
+                                labelKey="Title"
+                                customFeedbackLabel=""
+                                label={t("DocumentDtl.AccountFloating2")}
+                                placeHolder={t("msg.SelectBySuggestion")}
+                                handleSearch={handleSuggestionAccountFloating}
+                                defaultValue={
+                                  detail && !!detail.AccountFloating2
+                                    ? [detail.AccountFloating2]
+                                    : []
+                                }
+                                renderMenuItemChildren={(option, props) => (
+                                  <div>
+                                    <h6>{option.Title}</h6>
+                                    <span>کدکامل: {option.Code}</span>
+                                  </div>
+                                )}
+                              />
+                            </div>
+                            <div className="col-lg-6">
+                              <SuggestionField
+                                name="AccountFloatingId3"
+                                fieldKey="AccountFloatingId"
+                                labelKey="Title"
+                                customFeedbackLabel=""
+                                label={t("DocumentDtl.AccountFloating3")}
+                                placeHolder={t("msg.SelectBySuggestion")}
+                                handleSearch={handleSuggestionAccountFloating}
+                                defaultValue={
+                                  detail && !!detail.AccountFloating3
+                                    ? [detail.AccountFloating3]
+                                    : []
+                                }
+                                renderMenuItemChildren={(option, props) => (
+                                  <div>
+                                    <h6>{option.Title}</h6>
+                                    <span>کدکامل: {option.Code}</span>
+                                  </div>
+                                )}
+                              />
+                            </div>
+                          </>
+                        )}
+                    </div>
+                  </Accordion.Collapse>
+                </Accordion>
+                <button
+                  type="button"
+                  onClick={() => resetFormHard()}
+                  className="btn btn-light btn-elevate"
+                >
+                  {t("Common.Cancel")}
+                </button>
+                <> </>
+                <button
+                  type="button"
+                  onClick={() => handleSubmit()}
+                  className="btn btn-primary btn-elevate"
+                >
+                  {t("Common.Save")}
+                </button>
+              </Form>
+            </>
+          )}
+        </Formik>
+      )}
     </>
   );
 }

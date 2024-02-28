@@ -22,7 +22,11 @@ export function Wallet({ data, setData, receivable, goBack }) {
     let obj = { ...WalletTools.Clean(dirty) };
     let tranObj = { ...WalletTools.CleanTran(dirty, t) };
 
-    setData({ ...data, Wallets: [...data.Wallets, obj], Transactions: [...data.Transactions, tranObj] });
+    setData({
+      ...data,
+      Wallets: [...data.Wallets, obj],
+      Transactions: [...data.Transactions, tranObj],
+    });
     goBack();
   }
 

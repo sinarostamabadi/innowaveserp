@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { shallowEqual, useSelector } from "react-redux";
@@ -72,11 +71,11 @@ export function MajorEdit({
         .then((arg) => {
           backToMajorsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateMajor(id, values))
         .then(() => backToMajorsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

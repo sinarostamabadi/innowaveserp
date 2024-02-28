@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { PersonGroupModel } from "../../../../../core/_models/General/PersonGroupModel";
@@ -30,7 +29,7 @@ export function PersonGroupsUIProvider({ personGroupsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -40,12 +39,18 @@ export function PersonGroupsUIProvider({ personGroupsUIEvents, children }) {
     dataModel: PersonGroupModel,
     newPersonGroupButtonClick: personGroupsUIEvents.newPersonGroupButtonClick,
     openEditPersonGroupPage: personGroupsUIEvents.openEditPersonGroupPage,
-    openDeletePersonGroupDialog: personGroupsUIEvents.openDeletePersonGroupDialog,
-    openDeletePersonGroupsDialog: personGroupsUIEvents.openDeletePersonGroupsDialog,
-    openFetchPersonGroupsDialog: personGroupsUIEvents.openFetchPersonGroupsDialog,
-    openUpdatePersonGroupsStatusDialog: personGroupsUIEvents.openUpdatePersonGroupsStatusDialog,
+    openDeletePersonGroupDialog:
+      personGroupsUIEvents.openDeletePersonGroupDialog,
+    openDeletePersonGroupsDialog:
+      personGroupsUIEvents.openDeletePersonGroupsDialog,
+    openFetchPersonGroupsDialog:
+      personGroupsUIEvents.openFetchPersonGroupsDialog,
+    openUpdatePersonGroupsStatusDialog:
+      personGroupsUIEvents.openUpdatePersonGroupsStatusDialog,
   };
   return (
-    <PersonGroupsUIContext.Provider value={value}>{children}</PersonGroupsUIContext.Provider>
+    <PersonGroupsUIContext.Provider value={value}>
+      {children}
+    </PersonGroupsUIContext.Provider>
   );
 }

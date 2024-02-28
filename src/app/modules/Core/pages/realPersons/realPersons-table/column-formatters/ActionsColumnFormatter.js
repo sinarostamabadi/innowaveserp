@@ -12,31 +12,38 @@ export const ActionsColumnFormatter = (
   { openEditRealPersonPage, openDeleteRealPersonDialog, t }
 ) => {
   return (
-  <>
-    <OverlayTrigger
-      overlay={<Tooltip id="realPersons-edit-tooltip">{t("Common.Edit")}</Tooltip>}
-    >
-      <a
-        className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-        onClick={() => openEditRealPersonPage(row.RealPersonId)}
+    <>
+      <OverlayTrigger
+        overlay={
+          <Tooltip id="realPersons-edit-tooltip">{t("Common.Edit")}</Tooltip>
+        }
       >
-        <span className="svg-icon svg-icon-md svg-icon-primary">
-          <SVG
-            src={toAbsoluteUrl("/media/svg/icons/Communication/Write.svg")}
-          />
-        </span>
-      </a>
-    </OverlayTrigger>
-    <> </>
-    <OverlayTrigger
-      overlay={<Tooltip id="realPersons-delete-tooltip">{t("Common.Delete")}</Tooltip>}
-    >
-      <a
-        className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteRealPersonDialog(row.RealPersonId)}
+        <a
+          className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
+          onClick={() => openEditRealPersonPage(row.RealPersonId)}
+        >
+          <span className="svg-icon svg-icon-md svg-icon-primary">
+            <SVG
+              src={toAbsoluteUrl("/media/svg/icons/Communication/Write.svg")}
+            />
+          </span>
+        </a>
+      </OverlayTrigger>
+      <> </>
+      <OverlayTrigger
+        overlay={
+          <Tooltip id="realPersons-delete-tooltip">
+            {t("Common.Delete")}
+          </Tooltip>
+        }
       >
-        <i className="fas fa-trash-alt text-danger"></i>
-      </a>
-    </OverlayTrigger>
-  </>
-)};
+        <a
+          className="btn btn-icon btn-light btn-hover-danger btn-sm"
+          onClick={() => openDeleteRealPersonDialog(row.RealPersonId)}
+        >
+          <i className="fas fa-trash-alt text-danger"></i>
+        </a>
+      </OverlayTrigger>
+    </>
+  );
+};

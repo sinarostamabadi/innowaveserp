@@ -10,10 +10,20 @@ export function DateFaColumnFormatter(cellContent, row, rowIndex) {
   return (
     <>
       <OverlayTrigger
-        overlay={<Tooltip id="specs-edit-tooltip">{dateFa.local(process.env.REACT_APP_DATE).locale("fa").format("ddd DD MMM YYYY")}</Tooltip>}
+        overlay={
+          <Tooltip id="specs-edit-tooltip">
+            {dateFa
+              .local(process.env.REACT_APP_DATE)
+              .locale("fa")
+              .format("ddd DD MMM YYYY")}
+          </Tooltip>
+        }
       >
         <span className="svg-icon svg-icon-md svg-icon-primary">
-          {dateFa.local(process.env.REACT_APP_DATE).locale("fa").format("YYYY/MM/DD")}
+          {dateFa
+            .local(process.env.REACT_APP_DATE)
+            .locale("fa")
+            .format("YYYY/MM/DD")}
         </span>
       </OverlayTrigger>
     </>

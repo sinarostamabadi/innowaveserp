@@ -27,7 +27,9 @@ export function RestaurantDiscountTypeEditForm({
       .max(100, t("err.Max", { 0: 100 }))
       .required(t("err.IsRequired", { 0: t("RestaurantDiscountType.Title") })),
     FromDateObj: Yup.object()
-      .required(t("err.IsRequired", { 0: t("RestaurantDiscountType.FromDate") }))
+      .required(
+        t("err.IsRequired", { 0: t("RestaurantDiscountType.FromDate") })
+      )
       .nullable(),
     ToDateObj: Yup.object()
       .required(t("err.IsRequired", { 0: t("RestaurantDiscountType.ToDate") }))
@@ -270,7 +272,9 @@ export function RestaurantDiscountTypeEditForm({
               </div>
               <div className="form-group row">
                 <div className="col-lg-4">
-                  <DefaultRestaurant name="RestaurantId" defaultRestaurant={restaurantDiscountType.Restaurant}
+                  <DefaultRestaurant
+                    name="RestaurantId"
+                    defaultRestaurant={restaurantDiscountType.Restaurant}
                   />
                 </div>
                 <div className="col-lg-4">

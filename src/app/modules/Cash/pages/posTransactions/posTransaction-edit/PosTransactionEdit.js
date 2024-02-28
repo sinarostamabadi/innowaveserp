@@ -12,10 +12,7 @@ import {
 } from "src/core/_partials/controls";
 import { PosTransactionEditForm } from "./PosTransactionEditForm";
 import { useSubheader } from "src/core/layout";
-import {
-  ModalProgressBar,
-  Alerty,
-} from "src/core/_partials/controls";
+import { ModalProgressBar, Alerty } from "src/core/_partials/controls";
 import { useReactToPrint } from "react-to-print";
 import { useTranslation } from "react-i18next";
 
@@ -43,7 +40,7 @@ export function PosTransactionEdit({
     CurrencyPrice: "",
     EquivalentCurrencyTypeId: "",
     EquivalentCurrencyPrice: "",
-    Description: ""
+    Description: "",
   };
 
   // Subheader
@@ -69,7 +66,9 @@ export function PosTransactionEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("PosTransaction.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("PosTransaction.Entity");
 
     if (posTransactionForEdit && id) {
       _title = t("Common.Edit") + " " + posTransactionForEdit.TitleFa;

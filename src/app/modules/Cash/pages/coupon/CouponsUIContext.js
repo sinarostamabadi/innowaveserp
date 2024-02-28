@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { CouponModel } from "src/core/_models/Cash/CouponModel";
@@ -30,7 +29,7 @@ export function CouponsUIProvider({ couponsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function CouponsUIProvider({ couponsUIEvents, children }) {
     openDeleteCouponDialog: couponsUIEvents.openDeleteCouponDialog,
     openDeleteCouponsDialog: couponsUIEvents.openDeleteCouponsDialog,
     openFetchCouponsDialog: couponsUIEvents.openFetchCouponsDialog,
-    openUpdateCouponsStatusDialog: couponsUIEvents.openUpdateCouponsStatusDialog,
+    openUpdateCouponsStatusDialog:
+      couponsUIEvents.openUpdateCouponsStatusDialog,
   };
   return (
-    <CouponsUIContext.Provider value={value}>{children}</CouponsUIContext.Provider>
+    <CouponsUIContext.Provider value={value}>
+      {children}
+    </CouponsUIContext.Provider>
   );
 }

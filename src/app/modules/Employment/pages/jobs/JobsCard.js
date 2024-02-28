@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { JobsTable } from "./jobs-table/JobsTable";
 import { useJobsUIContext, JobsUIConsumer } from "./JobsUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function JobsCard() {
   const { t } = useTranslation();
@@ -31,14 +30,14 @@ export function JobsCard() {
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Job.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Job.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={jobsUIProps.newJobButtonClick}
           >
-            {t("Job.Entity")} {' '} {t("Common.New")}
+            {t("Job.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

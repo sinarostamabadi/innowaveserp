@@ -56,7 +56,9 @@ export function MassageReserveEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("MassageReserve.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("MassageReserve.Entity");
 
     if (massageReserveForEdit && id) {
       _title = t("Common.Edit") + " " + massageReserveForEdit.TitleFa;

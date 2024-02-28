@@ -12,7 +12,13 @@ export const ActionsColumnFormatter = (
   { openEditUnitMeasureGroupPage, openDeleteUnitMeasureGroupDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="unitMeasureGroups-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="unitMeasureGroups-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditUnitMeasureGroupPage(row.UnitMeasureGroupId)}
@@ -26,7 +32,11 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="unitMeasureGroups-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="unitMeasureGroups-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"

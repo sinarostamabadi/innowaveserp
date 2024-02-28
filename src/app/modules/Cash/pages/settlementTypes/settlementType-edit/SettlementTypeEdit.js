@@ -56,7 +56,9 @@ export function SettlementTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("SettlementType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("SettlementType.Entity");
 
     if (settlementTypeForEdit && id) {
       _title = t("Common.Edit") + " " + settlementTypeForEdit.TitleFa;

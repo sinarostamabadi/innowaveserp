@@ -161,8 +161,11 @@ export const RestaurantInvoiceEditForm = forwardRef(
                     <></>
                   )}
                   <div className="col-lg-3">
-                    <DefaultRestaurant name="RestaurantId" defaultRestaurant={restaurantInvoice.Restaurant}/>
-                  </div>                  
+                    <DefaultRestaurant
+                      name="RestaurantId"
+                      defaultRestaurant={restaurantInvoice.Restaurant}
+                    />
+                  </div>
                   <div className="col-lg-3">
                     <Select
                       key="RestaurantTableId"

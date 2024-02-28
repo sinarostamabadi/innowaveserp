@@ -8,7 +8,10 @@ import {
 } from "src/core/_partials/controls";
 import { AdvancedFilter } from "src/core/_partials/custom/advanced-filter/AdvancedFilter";
 import { ContractsTable } from "./Contracts-table/ContractsTable";
-import { useContractsUIContext, ContractsUIConsumer } from "./ContractsUIContext";
+import {
+  useContractsUIContext,
+  ContractsUIConsumer,
+} from "./ContractsUIContext";
 
 export function ContractsCard() {
   const { t } = useTranslation();

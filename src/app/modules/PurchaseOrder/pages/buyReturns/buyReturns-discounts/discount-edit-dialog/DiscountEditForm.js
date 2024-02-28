@@ -58,8 +58,10 @@ export function DiscountEditForm({
             (x) => x.DiscountTypeId == dirtyData.DiscountTypeId
           )[0]
         : null,
-      DiscountPercent: dirtyData.DiscountPercent == ""? null: +dirtyData.DiscountPercent,
-      PricePercent: dirtyData.PricePercent == ""? null: +dirtyData.PricePercent,
+      DiscountPercent:
+        dirtyData.DiscountPercent == "" ? null : +dirtyData.DiscountPercent,
+      PricePercent:
+        dirtyData.PricePercent == "" ? null : +dirtyData.PricePercent,
       IsDeleted: false,
     };
   }
@@ -113,7 +115,13 @@ export function DiscountEditForm({
                         setFieldValue("DiscountPercent", val.target.value);
                         setFieldValue(
                           "PricePercent",
-                          Math.ceil(+val.target.value > 0 ?(+discountsUIProps.buyReturnSum.SumPayable * +val.target.value) / 100: 0)
+                          Math.ceil(
+                            +val.target.value > 0
+                              ? (+discountsUIProps.buyReturnSum.SumPayable *
+                                  +val.target.value) /
+                                  100
+                              : 0
+                          )
                         );
                       }}
                     />

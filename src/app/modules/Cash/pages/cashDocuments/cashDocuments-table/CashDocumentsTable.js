@@ -15,12 +15,12 @@ import * as columnFormatters from "./column-formatters";
 import { Pagination } from "src/core/_partials/controls";
 import { useCashDocumentsUIContext } from "../CashDocumentsUIContext";
 import { CashDocumentModel } from "src/core/_models/Cash/CashDocumentModel";
-import {
-  getConfig,
-  getFields,
-} from "src/core/_models/ModelDescriber";
+import { getConfig, getFields } from "src/core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
-import { DateFaColumnFormatter, MoneyColumnFormatter } from "src/core/_formatters";
+import {
+  DateFaColumnFormatter,
+  MoneyColumnFormatter,
+} from "src/core/_formatters";
 
 export function CashDocumentsTable() {
   const { t } = useTranslation();
@@ -34,7 +34,8 @@ export function CashDocumentsTable() {
       queryParams: cashDocumentsUIContext.queryParams,
       setQueryParams: cashDocumentsUIContext.setQueryParams,
       openEditCashDocumentPage: cashDocumentsUIContext.openEditCashDocumentPage,
-      openDeleteCashDocumentDialog: cashDocumentsUIContext.openDeleteCashDocumentDialog,
+      openDeleteCashDocumentDialog:
+        cashDocumentsUIContext.openDeleteCashDocumentDialog,
     };
   }, [cashDocumentsUIContext]);
 
@@ -98,14 +99,14 @@ export function CashDocumentsTable() {
       text: t("CashDocument." + fields.Added.display),
       sort: fields.Added.sortable,
       sortCaret: sortCaret,
-      formatter: MoneyColumnFormatter
+      formatter: MoneyColumnFormatter,
     },
     {
       dataField: fieldKey.Deficit,
       text: t("CashDocument." + fields.Deficit.display),
       sort: fields.Deficit.sortable,
       sortCaret: sortCaret,
-      formatter: MoneyColumnFormatter
+      formatter: MoneyColumnFormatter,
     },
     {
       dataField: "action",
@@ -113,7 +114,8 @@ export function CashDocumentsTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditCashDocumentPage: cashDocumentsUIProps.openEditCashDocumentPage,
-        openDeleteCashDocumentDialog: cashDocumentsUIProps.openDeleteCashDocumentDialog,
+        openDeleteCashDocumentDialog:
+          cashDocumentsUIProps.openDeleteCashDocumentDialog,
         t: t,
       },
       classes: "text-right pr-0",

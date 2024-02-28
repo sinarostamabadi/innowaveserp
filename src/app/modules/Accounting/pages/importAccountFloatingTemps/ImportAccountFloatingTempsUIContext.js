@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { ImportAccountFloatingTempModel } from "../../../../../core/_models/Accounting/ImportAccountFloatingTempModel";
@@ -10,9 +9,13 @@ export function useImportAccountFloatingTempsUIContext() {
   return useContext(ImportAccountFloatingTempsUIContext);
 }
 
-export const ImportAccountFloatingTempsUIConsumer = ImportAccountFloatingTempsUIContext.Consumer;
+export const ImportAccountFloatingTempsUIConsumer =
+  ImportAccountFloatingTempsUIContext.Consumer;
 
-export function ImportAccountFloatingTempsUIProvider({ importAccountFloatingTempsUIEvents, children }) {
+export function ImportAccountFloatingTempsUIProvider({
+  importAccountFloatingTempsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(ImportAccountFloatingTempModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function ImportAccountFloatingTempsUIProvider({ importAccountFloatingTemp
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function ImportAccountFloatingTempsUIProvider({ importAccountFloatingTemp
     setIds,
     setQueryParams,
     dataModel: ImportAccountFloatingTempModel,
-    newImportAccountFloatingTempButtonClick: importAccountFloatingTempsUIEvents.newImportAccountFloatingTempButtonClick,
-    openEditImportAccountFloatingTempPage: importAccountFloatingTempsUIEvents.openEditImportAccountFloatingTempPage,
-    openDeleteImportAccountFloatingTempDialog: importAccountFloatingTempsUIEvents.openDeleteImportAccountFloatingTempDialog,
-    openDeleteImportAccountFloatingTempsDialog: importAccountFloatingTempsUIEvents.openDeleteImportAccountFloatingTempsDialog,
-    openFetchImportAccountFloatingTempsDialog: importAccountFloatingTempsUIEvents.openFetchImportAccountFloatingTempsDialog,
-    openUpdateImportAccountFloatingTempsStatusDialog: importAccountFloatingTempsUIEvents.openUpdateImportAccountFloatingTempsStatusDialog,
+    newImportAccountFloatingTempButtonClick:
+      importAccountFloatingTempsUIEvents.newImportAccountFloatingTempButtonClick,
+    openEditImportAccountFloatingTempPage:
+      importAccountFloatingTempsUIEvents.openEditImportAccountFloatingTempPage,
+    openDeleteImportAccountFloatingTempDialog:
+      importAccountFloatingTempsUIEvents.openDeleteImportAccountFloatingTempDialog,
+    openDeleteImportAccountFloatingTempsDialog:
+      importAccountFloatingTempsUIEvents.openDeleteImportAccountFloatingTempsDialog,
+    openFetchImportAccountFloatingTempsDialog:
+      importAccountFloatingTempsUIEvents.openFetchImportAccountFloatingTempsDialog,
+    openUpdateImportAccountFloatingTempsStatusDialog:
+      importAccountFloatingTempsUIEvents.openUpdateImportAccountFloatingTempsStatusDialog,
   };
   return (
-    <ImportAccountFloatingTempsUIContext.Provider value={value}>{children}</ImportAccountFloatingTempsUIContext.Provider>
+    <ImportAccountFloatingTempsUIContext.Provider value={value}>
+      {children}
+    </ImportAccountFloatingTempsUIContext.Provider>
   );
 }

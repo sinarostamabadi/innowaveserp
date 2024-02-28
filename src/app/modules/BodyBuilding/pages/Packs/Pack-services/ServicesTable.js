@@ -63,11 +63,7 @@ export function ServicesTable() {
         bootstrap4
         remote
         keyField="BodyBuildingPackServiceId"
-        data={
-          uiProps.activeServices === null
-            ? []
-            : uiProps.activeServices
-        }
+        data={uiProps.activeServices === null ? [] : uiProps.activeServices}
         columns={columns}
       >
         <PleaseWaitMessage entities={uiProps.activeServices} />

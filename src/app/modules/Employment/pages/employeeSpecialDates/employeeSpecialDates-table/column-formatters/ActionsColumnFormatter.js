@@ -12,10 +12,18 @@ export const ActionsColumnFormatter = (
   { openEditEmployeeSpecialDatePage, openDeleteEmployeeSpecialDateDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="employeeSpecialDates-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="employeeSpecialDates-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-        onClick={() => openEditEmployeeSpecialDatePage(row.EmployeeSpecialDateId)}
+        onClick={() =>
+          openEditEmployeeSpecialDatePage(row.EmployeeSpecialDateId)
+        }
       >
         <span className="svg-icon svg-icon-md svg-icon-primary">
           <SVG
@@ -26,11 +34,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="employeeSpecialDates-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="employeeSpecialDates-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteEmployeeSpecialDateDialog(row.EmployeeSpecialDateId)}
+        onClick={() =>
+          openDeleteEmployeeSpecialDateDialog(row.EmployeeSpecialDateId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

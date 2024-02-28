@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialDocumentTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const documentTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getDocumentTypeById  
+    // getDocumentTypeById
     documentTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.documentTypeForEdit = action.payload.documentTypeForEdit;
       state.error = null;
     },
-    // findDocumentTypes  
+    // findDocumentTypes
     documentTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,7 +46,7 @@ export const documentTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createDocumentType  
+    // createDocumentType
     documentTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
@@ -55,12 +54,14 @@ export const documentTypesSlice = createSlice({
 
       return;
     },
-    // updateDocumentType  
+    // updateDocumentType
     documentTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.DocumentTypeId === action.payload.documentType.DocumentTypeId) {
+        if (
+          entity.DocumentTypeId === action.payload.documentType.DocumentTypeId
+        ) {
           return action.payload.documentType;
         }
         return entity;
@@ -68,23 +69,23 @@ export const documentTypesSlice = createSlice({
 
       return;
     },
-    // deleteDocumentType  
+    // deleteDocumentType
     documentTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.DocumentTypeId !== action.payload.DocumentTypeId  
+        (el) => el.DocumentTypeId !== action.payload.DocumentTypeId
       );
     },
-    // deleteDocumentTypes  
+    // deleteDocumentTypes
     documentTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.DocumentTypeId)  
+        (el) => !action.payload.ids.includes(el.DocumentTypeId)
       );
     },
-    // documentTypesUpdateState  
+    // documentTypesUpdateState
     documentTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

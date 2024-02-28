@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBuyDetailsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const buyDetailsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBuyDetailById  
+    // getBuyDetailById
     buyDetailFetched: (state, action) => {
       state.actionsLoading = false;
       state.buyDetailForEdit = action.payload.buyDetailForEdit;
       state.error = null;
     },
-    // findBuyDetails  
+    // findBuyDetails
     buyDetailsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const buyDetailsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBuyDetail  
+    // createBuyDetail
     buyDetailCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBuyDetail  
+    // updateBuyDetail
     buyDetailUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const buyDetailsSlice = createSlice({
         return entity;
       });
     },
-    // deleteBuyDetail  
+    // deleteBuyDetail
     buyDetailDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BuyDetailId !== action.payload.BuyDetailId  
+        (el) => el.BuyDetailId !== action.payload.BuyDetailId
       );
     },
-    // deleteBuyDetails  
+    // deleteBuyDetails
     buyDetailsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BuyDetailId)  
+        (el) => !action.payload.ids.includes(el.BuyDetailId)
       );
     },
-    // buyDetailsUpdateState  
+    // buyDetailsUpdateState
     buyDetailsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

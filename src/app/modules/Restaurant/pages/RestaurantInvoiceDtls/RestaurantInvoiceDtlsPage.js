@@ -17,7 +17,9 @@ export function RestaurantInvoiceDtlsPage({ history }) {
       history.push(`/restaurant/restaurantInvoiceDtls/${id}/delete`);
     },
     openDeleteRestaurantInvoiceDtlsDialog: () => {
-      history.push(`/restaurant/restaurantInvoiceDtls/deleteRestaurantInvoiceDtls`);
+      history.push(
+        `/restaurant/restaurantInvoiceDtls/deleteRestaurantInvoiceDtls`
+      );
     },
     openFetchRestaurantInvoiceDtlsDialog: () => {
       history.push(`/restaurant/restaurantInvoiceDtls/fetch`);
@@ -26,9 +28,11 @@ export function RestaurantInvoiceDtlsPage({ history }) {
       history.push("/restaurant/restaurantInvoiceDtls/updateStatus");
     },
   };
-  
+
   return (
-    <RestaurantInvoiceDtlsUIProvider restaurantInvoiceDtlsUIEvents={restaurantInvoiceDtlsUIEvents}>
+    <RestaurantInvoiceDtlsUIProvider
+      restaurantInvoiceDtlsUIEvents={restaurantInvoiceDtlsUIEvents}
+    >
       <RestaurantInvoiceDtlsLoadingDialog />
       <Route path="/restaurant/restaurantInvoiceDtls/:id/delete">
         {({ history, match }) => (

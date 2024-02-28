@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BodyBuildingServiceModel } from "../../../../../core/_models/BodyBuilding/BodyBuildingServiceModel";
@@ -30,7 +29,7 @@ export function ServicesUIProvider({ servicesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function ServicesUIProvider({ servicesUIEvents, children }) {
     openDeleteServiceDialog: servicesUIEvents.openDeleteServiceDialog,
     openDeleteServicesDialog: servicesUIEvents.openDeleteServicesDialog,
     openFetchServicesDialog: servicesUIEvents.openFetchServicesDialog,
-    openUpdateServicesStatusDialog: servicesUIEvents.openUpdateServicesStatusDialog,
+    openUpdateServicesStatusDialog:
+      servicesUIEvents.openUpdateServicesStatusDialog,
   };
   return (
-    <ServicesUIContext.Provider value={value}>{children}</ServicesUIContext.Provider>
+    <ServicesUIContext.Provider value={value}>
+      {children}
+    </ServicesUIContext.Provider>
   );
 }

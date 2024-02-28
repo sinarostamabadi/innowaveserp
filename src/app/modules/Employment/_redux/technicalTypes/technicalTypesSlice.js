@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialTechnicalTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const technicalTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getTechnicalTypeById  
+    // getTechnicalTypeById
     technicalTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.technicalTypeForEdit = action.payload.technicalTypeForEdit;
       state.error = null;
     },
-    // findTechnicalTypes  
+    // findTechnicalTypes
     technicalTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const technicalTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createTechnicalType  
+    // createTechnicalType
     technicalTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateTechnicalType  
+    // updateTechnicalType
     technicalTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.TechnicalTypeId === action.payload.technicalType.TechnicalTypeId) {
+        if (
+          entity.TechnicalTypeId ===
+          action.payload.technicalType.TechnicalTypeId
+        ) {
           return action.payload.technicalType;
         }
         return entity;
       });
     },
-    // deleteTechnicalType  
+    // deleteTechnicalType
     technicalTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.TechnicalTypeId !== action.payload.TechnicalTypeId  
+        (el) => el.TechnicalTypeId !== action.payload.TechnicalTypeId
       );
     },
-    // deleteTechnicalTypes  
+    // deleteTechnicalTypes
     technicalTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.TechnicalTypeId)  
+        (el) => !action.payload.ids.includes(el.TechnicalTypeId)
       );
     },
-    // technicalTypesUpdateState  
+    // technicalTypesUpdateState
     technicalTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -35,7 +35,7 @@ export function Footer() {
         </div>
         <div className="nav nav-dark order-1 order-md-2">
           <a
-            href="http://roshasoft.ir/about"
+            href="https://www.futurewavesco.com/index.html"
             target="_blank"
             rel="noopener noreferrer"
             className="nav-link pr-3 pl-0"
@@ -43,7 +43,7 @@ export function Footer() {
             {t("App.About")}
           </a>
           <a
-            href="http://roshasoft.ir/contact"
+            href="https://www.futurewavesco.com/about-us.html"
             target="_blank"
             rel="noopener noreferrer"
             className="nav-link pl-3 pr-0"

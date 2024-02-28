@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmployeeLeaveChangeModel } from "../../../../../core/_models/Employment/EmployeeLeaveChangeModel";
@@ -10,9 +9,13 @@ export function useEmployeeLeaveChangesUIContext() {
   return useContext(EmployeeLeaveChangesUIContext);
 }
 
-export const EmployeeLeaveChangesUIConsumer = EmployeeLeaveChangesUIContext.Consumer;
+export const EmployeeLeaveChangesUIConsumer =
+  EmployeeLeaveChangesUIContext.Consumer;
 
-export function EmployeeLeaveChangesUIProvider({ employeeLeaveChangesUIEvents, children }) {
+export function EmployeeLeaveChangesUIProvider({
+  employeeLeaveChangesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(EmployeeLeaveChangeModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function EmployeeLeaveChangesUIProvider({ employeeLeaveChangesUIEvents, c
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function EmployeeLeaveChangesUIProvider({ employeeLeaveChangesUIEvents, c
     setIds,
     setQueryParams,
     dataModel: EmployeeLeaveChangeModel,
-    newEmployeeLeaveChangeButtonClick: employeeLeaveChangesUIEvents.newEmployeeLeaveChangeButtonClick,
-    openEditEmployeeLeaveChangePage: employeeLeaveChangesUIEvents.openEditEmployeeLeaveChangePage,
-    openDeleteEmployeeLeaveChangeDialog: employeeLeaveChangesUIEvents.openDeleteEmployeeLeaveChangeDialog,
-    openDeleteEmployeeLeaveChangesDialog: employeeLeaveChangesUIEvents.openDeleteEmployeeLeaveChangesDialog,
-    openFetchEmployeeLeaveChangesDialog: employeeLeaveChangesUIEvents.openFetchEmployeeLeaveChangesDialog,
-    openUpdateEmployeeLeaveChangesStatusDialog: employeeLeaveChangesUIEvents.openUpdateEmployeeLeaveChangesStatusDialog,
+    newEmployeeLeaveChangeButtonClick:
+      employeeLeaveChangesUIEvents.newEmployeeLeaveChangeButtonClick,
+    openEditEmployeeLeaveChangePage:
+      employeeLeaveChangesUIEvents.openEditEmployeeLeaveChangePage,
+    openDeleteEmployeeLeaveChangeDialog:
+      employeeLeaveChangesUIEvents.openDeleteEmployeeLeaveChangeDialog,
+    openDeleteEmployeeLeaveChangesDialog:
+      employeeLeaveChangesUIEvents.openDeleteEmployeeLeaveChangesDialog,
+    openFetchEmployeeLeaveChangesDialog:
+      employeeLeaveChangesUIEvents.openFetchEmployeeLeaveChangesDialog,
+    openUpdateEmployeeLeaveChangesStatusDialog:
+      employeeLeaveChangesUIEvents.openUpdateEmployeeLeaveChangesStatusDialog,
   };
   return (
-    <EmployeeLeaveChangesUIContext.Provider value={value}>{children}</EmployeeLeaveChangesUIContext.Provider>
+    <EmployeeLeaveChangesUIContext.Provider value={value}>
+      {children}
+    </EmployeeLeaveChangesUIContext.Provider>
   );
 }

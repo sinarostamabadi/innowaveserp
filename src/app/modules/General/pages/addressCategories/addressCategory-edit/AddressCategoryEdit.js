@@ -55,7 +55,9 @@ export function AddressCategoryEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("AddressCategory.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("AddressCategory.Entity");
 
     if (addressCategoryForEdit && id) {
       _title = t("Common.Edit") + " " + addressCategoryForEdit.Title;
@@ -131,7 +133,7 @@ export function AddressCategoryEdit({
             <i className="fa fa-save"></i> {t("Common.Save")}
           </button>
         </CardHeaderToolbar>
-        </CardHeader>
+      </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>

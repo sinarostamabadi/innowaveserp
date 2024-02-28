@@ -62,7 +62,7 @@ export function AddressesTable() {
       dataField: "PostalCode",
       text: t("Address.PostalCode"),
       sort: false,
-    }, 
+    },
     {
       dataField: "action",
       text: t("Common.Action"),
@@ -103,12 +103,20 @@ export function AddressesTable() {
                 bootstrap4
                 remote
                 keyField="AddressId"
-                data={addressesUIProps.activeAddresses === null ? [] : addressesUIProps.activeAddresses}
+                data={
+                  addressesUIProps.activeAddresses === null
+                    ? []
+                    : addressesUIProps.activeAddresses
+                }
                 columns={columns}
                 {...paginationTableProps}
               >
-                <PleaseWaitMessage entities={addressesUIProps.activeAddresses} />
-                <NoRecordsFoundMessage entities={addressesUIProps.activeAddresses} />
+                <PleaseWaitMessage
+                  entities={addressesUIProps.activeAddresses}
+                />
+                <NoRecordsFoundMessage
+                  entities={addressesUIProps.activeAddresses}
+                />
               </BootstrapTable>
             </Pagination>
           );

@@ -16,10 +16,7 @@ import { DateFaColumnFormatter } from "src/core/_formatters";
 import { Pagination } from "src/core/_partials/controls";
 import { usePacksUIContext } from "../PacksUIContext";
 import { BodyBuildingPackModel } from "src/core/_models/BodyBuilding/BodyBuildingPackModel";
-import {
-  getConfig,
-  getFields,
-} from "src/core/_models/ModelDescriber";
+import { getConfig, getFields } from "src/core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
 
 export function PacksTable() {
@@ -52,9 +49,7 @@ export function PacksTable() {
 
   useEffect(() => {
     uiProps.setIds([]);
-    dispatch(
-      actions.fetchPacks(uiProps.queryParams)
-    );
+    dispatch(actions.fetchPacks(uiProps.queryParams));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uiProps.queryParams, dispatch]);
 
@@ -115,9 +110,7 @@ export function PacksTable() {
                 data={entities === null ? [] : entities}
                 columns={columns}
                 defaultSorted={configs.defaultSorted}
-                onTableChange={getHandlerTableChange(
-                  uiProps.setQueryParams
-                )}
+                onTableChange={getHandlerTableChange(uiProps.setQueryParams)}
                 {...paginationTableProps}
               >
                 <PleaseWaitMessage entities={entities} />

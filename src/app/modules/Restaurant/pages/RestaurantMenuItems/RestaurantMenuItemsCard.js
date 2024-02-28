@@ -17,7 +17,7 @@ import { getAllRestaurantMenuItems } from "../../_redux/RestaurantMenuItems/Rest
 import { PrintMenu } from "./print-menu/PrintMenu";
 export function RestaurantMenuItemsCard() {
   const { t } = useTranslation();
-  const [ printing, setPrinting ] = useState(false);
+  const [printing, setPrinting] = useState(false);
 
   const restaurantMenuItemsUIContext = useRestaurantMenuItemsUIContext();
   const restaurantMenuItemsUIProps = useMemo(() => {
@@ -42,15 +42,17 @@ export function RestaurantMenuItemsCard() {
   const Print = () => {
     setPrinting(true);
 
-    getAllRestaurantMenuItems().then((res) => {
-      setPrintModel(res.data.Items);
-      setTimeout(() => {
+    getAllRestaurantMenuItems()
+      .then((res) => {
+        setPrintModel(res.data.Items);
+        setTimeout(() => {
+          setPrinting(false);
+          handlePrint();
+        }, 500);
+      })
+      .catch(() => {
         setPrinting(false);
-        handlePrint();
-      }, 500);
-    }).catch(()=>{
-      setPrinting(false);
-    });
+      });
   };
 
   const componentRef = useRef();
@@ -68,8 +70,14 @@ export function RestaurantMenuItemsCard() {
           title={t("Common.List") + " " + t("RestaurantMenuItem.Entity")}
         >
           <CardHeaderToolbar>
-            <button type="button" className="btn btn-primary mr-3" onClick={Print} disabled={printing}>
-              {t("Common.Print")} {t("Common.Menu")} {printing && (<i className="fad fa-spinner-third fa-spin"></i>)}
+            <button
+              type="button"
+              className="btn btn-primary mr-3"
+              onClick={Print}
+              disabled={printing}
+            >
+              {t("Common.Print")} {t("Common.Menu")}{" "}
+              {printing && <i className="fad fa-spinner-third fa-spin"></i>}
             </button>
             <button
               type="button"

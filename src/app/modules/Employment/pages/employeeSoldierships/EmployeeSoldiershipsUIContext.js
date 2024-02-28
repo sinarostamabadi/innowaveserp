@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmployeeSoldiershipModel } from "../../../../../core/_models/Employment/EmployeeSoldiershipModel";
@@ -10,9 +9,13 @@ export function useEmployeeSoldiershipsUIContext() {
   return useContext(EmployeeSoldiershipsUIContext);
 }
 
-export const EmployeeSoldiershipsUIConsumer = EmployeeSoldiershipsUIContext.Consumer;
+export const EmployeeSoldiershipsUIConsumer =
+  EmployeeSoldiershipsUIContext.Consumer;
 
-export function EmployeeSoldiershipsUIProvider({ employeeSoldiershipsUIEvents, children }) {
+export function EmployeeSoldiershipsUIProvider({
+  employeeSoldiershipsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(EmployeeSoldiershipModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function EmployeeSoldiershipsUIProvider({ employeeSoldiershipsUIEvents, c
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function EmployeeSoldiershipsUIProvider({ employeeSoldiershipsUIEvents, c
     setIds,
     setQueryParams,
     dataModel: EmployeeSoldiershipModel,
-    newEmployeeSoldiershipButtonClick: employeeSoldiershipsUIEvents.newEmployeeSoldiershipButtonClick,
-    openEditEmployeeSoldiershipPage: employeeSoldiershipsUIEvents.openEditEmployeeSoldiershipPage,
-    openDeleteEmployeeSoldiershipDialog: employeeSoldiershipsUIEvents.openDeleteEmployeeSoldiershipDialog,
-    openDeleteEmployeeSoldiershipsDialog: employeeSoldiershipsUIEvents.openDeleteEmployeeSoldiershipsDialog,
-    openFetchEmployeeSoldiershipsDialog: employeeSoldiershipsUIEvents.openFetchEmployeeSoldiershipsDialog,
-    openUpdateEmployeeSoldiershipsStatusDialog: employeeSoldiershipsUIEvents.openUpdateEmployeeSoldiershipsStatusDialog,
+    newEmployeeSoldiershipButtonClick:
+      employeeSoldiershipsUIEvents.newEmployeeSoldiershipButtonClick,
+    openEditEmployeeSoldiershipPage:
+      employeeSoldiershipsUIEvents.openEditEmployeeSoldiershipPage,
+    openDeleteEmployeeSoldiershipDialog:
+      employeeSoldiershipsUIEvents.openDeleteEmployeeSoldiershipDialog,
+    openDeleteEmployeeSoldiershipsDialog:
+      employeeSoldiershipsUIEvents.openDeleteEmployeeSoldiershipsDialog,
+    openFetchEmployeeSoldiershipsDialog:
+      employeeSoldiershipsUIEvents.openFetchEmployeeSoldiershipsDialog,
+    openUpdateEmployeeSoldiershipsStatusDialog:
+      employeeSoldiershipsUIEvents.openUpdateEmployeeSoldiershipsStatusDialog,
   };
   return (
-    <EmployeeSoldiershipsUIContext.Provider value={value}>{children}</EmployeeSoldiershipsUIContext.Provider>
+    <EmployeeSoldiershipsUIContext.Provider value={value}>
+      {children}
+    </EmployeeSoldiershipsUIContext.Provider>
   );
 }

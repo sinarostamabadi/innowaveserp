@@ -26,7 +26,7 @@ export function TechnicalTypesPage({ history }) {
       history.push("/employment/technicalTypes/updateStatus");
     },
   };
-  
+
   return (
     <TechnicalTypesUIProvider technicalTypesUIEvents={technicalTypesUIEvents}>
       <TechnicalTypesLoadingDialog />

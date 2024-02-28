@@ -23,7 +23,9 @@ export function BowlingDashboard() {
           >
             <div className="card-header">
               <div className="card-title">
-                <h3 className="card-label">{t("Dashboard.BowlingInformation")}</h3>
+                <h3 className="card-label">
+                  {t("Dashboard.BowlingInformation")}
+                </h3>
               </div>
             </div>
             <div className="card-body">

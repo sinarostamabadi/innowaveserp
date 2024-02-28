@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./inquiriesCrud";
 import { inquiriesSlice, callTypes } from "./inquiriesSlice";
 const { actions } = inquiriesSlice;
@@ -97,4 +96,4 @@ export const deleteInquiries = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

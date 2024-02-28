@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { TotalSalesProfitModel } from "../../../../../core/_models/Report/TotalSalesProfitModel";
-import { get } from "../../_data/Sell"
+import { get } from "../../_data/Sell";
 const TotalSalesProfitContext = createContext();
 
 export function useTotalSalesProfitContext() {
@@ -20,14 +20,14 @@ export function TotalSalesProfitProvider({ events, children }) {
     setFilters,
     dataModel: TotalSalesProfitModel,
     gotoEditBuy: events.gotoEditBuy,
-    readyToPrint: readyToPrint
+    readyToPrint: readyToPrint,
   };
 
-  useEffect(()=>{
-    if(!!filters){
+  useEffect(() => {
+    if (!!filters) {
       setReadyToPrint(false);
 
-      get(filters).then(({data}) => {
+      get(filters).then(({ data }) => {
         setItems(data);
         setReadyToPrint(true);
       });

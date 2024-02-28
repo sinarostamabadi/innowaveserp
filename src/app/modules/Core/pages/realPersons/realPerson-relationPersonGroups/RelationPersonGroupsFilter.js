@@ -8,7 +8,8 @@ export function RelationPersonGroupsFilter() {
   const relationPersonGroupsUIContext = useRelationPersonGroupsUIContext();
   const relationPersonGroupsUIProps = useMemo(() => {
     return {
-      openNewRelationPersonGroupDialog: relationPersonGroupsUIContext.openNewRelationPersonGroupDialog,
+      openNewRelationPersonGroupDialog:
+        relationPersonGroupsUIContext.openNewRelationPersonGroupDialog,
     };
   }, [relationPersonGroupsUIContext]);
 
@@ -20,7 +21,9 @@ export function RelationPersonGroupsFilter() {
             <button
               type="button"
               className="btn btn-success"
-              onClick={() => relationPersonGroupsUIProps.openNewRelationPersonGroupDialog()}
+              onClick={() =>
+                relationPersonGroupsUIProps.openNewRelationPersonGroupDialog()
+              }
             >
               {t("PersonGroup.Entity")} {t("Common.New")}
             </button>

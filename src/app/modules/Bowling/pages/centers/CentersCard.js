@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { CentersTable } from "./centers-table/CentersTable";
 import { useCentersUIContext, CentersUIConsumer } from "./CentersUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function CentersCard() {
   const { t } = useTranslation();
@@ -24,21 +23,22 @@ export function CentersCard() {
       newCenterButtonClick: centersUIContext.newCenterButtonClick,
       openDeleteCentersDialog: centersUIContext.openDeleteCentersDialog,
       openEditCenterPage: centersUIContext.openEditCenterPage,
-      openUpdateCentersStatusDialog: centersUIContext.openUpdateCentersStatusDialog,
+      openUpdateCentersStatusDialog:
+        centersUIContext.openUpdateCentersStatusDialog,
       openFetchCentersDialog: centersUIContext.openFetchCentersDialog,
     };
   }, [centersUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Center.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Center.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={centersUIProps.newCenterButtonClick}
           >
-            {t("Center.Entity")} {' '} {t("Common.New")}
+            {t("Center.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

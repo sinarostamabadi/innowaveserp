@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialTableStatusTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const tableStatusTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getTableStatusTypeById  
+    // getTableStatusTypeById
     tableStatusTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.tableStatusTypeForEdit = action.payload.tableStatusTypeForEdit;
       state.error = null;
     },
-    // findTableStatusTypes  
+    // findTableStatusTypes
     tableStatusTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const tableStatusTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createTableStatusType  
+    // createTableStatusType
     tableStatusTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateTableStatusType  
+    // updateTableStatusType
     tableStatusTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.TableStatusTypeId === action.payload.tableStatusType.TableStatusTypeId) {
+        if (
+          entity.TableStatusTypeId ===
+          action.payload.tableStatusType.TableStatusTypeId
+        ) {
           return action.payload.tableStatusType;
         }
         return entity;
       });
     },
-    // deleteTableStatusType  
+    // deleteTableStatusType
     tableStatusTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.TableStatusTypeId !== action.payload.TableStatusTypeId  
+        (el) => el.TableStatusTypeId !== action.payload.TableStatusTypeId
       );
     },
-    // deleteTableStatusTypes  
+    // deleteTableStatusTypes
     tableStatusTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.TableStatusTypeId)  
+        (el) => !action.payload.ids.includes(el.TableStatusTypeId)
       );
     },
-    // tableStatusTypesUpdateState  
+    // tableStatusTypesUpdateState
     tableStatusTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -26,9 +26,11 @@ export function RolePermissionsesPage({ history }) {
       history.push("/security/rolePermissionses/updateStatus");
     },
   };
-  
+
   return (
-    <RolePermissionsesUIProvider rolePermissionsesUIEvents={rolePermissionsesUIEvents}>
+    <RolePermissionsesUIProvider
+      rolePermissionsesUIEvents={rolePermissionsesUIEvents}
+    >
       <RolePermissionsesLoadingDialog />
       <Route path="/security/rolePermissionses/:id/delete">
         {({ history, match }) => (

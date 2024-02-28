@@ -12,10 +12,7 @@ import {
 } from "src/core/_partials/controls";
 import { ChequePaperEditForm } from "./ChequePaperEditForm";
 import { useSubheader } from "src/core/layout";
-import {
-  ModalProgressBar,
-  Alerty,
-} from "src/core/_partials/controls";
+import { ModalProgressBar, Alerty } from "src/core/_partials/controls";
 import { useReactToPrint } from "react-to-print";
 import { useTranslation } from "react-i18next";
 
@@ -43,7 +40,7 @@ export function ChequePaperEdit({
   const [tab, setTab] = useState("basic");
   const [title, setTitle] = useState("");
   const [editMode, setEditMode] = useState(false);
-  
+
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
   const { actionsLoading, chequePaperForEdit, error } = useSelector(
     (state) => ({
@@ -52,8 +49,8 @@ export function ChequePaperEdit({
       error: state.chequePapers.error,
     }),
     shallowEqual
-    );
-    
+  );
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actions.fetchChequePaper(id));
@@ -61,7 +58,7 @@ export function ChequePaperEdit({
 
   useEffect(() => {
     let _title = id ? "" : t("Common.Create") + " " + t("ChequePaper.Entity");
-    setEditMode(true)
+    setEditMode(true);
     if (chequePaperForEdit && id) {
       _title = t("Common.Edit") + " " + chequePaperForEdit.ChequeBook.Title;
     }
@@ -121,7 +118,7 @@ export function ChequePaperEdit({
               >
                 <i className="fa fa-arrow-left"></i> {t("Common.Back")}
               </button>
- 
+
               <button className="btn btn-light ml-2">
                 <i className="fa fa-redo"></i> {t("Common.Reset")}
               </button>

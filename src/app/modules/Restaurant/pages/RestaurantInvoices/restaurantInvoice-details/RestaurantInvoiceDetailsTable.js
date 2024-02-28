@@ -1,7 +1,13 @@
 // React bootstrap table next =>
 // DOCS: https://react-bootstrap-table.github.io/react-bootstrap-table2/docs/
 // STORYBOOK: https://react-bootstrap-table.github.io/react-bootstrap-table2/storybook/index.html
-import React, { useEffect, useMemo, useState, useCallback, useRef } from "react";
+import React, {
+  useEffect,
+  useMemo,
+  useState,
+  useCallback,
+  useRef,
+} from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
@@ -17,7 +23,7 @@ import {
   NoRecordsFoundMessage,
   PleaseWaitMessage,
   sortCaret,
-  getStorage
+  getStorage,
 } from "../../../../../../core/_helpers";
 import { useRestaurantInvoiceDetailsUIContext } from "./RestaurantInvoiceDetailsUIContext";
 import { useTranslation } from "react-i18next";
@@ -37,24 +43,25 @@ import {
 } from "../../../../../../core/_partials/controls";
 import { RestaurantInvoiceDetailDeleteDialog } from "./RestaurantInvoiceDetailDeleteDialog";
 import { suggestionMenuItem } from "../../../_redux/RestaurantMenuItems/RestaurantMenuItemsCrud";
-import { MoneyColumnFormatter } from "../../../../../../core/_formatters"
+import { MoneyColumnFormatter } from "../../../../../../core/_formatters";
 
 export function RestaurantInvoiceDetailsTable() {
   const { t } = useTranslation();
   const defaultInput = useRef(null);
   const defaultRestaurant = !!getStorage("defaultRestaurant")
-  ? JSON.parse(getStorage("defaultRestaurant"))
-  : null;
+    ? JSON.parse(getStorage("defaultRestaurant"))
+    : null;
 
   const [isReward, setIsReward] = useState(false);
   const [barcode, setBarcode] = useState(true);
   const [detailsModel, setDetailsModel] = useState({
     RestaurantMenuItemId: null,
     Count: 1,
-    IsReward: false
+    IsReward: false,
   });
   // Specs UI Context
-  const restaurantInvoiceDetailsUIContext = useRestaurantInvoiceDetailsUIContext();
+  const restaurantInvoiceDetailsUIContext =
+    useRestaurantInvoiceDetailsUIContext();
   const restaurantInvoiceDetailsUIProps = useMemo(() => {
     return {
       restaurantInvoiceDetails:
@@ -84,13 +91,13 @@ export function RestaurantInvoiceDetailsTable() {
       dataField: "UnitPrice",
       text: t("RestaurantInvoiceDetail.UnitPrice"),
       sort: false,
-      formatter: MoneyColumnFormatter
+      formatter: MoneyColumnFormatter,
     },
     {
       dataField: "Price",
       text: t("RestaurantInvoiceDetail.Price"),
       sort: false,
-      formatter: MoneyColumnFormatter
+      formatter: MoneyColumnFormatter,
     },
     {
       dataField: "RestaurantDiscountType.DiscountPercent",
@@ -106,7 +113,7 @@ export function RestaurantInvoiceDetailsTable() {
       dataField: "PayablePrice",
       text: t("RestaurantInvoiceDetail.PayablePrice"),
       sort: false,
-      formatter: MoneyColumnFormatter
+      formatter: MoneyColumnFormatter,
     },
     {
       dataField: "action",
@@ -132,7 +139,11 @@ export function RestaurantInvoiceDetailsTable() {
       .post("RestaurantMenuItem/get", {
         Filters: [
           { Property: "NameFa", Operation: 7, Values: [query] },
-          { Property: "RestaurantId", Operation: 5, Values: [defaultRestaurant.RestaurantId] }
+          {
+            Property: "RestaurantId",
+            Operation: 5,
+            Values: [defaultRestaurant.RestaurantId],
+          },
         ],
         OrderBy: "NameFa asc",
         PageNumber: 1,
@@ -151,17 +162,18 @@ export function RestaurantInvoiceDetailsTable() {
     axios
       .post("RestaurantInvoiceDtl/getPrice", {
         RestaurantId: +defaultRestaurant.RestaurantId,
-        RestaurantMenuItemId: values.RestaurantMenuItemId[0].RestaurantMenuItemId,
+        RestaurantMenuItemId:
+          values.RestaurantMenuItemId[0].RestaurantMenuItemId,
         PersonId: restaurantInvoiceDetailsUIProps.personId,
         ExecutionDate: restaurantInvoiceDetailsUIProps.invoiceDate,
         Count: +values.Count,
-        IsReward: values.IsReward
+        IsReward: values.IsReward,
       })
       .then(({ data }) => {
         restaurantInvoiceDetailsUIProps.addRestaurantInvoiceDetail({
           ...data,
           Count: +values.Count,
-          IsReward: values.IsReward
+          IsReward: values.IsReward,
         });
       });
   });
@@ -178,16 +190,18 @@ export function RestaurantInvoiceDetailsTable() {
               },
             ],
             Count: 1, //+detailsModel.Count,
-            IsReward: isReward
+            IsReward: isReward,
           });
 
           setDetailsModel({
             RestaurantMenuItemId: null,
             Count: 1,
-            IsReward: isReward
+            IsReward: isReward,
           });
 
-          !!defaultInput && !!defaultInput.current && defaultInput.current.focus();
+          !!defaultInput &&
+            !!defaultInput.current &&
+            defaultInput.current.focus();
         }
       });
 
@@ -198,7 +212,7 @@ export function RestaurantInvoiceDetailsTable() {
       e.target.value == 9999
     ) {
       restaurantInvoiceDetailsUIProps.masterSave();
-      (function(event) {
+      (function (event) {
         //event.target.value = "";
         event.target.select();
       })(e);
@@ -233,7 +247,7 @@ export function RestaurantInvoiceDetailsTable() {
                 marginRight: "30px",
               }}
             >
-              با بارکد
+              With barcode
             </label>
           </div>
         </Col>
@@ -261,7 +275,7 @@ export function RestaurantInvoiceDetailsTable() {
                         label={t("RestaurantInvoiceDetail.IsReward")}
                       />
                     </Col>
-                    <Col>	
+                    <Col>
                       <SuggestionField
                         key="RestaurantMenuItemId"
                         name="RestaurantMenuItemId"
@@ -280,11 +294,13 @@ export function RestaurantInvoiceDetailsTable() {
                           <div>
                             <h6>{option.NameFa}</h6>
                             <span>
-                              {t("RestaurantMenuItem.RestaurantMenuGroup")}: {option.RestaurantMenuGroup.Title}
+                              {t("RestaurantMenuItem.RestaurantMenuGroup")}:{" "}
+                              {option.RestaurantMenuGroup.Title}
                             </span>
                             <br />
                             <span>
-                              {t("RestaurantMenuItem.PlaceOfPreparation")}: {option.PlaceOfPreparation.Title}
+                              {t("RestaurantMenuItem.PlaceOfPreparation")}:{" "}
+                              {option.PlaceOfPreparation.Title}
                             </span>
                           </div>
                         )}
@@ -329,7 +345,7 @@ export function RestaurantInvoiceDetailsTable() {
               {({ handleSubmit }) => (
                 <Form className="form form-label-right">
                   <Row>
-                  <Col xs="auto">
+                    <Col xs="auto">
                       <CheckboxField
                         name="IsReward"
                         customFeedbackLabel=""

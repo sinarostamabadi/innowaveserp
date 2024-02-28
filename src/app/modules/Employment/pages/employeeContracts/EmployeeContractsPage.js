@@ -26,9 +26,11 @@ export function EmployeeContractsPage({ history }) {
       history.push("/employment/employeeContracts/updateStatus");
     },
   };
-  
+
   return (
-    <EmployeeContractsUIProvider employeeContractsUIEvents={employeeContractsUIEvents}>
+    <EmployeeContractsUIProvider
+      employeeContractsUIEvents={employeeContractsUIEvents}
+    >
       <EmployeeContractsLoadingDialog />
       <Route path="/employment/employeeContracts/:id/delete">
         {({ history, match }) => (

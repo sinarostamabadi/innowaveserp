@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPacksState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const packsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPackById  
+    // getPackById
     packFetched: (state, action) => {
       state.actionsLoading = false;
       state.packForEdit = action.payload.packForEdit;
       state.error = null;
     },
-    // findPacks  
+    // findPacks
     packsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,42 @@ export const packsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPack  
+    // createPack
     packCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePack  
+    // updatePack
     packUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BodyBuildingPackId === action.payload.pack.BodyBuildingPackId) {
+        if (
+          entity.BodyBuildingPackId === action.payload.pack.BodyBuildingPackId
+        ) {
           return action.payload.pack;
         }
         return entity;
       });
     },
-    // deletePack  
+    // deletePack
     packDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BodyBuildingPackId !== action.payload.BodyBuildingPackId  
+        (el) => el.BodyBuildingPackId !== action.payload.BodyBuildingPackId
       );
     },
-    // deletePacks  
+    // deletePacks
     packsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BodyBuildingPackId)  
+        (el) => !action.payload.ids.includes(el.BodyBuildingPackId)
       );
     },
-    // packsUpdateState  
+    // packsUpdateState
     packsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

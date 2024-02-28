@@ -33,7 +33,8 @@ export function DiscountTypesTable() {
       queryParams: discountTypesUIContext.queryParams,
       setQueryParams: discountTypesUIContext.setQueryParams,
       openEditDiscountTypePage: discountTypesUIContext.openEditDiscountTypePage,
-      openDeleteDiscountTypeDialog: discountTypesUIContext.openDeleteDiscountTypeDialog,
+      openDeleteDiscountTypeDialog:
+        discountTypesUIContext.openDeleteDiscountTypeDialog,
     };
   }, [discountTypesUIContext]);
 
@@ -73,7 +74,8 @@ export function DiscountTypesTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditDiscountTypePage: discountTypesUIProps.openEditDiscountTypePage,
-        openDeleteDiscountTypeDialog: discountTypesUIProps.openDeleteDiscountTypeDialog,
+        openDeleteDiscountTypeDialog:
+          discountTypesUIProps.openDeleteDiscountTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

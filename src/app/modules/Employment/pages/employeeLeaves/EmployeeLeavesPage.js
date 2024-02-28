@@ -26,7 +26,7 @@ export function EmployeeLeavesPage({ history }) {
       history.push("/employment/employeeLeaves/updateStatus");
     },
   };
-  
+
   return (
     <EmployeeLeavesUIProvider employeeLeavesUIEvents={employeeLeavesUIEvents}>
       <EmployeeLeavesLoadingDialog />

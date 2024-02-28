@@ -1,40 +1,39 @@
-
 import axios from "axios";
 export const ACCOUNTFLOATING_URL = "AccountFloating";
-// CREATE = add a new accountFloating to the server 
-export function createAccountFloating(accountFloating) { 
-  return axios.post(`${ACCOUNTFLOATING_URL}/post`, accountFloating); 
+// CREATE = add a new accountFloating to the server
+export function createAccountFloating(accountFloating) {
+  return axios.post(`${ACCOUNTFLOATING_URL}/post`, accountFloating);
 }
-// READ  
+// READ
 export function getAllAccountFloating() {
   return axios.get(`${ACCOUNTFLOATING_URL}/get`);
 }
 export function getAccountFloatingById(accountFloatingId) {
   return axios.get(`${ACCOUNTFLOATING_URL}/get/${accountFloatingId}`);
 }
-// Method from server should return QueryResultsModel(items: any[], totalsCount: number)  
-// items = result  
+// Method from server should return QueryResultsModel(items: any[], totalsCount: number)
+// items = result
 export function findAccountFloatings(queryParams) {
   return axios.post(`${ACCOUNTFLOATING_URL}/get`, queryParams);
 }
-// UPDATE = update the procuct on the server  
+// UPDATE = update the procuct on the server
 export function updateAccountFloating(id, accountFloating) {
   return axios.put(`${ACCOUNTFLOATING_URL}/put/${id}`, accountFloating);
 }
-// UPDATE Status  
+// UPDATE Status
 export function updateStatusForAccountFloating(ids, status) {
   return axios.post(`${ACCOUNTFLOATING_URL}/updateStatusForAccountFloating`, {
     ids,
     status,
   });
 }
-// DELETE = the accountFloating from the server  
+// DELETE = the accountFloating from the server
 export function deleteAccountFloating(accountFloatingId) {
   return axios.delete(`${ACCOUNTFLOATING_URL}/delete/${accountFloatingId}`);
 }
-// DELETE AccountFloating by ids  
+// DELETE AccountFloating by ids
 export function deleteAccountFloatings(ids) {
-return axios.post(`${ACCOUNTFLOATING_URL}/deleteAccountFloating`, ids);
+  return axios.post(`${ACCOUNTFLOATING_URL}/deleteAccountFloating`, ids);
 }
 
 // SUGGESTION AccountFloating

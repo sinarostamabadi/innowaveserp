@@ -26,9 +26,11 @@ export function EmployeeEducarionsPage({ history }) {
       history.push("/employment/employeeEducarions/updateStatus");
     },
   };
-  
+
   return (
-    <EmployeeEducarionsUIProvider employeeEducarionsUIEvents={employeeEducarionsUIEvents}>
+    <EmployeeEducarionsUIProvider
+      employeeEducarionsUIEvents={employeeEducarionsUIEvents}
+    >
       <EmployeeEducarionsLoadingDialog />
       <Route path="/employment/employeeEducarions/:id/delete">
         {({ history, match }) => (

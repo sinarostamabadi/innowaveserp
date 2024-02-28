@@ -26,9 +26,11 @@ export function MarridationTypesPage({ history }) {
       history.push("/employment/marridationTypes/updateStatus");
     },
   };
-  
+
   return (
-    <MarridationTypesUIProvider marridationTypesUIEvents={marridationTypesUIEvents}>
+    <MarridationTypesUIProvider
+      marridationTypesUIEvents={marridationTypesUIEvents}
+    >
       <MarridationTypesLoadingDialog />
       <Route path="/employment/marridationTypes/:id/delete">
         {({ history, match }) => (

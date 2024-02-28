@@ -13,7 +13,9 @@ export function ActionsColumnFormatter(
   return (
     <>
       <OverlayTrigger
-        overlay={<Tooltip id="specs-edit-tooltip">{t("Common.ChangeStatus")}</Tooltip>}
+        overlay={
+          <Tooltip id="specs-edit-tooltip">{t("Common.ChangeStatus")}</Tooltip>
+        }
       >
         <a
           className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
@@ -26,7 +28,7 @@ export function ActionsColumnFormatter(
           </span>
         </a>
       </OverlayTrigger>
-{/* 
+      {/* 
       <> </>
       <OverlayTrigger
         overlay={

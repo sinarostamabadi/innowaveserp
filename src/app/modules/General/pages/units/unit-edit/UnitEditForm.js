@@ -24,7 +24,7 @@ export function UnitEditForm({ unit, btnRef, saveUnit }) {
         return setUnitGroup(() => [
           { UnitGroupId: null, UnitGroupName: t("Common.WithoutSelect") },
           ...data.Items,
-        ])
+        ]);
       });
   }, [unitGroup.length]);
 
@@ -33,8 +33,9 @@ export function UnitEditForm({ unit, btnRef, saveUnit }) {
       .min(2, t("err.Min", { 0: 2 }))
       .max(100, t("err.Max", { 0: 100 }))
       .required(t("err.IsRequired", { 0: t("Unit.Name") })),
-    UnitGroupId: Yup.number()
-      .required(t("err.IsRequired", { 0: t("Unit.UnitGroup") })),
+    UnitGroupId: Yup.number().required(
+      t("err.IsRequired", { 0: t("Unit.UnitGroup") })
+    ),
   });
 
   return (
@@ -60,10 +61,7 @@ export function UnitEditForm({ unit, btnRef, saveUnit }) {
                   />
                 </div>
                 <div className="col-lg-6">
-                  <Select
-                    name="UnitGroupId"
-                    label={t("Unit.UnitGroupId")}
-                  >
+                  <Select name="UnitGroupId" label={t("Unit.UnitGroupId")}>
                     {unitGroup.map((item, index) => (
                       <option key={index} value={item.UnitMeasureGroupId}>
                         {item.UnitGroupName}

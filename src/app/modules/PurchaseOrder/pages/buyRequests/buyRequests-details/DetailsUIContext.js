@@ -157,9 +157,8 @@ export const DetailsUIProvider = forwardRef(
       setShowDeleteDetailDialog(false);
     };
 
-    const [showDeleteDetailsDialog, setShowDeleteDetailsDialog] = useState(
-      false
-    );
+    const [showDeleteDetailsDialog, setShowDeleteDetailsDialog] =
+      useState(false);
     const openDeleteDetailsDialog = () => {
       setShowDeleteDetailsDialog(true);
     };

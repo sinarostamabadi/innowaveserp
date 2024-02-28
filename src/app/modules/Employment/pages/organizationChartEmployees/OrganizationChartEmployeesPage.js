@@ -17,7 +17,9 @@ export function OrganizationChartEmployeesPage({ history }) {
       history.push(`/employment/organizationChartEmployees/${id}/delete`);
     },
     openDeleteOrganizationChartEmployeesDialog: () => {
-      history.push(`/employment/organizationChartEmployees/deleteOrganizationChartEmployees`);
+      history.push(
+        `/employment/organizationChartEmployees/deleteOrganizationChartEmployees`
+      );
     },
     openFetchOrganizationChartEmployeesDialog: () => {
       history.push(`/employment/organizationChartEmployees/fetch`);
@@ -26,9 +28,11 @@ export function OrganizationChartEmployeesPage({ history }) {
       history.push("/employment/organizationChartEmployees/updateStatus");
     },
   };
-  
+
   return (
-    <OrganizationChartEmployeesUIProvider organizationChartEmployeesUIEvents={organizationChartEmployeesUIEvents}>
+    <OrganizationChartEmployeesUIProvider
+      organizationChartEmployeesUIEvents={organizationChartEmployeesUIEvents}
+    >
       <OrganizationChartEmployeesLoadingDialog />
       <Route path="/employment/organizationChartEmployees/:id/delete">
         {({ history, match }) => (

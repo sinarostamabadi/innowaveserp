@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { OperationTypeModel } from "../../../../../core/_models/Cash/OperationTypeModel";
@@ -30,7 +29,7 @@ export function OperationTypesUIProvider({ operationTypesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function OperationTypesUIProvider({ operationTypesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: OperationTypeModel,
-    newOperationTypeButtonClick: operationTypesUIEvents.newOperationTypeButtonClick,
+    newOperationTypeButtonClick:
+      operationTypesUIEvents.newOperationTypeButtonClick,
     openEditOperationTypePage: operationTypesUIEvents.openEditOperationTypePage,
-    openDeleteOperationTypeDialog: operationTypesUIEvents.openDeleteOperationTypeDialog,
-    openDeleteOperationTypesDialog: operationTypesUIEvents.openDeleteOperationTypesDialog,
-    openFetchOperationTypesDialog: operationTypesUIEvents.openFetchOperationTypesDialog,
-    openUpdateOperationTypesStatusDialog: operationTypesUIEvents.openUpdateOperationTypesStatusDialog,
+    openDeleteOperationTypeDialog:
+      operationTypesUIEvents.openDeleteOperationTypeDialog,
+    openDeleteOperationTypesDialog:
+      operationTypesUIEvents.openDeleteOperationTypesDialog,
+    openFetchOperationTypesDialog:
+      operationTypesUIEvents.openFetchOperationTypesDialog,
+    openUpdateOperationTypesStatusDialog:
+      operationTypesUIEvents.openUpdateOperationTypesStatusDialog,
   };
   return (
-    <OperationTypesUIContext.Provider value={value}>{children}</OperationTypesUIContext.Provider>
+    <OperationTypesUIContext.Provider value={value}>
+      {children}
+    </OperationTypesUIContext.Provider>
   );
 }

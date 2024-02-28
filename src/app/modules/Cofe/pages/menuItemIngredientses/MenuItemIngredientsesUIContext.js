@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { MenuItemIngredientsModel } from "../../../../../core/_models/Cofe/MenuItemIngredientsModel";
@@ -10,9 +9,13 @@ export function useMenuItemIngredientsesUIContext() {
   return useContext(MenuItemIngredientsesUIContext);
 }
 
-export const MenuItemIngredientsesUIConsumer = MenuItemIngredientsesUIContext.Consumer;
+export const MenuItemIngredientsesUIConsumer =
+  MenuItemIngredientsesUIContext.Consumer;
 
-export function MenuItemIngredientsesUIProvider({ menuItemIngredientsesUIEvents, children }) {
+export function MenuItemIngredientsesUIProvider({
+  menuItemIngredientsesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(MenuItemIngredientsModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function MenuItemIngredientsesUIProvider({ menuItemIngredientsesUIEvents,
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function MenuItemIngredientsesUIProvider({ menuItemIngredientsesUIEvents,
     setIds,
     setQueryParams,
     dataModel: MenuItemIngredientsModel,
-    newMenuItemIngredientsButtonClick: menuItemIngredientsesUIEvents.newMenuItemIngredientsButtonClick,
-    openEditMenuItemIngredientsPage: menuItemIngredientsesUIEvents.openEditMenuItemIngredientsPage,
-    openDeleteMenuItemIngredientsDialog: menuItemIngredientsesUIEvents.openDeleteMenuItemIngredientsDialog,
-    openDeleteMenuItemIngredientsesDialog: menuItemIngredientsesUIEvents.openDeleteMenuItemIngredientsesDialog,
-    openFetchMenuItemIngredientsesDialog: menuItemIngredientsesUIEvents.openFetchMenuItemIngredientsesDialog,
-    openUpdateMenuItemIngredientsesStatusDialog: menuItemIngredientsesUIEvents.openUpdateMenuItemIngredientsesStatusDialog,
+    newMenuItemIngredientsButtonClick:
+      menuItemIngredientsesUIEvents.newMenuItemIngredientsButtonClick,
+    openEditMenuItemIngredientsPage:
+      menuItemIngredientsesUIEvents.openEditMenuItemIngredientsPage,
+    openDeleteMenuItemIngredientsDialog:
+      menuItemIngredientsesUIEvents.openDeleteMenuItemIngredientsDialog,
+    openDeleteMenuItemIngredientsesDialog:
+      menuItemIngredientsesUIEvents.openDeleteMenuItemIngredientsesDialog,
+    openFetchMenuItemIngredientsesDialog:
+      menuItemIngredientsesUIEvents.openFetchMenuItemIngredientsesDialog,
+    openUpdateMenuItemIngredientsesStatusDialog:
+      menuItemIngredientsesUIEvents.openUpdateMenuItemIngredientsesStatusDialog,
   };
   return (
-    <MenuItemIngredientsesUIContext.Provider value={value}>{children}</MenuItemIngredientsesUIContext.Provider>
+    <MenuItemIngredientsesUIContext.Provider value={value}>
+      {children}
+    </MenuItemIngredientsesUIContext.Provider>
   );
 }

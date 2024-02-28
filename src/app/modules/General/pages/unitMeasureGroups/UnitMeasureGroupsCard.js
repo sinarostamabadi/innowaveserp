@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { UnitMeasureGroupsTable } from "./unitMeasureGroups-table/UnitMeasureGroupsTable";
-import { useUnitMeasureGroupsUIContext, UnitMeasureGroupsUIConsumer } from "./UnitMeasureGroupsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useUnitMeasureGroupsUIContext,
+  UnitMeasureGroupsUIConsumer,
+} from "./UnitMeasureGroupsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function UnitMeasureGroupsCard() {
   const { t } = useTranslation();
@@ -21,11 +23,16 @@ export function UnitMeasureGroupsCard() {
       ids: unitMeasureGroupsUIContext.ids,
       queryParams: unitMeasureGroupsUIContext.queryParams,
       setQueryParams: unitMeasureGroupsUIContext.setQueryParams,
-      newUnitMeasureGroupButtonClick: unitMeasureGroupsUIContext.newUnitMeasureGroupButtonClick,
-      openDeleteUnitMeasureGroupsDialog: unitMeasureGroupsUIContext.openDeleteUnitMeasureGroupsDialog,
-      openEditUnitMeasureGroupPage: unitMeasureGroupsUIContext.openEditUnitMeasureGroupPage,
-      openUpdateUnitMeasureGroupsStatusDialog: unitMeasureGroupsUIContext.openUpdateUnitMeasureGroupsStatusDialog,
-      openFetchUnitMeasureGroupsDialog: unitMeasureGroupsUIContext.openFetchUnitMeasureGroupsDialog,
+      newUnitMeasureGroupButtonClick:
+        unitMeasureGroupsUIContext.newUnitMeasureGroupButtonClick,
+      openDeleteUnitMeasureGroupsDialog:
+        unitMeasureGroupsUIContext.openDeleteUnitMeasureGroupsDialog,
+      openEditUnitMeasureGroupPage:
+        unitMeasureGroupsUIContext.openEditUnitMeasureGroupPage,
+      openUpdateUnitMeasureGroupsStatusDialog:
+        unitMeasureGroupsUIContext.openUpdateUnitMeasureGroupsStatusDialog,
+      openFetchUnitMeasureGroupsDialog:
+        unitMeasureGroupsUIContext.openFetchUnitMeasureGroupsDialog,
     };
   }, [unitMeasureGroupsUIContext]);
 

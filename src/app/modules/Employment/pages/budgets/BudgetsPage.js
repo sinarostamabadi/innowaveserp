@@ -26,7 +26,7 @@ export function BudgetsPage({ history }) {
       history.push("/employment/budgets/updateStatus");
     },
   };
-  
+
   return (
     <BudgetsUIProvider budgetsUIEvents={budgetsUIEvents}>
       <BudgetsLoadingDialog />

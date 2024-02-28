@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BuyDetailModel } from "../../../../../core/_models/PurchaseOrder/BuyDetailModel";
@@ -30,7 +29,7 @@ export function BuyDetailsUIProvider({ buyDetailsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function BuyDetailsUIProvider({ buyDetailsUIEvents, children }) {
     openDeleteBuyDetailDialog: buyDetailsUIEvents.openDeleteBuyDetailDialog,
     openDeleteBuyDetailsDialog: buyDetailsUIEvents.openDeleteBuyDetailsDialog,
     openFetchBuyDetailsDialog: buyDetailsUIEvents.openFetchBuyDetailsDialog,
-    openUpdateBuyDetailsStatusDialog: buyDetailsUIEvents.openUpdateBuyDetailsStatusDialog,
+    openUpdateBuyDetailsStatusDialog:
+      buyDetailsUIEvents.openUpdateBuyDetailsStatusDialog,
   };
   return (
-    <BuyDetailsUIContext.Provider value={value}>{children}</BuyDetailsUIContext.Provider>
+    <BuyDetailsUIContext.Provider value={value}>
+      {children}
+    </BuyDetailsUIContext.Provider>
   );
 }

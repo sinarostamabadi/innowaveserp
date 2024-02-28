@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./unitsCrud";
 import { unitsSlice, callTypes } from "./unitsSlice";
 const { actions } = unitsSlice;
@@ -50,8 +49,8 @@ export const createUnit = (unitForCreation) => (dispatch) => {
   const data = {
     Name: unitForCreation.Name,
     UnitGroupId: Number(unitForCreation.UnitGroupId),
-    UnitId: 0
-  }
+    UnitId: 0,
+  };
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
     .createUnit(data)
@@ -69,8 +68,8 @@ export const updateUnit = (id, unit) => (dispatch) => {
   const data = {
     Name: unit.Name,
     UnitGroupId: Number(unit.UnitGroupId),
-    UnitId: unit.UnitId
-  }
+    UnitId: unit.UnitId,
+  };
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
     .updateUnit(id, data)
@@ -107,4 +106,4 @@ export const deleteUnits = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

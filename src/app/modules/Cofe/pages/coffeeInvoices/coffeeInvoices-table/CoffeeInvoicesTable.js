@@ -32,8 +32,10 @@ export function CoffeeInvoicesTable() {
       setIds: coffeeInvoicesUIContext.setIds,
       queryParams: coffeeInvoicesUIContext.queryParams,
       setQueryParams: coffeeInvoicesUIContext.setQueryParams,
-      openEditCoffeeInvoicePage: coffeeInvoicesUIContext.openEditCoffeeInvoicePage,
-      openDeleteCoffeeInvoiceDialog: coffeeInvoicesUIContext.openDeleteCoffeeInvoiceDialog,
+      openEditCoffeeInvoicePage:
+        coffeeInvoicesUIContext.openEditCoffeeInvoicePage,
+      openDeleteCoffeeInvoiceDialog:
+        coffeeInvoicesUIContext.openDeleteCoffeeInvoiceDialog,
     };
   }, [coffeeInvoicesUIContext]);
 
@@ -72,8 +74,10 @@ export function CoffeeInvoicesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditCoffeeInvoicePage: coffeeInvoicesUIProps.openEditCoffeeInvoicePage,
-        openDeleteCoffeeInvoiceDialog: coffeeInvoicesUIProps.openDeleteCoffeeInvoiceDialog,
+        openEditCoffeeInvoicePage:
+          coffeeInvoicesUIProps.openEditCoffeeInvoicePage,
+        openDeleteCoffeeInvoiceDialog:
+          coffeeInvoicesUIProps.openDeleteCoffeeInvoiceDialog,
         t: t,
       },
       classes: "text-right pr-0",

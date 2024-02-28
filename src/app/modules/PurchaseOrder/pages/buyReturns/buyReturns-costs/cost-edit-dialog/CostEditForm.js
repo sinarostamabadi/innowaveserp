@@ -37,12 +37,12 @@ export function CostEditForm({ saveCost, cost, actionsLoading, onHide }) {
 
   const [costTypes, setCostTypes] = useState([]);
   useEffect(() => {
-      getAllCostTypes().then(({ data }) => {
-        setCostTypes((costTypes) => [
-          { CostTypeId: null, Title: t("Common.WithoutSelect") },
-          ...data.Items,
-        ]);
-      });
+    getAllCostTypes().then(({ data }) => {
+      setCostTypes((costTypes) => [
+        { CostTypeId: null, Title: t("Common.WithoutSelect") },
+        ...data.Items,
+      ]);
+    });
   }, [costTypes.length]);
 
   function cleanCost(dirtyData) {
@@ -51,12 +51,10 @@ export function CostEditForm({ saveCost, cost, actionsLoading, onHide }) {
       BuyReturnId: dirtyData.BuyReturnId,
       CostTypeId: +dirtyData.CostTypeId,
       CostType: !!dirtyData.CostTypeId
-        ? costTypes.filter(
-            (x) => x.CostTypeId == dirtyData.CostTypeId
-          )[0]
+        ? costTypes.filter((x) => x.CostTypeId == dirtyData.CostTypeId)[0]
         : null,
       Price: Math.ceil(dirtyData.Price && +dirtyData.Price),
-      CostPercent: dirtyData.CostPercent == ""? null: +dirtyData.CostPercent,
+      CostPercent: dirtyData.CostPercent == "" ? null : +dirtyData.CostPercent,
       Describtion: dirtyData.Describtion,
       IsDeleted: false,
     };
@@ -93,14 +91,12 @@ export function CostEditForm({ saveCost, cost, actionsLoading, onHide }) {
                           key={costType.CostTypeId}
                           value={costType.CostTypeId}
                         >
-                          {!!costType
-                            ? costType.Title
-                            : ""}
+                          {!!costType ? costType.Title : ""}
                         </option>
                       ))}
                     </Select>
                   </div>
-                  </div>
+                </div>
                 <div className="form-group row">
                   <div className="col">
                     <Field
@@ -118,7 +114,13 @@ export function CostEditForm({ saveCost, cost, actionsLoading, onHide }) {
                         setFieldValue("CostPercent", val.target.value);
                         setFieldValue(
                           "Price",
-                          Math.ceil(+val.target.value > 0? (+costsUIProps.buyReturnSum.SumPayable * +val.target.value) / 100 : 0)
+                          Math.ceil(
+                            +val.target.value > 0
+                              ? (+costsUIProps.buyReturnSum.SumPayable *
+                                  +val.target.value) /
+                                  100
+                              : 0
+                          )
                         );
                       }}
                     />

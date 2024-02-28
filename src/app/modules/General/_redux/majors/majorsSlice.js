@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialMajorsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const majorsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getMajorById  
+    // getMajorById
     majorFetched: (state, action) => {
       state.actionsLoading = false;
       state.majorForEdit = action.payload.majorForEdit;
       state.error = null;
     },
-    // findMajors  
+    // findMajors
     majorsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const majorsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createMajor  
+    // createMajor
     majorCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateMajor  
+    // updateMajor
     majorUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const majorsSlice = createSlice({
         return entity;
       });
     },
-    // deleteMajor  
+    // deleteMajor
     majorDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.MajorId !== action.payload.MajorId  
+        (el) => el.MajorId !== action.payload.MajorId
       );
     },
-    // deleteMajors  
+    // deleteMajors
     majorsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.MajorId)  
+        (el) => !action.payload.ids.includes(el.MajorId)
       );
     },
-    // majorsUpdateState  
+    // majorsUpdateState
     majorsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

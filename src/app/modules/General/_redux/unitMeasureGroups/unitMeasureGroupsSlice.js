@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialUnitMeasureGroupsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const unitMeasureGroupsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getUnitMeasureGroupById  
+    // getUnitMeasureGroupById
     unitMeasureGroupFetched: (state, action) => {
       state.actionsLoading = false;
       state.unitMeasureGroupForEdit = action.payload.unitMeasureGroupForEdit;
       state.error = null;
     },
-    // findUnitMeasureGroups  
+    // findUnitMeasureGroups
     unitMeasureGroupsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const unitMeasureGroupsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createUnitMeasureGroup  
+    // createUnitMeasureGroup
     unitMeasureGroupCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateUnitMeasureGroup  
+    // updateUnitMeasureGroup
     unitMeasureGroupUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.UnitMeasureGroupId === action.payload.unitMeasureGroup.UnitMeasureGroupId) {
+        if (
+          entity.UnitMeasureGroupId ===
+          action.payload.unitMeasureGroup.UnitMeasureGroupId
+        ) {
           return action.payload.unitMeasureGroup;
         }
         return entity;
       });
     },
-    // deleteUnitMeasureGroup  
+    // deleteUnitMeasureGroup
     unitMeasureGroupDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.UnitMeasureGroupId !== action.payload.UnitMeasureGroupId  
+        (el) => el.UnitMeasureGroupId !== action.payload.UnitMeasureGroupId
       );
     },
-    // deleteUnitMeasureGroups  
+    // deleteUnitMeasureGroups
     unitMeasureGroupsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.UnitMeasureGroupId)  
+        (el) => !action.payload.ids.includes(el.UnitMeasureGroupId)
       );
     },
-    // unitMeasureGroupsUpdateState  
+    // unitMeasureGroupsUpdateState
     unitMeasureGroupsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

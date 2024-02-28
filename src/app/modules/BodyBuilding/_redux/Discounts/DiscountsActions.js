@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./DiscountsCrud";
 import { bodyBuildingDiscountsSlice, callTypes } from "./DiscountsSlice";
 const { actions } = bodyBuildingDiscountsSlice;
@@ -46,24 +45,25 @@ export const deleteDiscount = (id) => (dispatch) => {
       throw error;
     });
 };
-export const createDiscount = (discountForCreation, fnCallBack) => (dispatch) => {
-  dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer
-    .createDiscount(discountForCreation)
-    .then((response) => {
-      const discount = response.data;
-      fnCallBack(discount);
-      
-      dispatch(actions.discountCreated(discount));
+export const createDiscount =
+  (discountForCreation, fnCallBack) => (dispatch) => {
+    dispatch(actions.startCall({ callType: callTypes.action }));
+    return requestFromServer
+      .createDiscount(discountForCreation)
+      .then((response) => {
+        const discount = response.data;
+        fnCallBack(discount);
 
-      return discount;
-    })
-    .catch((error) => {
-      error.clientMessage = "Can't create discount";
-      dispatch(actions.catchError({ error, callType: callTypes.action }));
-      throw error;
-    });
-};
+        dispatch(actions.discountCreated(discount));
+
+        return discount;
+      })
+      .catch((error) => {
+        error.clientMessage = "Can't create discount";
+        dispatch(actions.catchError({ error, callType: callTypes.action }));
+        throw error;
+      });
+  };
 export const updateDiscount = (id, discount, fnCallBack) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
@@ -105,4 +105,4 @@ export const deleteDiscounts = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

@@ -26,7 +26,7 @@ export function RequestsPage({ history }) {
       history.push("/cash/requests/updateStatus");
     },
   };
-  
+
   return (
     <RequestsUIProvider requestsUIEvents={requestsUIEvents}>
       <RequestsLoadingDialog />

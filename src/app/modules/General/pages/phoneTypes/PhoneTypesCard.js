@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { PhoneTypesTable } from "./phoneTypes-table/PhoneTypesTable";
-import { usePhoneTypesUIContext, PhoneTypesUIConsumer } from "./PhoneTypesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  usePhoneTypesUIContext,
+  PhoneTypesUIConsumer,
+} from "./PhoneTypesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function PhoneTypesCard() {
   const { t } = useTranslation();
@@ -22,9 +24,11 @@ export function PhoneTypesCard() {
       queryParams: phoneTypesUIContext.queryParams,
       setQueryParams: phoneTypesUIContext.setQueryParams,
       newPhoneTypeButtonClick: phoneTypesUIContext.newPhoneTypeButtonClick,
-      openDeletePhoneTypesDialog: phoneTypesUIContext.openDeletePhoneTypesDialog,
+      openDeletePhoneTypesDialog:
+        phoneTypesUIContext.openDeletePhoneTypesDialog,
       openEditPhoneTypePage: phoneTypesUIContext.openEditPhoneTypePage,
-      openUpdatePhoneTypesStatusDialog: phoneTypesUIContext.openUpdatePhoneTypesStatusDialog,
+      openUpdatePhoneTypesStatusDialog:
+        phoneTypesUIContext.openUpdatePhoneTypesStatusDialog,
       openFetchPhoneTypesDialog: phoneTypesUIContext.openFetchPhoneTypesDialog,
     };
   }, [phoneTypesUIContext]);

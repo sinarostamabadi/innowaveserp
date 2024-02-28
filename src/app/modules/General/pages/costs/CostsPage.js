@@ -26,7 +26,7 @@ export function CostsPage({ history }) {
       history.push("/general/costs/updateStatus");
     },
   };
-  
+
   return (
     <CostsUIProvider costsUIEvents={costsUIEvents}>
       <CostsLoadingDialog />

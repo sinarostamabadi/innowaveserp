@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { CashTransactionTypeModel } from "../../../../../core/_models/Cash/CashTransactionTypeModel";
@@ -10,9 +9,13 @@ export function useCashTransactionTypesUIContext() {
   return useContext(CashTransactionTypesUIContext);
 }
 
-export const CashTransactionTypesUIConsumer = CashTransactionTypesUIContext.Consumer;
+export const CashTransactionTypesUIConsumer =
+  CashTransactionTypesUIContext.Consumer;
 
-export function CashTransactionTypesUIProvider({ cashTransactionTypesUIEvents, children }) {
+export function CashTransactionTypesUIProvider({
+  cashTransactionTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(CashTransactionTypeModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function CashTransactionTypesUIProvider({ cashTransactionTypesUIEvents, c
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function CashTransactionTypesUIProvider({ cashTransactionTypesUIEvents, c
     setIds,
     setQueryParams,
     dataModel: CashTransactionTypeModel,
-    newCashTransactionTypeButtonClick: cashTransactionTypesUIEvents.newCashTransactionTypeButtonClick,
-    openEditCashTransactionTypePage: cashTransactionTypesUIEvents.openEditCashTransactionTypePage,
-    openDeleteCashTransactionTypeDialog: cashTransactionTypesUIEvents.openDeleteCashTransactionTypeDialog,
-    openDeleteCashTransactionTypesDialog: cashTransactionTypesUIEvents.openDeleteCashTransactionTypesDialog,
-    openFetchCashTransactionTypesDialog: cashTransactionTypesUIEvents.openFetchCashTransactionTypesDialog,
-    openUpdateCashTransactionTypesStatusDialog: cashTransactionTypesUIEvents.openUpdateCashTransactionTypesStatusDialog,
+    newCashTransactionTypeButtonClick:
+      cashTransactionTypesUIEvents.newCashTransactionTypeButtonClick,
+    openEditCashTransactionTypePage:
+      cashTransactionTypesUIEvents.openEditCashTransactionTypePage,
+    openDeleteCashTransactionTypeDialog:
+      cashTransactionTypesUIEvents.openDeleteCashTransactionTypeDialog,
+    openDeleteCashTransactionTypesDialog:
+      cashTransactionTypesUIEvents.openDeleteCashTransactionTypesDialog,
+    openFetchCashTransactionTypesDialog:
+      cashTransactionTypesUIEvents.openFetchCashTransactionTypesDialog,
+    openUpdateCashTransactionTypesStatusDialog:
+      cashTransactionTypesUIEvents.openUpdateCashTransactionTypesStatusDialog,
   };
   return (
-    <CashTransactionTypesUIContext.Provider value={value}>{children}</CashTransactionTypesUIContext.Provider>
+    <CashTransactionTypesUIContext.Provider value={value}>
+      {children}
+    </CashTransactionTypesUIContext.Provider>
   );
 }

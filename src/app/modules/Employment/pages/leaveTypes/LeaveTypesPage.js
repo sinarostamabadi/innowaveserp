@@ -26,7 +26,7 @@ export function LeaveTypesPage({ history }) {
       history.push("/employment/leaveTypes/updateStatus");
     },
   };
-  
+
   return (
     <LeaveTypesUIProvider leaveTypesUIEvents={leaveTypesUIEvents}>
       <LeaveTypesLoadingDialog />

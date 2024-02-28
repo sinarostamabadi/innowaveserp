@@ -48,7 +48,9 @@ export default function FutsalReserveTimeSheet() {
       "/" +
       ("0" + uiProps.timing.toDate.day).slice(-2);
 
-    const fromDateM = moment.from(fromDate, process.env.REACT_APP_DATE, "YYYY/MM/DD").locale("en");
+    const fromDateM = moment
+      .from(fromDate, process.env.REACT_APP_DATE, "YYYY/MM/DD")
+      .locale("en");
     const toDateM = moment
       .from(toDate, process.env.REACT_APP_DATE, "YYYY/MM/DD")
       .locale("en")

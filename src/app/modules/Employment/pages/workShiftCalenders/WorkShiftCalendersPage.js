@@ -26,9 +26,11 @@ export function WorkShiftCalendersPage({ history }) {
       history.push("/employment/workShiftCalenders/updateStatus");
     },
   };
-  
+
   return (
-    <WorkShiftCalendersUIProvider workShiftCalendersUIEvents={workShiftCalendersUIEvents}>
+    <WorkShiftCalendersUIProvider
+      workShiftCalendersUIEvents={workShiftCalendersUIEvents}
+    >
       <WorkShiftCalendersLoadingDialog />
       <Route path="/employment/workShiftCalenders/:id/delete">
         {({ history, match }) => (

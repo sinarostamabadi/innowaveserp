@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPaymentStatusesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const paymentStatusesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPaymentStatusById  
+    // getPaymentStatusById
     paymentStatusFetched: (state, action) => {
       state.actionsLoading = false;
       state.paymentStatusForEdit = action.payload.paymentStatusForEdit;
       state.error = null;
     },
-    // findPaymentStatuses  
+    // findPaymentStatuses
     paymentStatusesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const paymentStatusesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPaymentStatus  
+    // createPaymentStatus
     paymentStatusCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePaymentStatus  
+    // updatePaymentStatus
     paymentStatusUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.PaymentStatusId === action.payload.paymentStatus.PaymentStatusId) {
+        if (
+          entity.PaymentStatusId ===
+          action.payload.paymentStatus.PaymentStatusId
+        ) {
           return action.payload.paymentStatus;
         }
         return entity;
       });
     },
-    // deletePaymentStatus  
+    // deletePaymentStatus
     paymentStatusDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PaymentStatusId !== action.payload.PaymentStatusId  
+        (el) => el.PaymentStatusId !== action.payload.PaymentStatusId
       );
     },
-    // deletePaymentStatuses  
+    // deletePaymentStatuses
     paymentStatusesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PaymentStatusId)  
+        (el) => !action.payload.ids.includes(el.PaymentStatusId)
       );
     },
-    // paymentStatusesUpdateState  
+    // paymentStatusesUpdateState
     paymentStatusesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

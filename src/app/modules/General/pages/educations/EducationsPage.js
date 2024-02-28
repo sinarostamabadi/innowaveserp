@@ -26,7 +26,7 @@ export function EducationsPage({ history }) {
       history.push("/general/educations/updateStatus");
     },
   };
-  
+
   return (
     <EducationsUIProvider educationsUIEvents={educationsUIEvents}>
       <EducationsLoadingDialog />

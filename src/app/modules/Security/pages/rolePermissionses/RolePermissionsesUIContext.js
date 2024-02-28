@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { RolePermissionsModel } from "../../../../../core/_models/Security/RolePermissionsModel";
@@ -12,7 +11,10 @@ export function useRolePermissionsesUIContext() {
 
 export const RolePermissionsesUIConsumer = RolePermissionsesUIContext.Consumer;
 
-export function RolePermissionsesUIProvider({ rolePermissionsesUIEvents, children }) {
+export function RolePermissionsesUIProvider({
+  rolePermissionsesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(RolePermissionsModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function RolePermissionsesUIProvider({ rolePermissionsesUIEvents, childre
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function RolePermissionsesUIProvider({ rolePermissionsesUIEvents, childre
     setIds,
     setQueryParams,
     dataModel: RolePermissionsModel,
-    newRolePermissionsButtonClick: rolePermissionsesUIEvents.newRolePermissionsButtonClick,
-    openEditRolePermissionsPage: rolePermissionsesUIEvents.openEditRolePermissionsPage,
-    openDeleteRolePermissionsDialog: rolePermissionsesUIEvents.openDeleteRolePermissionsDialog,
-    openDeleteRolePermissionsesDialog: rolePermissionsesUIEvents.openDeleteRolePermissionsesDialog,
-    openFetchRolePermissionsesDialog: rolePermissionsesUIEvents.openFetchRolePermissionsesDialog,
-    openUpdateRolePermissionsesStatusDialog: rolePermissionsesUIEvents.openUpdateRolePermissionsesStatusDialog,
+    newRolePermissionsButtonClick:
+      rolePermissionsesUIEvents.newRolePermissionsButtonClick,
+    openEditRolePermissionsPage:
+      rolePermissionsesUIEvents.openEditRolePermissionsPage,
+    openDeleteRolePermissionsDialog:
+      rolePermissionsesUIEvents.openDeleteRolePermissionsDialog,
+    openDeleteRolePermissionsesDialog:
+      rolePermissionsesUIEvents.openDeleteRolePermissionsesDialog,
+    openFetchRolePermissionsesDialog:
+      rolePermissionsesUIEvents.openFetchRolePermissionsesDialog,
+    openUpdateRolePermissionsesStatusDialog:
+      rolePermissionsesUIEvents.openUpdateRolePermissionsesStatusDialog,
   };
   return (
-    <RolePermissionsesUIContext.Provider value={value}>{children}</RolePermissionsesUIContext.Provider>
+    <RolePermissionsesUIContext.Provider value={value}>
+      {children}
+    </RolePermissionsesUIContext.Provider>
   );
 }

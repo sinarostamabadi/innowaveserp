@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmployeeEducarionModel } from "../../../../../core/_models/Employment/EmployeeEducarionModel";
@@ -10,9 +9,13 @@ export function useEmployeeEducarionsUIContext() {
   return useContext(EmployeeEducarionsUIContext);
 }
 
-export const EmployeeEducarionsUIConsumer = EmployeeEducarionsUIContext.Consumer;
+export const EmployeeEducarionsUIConsumer =
+  EmployeeEducarionsUIContext.Consumer;
 
-export function EmployeeEducarionsUIProvider({ employeeEducarionsUIEvents, children }) {
+export function EmployeeEducarionsUIProvider({
+  employeeEducarionsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(EmployeeEducarionModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function EmployeeEducarionsUIProvider({ employeeEducarionsUIEvents, child
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function EmployeeEducarionsUIProvider({ employeeEducarionsUIEvents, child
     setIds,
     setQueryParams,
     dataModel: EmployeeEducarionModel,
-    newEmployeeEducarionButtonClick: employeeEducarionsUIEvents.newEmployeeEducarionButtonClick,
-    openEditEmployeeEducarionPage: employeeEducarionsUIEvents.openEditEmployeeEducarionPage,
-    openDeleteEmployeeEducarionDialog: employeeEducarionsUIEvents.openDeleteEmployeeEducarionDialog,
-    openDeleteEmployeeEducarionsDialog: employeeEducarionsUIEvents.openDeleteEmployeeEducarionsDialog,
-    openFetchEmployeeEducarionsDialog: employeeEducarionsUIEvents.openFetchEmployeeEducarionsDialog,
-    openUpdateEmployeeEducarionsStatusDialog: employeeEducarionsUIEvents.openUpdateEmployeeEducarionsStatusDialog,
+    newEmployeeEducarionButtonClick:
+      employeeEducarionsUIEvents.newEmployeeEducarionButtonClick,
+    openEditEmployeeEducarionPage:
+      employeeEducarionsUIEvents.openEditEmployeeEducarionPage,
+    openDeleteEmployeeEducarionDialog:
+      employeeEducarionsUIEvents.openDeleteEmployeeEducarionDialog,
+    openDeleteEmployeeEducarionsDialog:
+      employeeEducarionsUIEvents.openDeleteEmployeeEducarionsDialog,
+    openFetchEmployeeEducarionsDialog:
+      employeeEducarionsUIEvents.openFetchEmployeeEducarionsDialog,
+    openUpdateEmployeeEducarionsStatusDialog:
+      employeeEducarionsUIEvents.openUpdateEmployeeEducarionsStatusDialog,
   };
   return (
-    <EmployeeEducarionsUIContext.Provider value={value}>{children}</EmployeeEducarionsUIContext.Provider>
+    <EmployeeEducarionsUIContext.Provider value={value}>
+      {children}
+    </EmployeeEducarionsUIContext.Provider>
   );
 }

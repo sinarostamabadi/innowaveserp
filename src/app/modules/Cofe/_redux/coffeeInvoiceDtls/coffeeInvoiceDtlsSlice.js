@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialCoffeeInvoiceDtlsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const coffeeInvoiceDtlsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCoffeeInvoiceDtlById  
+    // getCoffeeInvoiceDtlById
     coffeeInvoiceDtlFetched: (state, action) => {
       state.actionsLoading = false;
       state.coffeeInvoiceDtlForEdit = action.payload.coffeeInvoiceDtlForEdit;
       state.error = null;
     },
-    // findCoffeeInvoiceDtls  
+    // findCoffeeInvoiceDtls
     coffeeInvoiceDtlsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const coffeeInvoiceDtlsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCoffeeInvoiceDtl  
+    // createCoffeeInvoiceDtl
     coffeeInvoiceDtlCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCoffeeInvoiceDtl  
+    // updateCoffeeInvoiceDtl
     coffeeInvoiceDtlUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.CoffeeInvoiceDtlId === action.payload.coffeeInvoiceDtl.CoffeeInvoiceDtlId) {
+        if (
+          entity.CoffeeInvoiceDtlId ===
+          action.payload.coffeeInvoiceDtl.CoffeeInvoiceDtlId
+        ) {
           return action.payload.coffeeInvoiceDtl;
         }
         return entity;
       });
     },
-    // deleteCoffeeInvoiceDtl  
+    // deleteCoffeeInvoiceDtl
     coffeeInvoiceDtlDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CoffeeInvoiceDtlId !== action.payload.CoffeeInvoiceDtlId  
+        (el) => el.CoffeeInvoiceDtlId !== action.payload.CoffeeInvoiceDtlId
       );
     },
-    // deleteCoffeeInvoiceDtls  
+    // deleteCoffeeInvoiceDtls
     coffeeInvoiceDtlsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CoffeeInvoiceDtlId)  
+        (el) => !action.payload.ids.includes(el.CoffeeInvoiceDtlId)
       );
     },
-    // coffeeInvoiceDtlsUpdateState  
+    // coffeeInvoiceDtlsUpdateState
     coffeeInvoiceDtlsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

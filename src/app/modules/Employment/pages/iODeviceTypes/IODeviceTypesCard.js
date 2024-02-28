@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { IODeviceTypesTable } from "./iODeviceTypes-table/IODeviceTypesTable";
-import { useIODeviceTypesUIContext, IODeviceTypesUIConsumer } from "./IODeviceTypesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useIODeviceTypesUIContext,
+  IODeviceTypesUIConsumer,
+} from "./IODeviceTypesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function IODeviceTypesCard() {
   const { t } = useTranslation();
@@ -21,24 +23,28 @@ export function IODeviceTypesCard() {
       ids: iODeviceTypesUIContext.ids,
       queryParams: iODeviceTypesUIContext.queryParams,
       setQueryParams: iODeviceTypesUIContext.setQueryParams,
-      newIODeviceTypeButtonClick: iODeviceTypesUIContext.newIODeviceTypeButtonClick,
-      openDeleteIODeviceTypesDialog: iODeviceTypesUIContext.openDeleteIODeviceTypesDialog,
+      newIODeviceTypeButtonClick:
+        iODeviceTypesUIContext.newIODeviceTypeButtonClick,
+      openDeleteIODeviceTypesDialog:
+        iODeviceTypesUIContext.openDeleteIODeviceTypesDialog,
       openEditIODeviceTypePage: iODeviceTypesUIContext.openEditIODeviceTypePage,
-      openUpdateIODeviceTypesStatusDialog: iODeviceTypesUIContext.openUpdateIODeviceTypesStatusDialog,
-      openFetchIODeviceTypesDialog: iODeviceTypesUIContext.openFetchIODeviceTypesDialog,
+      openUpdateIODeviceTypesStatusDialog:
+        iODeviceTypesUIContext.openUpdateIODeviceTypesStatusDialog,
+      openFetchIODeviceTypesDialog:
+        iODeviceTypesUIContext.openFetchIODeviceTypesDialog,
     };
   }, [iODeviceTypesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("IODeviceType.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("IODeviceType.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={iODeviceTypesUIProps.newIODeviceTypeButtonClick}
           >
-            {t("IODeviceType.Entity")} {' '} {t("Common.New")}
+            {t("IODeviceType.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

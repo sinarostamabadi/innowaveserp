@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialServiceActionsesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const serviceActionsesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getServiceActionsById  
+    // getServiceActionsById
     serviceActionsFetched: (state, action) => {
       state.actionsLoading = false;
       state.serviceActionsForEdit = action.payload.serviceActionsForEdit;
       state.error = null;
     },
-    // findServiceActionses  
+    // findServiceActionses
     serviceActionsesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const serviceActionsesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createServiceActions  
+    // createServiceActions
     serviceActionsCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateServiceActions  
+    // updateServiceActions
     serviceActionsUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.ServiceActionsId === action.payload.serviceActions.ServiceActionsId) {
+        if (
+          entity.ServiceActionsId ===
+          action.payload.serviceActions.ServiceActionsId
+        ) {
           return action.payload.serviceActions;
         }
         return entity;
       });
     },
-    // deleteServiceActions  
+    // deleteServiceActions
     serviceActionsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.ServiceActionsId !== action.payload.ServiceActionsId  
+        (el) => el.ServiceActionsId !== action.payload.ServiceActionsId
       );
     },
-    // deleteServiceActionses  
+    // deleteServiceActionses
     serviceActionsesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ServiceActionsId)  
+        (el) => !action.payload.ids.includes(el.ServiceActionsId)
       );
     },
-    // serviceActionsesUpdateState  
+    // serviceActionsesUpdateState
     serviceActionsesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

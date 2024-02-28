@@ -27,7 +27,7 @@ export const Filter = forwardRef(({ reserve, btnRef, saveReserve }, ref) => {
 
   useImperativeHandle(ref, () => ({
     Search(fn) {
-    const btnSend = document.getElementById("BtnSearchProduct");
+      const btnSend = document.getElementById("BtnSearchProduct");
       btnSend.click();
     },
   }));
@@ -119,7 +119,7 @@ export const Filter = forwardRef(({ reserve, btnRef, saveReserve }, ref) => {
           </>
         )}
       </Formik>
-      <div style={{ display:"none" }}>
+      <div style={{ display: "none" }}>
         <Print ref={componentRef} data={printModel} />
       </div>
     </>

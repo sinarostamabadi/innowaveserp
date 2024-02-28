@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { TaxUnitModel } from "../../../../../core/_models/Employment/TaxUnitModel";
@@ -30,7 +29,7 @@ export function TaxUnitsUIProvider({ taxUnitsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function TaxUnitsUIProvider({ taxUnitsUIEvents, children }) {
     openDeleteTaxUnitDialog: taxUnitsUIEvents.openDeleteTaxUnitDialog,
     openDeleteTaxUnitsDialog: taxUnitsUIEvents.openDeleteTaxUnitsDialog,
     openFetchTaxUnitsDialog: taxUnitsUIEvents.openFetchTaxUnitsDialog,
-    openUpdateTaxUnitsStatusDialog: taxUnitsUIEvents.openUpdateTaxUnitsStatusDialog,
+    openUpdateTaxUnitsStatusDialog:
+      taxUnitsUIEvents.openUpdateTaxUnitsStatusDialog,
   };
   return (
-    <TaxUnitsUIContext.Provider value={value}>{children}</TaxUnitsUIContext.Provider>
+    <TaxUnitsUIContext.Provider value={value}>
+      {children}
+    </TaxUnitsUIContext.Provider>
   );
 }

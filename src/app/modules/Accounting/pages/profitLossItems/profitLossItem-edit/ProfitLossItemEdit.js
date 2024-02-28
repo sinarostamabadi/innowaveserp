@@ -56,7 +56,9 @@ export function ProfitLossItemEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("ProfitLossItem.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("ProfitLossItem.Entity");
 
     if (profitLossItemForEdit && id) {
       _title = t("Common.Edit") + " " + profitLossItemForEdit.TitleFa;

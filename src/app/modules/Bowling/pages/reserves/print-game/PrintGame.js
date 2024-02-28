@@ -35,9 +35,7 @@ export const PrintGame = React.forwardRef(({ data }, ref) => {
       <div
         style={{ borderTop: "3px solid #000", borderBottom: "3px solid #000" }}
       >
-        <h3 className="text-center py-2">
-          {t("App.BowlingSalon")}
-        </h3>
+        <h3 className="text-center py-2">{t("App.BowlingSalon")}</h3>
       </div>
       <div>
         <table className="table">
@@ -62,9 +60,11 @@ export const PrintGame = React.forwardRef(({ data }, ref) => {
                 {!!dataPrint == true
                   ? moment(dataPrint.CreationDate)
                       .locale(process.env.REACT_APP_DATE)
-                      .format("HH:mm") + " " + 
-                    (moment(dataPrint.CreationDate).locale(process.env.REACT_APP_DATE).format("HH") >=
-                    12
+                      .format("HH:mm") +
+                    " " +
+                    (moment(dataPrint.CreationDate)
+                      .locale(process.env.REACT_APP_DATE)
+                      .format("HH") >= 12
                       ? t("Time.PM")
                       : t("Time.AM"))
                   : ""}

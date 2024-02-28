@@ -26,7 +26,7 @@ export function DiscountTypesPage({ history }) {
       history.push("/general/discountTypes/updateStatus");
     },
   };
-  
+
   return (
     <DiscountTypesUIProvider discountTypesUIEvents={discountTypesUIEvents}>
       <DiscountTypesLoadingDialog />

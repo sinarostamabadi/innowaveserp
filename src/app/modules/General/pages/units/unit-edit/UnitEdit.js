@@ -73,11 +73,11 @@ export function UnitEdit({
         .then((arg) => {
           backToUnitsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateUnit(id, values))
         .then(() => backToUnitsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

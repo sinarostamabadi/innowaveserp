@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialSettlementTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const settlementTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getSettlementTypeById  
+    // getSettlementTypeById
     settlementTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.settlementTypeForEdit = action.payload.settlementTypeForEdit;
       state.error = null;
     },
-    // findSettlementTypes  
+    // findSettlementTypes
     settlementTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const settlementTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createSettlementType  
+    // createSettlementType
     settlementTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateSettlementType  
+    // updateSettlementType
     settlementTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.SettlementTypeId === action.payload.settlementType.SettlementTypeId) {
+        if (
+          entity.SettlementTypeId ===
+          action.payload.settlementType.SettlementTypeId
+        ) {
           return action.payload.settlementType;
         }
         return entity;
       });
     },
-    // deleteSettlementType  
+    // deleteSettlementType
     settlementTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.SettlementTypeId !== action.payload.SettlementTypeId  
+        (el) => el.SettlementTypeId !== action.payload.SettlementTypeId
       );
     },
-    // deleteSettlementTypes  
+    // deleteSettlementTypes
     settlementTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.SettlementTypeId)  
+        (el) => !action.payload.ids.includes(el.SettlementTypeId)
       );
     },
-    // settlementTypesUpdateState  
+    // settlementTypesUpdateState
     settlementTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

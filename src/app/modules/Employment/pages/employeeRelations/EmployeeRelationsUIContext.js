@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmployeeRelationModel } from "../../../../../core/_models/Employment/EmployeeRelationModel";
@@ -12,7 +11,10 @@ export function useEmployeeRelationsUIContext() {
 
 export const EmployeeRelationsUIConsumer = EmployeeRelationsUIContext.Consumer;
 
-export function EmployeeRelationsUIProvider({ employeeRelationsUIEvents, children }) {
+export function EmployeeRelationsUIProvider({
+  employeeRelationsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(EmployeeRelationModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function EmployeeRelationsUIProvider({ employeeRelationsUIEvents, childre
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function EmployeeRelationsUIProvider({ employeeRelationsUIEvents, childre
     setIds,
     setQueryParams,
     dataModel: EmployeeRelationModel,
-    newEmployeeRelationButtonClick: employeeRelationsUIEvents.newEmployeeRelationButtonClick,
-    openEditEmployeeRelationPage: employeeRelationsUIEvents.openEditEmployeeRelationPage,
-    openDeleteEmployeeRelationDialog: employeeRelationsUIEvents.openDeleteEmployeeRelationDialog,
-    openDeleteEmployeeRelationsDialog: employeeRelationsUIEvents.openDeleteEmployeeRelationsDialog,
-    openFetchEmployeeRelationsDialog: employeeRelationsUIEvents.openFetchEmployeeRelationsDialog,
-    openUpdateEmployeeRelationsStatusDialog: employeeRelationsUIEvents.openUpdateEmployeeRelationsStatusDialog,
+    newEmployeeRelationButtonClick:
+      employeeRelationsUIEvents.newEmployeeRelationButtonClick,
+    openEditEmployeeRelationPage:
+      employeeRelationsUIEvents.openEditEmployeeRelationPage,
+    openDeleteEmployeeRelationDialog:
+      employeeRelationsUIEvents.openDeleteEmployeeRelationDialog,
+    openDeleteEmployeeRelationsDialog:
+      employeeRelationsUIEvents.openDeleteEmployeeRelationsDialog,
+    openFetchEmployeeRelationsDialog:
+      employeeRelationsUIEvents.openFetchEmployeeRelationsDialog,
+    openUpdateEmployeeRelationsStatusDialog:
+      employeeRelationsUIEvents.openUpdateEmployeeRelationsStatusDialog,
   };
   return (
-    <EmployeeRelationsUIContext.Provider value={value}>{children}</EmployeeRelationsUIContext.Provider>
+    <EmployeeRelationsUIContext.Provider value={value}>
+      {children}
+    </EmployeeRelationsUIContext.Provider>
   );
 }

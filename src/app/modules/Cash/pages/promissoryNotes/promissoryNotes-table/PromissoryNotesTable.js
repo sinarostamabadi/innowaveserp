@@ -32,8 +32,10 @@ export function PromissoryNotesTable() {
       setIds: promissoryNotesUIContext.setIds,
       queryParams: promissoryNotesUIContext.queryParams,
       setQueryParams: promissoryNotesUIContext.setQueryParams,
-      openEditPromissoryNotePage: promissoryNotesUIContext.openEditPromissoryNotePage,
-      openDeletePromissoryNoteDialog: promissoryNotesUIContext.openDeletePromissoryNoteDialog,
+      openEditPromissoryNotePage:
+        promissoryNotesUIContext.openEditPromissoryNotePage,
+      openDeletePromissoryNoteDialog:
+        promissoryNotesUIContext.openDeletePromissoryNoteDialog,
     };
   }, [promissoryNotesUIContext]);
 
@@ -72,8 +74,10 @@ export function PromissoryNotesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditPromissoryNotePage: promissoryNotesUIProps.openEditPromissoryNotePage,
-        openDeletePromissoryNoteDialog: promissoryNotesUIProps.openDeletePromissoryNoteDialog,
+        openEditPromissoryNotePage:
+          promissoryNotesUIProps.openEditPromissoryNotePage,
+        openDeletePromissoryNoteDialog:
+          promissoryNotesUIProps.openDeletePromissoryNoteDialog,
         t: t,
       },
       classes: "text-right pr-0",

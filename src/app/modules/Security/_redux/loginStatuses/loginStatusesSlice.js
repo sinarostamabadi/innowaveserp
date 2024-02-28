@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialLoginStatusesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const loginStatusesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getLoginStatusById  
+    // getLoginStatusById
     loginStatusFetched: (state, action) => {
       state.actionsLoading = false;
       state.loginStatusForEdit = action.payload.loginStatusForEdit;
       state.error = null;
     },
-    // findLoginStatuses  
+    // findLoginStatuses
     loginStatusesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const loginStatusesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createLoginStatus  
+    // createLoginStatus
     loginStatusCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateLoginStatus  
+    // updateLoginStatus
     loginStatusUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const loginStatusesSlice = createSlice({
         return entity;
       });
     },
-    // deleteLoginStatus  
+    // deleteLoginStatus
     loginStatusDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.LoginStatusId !== action.payload.LoginStatusId  
+        (el) => el.LoginStatusId !== action.payload.LoginStatusId
       );
     },
-    // deleteLoginStatuses  
+    // deleteLoginStatuses
     loginStatusesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.LoginStatusId)  
+        (el) => !action.payload.ids.includes(el.LoginStatusId)
       );
     },
-    // loginStatusesUpdateState  
+    // loginStatusesUpdateState
     loginStatusesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

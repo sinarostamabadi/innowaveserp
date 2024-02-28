@@ -32,13 +32,13 @@ export const currenciesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCurrencyById  
+    // getCurrencyById
     currencyFetched: (state, action) => {
       state.actionsLoading = false;
       state.currencyForEdit = action.payload.currencyForEdit;
       state.error = null;
     },
-    // findCurrencies  
+    // findCurrencies
     currenciesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -46,13 +46,13 @@ export const currenciesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCurrency  
+    // createCurrency
     currencyCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCurrency  
+    // updateCurrency
     currencyUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -63,23 +63,23 @@ export const currenciesSlice = createSlice({
         return entity;
       });
     },
-    // deleteCurrency  
+    // deleteCurrency
     currencyDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CurrencyId !== action.payload.CurrencyId  
+        (el) => el.CurrencyId !== action.payload.CurrencyId
       );
     },
-    // deleteCurrencies  
+    // deleteCurrencies
     currenciesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CurrencyId)  
+        (el) => !action.payload.ids.includes(el.CurrencyId)
       );
     },
-    // currenciesUpdateState  
+    // currenciesUpdateState
     currenciesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

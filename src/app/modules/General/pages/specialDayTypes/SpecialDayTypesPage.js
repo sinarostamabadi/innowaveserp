@@ -26,9 +26,11 @@ export function SpecialDayTypesPage({ history }) {
       history.push("/general/specialDayTypes/updateStatus");
     },
   };
-  
+
   return (
-    <SpecialDayTypesUIProvider specialDayTypesUIEvents={specialDayTypesUIEvents}>
+    <SpecialDayTypesUIProvider
+      specialDayTypesUIEvents={specialDayTypesUIEvents}
+    >
       <SpecialDayTypesLoadingDialog />
       <Route path="/general/specialDayTypes/:id/delete">
         {({ history, match }) => (

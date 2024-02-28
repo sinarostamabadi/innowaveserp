@@ -50,7 +50,7 @@ export function SerialEditForm({ detail, actionsLoading, onHide }) {
       .test(
         "checkSerial",
         t("err.DucplicateContent", { 0: t("BuyReturnSerial.SerialNumber") }),
-        function(value) {
+        function (value) {
           return !detailsUIProps.checkSerial(value);
         }
       )
@@ -136,7 +136,9 @@ export function SerialEditForm({ detail, actionsLoading, onHide }) {
                       />
                     </Col>
                     <Col xs="auto">
-                      <label style={{visibility: "hidden", display: "block"}}>{"1"}</label>
+                      <label style={{ visibility: "hidden", display: "block" }}>
+                        {"1"}
+                      </label>
                       <Button
                         variant="outline-secondary"
                         type="button"

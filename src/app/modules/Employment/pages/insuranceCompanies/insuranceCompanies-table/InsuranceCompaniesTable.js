@@ -32,8 +32,10 @@ export function InsuranceCompaniesTable() {
       setIds: insuranceCompaniesUIContext.setIds,
       queryParams: insuranceCompaniesUIContext.queryParams,
       setQueryParams: insuranceCompaniesUIContext.setQueryParams,
-      openEditInsuranceCompanyPage: insuranceCompaniesUIContext.openEditInsuranceCompanyPage,
-      openDeleteInsuranceCompanyDialog: insuranceCompaniesUIContext.openDeleteInsuranceCompanyDialog,
+      openEditInsuranceCompanyPage:
+        insuranceCompaniesUIContext.openEditInsuranceCompanyPage,
+      openDeleteInsuranceCompanyDialog:
+        insuranceCompaniesUIContext.openDeleteInsuranceCompanyDialog,
     };
   }, [insuranceCompaniesUIContext]);
 
@@ -50,7 +52,9 @@ export function InsuranceCompaniesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     insuranceCompaniesUIProps.setIds([]);
-    dispatch(actions.fetchInsuranceCompanies(insuranceCompaniesUIProps.queryParams));
+    dispatch(
+      actions.fetchInsuranceCompanies(insuranceCompaniesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [insuranceCompaniesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function InsuranceCompaniesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditInsuranceCompanyPage: insuranceCompaniesUIProps.openEditInsuranceCompanyPage,
-        openDeleteInsuranceCompanyDialog: insuranceCompaniesUIProps.openDeleteInsuranceCompanyDialog,
+        openEditInsuranceCompanyPage:
+          insuranceCompaniesUIProps.openEditInsuranceCompanyPage,
+        openDeleteInsuranceCompanyDialog:
+          insuranceCompaniesUIProps.openDeleteInsuranceCompanyDialog,
         t: t,
       },
       classes: "text-right pr-0",

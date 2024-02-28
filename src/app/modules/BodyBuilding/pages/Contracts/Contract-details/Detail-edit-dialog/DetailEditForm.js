@@ -44,10 +44,26 @@ export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
       BodyBuildingPackId: dirtyData.BodyBuildingPackId,
       BodyBuildingPack: dirtyData.BodyBuildingPack,
       ServiceCount: +dirtyData.ServiceCount || 0,
-      RemaineCount: (typeof detail.BodyBuildingContractDetailId === "number"? +dirtyData.RemaineCount : +dirtyData.ServiceCount) || 0,
-      Price: (typeof detail.BodyBuildingContractDetailId === "number"? +dirtyData.Price : +(!!dirtyData.BodyBuildingService && dirtyData.BodyBuildingService.Price || 0)) || 0,
-      DiscountPrice: (typeof detail.BodyBuildingContractDetailId === "number"? +dirtyData.DiscountPrice : +dirtyData.DiscountPrice) || 0,
-      PayablePrice: (typeof detail.BodyBuildingContractDetailId === "number"? +dirtyData.PayablePrice : +dirtyData.PayablePrice) || 0,
+      RemaineCount:
+        (typeof detail.BodyBuildingContractDetailId === "number"
+          ? +dirtyData.RemaineCount
+          : +dirtyData.ServiceCount) || 0,
+      Price:
+        (typeof detail.BodyBuildingContractDetailId === "number"
+          ? +dirtyData.Price
+          : +(
+              (!!dirtyData.BodyBuildingService &&
+                dirtyData.BodyBuildingService.Price) ||
+              0
+            )) || 0,
+      DiscountPrice:
+        (typeof detail.BodyBuildingContractDetailId === "number"
+          ? +dirtyData.DiscountPrice
+          : +dirtyData.DiscountPrice) || 0,
+      PayablePrice:
+        (typeof detail.BodyBuildingContractDetailId === "number"
+          ? +dirtyData.PayablePrice
+          : +dirtyData.PayablePrice) || 0,
       IsDeleted: dirtyData.IsDeleted,
     };
   }
@@ -60,13 +76,13 @@ export function DetailEditForm({ saveDetail, detail, actionsLoading, onHide }) {
         initialValues={detail}
         validationSchema={DetailEditSchema}
         onSubmit={(values) => {
-          // if(!!values.BodyBuildingPackId) 
+          // if(!!values.BodyBuildingPackId)
           //   for (let index = 0; index < values.BodyBuildingPack.BodyBuildingPackServices.length; index++) {
           //     const s = values.BodyBuildingPack.BodyBuildingPackServices[index];
           //     saveDetail(cleanDetail({...values, BodyBuildingServiceId: s.BodyBuildingServiceId, BodyBuildingService: s}));
           //   }
-          // else 
-            saveDetail(cleanDetail(values))
+          // else
+          saveDetail(cleanDetail(values));
         }}
       >
         {({ handleSubmit }) => (

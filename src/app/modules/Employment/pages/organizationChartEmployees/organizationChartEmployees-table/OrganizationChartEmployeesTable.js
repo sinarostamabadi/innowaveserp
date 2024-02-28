@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function OrganizationChartEmployeesTable() {
   const { t } = useTranslation();
 
-  const organizationChartEmployeesUIContext = useOrganizationChartEmployeesUIContext();
+  const organizationChartEmployeesUIContext =
+    useOrganizationChartEmployeesUIContext();
 
   const organizationChartEmployeesUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function OrganizationChartEmployeesTable() {
       setIds: organizationChartEmployeesUIContext.setIds,
       queryParams: organizationChartEmployeesUIContext.queryParams,
       setQueryParams: organizationChartEmployeesUIContext.setQueryParams,
-      openEditOrganizationChartEmployeePage: organizationChartEmployeesUIContext.openEditOrganizationChartEmployeePage,
-      openDeleteOrganizationChartEmployeeDialog: organizationChartEmployeesUIContext.openDeleteOrganizationChartEmployeeDialog,
+      openEditOrganizationChartEmployeePage:
+        organizationChartEmployeesUIContext.openEditOrganizationChartEmployeePage,
+      openDeleteOrganizationChartEmployeeDialog:
+        organizationChartEmployeesUIContext.openDeleteOrganizationChartEmployeeDialog,
     };
   }, [organizationChartEmployeesUIContext]);
 
@@ -50,7 +53,11 @@ export function OrganizationChartEmployeesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     organizationChartEmployeesUIProps.setIds([]);
-    dispatch(actions.fetchOrganizationChartEmployees(organizationChartEmployeesUIProps.queryParams));
+    dispatch(
+      actions.fetchOrganizationChartEmployees(
+        organizationChartEmployeesUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [organizationChartEmployeesUIProps.queryParams, dispatch]);
 
@@ -72,8 +79,10 @@ export function OrganizationChartEmployeesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditOrganizationChartEmployeePage: organizationChartEmployeesUIProps.openEditOrganizationChartEmployeePage,
-        openDeleteOrganizationChartEmployeeDialog: organizationChartEmployeesUIProps.openDeleteOrganizationChartEmployeeDialog,
+        openEditOrganizationChartEmployeePage:
+          organizationChartEmployeesUIProps.openEditOrganizationChartEmployeePage,
+        openDeleteOrganizationChartEmployeeDialog:
+          organizationChartEmployeesUIProps.openDeleteOrganizationChartEmployeeDialog,
         t: t,
       },
       classes: "text-right pr-0",

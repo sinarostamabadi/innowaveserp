@@ -13,12 +13,16 @@ export function Payment({ data, setData, receivable, goBack }) {
     ),
   });
 
-  let cashDocument = {...PaymentTools.Model, Price: receivable};
+  let cashDocument = { ...PaymentTools.Model, Price: receivable };
   function saveCashDocument(dirty) {
-    let obj = {...PaymentTools.Clean(dirty)};
-    let tranObj = {...PaymentTools.CleanTran(dirty, t)};
+    let obj = { ...PaymentTools.Clean(dirty) };
+    let tranObj = { ...PaymentTools.CleanTran(dirty, t) };
 
-    setData({ ...data, Payments: [...data.Payments, obj], Transactions: [...data.Transactions, tranObj] });
+    setData({
+      ...data,
+      Payments: [...data.Payments, obj],
+      Transactions: [...data.Transactions, tranObj],
+    });
     goBack();
   }
 
@@ -100,7 +104,8 @@ export function Payment({ data, setData, receivable, goBack }) {
                         handleSubmit();
                       }}
                     >
-                      <i className="fa fa-arrow-down"></i> {t("CashDocument.Receipt")}
+                      <i className="fa fa-arrow-down"></i>{" "}
+                      {t("CashDocument.Receipt")}
                     </button>
                     <button
                       type="button"
@@ -110,7 +115,8 @@ export function Payment({ data, setData, receivable, goBack }) {
                         handleSubmit();
                       }}
                     >
-                      <i className="fa fa-arrow-up"></i> {t("CashDocument.Payment")}
+                      <i className="fa fa-arrow-up"></i>{" "}
+                      {t("CashDocument.Payment")}
                     </button>
                   </ButtonGroup>
                 </div>

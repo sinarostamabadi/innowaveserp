@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { AccountFloatingGroupRelationModel } from "../../../../../core/_models/Accounting/AccountFloatingGroupRelationModel";
@@ -10,9 +9,13 @@ export function useAccountFloatingGroupRelationsUIContext() {
   return useContext(AccountFloatingGroupRelationsUIContext);
 }
 
-export const AccountFloatingGroupRelationsUIConsumer = AccountFloatingGroupRelationsUIContext.Consumer;
+export const AccountFloatingGroupRelationsUIConsumer =
+  AccountFloatingGroupRelationsUIContext.Consumer;
 
-export function AccountFloatingGroupRelationsUIProvider({ accountFloatingGroupRelationsUIEvents, children }) {
+export function AccountFloatingGroupRelationsUIProvider({
+  accountFloatingGroupRelationsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(AccountFloatingGroupRelationModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function AccountFloatingGroupRelationsUIProvider({ accountFloatingGroupRe
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function AccountFloatingGroupRelationsUIProvider({ accountFloatingGroupRe
     setIds,
     setQueryParams,
     dataModel: AccountFloatingGroupRelationModel,
-    newAccountFloatingGroupRelationButtonClick: accountFloatingGroupRelationsUIEvents.newAccountFloatingGroupRelationButtonClick,
-    openEditAccountFloatingGroupRelationPage: accountFloatingGroupRelationsUIEvents.openEditAccountFloatingGroupRelationPage,
-    openDeleteAccountFloatingGroupRelationDialog: accountFloatingGroupRelationsUIEvents.openDeleteAccountFloatingGroupRelationDialog,
-    openDeleteAccountFloatingGroupRelationsDialog: accountFloatingGroupRelationsUIEvents.openDeleteAccountFloatingGroupRelationsDialog,
-    openFetchAccountFloatingGroupRelationsDialog: accountFloatingGroupRelationsUIEvents.openFetchAccountFloatingGroupRelationsDialog,
-    openUpdateAccountFloatingGroupRelationsStatusDialog: accountFloatingGroupRelationsUIEvents.openUpdateAccountFloatingGroupRelationsStatusDialog,
+    newAccountFloatingGroupRelationButtonClick:
+      accountFloatingGroupRelationsUIEvents.newAccountFloatingGroupRelationButtonClick,
+    openEditAccountFloatingGroupRelationPage:
+      accountFloatingGroupRelationsUIEvents.openEditAccountFloatingGroupRelationPage,
+    openDeleteAccountFloatingGroupRelationDialog:
+      accountFloatingGroupRelationsUIEvents.openDeleteAccountFloatingGroupRelationDialog,
+    openDeleteAccountFloatingGroupRelationsDialog:
+      accountFloatingGroupRelationsUIEvents.openDeleteAccountFloatingGroupRelationsDialog,
+    openFetchAccountFloatingGroupRelationsDialog:
+      accountFloatingGroupRelationsUIEvents.openFetchAccountFloatingGroupRelationsDialog,
+    openUpdateAccountFloatingGroupRelationsStatusDialog:
+      accountFloatingGroupRelationsUIEvents.openUpdateAccountFloatingGroupRelationsStatusDialog,
   };
   return (
-    <AccountFloatingGroupRelationsUIContext.Provider value={value}>{children}</AccountFloatingGroupRelationsUIContext.Provider>
+    <AccountFloatingGroupRelationsUIContext.Provider value={value}>
+      {children}
+    </AccountFloatingGroupRelationsUIContext.Provider>
   );
 }

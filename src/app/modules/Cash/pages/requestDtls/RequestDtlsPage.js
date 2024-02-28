@@ -26,7 +26,7 @@ export function RequestDtlsPage({ history }) {
       history.push("/cash/requestDtls/updateStatus");
     },
   };
-  
+
   return (
     <RequestDtlsUIProvider requestDtlsUIEvents={requestDtlsUIEvents}>
       <RequestDtlsLoadingDialog />

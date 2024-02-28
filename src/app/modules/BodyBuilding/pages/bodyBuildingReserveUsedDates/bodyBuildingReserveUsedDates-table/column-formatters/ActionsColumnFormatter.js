@@ -9,13 +9,27 @@ export const ActionsColumnFormatter = (
   cellContent,
   row,
   rowIndex,
-  { openEditBodyBuildingReserveUsedDatePage, openDeleteBodyBuildingReserveUsedDateDialog, t }
+  {
+    openEditBodyBuildingReserveUsedDatePage,
+    openDeleteBodyBuildingReserveUsedDateDialog,
+    t,
+  }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="bodyBuildingReserveUsedDates-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="bodyBuildingReserveUsedDates-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-        onClick={() => openEditBodyBuildingReserveUsedDatePage(row.BodyBuildingReserveUsedDateId)}
+        onClick={() =>
+          openEditBodyBuildingReserveUsedDatePage(
+            row.BodyBuildingReserveUsedDateId
+          )
+        }
       >
         <span className="svg-icon svg-icon-md svg-icon-primary">
           <SVG
@@ -26,11 +40,19 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="bodyBuildingReserveUsedDates-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="bodyBuildingReserveUsedDates-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteBodyBuildingReserveUsedDateDialog(row.BodyBuildingReserveUsedDateId)}
+        onClick={() =>
+          openDeleteBodyBuildingReserveUsedDateDialog(
+            row.BodyBuildingReserveUsedDateId
+          )
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

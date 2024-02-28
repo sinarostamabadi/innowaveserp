@@ -8,10 +8,10 @@ import {
 import { AdvancedFilter } from "src/core/_partials/custom/advanced-filter/AdvancedFilter";
 import { BanksTable } from "./banks-table/BanksTable";
 import { useBanksUIContext, BanksUIConsumer } from "./BanksUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function BanksCard() {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const banksUIContext = useBanksUIContext();
 
@@ -30,7 +30,7 @@ export function BanksCard() {
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Bank.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Bank.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"

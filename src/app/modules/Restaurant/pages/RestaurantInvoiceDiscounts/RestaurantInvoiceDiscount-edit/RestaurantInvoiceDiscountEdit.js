@@ -42,24 +42,29 @@ export function RestaurantInvoiceDiscountEdit({
   const dispatch = useDispatch();
 
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
-  const { actionsLoading, restaurantInvoiceDiscountForEdit, error } = useSelector(
-    (state) => ({
-      actionsLoading: state.restaurantInvoiceDiscounts.actionsLoading,
-      restaurantInvoiceDiscountForEdit: state.restaurantInvoiceDiscounts.restaurantInvoiceDiscountForEdit,
-      error: state.restaurantInvoiceDiscounts.error,
-    }),
-    shallowEqual
-  );
+  const { actionsLoading, restaurantInvoiceDiscountForEdit, error } =
+    useSelector(
+      (state) => ({
+        actionsLoading: state.restaurantInvoiceDiscounts.actionsLoading,
+        restaurantInvoiceDiscountForEdit:
+          state.restaurantInvoiceDiscounts.restaurantInvoiceDiscountForEdit,
+        error: state.restaurantInvoiceDiscounts.error,
+      }),
+      shallowEqual
+    );
 
   useEffect(() => {
     dispatch(actions.fetchRestaurantInvoiceDiscount(id));
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("RestaurantInvoiceDiscount.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("RestaurantInvoiceDiscount.Entity");
 
     if (restaurantInvoiceDiscountForEdit && id) {
-      _title = t("Common.Edit") + " " + restaurantInvoiceDiscountForEdit.TitleFa;
+      _title =
+        t("Common.Edit") + " " + restaurantInvoiceDiscountForEdit.TitleFa;
     }
 
     setTitle(_title);
@@ -150,7 +155,9 @@ export function RestaurantInvoiceDiscountEdit({
           {tab === "basic" && (
             <RestaurantInvoiceDiscountEditForm
               actionsLoading={actionsLoading}
-              restaurantInvoiceDiscount={restaurantInvoiceDiscountForEdit || initModel}
+              restaurantInvoiceDiscount={
+                restaurantInvoiceDiscountForEdit || initModel
+              }
               btnRef={btnRef}
               saveRestaurantInvoiceDiscount={saveRestaurantInvoiceDiscount}
             />

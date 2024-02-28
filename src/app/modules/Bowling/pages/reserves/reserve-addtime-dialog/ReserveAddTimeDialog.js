@@ -40,19 +40,23 @@ export function ReserveAddTimeDialog({ id, show, onHide }) {
   useEffect(() => {
     if (!id) {
       onHide();
-    }
-    else {
+    } else {
       dispatchFetch(actions.fetchReserve(id));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
-  
+
   // looking for loading/dispatch
   useEffect(() => {}, [isLoading, dispatch]);
 
   const doneReserve = () => {
     // server request for deleting reserve by id
-    dispatch(actions.addTimeReserve(id, {...reserveForEdit, ToTime: moment.from().add(10, "minutes").locale("en").format("HH:mm")}))
+    dispatch(
+      actions.addTimeReserve(id, {
+        ...reserveForEdit,
+        ToTime: moment.from().add(10, "minutes").locale("en").format("HH:mm"),
+      })
+    )
       .then(() => {
         // refresh list after deletion
         dispatch(actions.fetchReserves(reservesUIProps.queryParams));
@@ -74,10 +78,12 @@ export function ReserveAddTimeDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.AddTime") + " " + t("BowlingReserve.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.AddTime") + " " + t("BowlingReserve.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

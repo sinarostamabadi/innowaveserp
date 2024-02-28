@@ -4,8 +4,8 @@ import { LoadingDialog } from "src/core/_partials/controls";
 export function BankCardsLoadingDialog() {
   const { isLoading } = useSelector(
     (state) => ({ isLoading: state.bankCards.listLoading }),
-    shallowEqual  
+    shallowEqual
   );
-useEffect(() => {}, [isLoading]);
+  useEffect(() => {}, [isLoading]);
   return <LoadingDialog isLoading={isLoading} text="در حال بارگذاری..." />;
 }

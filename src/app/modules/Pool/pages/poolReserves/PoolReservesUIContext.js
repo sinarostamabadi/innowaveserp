@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { PoolReserveModel } from "../../../../../core/_models/Pool/PoolReserveModel";
@@ -30,7 +29,7 @@ export function PoolReservesUIProvider({ poolReservesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -40,12 +39,18 @@ export function PoolReservesUIProvider({ poolReservesUIEvents, children }) {
     dataModel: PoolReserveModel,
     newPoolReserveButtonClick: poolReservesUIEvents.newPoolReserveButtonClick,
     openEditPoolReservePage: poolReservesUIEvents.openEditPoolReservePage,
-    openDeletePoolReserveDialog: poolReservesUIEvents.openDeletePoolReserveDialog,
-    openDeletePoolReservesDialog: poolReservesUIEvents.openDeletePoolReservesDialog,
-    openFetchPoolReservesDialog: poolReservesUIEvents.openFetchPoolReservesDialog,
-    openUpdatePoolReservesStatusDialog: poolReservesUIEvents.openUpdatePoolReservesStatusDialog,
+    openDeletePoolReserveDialog:
+      poolReservesUIEvents.openDeletePoolReserveDialog,
+    openDeletePoolReservesDialog:
+      poolReservesUIEvents.openDeletePoolReservesDialog,
+    openFetchPoolReservesDialog:
+      poolReservesUIEvents.openFetchPoolReservesDialog,
+    openUpdatePoolReservesStatusDialog:
+      poolReservesUIEvents.openUpdatePoolReservesStatusDialog,
   };
   return (
-    <PoolReservesUIContext.Provider value={value}>{children}</PoolReservesUIContext.Provider>
+    <PoolReservesUIContext.Provider value={value}>
+      {children}
+    </PoolReservesUIContext.Provider>
   );
 }

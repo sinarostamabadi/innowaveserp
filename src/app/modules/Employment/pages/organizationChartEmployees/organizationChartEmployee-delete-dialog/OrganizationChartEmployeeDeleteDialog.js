@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -16,7 +15,8 @@ export function OrganizationChartEmployeeDeleteDialog({ id, show, onHide }) {
   const { t } = useTranslation();
 
   // OrganizationChartEmployees UI Context
-  const organizationChartEmployeesUIContext = useOrganizationChartEmployeesUIContext();
+  const organizationChartEmployeesUIContext =
+    useOrganizationChartEmployeesUIContext();
   const [error, setError] = useState(null);
   const organizationChartEmployeesUIProps = useMemo(() => {
     return {
@@ -48,7 +48,11 @@ export function OrganizationChartEmployeeDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteOrganizationChartEmployee(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchOrganizationChartEmployees(organizationChartEmployeesUIProps.queryParams));
+        dispatch(
+          actions.fetchOrganizationChartEmployees(
+            organizationChartEmployeesUIProps.queryParams
+          )
+        );
         // clear selections list
         organizationChartEmployeesUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +71,12 @@ export function OrganizationChartEmployeeDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("OrganizationChartEmployee.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("OrganizationChartEmployee.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

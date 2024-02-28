@@ -30,7 +30,7 @@ export function AccountFloatingGroupEdit({
     AccountFloatingGroupId: undefined,
     AccountFloatingGroupTypeId: "",
     Title: "",
-    Code: ""
+    Code: "",
   };
 
   // Subheader
@@ -45,7 +45,8 @@ export function AccountFloatingGroupEdit({
   const { actionsLoading, accountFloatingGroupForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.accountFloatingGroups.actionsLoading,
-      accountFloatingGroupForEdit: state.accountFloatingGroups.accountFloatingGroupForEdit,
+      accountFloatingGroupForEdit:
+        state.accountFloatingGroups.accountFloatingGroupForEdit,
       error: state.accountFloatingGroups.error,
     }),
     shallowEqual
@@ -56,7 +57,9 @@ export function AccountFloatingGroupEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("AccountFloatingGroup.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("AccountFloatingGroup.Entity");
 
     if (accountFloatingGroupForEdit && id) {
       _title = t("Common.Edit") + " " + accountFloatingGroupForEdit.Title;
@@ -125,14 +128,14 @@ export function AccountFloatingGroupEdit({
           </button>
           {`  `}
           <button
-              type="submit"
-              className="btn btn-primary ml-2"
-              onClick={saveAccountFloatingGroupClick}
-            >
-              <i className="fa fa-save"></i> {t("Common.Save")}
-            </button>
-          </CardHeaderToolbar>
-        </CardHeader>
+            type="submit"
+            className="btn btn-primary ml-2"
+            onClick={saveAccountFloatingGroupClick}
+          >
+            <i className="fa fa-save"></i> {t("Common.Save")}
+          </button>
+        </CardHeaderToolbar>
+      </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>

@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialAccountFloatingGroupRelationsState = {
@@ -36,13 +35,14 @@ export const accountFloatingGroupRelationsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getAccountFloatingGroupRelationById  
+    // getAccountFloatingGroupRelationById
     accountFloatingGroupRelationFetched: (state, action) => {
       state.actionsLoading = false;
-      state.accountFloatingGroupRelationForEdit = action.payload.accountFloatingGroupRelationForEdit;
+      state.accountFloatingGroupRelationForEdit =
+        action.payload.accountFloatingGroupRelationForEdit;
       state.error = null;
     },
-    // findAccountFloatingGroupRelations  
+    // findAccountFloatingGroupRelations
     accountFloatingGroupRelationsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -50,7 +50,7 @@ export const accountFloatingGroupRelationsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createAccountFloatingGroupRelation  
+    // createAccountFloatingGroupRelation
     accountFloatingGroupRelationCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
@@ -58,42 +58,53 @@ export const accountFloatingGroupRelationsSlice = createSlice({
 
       return;
     },
-    // updateAccountFloatingGroupRelation  
+    // updateAccountFloatingGroupRelation
     accountFloatingGroupRelationUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
-      state.entities = state.entities && state.entities.length > 0? state.entities.map((entity) => {
-        if (entity.AccountFloatingGroupRelationId === action.payload.data.AccountFloatingGroupRelationId) {
-          return action.payload.data;
-        }
-        return entity;
-      }): [];
+      state.entities =
+        state.entities && state.entities.length > 0
+          ? state.entities.map((entity) => {
+              if (
+                entity.AccountFloatingGroupRelationId ===
+                action.payload.data.AccountFloatingGroupRelationId
+              ) {
+                return action.payload.data;
+              }
+              return entity;
+            })
+          : [];
 
       return;
     },
-    // deleteAccountFloatingGroupRelation  
+    // deleteAccountFloatingGroupRelation
     accountFloatingGroupRelationDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.AccountFloatingGroupRelationId !== action.payload.AccountFloatingGroupRelationId  
+        (el) =>
+          el.AccountFloatingGroupRelationId !==
+          action.payload.AccountFloatingGroupRelationId
       );
     },
-    // deleteAccountFloatingGroupRelations  
+    // deleteAccountFloatingGroupRelations
     accountFloatingGroupRelationsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.AccountFloatingGroupRelationId)  
+        (el) => !action.payload.ids.includes(el.AccountFloatingGroupRelationId)
       );
     },
-    // accountFloatingGroupRelationsUpdateState  
+    // accountFloatingGroupRelationsUpdateState
     accountFloatingGroupRelationsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       const { ids, status } = action.payload;
       state.entities = state.entities.map((entity) => {
-        if (ids.findIndex((id) => id === entity.AccountFloatingGroupRelationId) > -1) {
+        if (
+          ids.findIndex((id) => id === entity.AccountFloatingGroupRelationId) >
+          -1
+        ) {
           entity.status = status;
         }
         return entity;

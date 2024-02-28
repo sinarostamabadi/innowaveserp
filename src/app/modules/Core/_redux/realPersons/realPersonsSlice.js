@@ -25,7 +25,6 @@ export const realPersonsSlice = createSlice({
       }
 
       console.log("States ", state.error);
-      
     },
     startCall: (state, action) => {
       state.error = null;
@@ -35,13 +34,13 @@ export const realPersonsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getRealPersonById  
+    // getRealPersonById
     realPersonFetched: (state, action) => {
       state.actionsLoading = false;
       state.realPersonForEdit = action.payload.realPersonForEdit;
       state.error = null;
     },
-    // findRealPersons  
+    // findRealPersons
     realPersonsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -49,13 +48,13 @@ export const realPersonsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createRealPerson  
+    // createRealPerson
     realPersonCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateRealPerson  
+    // updateRealPerson
     realPersonUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -66,23 +65,23 @@ export const realPersonsSlice = createSlice({
         return entity;
       });
     },
-    // deleteRealPerson  
+    // deleteRealPerson
     realPersonDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.RealPersonId !== action.payload.RealPersonId  
+        (el) => el.RealPersonId !== action.payload.RealPersonId
       );
     },
-    // deleteRealPersons  
+    // deleteRealPersons
     realPersonsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.RealPersonId)  
+        (el) => !action.payload.ids.includes(el.RealPersonId)
       );
     },
-    // realPersonsUpdateState  
+    // realPersonsUpdateState
     realPersonsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

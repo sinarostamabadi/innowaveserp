@@ -26,9 +26,11 @@ export function SoldiershipTypesPage({ history }) {
       history.push("/employment/soldiershipTypes/updateStatus");
     },
   };
-  
+
   return (
-    <SoldiershipTypesUIProvider soldiershipTypesUIEvents={soldiershipTypesUIEvents}>
+    <SoldiershipTypesUIProvider
+      soldiershipTypesUIEvents={soldiershipTypesUIEvents}
+    >
       <SoldiershipTypesLoadingDialog />
       <Route path="/employment/soldiershipTypes/:id/delete">
         {({ history, match }) => (

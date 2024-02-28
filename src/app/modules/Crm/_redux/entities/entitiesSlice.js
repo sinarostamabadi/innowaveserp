@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEntitiesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const entitiesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEntityById  
+    // getEntityById
     entityFetched: (state, action) => {
       state.actionsLoading = false;
       state.entityForEdit = action.payload.entityForEdit;
       state.error = null;
     },
-    // findEntities  
+    // findEntities
     entitiesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const entitiesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEntity  
+    // createEntity
     entityCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEntity  
+    // updateEntity
     entityUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const entitiesSlice = createSlice({
         return entity;
       });
     },
-    // deleteEntity  
+    // deleteEntity
     entityDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EntityId !== action.payload.EntityId  
+        (el) => el.EntityId !== action.payload.EntityId
       );
     },
-    // deleteEntities  
+    // deleteEntities
     entitiesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EntityId)  
+        (el) => !action.payload.ids.includes(el.EntityId)
       );
     },
-    // entitiesUpdateState  
+    // entitiesUpdateState
     entitiesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

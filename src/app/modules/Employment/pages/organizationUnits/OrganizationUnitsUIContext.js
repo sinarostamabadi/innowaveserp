@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { OrganizationUnitModel } from "../../../../../core/_models/Employment/OrganizationUnitModel";
@@ -12,7 +11,10 @@ export function useOrganizationUnitsUIContext() {
 
 export const OrganizationUnitsUIConsumer = OrganizationUnitsUIContext.Consumer;
 
-export function OrganizationUnitsUIProvider({ organizationUnitsUIEvents, children }) {
+export function OrganizationUnitsUIProvider({
+  organizationUnitsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(OrganizationUnitModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function OrganizationUnitsUIProvider({ organizationUnitsUIEvents, childre
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function OrganizationUnitsUIProvider({ organizationUnitsUIEvents, childre
     setIds,
     setQueryParams,
     dataModel: OrganizationUnitModel,
-    newOrganizationUnitButtonClick: organizationUnitsUIEvents.newOrganizationUnitButtonClick,
-    openEditOrganizationUnitPage: organizationUnitsUIEvents.openEditOrganizationUnitPage,
-    openDeleteOrganizationUnitDialog: organizationUnitsUIEvents.openDeleteOrganizationUnitDialog,
-    openDeleteOrganizationUnitsDialog: organizationUnitsUIEvents.openDeleteOrganizationUnitsDialog,
-    openFetchOrganizationUnitsDialog: organizationUnitsUIEvents.openFetchOrganizationUnitsDialog,
-    openUpdateOrganizationUnitsStatusDialog: organizationUnitsUIEvents.openUpdateOrganizationUnitsStatusDialog,
+    newOrganizationUnitButtonClick:
+      organizationUnitsUIEvents.newOrganizationUnitButtonClick,
+    openEditOrganizationUnitPage:
+      organizationUnitsUIEvents.openEditOrganizationUnitPage,
+    openDeleteOrganizationUnitDialog:
+      organizationUnitsUIEvents.openDeleteOrganizationUnitDialog,
+    openDeleteOrganizationUnitsDialog:
+      organizationUnitsUIEvents.openDeleteOrganizationUnitsDialog,
+    openFetchOrganizationUnitsDialog:
+      organizationUnitsUIEvents.openFetchOrganizationUnitsDialog,
+    openUpdateOrganizationUnitsStatusDialog:
+      organizationUnitsUIEvents.openUpdateOrganizationUnitsStatusDialog,
   };
   return (
-    <OrganizationUnitsUIContext.Provider value={value}>{children}</OrganizationUnitsUIContext.Provider>
+    <OrganizationUnitsUIContext.Provider value={value}>
+      {children}
+    </OrganizationUnitsUIContext.Provider>
   );
 }

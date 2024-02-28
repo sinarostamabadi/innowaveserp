@@ -1,6 +1,8 @@
-
 import * as requestFromServer from "./RestaurantMenuItemsCrud";
-import { restaurantMenuItemsSlice, callTypes } from "./RestaurantMenuItemsSlice";
+import {
+  restaurantMenuItemsSlice,
+  callTypes,
+} from "./RestaurantMenuItemsSlice";
 const { actions } = restaurantMenuItemsSlice;
 export const fetchRestaurantMenuItems = (queryParams) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.list }));
@@ -9,7 +11,10 @@ export const fetchRestaurantMenuItems = (queryParams) => (dispatch) => {
     .then((response) => {
       const { Items, TotalCount } = response.data;
       dispatch(
-        actions.restaurantMenuItemsFetched({ totalCount: TotalCount, entities: Items })
+        actions.restaurantMenuItemsFetched({
+          totalCount: TotalCount,
+          entities: Items,
+        })
       );
     })
     .catch((error) => {
@@ -19,14 +24,22 @@ export const fetchRestaurantMenuItems = (queryParams) => (dispatch) => {
 };
 export const fetchRestaurantMenuItem = (id) => (dispatch) => {
   if (!id) {
-    return dispatch(actions.restaurantMenuItemFetched({ restaurantMenuItemForEdit: undefined }));
+    return dispatch(
+      actions.restaurantMenuItemFetched({
+        restaurantMenuItemForEdit: undefined,
+      })
+    );
   }
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
     .getRestaurantMenuItemById(id)
     .then((response) => {
       const restaurantMenuItem = response.data;
-      dispatch(actions.restaurantMenuItemFetched({ restaurantMenuItemForEdit: restaurantMenuItem }));
+      dispatch(
+        actions.restaurantMenuItemFetched({
+          restaurantMenuItemForEdit: restaurantMenuItem,
+        })
+      );
     })
     .catch((error) => {
       error.clientMessage = "Can't find restaurantMenuItem";
@@ -46,41 +59,43 @@ export const deleteRestaurantMenuItem = (id) => (dispatch) => {
       throw error;
     });
 };
-export const createRestaurantMenuItem = (restaurantMenuItemForCreation, fnCallBack) => (dispatch) => {
-  dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer
-    .createRestaurantMenuItem(restaurantMenuItemForCreation)
-    .then((response) => {
-      const restaurantMenuItem = response.data;
-      fnCallBack(restaurantMenuItem);
-      
-      dispatch(actions.restaurantMenuItemCreated(restaurantMenuItem));
+export const createRestaurantMenuItem =
+  (restaurantMenuItemForCreation, fnCallBack) => (dispatch) => {
+    dispatch(actions.startCall({ callType: callTypes.action }));
+    return requestFromServer
+      .createRestaurantMenuItem(restaurantMenuItemForCreation)
+      .then((response) => {
+        const restaurantMenuItem = response.data;
+        fnCallBack(restaurantMenuItem);
 
-      return restaurantMenuItem;
-    })
-    .catch((error) => {
-      error.clientMessage = "Can't create restaurantMenuItem";
-      dispatch(actions.catchError({ error, callType: callTypes.action }));
-      throw error;
-    });
-};
-export const updateRestaurantMenuItem = (id, restaurantMenuItem, fnCallBack) => (dispatch) => {
-  dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer
-    .updateRestaurantMenuItem(id, restaurantMenuItem)
-    .then((response) => {
-      fnCallBack(restaurantMenuItem);
+        dispatch(actions.restaurantMenuItemCreated(restaurantMenuItem));
 
-      dispatch(actions.restaurantMenuItemUpdated({ restaurantMenuItem }));
+        return restaurantMenuItem;
+      })
+      .catch((error) => {
+        error.clientMessage = "Can't create restaurantMenuItem";
+        dispatch(actions.catchError({ error, callType: callTypes.action }));
+        throw error;
+      });
+  };
+export const updateRestaurantMenuItem =
+  (id, restaurantMenuItem, fnCallBack) => (dispatch) => {
+    dispatch(actions.startCall({ callType: callTypes.action }));
+    return requestFromServer
+      .updateRestaurantMenuItem(id, restaurantMenuItem)
+      .then((response) => {
+        fnCallBack(restaurantMenuItem);
 
-      return restaurantMenuItem;
-    })
-    .catch((error) => {
-      error.clientMessage = "Can't update restaurantMenuItem";
-      dispatch(actions.catchError({ error, callType: callTypes.action }));
-      throw error;
-    });
-};
+        dispatch(actions.restaurantMenuItemUpdated({ restaurantMenuItem }));
+
+        return restaurantMenuItem;
+      })
+      .catch((error) => {
+        error.clientMessage = "Can't update restaurantMenuItem";
+        dispatch(actions.catchError({ error, callType: callTypes.action }));
+        throw error;
+      });
+  };
 export const updateRestaurantMenuItemsStatus = (ids, status) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
@@ -105,4 +120,4 @@ export const deleteRestaurantMenuItems = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

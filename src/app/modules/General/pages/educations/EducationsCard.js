@@ -7,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { EducationsTable } from "./educations-table/EducationsTable";
-import { useEducationsUIContext, EducationsUIConsumer } from "./EducationsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useEducationsUIContext,
+  EducationsUIConsumer,
+} from "./EducationsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function EducationsCard() {
   const { t } = useTranslation();
@@ -21,23 +24,25 @@ export function EducationsCard() {
       queryParams: educationsUIContext.queryParams,
       setQueryParams: educationsUIContext.setQueryParams,
       newEducationButtonClick: educationsUIContext.newEducationButtonClick,
-      openDeleteEducationsDialog: educationsUIContext.openDeleteEducationsDialog,
+      openDeleteEducationsDialog:
+        educationsUIContext.openDeleteEducationsDialog,
       openEditEducationPage: educationsUIContext.openEditEducationPage,
-      openUpdateEducationsStatusDialog: educationsUIContext.openUpdateEducationsStatusDialog,
+      openUpdateEducationsStatusDialog:
+        educationsUIContext.openUpdateEducationsStatusDialog,
       openFetchEducationsDialog: educationsUIContext.openFetchEducationsDialog,
     };
   }, [educationsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Education.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Education.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={educationsUIProps.newEducationButtonClick}
           >
-            {t("Education.Entity")} {' '} {t("Common.New")}
+            {t("Education.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

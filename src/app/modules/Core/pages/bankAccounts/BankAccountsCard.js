@@ -11,7 +11,7 @@ import {
   useBankAccountsUIContext,
   BankAccountsUIConsumer,
 } from "./BankAccountsUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function BankAccountsCard() {
   const { t } = useTranslation();
@@ -25,7 +25,7 @@ export function BankAccountsCard() {
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("BankAccount.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("BankAccount.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"

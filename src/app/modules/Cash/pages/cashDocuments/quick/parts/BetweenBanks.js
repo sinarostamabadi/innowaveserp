@@ -15,9 +15,9 @@ import { BetweenBanksTools } from "../Dependency";
 export function BetweenBanks({ data, setData, receivable, goBack }) {
   const { t } = useTranslation();
   const CashDocumentEditSchema = Yup.object().shape({
-    BankAccountId: Yup.array().nullable().min(1, 
-      t("err.IsRequired", { 0: t("CashDocument.BankAccount") })
-    ),
+    BankAccountId: Yup.array()
+      .nullable()
+      .min(1, t("err.IsRequired", { 0: t("CashDocument.BankAccount") })),
     BankId: Yup.number().required(
       t("err.IsRequired", { 0: t("CashDocument.Bank") })
     ),
@@ -44,7 +44,11 @@ export function BetweenBanks({ data, setData, receivable, goBack }) {
     let obj = { ...BetweenBanksTools.Clean(dirty) };
     let tranObj = { ...BetweenBanksTools.CleanTran(dirty, t) };
 
-    setData({ ...data, BankTransfers: [...data.BankTransfers, obj], Transactions: [...data.Transactions, tranObj] });
+    setData({
+      ...data,
+      BankTransfers: [...data.BankTransfers, obj],
+      Transactions: [...data.Transactions, tranObj],
+    });
     goBack();
   }
 

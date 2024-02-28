@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -16,7 +15,8 @@ export function EmployeeMonthlyCalculatedDeleteDialog({ id, show, onHide }) {
   const { t } = useTranslation();
 
   // EmployeeMonthlyCalculateds UI Context
-  const employeeMonthlyCalculatedsUIContext = useEmployeeMonthlyCalculatedsUIContext();
+  const employeeMonthlyCalculatedsUIContext =
+    useEmployeeMonthlyCalculatedsUIContext();
   const [error, setError] = useState(null);
   const employeeMonthlyCalculatedsUIProps = useMemo(() => {
     return {
@@ -48,7 +48,11 @@ export function EmployeeMonthlyCalculatedDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteEmployeeMonthlyCalculated(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchEmployeeMonthlyCalculateds(employeeMonthlyCalculatedsUIProps.queryParams));
+        dispatch(
+          actions.fetchEmployeeMonthlyCalculateds(
+            employeeMonthlyCalculatedsUIProps.queryParams
+          )
+        );
         // clear selections list
         employeeMonthlyCalculatedsUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +71,12 @@ export function EmployeeMonthlyCalculatedDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("EmployeeMonthlyCalculated.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("EmployeeMonthlyCalculated.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

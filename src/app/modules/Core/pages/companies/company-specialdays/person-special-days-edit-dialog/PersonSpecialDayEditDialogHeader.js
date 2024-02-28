@@ -19,9 +19,11 @@ export function PersonSpecialDayEditDialogHeader({ id }) {
   );
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("PersonSpecialDay.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("PersonSpecialDay.Entity");
     if (personSpecialDayForEdit && id) {
-      _title = t("Common.Edit") + " " + t("PersonSpecialDay.Entity") ;
+      _title = t("Common.Edit") + " " + t("PersonSpecialDay.Entity");
     }
 
     setTitle(_title);

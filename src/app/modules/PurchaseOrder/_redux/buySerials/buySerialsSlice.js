@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBuySerialsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const buySerialsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBuySerialById  
+    // getBuySerialById
     buySerialFetched: (state, action) => {
       state.actionsLoading = false;
       state.buySerialForEdit = action.payload.buySerialForEdit;
       state.error = null;
     },
-    // findBuySerials  
+    // findBuySerials
     buySerialsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const buySerialsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBuySerial  
+    // createBuySerial
     buySerialCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBuySerial  
+    // updateBuySerial
     buySerialUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const buySerialsSlice = createSlice({
         return entity;
       });
     },
-    // deleteBuySerial  
+    // deleteBuySerial
     buySerialDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BuySerialId !== action.payload.BuySerialId  
+        (el) => el.BuySerialId !== action.payload.BuySerialId
       );
     },
-    // deleteBuySerials  
+    // deleteBuySerials
     buySerialsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BuySerialId)  
+        (el) => !action.payload.ids.includes(el.BuySerialId)
       );
     },
-    // buySerialsUpdateState  
+    // buySerialsUpdateState
     buySerialsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

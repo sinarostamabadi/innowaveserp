@@ -19,13 +19,17 @@ export function PromissoryNote({ data, setData, receivable, goBack }) {
     ),
   });
 
-  let cashDocument = {...PromissoryNoteTools.Model, Price: receivable};
+  let cashDocument = { ...PromissoryNoteTools.Model, Price: receivable };
 
   function saveCashDocument(dirty) {
-    let obj = {...PromissoryNoteTools.Clean(dirty)};
-    let tranObj = {...PromissoryNoteTools.CleanTran(dirty, t)};
+    let obj = { ...PromissoryNoteTools.Clean(dirty) };
+    let tranObj = { ...PromissoryNoteTools.CleanTran(dirty, t) };
 
-    setData({ ...data, PromissoryNotes: [...data.PromissoryNotes, obj], Transactions: [...data.Transactions, tranObj] });
+    setData({
+      ...data,
+      PromissoryNotes: [...data.PromissoryNotes, obj],
+      Transactions: [...data.Transactions, tranObj],
+    });
     goBack();
   }
 
@@ -113,7 +117,7 @@ export function PromissoryNote({ data, setData, receivable, goBack }) {
               </div>
               <div className="row mt-5">
                 <div className="col ">
-                <ButtonGroup className="mr-2" aria-label="Second group">
+                  <ButtonGroup className="mr-2" aria-label="Second group">
                     <button
                       type="button"
                       onClick={goBack}
@@ -129,7 +133,8 @@ export function PromissoryNote({ data, setData, receivable, goBack }) {
                         handleSubmit();
                       }}
                     >
-                      <i className="fa fa-arrow-down"></i> {t("CashDocument.Receipt")}
+                      <i className="fa fa-arrow-down"></i>{" "}
+                      {t("CashDocument.Receipt")}
                     </button>
                     <button
                       type="button"
@@ -139,7 +144,8 @@ export function PromissoryNote({ data, setData, receivable, goBack }) {
                         handleSubmit();
                       }}
                     >
-                      <i className="fa fa-arrow-up"></i> {t("CashDocument.Payment")}
+                      <i className="fa fa-arrow-up"></i>{" "}
+                      {t("CashDocument.Payment")}
                     </button>
                   </ButtonGroup>
                 </div>

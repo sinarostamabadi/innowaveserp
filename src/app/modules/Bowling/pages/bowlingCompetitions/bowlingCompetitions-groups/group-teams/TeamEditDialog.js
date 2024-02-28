@@ -6,7 +6,7 @@ import { TeamEditForm } from "./TeamEditForm";
 import { useGroupsUIContext } from "../GroupsUIContext";
 
 export function TeamEditDialog() {
-    // Groups UI Context
+  // Groups UI Context
   const groupsUIContext = useGroupsUIContext();
   const groupsUIProps = useMemo(() => {
     return {
@@ -30,7 +30,11 @@ export function TeamEditDialog() {
       <TeamEditDialogHeader id={groupsUIProps.id} />
       <TeamEditForm
         actionsLoading={actionsLoading}
-        group={!!groupsUIProps.selectedItem ? groupsUIProps.selectedItem.BowlingCompetitionGroupTeams: []}
+        group={
+          !!groupsUIProps.selectedItem
+            ? groupsUIProps.selectedItem.BowlingCompetitionGroupTeams
+            : []
+        }
         onHide={groupsUIProps.onHide}
       />
     </Modal>

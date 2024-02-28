@@ -19,7 +19,8 @@ export function useRelationPersonGroupsUIContext() {
   return useContext(RelationPersonGroupsUIContext);
 }
 
-export const RelationPersonGroupsUIConsumer = RelationPersonGroupsUIContext.Consumer;
+export const RelationPersonGroupsUIConsumer =
+  RelationPersonGroupsUIContext.Consumer;
 
 export const RelationPersonGroupsUIProvider = forwardRef(
   ({ currentPersonId, children, relationPersonGroup, btnRef }, ref) => {
@@ -28,10 +29,15 @@ export const RelationPersonGroupsUIProvider = forwardRef(
         fn(
           relationPersonGroups.map((relationPersonGroup) => {
             return {
-              RelationPersonGroupId: relationPersonGroup.RelationPersonGroupId.toString().indexOf("temp_") > -1? null: relationPersonGroup.RelationPersonGroupId,
+              RelationPersonGroupId:
+                relationPersonGroup.RelationPersonGroupId.toString().indexOf(
+                  "temp_"
+                ) > -1
+                  ? null
+                  : relationPersonGroup.RelationPersonGroupId,
               PersonGroupId: relationPersonGroup.PersonGroupId,
               PersonId: +personId,
-              IsDeleted: relationPersonGroup.IsDeleted
+              IsDeleted: relationPersonGroup.IsDeleted,
             };
           })
         );
@@ -71,7 +77,8 @@ export const RelationPersonGroupsUIProvider = forwardRef(
       });
     }, []);
 
-    const [relationPersonGroups, setRelationPersonGroups] = useState(relationPersonGroup);
+    const [relationPersonGroups, setRelationPersonGroups] =
+      useState(relationPersonGroup);
     const [active, setActive] = useState([]);
     const [totalCount, setTotalCount] = useState(0);
 
@@ -95,11 +102,14 @@ export const RelationPersonGroupsUIProvider = forwardRef(
     }, [currentPersonId]);
 
     useEffect(() => {
-      if(relationPersonGroups.length > 0)
-        setActive(relationPersonGroups.filter(x=> !x.IsDeleted));
+      if (relationPersonGroups.length > 0)
+        setActive(relationPersonGroups.filter((x) => !x.IsDeleted));
     }, [relationPersonGroups]);
 
-    const [showEditRelationPersonGroupDialog, setShowEditRelationPersonGroupDialog] = useState(false);
+    const [
+      showEditRelationPersonGroupDialog,
+      setShowEditRelationPersonGroupDialog,
+    ] = useState(false);
     const openNewRelationPersonGroupDialog = () => {
       setSelectedId(undefined);
       setShowEditRelationPersonGroupDialog(true);
@@ -113,7 +123,10 @@ export const RelationPersonGroupsUIProvider = forwardRef(
       setShowEditRelationPersonGroupDialog(false);
     };
 
-    const [showDeleteRelationPersonGroupDialog, setShowDeleteRelationPersonGroupDialog] = useState(false);
+    const [
+      showDeleteRelationPersonGroupDialog,
+      setShowDeleteRelationPersonGroupDialog,
+    ] = useState(false);
     const openDeleteRelationPersonGroupDialog = (id) => {
       setSelectedId(id);
       setShowDeleteRelationPersonGroupDialog(true);
@@ -123,7 +136,10 @@ export const RelationPersonGroupsUIProvider = forwardRef(
       setShowDeleteRelationPersonGroupDialog(false);
     };
 
-    const [showDeleteRelationPersonGroupsDialog, setShowDeleteRelationPersonGroupsDialog] = useState(false);
+    const [
+      showDeleteRelationPersonGroupsDialog,
+      setShowDeleteRelationPersonGroupsDialog,
+    ] = useState(false);
     const openDeleteRelationPersonGroupsDialog = () => {
       setShowDeleteRelationPersonGroupsDialog(true);
     };
@@ -131,7 +147,10 @@ export const RelationPersonGroupsUIProvider = forwardRef(
       setShowDeleteRelationPersonGroupsDialog(false);
     };
 
-    const [showFetchRelationPersonGroupsDialog, setShowFetchRelationPersonGroupsDialog] = useState(false);
+    const [
+      showFetchRelationPersonGroupsDialog,
+      setShowFetchRelationPersonGroupsDialog,
+    ] = useState(false);
     const openFetchRelationPersonGroupsDialog = () => {
       setShowFetchRelationPersonGroupsDialog(true);
     };
@@ -140,22 +159,29 @@ export const RelationPersonGroupsUIProvider = forwardRef(
     };
 
     const findRelationPersonGroup = (relationPersonGroupId) => {
-      return relationPersonGroups.filter((relationPersonGroup) => relationPersonGroup.RelationPersonGroupId == relationPersonGroupId)[0];
+      return relationPersonGroups.filter(
+        (relationPersonGroup) =>
+          relationPersonGroup.RelationPersonGroupId == relationPersonGroupId
+      )[0];
     };
 
     const addRelationPersonGroup = (relationPersonGroup) => {
-      relationPersonGroup.RelationPersonGroupId = "temp_" + Math.floor(Math.random() * 100);
+      relationPersonGroup.RelationPersonGroupId =
+        "temp_" + Math.floor(Math.random() * 100);
       relationPersonGroup.PersonGroupId = +relationPersonGroup.PersonGroupId;
       relationPersonGroup.PersonId = +relationPersonGroup.PersonId;
-      
-      setRelationPersonGroups((relationPersonGroups) => [...relationPersonGroups, relationPersonGroup]);
+
+      setRelationPersonGroups((relationPersonGroups) => [
+        ...relationPersonGroups,
+        relationPersonGroup,
+      ]);
     };
 
     const removeRelationPersonGroup = (relationPersonGroupId) => {
       let relationPersonGroup = findRelationPersonGroup(relationPersonGroupId);
 
       setRelationPersonGroups((relationPersonGroups) =>
-      relationPersonGroups.map((item) => {
+        relationPersonGroups.map((item) => {
           return item.RelationPersonGroupId == relationPersonGroupId
             ? { ...relationPersonGroup, IsDeleted: true }
             : item;
@@ -168,7 +194,12 @@ export const RelationPersonGroupsUIProvider = forwardRef(
       relationPersonGroup.PersonId = +relationPersonGroup.PersonId;
 
       setRelationPersonGroups((relationPersonGroups) =>
-        relationPersonGroups.map((item) => (item.RelationPersonGroupId === relationPersonGroup.RelationPersonGroupId ? relationPersonGroup : item))
+        relationPersonGroups.map((item) =>
+          item.RelationPersonGroupId ===
+          relationPersonGroup.RelationPersonGroupId
+            ? relationPersonGroup
+            : item
+        )
       );
     };
 

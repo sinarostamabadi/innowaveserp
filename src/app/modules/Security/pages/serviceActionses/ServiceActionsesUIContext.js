@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { ServiceActionsModel } from "../../../../../core/_models/Security/ServiceActionsModel";
@@ -12,7 +11,10 @@ export function useServiceActionsesUIContext() {
 
 export const ServiceActionsesUIConsumer = ServiceActionsesUIContext.Consumer;
 
-export function ServiceActionsesUIProvider({ serviceActionsesUIEvents, children }) {
+export function ServiceActionsesUIProvider({
+  serviceActionsesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(ServiceActionsModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function ServiceActionsesUIProvider({ serviceActionsesUIEvents, children 
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function ServiceActionsesUIProvider({ serviceActionsesUIEvents, children 
     setIds,
     setQueryParams,
     dataModel: ServiceActionsModel,
-    newServiceActionsButtonClick: serviceActionsesUIEvents.newServiceActionsButtonClick,
-    openEditServiceActionsPage: serviceActionsesUIEvents.openEditServiceActionsPage,
-    openDeleteServiceActionsDialog: serviceActionsesUIEvents.openDeleteServiceActionsDialog,
-    openDeleteServiceActionsesDialog: serviceActionsesUIEvents.openDeleteServiceActionsesDialog,
-    openFetchServiceActionsesDialog: serviceActionsesUIEvents.openFetchServiceActionsesDialog,
-    openUpdateServiceActionsesStatusDialog: serviceActionsesUIEvents.openUpdateServiceActionsesStatusDialog,
+    newServiceActionsButtonClick:
+      serviceActionsesUIEvents.newServiceActionsButtonClick,
+    openEditServiceActionsPage:
+      serviceActionsesUIEvents.openEditServiceActionsPage,
+    openDeleteServiceActionsDialog:
+      serviceActionsesUIEvents.openDeleteServiceActionsDialog,
+    openDeleteServiceActionsesDialog:
+      serviceActionsesUIEvents.openDeleteServiceActionsesDialog,
+    openFetchServiceActionsesDialog:
+      serviceActionsesUIEvents.openFetchServiceActionsesDialog,
+    openUpdateServiceActionsesStatusDialog:
+      serviceActionsesUIEvents.openUpdateServiceActionsesStatusDialog,
   };
   return (
-    <ServiceActionsesUIContext.Provider value={value}>{children}</ServiceActionsesUIContext.Provider>
+    <ServiceActionsesUIContext.Provider value={value}>
+      {children}
+    </ServiceActionsesUIContext.Provider>
   );
 }

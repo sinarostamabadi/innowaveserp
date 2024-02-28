@@ -17,7 +17,9 @@ export function RewardOrPenaltyTypesPage({ history }) {
       history.push(`/employment/rewardOrPenaltyTypes/${id}/delete`);
     },
     openDeleteRewardOrPenaltyTypesDialog: () => {
-      history.push(`/employment/rewardOrPenaltyTypes/deleteRewardOrPenaltyTypes`);
+      history.push(
+        `/employment/rewardOrPenaltyTypes/deleteRewardOrPenaltyTypes`
+      );
     },
     openFetchRewardOrPenaltyTypesDialog: () => {
       history.push(`/employment/rewardOrPenaltyTypes/fetch`);
@@ -26,9 +28,11 @@ export function RewardOrPenaltyTypesPage({ history }) {
       history.push("/employment/rewardOrPenaltyTypes/updateStatus");
     },
   };
-  
+
   return (
-    <RewardOrPenaltyTypesUIProvider rewardOrPenaltyTypesUIEvents={rewardOrPenaltyTypesUIEvents}>
+    <RewardOrPenaltyTypesUIProvider
+      rewardOrPenaltyTypesUIEvents={rewardOrPenaltyTypesUIEvents}
+    >
       <RewardOrPenaltyTypesLoadingDialog />
       <Route path="/employment/rewardOrPenaltyTypes/:id/delete">
         {({ history, match }) => (

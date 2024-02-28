@@ -26,7 +26,7 @@ export function ServicesesPage({ history }) {
       history.push("/security/serviceses/updateStatus");
     },
   };
-  
+
   return (
     <ServicesesUIProvider servicesesUIEvents={servicesesUIEvents}>
       <ServicesesLoadingDialog />

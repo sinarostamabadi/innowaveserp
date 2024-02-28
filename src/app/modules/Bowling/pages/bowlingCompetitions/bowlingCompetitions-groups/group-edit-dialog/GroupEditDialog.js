@@ -43,7 +43,7 @@ export function GroupEditDialog() {
       groupsUIProps.onHide();
     }
   };
-  
+
   return (
     <Modal
       show={groupsUIProps.show}

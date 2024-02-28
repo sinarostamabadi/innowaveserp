@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
@@ -17,19 +17,20 @@ export function ServiceEditForm({ service, btnRef, saveService }) {
 
   useEffect(() => {
     if (employeeTypes.length == 0)
-    getAll().then(({ data }) =>
-    setEmployeeTypes((lines) => [
+      getAll().then(({ data }) =>
+        setEmployeeTypes((lines) => [
           { BodyBuildingEmployeeTypeId: "", Title: t("Common.WithoutSelect") },
           ...data.Items,
         ])
       );
   }, [employeeTypes.length, t]);
 
-
   function clean(dirty) {
     return {
       BodyBuildingServiceId: dirty.BodyBuildingServiceId,
-      BodyBuildingEmployeeTypeId: !!dirty.BodyBuildingEmployeeTypeId ? +dirty.BodyBuildingEmployeeTypeId : null,
+      BodyBuildingEmployeeTypeId: !!dirty.BodyBuildingEmployeeTypeId
+        ? +dirty.BodyBuildingEmployeeTypeId
+        : null,
       Title: dirty.Title,
       UseIPAddress: dirty.UseIPAddress,
       Price: +dirty.Price,
@@ -81,17 +82,20 @@ export function ServiceEditForm({ service, btnRef, saveService }) {
                   />
                 </div>
                 <div className="col-lg-6">
-                    <Select
-                      name="BodyBuildingEmployeeTypeId"
-                      label={t("BodyBuildingService.BodyBuildingEmployeeType")}
-                    >
-                      {employeeTypes.map((employeeType) => (
-                        <option key={employeeType.BodyBuildingEmployeeTypeId} value={employeeType.BodyBuildingEmployeeTypeId}>
-                          {employeeType.Title}
-                        </option>
-                      ))}
-                    </Select>
-                  </div>
+                  <Select
+                    name="BodyBuildingEmployeeTypeId"
+                    label={t("BodyBuildingService.BodyBuildingEmployeeType")}
+                  >
+                    {employeeTypes.map((employeeType) => (
+                      <option
+                        key={employeeType.BodyBuildingEmployeeTypeId}
+                        value={employeeType.BodyBuildingEmployeeTypeId}
+                      >
+                        {employeeType.Title}
+                      </option>
+                    ))}
+                  </Select>
+                </div>
               </div>
               <button
                 type="submit"

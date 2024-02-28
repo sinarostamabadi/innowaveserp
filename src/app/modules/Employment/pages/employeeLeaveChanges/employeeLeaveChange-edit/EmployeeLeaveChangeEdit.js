@@ -44,7 +44,8 @@ export function EmployeeLeaveChangeEdit({
   const { actionsLoading, employeeLeaveChangeForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.employeeLeaveChanges.actionsLoading,
-      employeeLeaveChangeForEdit: state.employeeLeaveChanges.employeeLeaveChangeForEdit,
+      employeeLeaveChangeForEdit:
+        state.employeeLeaveChanges.employeeLeaveChangeForEdit,
       error: state.employeeLeaveChanges.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function EmployeeLeaveChangeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("EmployeeLeaveChange.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("EmployeeLeaveChange.Entity");
 
     if (employeeLeaveChangeForEdit && id) {
       _title = t("Common.Edit") + " " + employeeLeaveChangeForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function EmployeeLeaveChangeEdit({
         .then((arg) => {
           backToEmployeeLeaveChangesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateEmployeeLeaveChange(id, values))
         .then(() => backToEmployeeLeaveChangesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

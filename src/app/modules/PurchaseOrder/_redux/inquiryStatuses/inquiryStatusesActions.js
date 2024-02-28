@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./inquiryStatusesCrud";
 import { inquiryStatusesSlice, callTypes } from "./inquiryStatusesSlice";
 const { actions } = inquiryStatusesSlice;
@@ -9,7 +8,10 @@ export const fetchInquiryStatuses = (queryParams) => (dispatch) => {
     .then((response) => {
       const { Items, TotalCount } = response.data;
       dispatch(
-        actions.inquiryStatusesFetched({ totalCount: TotalCount, entities: Items })
+        actions.inquiryStatusesFetched({
+          totalCount: TotalCount,
+          entities: Items,
+        })
       );
     })
     .catch((error) => {
@@ -19,14 +21,18 @@ export const fetchInquiryStatuses = (queryParams) => (dispatch) => {
 };
 export const fetchInquiryStatus = (id) => (dispatch) => {
   if (!id) {
-    return dispatch(actions.inquiryStatusFetched({ inquiryStatusForEdit: undefined }));
+    return dispatch(
+      actions.inquiryStatusFetched({ inquiryStatusForEdit: undefined })
+    );
   }
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
     .getInquiryStatusById(id)
     .then((response) => {
       const inquiryStatus = response.data;
-      dispatch(actions.inquiryStatusFetched({ inquiryStatusForEdit: inquiryStatus }));
+      dispatch(
+        actions.inquiryStatusFetched({ inquiryStatusForEdit: inquiryStatus })
+      );
     })
     .catch((error) => {
       error.clientMessage = "Can't find inquiryStatus";
@@ -97,4 +103,4 @@ export const deleteInquiryStatuses = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

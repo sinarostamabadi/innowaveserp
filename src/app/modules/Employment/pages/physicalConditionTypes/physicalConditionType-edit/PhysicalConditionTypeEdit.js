@@ -44,7 +44,8 @@ export function PhysicalConditionTypeEdit({
   const { actionsLoading, physicalConditionTypeForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.physicalConditionTypes.actionsLoading,
-      physicalConditionTypeForEdit: state.physicalConditionTypes.physicalConditionTypeForEdit,
+      physicalConditionTypeForEdit:
+        state.physicalConditionTypes.physicalConditionTypeForEdit,
       error: state.physicalConditionTypes.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function PhysicalConditionTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("PhysicalConditionType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("PhysicalConditionType.Entity");
 
     if (physicalConditionTypeForEdit && id) {
       _title = t("Common.Edit") + " " + physicalConditionTypeForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function PhysicalConditionTypeEdit({
         .then((arg) => {
           backToPhysicalConditionTypesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updatePhysicalConditionType(id, values))
         .then(() => backToPhysicalConditionTypesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

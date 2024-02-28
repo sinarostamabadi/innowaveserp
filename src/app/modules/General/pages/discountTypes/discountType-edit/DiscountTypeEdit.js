@@ -73,11 +73,11 @@ export function DiscountTypeEdit({
         .then((arg) => {
           backToDiscountTypesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateDiscountType(id, values))
         .then(() => backToDiscountTypesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

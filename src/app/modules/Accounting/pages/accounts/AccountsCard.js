@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { AccountsTable } from "./accounts-table/AccountsTable";
 import { useAccountsUIContext, AccountsUIConsumer } from "./AccountsUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function AccountsCard() {
   const { t } = useTranslation();
@@ -30,14 +29,14 @@ export function AccountsCard() {
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Account.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Account.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={accountsUIProps.openEditDetailDialog}
           >
-            {t("Account.Entity")} {' '} {t("Common.New")}
+            {t("Account.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

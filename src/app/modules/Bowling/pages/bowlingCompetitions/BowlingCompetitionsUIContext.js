@@ -9,10 +9,16 @@ const BowlingCompetitionsUIContext = createContext();
 export function useBowlingCompetitionsUIContext() {
   return useContext(BowlingCompetitionsUIContext);
 }
-export const BowlingCompetitionsUIConsumer = BowlingCompetitionsUIContext.Consumer;
+export const BowlingCompetitionsUIConsumer =
+  BowlingCompetitionsUIContext.Consumer;
 
-export function BowlingCompetitionsUIProvider({ bowlingCompetitionsUIEvents, children }) {
-  const [queryParams, setQueryParamsBase] = useState(getConfig(BowlingCompetitionModel, "Title", "asc").initialFilter);
+export function BowlingCompetitionsUIProvider({
+  bowlingCompetitionsUIEvents,
+  children,
+}) {
+  const [queryParams, setQueryParamsBase] = useState(
+    getConfig(BowlingCompetitionModel, "Title", "asc").initialFilter
+  );
 
   const [ids, setIds] = useState([]);
 
@@ -35,11 +41,16 @@ export function BowlingCompetitionsUIProvider({ bowlingCompetitionsUIEvents, chi
     setIds,
     setQueryParams,
     dataModel: BowlingCompetitionModel,
-    newBowlingCompetitionButtonClick: bowlingCompetitionsUIEvents.newBowlingCompetitionButtonClick,
-    openEditBowlingCompetitionPage: bowlingCompetitionsUIEvents.openEditBowlingCompetitionPage,
-    openDeleteBowlingCompetitionDialog: bowlingCompetitionsUIEvents.openDeleteBowlingCompetitionDialog,
-    openDeleteBowlingCompetitionsDialog: bowlingCompetitionsUIEvents.openDeleteBowlingCompetitionsDialog,
-    openFetchBowlingCompetitionsDialog: bowlingCompetitionsUIEvents.openFetchBowlingCompetitionsDialog,
+    newBowlingCompetitionButtonClick:
+      bowlingCompetitionsUIEvents.newBowlingCompetitionButtonClick,
+    openEditBowlingCompetitionPage:
+      bowlingCompetitionsUIEvents.openEditBowlingCompetitionPage,
+    openDeleteBowlingCompetitionDialog:
+      bowlingCompetitionsUIEvents.openDeleteBowlingCompetitionDialog,
+    openDeleteBowlingCompetitionsDialog:
+      bowlingCompetitionsUIEvents.openDeleteBowlingCompetitionsDialog,
+    openFetchBowlingCompetitionsDialog:
+      bowlingCompetitionsUIEvents.openFetchBowlingCompetitionsDialog,
     openUpdateBowlingCompetitionsStatusDialog:
       bowlingCompetitionsUIEvents.openUpdateBowlingCompetitionsStatusDialog,
   };

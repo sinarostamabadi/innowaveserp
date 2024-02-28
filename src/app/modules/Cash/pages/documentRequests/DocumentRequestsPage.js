@@ -26,9 +26,11 @@ export function DocumentRequestsPage({ history }) {
       history.push("/cash/documentRequests/updateStatus");
     },
   };
-  
+
   return (
-    <DocumentRequestsUIProvider documentRequestsUIEvents={documentRequestsUIEvents}>
+    <DocumentRequestsUIProvider
+      documentRequestsUIEvents={documentRequestsUIEvents}
+    >
       <DocumentRequestsLoadingDialog />
       <Route path="/cash/documentRequests/:id/delete">
         {({ history, match }) => (

@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { InquiryStatusesTable } from "./inquiryStatuses-table/InquiryStatusesTable";
-import { useInquiryStatusesUIContext, InquiryStatusesUIConsumer } from "./InquiryStatusesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useInquiryStatusesUIContext,
+  InquiryStatusesUIConsumer,
+} from "./InquiryStatusesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function InquiryStatusesCard() {
   const { t } = useTranslation();
@@ -21,11 +23,16 @@ export function InquiryStatusesCard() {
       ids: inquiryStatusesUIContext.ids,
       queryParams: inquiryStatusesUIContext.queryParams,
       setQueryParams: inquiryStatusesUIContext.setQueryParams,
-      newInquiryStatusButtonClick: inquiryStatusesUIContext.newInquiryStatusButtonClick,
-      openDeleteInquiryStatusesDialog: inquiryStatusesUIContext.openDeleteInquiryStatusesDialog,
-      openEditInquiryStatusPage: inquiryStatusesUIContext.openEditInquiryStatusPage,
-      openUpdateInquiryStatusesStatusDialog: inquiryStatusesUIContext.openUpdateInquiryStatusesStatusDialog,
-      openFetchInquiryStatusesDialog: inquiryStatusesUIContext.openFetchInquiryStatusesDialog,
+      newInquiryStatusButtonClick:
+        inquiryStatusesUIContext.newInquiryStatusButtonClick,
+      openDeleteInquiryStatusesDialog:
+        inquiryStatusesUIContext.openDeleteInquiryStatusesDialog,
+      openEditInquiryStatusPage:
+        inquiryStatusesUIContext.openEditInquiryStatusPage,
+      openUpdateInquiryStatusesStatusDialog:
+        inquiryStatusesUIContext.openUpdateInquiryStatusesStatusDialog,
+      openFetchInquiryStatusesDialog:
+        inquiryStatusesUIContext.openFetchInquiryStatusesDialog,
     };
   }, [inquiryStatusesUIContext]);
 

@@ -41,7 +41,7 @@ export function DiscountEdit({
     ToTimeObj: "",
     ToTime: "",
     PersonId: "",
-    Person: ""
+    Person: "",
   };
 
   // Subheader
@@ -49,7 +49,7 @@ export function DiscountEdit({
 
   // Tabs
   const [editMode, setEditMode] = useState(false);
-  const [object, setObject] = useState({...initModel});
+  const [object, setObject] = useState({ ...initModel });
   const [title, setTitle] = useState("");
   const dispatch = useDispatch();
 
@@ -74,14 +74,20 @@ export function DiscountEdit({
     let _title = id ? "" : t("Common.Create") + " " + t("Discount.Entity");
 
     if (discountForEdit && discountForEdit.DiscountId == id) {
-      _title = t("Common.Edit") + " " + t("Discount.Entity") + " «" + discountForEdit.DiscountType.TitleFa + "»";
+      _title =
+        t("Common.Edit") +
+        " " +
+        t("Discount.Entity") +
+        " «" +
+        discountForEdit.DiscountType.TitleFa +
+        "»";
       setObject({
         ...discountForEdit,
         FromDateObj: EnToFaObjDate(discountForEdit.FromDate),
         ToDateObj: EnToFaObjDate(discountForEdit.ToDate),
-        FromTimeObj: moment(discountForEdit.FromTime, 'hh:mm:ss'),
-        ToTimeObj: moment(discountForEdit.ToTime, 'hh:mm:ss')
-      })
+        FromTimeObj: moment(discountForEdit.FromTime, "hh:mm:ss"),
+        ToTimeObj: moment(discountForEdit.ToTime, "hh:mm:ss"),
+      });
     }
 
     setTitle(_title);
@@ -92,18 +98,21 @@ export function DiscountEdit({
 
   const saveDiscount = (values) => {
     if (!id) {
-      dispatch(actions.createDiscount(values, () => {
-        backToDiscountsList();
-      }))
-        .then((arg) => {
+      dispatch(
+        actions.createDiscount(values, () => {
+          backToDiscountsList();
         })
-        .catch((err) => { });
+      )
+        .then((arg) => {})
+        .catch((err) => {});
     } else {
-      dispatch(actions.updateDiscount(id, values, () => {
-        backToDiscountsList();
-      }))
+      dispatch(
+        actions.updateDiscount(id, values, () => {
+          backToDiscountsList();
+        })
+      )
         .then(() => backToDiscountsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

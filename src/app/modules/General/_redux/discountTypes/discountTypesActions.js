@@ -8,7 +8,10 @@ export const fetchDiscountTypes = (queryParams) => (dispatch) => {
     .then((response) => {
       const { Items, TotalCount } = response.data;
       dispatch(
-        actions.discountTypesFetched({ totalCount: TotalCount, entities: Items })
+        actions.discountTypesFetched({
+          totalCount: TotalCount,
+          entities: Items,
+        })
       );
     })
     .catch((error) => {
@@ -18,14 +21,18 @@ export const fetchDiscountTypes = (queryParams) => (dispatch) => {
 };
 export const fetchDiscountType = (id) => (dispatch) => {
   if (!id) {
-    return dispatch(actions.discountTypeFetched({ discountTypeForEdit: undefined }));
+    return dispatch(
+      actions.discountTypeFetched({ discountTypeForEdit: undefined })
+    );
   }
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
     .getDiscountTypeById(id)
     .then((response) => {
       const discountType = response.data;
-      dispatch(actions.discountTypeFetched({ discountTypeForEdit: discountType }));
+      dispatch(
+        actions.discountTypeFetched({ discountTypeForEdit: discountType })
+      );
     })
     .catch((error) => {
       error.clientMessage = "Can't find discountType";
@@ -96,4 +103,4 @@ export const deleteDiscountTypes = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

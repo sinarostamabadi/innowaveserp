@@ -12,7 +12,9 @@ export const ActionsColumnFormatter = (
   { openEditUnitPage, openDeleteUnitDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="units-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={<Tooltip id="units-edit-tooltip">{t("Common.Edit")}</Tooltip>}
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditUnitPage(row.UnitId)}
@@ -26,7 +28,9 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="units-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="units-delete-tooltip">{t("Common.Delete")}</Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"

@@ -12,10 +12,18 @@ export const ActionsColumnFormatter = (
   { openEditEmployeeSoldiershipPage, openDeleteEmployeeSoldiershipDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="employeeSoldierships-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="employeeSoldierships-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-        onClick={() => openEditEmployeeSoldiershipPage(row.EmployeeSoldiershipId)}
+        onClick={() =>
+          openEditEmployeeSoldiershipPage(row.EmployeeSoldiershipId)
+        }
       >
         <span className="svg-icon svg-icon-md svg-icon-primary">
           <SVG
@@ -26,11 +34,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="employeeSoldierships-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="employeeSoldierships-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteEmployeeSoldiershipDialog(row.EmployeeSoldiershipId)}
+        onClick={() =>
+          openDeleteEmployeeSoldiershipDialog(row.EmployeeSoldiershipId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

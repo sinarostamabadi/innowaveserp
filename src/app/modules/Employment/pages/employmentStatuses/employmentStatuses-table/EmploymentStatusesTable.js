@@ -32,8 +32,10 @@ export function EmploymentStatusesTable() {
       setIds: employmentStatusesUIContext.setIds,
       queryParams: employmentStatusesUIContext.queryParams,
       setQueryParams: employmentStatusesUIContext.setQueryParams,
-      openEditEmploymentStatusPage: employmentStatusesUIContext.openEditEmploymentStatusPage,
-      openDeleteEmploymentStatusDialog: employmentStatusesUIContext.openDeleteEmploymentStatusDialog,
+      openEditEmploymentStatusPage:
+        employmentStatusesUIContext.openEditEmploymentStatusPage,
+      openDeleteEmploymentStatusDialog:
+        employmentStatusesUIContext.openDeleteEmploymentStatusDialog,
     };
   }, [employmentStatusesUIContext]);
 
@@ -50,7 +52,9 @@ export function EmploymentStatusesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     employmentStatusesUIProps.setIds([]);
-    dispatch(actions.fetchEmploymentStatuses(employmentStatusesUIProps.queryParams));
+    dispatch(
+      actions.fetchEmploymentStatuses(employmentStatusesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employmentStatusesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function EmploymentStatusesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmploymentStatusPage: employmentStatusesUIProps.openEditEmploymentStatusPage,
-        openDeleteEmploymentStatusDialog: employmentStatusesUIProps.openDeleteEmploymentStatusDialog,
+        openEditEmploymentStatusPage:
+          employmentStatusesUIProps.openEditEmploymentStatusPage,
+        openDeleteEmploymentStatusDialog:
+          employmentStatusesUIProps.openDeleteEmploymentStatusDialog,
         t: t,
       },
       classes: "text-right pr-0",

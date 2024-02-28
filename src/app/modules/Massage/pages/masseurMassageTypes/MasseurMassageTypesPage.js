@@ -26,9 +26,11 @@ export function MasseurMassageTypesPage({ history }) {
       history.push("/massage/masseurMassageTypes/updateStatus");
     },
   };
-  
+
   return (
-    <MasseurMassageTypesUIProvider masseurMassageTypesUIEvents={masseurMassageTypesUIEvents}>
+    <MasseurMassageTypesUIProvider
+      masseurMassageTypesUIEvents={masseurMassageTypesUIEvents}
+    >
       <MasseurMassageTypesLoadingDialog />
       <Route path="/massage/masseurMassageTypes/:id/delete">
         {({ history, match }) => (

@@ -44,7 +44,8 @@ export function EmployeeInIODeviceEdit({
   const { actionsLoading, employeeInIODeviceForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.employeeInIODevices.actionsLoading,
-      employeeInIODeviceForEdit: state.employeeInIODevices.employeeInIODeviceForEdit,
+      employeeInIODeviceForEdit:
+        state.employeeInIODevices.employeeInIODeviceForEdit,
       error: state.employeeInIODevices.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function EmployeeInIODeviceEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("EmployeeInIODevice.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("EmployeeInIODevice.Entity");
 
     if (employeeInIODeviceForEdit && id) {
       _title = t("Common.Edit") + " " + employeeInIODeviceForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function EmployeeInIODeviceEdit({
         .then((arg) => {
           backToEmployeeInIODevicesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateEmployeeInIODevice(id, values))
         .then(() => backToEmployeeInIODevicesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

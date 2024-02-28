@@ -26,7 +26,7 @@ export function MasseursPage({ history }) {
       history.push("/massage/masseurs/updateStatus");
     },
   };
-  
+
   return (
     <MasseursUIProvider masseursUIEvents={masseursUIEvents}>
       <MasseursLoadingDialog />

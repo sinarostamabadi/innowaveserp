@@ -5,10 +5,12 @@ import { useTranslation } from "react-i18next";
 export function RestaurantMenuItemIngredientsToolbar() {
   const { t } = useTranslation();
 
-  const restaurantMenuItemIngredientsUIContext = useRestaurantMenuItemIngredientsUIContext();
+  const restaurantMenuItemIngredientsUIContext =
+    useRestaurantMenuItemIngredientsUIContext();
   const restaurantMenuItemIngredientsUIProps = useMemo(() => {
     return {
-      openNewRestaurantMenuItemIngredientDialog: restaurantMenuItemIngredientsUIContext.openNewRestaurantMenuItemIngredientDialog,
+      openNewRestaurantMenuItemIngredientDialog:
+        restaurantMenuItemIngredientsUIContext.openNewRestaurantMenuItemIngredientDialog,
     };
   }, [restaurantMenuItemIngredientsUIContext]);
 
@@ -23,7 +25,9 @@ export function RestaurantMenuItemIngredientsToolbar() {
             <button
               type="button"
               className="btn btn-success"
-              onClick={() => restaurantMenuItemIngredientsUIProps.openNewRestaurantMenuItemIngredientDialog()}
+              onClick={() =>
+                restaurantMenuItemIngredientsUIProps.openNewRestaurantMenuItemIngredientDialog()
+              }
             >
               {t("RestaurantMenuItemIngredient.Entity")} {t("Common.New")}
             </button>

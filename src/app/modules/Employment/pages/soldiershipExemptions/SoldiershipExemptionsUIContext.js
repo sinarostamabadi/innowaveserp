@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { SoldiershipExemptionModel } from "../../../../../core/_models/Employment/SoldiershipExemptionModel";
@@ -10,9 +9,13 @@ export function useSoldiershipExemptionsUIContext() {
   return useContext(SoldiershipExemptionsUIContext);
 }
 
-export const SoldiershipExemptionsUIConsumer = SoldiershipExemptionsUIContext.Consumer;
+export const SoldiershipExemptionsUIConsumer =
+  SoldiershipExemptionsUIContext.Consumer;
 
-export function SoldiershipExemptionsUIProvider({ soldiershipExemptionsUIEvents, children }) {
+export function SoldiershipExemptionsUIProvider({
+  soldiershipExemptionsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(SoldiershipExemptionModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function SoldiershipExemptionsUIProvider({ soldiershipExemptionsUIEvents,
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function SoldiershipExemptionsUIProvider({ soldiershipExemptionsUIEvents,
     setIds,
     setQueryParams,
     dataModel: SoldiershipExemptionModel,
-    newSoldiershipExemptionButtonClick: soldiershipExemptionsUIEvents.newSoldiershipExemptionButtonClick,
-    openEditSoldiershipExemptionPage: soldiershipExemptionsUIEvents.openEditSoldiershipExemptionPage,
-    openDeleteSoldiershipExemptionDialog: soldiershipExemptionsUIEvents.openDeleteSoldiershipExemptionDialog,
-    openDeleteSoldiershipExemptionsDialog: soldiershipExemptionsUIEvents.openDeleteSoldiershipExemptionsDialog,
-    openFetchSoldiershipExemptionsDialog: soldiershipExemptionsUIEvents.openFetchSoldiershipExemptionsDialog,
-    openUpdateSoldiershipExemptionsStatusDialog: soldiershipExemptionsUIEvents.openUpdateSoldiershipExemptionsStatusDialog,
+    newSoldiershipExemptionButtonClick:
+      soldiershipExemptionsUIEvents.newSoldiershipExemptionButtonClick,
+    openEditSoldiershipExemptionPage:
+      soldiershipExemptionsUIEvents.openEditSoldiershipExemptionPage,
+    openDeleteSoldiershipExemptionDialog:
+      soldiershipExemptionsUIEvents.openDeleteSoldiershipExemptionDialog,
+    openDeleteSoldiershipExemptionsDialog:
+      soldiershipExemptionsUIEvents.openDeleteSoldiershipExemptionsDialog,
+    openFetchSoldiershipExemptionsDialog:
+      soldiershipExemptionsUIEvents.openFetchSoldiershipExemptionsDialog,
+    openUpdateSoldiershipExemptionsStatusDialog:
+      soldiershipExemptionsUIEvents.openUpdateSoldiershipExemptionsStatusDialog,
   };
   return (
-    <SoldiershipExemptionsUIContext.Provider value={value}>{children}</SoldiershipExemptionsUIContext.Provider>
+    <SoldiershipExemptionsUIContext.Provider value={value}>
+      {children}
+    </SoldiershipExemptionsUIContext.Provider>
   );
 }

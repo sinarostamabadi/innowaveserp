@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { ServicesModel } from "../../../../../core/_models/Security/ServicesModel";
@@ -30,7 +29,7 @@ export function ServicesesUIProvider({ servicesesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function ServicesesUIProvider({ servicesesUIEvents, children }) {
     openDeleteServicesDialog: servicesesUIEvents.openDeleteServicesDialog,
     openDeleteServicesesDialog: servicesesUIEvents.openDeleteServicesesDialog,
     openFetchServicesesDialog: servicesesUIEvents.openFetchServicesesDialog,
-    openUpdateServicesesStatusDialog: servicesesUIEvents.openUpdateServicesesStatusDialog,
+    openUpdateServicesesStatusDialog:
+      servicesesUIEvents.openUpdateServicesesStatusDialog,
   };
   return (
-    <ServicesesUIContext.Provider value={value}>{children}</ServicesesUIContext.Provider>
+    <ServicesesUIContext.Provider value={value}>
+      {children}
+    </ServicesesUIContext.Provider>
   );
 }

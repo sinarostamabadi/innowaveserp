@@ -53,28 +53,34 @@ export function StandingTable({
   };
 
   function showGroups() {
-      let levels = [];
+    let levels = [];
 
     for (const key in grouped) {
       if (Object.hasOwnProperty.call(grouped, key)) {
         const group = grouped[key];
         levels.push(
-            <Tab eventKey={"Level" + (+key)} title={"مرحله " + (+key + 1)} className="nav-item">
-                {
-                    group.map(g => 
-                <Row className="my-3">
-                    <Col className="col text-right">
-                        {!!g.BowlingCompetitionGroupTeamA && g.BowlingCompetitionGroupTeamA.BowlingTeam.Title} - {g.ScoreA}
-                    </Col>
-                    <Col className="col-auto text-center"> X </Col>
-                    <Col className="col text-left">
-                    {g.ScoreB} - {!!g.BowlingCompetitionGroupTeamB && g.BowlingCompetitionGroupTeamB.BowlingTeam.Title}
-                    </Col>
-                </Row>  
-                        )
-                }
-            </Tab>
-        )
+          <Tab
+            eventKey={"Level" + +key}
+            title={"مرحله " + (+key + 1)}
+            className="nav-item"
+          >
+            {group.map((g) => (
+              <Row className="my-3">
+                <Col className="col text-right">
+                  {!!g.BowlingCompetitionGroupTeamA &&
+                    g.BowlingCompetitionGroupTeamA.BowlingTeam.Title}{" "}
+                  - {g.ScoreA}
+                </Col>
+                <Col className="col-auto text-center"> X </Col>
+                <Col className="col text-left">
+                  {g.ScoreB} -{" "}
+                  {!!g.BowlingCompetitionGroupTeamB &&
+                    g.BowlingCompetitionGroupTeamB.BowlingTeam.Title}
+                </Col>
+              </Row>
+            ))}
+          </Tab>
+        );
       }
     }
 
@@ -116,13 +122,13 @@ export function StandingTable({
                           </tr>
                         </thead>
                         <tbody>
-                          {x.BowlingCompetitionGroupTeams.map((t, i) => 
+                          {x.BowlingCompetitionGroupTeams.map((t, i) => (
                             <tr>
                               <td>{i + 1}</td>
                               <td>{t.BowlingTeam.Title}</td>
                               <td>{t.Score}</td>
                             </tr>
-                          )}
+                          ))}
                         </tbody>
                       </table>
                     </div>

@@ -10,12 +10,15 @@ export function EntityPointEditForm({ entityPoint, btnRef, saveEntityPoint }) {
   const { t } = useTranslation();
 
   const EntityPointEditSchema = Yup.object().shape({
-    EntityId: Yup.array()
-      .required(t("err.IsRequired", { 0: t("EntityPoint.EntityObj") })),
-    Price: Yup.string()
-      .required(t("err.IsRequired", { 0: t("EntityPoint.Price") })),
-    Point: Yup.string()
-      .required(t("err.IsRequired", { 0: t("EntityPoint.Point") })),      
+    EntityId: Yup.array().required(
+      t("err.IsRequired", { 0: t("EntityPoint.EntityObj") })
+    ),
+    Price: Yup.string().required(
+      t("err.IsRequired", { 0: t("EntityPoint.Price") })
+    ),
+    Point: Yup.string().required(
+      t("err.IsRequired", { 0: t("EntityPoint.Point") })
+    ),
   });
 
   const handleSuggestionEntity = useCallback((query, fnCallback) => {
@@ -30,11 +33,15 @@ export function EntityPointEditForm({ entityPoint, btnRef, saveEntityPoint }) {
       Entity:
         !!dirtyData.EntityId && dirtyData.EntityId.length == 1
           ? dirtyData.EntityId[0]
-          : (!!dirtyData.Entity ? dirtyData.Entity: null),
+          : !!dirtyData.Entity
+          ? dirtyData.Entity
+          : null,
       EntityId:
         !!dirtyData.EntityId && dirtyData.EntityId.length == 1
           ? +dirtyData.EntityId[0].EntityId
-          : (!!dirtyData.EntityId ? dirtyData.EntityId: null),
+          : !!dirtyData.EntityId
+          ? dirtyData.EntityId
+          : null,
       Price: dirtyData.Price && +dirtyData.Price,
       Point: dirtyData.Point && +dirtyData.Point,
       IsDeleted: false,
@@ -56,22 +63,24 @@ export function EntityPointEditForm({ entityPoint, btnRef, saveEntityPoint }) {
             <Form className="form form-label-right">
               <div className="form-group row">
                 <div className="col-lg-4">
-                <SuggestionField
-                      name="EntityId"
-                      labelKey="Title"
-                      customFeedbackLabel=""
-                      label={t("EntityPoint.EntityObj")}
-                      placeHolder={t("msg.SelectBySuggestion")}
-                      handleSearch={handleSuggestionEntity}
-                      defaultValue={
-                        entityPoint && !!entityPoint.Entity ? [entityPoint.Entity] : []
-                      }
-                      renderMenuItemChildren={(option, props) => (
-                        <div>
-                          <h6>{option.Title}</h6>
-                        </div>
-                      )}
-                    />
+                  <SuggestionField
+                    name="EntityId"
+                    labelKey="Title"
+                    customFeedbackLabel=""
+                    label={t("EntityPoint.EntityObj")}
+                    placeHolder={t("msg.SelectBySuggestion")}
+                    handleSearch={handleSuggestionEntity}
+                    defaultValue={
+                      entityPoint && !!entityPoint.Entity
+                        ? [entityPoint.Entity]
+                        : []
+                    }
+                    renderMenuItemChildren={(option, props) => (
+                      <div>
+                        <h6>{option.Title}</h6>
+                      </div>
+                    )}
+                  />
                 </div>
                 <div className="col-lg-4">
                   <Field

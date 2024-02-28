@@ -48,11 +48,7 @@ export function ExpertisesTable() {
         bootstrap4
         remote
         keyField="BodyBuildingEmployeeTypeExpertiseId"
-        data={
-          uiProps.activeExpertises === null
-            ? []
-            : uiProps.activeExpertises
-        }
+        data={uiProps.activeExpertises === null ? [] : uiProps.activeExpertises}
         columns={columns}
       >
         <PleaseWaitMessage entities={uiProps.activeExpertises} />

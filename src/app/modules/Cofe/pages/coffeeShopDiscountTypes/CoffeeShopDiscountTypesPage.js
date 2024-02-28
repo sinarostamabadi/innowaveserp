@@ -17,7 +17,9 @@ export function CoffeeShopDiscountTypesPage({ history }) {
       history.push(`/cofe/coffeeShopDiscountTypes/${id}/delete`);
     },
     openDeleteCoffeeShopDiscountTypesDialog: () => {
-      history.push(`/cofe/coffeeShopDiscountTypes/deleteCoffeeShopDiscountTypes`);
+      history.push(
+        `/cofe/coffeeShopDiscountTypes/deleteCoffeeShopDiscountTypes`
+      );
     },
     openFetchCoffeeShopDiscountTypesDialog: () => {
       history.push(`/cofe/coffeeShopDiscountTypes/fetch`);
@@ -26,9 +28,11 @@ export function CoffeeShopDiscountTypesPage({ history }) {
       history.push("/cofe/coffeeShopDiscountTypes/updateStatus");
     },
   };
-  
+
   return (
-    <CoffeeShopDiscountTypesUIProvider coffeeShopDiscountTypesUIEvents={coffeeShopDiscountTypesUIEvents}>
+    <CoffeeShopDiscountTypesUIProvider
+      coffeeShopDiscountTypesUIEvents={coffeeShopDiscountTypesUIEvents}
+    >
       <CoffeeShopDiscountTypesLoadingDialog />
       <Route path="/cofe/coffeeShopDiscountTypes/:id/delete">
         {({ history, match }) => (

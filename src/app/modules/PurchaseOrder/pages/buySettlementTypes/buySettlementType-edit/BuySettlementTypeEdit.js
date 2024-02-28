@@ -43,7 +43,8 @@ export function BuySettlementTypeEdit({
   const { actionsLoading, buySettlementTypeForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.buySettlementTypes.actionsLoading,
-      buySettlementTypeForEdit: state.buySettlementTypes.buySettlementTypeForEdit,
+      buySettlementTypeForEdit:
+        state.buySettlementTypes.buySettlementTypeForEdit,
       error: state.buySettlementTypes.error,
     }),
     shallowEqual
@@ -54,7 +55,9 @@ export function BuySettlementTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("BuySettlementType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("BuySettlementType.Entity");
 
     if (buySettlementTypeForEdit && id) {
       _title = t("Common.Edit") + " " + buySettlementTypeForEdit.Title;
@@ -70,18 +73,18 @@ export function BuySettlementTypeEdit({
     const newValues = {
       BuySettlementTypeId: values.BuySettlementTypeId,
       Describtion: values.Describtion,
-      Title: values.Title
-    }
+      Title: values.Title,
+    };
     if (!id) {
       dispatch(actions.createBuySettlementType(newValues))
         .then((arg) => {
           backToBuySettlementTypesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateBuySettlementType(id, newValues))
         .then(() => backToBuySettlementTypesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

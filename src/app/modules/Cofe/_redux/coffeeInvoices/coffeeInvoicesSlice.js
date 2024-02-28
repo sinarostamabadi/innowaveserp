@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialCoffeeInvoicesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const coffeeInvoicesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCoffeeInvoiceById  
+    // getCoffeeInvoiceById
     coffeeInvoiceFetched: (state, action) => {
       state.actionsLoading = false;
       state.coffeeInvoiceForEdit = action.payload.coffeeInvoiceForEdit;
       state.error = null;
     },
-    // findCoffeeInvoices  
+    // findCoffeeInvoices
     coffeeInvoicesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const coffeeInvoicesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCoffeeInvoice  
+    // createCoffeeInvoice
     coffeeInvoiceCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCoffeeInvoice  
+    // updateCoffeeInvoice
     coffeeInvoiceUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.CoffeeInvoiceId === action.payload.coffeeInvoice.CoffeeInvoiceId) {
+        if (
+          entity.CoffeeInvoiceId ===
+          action.payload.coffeeInvoice.CoffeeInvoiceId
+        ) {
           return action.payload.coffeeInvoice;
         }
         return entity;
       });
     },
-    // deleteCoffeeInvoice  
+    // deleteCoffeeInvoice
     coffeeInvoiceDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CoffeeInvoiceId !== action.payload.CoffeeInvoiceId  
+        (el) => el.CoffeeInvoiceId !== action.payload.CoffeeInvoiceId
       );
     },
-    // deleteCoffeeInvoices  
+    // deleteCoffeeInvoices
     coffeeInvoicesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CoffeeInvoiceId)  
+        (el) => !action.payload.ids.includes(el.CoffeeInvoiceId)
       );
     },
-    // coffeeInvoicesUpdateState  
+    // coffeeInvoicesUpdateState
     coffeeInvoicesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -35,7 +35,7 @@ export function WarehouseDashboard() {
           >
             <div className="card-header">
               <div className="card-title">
-                <h3 className="card-label">اطلاعات انبار</h3>
+                <h3 className="card-label">Warehouse information</h3>
               </div>
             </div>
             <div className="card-body">

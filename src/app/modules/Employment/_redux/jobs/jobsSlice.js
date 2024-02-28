@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialJobsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const jobsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getJobById  
+    // getJobById
     jobFetched: (state, action) => {
       state.actionsLoading = false;
       state.jobForEdit = action.payload.jobForEdit;
       state.error = null;
     },
-    // findJobs  
+    // findJobs
     jobsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const jobsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createJob  
+    // createJob
     jobCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateJob  
+    // updateJob
     jobUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const jobsSlice = createSlice({
         return entity;
       });
     },
-    // deleteJob  
+    // deleteJob
     jobDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.JobId !== action.payload.JobId  
+        (el) => el.JobId !== action.payload.JobId
       );
     },
-    // deleteJobs  
+    // deleteJobs
     jobsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.JobId)  
+        (el) => !action.payload.ids.includes(el.JobId)
       );
     },
-    // jobsUpdateState  
+    // jobsUpdateState
     jobsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

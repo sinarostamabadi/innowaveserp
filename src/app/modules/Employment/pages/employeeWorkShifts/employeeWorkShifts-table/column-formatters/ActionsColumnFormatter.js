@@ -12,7 +12,13 @@ export const ActionsColumnFormatter = (
   { openEditEmployeeWorkShiftPage, openDeleteEmployeeWorkShiftDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="employeeWorkShifts-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="employeeWorkShifts-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditEmployeeWorkShiftPage(row.EmployeeWorkShiftId)}
@@ -26,11 +32,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="employeeWorkShifts-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="employeeWorkShifts-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteEmployeeWorkShiftDialog(row.EmployeeWorkShiftId)}
+        onClick={() =>
+          openDeleteEmployeeWorkShiftDialog(row.EmployeeWorkShiftId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { CostCenterModel } from "../../../../../core/_models/Accounting/CostCenterModel";
@@ -30,7 +29,7 @@ export function CostCentersUIProvider({ costCentersUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -41,11 +40,15 @@ export function CostCentersUIProvider({ costCentersUIEvents, children }) {
     newCostCenterButtonClick: costCentersUIEvents.newCostCenterButtonClick,
     openEditCostCenterPage: costCentersUIEvents.openEditCostCenterPage,
     openDeleteCostCenterDialog: costCentersUIEvents.openDeleteCostCenterDialog,
-    openDeleteCostCentersDialog: costCentersUIEvents.openDeleteCostCentersDialog,
+    openDeleteCostCentersDialog:
+      costCentersUIEvents.openDeleteCostCentersDialog,
     openFetchCostCentersDialog: costCentersUIEvents.openFetchCostCentersDialog,
-    openUpdateCostCentersStatusDialog: costCentersUIEvents.openUpdateCostCentersStatusDialog,
+    openUpdateCostCentersStatusDialog:
+      costCentersUIEvents.openUpdateCostCentersStatusDialog,
   };
   return (
-    <CostCentersUIContext.Provider value={value}>{children}</CostCentersUIContext.Provider>
+    <CostCentersUIContext.Provider value={value}>
+      {children}
+    </CostCentersUIContext.Provider>
   );
 }

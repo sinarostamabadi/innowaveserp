@@ -34,7 +34,7 @@ export function BuyReturnsPage({ history }) {
       history.push(`/PurchaseOrder/buyReturns/${id}/attachments`);
     },
   };
-  
+
   return (
     <BuyReturnsUIProvider buyReturnsUIEvents={buyReturnsUIEvents}>
       <BuyReturnsLoadingDialog />
@@ -55,10 +55,13 @@ export function BuyReturnsPage({ history }) {
             show={match != null}
             id={match && match.params.id}
             onHide={(isCanceled) => {
-              if(isCanceled == true)
-                !!match && !!match.params.id && history.push(`/PurchaseOrder/buyReturns/${match.params.id}/new`);
-              else
-                history.push("/PurchaseOrder/buyReturns");
+              if (isCanceled == true)
+                !!match &&
+                  !!match.params.id &&
+                  history.push(
+                    `/PurchaseOrder/buyReturns/${match.params.id}/new`
+                  );
+              else history.push("/PurchaseOrder/buyReturns");
             }}
           />
         )}
@@ -69,7 +72,7 @@ export function BuyReturnsPage({ history }) {
             show={match != null}
             id={match && match.params.id}
             onHide={() => {
-                history.push("/PurchaseOrder/buyReturns");
+              history.push("/PurchaseOrder/buyReturns");
             }}
           />
         )}

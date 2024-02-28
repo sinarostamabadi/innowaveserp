@@ -55,7 +55,9 @@ export function PoolReservePriceEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("PoolReservePrice.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("PoolReservePrice.Entity");
 
     if (poolReservePriceForEdit && id) {
       _title = t("Common.Edit") + " " + poolReservePriceForEdit.TitleFa;
@@ -73,11 +75,11 @@ export function PoolReservePriceEdit({
         .then((arg) => {
           backToPoolReservePricesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updatePoolReservePrice(id, values))
         .then(() => backToPoolReservePricesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

@@ -8,7 +8,8 @@ export function BowlingTeamPersonsToolbar() {
   const bowlingTeamPersonsUIContext = useBowlingTeamPersonsUIContext();
   const bowlingTeamPersonsUIProps = useMemo(() => {
     return {
-      openNewBowlingTeamPersonDialog: bowlingTeamPersonsUIContext.openNewBowlingTeamPersonDialog,
+      openNewBowlingTeamPersonDialog:
+        bowlingTeamPersonsUIContext.openNewBowlingTeamPersonDialog,
       clearPersons: bowlingTeamPersonsUIContext.clearPersons,
     };
   }, [bowlingTeamPersonsUIContext]);
@@ -34,7 +35,9 @@ export function BowlingTeamPersonsToolbar() {
             <button
               type="button"
               className="btn btn-success"
-              onClick={() => bowlingTeamPersonsUIProps.openNewBowlingTeamPersonDialog()}
+              onClick={() =>
+                bowlingTeamPersonsUIProps.openNewBowlingTeamPersonDialog()
+              }
             >
               {t("Common.New")}
             </button>

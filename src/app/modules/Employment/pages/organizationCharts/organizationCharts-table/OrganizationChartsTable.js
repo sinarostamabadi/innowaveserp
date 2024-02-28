@@ -32,8 +32,10 @@ export function OrganizationChartsTable() {
       setIds: organizationChartsUIContext.setIds,
       queryParams: organizationChartsUIContext.queryParams,
       setQueryParams: organizationChartsUIContext.setQueryParams,
-      openEditOrganizationChartPage: organizationChartsUIContext.openEditOrganizationChartPage,
-      openDeleteOrganizationChartDialog: organizationChartsUIContext.openDeleteOrganizationChartDialog,
+      openEditOrganizationChartPage:
+        organizationChartsUIContext.openEditOrganizationChartPage,
+      openDeleteOrganizationChartDialog:
+        organizationChartsUIContext.openDeleteOrganizationChartDialog,
     };
   }, [organizationChartsUIContext]);
 
@@ -50,7 +52,9 @@ export function OrganizationChartsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     organizationChartsUIProps.setIds([]);
-    dispatch(actions.fetchOrganizationCharts(organizationChartsUIProps.queryParams));
+    dispatch(
+      actions.fetchOrganizationCharts(organizationChartsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [organizationChartsUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function OrganizationChartsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditOrganizationChartPage: organizationChartsUIProps.openEditOrganizationChartPage,
-        openDeleteOrganizationChartDialog: organizationChartsUIProps.openDeleteOrganizationChartDialog,
+        openEditOrganizationChartPage:
+          organizationChartsUIProps.openEditOrganizationChartPage,
+        openDeleteOrganizationChartDialog:
+          organizationChartsUIProps.openDeleteOrganizationChartDialog,
         t: t,
       },
       classes: "text-right pr-0",

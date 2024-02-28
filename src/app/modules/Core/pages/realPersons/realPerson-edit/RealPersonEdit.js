@@ -112,7 +112,10 @@ export function RealPersonEdit({
       _title = t("Common.Edit") + " " + realPersonForEdit.FullNameFa;
 
       setPersonObj(realPersonForEdit);
-      setRealObj({...realPersonForEdit.RealPerson, BirthDateObj: EnToFaObjDate(realPersonForEdit.RealPerson.BirthDate)});
+      setRealObj({
+        ...realPersonForEdit.RealPerson,
+        BirthDateObj: EnToFaObjDate(realPersonForEdit.RealPerson.BirthDate),
+      });
       setPhonesObj(realPersonForEdit.Phones);
       setAddressObj(realPersonForEdit.Addresses);
       setCreditObj(realPersonForEdit.Credits);
@@ -130,7 +133,7 @@ export function RealPersonEdit({
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [realPersonForEdit, id]);
-console.log("creditObj > ", creditObj);
+  console.log("creditObj > ", creditObj);
   const SavePerson = (data) => {
     if (!id) {
       dispatch(

@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { CashTransactionTypesTable } from "./cashTransactionTypes-table/CashTransactionTypesTable";
-import { useCashTransactionTypesUIContext, CashTransactionTypesUIConsumer } from "./CashTransactionTypesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useCashTransactionTypesUIContext,
+  CashTransactionTypesUIConsumer,
+} from "./CashTransactionTypesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function CashTransactionTypesCard() {
   const { t } = useTranslation();
@@ -21,24 +23,33 @@ export function CashTransactionTypesCard() {
       ids: cashTransactionTypesUIContext.ids,
       queryParams: cashTransactionTypesUIContext.queryParams,
       setQueryParams: cashTransactionTypesUIContext.setQueryParams,
-      newCashTransactionTypeButtonClick: cashTransactionTypesUIContext.newCashTransactionTypeButtonClick,
-      openDeleteCashTransactionTypesDialog: cashTransactionTypesUIContext.openDeleteCashTransactionTypesDialog,
-      openEditCashTransactionTypePage: cashTransactionTypesUIContext.openEditCashTransactionTypePage,
-      openUpdateCashTransactionTypesStatusDialog: cashTransactionTypesUIContext.openUpdateCashTransactionTypesStatusDialog,
-      openFetchCashTransactionTypesDialog: cashTransactionTypesUIContext.openFetchCashTransactionTypesDialog,
+      newCashTransactionTypeButtonClick:
+        cashTransactionTypesUIContext.newCashTransactionTypeButtonClick,
+      openDeleteCashTransactionTypesDialog:
+        cashTransactionTypesUIContext.openDeleteCashTransactionTypesDialog,
+      openEditCashTransactionTypePage:
+        cashTransactionTypesUIContext.openEditCashTransactionTypePage,
+      openUpdateCashTransactionTypesStatusDialog:
+        cashTransactionTypesUIContext.openUpdateCashTransactionTypesStatusDialog,
+      openFetchCashTransactionTypesDialog:
+        cashTransactionTypesUIContext.openFetchCashTransactionTypesDialog,
     };
   }, [cashTransactionTypesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("CashTransactionType.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("CashTransactionType.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
-            onClick={cashTransactionTypesUIProps.newCashTransactionTypeButtonClick}
+            onClick={
+              cashTransactionTypesUIProps.newCashTransactionTypeButtonClick
+            }
           >
-            {t("CashTransactionType.Entity")} {' '} {t("Common.New")}
+            {t("CashTransactionType.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

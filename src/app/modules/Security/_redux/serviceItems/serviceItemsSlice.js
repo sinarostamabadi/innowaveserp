@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialServiceItemsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const serviceItemsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getServiceItemById  
+    // getServiceItemById
     serviceItemFetched: (state, action) => {
       state.actionsLoading = false;
       state.serviceItemForEdit = action.payload.serviceItemForEdit;
       state.error = null;
     },
-    // findServiceItems  
+    // findServiceItems
     serviceItemsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const serviceItemsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createServiceItem  
+    // createServiceItem
     serviceItemCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateServiceItem  
+    // updateServiceItem
     serviceItemUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const serviceItemsSlice = createSlice({
         return entity;
       });
     },
-    // deleteServiceItem  
+    // deleteServiceItem
     serviceItemDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.ServiceItemId !== action.payload.ServiceItemId  
+        (el) => el.ServiceItemId !== action.payload.ServiceItemId
       );
     },
-    // deleteServiceItems  
+    // deleteServiceItems
     serviceItemsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ServiceItemId)  
+        (el) => !action.payload.ids.includes(el.ServiceItemId)
       );
     },
-    // serviceItemsUpdateState  
+    // serviceItemsUpdateState
     serviceItemsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

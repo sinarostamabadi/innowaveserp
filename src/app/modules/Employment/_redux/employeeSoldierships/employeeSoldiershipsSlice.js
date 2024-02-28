@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmployeeSoldiershipsState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const employeeSoldiershipsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmployeeSoldiershipById  
+    // getEmployeeSoldiershipById
     employeeSoldiershipFetched: (state, action) => {
       state.actionsLoading = false;
-      state.employeeSoldiershipForEdit = action.payload.employeeSoldiershipForEdit;
+      state.employeeSoldiershipForEdit =
+        action.payload.employeeSoldiershipForEdit;
       state.error = null;
     },
-    // findEmployeeSoldierships  
+    // findEmployeeSoldierships
     employeeSoldiershipsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const employeeSoldiershipsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmployeeSoldiership  
+    // createEmployeeSoldiership
     employeeSoldiershipCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmployeeSoldiership  
+    // updateEmployeeSoldiership
     employeeSoldiershipUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.EmployeeSoldiershipId === action.payload.employeeSoldiership.EmployeeSoldiershipId) {
+        if (
+          entity.EmployeeSoldiershipId ===
+          action.payload.employeeSoldiership.EmployeeSoldiershipId
+        ) {
           return action.payload.employeeSoldiership;
         }
         return entity;
       });
     },
-    // deleteEmployeeSoldiership  
+    // deleteEmployeeSoldiership
     employeeSoldiershipDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EmployeeSoldiershipId !== action.payload.EmployeeSoldiershipId  
+        (el) =>
+          el.EmployeeSoldiershipId !== action.payload.EmployeeSoldiershipId
       );
     },
-    // deleteEmployeeSoldierships  
+    // deleteEmployeeSoldierships
     employeeSoldiershipsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EmployeeSoldiershipId)  
+        (el) => !action.payload.ids.includes(el.EmployeeSoldiershipId)
       );
     },
-    // employeeSoldiershipsUpdateState  
+    // employeeSoldiershipsUpdateState
     employeeSoldiershipsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

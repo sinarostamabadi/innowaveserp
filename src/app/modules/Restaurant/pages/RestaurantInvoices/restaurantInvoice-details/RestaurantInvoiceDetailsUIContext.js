@@ -139,7 +139,8 @@ export const RestaurantInvoiceDetailsUIProvider = forwardRef(
 
     const addRestaurantInvoiceDetail = (restaurantInvoiceDetail) => {
       const collected = collectDetail(restaurantInvoiceDetail);
-      restaurantInvoiceDetail.RestaurantInvoiceId = +restaurantInvoiceDetail.RestaurantInvoiceId;
+      restaurantInvoiceDetail.RestaurantInvoiceId =
+        +restaurantInvoiceDetail.RestaurantInvoiceId;
 
       if (!!collected) {
         updateRestaurantInvoiceDetail(collected);
@@ -165,13 +166,15 @@ export const RestaurantInvoiceDetailsUIProvider = forwardRef(
     };
 
     const updateRestaurantInvoiceDetail = (restaurantInvoiceDetail) => {
-      restaurantInvoiceDetail.RestaurantInvoiceDetailTypeId = +restaurantInvoiceDetail.RestaurantInvoiceDetailTypeId;
-      restaurantInvoiceDetail.RestaurantInvoiceId = +restaurantInvoiceDetail.RestaurantInvoiceId;
+      restaurantInvoiceDetail.RestaurantInvoiceDetailTypeId =
+        +restaurantInvoiceDetail.RestaurantInvoiceDetailTypeId;
+      restaurantInvoiceDetail.RestaurantInvoiceId =
+        +restaurantInvoiceDetail.RestaurantInvoiceId;
 
       setRestaurantInvoiceDetails((RestaurantInvoiceDetails) =>
         RestaurantInvoiceDetails.map((item) =>
           item.RestaurantInvoiceDtlId ===
-            restaurantInvoiceDetail.RestaurantInvoiceDtlId
+          restaurantInvoiceDetail.RestaurantInvoiceDtlId
             ? restaurantInvoiceDetail
             : item
         )

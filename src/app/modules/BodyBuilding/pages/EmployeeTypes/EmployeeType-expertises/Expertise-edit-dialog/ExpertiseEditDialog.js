@@ -27,7 +27,9 @@ export function ExpertiseEditDialog() {
   const dispatch = useDispatch();
   const { actionsLoading, setActionsLoading } = useState(false);
 
-  const [editExpertise, setEditExpertise] = useState(expertisesUIProps.initExpertise);
+  const [editExpertise, setEditExpertise] = useState(
+    expertisesUIProps.initExpertise
+  );
 
   useEffect(() => {
     if (!!expertisesUIProps.id)
@@ -43,18 +45,23 @@ export function ExpertiseEditDialog() {
       expertisesUIProps.onHide();
     }
   };
-  
+
   return (
     <Modal
       show={expertisesUIProps.show}
       onHide={expertisesUIProps.onHide}
       aria-labelledby="example-modal-sizes-title-lg"
     >
-      <ExpertiseEditDialogHeader id={expertisesUIProps.id} isLoading={actionsLoading} />
+      <ExpertiseEditDialogHeader
+        id={expertisesUIProps.id}
+        isLoading={actionsLoading}
+      />
       <ExpertiseEditForm
         saveExpertise={saveExpertise}
         actionsLoading={actionsLoading}
-        expertise={expertisesUIProps.selectedItem || expertisesUIProps.initExpertise}
+        expertise={
+          expertisesUIProps.selectedItem || expertisesUIProps.initExpertise
+        }
         onHide={expertisesUIProps.onHide}
       />
     </Modal>

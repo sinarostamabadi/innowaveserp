@@ -25,7 +25,7 @@ export function PacksPage({ history }) {
       history.push("/BodyBuilding/Packs/updateStatus");
     },
   };
-  
+
   return (
     <PacksUIProvider packsUIEvents={packsUIEvents}>
       <PacksLoadingDialog />

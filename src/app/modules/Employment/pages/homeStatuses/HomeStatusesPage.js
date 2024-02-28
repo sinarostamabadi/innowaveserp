@@ -26,7 +26,7 @@ export function HomeStatusesPage({ history }) {
       history.push("/employment/homeStatuses/updateStatus");
     },
   };
-  
+
   return (
     <HomeStatusesUIProvider homeStatusesUIEvents={homeStatusesUIEvents}>
       <HomeStatusesLoadingDialog />

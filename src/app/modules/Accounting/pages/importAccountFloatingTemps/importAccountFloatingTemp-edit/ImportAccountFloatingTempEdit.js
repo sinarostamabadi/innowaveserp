@@ -42,24 +42,29 @@ export function ImportAccountFloatingTempEdit({
   const dispatch = useDispatch();
 
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
-  const { actionsLoading, importAccountFloatingTempForEdit, error } = useSelector(
-    (state) => ({
-      actionsLoading: state.importAccountFloatingTemps.actionsLoading,
-      importAccountFloatingTempForEdit: state.importAccountFloatingTemps.importAccountFloatingTempForEdit,
-      error: state.importAccountFloatingTemps.error,
-    }),
-    shallowEqual
-  );
+  const { actionsLoading, importAccountFloatingTempForEdit, error } =
+    useSelector(
+      (state) => ({
+        actionsLoading: state.importAccountFloatingTemps.actionsLoading,
+        importAccountFloatingTempForEdit:
+          state.importAccountFloatingTemps.importAccountFloatingTempForEdit,
+        error: state.importAccountFloatingTemps.error,
+      }),
+      shallowEqual
+    );
 
   useEffect(() => {
     dispatch(actions.fetchImportAccountFloatingTemp(id));
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("ImportAccountFloatingTemp.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("ImportAccountFloatingTemp.Entity");
 
     if (importAccountFloatingTempForEdit && id) {
-      _title = t("Common.Edit") + " " + importAccountFloatingTempForEdit.TitleFa;
+      _title =
+        t("Common.Edit") + " " + importAccountFloatingTempForEdit.TitleFa;
     }
 
     setTitle(_title);
@@ -125,14 +130,14 @@ export function ImportAccountFloatingTempEdit({
           </button>
           {`  `}
           <button
-              type="submit"
-              className="btn btn-primary ml-2"
-              onClick={saveImportAccountFloatingTempClick}
-            >
-              <i className="fa fa-save"></i> {t("Common.Save")}
-            </button>
-          </CardHeaderToolbar>
-        </CardHeader>
+            type="submit"
+            className="btn btn-primary ml-2"
+            onClick={saveImportAccountFloatingTempClick}
+          >
+            <i className="fa fa-save"></i> {t("Common.Save")}
+          </button>
+        </CardHeaderToolbar>
+      </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>
@@ -150,7 +155,9 @@ export function ImportAccountFloatingTempEdit({
           {tab === "basic" && (
             <ImportAccountFloatingTempEditForm
               actionsLoading={actionsLoading}
-              importAccountFloatingTemp={importAccountFloatingTempForEdit || initModel}
+              importAccountFloatingTemp={
+                importAccountFloatingTempForEdit || initModel
+              }
               btnRef={btnRef}
               saveImportAccountFloatingTemp={saveImportAccountFloatingTemp}
             />

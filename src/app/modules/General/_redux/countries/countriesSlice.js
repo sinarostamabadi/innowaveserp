@@ -32,13 +32,13 @@ export const countriesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCountryById  
+    // getCountryById
     countryFetched: (state, action) => {
       state.actionsLoading = false;
       state.countryForEdit = action.payload.countryForEdit;
       state.error = null;
     },
-    // findCountries  
+    // findCountries
     countriesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -46,13 +46,13 @@ export const countriesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCountry  
+    // createCountry
     countryCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCountry  
+    // updateCountry
     countryUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -63,23 +63,23 @@ export const countriesSlice = createSlice({
         return entity;
       });
     },
-    // deleteCountry  
+    // deleteCountry
     countryDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CountryId !== action.payload.CountryId  
+        (el) => el.CountryId !== action.payload.CountryId
       );
     },
-    // deleteCountries  
+    // deleteCountries
     countriesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CountryId)  
+        (el) => !action.payload.ids.includes(el.CountryId)
       );
     },
-    // countriesUpdateState  
+    // countriesUpdateState
     countriesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

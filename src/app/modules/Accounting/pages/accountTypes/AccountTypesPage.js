@@ -26,7 +26,7 @@ export function AccountTypesPage({ history }) {
       history.push("/accounting/accountTypes/updateStatus");
     },
   };
-  
+
   return (
     <AccountTypesUIProvider accountTypesUIEvents={accountTypesUIEvents}>
       <AccountTypesLoadingDialog />

@@ -18,25 +18,28 @@ export function CoreTransactionsesCard() {
       ids: coreTransactionsesUIContext.ids,
       queryParams: coreTransactionsesUIContext.queryParams,
       setQueryParams: coreTransactionsesUIContext.setQueryParams,
-      newCoreTransactionsButtonClick: coreTransactionsesUIContext.newCoreTransactionsButtonClick,
-      openDeleteCoreTransactionsesDialog:  
+      newCoreTransactionsButtonClick:
+        coreTransactionsesUIContext.newCoreTransactionsButtonClick,
+      openDeleteCoreTransactionsesDialog:
         coreTransactionsesUIContext.openDeleteCoreTransactionsesDialog,
-      openEditCoreTransactionsPage: coreTransactionsesUIContext.openEditCoreTransactionsPage,
-      openUpdateCoreTransactionsesStatusDialog:  
+      openEditCoreTransactionsPage:
+        coreTransactionsesUIContext.openEditCoreTransactionsPage,
+      openUpdateCoreTransactionsesStatusDialog:
         coreTransactionsesUIContext.openUpdateCoreTransactionsesStatusDialog,
-      openFetchCoreTransactionsesDialog: coreTransactionsesUIContext.openFetchCoreTransactionsesDialog,
+      openFetchCoreTransactionsesDialog:
+        coreTransactionsesUIContext.openFetchCoreTransactionsesDialog,
     };
   }, [coreTransactionsesUIContext]);
   return (
     <Card>
       <CardHeader title="EntityTitle">
         <CardHeaderToolbar>
-          <button  
-            type="button"  
-            className="btn btn-primary"  
+          <button
+            type="button"
+            className="btn btn-primary"
             onClick={coreTransactionsesUIProps.newCoreTransactionsButtonClick}
           >
-            EntityTitle  
+            EntityTitle
           </button>
         </CardHeaderToolbar>
       </CardHeader>

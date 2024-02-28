@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { FutsalReservePriceModel } from "../../../../../core/_models/Futsal/FutsalReservePriceModel";
@@ -10,9 +9,13 @@ export function useFutsalReservePricesUIContext() {
   return useContext(FutsalReservePricesUIContext);
 }
 
-export const FutsalReservePricesUIConsumer = FutsalReservePricesUIContext.Consumer;
+export const FutsalReservePricesUIConsumer =
+  FutsalReservePricesUIContext.Consumer;
 
-export function FutsalReservePricesUIProvider({ futsalReservePricesUIEvents, children }) {
+export function FutsalReservePricesUIProvider({
+  futsalReservePricesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(FutsalReservePriceModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function FutsalReservePricesUIProvider({ futsalReservePricesUIEvents, chi
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function FutsalReservePricesUIProvider({ futsalReservePricesUIEvents, chi
     setIds,
     setQueryParams,
     dataModel: FutsalReservePriceModel,
-    newFutsalReservePriceButtonClick: futsalReservePricesUIEvents.newFutsalReservePriceButtonClick,
-    openEditFutsalReservePricePage: futsalReservePricesUIEvents.openEditFutsalReservePricePage,
-    openDeleteFutsalReservePriceDialog: futsalReservePricesUIEvents.openDeleteFutsalReservePriceDialog,
-    openDeleteFutsalReservePricesDialog: futsalReservePricesUIEvents.openDeleteFutsalReservePricesDialog,
-    openFetchFutsalReservePricesDialog: futsalReservePricesUIEvents.openFetchFutsalReservePricesDialog,
-    openUpdateFutsalReservePricesStatusDialog: futsalReservePricesUIEvents.openUpdateFutsalReservePricesStatusDialog,
+    newFutsalReservePriceButtonClick:
+      futsalReservePricesUIEvents.newFutsalReservePriceButtonClick,
+    openEditFutsalReservePricePage:
+      futsalReservePricesUIEvents.openEditFutsalReservePricePage,
+    openDeleteFutsalReservePriceDialog:
+      futsalReservePricesUIEvents.openDeleteFutsalReservePriceDialog,
+    openDeleteFutsalReservePricesDialog:
+      futsalReservePricesUIEvents.openDeleteFutsalReservePricesDialog,
+    openFetchFutsalReservePricesDialog:
+      futsalReservePricesUIEvents.openFetchFutsalReservePricesDialog,
+    openUpdateFutsalReservePricesStatusDialog:
+      futsalReservePricesUIEvents.openUpdateFutsalReservePricesStatusDialog,
   };
   return (
-    <FutsalReservePricesUIContext.Provider value={value}>{children}</FutsalReservePricesUIContext.Provider>
+    <FutsalReservePricesUIContext.Provider value={value}>
+      {children}
+    </FutsalReservePricesUIContext.Provider>
   );
 }

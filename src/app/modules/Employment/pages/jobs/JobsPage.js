@@ -26,7 +26,7 @@ export function JobsPage({ history }) {
       history.push("/employment/jobs/updateStatus");
     },
   };
-  
+
   return (
     <JobsUIProvider jobsUIEvents={jobsUIEvents}>
       <JobsLoadingDialog />

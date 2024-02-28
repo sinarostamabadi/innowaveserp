@@ -30,7 +30,7 @@ export function AddressesPage({ history }) {
       <AddressesLoadingDialog />
       <Route path="/Core/addresses/:id/delete">
         {({ history, match }) => (
-          <AddressDeleteDialog  
+          <AddressDeleteDialog
             show={match != null}
             id={match && match.params.id}
             onHide={() => {

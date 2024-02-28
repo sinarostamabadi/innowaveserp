@@ -33,7 +33,8 @@ export function ContractTypesTable() {
       queryParams: contractTypesUIContext.queryParams,
       setQueryParams: contractTypesUIContext.setQueryParams,
       openEditContractTypePage: contractTypesUIContext.openEditContractTypePage,
-      openDeleteContractTypeDialog: contractTypesUIContext.openDeleteContractTypeDialog,
+      openDeleteContractTypeDialog:
+        contractTypesUIContext.openDeleteContractTypeDialog,
     };
   }, [contractTypesUIContext]);
 
@@ -73,7 +74,8 @@ export function ContractTypesTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditContractTypePage: contractTypesUIProps.openEditContractTypePage,
-        openDeleteContractTypeDialog: contractTypesUIProps.openDeleteContractTypeDialog,
+        openDeleteContractTypeDialog:
+          contractTypesUIProps.openDeleteContractTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

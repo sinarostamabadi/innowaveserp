@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { InfoAreaModel } from "../../../../../core/_models/Employment/InfoAreaModel";
@@ -30,7 +29,7 @@ export function InfoAreasUIProvider({ infoAreasUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function InfoAreasUIProvider({ infoAreasUIEvents, children }) {
     openDeleteInfoAreaDialog: infoAreasUIEvents.openDeleteInfoAreaDialog,
     openDeleteInfoAreasDialog: infoAreasUIEvents.openDeleteInfoAreasDialog,
     openFetchInfoAreasDialog: infoAreasUIEvents.openFetchInfoAreasDialog,
-    openUpdateInfoAreasStatusDialog: infoAreasUIEvents.openUpdateInfoAreasStatusDialog,
+    openUpdateInfoAreasStatusDialog:
+      infoAreasUIEvents.openUpdateInfoAreasStatusDialog,
   };
   return (
-    <InfoAreasUIContext.Provider value={value}>{children}</InfoAreasUIContext.Provider>
+    <InfoAreasUIContext.Provider value={value}>
+      {children}
+    </InfoAreasUIContext.Provider>
   );
 }

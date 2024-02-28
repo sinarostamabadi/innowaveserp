@@ -17,7 +17,9 @@ export function RestaurantInvoiceDiscountsPage({ history }) {
       history.push(`/restaurant/restaurantInvoiceDiscounts/${id}/delete`);
     },
     openDeleteRestaurantInvoiceDiscountsDialog: () => {
-      history.push(`/restaurant/restaurantInvoiceDiscounts/deleteRestaurantInvoiceDiscounts`);
+      history.push(
+        `/restaurant/restaurantInvoiceDiscounts/deleteRestaurantInvoiceDiscounts`
+      );
     },
     openFetchRestaurantInvoiceDiscountsDialog: () => {
       history.push(`/restaurant/restaurantInvoiceDiscounts/fetch`);
@@ -26,9 +28,11 @@ export function RestaurantInvoiceDiscountsPage({ history }) {
       history.push("/restaurant/restaurantInvoiceDiscounts/updateStatus");
     },
   };
-  
+
   return (
-    <RestaurantInvoiceDiscountsUIProvider restaurantInvoiceDiscountsUIEvents={restaurantInvoiceDiscountsUIEvents}>
+    <RestaurantInvoiceDiscountsUIProvider
+      restaurantInvoiceDiscountsUIEvents={restaurantInvoiceDiscountsUIEvents}
+    >
       <RestaurantInvoiceDiscountsLoadingDialog />
       <Route path="/restaurant/restaurantInvoiceDiscounts/:id/delete">
         {({ history, match }) => (

@@ -4,14 +4,17 @@ const { actions } = accountFloatingsSlice;
 
 export const fetchAccountFloatings = (queryParams) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.list }));
-  return requestFromServer  
-    .findAccountFloatings(queryParams)  
+  return requestFromServer
+    .findAccountFloatings(queryParams)
     .then((response) => {
       const { Items, TotalCount } = response.data;
       dispatch(
-        actions.accountFloatingsFetched({ totalCount: TotalCount, entities: Items })  
+        actions.accountFloatingsFetched({
+          totalCount: TotalCount,
+          entities: Items,
+        })
       );
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't find accountFloating";
       dispatch(actions.catchError({ error, callType: callTypes.list }));
@@ -19,15 +22,21 @@ export const fetchAccountFloatings = (queryParams) => (dispatch) => {
 };
 export const fetchAccountFloating = (id) => (dispatch) => {
   if (!id) {
-    return dispatch(actions.accountFloatingFetched({ accountFloatingForEdit: undefined }));
+    return dispatch(
+      actions.accountFloatingFetched({ accountFloatingForEdit: undefined })
+    );
   }
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .getAccountFloatingById(id)  
+  return requestFromServer
+    .getAccountFloatingById(id)
     .then((response) => {
       const accountFloating = response.data;
-      dispatch(actions.accountFloatingFetched({ accountFloatingForEdit: accountFloating }));
-    })  
+      dispatch(
+        actions.accountFloatingFetched({
+          accountFloatingForEdit: accountFloating,
+        })
+      );
+    })
     .catch((error) => {
       error.clientMessage = "Can't find accountFloating";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -35,11 +44,11 @@ export const fetchAccountFloating = (id) => (dispatch) => {
 };
 export const deleteAccountFloating = (id) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .deleteAccountFloating(id)  
+  return requestFromServer
+    .deleteAccountFloating(id)
     .then((response) => {
       dispatch(actions.accountFloatingDeleted({ id }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't delete accountFloating";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -48,12 +57,12 @@ export const deleteAccountFloating = (id) => (dispatch) => {
 };
 export const createAccountFloating = (accountFloating) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .createAccountFloating(accountFloating)  
+  return requestFromServer
+    .createAccountFloating(accountFloating)
     .then((response) => {
       const accountFloating = response.data;
       dispatch(actions.accountFloatingCreated(accountFloating));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't create accountFloating";
       dispatch(actions.catchError({ error, callType: callTypes.action }));

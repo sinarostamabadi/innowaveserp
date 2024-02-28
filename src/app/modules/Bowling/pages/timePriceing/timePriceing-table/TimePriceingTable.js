@@ -33,7 +33,8 @@ export function TimePriceingTable() {
       queryParams: timePriceingUIContext.queryParams,
       setQueryParams: timePriceingUIContext.setQueryParams,
       openEditTimePriceingPage: timePriceingUIContext.openEditTimePriceingPage,
-      openDeleteTimePriceingDialog: timePriceingUIContext.openDeleteTimePriceingDialog,
+      openDeleteTimePriceingDialog:
+        timePriceingUIContext.openDeleteTimePriceingDialog,
     };
   }, [timePriceingUIContext]);
 
@@ -73,7 +74,8 @@ export function TimePriceingTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditTimePriceingPage: timePriceingUIProps.openEditTimePriceingPage,
-        openDeleteTimePriceingDialog: timePriceingUIProps.openDeleteTimePriceingDialog,
+        openDeleteTimePriceingDialog:
+          timePriceingUIProps.openDeleteTimePriceingDialog,
         t: t,
       },
       classes: "text-right pr-0",

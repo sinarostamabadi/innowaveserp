@@ -41,24 +41,29 @@ export function OrganizationChartEmployeeEdit({
   const dispatch = useDispatch();
 
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
-  const { actionsLoading, organizationChartEmployeeForEdit, error } = useSelector(
-    (state) => ({
-      actionsLoading: state.organizationChartEmployees.actionsLoading,
-      organizationChartEmployeeForEdit: state.organizationChartEmployees.organizationChartEmployeeForEdit,
-      error: state.organizationChartEmployees.error,
-    }),
-    shallowEqual
-  );
+  const { actionsLoading, organizationChartEmployeeForEdit, error } =
+    useSelector(
+      (state) => ({
+        actionsLoading: state.organizationChartEmployees.actionsLoading,
+        organizationChartEmployeeForEdit:
+          state.organizationChartEmployees.organizationChartEmployeeForEdit,
+        error: state.organizationChartEmployees.error,
+      }),
+      shallowEqual
+    );
 
   useEffect(() => {
     dispatch(actions.fetchOrganizationChartEmployee(id));
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("OrganizationChartEmployee.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("OrganizationChartEmployee.Entity");
 
     if (organizationChartEmployeeForEdit && id) {
-      _title = t("Common.Edit") + " " + organizationChartEmployeeForEdit.TitleFa;
+      _title =
+        t("Common.Edit") + " " + organizationChartEmployeeForEdit.TitleFa;
     }
 
     setTitle(_title);
@@ -73,11 +78,11 @@ export function OrganizationChartEmployeeEdit({
         .then((arg) => {
           backToOrganizationChartEmployeesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateOrganizationChartEmployee(id, values))
         .then(() => backToOrganizationChartEmployeesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 
@@ -149,7 +154,9 @@ export function OrganizationChartEmployeeEdit({
           {tab === "basic" && (
             <OrganizationChartEmployeeEditForm
               actionsLoading={actionsLoading}
-              organizationChartEmployee={organizationChartEmployeeForEdit || initModel}
+              organizationChartEmployee={
+                organizationChartEmployeeForEdit || initModel
+              }
               btnRef={btnRef}
               saveOrganizationChartEmployee={saveOrganizationChartEmployee}
             />

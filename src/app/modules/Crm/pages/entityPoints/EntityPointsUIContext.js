@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EntityPointModel } from "../../../../../core/_models/Crm";
@@ -30,7 +29,7 @@ export function EntityPointsUIProvider({ entityPointsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -40,12 +39,18 @@ export function EntityPointsUIProvider({ entityPointsUIEvents, children }) {
     dataModel: EntityPointModel,
     newEntityPointButtonClick: entityPointsUIEvents.newEntityPointButtonClick,
     openEditEntityPointPage: entityPointsUIEvents.openEditEntityPointPage,
-    openDeleteEntityPointDialog: entityPointsUIEvents.openDeleteEntityPointDialog,
-    openDeleteEntityPointsDialog: entityPointsUIEvents.openDeleteEntityPointsDialog,
-    openFetchEntityPointsDialog: entityPointsUIEvents.openFetchEntityPointsDialog,
-    openUpdateEntityPointsStatusDialog: entityPointsUIEvents.openUpdateEntityPointsStatusDialog,
+    openDeleteEntityPointDialog:
+      entityPointsUIEvents.openDeleteEntityPointDialog,
+    openDeleteEntityPointsDialog:
+      entityPointsUIEvents.openDeleteEntityPointsDialog,
+    openFetchEntityPointsDialog:
+      entityPointsUIEvents.openFetchEntityPointsDialog,
+    openUpdateEntityPointsStatusDialog:
+      entityPointsUIEvents.openUpdateEntityPointsStatusDialog,
   };
   return (
-    <EntityPointsUIContext.Provider value={value}>{children}</EntityPointsUIContext.Provider>
+    <EntityPointsUIContext.Provider value={value}>
+      {children}
+    </EntityPointsUIContext.Provider>
   );
 }

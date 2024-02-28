@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { MenuItemPricesTable } from "./menuItemPrices-table/MenuItemPricesTable";
-import { useMenuItemPricesUIContext, MenuItemPricesUIConsumer } from "./MenuItemPricesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useMenuItemPricesUIContext,
+  MenuItemPricesUIConsumer,
+} from "./MenuItemPricesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function MenuItemPricesCard() {
   const { t } = useTranslation();
@@ -21,24 +23,29 @@ export function MenuItemPricesCard() {
       ids: menuItemPricesUIContext.ids,
       queryParams: menuItemPricesUIContext.queryParams,
       setQueryParams: menuItemPricesUIContext.setQueryParams,
-      newMenuItemPriceButtonClick: menuItemPricesUIContext.newMenuItemPriceButtonClick,
-      openDeleteMenuItemPricesDialog: menuItemPricesUIContext.openDeleteMenuItemPricesDialog,
-      openEditMenuItemPricePage: menuItemPricesUIContext.openEditMenuItemPricePage,
-      openUpdateMenuItemPricesStatusDialog: menuItemPricesUIContext.openUpdateMenuItemPricesStatusDialog,
-      openFetchMenuItemPricesDialog: menuItemPricesUIContext.openFetchMenuItemPricesDialog,
+      newMenuItemPriceButtonClick:
+        menuItemPricesUIContext.newMenuItemPriceButtonClick,
+      openDeleteMenuItemPricesDialog:
+        menuItemPricesUIContext.openDeleteMenuItemPricesDialog,
+      openEditMenuItemPricePage:
+        menuItemPricesUIContext.openEditMenuItemPricePage,
+      openUpdateMenuItemPricesStatusDialog:
+        menuItemPricesUIContext.openUpdateMenuItemPricesStatusDialog,
+      openFetchMenuItemPricesDialog:
+        menuItemPricesUIContext.openFetchMenuItemPricesDialog,
     };
   }, [menuItemPricesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("MenuItemPrice.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("MenuItemPrice.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={menuItemPricesUIProps.newMenuItemPriceButtonClick}
           >
-            {t("MenuItemPrice.Entity")} {' '} {t("Common.New")}
+            {t("MenuItemPrice.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

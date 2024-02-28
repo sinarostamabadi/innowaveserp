@@ -13,9 +13,11 @@ export function SerialEditDialogHeader({ id }) {
   const { actionsLoading, setActionsLoading } = useState();
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("BuyReturnDetail.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("BuyReturnDetail.Entity");
     if (id) {
-      _title = t("Common.Edit") + " " + t("BuyReturnDetail.Entity") ;
+      _title = t("Common.Edit") + " " + t("BuyReturnDetail.Entity");
     }
 
     setTitle(_title);

@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { EntityPointsTable } from "./entityPoints-table/EntityPointsTable";
-import { useEntityPointsUIContext, EntityPointsUIConsumer } from "./EntityPointsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useEntityPointsUIContext,
+  EntityPointsUIConsumer,
+} from "./EntityPointsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function EntityPointsCard() {
   const { t } = useTranslation();
@@ -21,24 +23,28 @@ export function EntityPointsCard() {
       ids: entityPointsUIContext.ids,
       queryParams: entityPointsUIContext.queryParams,
       setQueryParams: entityPointsUIContext.setQueryParams,
-      newEntityPointButtonClick: entityPointsUIContext.newEntityPointButtonClick,
-      openDeleteEntityPointsDialog: entityPointsUIContext.openDeleteEntityPointsDialog,
+      newEntityPointButtonClick:
+        entityPointsUIContext.newEntityPointButtonClick,
+      openDeleteEntityPointsDialog:
+        entityPointsUIContext.openDeleteEntityPointsDialog,
       openEditEntityPointPage: entityPointsUIContext.openEditEntityPointPage,
-      openUpdateEntityPointsStatusDialog: entityPointsUIContext.openUpdateEntityPointsStatusDialog,
-      openFetchEntityPointsDialog: entityPointsUIContext.openFetchEntityPointsDialog,
+      openUpdateEntityPointsStatusDialog:
+        entityPointsUIContext.openUpdateEntityPointsStatusDialog,
+      openFetchEntityPointsDialog:
+        entityPointsUIContext.openFetchEntityPointsDialog,
     };
   }, [entityPointsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("EntityPoint.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("EntityPoint.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={entityPointsUIProps.newEntityPointButtonClick}
           >
-            {t("EntityPoint.Entity")} {' '} {t("Common.New")}
+            {t("EntityPoint.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

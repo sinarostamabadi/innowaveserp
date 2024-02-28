@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialRestaurantTablesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const restaurantTablesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getRestaurantTableById  
+    // getRestaurantTableById
     restaurantTableFetched: (state, action) => {
       state.actionsLoading = false;
       state.restaurantTableForEdit = action.payload.restaurantTableForEdit;
       state.error = null;
     },
-    // findRestaurantTables  
+    // findRestaurantTables
     restaurantTablesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const restaurantTablesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createRestaurantTable  
+    // createRestaurantTable
     restaurantTableCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateRestaurantTable  
+    // updateRestaurantTable
     restaurantTableUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.RestaurantTableId === action.payload.restaurantTable.RestaurantTableId) {
+        if (
+          entity.RestaurantTableId ===
+          action.payload.restaurantTable.RestaurantTableId
+        ) {
           return action.payload.restaurantTable;
         }
         return entity;
       });
     },
-    // deleteRestaurantTable  
+    // deleteRestaurantTable
     restaurantTableDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.RestaurantTableId !== action.payload.RestaurantTableId  
+        (el) => el.RestaurantTableId !== action.payload.RestaurantTableId
       );
     },
-    // deleteRestaurantTables  
+    // deleteRestaurantTables
     restaurantTablesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.RestaurantTableId)  
+        (el) => !action.payload.ids.includes(el.RestaurantTableId)
       );
     },
-    // restaurantTablesUpdateState  
+    // restaurantTablesUpdateState
     restaurantTablesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

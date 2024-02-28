@@ -7,10 +7,8 @@ export function WalletsGrouping() {
   const specsUIProps = useMemo(() => {
     return {
       ids: specsUIContext.ids,
-      openDeleteWalletsDialog:
-        specsUIContext.openDeleteWalletsDialog,
-      openFetchWalletsDialog:
-        specsUIContext.openFetchWalletsDialog,
+      openDeleteWalletsDialog: specsUIContext.openDeleteWalletsDialog,
+      openFetchWalletsDialog: specsUIContext.openFetchWalletsDialog,
     };
   }, [specsUIContext]);
 

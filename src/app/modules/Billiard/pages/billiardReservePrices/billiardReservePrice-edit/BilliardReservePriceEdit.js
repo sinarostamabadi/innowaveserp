@@ -45,7 +45,8 @@ export function BilliardReservePriceEdit({
   const { actionsLoading, billiardReservePriceForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.billiardReservePrices.actionsLoading,
-      billiardReservePriceForEdit: state.billiardReservePrices.billiardReservePriceForEdit,
+      billiardReservePriceForEdit:
+        state.billiardReservePrices.billiardReservePriceForEdit,
       error: state.billiardReservePrices.error,
     }),
     shallowEqual
@@ -56,7 +57,9 @@ export function BilliardReservePriceEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("BilliardReservePrice.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("BilliardReservePrice.Entity");
 
     if (billiardReservePriceForEdit && id) {
       _title = t("Common.Edit") + " " + billiardReservePriceForEdit.TitleFa;
@@ -125,14 +128,14 @@ export function BilliardReservePriceEdit({
           </button>
           {`  `}
           <button
-              type="submit"
-              className="btn btn-primary ml-2"
-              onClick={saveBilliardReservePriceClick}
-            >
-              <i className="fa fa-save"></i> {t("Common.Save")}
-            </button>
-          </CardHeaderToolbar>
-        </CardHeader>
+            type="submit"
+            className="btn btn-primary ml-2"
+            onClick={saveBilliardReservePriceClick}
+          >
+            <i className="fa fa-save"></i> {t("Common.Save")}
+          </button>
+        </CardHeaderToolbar>
+      </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>

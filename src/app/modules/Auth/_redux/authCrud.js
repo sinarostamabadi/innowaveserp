@@ -12,7 +12,10 @@ export const ME_URL = "user/current";
 // }
 
 export function login(mobileNo, verifyCode) {
-  return axios.post(LOGIN_URL, { MobileNumber: mobileNo, ActiveCode: verifyCode });
+  return axios.post(LOGIN_URL, {
+    MobileNumber: mobileNo,
+    ActiveCode: verifyCode,
+  });
 }
 
 export function loginWithPassword(mobileNo, verifyCode) {

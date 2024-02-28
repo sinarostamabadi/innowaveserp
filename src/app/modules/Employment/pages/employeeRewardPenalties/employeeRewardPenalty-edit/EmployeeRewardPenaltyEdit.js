@@ -44,7 +44,8 @@ export function EmployeeRewardPenaltyEdit({
   const { actionsLoading, employeeRewardPenaltyForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.employeeRewardPenalties.actionsLoading,
-      employeeRewardPenaltyForEdit: state.employeeRewardPenalties.employeeRewardPenaltyForEdit,
+      employeeRewardPenaltyForEdit:
+        state.employeeRewardPenalties.employeeRewardPenaltyForEdit,
       error: state.employeeRewardPenalties.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function EmployeeRewardPenaltyEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("EmployeeRewardPenalty.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("EmployeeRewardPenalty.Entity");
 
     if (employeeRewardPenaltyForEdit && id) {
       _title = t("Common.Edit") + " " + employeeRewardPenaltyForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function EmployeeRewardPenaltyEdit({
         .then((arg) => {
           backToEmployeeRewardPenaltiesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateEmployeeRewardPenalty(id, values))
         .then(() => backToEmployeeRewardPenaltiesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

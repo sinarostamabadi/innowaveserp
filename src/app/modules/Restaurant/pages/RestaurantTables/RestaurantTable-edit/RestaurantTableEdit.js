@@ -56,7 +56,9 @@ export function RestaurantTableEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("RestaurantTable.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("RestaurantTable.Entity");
 
     if (restaurantTableForEdit && id) {
       _title = t("Common.Edit") + " " + restaurantTableForEdit.TitleFa;

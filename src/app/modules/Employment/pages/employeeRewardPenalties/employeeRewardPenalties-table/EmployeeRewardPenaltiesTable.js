@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function EmployeeRewardPenaltiesTable() {
   const { t } = useTranslation();
 
-  const employeeRewardPenaltiesUIContext = useEmployeeRewardPenaltiesUIContext();
+  const employeeRewardPenaltiesUIContext =
+    useEmployeeRewardPenaltiesUIContext();
 
   const employeeRewardPenaltiesUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function EmployeeRewardPenaltiesTable() {
       setIds: employeeRewardPenaltiesUIContext.setIds,
       queryParams: employeeRewardPenaltiesUIContext.queryParams,
       setQueryParams: employeeRewardPenaltiesUIContext.setQueryParams,
-      openEditEmployeeRewardPenaltyPage: employeeRewardPenaltiesUIContext.openEditEmployeeRewardPenaltyPage,
-      openDeleteEmployeeRewardPenaltyDialog: employeeRewardPenaltiesUIContext.openDeleteEmployeeRewardPenaltyDialog,
+      openEditEmployeeRewardPenaltyPage:
+        employeeRewardPenaltiesUIContext.openEditEmployeeRewardPenaltyPage,
+      openDeleteEmployeeRewardPenaltyDialog:
+        employeeRewardPenaltiesUIContext.openDeleteEmployeeRewardPenaltyDialog,
     };
   }, [employeeRewardPenaltiesUIContext]);
 
@@ -50,7 +53,11 @@ export function EmployeeRewardPenaltiesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     employeeRewardPenaltiesUIProps.setIds([]);
-    dispatch(actions.fetchEmployeeRewardPenalties(employeeRewardPenaltiesUIProps.queryParams));
+    dispatch(
+      actions.fetchEmployeeRewardPenalties(
+        employeeRewardPenaltiesUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employeeRewardPenaltiesUIProps.queryParams, dispatch]);
 
@@ -72,8 +79,10 @@ export function EmployeeRewardPenaltiesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmployeeRewardPenaltyPage: employeeRewardPenaltiesUIProps.openEditEmployeeRewardPenaltyPage,
-        openDeleteEmployeeRewardPenaltyDialog: employeeRewardPenaltiesUIProps.openDeleteEmployeeRewardPenaltyDialog,
+        openEditEmployeeRewardPenaltyPage:
+          employeeRewardPenaltiesUIProps.openEditEmployeeRewardPenaltyPage,
+        openDeleteEmployeeRewardPenaltyDialog:
+          employeeRewardPenaltiesUIProps.openDeleteEmployeeRewardPenaltyDialog,
         t: t,
       },
       classes: "text-right pr-0",

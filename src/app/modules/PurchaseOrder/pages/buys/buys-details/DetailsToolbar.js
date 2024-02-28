@@ -30,7 +30,7 @@ export function DetailsToolbar() {
                 type="button"
                 className="btn btn-success"
                 onClick={() => detailsUIProps.openNewDetailDialog()}
-                >
+              >
                 {t("BuyDetail.Entity")} {t("Common.New")}
               </button>
             )}

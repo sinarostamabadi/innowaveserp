@@ -62,7 +62,7 @@ export function Score({
     "Wallpaper.jpg",
     "Wings.jpg",
   ];
-  
+
   const intros = [
     "01.jpg",
     "02.jpg",
@@ -83,20 +83,21 @@ export function Score({
   }
 
   function getWallpaper(type) {
-    return !!type? 
-    "/media/bg/" + backgrounds[getRandomInt(0, backgrounds.length-1)]: 
-    "/media/modules/bowling/sliders/" + intros[getRandomInt(0, intros.length-1)];
+    return !!type
+      ? "/media/bg/" + backgrounds[getRandomInt(0, backgrounds.length - 1)]
+      : "/media/modules/bowling/sliders/" +
+          intros[getRandomInt(0, intros.length - 1)];
   }
-  
+
   useEffect(() => {
     setWallpaper(getWallpaper(1));
     setBanner(getWallpaper(0));
-    
+
     const interval2 = setInterval(() => {
       setWallpaper(getWallpaper(1));
       setBanner(getWallpaper(0));
     }, 30000);
-    
+
     return () => {
       clearInterval(interval2);
     };
@@ -143,9 +144,10 @@ export function Score({
               break;
             }
           }
-          
 
-          const maxScore = x.data.Items[0].ReservePersonScores.filter((x) => x.IsMaxScore);
+          const maxScore = x.data.Items[0].ReservePersonScores.filter(
+            (x) => x.IsMaxScore
+          );
 
           if (!!maxScore && maxScore.length > 0) setWiner(maxScore[0].PersonId);
           else setWiner(null);
@@ -156,7 +158,7 @@ export function Score({
         }
       });
     }, 3000);
-    
+
     return () => {
       clearInterval(interval);
     };
@@ -169,7 +171,7 @@ export function Score({
       <Card
         style={{
           height: "100%",
-          backgroundImage: `url(${!!reserve? wallpaper: banner})`,
+          backgroundImage: `url(${!!reserve ? wallpaper : banner})`,
           backgroundSize: "cover",
         }}
       >
@@ -180,7 +182,11 @@ export function Score({
           <Row>
             <Col xs="3">
               <Card.Title className="m-0">
-                {!!reserve && t("BowlingReserve.CountingPoints") + " «" + reserve.Line.Title + "»"}
+                {!!reserve &&
+                  t("BowlingReserve.CountingPoints") +
+                    " «" +
+                    reserve.Line.Title +
+                    "»"}
                 <br />
                 <div style={{ fontSize: "1.1rem", marginTop: "1rem" }}>
                   {!!reserve && (

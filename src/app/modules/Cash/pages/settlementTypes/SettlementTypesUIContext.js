@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { SettlementTypeModel } from "../../../../../core/_models/Cash/SettlementTypeModel";
@@ -12,7 +11,10 @@ export function useSettlementTypesUIContext() {
 
 export const SettlementTypesUIConsumer = SettlementTypesUIContext.Consumer;
 
-export function SettlementTypesUIProvider({ settlementTypesUIEvents, children }) {
+export function SettlementTypesUIProvider({
+  settlementTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(SettlementTypeModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function SettlementTypesUIProvider({ settlementTypesUIEvents, children })
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function SettlementTypesUIProvider({ settlementTypesUIEvents, children })
     setIds,
     setQueryParams,
     dataModel: SettlementTypeModel,
-    newSettlementTypeButtonClick: settlementTypesUIEvents.newSettlementTypeButtonClick,
-    openEditSettlementTypePage: settlementTypesUIEvents.openEditSettlementTypePage,
-    openDeleteSettlementTypeDialog: settlementTypesUIEvents.openDeleteSettlementTypeDialog,
-    openDeleteSettlementTypesDialog: settlementTypesUIEvents.openDeleteSettlementTypesDialog,
-    openFetchSettlementTypesDialog: settlementTypesUIEvents.openFetchSettlementTypesDialog,
-    openUpdateSettlementTypesStatusDialog: settlementTypesUIEvents.openUpdateSettlementTypesStatusDialog,
+    newSettlementTypeButtonClick:
+      settlementTypesUIEvents.newSettlementTypeButtonClick,
+    openEditSettlementTypePage:
+      settlementTypesUIEvents.openEditSettlementTypePage,
+    openDeleteSettlementTypeDialog:
+      settlementTypesUIEvents.openDeleteSettlementTypeDialog,
+    openDeleteSettlementTypesDialog:
+      settlementTypesUIEvents.openDeleteSettlementTypesDialog,
+    openFetchSettlementTypesDialog:
+      settlementTypesUIEvents.openFetchSettlementTypesDialog,
+    openUpdateSettlementTypesStatusDialog:
+      settlementTypesUIEvents.openUpdateSettlementTypesStatusDialog,
   };
   return (
-    <SettlementTypesUIContext.Provider value={value}>{children}</SettlementTypesUIContext.Provider>
+    <SettlementTypesUIContext.Provider value={value}>
+      {children}
+    </SettlementTypesUIContext.Provider>
   );
 }

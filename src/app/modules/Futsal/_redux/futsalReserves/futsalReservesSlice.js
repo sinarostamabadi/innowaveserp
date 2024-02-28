@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialFutsalReservesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const futsalReservesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getFutsalReserveById  
+    // getFutsalReserveById
     futsalReserveFetched: (state, action) => {
       state.actionsLoading = false;
       state.futsalReserveForEdit = action.payload.futsalReserveForEdit;
       state.error = null;
     },
-    // findFutsalReserves  
+    // findFutsalReserves
     futsalReservesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const futsalReservesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createFutsalReserve  
+    // createFutsalReserve
     futsalReserveCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateFutsalReserve  
+    // updateFutsalReserve
     futsalReserveUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.FutsalReserveId === action.payload.futsalReserve.FutsalReserveId) {
+        if (
+          entity.FutsalReserveId ===
+          action.payload.futsalReserve.FutsalReserveId
+        ) {
           return action.payload.futsalReserve;
         }
         return entity;
       });
     },
-    // deleteFutsalReserve  
+    // deleteFutsalReserve
     futsalReserveDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.FutsalReserveId !== action.payload.FutsalReserveId  
+        (el) => el.FutsalReserveId !== action.payload.FutsalReserveId
       );
     },
-    // deleteFutsalReserves  
+    // deleteFutsalReserves
     futsalReservesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.FutsalReserveId)  
+        (el) => !action.payload.ids.includes(el.FutsalReserveId)
       );
     },
-    // futsalReservesUpdateState  
+    // futsalReservesUpdateState
     futsalReservesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

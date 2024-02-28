@@ -26,9 +26,11 @@ export function PoolTimePriceingPage({ history }) {
       history.push("/pool/poolTimePriceing/updateStatus");
     },
   };
-  
+
   return (
-    <PoolTimePriceingUIProvider poolTimePriceingUIEvents={poolTimePriceingUIEvents}>
+    <PoolTimePriceingUIProvider
+      poolTimePriceingUIEvents={poolTimePriceingUIEvents}
+    >
       <PoolTimePriceingLoadingDialog />
       <Route path="/pool/poolTimePriceing/:id/delete">
         {({ history, match }) => (

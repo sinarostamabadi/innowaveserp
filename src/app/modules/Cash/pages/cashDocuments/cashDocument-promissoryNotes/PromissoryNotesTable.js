@@ -4,7 +4,10 @@ import { ActionsColumnFormatter } from "./column-formatters/ActionsColumnFormatt
 import { NoRecordsFoundMessage, PleaseWaitMessage } from "src/core/_helpers";
 import { usePromissoryNotesUIContext } from "./PromissoryNotesUIContext";
 import { useTranslation } from "react-i18next";
-import { MoneyColumnFormatter, DateFaColumnFormatter } from "src/core/_formatters";
+import {
+  MoneyColumnFormatter,
+  DateFaColumnFormatter,
+} from "src/core/_formatters";
 
 export function PromissoryNotesTable() {
   const { t } = useTranslation();
@@ -14,8 +17,10 @@ export function PromissoryNotesTable() {
   const promissoryNotesUIProps = useMemo(() => {
     return {
       activePromissoryNotes: promissoryNotesUIContext.activePromissoryNotes,
-      openEditPromissoryNoteDialog: promissoryNotesUIContext.openEditPromissoryNoteDialog,
-      openDeletePromissoryNoteDialog: promissoryNotesUIContext.openDeletePromissoryNoteDialog
+      openEditPromissoryNoteDialog:
+        promissoryNotesUIContext.openEditPromissoryNoteDialog,
+      openDeletePromissoryNoteDialog:
+        promissoryNotesUIContext.openDeletePromissoryNoteDialog,
     };
   }, [promissoryNotesUIContext]);
 
@@ -29,19 +34,19 @@ export function PromissoryNotesTable() {
       dataField: "Price",
       text: t("CashDocument.Price"),
       sort: false,
-      formatter: MoneyColumnFormatter
+      formatter: MoneyColumnFormatter,
     },
     {
       dataField: "MaxPrice",
       text: t("CashDocument.MaxPrice"),
       sort: false,
-      formatter: MoneyColumnFormatter
+      formatter: MoneyColumnFormatter,
     },
     {
       dataField: "PromissoryNumber",
       text: t("CashDocument.PromissoryNumber"),
       sort: false,
-      formatter: MoneyColumnFormatter
+      formatter: MoneyColumnFormatter,
     },
     {
       dataField: "PromissoryDate",
@@ -59,8 +64,10 @@ export function PromissoryNotesTable() {
       text: t("Common.Action"),
       formatter: ActionsColumnFormatter,
       formatExtraData: {
-        openEditPromissoryNoteDialog: promissoryNotesUIProps.openEditPromissoryNoteDialog,
-        openDeletePromissoryNoteDialog: promissoryNotesUIProps.openDeletePromissoryNoteDialog,
+        openEditPromissoryNoteDialog:
+          promissoryNotesUIProps.openEditPromissoryNoteDialog,
+        openDeletePromissoryNoteDialog:
+          promissoryNotesUIProps.openDeletePromissoryNoteDialog,
         t: t,
       },
       classes: "text-right pr-0",
@@ -86,8 +93,12 @@ export function PromissoryNotesTable() {
       }
       columns={columns}
     >
-      <PleaseWaitMessage entities={promissoryNotesUIProps.activePromissoryNotes} />
-      <NoRecordsFoundMessage entities={promissoryNotesUIProps.activePromissoryNotes} />
+      <PleaseWaitMessage
+        entities={promissoryNotesUIProps.activePromissoryNotes}
+      />
+      <NoRecordsFoundMessage
+        entities={promissoryNotesUIProps.activePromissoryNotes}
+      />
     </BootstrapTable>
   );
 }

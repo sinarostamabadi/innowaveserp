@@ -3,11 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Modal } from "react-bootstrap";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
-import {
-  Formik,
-  Form,
-  Field
-} from "formik";
+import { Formik, Form, Field } from "formik";
 import {
   Input,
   DatePickerField,
@@ -16,7 +12,7 @@ import {
 } from "../../../../../../core/_partials/controls";
 import * as Yup from "yup";
 
-export function QuickCreateDialog({fnCallBack}) {
+export function QuickCreateDialog({ fnCallBack }) {
   const { t } = useTranslation();
 
   const initModel = {
@@ -38,7 +34,7 @@ export function QuickCreateDialog({fnCallBack}) {
     LastName: Yup.string()
       .min(2, t("err.Min", { 0: 3 }))
       .max(100, t("err.Max", { 0: 100 }))
-      .required(t("err.IsRequired", { 0: t("Company.LastName") })),      
+      .required(t("err.IsRequired", { 0: t("Company.LastName") })),
   });
   const [show, setShow] = useState(true);
   const [actionsLoading, setActionsLoading] = useState(false);
@@ -46,10 +42,8 @@ export function QuickCreateDialog({fnCallBack}) {
   setShow(true);
 
   // Create Simple Company
-  function saveCompany(values){
-    axios
-    .post("Person/post", values)
-    .then(({ data }) => {
+  function saveCompany(values) {
+    axios.post("Person/post", values).then(({ data }) => {
       fnCallBack(data);
     });
   }
@@ -139,8 +133,8 @@ export function QuickCreateDialog({fnCallBack}) {
               </button>
             </Modal.Footer>
           </>
-          )}
-          </Formik>
+        )}
+      </Formik>
     </Modal>
   );
 }

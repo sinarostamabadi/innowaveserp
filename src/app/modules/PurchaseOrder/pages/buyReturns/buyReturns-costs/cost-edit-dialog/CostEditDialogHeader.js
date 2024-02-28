@@ -15,7 +15,7 @@ export function CostEditDialogHeader({ id }) {
   useEffect(() => {
     let _title = id ? "" : t("Common.Create") + " " + t("BuyReturnCost.Entity");
     if (id) {
-      _title = t("Common.Edit") + " " + t("BuyReturnCost.Entity") ;
+      _title = t("Common.Edit") + " " + t("BuyReturnCost.Entity");
     }
 
     setTitle(_title);

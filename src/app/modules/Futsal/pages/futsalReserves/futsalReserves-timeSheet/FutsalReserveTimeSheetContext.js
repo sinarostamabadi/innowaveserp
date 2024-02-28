@@ -67,9 +67,8 @@ export const FutsalReserveDatesUIProvider = forwardRef(
       shallowEqual
     );
 
-    const [futsalReserveDates, setFutsalReserveDates] = useState(
-      futsalReserveDate
-    );
+    const [futsalReserveDates, setFutsalReserveDates] =
+      useState(futsalReserveDate);
     const [totalCount, setTotalCount] = useState(0);
 
     useEffect(() => {
@@ -92,8 +91,14 @@ export const FutsalReserveDatesUIProvider = forwardRef(
     }, [currentReserveId]);
 
     useEffect(() => {
-      if (!!timing == false || (!!timing && (!!timing.fromDate == false || !!timing.toDate == false || !!timing.days.length == 0))) return;
-
+      if (
+        !!timing == false ||
+        (!!timing &&
+          (!!timing.fromDate == false ||
+            !!timing.toDate == false ||
+            !!timing.days.length == 0))
+      )
+        return;
 
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [timing]);
@@ -108,7 +113,8 @@ export const FutsalReserveDatesUIProvider = forwardRef(
     const addFutsalReserveDate = (futsalReserveDate) => {
       futsalReserveDate.FutsalReserveDateId =
         "temp_" + Math.floor(Math.random() * 100);
-      futsalReserveDate.FutsalReserveDateTypeId = +futsalReserveDate.FutsalReserveDateTypeId;
+      futsalReserveDate.FutsalReserveDateTypeId =
+        +futsalReserveDate.FutsalReserveDateTypeId;
       futsalReserveDate.FutsalReserveId = +futsalReserveDate.FutsalReserveId;
 
       setFutsalReserveDates((futsalReserveDates) => [
@@ -124,7 +130,8 @@ export const FutsalReserveDatesUIProvider = forwardRef(
     };
 
     const updateFutsalReserveDate = (futsalReserveDate) => {
-      futsalReserveDate.FutsalReserveDateTypeId = +futsalReserveDate.FutsalReserveDateTypeId;
+      futsalReserveDate.FutsalReserveDateTypeId =
+        +futsalReserveDate.FutsalReserveDateTypeId;
       futsalReserveDate.FutsalReserveId = +futsalReserveDate.FutsalReserveId;
 
       setFutsalReserveDates((futsalReserveDates) =>

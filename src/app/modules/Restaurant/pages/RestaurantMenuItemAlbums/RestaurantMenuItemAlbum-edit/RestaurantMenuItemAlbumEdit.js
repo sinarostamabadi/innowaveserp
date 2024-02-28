@@ -44,7 +44,8 @@ export function RestaurantMenuItemAlbumEdit({
   const { actionsLoading, restaurantMenuItemAlbumForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.restaurantMenuItemAlbums.actionsLoading,
-      restaurantMenuItemAlbumForEdit: state.restaurantMenuItemAlbums.restaurantMenuItemAlbumForEdit,
+      restaurantMenuItemAlbumForEdit:
+        state.restaurantMenuItemAlbums.restaurantMenuItemAlbumForEdit,
       error: state.restaurantMenuItemAlbums.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function RestaurantMenuItemAlbumEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("RestaurantMenuItemAlbum.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("RestaurantMenuItemAlbum.Entity");
 
     if (restaurantMenuItemAlbumForEdit && id) {
       _title = t("Common.Edit") + " " + restaurantMenuItemAlbumForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function RestaurantMenuItemAlbumEdit({
         .then((arg) => {
           backToRestaurantMenuItemAlbumsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateRestaurantMenuItemAlbum(id, values))
         .then(() => backToRestaurantMenuItemAlbumsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 
@@ -149,7 +152,9 @@ export function RestaurantMenuItemAlbumEdit({
           {tab === "basic" && (
             <RestaurantMenuItemAlbumEditForm
               actionsLoading={actionsLoading}
-              restaurantMenuItemAlbum={restaurantMenuItemAlbumForEdit || initModel}
+              restaurantMenuItemAlbum={
+                restaurantMenuItemAlbumForEdit || initModel
+              }
               btnRef={btnRef}
               saveRestaurantMenuItemAlbum={saveRestaurantMenuItemAlbum}
             />

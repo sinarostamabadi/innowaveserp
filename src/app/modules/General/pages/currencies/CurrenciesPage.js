@@ -26,7 +26,7 @@ export function CurrenciesPage({ history }) {
       history.push("/general/currencies/updateStatus");
     },
   };
-  
+
   return (
     <CurrenciesUIProvider currenciesUIEvents={currenciesUIEvents}>
       <CurrenciesLoadingDialog />

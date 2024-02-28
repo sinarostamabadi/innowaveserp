@@ -69,9 +69,7 @@ export function CreditsDeleteDialog() {
       </Modal.Header>
       <Modal.Body>
         {!isLoading && (
-          <span>
-            Are you sure to permanently delete selected credits?
-          </span>
+          <span>Are you sure to permanently delete selected credits?</span>
         )}
         {isLoading && <span>Credits are deleting...</span>}
       </Modal.Body>

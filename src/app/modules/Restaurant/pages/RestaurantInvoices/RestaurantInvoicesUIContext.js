@@ -24,23 +24,31 @@ export function RestaurantInvoicesUIProvider({
   children,
 }) {
   const defaultRestaurant = !!getStorage("defaultRestaurant")
-  ? JSON.parse(getStorage("defaultRestaurant"))
-  : null;
+    ? JSON.parse(getStorage("defaultRestaurant"))
+    : null;
   const defaultRestaurantFilter = {
     Property: "RestaurantId",
     Operation: 5,
-    Values: [!!defaultRestaurant? defaultRestaurant.RestaurantId: null],
+    Values: [!!defaultRestaurant ? defaultRestaurant.RestaurantId : null],
   };
   const defaultFilter = {
     Property: "RestaurantInvoiceStatusId",
     Operation: 5,
-    Values: ["1", "2", "4"]
+    Values: ["1", "2", "4"],
   };
-  
+
   const [queryParams, setQueryParamsBase] = useState(
     !!defaultRestaurant
-    ? {...getConfig(RestaurantInvoiceModel, "InvoiceNumber", "desc").initialFilter, Filters: [defaultFilter, defaultRestaurantFilter]}
-    : {...getConfig(RestaurantInvoiceModel, "InvoiceNumber", "desc").initialFilter, Filters: [defaultFilter]}
+      ? {
+          ...getConfig(RestaurantInvoiceModel, "InvoiceNumber", "desc")
+            .initialFilter,
+          Filters: [defaultFilter, defaultRestaurantFilter],
+        }
+      : {
+          ...getConfig(RestaurantInvoiceModel, "InvoiceNumber", "desc")
+            .initialFilter,
+          Filters: [defaultFilter],
+        }
   );
 
   const setQueryParams = useCallback((nextQueryParams) => {
@@ -77,7 +85,8 @@ export function RestaurantInvoicesUIProvider({
     openrelocationDialog: restaurantInvoicesUIEvents.openrelocationDialog,
     openReleaseDialog: restaurantInvoicesUIEvents.openReleaseDialog,
     openCancelOrderDialog: restaurantInvoicesUIEvents.openCancelOrderDialog,
-    openCancelAndReorderDialog: restaurantInvoicesUIEvents.openCancelAndReorderDialog,
+    openCancelAndReorderDialog:
+      restaurantInvoicesUIEvents.openCancelAndReorderDialog,
     showReportDialog,
     openReportDialog,
     closeReportDialog,

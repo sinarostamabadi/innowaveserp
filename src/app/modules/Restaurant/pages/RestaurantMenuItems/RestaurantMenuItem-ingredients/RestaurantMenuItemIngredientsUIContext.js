@@ -22,10 +22,19 @@ export function useRestaurantMenuItemIngredientsUIContext() {
   return useContext(RestaurantMenuItemIngredientsUIContext);
 }
 
-export const RestaurantMenuItemIngredientsUIConsumer = RestaurantMenuItemIngredientsUIContext.Consumer;
+export const RestaurantMenuItemIngredientsUIConsumer =
+  RestaurantMenuItemIngredientsUIContext.Consumer;
 
 export const RestaurantMenuItemIngredientsUIProvider = forwardRef(
-  ({ currentRestaurantMenuItemId, children, restaurantMenuItemIngredient, btnRef }, ref) => {
+  (
+    {
+      currentRestaurantMenuItemId,
+      children,
+      restaurantMenuItemIngredient,
+      btnRef,
+    },
+    ref
+  ) => {
     const { t } = useTranslation();
     const [serialErrors, setSerialErrors] = useState("");
 
@@ -35,7 +44,11 @@ export const RestaurantMenuItemIngredientsUIProvider = forwardRef(
           fn(
             restaurantMenuItemIngredients.map((d) => {
               let x = {
-                RestaurantMenuItemIngredientId: d.RestaurantMenuItemIngredientId.toString().indexOf("temp") > -1? null: +d.RestaurantMenuItemIngredientId,
+                RestaurantMenuItemIngredientId:
+                  d.RestaurantMenuItemIngredientId.toString().indexOf("temp") >
+                  -1
+                    ? null
+                    : +d.RestaurantMenuItemIngredientId,
                 ProductGroupId: d.ProductGroupId,
                 UnitId: d.UnitId,
                 Amount: +d.Amount,
@@ -51,7 +64,9 @@ export const RestaurantMenuItemIngredientsUIProvider = forwardRef(
 
     const [selectedId, setSelectedId] = useState(null);
     const [selectedItem, setSelectedItem] = useState(null);
-    const [restaurantMenuItemId, setRestaurantMenuItemId] = useState(currentRestaurantMenuItemId);
+    const [restaurantMenuItemId, setRestaurantMenuItemId] = useState(
+      currentRestaurantMenuItemId
+    );
 
     const initRestaurantMenuItemIngredient = {
       RestaurantMenuItemIngredientId: "",
@@ -66,7 +81,8 @@ export const RestaurantMenuItemIngredientsUIProvider = forwardRef(
     const { actionsLoading, restaurantMenuItemForEdit, error } = useSelector(
       (state) => ({
         actionsLoading: state.restaurantMenuItems.actionsLoading,
-        restaurantMenuItemForEdit: state.restaurantMenuItems.restaurantMenuItemForEdit,
+        restaurantMenuItemForEdit:
+          state.restaurantMenuItems.restaurantMenuItemForEdit,
         error: state.restaurantMenuItems.error,
       }),
       shallowEqual
@@ -87,8 +103,12 @@ export const RestaurantMenuItemIngredientsUIProvider = forwardRef(
       });
     }, []);
 
-    const [restaurantMenuItemIngredients, setRestaurantMenuItemIngredients] = useState(restaurantMenuItemIngredient);
-    const [activeRestaurantMenuItemIngredients, setActiveRestaurantMenuItemIngredients] = useState(restaurantMenuItemIngredient);
+    const [restaurantMenuItemIngredients, setRestaurantMenuItemIngredients] =
+      useState(restaurantMenuItemIngredient);
+    const [
+      activeRestaurantMenuItemIngredients,
+      setActiveRestaurantMenuItemIngredients,
+    ] = useState(restaurantMenuItemIngredient);
     const [totalCount, setTotalCount] = useState(0);
 
     useEffect(() => {
@@ -110,19 +130,25 @@ export const RestaurantMenuItemIngredientsUIProvider = forwardRef(
     }, [restaurantMenuItemForEdit]);
 
     useEffect(() => {
-      initRestaurantMenuItemIngredient.RestaurantMenuItemId = currentRestaurantMenuItemId;
+      initRestaurantMenuItemIngredient.RestaurantMenuItemId =
+        currentRestaurantMenuItemId;
 
       setRestaurantMenuItemId(currentRestaurantMenuItemId);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentRestaurantMenuItemId]);
 
     useEffect(() => {
-      setActiveRestaurantMenuItemIngredients(restaurantMenuItemIngredients.filter((x) => x.IsDeleted == false));
+      setActiveRestaurantMenuItemIngredients(
+        restaurantMenuItemIngredients.filter((x) => x.IsDeleted == false)
+      );
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [restaurantMenuItemIngredients]);
 
     // Edit Dialog, New Dialog
-    const [showEditRestaurantMenuItemIngredientDialog, setShowEditRestaurantMenuItemIngredientDialog] = useState(false);
+    const [
+      showEditRestaurantMenuItemIngredientDialog,
+      setShowEditRestaurantMenuItemIngredientDialog,
+    ] = useState(false);
     const openNewRestaurantMenuItemIngredientDialog = () => {
       setSelectedId(undefined);
       setShowEditRestaurantMenuItemIngredientDialog(true);
@@ -137,7 +163,10 @@ export const RestaurantMenuItemIngredientsUIProvider = forwardRef(
       setShowEditRestaurantMenuItemIngredientDialog(false);
     };
 
-    const [showDeleteRestaurantMenuItemIngredientDialog, setShowDeleteRestaurantMenuItemIngredientDialog] = useState(false);
+    const [
+      showDeleteRestaurantMenuItemIngredientDialog,
+      setShowDeleteRestaurantMenuItemIngredientDialog,
+    ] = useState(false);
     const openDeleteRestaurantMenuItemIngredientDialog = (id) => {
       setSelectedId(id);
       setShowDeleteRestaurantMenuItemIngredientDialog(true);
@@ -147,9 +176,10 @@ export const RestaurantMenuItemIngredientsUIProvider = forwardRef(
       setShowDeleteRestaurantMenuItemIngredientDialog(false);
     };
 
-    const [showDeleteRestaurantMenuItemIngredientsDialog, setShowDeleteRestaurantMenuItemIngredientsDialog] = useState(
-      false
-    );
+    const [
+      showDeleteRestaurantMenuItemIngredientsDialog,
+      setShowDeleteRestaurantMenuItemIngredientsDialog,
+    ] = useState(false);
     const openDeleteRestaurantMenuItemIngredientsDialog = () => {
       setShowDeleteRestaurantMenuItemIngredientsDialog(true);
     };
@@ -157,7 +187,10 @@ export const RestaurantMenuItemIngredientsUIProvider = forwardRef(
       setShowDeleteRestaurantMenuItemIngredientsDialog(false);
     };
 
-    const [showFetchRestaurantMenuItemIngredientsDialog, setShowFetchRestaurantMenuItemIngredientsDialog] = useState(false);
+    const [
+      showFetchRestaurantMenuItemIngredientsDialog,
+      setShowFetchRestaurantMenuItemIngredientsDialog,
+    ] = useState(false);
     const openFetchRestaurantMenuItemIngredientsDialog = () => {
       setShowFetchRestaurantMenuItemIngredientsDialog(true);
     };
@@ -165,16 +198,23 @@ export const RestaurantMenuItemIngredientsUIProvider = forwardRef(
       setShowFetchRestaurantMenuItemIngredientsDialog(false);
     };
 
-    const findRestaurantMenuItemIngredient = (restaurantMenuItemIngredientId) => {
+    const findRestaurantMenuItemIngredient = (
+      restaurantMenuItemIngredientId
+    ) => {
       if (!!restaurantMenuItemIngredientId == false) return;
 
-      const restaurantMenuItemIngredientObj = restaurantMenuItemIngredients.filter(
-        (restaurantMenuItemIngredient) => restaurantMenuItemIngredient.RestaurantMenuItemIngredientId == restaurantMenuItemIngredientId
-      )[0];
+      const restaurantMenuItemIngredientObj =
+        restaurantMenuItemIngredients.filter(
+          (restaurantMenuItemIngredient) =>
+            restaurantMenuItemIngredient.RestaurantMenuItemIngredientId ==
+            restaurantMenuItemIngredientId
+        )[0];
 
       return {
-        RestaurantMenuItemIngredientId: restaurantMenuItemIngredientObj.RestaurantMenuItemIngredientId,
-        RestaurantMenuItemId: restaurantMenuItemIngredientObj.RestaurantMenuItemId,
+        RestaurantMenuItemIngredientId:
+          restaurantMenuItemIngredientObj.RestaurantMenuItemIngredientId,
+        RestaurantMenuItemId:
+          restaurantMenuItemIngredientObj.RestaurantMenuItemId,
         RestaurantMenuItem: restaurantMenuItemIngredientObj.RestaurantMenuItem,
         ProductGroupId: restaurantMenuItemIngredientObj.ProductGroupId,
         ProductGroup: restaurantMenuItemIngredientObj.ProductGroup,
@@ -187,25 +227,43 @@ export const RestaurantMenuItemIngredientsUIProvider = forwardRef(
     };
 
     const addRestaurantMenuItemIngredient = (restaurantMenuItemIngredient) => {
-      restaurantMenuItemIngredient.RestaurantMenuItemIngredientId = "temp_" + Math.floor(Math.random() * 100);
+      restaurantMenuItemIngredient.RestaurantMenuItemIngredientId =
+        "temp_" + Math.floor(Math.random() * 100);
 
-      setRestaurantMenuItemIngredients((restaurantMenuItemIngredients) => [...restaurantMenuItemIngredients, restaurantMenuItemIngredient]);
+      setRestaurantMenuItemIngredients((restaurantMenuItemIngredients) => [
+        ...restaurantMenuItemIngredients,
+        restaurantMenuItemIngredient,
+      ]);
     };
 
-    const removeRestaurantMenuItemIngredient = (restaurantMenuItemIngredientId) => {
+    const removeRestaurantMenuItemIngredient = (
+      restaurantMenuItemIngredientId
+    ) => {
       if (restaurantMenuItemIngredientId.toString().indexOf("temp_") > -1)
-        setRestaurantMenuItemIngredients(restaurantMenuItemIngredients.filter((x) => x.RestaurantMenuItemIngredientId != restaurantMenuItemIngredientId));
+        setRestaurantMenuItemIngredients(
+          restaurantMenuItemIngredients.filter(
+            (x) =>
+              x.RestaurantMenuItemIngredientId != restaurantMenuItemIngredientId
+          )
+        );
       else {
-        let restaurantMenuItemIngredient = findRestaurantMenuItemIngredient(restaurantMenuItemIngredientId);
+        let restaurantMenuItemIngredient = findRestaurantMenuItemIngredient(
+          restaurantMenuItemIngredientId
+        );
         restaurantMenuItemIngredient["IsDeleted"] = true;
         updateRestaurantMenuItemIngredient(restaurantMenuItemIngredient);
       }
     };
 
-    const updateRestaurantMenuItemIngredient = (restaurantMenuItemIngredient) => {
+    const updateRestaurantMenuItemIngredient = (
+      restaurantMenuItemIngredient
+    ) => {
       setRestaurantMenuItemIngredients((restaurantMenuItemIngredients) =>
         restaurantMenuItemIngredients.map((item) =>
-          item.RestaurantMenuItemIngredientId == restaurantMenuItemIngredient.RestaurantMenuItemIngredientId ? restaurantMenuItemIngredient : item
+          item.RestaurantMenuItemIngredientId ==
+          restaurantMenuItemIngredient.RestaurantMenuItemIngredientId
+            ? restaurantMenuItemIngredient
+            : item
         )
       );
 

@@ -26,7 +26,7 @@ export function ContractTypesPage({ history }) {
       history.push("/employment/contractTypes/updateStatus");
     },
   };
-  
+
   return (
     <ContractTypesUIProvider contractTypesUIEvents={contractTypesUIEvents}>
       <ContractTypesLoadingDialog />

@@ -33,7 +33,8 @@ export function InsuranceJobsTable() {
       queryParams: insuranceJobsUIContext.queryParams,
       setQueryParams: insuranceJobsUIContext.setQueryParams,
       openEditInsuranceJobPage: insuranceJobsUIContext.openEditInsuranceJobPage,
-      openDeleteInsuranceJobDialog: insuranceJobsUIContext.openDeleteInsuranceJobDialog,
+      openDeleteInsuranceJobDialog:
+        insuranceJobsUIContext.openDeleteInsuranceJobDialog,
     };
   }, [insuranceJobsUIContext]);
 
@@ -73,7 +74,8 @@ export function InsuranceJobsTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditInsuranceJobPage: insuranceJobsUIProps.openEditInsuranceJobPage,
-        openDeleteInsuranceJobDialog: insuranceJobsUIProps.openDeleteInsuranceJobDialog,
+        openDeleteInsuranceJobDialog:
+          insuranceJobsUIProps.openDeleteInsuranceJobDialog,
         t: t,
       },
       classes: "text-right pr-0",

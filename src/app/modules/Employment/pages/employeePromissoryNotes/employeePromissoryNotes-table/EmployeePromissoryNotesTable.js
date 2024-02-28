@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function EmployeePromissoryNotesTable() {
   const { t } = useTranslation();
 
-  const employeePromissoryNotesUIContext = useEmployeePromissoryNotesUIContext();
+  const employeePromissoryNotesUIContext =
+    useEmployeePromissoryNotesUIContext();
 
   const employeePromissoryNotesUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function EmployeePromissoryNotesTable() {
       setIds: employeePromissoryNotesUIContext.setIds,
       queryParams: employeePromissoryNotesUIContext.queryParams,
       setQueryParams: employeePromissoryNotesUIContext.setQueryParams,
-      openEditEmployeePromissoryNotePage: employeePromissoryNotesUIContext.openEditEmployeePromissoryNotePage,
-      openDeleteEmployeePromissoryNoteDialog: employeePromissoryNotesUIContext.openDeleteEmployeePromissoryNoteDialog,
+      openEditEmployeePromissoryNotePage:
+        employeePromissoryNotesUIContext.openEditEmployeePromissoryNotePage,
+      openDeleteEmployeePromissoryNoteDialog:
+        employeePromissoryNotesUIContext.openDeleteEmployeePromissoryNoteDialog,
     };
   }, [employeePromissoryNotesUIContext]);
 
@@ -50,7 +53,11 @@ export function EmployeePromissoryNotesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     employeePromissoryNotesUIProps.setIds([]);
-    dispatch(actions.fetchEmployeePromissoryNotes(employeePromissoryNotesUIProps.queryParams));
+    dispatch(
+      actions.fetchEmployeePromissoryNotes(
+        employeePromissoryNotesUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employeePromissoryNotesUIProps.queryParams, dispatch]);
 
@@ -72,8 +79,10 @@ export function EmployeePromissoryNotesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmployeePromissoryNotePage: employeePromissoryNotesUIProps.openEditEmployeePromissoryNotePage,
-        openDeleteEmployeePromissoryNoteDialog: employeePromissoryNotesUIProps.openDeleteEmployeePromissoryNoteDialog,
+        openEditEmployeePromissoryNotePage:
+          employeePromissoryNotesUIProps.openEditEmployeePromissoryNotePage,
+        openDeleteEmployeePromissoryNoteDialog:
+          employeePromissoryNotesUIProps.openDeleteEmployeePromissoryNoteDialog,
         t: t,
       },
       classes: "text-right pr-0",

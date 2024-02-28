@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmployeeEducarionsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const employeeEducarionsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmployeeEducarionById  
+    // getEmployeeEducarionById
     employeeEducarionFetched: (state, action) => {
       state.actionsLoading = false;
       state.employeeEducarionForEdit = action.payload.employeeEducarionForEdit;
       state.error = null;
     },
-    // findEmployeeEducarions  
+    // findEmployeeEducarions
     employeeEducarionsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const employeeEducarionsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmployeeEducarion  
+    // createEmployeeEducarion
     employeeEducarionCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmployeeEducarion  
+    // updateEmployeeEducarion
     employeeEducarionUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.EmployeeEducarionId === action.payload.employeeEducarion.EmployeeEducarionId) {
+        if (
+          entity.EmployeeEducarionId ===
+          action.payload.employeeEducarion.EmployeeEducarionId
+        ) {
           return action.payload.employeeEducarion;
         }
         return entity;
       });
     },
-    // deleteEmployeeEducarion  
+    // deleteEmployeeEducarion
     employeeEducarionDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EmployeeEducarionId !== action.payload.EmployeeEducarionId  
+        (el) => el.EmployeeEducarionId !== action.payload.EmployeeEducarionId
       );
     },
-    // deleteEmployeeEducarions  
+    // deleteEmployeeEducarions
     employeeEducarionsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EmployeeEducarionId)  
+        (el) => !action.payload.ids.includes(el.EmployeeEducarionId)
       );
     },
-    // employeeEducarionsUpdateState  
+    // employeeEducarionsUpdateState
     employeeEducarionsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

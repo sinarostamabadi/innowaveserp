@@ -32,8 +32,10 @@ export function CoffeeInvoiceDiscountsTable() {
       setIds: coffeeInvoiceDiscountsUIContext.setIds,
       queryParams: coffeeInvoiceDiscountsUIContext.queryParams,
       setQueryParams: coffeeInvoiceDiscountsUIContext.setQueryParams,
-      openEditCoffeeInvoiceDiscountPage: coffeeInvoiceDiscountsUIContext.openEditCoffeeInvoiceDiscountPage,
-      openDeleteCoffeeInvoiceDiscountDialog: coffeeInvoiceDiscountsUIContext.openDeleteCoffeeInvoiceDiscountDialog,
+      openEditCoffeeInvoiceDiscountPage:
+        coffeeInvoiceDiscountsUIContext.openEditCoffeeInvoiceDiscountPage,
+      openDeleteCoffeeInvoiceDiscountDialog:
+        coffeeInvoiceDiscountsUIContext.openDeleteCoffeeInvoiceDiscountDialog,
     };
   }, [coffeeInvoiceDiscountsUIContext]);
 
@@ -50,7 +52,11 @@ export function CoffeeInvoiceDiscountsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     coffeeInvoiceDiscountsUIProps.setIds([]);
-    dispatch(actions.fetchCoffeeInvoiceDiscounts(coffeeInvoiceDiscountsUIProps.queryParams));
+    dispatch(
+      actions.fetchCoffeeInvoiceDiscounts(
+        coffeeInvoiceDiscountsUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coffeeInvoiceDiscountsUIProps.queryParams, dispatch]);
 
@@ -72,8 +78,10 @@ export function CoffeeInvoiceDiscountsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditCoffeeInvoiceDiscountPage: coffeeInvoiceDiscountsUIProps.openEditCoffeeInvoiceDiscountPage,
-        openDeleteCoffeeInvoiceDiscountDialog: coffeeInvoiceDiscountsUIProps.openDeleteCoffeeInvoiceDiscountDialog,
+        openEditCoffeeInvoiceDiscountPage:
+          coffeeInvoiceDiscountsUIProps.openEditCoffeeInvoiceDiscountPage,
+        openDeleteCoffeeInvoiceDiscountDialog:
+          coffeeInvoiceDiscountsUIProps.openDeleteCoffeeInvoiceDiscountDialog,
         t: t,
       },
       classes: "text-right pr-0",

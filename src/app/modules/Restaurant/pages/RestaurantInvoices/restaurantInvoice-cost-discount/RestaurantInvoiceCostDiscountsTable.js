@@ -35,11 +35,13 @@ export function RestaurantInvoiceCostDiscountsTable() {
     RestaurantMenuItemId: null,
   };
   // Specs UI Context
-  const restaurantInvoiceCostDiscountsUIContext = useRestaurantInvoiceCostDiscountsUIContext();
+  const restaurantInvoiceCostDiscountsUIContext =
+    useRestaurantInvoiceCostDiscountsUIContext();
   const costDiscountsUIProps = useMemo(() => {
     return {
       costDiscounts: restaurantInvoiceCostDiscountsUIContext.costDiscounts,
-        addRestaurantInvoiceCostDiscount: restaurantInvoiceCostDiscountsUIContext.addRestaurantInvoiceCostDiscount,
+      addRestaurantInvoiceCostDiscount:
+        restaurantInvoiceCostDiscountsUIContext.addRestaurantInvoiceCostDiscount,
       totalCount: restaurantInvoiceCostDiscountsUIContext.totalCount,
       actionsLoading: restaurantInvoiceCostDiscountsUIContext.actionsLoading,
       openEditPhoneDialog:
@@ -79,10 +81,8 @@ export function RestaurantInvoiceCostDiscountsTable() {
       text: t("Common.Action"),
       formatter: ActionsColumnFormatter,
       formatExtraData: {
-        openEditPhoneDialog:
-          costDiscountsUIProps.openEditPhoneDialog,
-        openDeletePhoneDialog:
-          costDiscountsUIProps.openDeletePhoneDialog,
+        openEditPhoneDialog: costDiscountsUIProps.openEditPhoneDialog,
+        openDeletePhoneDialog: costDiscountsUIProps.openDeletePhoneDialog,
         t: t,
       },
       classes: "text-right pl-0",
@@ -109,7 +109,8 @@ export function RestaurantInvoiceCostDiscountsTable() {
   const addMenuItem = useCallback((values) => {
     axios
       .post("RestaurantInvoiceDtl/getPrice", {
-        RestaurantMenuItemId: values.RestaurantMenuItemId[0].RestaurantMenuItemId,
+        RestaurantMenuItemId:
+          values.RestaurantMenuItemId[0].RestaurantMenuItemId,
         PersonId: costDiscountsUIProps.personId,
         ExecutionDate: costDiscountsUIProps.invoiceDate,
       })
@@ -117,10 +118,7 @@ export function RestaurantInvoiceCostDiscountsTable() {
         costDiscountsUIProps.addRestaurantInvoiceCostDiscount(data);
       });
   });
-  console.log(
-    "costDiscountsUIProps",
-    costDiscountsUIProps
-  );
+  console.log("costDiscountsUIProps", costDiscountsUIProps);
 
   return (
     <div
@@ -141,8 +139,12 @@ export function RestaurantInvoiceCostDiscountsTable() {
       >
         {({ handleSubmit }) => (
           <Form className="form form-label-right mb-3 text-right">
-            <Button variant="outline-success" className="mr-2"><i className="fas fa-donate"></i> افزودن هزینه</Button>
-            <Button variant="outline-success"><i className="fas fa-tags"></i> افزودن تخفیف</Button>
+            <Button variant="outline-success" className="mr-2">
+              <i className="fas fa-donate"></i> افزودن هزینه
+            </Button>
+            <Button variant="outline-success">
+              <i className="fas fa-tags"></i> افزودن تخفیف
+            </Button>
           </Form>
         )}
       </Formik>
@@ -161,12 +163,8 @@ export function RestaurantInvoiceCostDiscountsTable() {
         }
         columns={columns}
       >
-        <PleaseWaitMessage
-          entities={costDiscountsUIProps.costDiscounts}
-        />
-        <NoRecordsFoundMessage
-          entities={costDiscountsUIProps.costDiscounts}
-        />
+        <PleaseWaitMessage entities={costDiscountsUIProps.costDiscounts} />
+        <NoRecordsFoundMessage entities={costDiscountsUIProps.costDiscounts} />
       </BootstrapTable>
     </div>
   );

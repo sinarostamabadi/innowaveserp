@@ -32,8 +32,10 @@ export function EmployeeInsurancesTable() {
       setIds: employeeInsurancesUIContext.setIds,
       queryParams: employeeInsurancesUIContext.queryParams,
       setQueryParams: employeeInsurancesUIContext.setQueryParams,
-      openEditEmployeeInsurancePage: employeeInsurancesUIContext.openEditEmployeeInsurancePage,
-      openDeleteEmployeeInsuranceDialog: employeeInsurancesUIContext.openDeleteEmployeeInsuranceDialog,
+      openEditEmployeeInsurancePage:
+        employeeInsurancesUIContext.openEditEmployeeInsurancePage,
+      openDeleteEmployeeInsuranceDialog:
+        employeeInsurancesUIContext.openDeleteEmployeeInsuranceDialog,
     };
   }, [employeeInsurancesUIContext]);
 
@@ -50,7 +52,9 @@ export function EmployeeInsurancesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     employeeInsurancesUIProps.setIds([]);
-    dispatch(actions.fetchEmployeeInsurances(employeeInsurancesUIProps.queryParams));
+    dispatch(
+      actions.fetchEmployeeInsurances(employeeInsurancesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employeeInsurancesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function EmployeeInsurancesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmployeeInsurancePage: employeeInsurancesUIProps.openEditEmployeeInsurancePage,
-        openDeleteEmployeeInsuranceDialog: employeeInsurancesUIProps.openDeleteEmployeeInsuranceDialog,
+        openEditEmployeeInsurancePage:
+          employeeInsurancesUIProps.openEditEmployeeInsurancePage,
+        openDeleteEmployeeInsuranceDialog:
+          employeeInsurancesUIProps.openDeleteEmployeeInsuranceDialog,
         t: t,
       },
       classes: "text-right pr-0",

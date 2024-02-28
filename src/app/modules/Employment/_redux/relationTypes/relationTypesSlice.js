@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialRelationTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const relationTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getRelationTypeById  
+    // getRelationTypeById
     relationTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.relationTypeForEdit = action.payload.relationTypeForEdit;
       state.error = null;
     },
-    // findRelationTypes  
+    // findRelationTypes
     relationTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,42 @@ export const relationTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createRelationType  
+    // createRelationType
     relationTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateRelationType  
+    // updateRelationType
     relationTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.RelationTypeId === action.payload.relationType.RelationTypeId) {
+        if (
+          entity.RelationTypeId === action.payload.relationType.RelationTypeId
+        ) {
           return action.payload.relationType;
         }
         return entity;
       });
     },
-    // deleteRelationType  
+    // deleteRelationType
     relationTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.RelationTypeId !== action.payload.RelationTypeId  
+        (el) => el.RelationTypeId !== action.payload.RelationTypeId
       );
     },
-    // deleteRelationTypes  
+    // deleteRelationTypes
     relationTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.RelationTypeId)  
+        (el) => !action.payload.ids.includes(el.RelationTypeId)
       );
     },
-    // relationTypesUpdateState  
+    // relationTypesUpdateState
     relationTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

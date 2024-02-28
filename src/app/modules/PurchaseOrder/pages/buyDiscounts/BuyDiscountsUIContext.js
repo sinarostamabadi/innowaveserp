@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BuyDiscountModel } from "../../../../../core/_models/PurchaseOrder/BuyDiscountModel";
@@ -30,7 +29,7 @@ export function BuyDiscountsUIProvider({ buyDiscountsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -40,12 +39,18 @@ export function BuyDiscountsUIProvider({ buyDiscountsUIEvents, children }) {
     dataModel: BuyDiscountModel,
     newBuyDiscountButtonClick: buyDiscountsUIEvents.newBuyDiscountButtonClick,
     openEditBuyDiscountPage: buyDiscountsUIEvents.openEditBuyDiscountPage,
-    openDeleteBuyDiscountDialog: buyDiscountsUIEvents.openDeleteBuyDiscountDialog,
-    openDeleteBuyDiscountsDialog: buyDiscountsUIEvents.openDeleteBuyDiscountsDialog,
-    openFetchBuyDiscountsDialog: buyDiscountsUIEvents.openFetchBuyDiscountsDialog,
-    openUpdateBuyDiscountsStatusDialog: buyDiscountsUIEvents.openUpdateBuyDiscountsStatusDialog,
+    openDeleteBuyDiscountDialog:
+      buyDiscountsUIEvents.openDeleteBuyDiscountDialog,
+    openDeleteBuyDiscountsDialog:
+      buyDiscountsUIEvents.openDeleteBuyDiscountsDialog,
+    openFetchBuyDiscountsDialog:
+      buyDiscountsUIEvents.openFetchBuyDiscountsDialog,
+    openUpdateBuyDiscountsStatusDialog:
+      buyDiscountsUIEvents.openUpdateBuyDiscountsStatusDialog,
   };
   return (
-    <BuyDiscountsUIContext.Provider value={value}>{children}</BuyDiscountsUIContext.Provider>
+    <BuyDiscountsUIContext.Provider value={value}>
+      {children}
+    </BuyDiscountsUIContext.Provider>
   );
 }

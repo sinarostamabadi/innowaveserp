@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPromissoryNotesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const promissoryNotesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPromissoryNoteById  
+    // getPromissoryNoteById
     promissoryNoteFetched: (state, action) => {
       state.actionsLoading = false;
       state.promissoryNoteForEdit = action.payload.promissoryNoteForEdit;
       state.error = null;
     },
-    // findPromissoryNotes  
+    // findPromissoryNotes
     promissoryNotesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const promissoryNotesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPromissoryNote  
+    // createPromissoryNote
     promissoryNoteCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePromissoryNote  
+    // updatePromissoryNote
     promissoryNoteUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.PromissoryNoteId === action.payload.promissoryNote.PromissoryNoteId) {
+        if (
+          entity.PromissoryNoteId ===
+          action.payload.promissoryNote.PromissoryNoteId
+        ) {
           return action.payload.promissoryNote;
         }
         return entity;
       });
     },
-    // deletePromissoryNote  
+    // deletePromissoryNote
     promissoryNoteDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PromissoryNoteId !== action.payload.PromissoryNoteId  
+        (el) => el.PromissoryNoteId !== action.payload.PromissoryNoteId
       );
     },
-    // deletePromissoryNotes  
+    // deletePromissoryNotes
     promissoryNotesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PromissoryNoteId)  
+        (el) => !action.payload.ids.includes(el.PromissoryNoteId)
       );
     },
-    // promissoryNotesUpdateState  
+    // promissoryNotesUpdateState
     promissoryNotesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -69,9 +69,7 @@ export function AddressesDeleteDialog() {
       </Modal.Header>
       <Modal.Body>
         {!isLoading && (
-          <span>
-            Are you sure to permanently delete selected addresses?
-          </span>
+          <span>Are you sure to permanently delete selected addresses?</span>
         )}
         {isLoading && <span>Addresses are deleting...</span>}
       </Modal.Body>

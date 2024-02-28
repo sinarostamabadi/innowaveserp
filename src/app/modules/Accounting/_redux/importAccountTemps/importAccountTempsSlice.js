@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialImportAccountTempsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const importAccountTempsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getImportAccountTempById  
+    // getImportAccountTempById
     importAccountTempFetched: (state, action) => {
       state.actionsLoading = false;
       state.importAccountTempForEdit = action.payload.importAccountTempForEdit;
       state.error = null;
     },
-    // findImportAccountTemps  
+    // findImportAccountTemps
     importAccountTempsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const importAccountTempsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createImportAccountTemp  
+    // createImportAccountTemp
     importAccountTempCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateImportAccountTemp  
+    // updateImportAccountTemp
     importAccountTempUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.ImportAccountTempId === action.payload.importAccountTemp.ImportAccountTempId) {
+        if (
+          entity.ImportAccountTempId ===
+          action.payload.importAccountTemp.ImportAccountTempId
+        ) {
           return action.payload.importAccountTemp;
         }
         return entity;
       });
     },
-    // deleteImportAccountTemp  
+    // deleteImportAccountTemp
     importAccountTempDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.ImportAccountTempId !== action.payload.ImportAccountTempId  
+        (el) => el.ImportAccountTempId !== action.payload.ImportAccountTempId
       );
     },
-    // deleteImportAccountTemps  
+    // deleteImportAccountTemps
     importAccountTempsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ImportAccountTempId)  
+        (el) => !action.payload.ids.includes(el.ImportAccountTempId)
       );
     },
-    // importAccountTempsUpdateState  
+    // importAccountTempsUpdateState
     importAccountTempsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

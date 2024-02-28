@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { OrganizationPostsTable } from "./organizationPosts-table/OrganizationPostsTable";
-import { useOrganizationPostsUIContext, OrganizationPostsUIConsumer } from "./OrganizationPostsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useOrganizationPostsUIContext,
+  OrganizationPostsUIConsumer,
+} from "./OrganizationPostsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function OrganizationPostsCard() {
   const { t } = useTranslation();
@@ -21,24 +23,29 @@ export function OrganizationPostsCard() {
       ids: organizationPostsUIContext.ids,
       queryParams: organizationPostsUIContext.queryParams,
       setQueryParams: organizationPostsUIContext.setQueryParams,
-      newOrganizationPostButtonClick: organizationPostsUIContext.newOrganizationPostButtonClick,
-      openDeleteOrganizationPostsDialog: organizationPostsUIContext.openDeleteOrganizationPostsDialog,
-      openEditOrganizationPostPage: organizationPostsUIContext.openEditOrganizationPostPage,
-      openUpdateOrganizationPostsStatusDialog: organizationPostsUIContext.openUpdateOrganizationPostsStatusDialog,
-      openFetchOrganizationPostsDialog: organizationPostsUIContext.openFetchOrganizationPostsDialog,
+      newOrganizationPostButtonClick:
+        organizationPostsUIContext.newOrganizationPostButtonClick,
+      openDeleteOrganizationPostsDialog:
+        organizationPostsUIContext.openDeleteOrganizationPostsDialog,
+      openEditOrganizationPostPage:
+        organizationPostsUIContext.openEditOrganizationPostPage,
+      openUpdateOrganizationPostsStatusDialog:
+        organizationPostsUIContext.openUpdateOrganizationPostsStatusDialog,
+      openFetchOrganizationPostsDialog:
+        organizationPostsUIContext.openFetchOrganizationPostsDialog,
     };
   }, [organizationPostsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("OrganizationPost.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("OrganizationPost.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={organizationPostsUIProps.newOrganizationPostButtonClick}
           >
-            {t("OrganizationPost.Entity")} {' '} {t("Common.New")}
+            {t("OrganizationPost.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

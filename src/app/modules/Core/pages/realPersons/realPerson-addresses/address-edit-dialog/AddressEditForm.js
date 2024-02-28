@@ -69,156 +69,166 @@ export function AddressEditForm({
           (p) => p.AddressCategoryId == dirty.AddressCategoryId
         ).Title,
       },
-      CityId: Array.isArray(dirty.CityId) && dirty.CityId.length == 1? dirty.CityId[0].CityId: (!!dirty.CityId? +dirty.CityId: null),
-      City: Array.isArray(dirty.CityId) && dirty.CityId.length == 1? dirty.CityId[0]: (!!dirty.CityId? dirty.City: null),
+      CityId:
+        Array.isArray(dirty.CityId) && dirty.CityId.length == 1
+          ? dirty.CityId[0].CityId
+          : !!dirty.CityId
+          ? +dirty.CityId
+          : null,
+      City:
+        Array.isArray(dirty.CityId) && dirty.CityId.length == 1
+          ? dirty.CityId[0]
+          : !!dirty.CityId
+          ? dirty.City
+          : null,
       AddressFa: dirty.AddressFa,
       AddressEn: dirty.AddressEn,
       PostalCode: dirty.PostalCode,
       MailBoxNumber: dirty.MailBoxNumber,
       Longitude: !!dirty.Longitude == false ? null : +dirty.Longitude,
       Latitude: !!dirty.Latitude == false ? null : +dirty.Latitude,
-      IsDeleted: false
+      IsDeleted: false,
     };
   }
 
   return (
     <>
-    {address != null && (
-      <Formik
-        enableReinitialize={true}
-        initialValues={address}
-        validationSchema={AddressEditSchema}
-        onSubmit={(values) => {
-          saveAddress(clean(values));
-        }}
-      >
-        {({ handleSubmit }) => (
-          <>
-            <Modal.Body className="">
-              {actionsLoading && (
-                <div className="overlay-layer bg-transparent">
-                  <div className="spinner spinner-lg spinner-success" />
-                </div>
-              )}
-              <Form className="form form-label-right">
-                <div className="form-group row">
-                  <div className="col-lg-6">
-                    <Select
-                      name="AddressCategoryId"
-                      label={t("Address.AddressCategory")}
-                    >
-                      {addressCategories.map((addressCategory) => (
-                        <option
-                          key={addressCategory.AddressCategoryId}
-                          value={addressCategory.AddressCategoryId}
-                        >
-                          {addressCategory.Title}
-                        </option>
-                      ))}
-                    </Select>
+      {address != null && (
+        <Formik
+          enableReinitialize={true}
+          initialValues={address}
+          validationSchema={AddressEditSchema}
+          onSubmit={(values) => {
+            saveAddress(clean(values));
+          }}
+        >
+          {({ handleSubmit }) => (
+            <>
+              <Modal.Body className="">
+                {actionsLoading && (
+                  <div className="overlay-layer bg-transparent">
+                    <div className="spinner spinner-lg spinner-success" />
                   </div>
-                  <div className="col-lg-6">
-                    <SuggestionField
-                      name="CityId"
-                      labelKey="TitleFa"
-                      customFeedbackLabel=""
-                      label={t("Address.City")}
-                      placeHolder={t("msg.SelectBySuggestion")}
-                      handleSearch={handleSuggestionCity}
-                      defaultValue={!!address.City ? [address.City] : []}
-                      renderMenuItemChildren={(option, props) => (
-                        <div>
-                          <h6>{option.TitleFa}</h6>
-                          <span>
-                            {t("Township.Entity")}: {option.Township.TitleFa}
-                          </span>
-                          <br />
-                          <span>
-                            {t("Province.Entity")}:{" "}
-                            {option.Township.Province.TitleFa}
-                          </span>
-                        </div>
-                      )}
-                    />
+                )}
+                <Form className="form form-label-right">
+                  <div className="form-group row">
+                    <div className="col-lg-6">
+                      <Select
+                        name="AddressCategoryId"
+                        label={t("Address.AddressCategory")}
+                      >
+                        {addressCategories.map((addressCategory) => (
+                          <option
+                            key={addressCategory.AddressCategoryId}
+                            value={addressCategory.AddressCategoryId}
+                          >
+                            {addressCategory.Title}
+                          </option>
+                        ))}
+                      </Select>
+                    </div>
+                    <div className="col-lg-6">
+                      <SuggestionField
+                        name="CityId"
+                        labelKey="TitleFa"
+                        customFeedbackLabel=""
+                        label={t("Address.City")}
+                        placeHolder={t("msg.SelectBySuggestion")}
+                        handleSearch={handleSuggestionCity}
+                        defaultValue={!!address.City ? [address.City] : []}
+                        renderMenuItemChildren={(option, props) => (
+                          <div>
+                            <h6>{option.TitleFa}</h6>
+                            <span>
+                              {t("Township.Entity")}: {option.Township.TitleFa}
+                            </span>
+                            <br />
+                            <span>
+                              {t("Province.Entity")}:{" "}
+                              {option.Township.Province.TitleFa}
+                            </span>
+                          </div>
+                        )}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="form-group row">
-                  <div className="col-lg-12">
-                    <Field
-                      name="AddressFa"
-                      as="textarea"
-                      component={TextArea}
-                      label={t("Address.AddressFa")}
-                    />
+                  <div className="form-group row">
+                    <div className="col-lg-12">
+                      <Field
+                        name="AddressFa"
+                        as="textarea"
+                        component={TextArea}
+                        label={t("Address.AddressFa")}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="form-group row">
-                  <div className="col-lg-12">
-                    <Field
-                      name="AddressEn"
-                      as="textarea"
-                      component={TextArea}
-                      label={t("Address.AddressEn")}
-                    />
+                  <div className="form-group row">
+                    <div className="col-lg-12">
+                      <Field
+                        name="AddressEn"
+                        as="textarea"
+                        component={TextArea}
+                        label={t("Address.AddressEn")}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="form-group row">
-                  <div className="col-lg-12">
-                    <Field
-                      name="PostalCode"
-                      component={Input}
-                      label={t("Address.PostalCode")}
-                    />
+                  <div className="form-group row">
+                    <div className="col-lg-12">
+                      <Field
+                        name="PostalCode"
+                        component={Input}
+                        label={t("Address.PostalCode")}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="form-group row">
-                  <div className="col-lg-12">
-                    <Field
-                      name="MailBoxNumber"
-                      component={Input}
-                      label={t("Address.MailBoxNumber")}
-                    />
+                  <div className="form-group row">
+                    <div className="col-lg-12">
+                      <Field
+                        name="MailBoxNumber"
+                        component={Input}
+                        label={t("Address.MailBoxNumber")}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="form-group row">
-                  <div className="col-lg-6">
-                    <Field
-                      name="Longitude"
-                      component={Input}
-                      label={t("Address.Longitude")}
-                    />
+                  <div className="form-group row">
+                    <div className="col-lg-6">
+                      <Field
+                        name="Longitude"
+                        component={Input}
+                        label={t("Address.Longitude")}
+                      />
+                    </div>
+                    <div className="col-lg-6">
+                      <Field
+                        name="Latitude"
+                        component={Input}
+                        label={t("Address.Latitude")}
+                      />
+                    </div>
                   </div>
-                  <div className="col-lg-6">
-                    <Field
-                      name="Latitude"
-                      component={Input}
-                      label={t("Address.Latitude")}
-                    />
-                  </div>
-                </div>
-              </Form>
-            </Modal.Body>
-            <Modal.Footer>
-              <button
-                type="button"
-                onClick={onHide}
-                className="btn btn-light btn-elevate"
-              >
-                {t("Common.Cancel")}
-              </button>
-              <> </>
-              <button
-                type="submit"
-                onClick={() => handleSubmit()}
-                className="btn btn-primary btn-elevate"
-              >
-                {t("Common.Save")}
-              </button>
-            </Modal.Footer>
-          </>
-        )}
-      </Formik>
-    )}
+                </Form>
+              </Modal.Body>
+              <Modal.Footer>
+                <button
+                  type="button"
+                  onClick={onHide}
+                  className="btn btn-light btn-elevate"
+                >
+                  {t("Common.Cancel")}
+                </button>
+                <> </>
+                <button
+                  type="submit"
+                  onClick={() => handleSubmit()}
+                  className="btn btn-primary btn-elevate"
+                >
+                  {t("Common.Save")}
+                </button>
+              </Modal.Footer>
+            </>
+          )}
+        </Formik>
+      )}
     </>
   );
 }

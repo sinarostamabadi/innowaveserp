@@ -32,8 +32,10 @@ export function EmployeeLeaveChangesTable() {
       setIds: employeeLeaveChangesUIContext.setIds,
       queryParams: employeeLeaveChangesUIContext.queryParams,
       setQueryParams: employeeLeaveChangesUIContext.setQueryParams,
-      openEditEmployeeLeaveChangePage: employeeLeaveChangesUIContext.openEditEmployeeLeaveChangePage,
-      openDeleteEmployeeLeaveChangeDialog: employeeLeaveChangesUIContext.openDeleteEmployeeLeaveChangeDialog,
+      openEditEmployeeLeaveChangePage:
+        employeeLeaveChangesUIContext.openEditEmployeeLeaveChangePage,
+      openDeleteEmployeeLeaveChangeDialog:
+        employeeLeaveChangesUIContext.openDeleteEmployeeLeaveChangeDialog,
     };
   }, [employeeLeaveChangesUIContext]);
 
@@ -50,7 +52,9 @@ export function EmployeeLeaveChangesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     employeeLeaveChangesUIProps.setIds([]);
-    dispatch(actions.fetchEmployeeLeaveChanges(employeeLeaveChangesUIProps.queryParams));
+    dispatch(
+      actions.fetchEmployeeLeaveChanges(employeeLeaveChangesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employeeLeaveChangesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function EmployeeLeaveChangesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmployeeLeaveChangePage: employeeLeaveChangesUIProps.openEditEmployeeLeaveChangePage,
-        openDeleteEmployeeLeaveChangeDialog: employeeLeaveChangesUIProps.openDeleteEmployeeLeaveChangeDialog,
+        openEditEmployeeLeaveChangePage:
+          employeeLeaveChangesUIProps.openEditEmployeeLeaveChangePage,
+        openDeleteEmployeeLeaveChangeDialog:
+          employeeLeaveChangesUIProps.openDeleteEmployeeLeaveChangeDialog,
         t: t,
       },
       classes: "text-right pr-0",

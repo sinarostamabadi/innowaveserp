@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBuysState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const buysSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBuyById  
+    // getBuyById
     buyFetched: (state, action) => {
       state.actionsLoading = false;
       state.buyForEdit = action.payload.buyForEdit;
       state.error = null;
     },
-    // findBuys  
+    // findBuys
     buysFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const buysSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBuy  
+    // createBuy
     buyCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBuy  
+    // updateBuy
     buyUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const buysSlice = createSlice({
         return entity;
       });
     },
-    // deleteBuy  
+    // deleteBuy
     buyDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BuyId !== action.payload.BuyId  
+        (el) => el.BuyId !== action.payload.BuyId
       );
     },
-    // deleteBuys  
+    // deleteBuys
     buysDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BuyId)  
+        (el) => !action.payload.ids.includes(el.BuyId)
       );
     },
-    // buysUpdateState  
+    // buysUpdateState
     buysStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

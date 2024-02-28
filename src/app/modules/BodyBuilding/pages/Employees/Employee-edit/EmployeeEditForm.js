@@ -20,19 +20,27 @@ export const EmployeeEditForm = forwardRef(
     const { t } = useTranslation();
     const defaultInput = useRef(null);
     !!defaultInput && !!defaultInput.current && defaultInput.current.focus();
-        
+
     let callBack;
     const EmployeeEditSchema = Yup.object().shape({
-      BodyBuildingEmployeeTypeId: Yup.number().nullable()
-        .required(t("err.IsRequired", { 0: t("BodyBuildingEmployee.BodyBuildingEmployeeType") })),
-      RealPersonId: Yup.number().nullable()
-        .required(t("err.IsRequired", { 0: t("BodyBuildingEmployee.RealPerson") })),
+      BodyBuildingEmployeeTypeId: Yup.number()
+        .nullable()
+        .required(
+          t("err.IsRequired", {
+            0: t("BodyBuildingEmployee.BodyBuildingEmployeeType"),
+          })
+        ),
+      RealPersonId: Yup.number()
+        .nullable()
+        .required(
+          t("err.IsRequired", { 0: t("BodyBuildingEmployee.RealPerson") })
+        ),
     });
 
     const cooperationTypes = [
       { text: t("Common.WithoutSelect"), value: null },
       { text: t("Common.Male"), value: 1 },
-      { text: t("Common.Female"), value: 0 }
+      { text: t("Common.Female"), value: 0 },
     ];
 
     const [employeeTypes, setEmployeeTypes] = useState([]);
@@ -40,7 +48,10 @@ export const EmployeeEditForm = forwardRef(
       if (employeeTypes.length == 0)
         getAll().then(({ data }) =>
           setEmployeeTypes((lines) => [
-            { BodyBuildingEmployeeTypeId: "", Title: t("Common.WithoutSelect") },
+            {
+              BodyBuildingEmployeeTypeId: "",
+              Title: t("Common.WithoutSelect"),
+            },
             ...data.Items,
           ])
         );
@@ -73,8 +84,8 @@ export const EmployeeEditForm = forwardRef(
         BodyBuildingEmployeeId: data.BodyBuildingEmployeeId,
         BodyBuildingEmployeeTypeId: data.BodyBuildingEmployeeTypeId,
         RealPersonId: data.RealPersonId,
-        CooperationType: !!data.CooperationType? +data.CooperationType: null,
-        BodyBuildingEmployeeExpertises: data.BodyBuildingEmployeeExpertises
+        CooperationType: !!data.CooperationType ? +data.CooperationType : null,
+        BodyBuildingEmployeeExpertises: data.BodyBuildingEmployeeExpertises,
       };
     }
 
@@ -96,13 +107,21 @@ export const EmployeeEditForm = forwardRef(
                     <Select
                       name="BodyBuildingEmployeeTypeId"
                       label={t("BodyBuildingEmployee.BodyBuildingEmployeeType")}
-                      onChange={val => {
-                        setFieldValue("BodyBuildingEmployeeTypeId", !!val.target.value? +val.target.value: null);
-                        setEmployeeType(!!val.target.value? +val.target.value: null);
+                      onChange={(val) => {
+                        setFieldValue(
+                          "BodyBuildingEmployeeTypeId",
+                          !!val.target.value ? +val.target.value : null
+                        );
+                        setEmployeeType(
+                          !!val.target.value ? +val.target.value : null
+                        );
                       }}
                     >
                       {employeeTypes.map((employeeType) => (
-                        <option key={employeeType.BodyBuildingEmployeeTypeId} value={employeeType.BodyBuildingEmployeeTypeId}>
+                        <option
+                          key={employeeType.BodyBuildingEmployeeTypeId}
+                          value={employeeType.BodyBuildingEmployeeTypeId}
+                        >
                           {employeeType.Title}
                         </option>
                       ))}
@@ -115,7 +134,10 @@ export const EmployeeEditForm = forwardRef(
                       customFeedbackLabel=""
                     >
                       {cooperationTypes.map((cooperationType) => (
-                        <option key={cooperationType.value} value={cooperationType.value}>
+                        <option
+                          key={cooperationType.value}
+                          value={cooperationType.value}
+                        >
                           {cooperationType.text}
                         </option>
                       ))}
@@ -133,8 +155,7 @@ export const EmployeeEditForm = forwardRef(
                       placeHolder={t("msg.SelectBySuggestion")}
                       handleSearch={handleSuggestionRealperson}
                       defaultValue={
-                        !!employee &&
-                          !!employee.RealPerson
+                        !!employee && !!employee.RealPerson
                           ? [employee.RealPerson]
                           : []
                       }

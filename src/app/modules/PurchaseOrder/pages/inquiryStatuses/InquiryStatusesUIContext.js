@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { InquiryStatusModel } from "../../../../../core/_models/PurchaseOrder/InquiryStatusModel";
@@ -12,7 +11,10 @@ export function useInquiryStatusesUIContext() {
 
 export const InquiryStatusesUIConsumer = InquiryStatusesUIContext.Consumer;
 
-export function InquiryStatusesUIProvider({ inquiryStatusesUIEvents, children }) {
+export function InquiryStatusesUIProvider({
+  inquiryStatusesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(InquiryStatusModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function InquiryStatusesUIProvider({ inquiryStatusesUIEvents, children })
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function InquiryStatusesUIProvider({ inquiryStatusesUIEvents, children })
     setIds,
     setQueryParams,
     dataModel: InquiryStatusModel,
-    newInquiryStatusButtonClick: inquiryStatusesUIEvents.newInquiryStatusButtonClick,
-    openEditInquiryStatusPage: inquiryStatusesUIEvents.openEditInquiryStatusPage,
-    openDeleteInquiryStatusDialog: inquiryStatusesUIEvents.openDeleteInquiryStatusDialog,
-    openDeleteInquiryStatusesDialog: inquiryStatusesUIEvents.openDeleteInquiryStatusesDialog,
-    openFetchInquiryStatusesDialog: inquiryStatusesUIEvents.openFetchInquiryStatusesDialog,
-    openUpdateInquiryStatusesStatusDialog: inquiryStatusesUIEvents.openUpdateInquiryStatusesStatusDialog,
+    newInquiryStatusButtonClick:
+      inquiryStatusesUIEvents.newInquiryStatusButtonClick,
+    openEditInquiryStatusPage:
+      inquiryStatusesUIEvents.openEditInquiryStatusPage,
+    openDeleteInquiryStatusDialog:
+      inquiryStatusesUIEvents.openDeleteInquiryStatusDialog,
+    openDeleteInquiryStatusesDialog:
+      inquiryStatusesUIEvents.openDeleteInquiryStatusesDialog,
+    openFetchInquiryStatusesDialog:
+      inquiryStatusesUIEvents.openFetchInquiryStatusesDialog,
+    openUpdateInquiryStatusesStatusDialog:
+      inquiryStatusesUIEvents.openUpdateInquiryStatusesStatusDialog,
   };
   return (
-    <InquiryStatusesUIContext.Provider value={value}>{children}</InquiryStatusesUIContext.Provider>
+    <InquiryStatusesUIContext.Provider value={value}>
+      {children}
+    </InquiryStatusesUIContext.Provider>
   );
 }

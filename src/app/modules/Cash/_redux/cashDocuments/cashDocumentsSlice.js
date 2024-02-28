@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialCashDocumentsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const cashDocumentsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCashDocumentById  
+    // getCashDocumentById
     cashDocumentFetched: (state, action) => {
       state.actionsLoading = false;
       state.cashDocumentForEdit = action.payload.cashDocumentForEdit;
       state.error = null;
     },
-    // findCashDocuments  
+    // findCashDocuments
     cashDocumentsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,42 @@ export const cashDocumentsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCashDocument  
+    // createCashDocument
     cashDocumentCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCashDocument  
+    // updateCashDocument
     cashDocumentUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.CashDocumentId === action.payload.cashDocument.CashDocumentId) {
+        if (
+          entity.CashDocumentId === action.payload.cashDocument.CashDocumentId
+        ) {
           return action.payload.cashDocument;
         }
         return entity;
       });
     },
-    // deleteCashDocument  
+    // deleteCashDocument
     cashDocumentDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CashDocumentId !== action.payload.CashDocumentId  
+        (el) => el.CashDocumentId !== action.payload.CashDocumentId
       );
     },
-    // deleteCashDocuments  
+    // deleteCashDocuments
     cashDocumentsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CashDocumentId)  
+        (el) => !action.payload.ids.includes(el.CashDocumentId)
       );
     },
-    // cashDocumentsUpdateState  
+    // cashDocumentsUpdateState
     cashDocumentsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

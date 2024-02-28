@@ -26,9 +26,11 @@ export function FutsalReserveDatesPage({ history }) {
       history.push("/futsal/futsalReserveDates/updateStatus");
     },
   };
-  
+
   return (
-    <FutsalReserveDatesUIProvider futsalReserveDatesUIEvents={futsalReserveDatesUIEvents}>
+    <FutsalReserveDatesUIProvider
+      futsalReserveDatesUIEvents={futsalReserveDatesUIEvents}
+    >
       <FutsalReserveDatesLoadingDialog />
       <Route path="/futsal/futsalReserveDates/:id/delete">
         {({ history, match }) => (

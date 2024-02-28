@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "src/core/_partials/controls";
 import { AdvancedFilter } from "src/core/_partials/custom/advanced-filter/AdvancedFilter";
 import { BankCardsTable } from "./bankCards-table/BankCardsTable";
-import { useBankCardsUIContext, BankCardsUIConsumer } from "./BankCardsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useBankCardsUIContext,
+  BankCardsUIConsumer,
+} from "./BankCardsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function BankCardsCard() {
   const { t } = useTranslation();
@@ -24,14 +26,15 @@ export function BankCardsCard() {
       newBankCardButtonClick: bankCardsUIContext.newBankCardButtonClick,
       openDeleteBankCardsDialog: bankCardsUIContext.openDeleteBankCardsDialog,
       openEditBankCardPage: bankCardsUIContext.openEditBankCardPage,
-      openUpdateBankCardsStatusDialog: bankCardsUIContext.openUpdateBankCardsStatusDialog,
+      openUpdateBankCardsStatusDialog:
+        bankCardsUIContext.openUpdateBankCardsStatusDialog,
       openFetchBankCardsDialog: bankCardsUIContext.openFetchBankCardsDialog,
     };
   }, [bankCardsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("BankCard.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("BankCard.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"

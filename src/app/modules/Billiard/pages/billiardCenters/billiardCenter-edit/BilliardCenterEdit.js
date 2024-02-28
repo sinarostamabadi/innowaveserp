@@ -56,7 +56,9 @@ export function BilliardCenterEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("BilliardCenter.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("BilliardCenter.Entity");
 
     if (billiardCenterForEdit && id) {
       _title = t("Common.Edit") + " " + billiardCenterForEdit.TitleFa;

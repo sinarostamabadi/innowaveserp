@@ -365,15 +365,8 @@ export function SellDocumentEdit({
                   >
                     <div className="wizard-label">
                       <i className="wizard-icon fimanager flaticon-shop-online-support"></i>
-                      <h3 className="wizard-title">1. اطلاعات مشتری</h3>
+                      <h3 className="wizard-title">1-Customer information</h3>
                     </div>
-                    <i
-                      className={
-                        "fad fa-arrow-left position-absolute " +
-                        (step >= 1 && "text-primary")
-                      }
-                      style={{ left: "-2.5rem" }}
-                    ></i>
                   </div>
                   <div
                     className="wizard-step mx-8 position-relative"
@@ -384,25 +377,32 @@ export function SellDocumentEdit({
                   >
                     <div className="wizard-label">
                       <i className="wizard-icon fimanager flaticon-shop-note"></i>
-                      <h3 className="wizard-title">2. لیست فروش</h3>
+                      <h3 className="wizard-title">2-Sales list</h3>
                     </div>
                     <i
                       className={
-                        "fad fa-arrow-left position-absolute " +
-                        (step >= 2 && "text-primary")
+                        "fas fa-arrow-right position-absolute " +
+                        (step >= 1 && "text-primary")
                       }
                       style={{ left: "-2.5rem" }}
                     ></i>
                   </div>
                   <div
-                    className="wizard-step mx-8"
+                    className="wizard-step mx-8 position-relative"
                     data-wizard-type="step"
                     data-wizard-state={step == 3 ? "current" : "pending"}
                   >
                     <div className="wizard-label">
                       <i className="wizard-icon fimanager flaticon-shop-cashbox"></i>
-                      <h3 className="wizard-title">3. صندوق فروش</h3>
+                      <h3 className="wizard-title">3-Sales box</h3>
                     </div>
+                    <i
+                      className={
+                        "fas fa-arrow-right position-absolute " +
+                        (step >= 2 && "text-primary")
+                      }
+                      style={{ left: "-2.5rem" }}
+                    ></i>
                   </div>
                   {!handle.active && (
                     <button
@@ -512,7 +512,7 @@ export function SellDocumentEdit({
                               data-wizard-type="action-next"
                               onClick={saveSellDocumentClick}
                             >
-                              مرحله بعد
+                              Next
                             </button>
                           )}
                           {step > 1 && (
@@ -522,7 +522,7 @@ export function SellDocumentEdit({
                               data-wizard-type="action-prev"
                               onClick={() => setStep(step - 1)}
                             >
-                              مرحله قبل
+                              Back
                             </button>
                           )}
                         </Col>
@@ -536,7 +536,7 @@ export function SellDocumentEdit({
                                 disabled={!!payError ? "disabled" : ""}
                                 onClick={closeSellDocument}
                               >
-                                بستن
+                                Close
                               </button>
                               <button
                                 type="button"

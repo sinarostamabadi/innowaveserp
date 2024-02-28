@@ -7,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { DiscountTypesTable } from "./discountTypes-table/DiscountTypesTable";
-import { useDiscountTypesUIContext, DiscountTypesUIConsumer } from "./DiscountTypesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useDiscountTypesUIContext,
+  DiscountTypesUIConsumer,
+} from "./DiscountTypesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function DiscountTypesCard() {
   const { t } = useTranslation();
@@ -20,11 +23,15 @@ export function DiscountTypesCard() {
       ids: discountTypesUIContext.ids,
       queryParams: discountTypesUIContext.queryParams,
       setQueryParams: discountTypesUIContext.setQueryParams,
-      newDiscountTypeButtonClick: discountTypesUIContext.newDiscountTypeButtonClick,
-      openDeleteDiscountTypesDialog: discountTypesUIContext.openDeleteDiscountTypesDialog,
+      newDiscountTypeButtonClick:
+        discountTypesUIContext.newDiscountTypeButtonClick,
+      openDeleteDiscountTypesDialog:
+        discountTypesUIContext.openDeleteDiscountTypesDialog,
       openEditDiscountTypePage: discountTypesUIContext.openEditDiscountTypePage,
-      openUpdateDiscountTypesStatusDialog: discountTypesUIContext.openUpdateDiscountTypesStatusDialog,
-      openFetchDiscountTypesDialog: discountTypesUIContext.openFetchDiscountTypesDialog,
+      openUpdateDiscountTypesStatusDialog:
+        discountTypesUIContext.openUpdateDiscountTypesStatusDialog,
+      openFetchDiscountTypesDialog:
+        discountTypesUIContext.openFetchDiscountTypesDialog,
     };
   }, [discountTypesUIContext]);
 

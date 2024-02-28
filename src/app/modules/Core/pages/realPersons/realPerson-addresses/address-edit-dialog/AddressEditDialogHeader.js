@@ -21,7 +21,7 @@ export function AddressEditDialogHeader({ id }) {
   useEffect(() => {
     let _title = id ? "" : t("Common.Create") + " " + t("Address.Entity");
     if (addressForEdit && id) {
-      _title = t("Common.Edit") + " " + t("Address.Entity") ;
+      _title = t("Common.Edit") + " " + t("Address.Entity");
     }
 
     setTitle(_title);

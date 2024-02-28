@@ -26,7 +26,7 @@ export function BalanceProvider({ events, children, col }) {
     col: col,
     levelColumns,
     steps,
-    setSteps
+    setSteps,
   };
 
   const search = () => {
@@ -34,7 +34,7 @@ export function BalanceProvider({ events, children, col }) {
       setItems(data.Items);
       setReadyToPrint(true);
     });
-  }
+  };
 
   useEffect(() => {
     if (col.id == 2)
@@ -43,13 +43,13 @@ export function BalanceProvider({ events, children, col }) {
           dataField: "SumBed_Dore",
           text: t("Reports.Balance.SumBed_Dore"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
         {
           dataField: "SumBes_Dore",
           text: t("Reports.Balance.SumBes_Dore"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
       ]);
 
@@ -59,25 +59,25 @@ export function BalanceProvider({ events, children, col }) {
           dataField: "SumBed",
           text: t("Reports.Balance.SumBed"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
         {
           dataField: "SumBes",
           text: t("Reports.Balance.SumBes"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
         {
           dataField: "MandeBed",
           text: t("Reports.Balance.MandeBed"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
         {
           dataField: "MandeBes",
           text: t("Reports.Balance.MandeBes"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
       ]);
 
@@ -87,37 +87,37 @@ export function BalanceProvider({ events, children, col }) {
           dataField: "SumBed",
           text: t("Reports.Balance.SumBed"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
         {
           dataField: "SumBes",
           text: t("Reports.Balance.SumBes"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
         {
           dataField: "MandeBed",
           text: t("Reports.Balance.MandeBed"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
         {
           dataField: "MandeBes",
           text: t("Reports.Balance.MandeBes"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
         {
           dataField: "SumBed_TaDore",
           text: t("Reports.Balance.SumBed_TaDore"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
         {
           dataField: "SumBes_TaDore",
           text: t("Reports.Balance.SumBes_TaDore"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
       ]);
 
@@ -127,61 +127,59 @@ export function BalanceProvider({ events, children, col }) {
           dataField: "SumBed",
           text: t("Reports.Balance.SumBed"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
         {
           dataField: "SumBes",
           text: t("Reports.Balance.SumBes"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
         {
           dataField: "MandeBed",
           text: t("Reports.Balance.MandeBed"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
         {
           dataField: "MandeBes",
           text: t("Reports.Balance.MandeBes"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
         {
           dataField: "SumBed_TaDore",
           text: t("Reports.Balance.SumBed_TaDore"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
         {
           dataField: "SumBes_TaDore",
           text: t("Reports.Balance.SumBes_TaDore"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
         {
           dataField: "MandeBed_TaDore",
           text: t("Reports.Balance.MandeBed_TaDore"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
         {
           dataField: "MandeBes_TaDore",
           text: t("Reports.Balance.MandeBes_TaDore"),
           sort: false,
-          formatter: MoneyColumnFormatter
+          formatter: MoneyColumnFormatter,
         },
       ]);
   }, [col.id]);
 
   useEffect(() => {
-    if (!!filters) 
-      search()
-    else 
-      {
-        setItems([]);
-        setSteps([]);
-      }
+    if (!!filters) search();
+    else {
+      setItems([]);
+      setSteps([]);
+    }
   }, [filters, col]);
 
   return (

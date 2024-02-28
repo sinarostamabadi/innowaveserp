@@ -32,8 +32,10 @@ export function PoolReservePricesTable() {
       setIds: poolReservePricesUIContext.setIds,
       queryParams: poolReservePricesUIContext.queryParams,
       setQueryParams: poolReservePricesUIContext.setQueryParams,
-      openEditPoolReservePricePage: poolReservePricesUIContext.openEditPoolReservePricePage,
-      openDeletePoolReservePriceDialog: poolReservePricesUIContext.openDeletePoolReservePriceDialog,
+      openEditPoolReservePricePage:
+        poolReservePricesUIContext.openEditPoolReservePricePage,
+      openDeletePoolReservePriceDialog:
+        poolReservePricesUIContext.openDeletePoolReservePriceDialog,
     };
   }, [poolReservePricesUIContext]);
 
@@ -50,7 +52,9 @@ export function PoolReservePricesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     poolReservePricesUIProps.setIds([]);
-    dispatch(actions.fetchPoolReservePrices(poolReservePricesUIProps.queryParams));
+    dispatch(
+      actions.fetchPoolReservePrices(poolReservePricesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [poolReservePricesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function PoolReservePricesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditPoolReservePricePage: poolReservePricesUIProps.openEditPoolReservePricePage,
-        openDeletePoolReservePriceDialog: poolReservePricesUIProps.openDeletePoolReservePriceDialog,
+        openEditPoolReservePricePage:
+          poolReservePricesUIProps.openEditPoolReservePricePage,
+        openDeletePoolReservePriceDialog:
+          poolReservePricesUIProps.openDeletePoolReservePriceDialog,
         t: t,
       },
       classes: "text-right pr-0",

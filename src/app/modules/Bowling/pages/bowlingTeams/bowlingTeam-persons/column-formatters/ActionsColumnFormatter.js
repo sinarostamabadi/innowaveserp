@@ -8,7 +8,12 @@ export function ActionsColumnFormatter(
   cellContent,
   row,
   rowIndex,
-  { openEditBowlingTeamPersonDialog, openDeleteBowlingTeamPersonDialog, openSerialBowlingTeamPersonDialog, t }
+  {
+    openEditBowlingTeamPersonDialog,
+    openDeleteBowlingTeamPersonDialog,
+    openSerialBowlingTeamPersonDialog,
+    t,
+  }
 ) {
   return (
     <>

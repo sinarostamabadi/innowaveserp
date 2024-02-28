@@ -32,8 +32,10 @@ export function ImportAccountTempsTable() {
       setIds: importAccountTempsUIContext.setIds,
       queryParams: importAccountTempsUIContext.queryParams,
       setQueryParams: importAccountTempsUIContext.setQueryParams,
-      openEditImportAccountTempPage: importAccountTempsUIContext.openEditImportAccountTempPage,
-      openDeleteImportAccountTempDialog: importAccountTempsUIContext.openDeleteImportAccountTempDialog,
+      openEditImportAccountTempPage:
+        importAccountTempsUIContext.openEditImportAccountTempPage,
+      openDeleteImportAccountTempDialog:
+        importAccountTempsUIContext.openDeleteImportAccountTempDialog,
     };
   }, [importAccountTempsUIContext]);
 
@@ -50,7 +52,9 @@ export function ImportAccountTempsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     importAccountTempsUIProps.setIds([]);
-    dispatch(actions.fetchImportAccountTemps(importAccountTempsUIProps.queryParams));
+    dispatch(
+      actions.fetchImportAccountTemps(importAccountTempsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [importAccountTempsUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function ImportAccountTempsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditImportAccountTempPage: importAccountTempsUIProps.openEditImportAccountTempPage,
-        openDeleteImportAccountTempDialog: importAccountTempsUIProps.openDeleteImportAccountTempDialog,
+        openEditImportAccountTempPage:
+          importAccountTempsUIProps.openEditImportAccountTempPage,
+        openDeleteImportAccountTempDialog:
+          importAccountTempsUIProps.openDeleteImportAccountTempDialog,
         t: t,
       },
       classes: "text-right pr-0",

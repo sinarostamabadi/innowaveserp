@@ -57,14 +57,14 @@ export function SendSms() {
             Values: [personGroupId + ""],
           },
         ],
-        OrderBy: "PersonId asc"
+        OrderBy: "PersonId asc",
       })
       .then(({ data }) => {
         if (data.Items.length > 0) {
           setPhones((p) => [
             ...phones,
-            ...data.Items.filter(x=> !!x.Person).map((x) => {
-              return {Person: x.Person.FullNameFa, Mobile: x.Person.Mobile };
+            ...data.Items.filter((x) => !!x.Person).map((x) => {
+              return { Person: x.Person.FullNameFa, Mobile: x.Person.Mobile };
             }),
           ]);
         }
@@ -109,7 +109,7 @@ export function SendSms() {
           <Form id="Formik" className="form form-label-right">
             <Card>
               {sending && <ModalProgressBar />}
-              <CardHeader title="ارسال SMS">
+              <CardHeader title="Send SMS">
                 <CardHeaderToolbar>
                   <button
                     type="submit"
@@ -138,7 +138,7 @@ export function SendSms() {
                               <h6>{option.FullNameFa}</h6>
                               <span>
                                 {t("Person.Mobile")}:{" "}
-                                {option.Mobile ?? "تلفن همراه ثبت نشده است."}
+                                {option.Mobile ?? "Mobile phone is not registered"}
                               </span>
                               <br />
                               <span>
@@ -153,7 +153,10 @@ export function SendSms() {
                         <Button
                           variant="outline-success"
                           onClick={() => {
-                            addPhone({Person:values.Person[0].FullNameFa, Mobile: values.Person[0].Mobile});
+                            addPhone({
+                              Person: values.Person[0].FullNameFa,
+                              Mobile: values.Person[0].Mobile,
+                            });
                           }}
                         >
                           <i className="fa fa-plus p-0"></i>

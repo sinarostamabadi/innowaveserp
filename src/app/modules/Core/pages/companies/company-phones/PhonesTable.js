@@ -101,7 +101,11 @@ export function PhonesTable() {
                 bootstrap4
                 remote
                 keyField="PhoneId"
-                data={phonesUIProps.activePhones === null ? [] : phonesUIProps.activePhones}
+                data={
+                  phonesUIProps.activePhones === null
+                    ? []
+                    : phonesUIProps.activePhones
+                }
                 columns={columns}
                 {...paginationTableProps}
               >

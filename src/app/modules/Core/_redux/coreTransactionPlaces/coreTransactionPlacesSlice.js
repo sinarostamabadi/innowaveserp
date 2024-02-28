@@ -31,13 +31,14 @@ export const coreTransactionPlacesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCoreTransactionPlaceById  
+    // getCoreTransactionPlaceById
     coreTransactionPlaceFetched: (state, action) => {
       state.actionsLoading = false;
-      state.coreTransactionPlaceForEdit = action.payload.coreTransactionPlaceForEdit;
+      state.coreTransactionPlaceForEdit =
+        action.payload.coreTransactionPlaceForEdit;
       state.error = null;
     },
-    // findCoreTransactionPlaces  
+    // findCoreTransactionPlaces
     coreTransactionPlacesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -45,40 +46,44 @@ export const coreTransactionPlacesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCoreTransactionPlace  
+    // createCoreTransactionPlace
     coreTransactionPlaceCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCoreTransactionPlace  
+    // updateCoreTransactionPlace
     coreTransactionPlaceUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.CoreTransactionPlaceId === action.payload.coreTransactionPlace.CoreTransactionPlaceId) {
+        if (
+          entity.CoreTransactionPlaceId ===
+          action.payload.coreTransactionPlace.CoreTransactionPlaceId
+        ) {
           return action.payload.coreTransactionPlace;
         }
         return entity;
       });
     },
-    // deleteCoreTransactionPlace  
+    // deleteCoreTransactionPlace
     coreTransactionPlaceDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CoreTransactionPlaceId !== action.payload.CoreTransactionPlaceId  
+        (el) =>
+          el.CoreTransactionPlaceId !== action.payload.CoreTransactionPlaceId
       );
     },
-    // deleteCoreTransactionPlaces  
+    // deleteCoreTransactionPlaces
     coreTransactionPlacesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CoreTransactionPlaceId)  
+        (el) => !action.payload.ids.includes(el.CoreTransactionPlaceId)
       );
     },
-    // coreTransactionPlacesUpdateState  
+    // coreTransactionPlacesUpdateState
     coreTransactionPlacesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

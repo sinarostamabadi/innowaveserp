@@ -26,7 +26,7 @@ export function CoffeeInvoicesPage({ history }) {
       history.push("/cofe/coffeeInvoices/updateStatus");
     },
   };
-  
+
   return (
     <CoffeeInvoicesUIProvider coffeeInvoicesUIEvents={coffeeInvoicesUIEvents}>
       <CoffeeInvoicesLoadingDialog />

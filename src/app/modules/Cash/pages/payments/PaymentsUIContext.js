@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { PaymentModel } from "../../../../../core/_models/Cash/PaymentModel";
@@ -30,7 +29,7 @@ export function PaymentsUIProvider({ paymentsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function PaymentsUIProvider({ paymentsUIEvents, children }) {
     openDeletePaymentDialog: paymentsUIEvents.openDeletePaymentDialog,
     openDeletePaymentsDialog: paymentsUIEvents.openDeletePaymentsDialog,
     openFetchPaymentsDialog: paymentsUIEvents.openFetchPaymentsDialog,
-    openUpdatePaymentsStatusDialog: paymentsUIEvents.openUpdatePaymentsStatusDialog,
+    openUpdatePaymentsStatusDialog:
+      paymentsUIEvents.openUpdatePaymentsStatusDialog,
   };
   return (
-    <PaymentsUIContext.Provider value={value}>{children}</PaymentsUIContext.Provider>
+    <PaymentsUIContext.Provider value={value}>
+      {children}
+    </PaymentsUIContext.Provider>
   );
 }

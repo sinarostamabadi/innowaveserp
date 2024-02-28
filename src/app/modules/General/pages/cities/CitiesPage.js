@@ -26,7 +26,7 @@ export function CitiesPage({ history }) {
       history.push("/general/cities/updateStatus");
     },
   };
-  
+
   return (
     <CitiesUIProvider citiesUIEvents={citiesUIEvents}>
       <CitiesLoadingDialog />

@@ -71,7 +71,7 @@ export function BuyRequestEdit({
   useEffect(() => {
     dispatch(actions.fetchBuyRequest(id));
   }, [id, dispatch]);
-  
+
   useEffect(() => {
     let _title = id ? "" : t("Common.Create") + " " + t("BuyRequest.Entity");
 
@@ -130,9 +130,8 @@ export function BuyRequestEdit({
         }
 
         if (isApprove == true)
-          buyRequestObj[
-            "BuyRequestStatusId"
-          ] = ++buyRequestObj.BuyRequestStatusId;
+          buyRequestObj["BuyRequestStatusId"] =
+            ++buyRequestObj.BuyRequestStatusId;
         if (isApprove == false) buyRequestObj["BuyRequestStatusId"] = 5;
 
         buyRequestObj["BuyRequestDetails"] = [];

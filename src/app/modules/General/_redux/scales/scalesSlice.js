@@ -32,13 +32,13 @@ export const scalesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getScaleById  
+    // getScaleById
     scaleFetched: (state, action) => {
       state.actionsLoading = false;
       state.scaleForEdit = action.payload.scaleForEdit;
       state.error = null;
     },
-    // findScales  
+    // findScales
     scalesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -46,15 +46,15 @@ export const scalesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createScale  
+    // createScale
     scaleCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
-      
+
       return;
     },
-    // updateScale  
+    // updateScale
     scaleUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,26 +64,26 @@ export const scalesSlice = createSlice({
         }
         return entity;
       });
-      
+
       return;
     },
-    // deleteScale  
+    // deleteScale
     scaleDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.ScaleId !== action.payload.ScaleId  
+        (el) => el.ScaleId !== action.payload.ScaleId
       );
     },
-    // deleteScales  
+    // deleteScales
     scalesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ScaleId)  
+        (el) => !action.payload.ids.includes(el.ScaleId)
       );
     },
-    // scalesUpdateState  
+    // scalesUpdateState
     scalesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

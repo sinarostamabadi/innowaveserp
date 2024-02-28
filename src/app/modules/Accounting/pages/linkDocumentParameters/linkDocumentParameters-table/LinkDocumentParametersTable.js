@@ -32,8 +32,10 @@ export function LinkDocumentParametersTable() {
       setIds: linkDocumentParametersUIContext.setIds,
       queryParams: linkDocumentParametersUIContext.queryParams,
       setQueryParams: linkDocumentParametersUIContext.setQueryParams,
-      openEditLinkDocumentParameterPage: linkDocumentParametersUIContext.openEditLinkDocumentParameterPage,
-      openDeleteLinkDocumentParameterDialog: linkDocumentParametersUIContext.openDeleteLinkDocumentParameterDialog,
+      openEditLinkDocumentParameterPage:
+        linkDocumentParametersUIContext.openEditLinkDocumentParameterPage,
+      openDeleteLinkDocumentParameterDialog:
+        linkDocumentParametersUIContext.openDeleteLinkDocumentParameterDialog,
     };
   }, [linkDocumentParametersUIContext]);
 
@@ -50,7 +52,11 @@ export function LinkDocumentParametersTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     linkDocumentParametersUIProps.setIds([]);
-    dispatch(actions.fetchLinkDocumentParameters(linkDocumentParametersUIProps.queryParams));
+    dispatch(
+      actions.fetchLinkDocumentParameters(
+        linkDocumentParametersUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [linkDocumentParametersUIProps.queryParams, dispatch]);
 
@@ -72,8 +78,10 @@ export function LinkDocumentParametersTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditLinkDocumentParameterPage: linkDocumentParametersUIProps.openEditLinkDocumentParameterPage,
-        openDeleteLinkDocumentParameterDialog: linkDocumentParametersUIProps.openDeleteLinkDocumentParameterDialog,
+        openEditLinkDocumentParameterPage:
+          linkDocumentParametersUIProps.openEditLinkDocumentParameterPage,
+        openDeleteLinkDocumentParameterDialog:
+          linkDocumentParametersUIProps.openDeleteLinkDocumentParameterDialog,
         t: t,
       },
       classes: "text-right pr-0",

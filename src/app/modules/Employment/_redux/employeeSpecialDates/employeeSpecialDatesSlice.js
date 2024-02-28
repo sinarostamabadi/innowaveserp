@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmployeeSpecialDatesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const employeeSpecialDatesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmployeeSpecialDateById  
+    // getEmployeeSpecialDateById
     employeeSpecialDateFetched: (state, action) => {
       state.actionsLoading = false;
-      state.employeeSpecialDateForEdit = action.payload.employeeSpecialDateForEdit;
+      state.employeeSpecialDateForEdit =
+        action.payload.employeeSpecialDateForEdit;
       state.error = null;
     },
-    // findEmployeeSpecialDates  
+    // findEmployeeSpecialDates
     employeeSpecialDatesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const employeeSpecialDatesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmployeeSpecialDate  
+    // createEmployeeSpecialDate
     employeeSpecialDateCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmployeeSpecialDate  
+    // updateEmployeeSpecialDate
     employeeSpecialDateUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.EmployeeSpecialDateId === action.payload.employeeSpecialDate.EmployeeSpecialDateId) {
+        if (
+          entity.EmployeeSpecialDateId ===
+          action.payload.employeeSpecialDate.EmployeeSpecialDateId
+        ) {
           return action.payload.employeeSpecialDate;
         }
         return entity;
       });
     },
-    // deleteEmployeeSpecialDate  
+    // deleteEmployeeSpecialDate
     employeeSpecialDateDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EmployeeSpecialDateId !== action.payload.EmployeeSpecialDateId  
+        (el) =>
+          el.EmployeeSpecialDateId !== action.payload.EmployeeSpecialDateId
       );
     },
-    // deleteEmployeeSpecialDates  
+    // deleteEmployeeSpecialDates
     employeeSpecialDatesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EmployeeSpecialDateId)  
+        (el) => !action.payload.ids.includes(el.EmployeeSpecialDateId)
       );
     },
-    // employeeSpecialDatesUpdateState  
+    // employeeSpecialDatesUpdateState
     employeeSpecialDatesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

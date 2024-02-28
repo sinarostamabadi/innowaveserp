@@ -30,7 +30,7 @@ export function PhonesPage({ history }) {
       <PhonesLoadingDialog />
       <Route path="/Core/phones/:id/delete">
         {({ history, match }) => (
-          <PhoneDeleteDialog  
+          <PhoneDeleteDialog
             show={match != null}
             id={match && match.params.id}
             onHide={() => {

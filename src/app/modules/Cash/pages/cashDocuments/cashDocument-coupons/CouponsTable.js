@@ -4,7 +4,10 @@ import { ActionsColumnFormatter } from "./column-formatters/ActionsColumnFormatt
 import { NoRecordsFoundMessage, PleaseWaitMessage } from "src/core/_helpers";
 import { useCouponsUIContext } from "./CouponsUIContext";
 import { useTranslation } from "react-i18next";
-import { MoneyColumnFormatter, DateFaColumnFormatter } from "src/core/_formatters";
+import {
+  MoneyColumnFormatter,
+  DateFaColumnFormatter,
+} from "src/core/_formatters";
 
 export function CouponsTable() {
   const { t } = useTranslation();
@@ -15,7 +18,7 @@ export function CouponsTable() {
     return {
       activeCoupons: couponsUIContext.activeCoupons,
       openEditCouponDialog: couponsUIContext.openEditCouponDialog,
-      openDeleteCouponDialog: couponsUIContext.openDeleteCouponDialog
+      openDeleteCouponDialog: couponsUIContext.openDeleteCouponDialog,
     };
   }, [couponsUIContext]);
 
@@ -29,7 +32,7 @@ export function CouponsTable() {
       dataField: "Price",
       text: t("CashDocument.Price"),
       sort: false,
-      formatter: MoneyColumnFormatter
+      formatter: MoneyColumnFormatter,
     },
     {
       dataField: "TransactionDate",

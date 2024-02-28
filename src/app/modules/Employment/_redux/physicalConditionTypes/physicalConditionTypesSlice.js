@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPhysicalConditionTypesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const physicalConditionTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPhysicalConditionTypeById  
+    // getPhysicalConditionTypeById
     physicalConditionTypeFetched: (state, action) => {
       state.actionsLoading = false;
-      state.physicalConditionTypeForEdit = action.payload.physicalConditionTypeForEdit;
+      state.physicalConditionTypeForEdit =
+        action.payload.physicalConditionTypeForEdit;
       state.error = null;
     },
-    // findPhysicalConditionTypes  
+    // findPhysicalConditionTypes
     physicalConditionTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const physicalConditionTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPhysicalConditionType  
+    // createPhysicalConditionType
     physicalConditionTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePhysicalConditionType  
+    // updatePhysicalConditionType
     physicalConditionTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.PhysicalConditionTypeId === action.payload.physicalConditionType.PhysicalConditionTypeId) {
+        if (
+          entity.PhysicalConditionTypeId ===
+          action.payload.physicalConditionType.PhysicalConditionTypeId
+        ) {
           return action.payload.physicalConditionType;
         }
         return entity;
       });
     },
-    // deletePhysicalConditionType  
+    // deletePhysicalConditionType
     physicalConditionTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PhysicalConditionTypeId !== action.payload.PhysicalConditionTypeId  
+        (el) =>
+          el.PhysicalConditionTypeId !== action.payload.PhysicalConditionTypeId
       );
     },
-    // deletePhysicalConditionTypes  
+    // deletePhysicalConditionTypes
     physicalConditionTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PhysicalConditionTypeId)  
+        (el) => !action.payload.ids.includes(el.PhysicalConditionTypeId)
       );
     },
-    // physicalConditionTypesUpdateState  
+    // physicalConditionTypesUpdateState
     physicalConditionTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

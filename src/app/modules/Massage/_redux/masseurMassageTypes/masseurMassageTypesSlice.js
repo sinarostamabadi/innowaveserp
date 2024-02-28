@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialMasseurMassageTypesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const masseurMassageTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getMasseurMassageTypeById  
+    // getMasseurMassageTypeById
     masseurMassageTypeFetched: (state, action) => {
       state.actionsLoading = false;
-      state.masseurMassageTypeForEdit = action.payload.masseurMassageTypeForEdit;
+      state.masseurMassageTypeForEdit =
+        action.payload.masseurMassageTypeForEdit;
       state.error = null;
     },
-    // findMasseurMassageTypes  
+    // findMasseurMassageTypes
     masseurMassageTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,43 @@ export const masseurMassageTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createMasseurMassageType  
+    // createMasseurMassageType
     masseurMassageTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateMasseurMassageType  
+    // updateMasseurMassageType
     masseurMassageTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.MasseurMassageTypeId === action.payload.masseurMassageType.MasseurMassageTypeId) {
+        if (
+          entity.MasseurMassageTypeId ===
+          action.payload.masseurMassageType.MasseurMassageTypeId
+        ) {
           return action.payload.masseurMassageType;
         }
         return entity;
       });
     },
-    // deleteMasseurMassageType  
+    // deleteMasseurMassageType
     masseurMassageTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.MasseurMassageTypeId !== action.payload.MasseurMassageTypeId  
+        (el) => el.MasseurMassageTypeId !== action.payload.MasseurMassageTypeId
       );
     },
-    // deleteMasseurMassageTypes  
+    // deleteMasseurMassageTypes
     masseurMassageTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.MasseurMassageTypeId)  
+        (el) => !action.payload.ids.includes(el.MasseurMassageTypeId)
       );
     },
-    // masseurMassageTypesUpdateState  
+    // masseurMassageTypesUpdateState
     masseurMassageTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

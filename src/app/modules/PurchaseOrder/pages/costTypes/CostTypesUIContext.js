@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { CostTypeModel } from "../../../../../core/_models/PurchaseOrder/CostTypeModel";
@@ -30,7 +29,7 @@ export function CostTypesUIProvider({ costTypesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function CostTypesUIProvider({ costTypesUIEvents, children }) {
     openDeleteCostTypeDialog: costTypesUIEvents.openDeleteCostTypeDialog,
     openDeleteCostTypesDialog: costTypesUIEvents.openDeleteCostTypesDialog,
     openFetchCostTypesDialog: costTypesUIEvents.openFetchCostTypesDialog,
-    openUpdateCostTypesStatusDialog: costTypesUIEvents.openUpdateCostTypesStatusDialog,
+    openUpdateCostTypesStatusDialog:
+      costTypesUIEvents.openUpdateCostTypesStatusDialog,
   };
   return (
-    <CostTypesUIContext.Provider value={value}>{children}</CostTypesUIContext.Provider>
+    <CostTypesUIContext.Provider value={value}>
+      {children}
+    </CostTypesUIContext.Provider>
   );
 }

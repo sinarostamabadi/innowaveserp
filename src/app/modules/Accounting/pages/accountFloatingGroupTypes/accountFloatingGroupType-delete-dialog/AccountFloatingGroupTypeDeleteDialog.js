@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -16,7 +15,8 @@ export function AccountFloatingGroupTypeDeleteDialog({ id, show, onHide }) {
   const { t } = useTranslation();
 
   // AccountFloatingGroupTypes UI Context
-  const accountFloatingGroupTypesUIContext = useAccountFloatingGroupTypesUIContext();
+  const accountFloatingGroupTypesUIContext =
+    useAccountFloatingGroupTypesUIContext();
   const [error, setError] = useState(null);
   const accountFloatingGroupTypesUIProps = useMemo(() => {
     return {
@@ -48,7 +48,11 @@ export function AccountFloatingGroupTypeDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteAccountFloatingGroupType(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchAccountFloatingGroupTypes(accountFloatingGroupTypesUIProps.queryParams));
+        dispatch(
+          actions.fetchAccountFloatingGroupTypes(
+            accountFloatingGroupTypesUIProps.queryParams
+          )
+        );
         // clear selections list
         accountFloatingGroupTypesUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +71,12 @@ export function AccountFloatingGroupTypeDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("AccountFloatingGroupType.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("AccountFloatingGroupType.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

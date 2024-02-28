@@ -40,10 +40,10 @@ export function PersonSpecialDayDeleteDialog() {
   }, [uiProps.id]);
 
   // looking for loading/dispatch
-  useEffect(() => { }, [isLoading, dispatch]);
+  useEffect(() => {}, [isLoading, dispatch]);
 
   const deletePersonSpecialDay = () => {
-    uiProps.removePersonSpecialDay(uiProps.id)
+    uiProps.removePersonSpecialDay(uiProps.id);
     uiProps.onHide();
   };
 
@@ -60,9 +60,7 @@ export function PersonSpecialDayDeleteDialog() {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && (
-          <span>{t("Common.DeleteQuestion")}</span>
-        )}
+        {!isLoading && <span>{t("Common.DeleteQuestion")}</span>}
         {isLoading && <span>{t("Common.DeleteLoading")}</span>}
       </Modal.Body>
       <Modal.Footer>

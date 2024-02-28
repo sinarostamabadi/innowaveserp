@@ -7,31 +7,33 @@ import { toAbsoluteUrl } from "../../../../../../../core/_helpers";
 export function DetailAmountColumnFormatter(cellContent, row, rowIndex, { t }) {
   const hasSerial = row.Product.HasSerial;
   const amount = row.Amount;
-  const serialCount = !!row.BuyRequestSerials ? row.BuyRequestSerials.length : 0;
-  
+  const serialCount = !!row.BuyRequestSerials
+    ? row.BuyRequestSerials.length
+    : 0;
+
   return (
     <>
-        <OverlayTrigger
-          overlay={
-            <Tooltip id="specs-edit-tooltip">
-              {hasSerial ? (
-                <>
-                  {t("BuyRequestDetail.Amount") + ": " + amount}
-                  <br />
-                  {t("Common.Serials") + ": " + serialCount}
-                </>
-              ) : (
-                t("BuyRequestDetail.Amount") + ": " + amount
-              )}
-            </Tooltip>
-          }
+      <OverlayTrigger
+        overlay={
+          <Tooltip id="specs-edit-tooltip">
+            {hasSerial ? (
+              <>
+                {t("BuyRequestDetail.Amount") + ": " + amount}
+                <br />
+                {t("Common.Serials") + ": " + serialCount}
+              </>
+            ) : (
+              t("BuyRequestDetail.Amount") + ": " + amount
+            )}
+          </Tooltip>
+        }
+      >
+        <span
+          className={amount != serialCount && hasSerial ? "text-danger" : ""}
         >
-          <span
-            className={amount != serialCount && hasSerial ? "text-danger" : ""}
-          >
-            {amount + (hasSerial ? " (" + serialCount + ")" : "")}
-          </span>
-        </OverlayTrigger>
+          {amount + (hasSerial ? " (" + serialCount + ")" : "")}
+        </span>
+      </OverlayTrigger>
     </>
   );
 }

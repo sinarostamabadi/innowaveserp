@@ -1,11 +1,16 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import {  Row,Col, Dropdown, Tabs, Tab } from "react-bootstrap";
+import { Row, Col, Dropdown, Tabs, Tab } from "react-bootstrap";
 import { shallowEqual, useSelector } from "react-redux";
 import moment from "jalali-moment";
 import axios from "axios";
 import * as actions from "../../../_redux/buyReturns/buyReturnsActions";
-import { Card, CardBody, CardHeader, CardHeaderToolbar } from "src/core/_partials/controls";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderToolbar,
+} from "src/core/_partials/controls";
 import { BuyReturnEditForm } from "./BuyReturnEditForm";
 import { useSubheader } from "src/core/layout";
 import { ModalProgressBar, Alerty } from "src/core/_partials/controls";
@@ -19,7 +24,12 @@ import { DiscountsUIProvider } from "../buyReturns-discounts/DiscountsUIContext"
 import { Discounts } from "../buyReturns-discounts/Discounts";
 import { PrintFactor } from "../print/PrintFactor";
 import { PrintOfficial } from "../print/PrintOfficial";
-import { EnToFaObjDate, CloneObject, getStorage, numberWithCommas } from "src/core/_helpers";
+import {
+  EnToFaObjDate,
+  CloneObject,
+  getStorage,
+  numberWithCommas,
+} from "src/core/_helpers";
 import { Attachments } from "src/core/_partials/controls/attachment/Attachments";
 import { ObjectToFormData } from "src/core/_helpers";
 
@@ -43,10 +53,7 @@ export function BuyReturnEdit({
     FactorDate: "",
     FactorDateObj: "",
     BuyReturnDateObj: EnToFaObjDate(new Date()),
-    BuyReturnDate: moment
-      .from()
-      .locale("en")
-      .format("YYYY-MM-DDTHH:mm:ss"),
+    BuyReturnDate: moment.from().locale("en").format("YYYY-MM-DDTHH:mm:ss"),
     IsClosed: false,
     IsTemp: true,
     BuyReturnDetails: [],
@@ -63,11 +70,21 @@ export function BuyReturnEdit({
   const [title, setTitle] = useState("");
   const dispatch = useDispatch();
   const [buyReturnObj, setBuyReturnObj] = useState(copyModel);
-  const [buyReturnDtlObj, setBuyReturnDetailObj] = useState(copyModel.BuyReturnDetails);
-  const [entityAttachmentsObj, setEntityAttachmentsObj] = useState(copyModel.EntityAttachments);
-  const [buyReturnRequestDetailsObj, setBuyReturnRequestDetailsObj] = useState([]);
-  const [buyReturnCostObj, setBuyReturnCostObj] = useState(copyModel.BuyReturnCosts);
-  const [buyReturnDiscountObj, setBuyReturnDiscountObj] = useState(copyModel.BuyReturnDiscounts);
+  const [buyReturnDtlObj, setBuyReturnDetailObj] = useState(
+    copyModel.BuyReturnDetails
+  );
+  const [entityAttachmentsObj, setEntityAttachmentsObj] = useState(
+    copyModel.EntityAttachments
+  );
+  const [buyReturnRequestDetailsObj, setBuyReturnRequestDetailsObj] = useState(
+    []
+  );
+  const [buyReturnCostObj, setBuyReturnCostObj] = useState(
+    copyModel.BuyReturnCosts
+  );
+  const [buyReturnDiscountObj, setBuyReturnDiscountObj] = useState(
+    copyModel.BuyReturnDiscounts
+  );
   const [buyReturnSum, updateBuyReturnSum] = useState({
     DetailCount: 0,
     SumPrice: 0,
@@ -99,7 +116,7 @@ export function BuyReturnEdit({
         for (let index = 0; index < ids.length; index++) {
           const element = ids[index];
 
-          (function(el) {
+          (function (el) {
             axios
               .get(`BuyReturnRequestDetail/get/${el}`)
               .then(({ data }) => {
@@ -125,7 +142,8 @@ export function BuyReturnEdit({
                           BuyReturnDetailRequestDetails: [
                             {
                               // BuyReturnDetailId: null,
-                              BuyReturnRequestDetailId: x.BuyReturnRequestDetailId,
+                              BuyReturnRequestDetailId:
+                                x.BuyReturnRequestDetailId,
                             },
                           ],
                         };
@@ -156,12 +174,15 @@ export function BuyReturnEdit({
         ...buyReturnForEdit,
         BuyReturnDateObj: EnToFaObjDate(buyReturnForEdit.BuyReturnDate),
         FactorDateObj:
-          buyReturnForEdit.FactorDate && EnToFaObjDate(buyReturnForEdit.FactorDate),
+          buyReturnForEdit.FactorDate &&
+          EnToFaObjDate(buyReturnForEdit.FactorDate),
       });
       setBuyReturnDetailObj(buyReturnForEdit.BuyReturnDetails);
       setBuyReturnCostObj(buyReturnForEdit.BuyReturnCosts);
       setBuyReturnCostObj(buyReturnForEdit.BuyReturnDiscounts);
-      setBuyReturnRequestDetailsObj(buyReturnForEdit.BuyReturnDetailRequestDetails);
+      setBuyReturnRequestDetailsObj(
+        buyReturnForEdit.BuyReturnDetailRequestDetails
+      );
       setEntityAttachmentsObj(buyReturnForEdit.EntityAttachments);
 
       updateBuyReturnSum({
@@ -221,22 +242,29 @@ export function BuyReturnEdit({
         buyReturnObj["BuyReturnDetails"] = [];
         buyReturnObj["BuyReturnCosts"] = [];
         buyReturnObj["BuyReturnDiscounts"] = [];
-        buyReturnObj["EntityAttachments"] = entityAttachmentsObj.map(x=> {return{
-          EntityAttachmentId: x.EntityAttachmentId.toString().indexOf("temp_") > -1? null: x.EntityAttachmentId,
-          EntityId: x.EntityId,
-          EntityPKId: x.EntityPKId,
-          AttachmentId: x.AttachmentId,
-          Title: x.Title,
-          Description: x.Description,
-          Reference1: x.Reference1,
-          Reference2: x.Reference2,
-          Reference3: x.Reference3,
-          Reference4: x.Reference4,
-          IsDeleted: x.IsDeleted || false,
-          Attachment: x.Attachment.FormFile? {
-            FormFile: x.Attachment.FormFile,
-          }: null,
-        }});
+        buyReturnObj["EntityAttachments"] = entityAttachmentsObj.map((x) => {
+          return {
+            EntityAttachmentId:
+              x.EntityAttachmentId.toString().indexOf("temp_") > -1
+                ? null
+                : x.EntityAttachmentId,
+            EntityId: x.EntityId,
+            EntityPKId: x.EntityPKId,
+            AttachmentId: x.AttachmentId,
+            Title: x.Title,
+            Description: x.Description,
+            Reference1: x.Reference1,
+            Reference2: x.Reference2,
+            Reference3: x.Reference3,
+            Reference4: x.Reference4,
+            IsDeleted: x.IsDeleted || false,
+            Attachment: x.Attachment.FormFile
+              ? {
+                  FormFile: x.Attachment.FormFile,
+                }
+              : null,
+          };
+        });
 
         btnRefDetails.current.Collect((detailsData) => {
           buyReturnObj.BuyReturnDetails = detailsData;
@@ -377,7 +405,7 @@ export function BuyReturnEdit({
             </CardHeaderToolbar>
           </CardHeader>
           <CardBody className="py-0">
-          <Tabs
+            <Tabs
               defaultActiveKey="buyReturn"
               transition={false}
               className="nav nav-tabs nav-tabs-line"
@@ -387,100 +415,122 @@ export function BuyReturnEdit({
                 title={t("Common.BasicInfo")}
                 className="nav-item"
               >
-            <BuyReturnEditForm
-              actionsLoading={actionsLoading}
-              buyReturn={buyReturnObj}
-              ref={btnRefBuyReturn}
-            />
-            <table className="table table-bordered">
-              <tbody>
-                <tr>
-                  <td className="font-weight-bold">
-                    تعداد کالا: {numberWithCommas(Math.ceil(buyReturnSum.DetailCount))}
-                  </td>
-                  <td className="font-weight-bold">
-                    جمع کل: {numberWithCommas(Math.ceil(+buyReturnSum.SumPayable))}
-                  </td>
-                  <td className="font-weight-bold">
-                    جمع تخفیف‌های پای فاکتور: {numberWithCommas(Math.ceil(buyReturnSumDiscount))}
-                  </td>
-                  <td className="font-weight-bold">
-                    جمع هزینه‌های پای فاکتور: {numberWithCommas(Math.ceil(buyReturnSumCost))}
-                  </td>
-                  <td className="font-weight-bold">
-                    قابل پرداخت:{" "}
-                    {numberWithCommas(
-                      Math.ceil(+buyReturnSum.SumPayable - +buyReturnSumDiscount + +buyReturnSumCost)
-                    )}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <DetailsUIProvider
-              currentBuyReturnId={id}
-              actionsLoading={actionsLoading}
-              detail={buyReturnDtlObj}
-              updateBuyReturn={updateBuyReturnSum}
-              buyReturnSum={buyReturnSum}
-              editable={!!id == false || (!!id == true && buyReturnObj.IsTemp)}
-              ref={btnRefDetails}
-            >
-              <Details />
-            </DetailsUIProvider>
-            <table className="table table-bordered">
-              <tbody>
-                <tr>
-                  <td className="font-weight-bold">
-                    تعداد کالا: {numberWithCommas(Math.ceil(buyReturnSum.DetailCount))}
-                  </td>
-                  <td className="font-weight-bold">
-                    جمع کل: {numberWithCommas(Math.ceil(+buyReturnSum.SumPayable))}
-                  </td>
-                  <td className="font-weight-bold">
-                    جمع تخفیف‌های پای فاکتور: {numberWithCommas(Math.ceil(buyReturnSumDiscount))}
-                  </td>
-                  <td className="font-weight-bold">
-                    جمع هزینه‌های پای فاکتور: {numberWithCommas(Math.ceil(buyReturnSumCost))}
-                  </td>
-                  <td className="font-weight-bold">
-                    قابل پرداخت:{" "}
-                    {numberWithCommas(
-                      Math.ceil(+buyReturnSum.SumPayable - +buyReturnSumDiscount + +buyReturnSumCost)
-                    )}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <Row className="mt-5">
-              <Col lg="6" md="12">
-                <CostsUIProvider
+                <BuyReturnEditForm
+                  actionsLoading={actionsLoading}
+                  buyReturn={buyReturnObj}
+                  ref={btnRefBuyReturn}
+                />
+                <table className="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <td className="font-weight-bold">
+                        تعداد کالا:{" "}
+                        {numberWithCommas(Math.ceil(buyReturnSum.DetailCount))}
+                      </td>
+                      <td className="font-weight-bold">
+                        جمع کل:{" "}
+                        {numberWithCommas(Math.ceil(+buyReturnSum.SumPayable))}
+                      </td>
+                      <td className="font-weight-bold">
+                        جمع تخفیف‌های پای فاکتور:{" "}
+                        {numberWithCommas(Math.ceil(buyReturnSumDiscount))}
+                      </td>
+                      <td className="font-weight-bold">
+                        جمع هزینه‌های پای فاکتور:{" "}
+                        {numberWithCommas(Math.ceil(buyReturnSumCost))}
+                      </td>
+                      <td className="font-weight-bold">
+                        قابل پرداخت:{" "}
+                        {numberWithCommas(
+                          Math.ceil(
+                            +buyReturnSum.SumPayable -
+                              +buyReturnSumDiscount +
+                              +buyReturnSumCost
+                          )
+                        )}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <DetailsUIProvider
                   currentBuyReturnId={id}
                   actionsLoading={actionsLoading}
-                  cost={buyReturnCostObj}
-                  updateBuyReturn={updateBuyReturnSumCost}
+                  detail={buyReturnDtlObj}
+                  updateBuyReturn={updateBuyReturnSum}
                   buyReturnSum={buyReturnSum}
-                  editable={!!id == false || (!!id == true && buyReturnObj.IsTemp)}
-                  ref={btnRefCosts}
+                  editable={
+                    !!id == false || (!!id == true && buyReturnObj.IsTemp)
+                  }
+                  ref={btnRefDetails}
                 >
-                  <Costs />
-                </CostsUIProvider>
-              </Col>
-              <Col lg="6" md="12">
-                <DiscountsUIProvider
-                  currentBuyReturnId={id}
-                  actionsLoading={actionsLoading}
-                  discount={buyReturnDiscountObj}
-                  updateBuyReturn={updateBuyReturnSumDiscount}
-                  buyReturnSum={buyReturnSum}
-                  editable={!!id == false || (!!id == true && buyReturnObj.IsTemp)}
-                  ref={btnRefDiscounts}
-                >
-                  <Discounts />
-                </DiscountsUIProvider>
-              </Col>
-            </Row>
-            </Tab>
-            <Tab
+                  <Details />
+                </DetailsUIProvider>
+                <table className="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <td className="font-weight-bold">
+                        تعداد کالا:{" "}
+                        {numberWithCommas(Math.ceil(buyReturnSum.DetailCount))}
+                      </td>
+                      <td className="font-weight-bold">
+                        جمع کل:{" "}
+                        {numberWithCommas(Math.ceil(+buyReturnSum.SumPayable))}
+                      </td>
+                      <td className="font-weight-bold">
+                        جمع تخفیف‌های پای فاکتور:{" "}
+                        {numberWithCommas(Math.ceil(buyReturnSumDiscount))}
+                      </td>
+                      <td className="font-weight-bold">
+                        جمع هزینه‌های پای فاکتور:{" "}
+                        {numberWithCommas(Math.ceil(buyReturnSumCost))}
+                      </td>
+                      <td className="font-weight-bold">
+                        قابل پرداخت:{" "}
+                        {numberWithCommas(
+                          Math.ceil(
+                            +buyReturnSum.SumPayable -
+                              +buyReturnSumDiscount +
+                              +buyReturnSumCost
+                          )
+                        )}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <Row className="mt-5">
+                  <Col lg="6" md="12">
+                    <CostsUIProvider
+                      currentBuyReturnId={id}
+                      actionsLoading={actionsLoading}
+                      cost={buyReturnCostObj}
+                      updateBuyReturn={updateBuyReturnSumCost}
+                      buyReturnSum={buyReturnSum}
+                      editable={
+                        !!id == false || (!!id == true && buyReturnObj.IsTemp)
+                      }
+                      ref={btnRefCosts}
+                    >
+                      <Costs />
+                    </CostsUIProvider>
+                  </Col>
+                  <Col lg="6" md="12">
+                    <DiscountsUIProvider
+                      currentBuyReturnId={id}
+                      actionsLoading={actionsLoading}
+                      discount={buyReturnDiscountObj}
+                      updateBuyReturn={updateBuyReturnSumDiscount}
+                      buyReturnSum={buyReturnSum}
+                      editable={
+                        !!id == false || (!!id == true && buyReturnObj.IsTemp)
+                      }
+                      ref={btnRefDiscounts}
+                    >
+                      <Discounts />
+                    </DiscountsUIProvider>
+                  </Col>
+                </Row>
+              </Tab>
+              <Tab
                 eventKey="attachments"
                 title={t("Common.Attachments")}
                 className="nav-item"

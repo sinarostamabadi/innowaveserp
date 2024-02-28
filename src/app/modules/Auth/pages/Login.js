@@ -109,7 +109,6 @@ function Login(props) {
                 return response;
               })
               .then(
-              
                 ({
                   data: {
                     CurrentLogin,
@@ -121,7 +120,7 @@ function Login(props) {
                 }) => {
                   setLoginError(null);
                   disableLoading();
-                  console.log("menuuuuuuuuuuuuu",Services)
+                  console.log("menuuuuuuuuuuuuu", Services);
                   props.login(CurrentLogin.Token, {
                     UserId,
                     UserName,

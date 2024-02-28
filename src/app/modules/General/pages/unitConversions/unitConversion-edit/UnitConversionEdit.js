@@ -56,7 +56,9 @@ export function UnitConversionEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("UnitConversion.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("UnitConversion.Entity");
 
     if (unitConversionForEdit && id) {
       _title = t("Common.Edit") + " " + unitConversionForEdit.BaseUnitId;
@@ -74,17 +76,17 @@ export function UnitConversionEdit({
       Amount: Number(values.Amount),
       BaseUnitId: Number(values.BaseUnitId),
       ConvertedUnitId: Number(values.ConvertedUnitId),
-    }
+    };
     if (!id) {
       dispatch(actions.createUnitConversion(newValues))
         .then((arg) => {
           backToUnitConversionsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateUnitConversion(id, newValues))
         .then(() => backToUnitConversionsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

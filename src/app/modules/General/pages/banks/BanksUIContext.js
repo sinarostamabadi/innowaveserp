@@ -29,7 +29,7 @@ export function BanksUIProvider({ banksUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,

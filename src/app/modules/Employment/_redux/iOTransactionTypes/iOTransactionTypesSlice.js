@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialIOTransactionTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const iOTransactionTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getIOTransactionTypeById  
+    // getIOTransactionTypeById
     iOTransactionTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.iOTransactionTypeForEdit = action.payload.iOTransactionTypeForEdit;
       state.error = null;
     },
-    // findIOTransactionTypes  
+    // findIOTransactionTypes
     iOTransactionTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const iOTransactionTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createIOTransactionType  
+    // createIOTransactionType
     iOTransactionTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateIOTransactionType  
+    // updateIOTransactionType
     iOTransactionTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.IOTransactionTypeId === action.payload.iOTransactionType.IOTransactionTypeId) {
+        if (
+          entity.IOTransactionTypeId ===
+          action.payload.iOTransactionType.IOTransactionTypeId
+        ) {
           return action.payload.iOTransactionType;
         }
         return entity;
       });
     },
-    // deleteIOTransactionType  
+    // deleteIOTransactionType
     iOTransactionTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.IOTransactionTypeId !== action.payload.IOTransactionTypeId  
+        (el) => el.IOTransactionTypeId !== action.payload.IOTransactionTypeId
       );
     },
-    // deleteIOTransactionTypes  
+    // deleteIOTransactionTypes
     iOTransactionTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.IOTransactionTypeId)  
+        (el) => !action.payload.ids.includes(el.IOTransactionTypeId)
       );
     },
-    // iOTransactionTypesUpdateState  
+    // iOTransactionTypesUpdateState
     iOTransactionTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

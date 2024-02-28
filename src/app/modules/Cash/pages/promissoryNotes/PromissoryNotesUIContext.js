@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { PromissoryNoteModel } from "../../../../../core/_models/Cash/PromissoryNoteModel";
@@ -12,7 +11,10 @@ export function usePromissoryNotesUIContext() {
 
 export const PromissoryNotesUIConsumer = PromissoryNotesUIContext.Consumer;
 
-export function PromissoryNotesUIProvider({ promissoryNotesUIEvents, children }) {
+export function PromissoryNotesUIProvider({
+  promissoryNotesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(PromissoryNoteModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function PromissoryNotesUIProvider({ promissoryNotesUIEvents, children })
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function PromissoryNotesUIProvider({ promissoryNotesUIEvents, children })
     setIds,
     setQueryParams,
     dataModel: PromissoryNoteModel,
-    newPromissoryNoteButtonClick: promissoryNotesUIEvents.newPromissoryNoteButtonClick,
-    openEditPromissoryNotePage: promissoryNotesUIEvents.openEditPromissoryNotePage,
-    openDeletePromissoryNoteDialog: promissoryNotesUIEvents.openDeletePromissoryNoteDialog,
-    openDeletePromissoryNotesDialog: promissoryNotesUIEvents.openDeletePromissoryNotesDialog,
-    openFetchPromissoryNotesDialog: promissoryNotesUIEvents.openFetchPromissoryNotesDialog,
-    openUpdatePromissoryNotesStatusDialog: promissoryNotesUIEvents.openUpdatePromissoryNotesStatusDialog,
+    newPromissoryNoteButtonClick:
+      promissoryNotesUIEvents.newPromissoryNoteButtonClick,
+    openEditPromissoryNotePage:
+      promissoryNotesUIEvents.openEditPromissoryNotePage,
+    openDeletePromissoryNoteDialog:
+      promissoryNotesUIEvents.openDeletePromissoryNoteDialog,
+    openDeletePromissoryNotesDialog:
+      promissoryNotesUIEvents.openDeletePromissoryNotesDialog,
+    openFetchPromissoryNotesDialog:
+      promissoryNotesUIEvents.openFetchPromissoryNotesDialog,
+    openUpdatePromissoryNotesStatusDialog:
+      promissoryNotesUIEvents.openUpdatePromissoryNotesStatusDialog,
   };
   return (
-    <PromissoryNotesUIContext.Provider value={value}>{children}</PromissoryNotesUIContext.Provider>
+    <PromissoryNotesUIContext.Provider value={value}>
+      {children}
+    </PromissoryNotesUIContext.Provider>
   );
 }

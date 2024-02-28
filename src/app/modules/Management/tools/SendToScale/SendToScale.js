@@ -26,7 +26,7 @@ export function SendToScale({ history }) {
   useEffect(() => {
     if (scales.length == 0) {
       getAllScales().then(({ data }) => {
-        setScales((scales) => [...data.Items])
+        setScales((scales) => [...data.Items]);
         setScale(data.Items[0].ScaleId);
       });
     }
@@ -40,7 +40,9 @@ export function SendToScale({ history }) {
   };
 
   const sendToScale = (scaleId) => {
-    axios.get(`http://185.158.175.89:6070/api/Management/sendToScale/${scaleId}`);
+    axios.get(
+      `http://185.158.175.89:6070/api/Management/sendToScale/${scaleId}`
+    );
   };
 
   return (
@@ -76,7 +78,8 @@ export function SendToScale({ history }) {
                     class="btn btn-primary"
                     onClick={() => sendToScale(scale)}
                   >
-                    <i class="fas fa-cash-register"></i> {t("Scale.SendToScale")}
+                    <i class="fas fa-cash-register"></i>{" "}
+                    {t("Scale.SendToScale")}
                   </button>
                 </div>
               </div>

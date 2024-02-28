@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./countriesCrud";
 import { countriesSlice, callTypes } from "./countriesSlice";
 const { actions } = countriesSlice;
@@ -97,4 +96,4 @@ export const deleteCountries = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

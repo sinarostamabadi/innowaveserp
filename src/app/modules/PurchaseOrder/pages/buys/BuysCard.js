@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { BuysTable } from "./buys-table/BuysTable";
 import { useBuysUIContext, BuysUIConsumer } from "./BuysUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function BuysCard() {
   const { t } = useTranslation();

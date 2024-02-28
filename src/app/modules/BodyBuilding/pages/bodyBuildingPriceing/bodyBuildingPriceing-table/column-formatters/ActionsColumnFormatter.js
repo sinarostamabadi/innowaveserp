@@ -12,10 +12,18 @@ export const ActionsColumnFormatter = (
   { openEditBodyBuildingPriceingPage, openDeleteBodyBuildingPriceingDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="bodyBuildingPriceing-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="bodyBuildingPriceing-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-        onClick={() => openEditBodyBuildingPriceingPage(row.BodyBuildingPriceingId)}
+        onClick={() =>
+          openEditBodyBuildingPriceingPage(row.BodyBuildingPriceingId)
+        }
       >
         <span className="svg-icon svg-icon-md svg-icon-primary">
           <SVG
@@ -26,11 +34,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="bodyBuildingPriceing-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="bodyBuildingPriceing-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteBodyBuildingPriceingDialog(row.BodyBuildingPriceingId)}
+        onClick={() =>
+          openDeleteBodyBuildingPriceingDialog(row.BodyBuildingPriceingId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

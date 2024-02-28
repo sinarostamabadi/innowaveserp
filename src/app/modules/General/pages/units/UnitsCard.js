@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { UnitsTable } from "./units-table/UnitsTable";
 import { useUnitsUIContext, UnitsUIConsumer } from "./UnitsUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function UnitsCard() {
   const { t } = useTranslation();

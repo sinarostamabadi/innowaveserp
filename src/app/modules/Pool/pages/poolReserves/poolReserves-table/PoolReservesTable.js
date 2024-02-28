@@ -33,7 +33,8 @@ export function PoolReservesTable() {
       queryParams: poolReservesUIContext.queryParams,
       setQueryParams: poolReservesUIContext.setQueryParams,
       openEditPoolReservePage: poolReservesUIContext.openEditPoolReservePage,
-      openDeletePoolReserveDialog: poolReservesUIContext.openDeletePoolReserveDialog,
+      openDeletePoolReserveDialog:
+        poolReservesUIContext.openDeletePoolReserveDialog,
     };
   }, [poolReservesUIContext]);
 
@@ -73,7 +74,8 @@ export function PoolReservesTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditPoolReservePage: poolReservesUIProps.openEditPoolReservePage,
-        openDeletePoolReserveDialog: poolReservesUIProps.openDeletePoolReserveDialog,
+        openDeletePoolReserveDialog:
+          poolReservesUIProps.openDeletePoolReserveDialog,
         t: t,
       },
       classes: "text-right pr-0",

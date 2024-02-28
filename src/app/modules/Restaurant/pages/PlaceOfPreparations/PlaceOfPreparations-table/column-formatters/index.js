@@ -1,1 +1,1 @@
-export {ActionsColumnFormatter} from "./ActionsColumnFormatter";
+export { ActionsColumnFormatter } from "./ActionsColumnFormatter";

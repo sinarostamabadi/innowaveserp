@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialProfitLossItemsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const profitLossItemsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getProfitLossItemById  
+    // getProfitLossItemById
     profitLossItemFetched: (state, action) => {
       state.actionsLoading = false;
       state.profitLossItemForEdit = action.payload.profitLossItemForEdit;
       state.error = null;
     },
-    // findProfitLossItems  
+    // findProfitLossItems
     profitLossItemsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const profitLossItemsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createProfitLossItem  
+    // createProfitLossItem
     profitLossItemCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateProfitLossItem  
+    // updateProfitLossItem
     profitLossItemUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.ProfitLossItemId === action.payload.profitLossItem.ProfitLossItemId) {
+        if (
+          entity.ProfitLossItemId ===
+          action.payload.profitLossItem.ProfitLossItemId
+        ) {
           return action.payload.profitLossItem;
         }
         return entity;
       });
     },
-    // deleteProfitLossItem  
+    // deleteProfitLossItem
     profitLossItemDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.ProfitLossItemId !== action.payload.ProfitLossItemId  
+        (el) => el.ProfitLossItemId !== action.payload.ProfitLossItemId
       );
     },
-    // deleteProfitLossItems  
+    // deleteProfitLossItems
     profitLossItemsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ProfitLossItemId)  
+        (el) => !action.payload.ids.includes(el.ProfitLossItemId)
       );
     },
-    // profitLossItemsUpdateState  
+    // profitLossItemsUpdateState
     profitLossItemsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

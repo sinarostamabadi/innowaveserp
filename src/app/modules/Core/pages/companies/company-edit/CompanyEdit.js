@@ -105,7 +105,10 @@ export function CompanyEdit({
       _title = t("Common.Edit") + " " + companyForEdit.FullNameFa;
 
       setPersonObj(companyForEdit);
-      setRealObj({...companyForEdit.Company, RegisterDateObj: EnToFaObjDate(companyForEdit.Company.RegisterDate)});
+      setRealObj({
+        ...companyForEdit.Company,
+        RegisterDateObj: EnToFaObjDate(companyForEdit.Company.RegisterDate),
+      });
       setPhonesObj(companyForEdit.Phones);
       setAddressObj(companyForEdit.Addresses);
       setPersonSpecialDaysObj(

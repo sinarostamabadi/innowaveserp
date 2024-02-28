@@ -26,7 +26,7 @@ export function FutsalTimingPage({ history }) {
       history.push("/futsal/futsalTiming/updateStatus");
     },
   };
-  
+
   return (
     <FutsalTimingUIProvider futsalTimingUIEvents={futsalTimingUIEvents}>
       <FutsalTimingLoadingDialog />

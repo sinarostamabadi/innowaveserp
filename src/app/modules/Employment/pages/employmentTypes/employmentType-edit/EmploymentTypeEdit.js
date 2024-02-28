@@ -56,7 +56,9 @@ export function EmploymentTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("EmploymentType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("EmploymentType.Entity");
 
     if (employmentTypeForEdit && id) {
       _title = t("Common.Edit") + " " + employmentTypeForEdit.TitleFa;

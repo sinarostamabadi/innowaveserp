@@ -26,9 +26,11 @@ export function ImportAccountTempsPage({ history }) {
       history.push("/accounting/importAccountTemps/updateStatus");
     },
   };
-  
+
   return (
-    <ImportAccountTempsUIProvider importAccountTempsUIEvents={importAccountTempsUIEvents}>
+    <ImportAccountTempsUIProvider
+      importAccountTempsUIEvents={importAccountTempsUIEvents}
+    >
       <ImportAccountTempsLoadingDialog />
       <Route path="/accounting/importAccountTemps/:id/delete">
         {({ history, match }) => (

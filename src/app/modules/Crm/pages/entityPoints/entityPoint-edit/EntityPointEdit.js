@@ -74,11 +74,11 @@ export function EntityPointEdit({
         .then((arg) => {
           backToEntityPointsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateEntityPoint(id, values))
         .then(() => backToEntityPointsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

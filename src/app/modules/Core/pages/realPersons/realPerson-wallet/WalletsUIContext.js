@@ -28,13 +28,16 @@ export const WalletsUIProvider = forwardRef(
         fn(
           !!wallets && wallets.length > 0
             ? wallets.map((wallet) => {
-              return {
-                WalletId: wallet.WalletId.toString().indexOf("temp_") > -1 ? null : wallet.WalletId,
-                PersonId: +personId,
-                Title: wallet.Title,
-                Price: +wallet.Price
-              };
-            })
+                return {
+                  WalletId:
+                    wallet.WalletId.toString().indexOf("temp_") > -1
+                      ? null
+                      : wallet.WalletId,
+                  PersonId: +personId,
+                  Title: wallet.Title,
+                  Price: +wallet.Price,
+                };
+              })
             : []
         );
       },
@@ -98,13 +101,10 @@ export const WalletsUIProvider = forwardRef(
 
     useEffect(() => {
       if (!!wallets && wallets.length > 0)
-        setActive(wallets.filter(x => !x.IsDeleted));
+        setActive(wallets.filter((x) => !x.IsDeleted));
     }, [wallets]);
 
-    const [
-      showEditWalletDialog,
-      setShowEditWalletDialog,
-    ] = useState(false);
+    const [showEditWalletDialog, setShowEditWalletDialog] = useState(false);
     const openNewWalletDialog = () => {
       setSelectedId(undefined);
       setShowEditWalletDialog(true);
@@ -118,10 +118,7 @@ export const WalletsUIProvider = forwardRef(
       setShowEditWalletDialog(false);
     };
 
-    const [
-      showDeleteWalletDialog,
-      setShowDeleteWalletDialog,
-    ] = useState(false);
+    const [showDeleteWalletDialog, setShowDeleteWalletDialog] = useState(false);
     const openDeleteWalletDialog = (id) => {
       setSelectedId(id);
       setShowDeleteWalletDialog(true);
@@ -131,10 +128,8 @@ export const WalletsUIProvider = forwardRef(
       setShowDeleteWalletDialog(false);
     };
 
-    const [
-      showDeleteWalletsDialog,
-      setShowDeleteWalletsDialog,
-    ] = useState(false);
+    const [showDeleteWalletsDialog, setShowDeleteWalletsDialog] =
+      useState(false);
     const openDeleteWalletsDialog = () => {
       setShowDeleteWalletsDialog(true);
     };
@@ -142,10 +137,7 @@ export const WalletsUIProvider = forwardRef(
       setShowDeleteWalletsDialog(false);
     };
 
-    const [
-      showFetchWalletsDialog,
-      setShowFetchWalletsDialog,
-    ] = useState(false);
+    const [showFetchWalletsDialog, setShowFetchWalletsDialog] = useState(false);
     const openFetchWalletsDialog = () => {
       setShowFetchWalletsDialog(true);
     };
@@ -155,33 +147,24 @@ export const WalletsUIProvider = forwardRef(
 
     const findWallet = (walletId) => {
       let walletObj = !!wallets
-        ? wallets.filter(
-          (wallet) =>
-            wallet.WalletId == walletId
-        )[0]
+        ? wallets.filter((wallet) => wallet.WalletId == walletId)[0]
         : null;
 
       return walletObj;
     };
 
     const addWallet = (wallet) => {
-      wallet.WalletId =
-        "temp_" + Math.floor(Math.random() * 100);
+      wallet.WalletId = "temp_" + Math.floor(Math.random() * 100);
       wallet.Title = wallet.Title;
       wallet.PersonId = +wallet.PersonId;
 
-      setWallets((wallets) => [
-        ...wallets,
-        wallet,
-      ]);
+      setWallets((wallets) => [...wallets, wallet]);
     };
 
     const removeWallet = (walletId) => {
       setWallets((wallets) =>
         wallets.map((item) =>
-          item.WalletId == walletId
-            ? { ...wallet, IsDeleted: true }
-            : item
+          item.WalletId == walletId ? { ...wallet, IsDeleted: true } : item
         )
       );
     };
@@ -192,9 +175,7 @@ export const WalletsUIProvider = forwardRef(
 
       setWallets((wallets) =>
         wallets.map((item) =>
-          item.WalletId == wallet.WalletId
-            ? wallet
-            : item
+          item.WalletId == wallet.WalletId ? wallet : item
         )
       );
     };

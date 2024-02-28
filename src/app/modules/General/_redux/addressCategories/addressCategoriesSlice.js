@@ -32,13 +32,13 @@ export const addressCategoriesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getAddressCategoryById  
+    // getAddressCategoryById
     addressCategoryFetched: (state, action) => {
       state.actionsLoading = false;
       state.addressCategoryForEdit = action.payload.addressCategoryForEdit;
       state.error = null;
     },
-    // findAddressCategories  
+    // findAddressCategories
     addressCategoriesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -46,40 +46,43 @@ export const addressCategoriesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createAddressCategory  
+    // createAddressCategory
     addressCategoryCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateAddressCategory  
+    // updateAddressCategory
     addressCategoryUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.AddressCategoryId === action.payload.addressCategory.AddressCategoryId) {
+        if (
+          entity.AddressCategoryId ===
+          action.payload.addressCategory.AddressCategoryId
+        ) {
           return action.payload.addressCategory;
         }
         return entity;
       });
     },
-    // deleteAddressCategory  
+    // deleteAddressCategory
     addressCategoryDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.AddressCategoryId !== action.payload.AddressCategoryId  
+        (el) => el.AddressCategoryId !== action.payload.AddressCategoryId
       );
     },
-    // deleteAddressCategories  
+    // deleteAddressCategories
     addressCategoriesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.AddressCategoryId)  
+        (el) => !action.payload.ids.includes(el.AddressCategoryId)
       );
     },
-    // addressCategoriesUpdateState  
+    // addressCategoriesUpdateState
     addressCategoriesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

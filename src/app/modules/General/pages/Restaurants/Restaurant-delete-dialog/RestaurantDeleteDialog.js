@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -41,7 +40,7 @@ export function RestaurantDeleteDialog({ id, show, onHide }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
   // looking for loading/dispatch
-  useEffect(() => { }, [isLoading, dispatch]);
+  useEffect(() => {}, [isLoading, dispatch]);
 
   const deleteRestaurant = () => {
     // server request for deleting restaurant by id
@@ -67,7 +66,9 @@ export function RestaurantDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("Restaurant.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("Restaurant.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {!isLoading && error != null && (

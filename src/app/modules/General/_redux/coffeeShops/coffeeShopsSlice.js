@@ -32,13 +32,13 @@ export const coffeeShopsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCoffeeShopById  
+    // getCoffeeShopById
     coffeeShopFetched: (state, action) => {
       state.actionsLoading = false;
       state.coffeeShopForEdit = action.payload.coffeeShopForEdit;
       state.error = null;
     },
-    // findCoffeeShops  
+    // findCoffeeShops
     coffeeShopsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -46,13 +46,13 @@ export const coffeeShopsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCoffeeShop  
+    // createCoffeeShop
     coffeeShopCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCoffeeShop  
+    // updateCoffeeShop
     coffeeShopUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -63,23 +63,23 @@ export const coffeeShopsSlice = createSlice({
         return entity;
       });
     },
-    // deleteCoffeeShop  
+    // deleteCoffeeShop
     coffeeShopDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CoffeeShopId !== action.payload.CoffeeShopId  
+        (el) => el.CoffeeShopId !== action.payload.CoffeeShopId
       );
     },
-    // deleteCoffeeShops  
+    // deleteCoffeeShops
     coffeeShopsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CoffeeShopId)  
+        (el) => !action.payload.ids.includes(el.CoffeeShopId)
       );
     },
-    // coffeeShopsUpdateState  
+    // coffeeShopsUpdateState
     coffeeShopsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

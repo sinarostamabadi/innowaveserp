@@ -32,8 +32,10 @@ export function UnitConversionsTable() {
       setIds: unitConversionsUIContext.setIds,
       queryParams: unitConversionsUIContext.queryParams,
       setQueryParams: unitConversionsUIContext.setQueryParams,
-      openEditUnitConversionPage: unitConversionsUIContext.openEditUnitConversionPage,
-      openDeleteUnitConversionDialog: unitConversionsUIContext.openDeleteUnitConversionDialog,
+      openEditUnitConversionPage:
+        unitConversionsUIContext.openEditUnitConversionPage,
+      openDeleteUnitConversionDialog:
+        unitConversionsUIContext.openDeleteUnitConversionDialog,
     };
   }, [unitConversionsUIContext]);
 
@@ -78,8 +80,10 @@ export function UnitConversionsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditUnitConversionPage: unitConversionsUIProps.openEditUnitConversionPage,
-        openDeleteUnitConversionDialog: unitConversionsUIProps.openDeleteUnitConversionDialog,
+        openEditUnitConversionPage:
+          unitConversionsUIProps.openEditUnitConversionPage,
+        openDeleteUnitConversionDialog:
+          unitConversionsUIProps.openDeleteUnitConversionDialog,
         t: t,
       },
       classes: "text-right pr-0",
@@ -130,4 +134,4 @@ export function UnitConversionsTable() {
       </PaginationProvider>
     </>
   );
-} 
+}

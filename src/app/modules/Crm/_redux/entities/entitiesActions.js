@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./entitiesCrud";
 import { entitiesSlice, callTypes } from "./entitiesSlice";
 const { actions } = entitiesSlice;
@@ -97,4 +96,4 @@ export const deleteEntities = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

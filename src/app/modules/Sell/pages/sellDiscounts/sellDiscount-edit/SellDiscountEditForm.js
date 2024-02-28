@@ -64,9 +64,9 @@ export const SellDiscountEditForm = forwardRef(
     }));
 
     const Genders = [
-      { text: "بدون انتخاب", value: null },
-      { text: "مرد", value: 1 },
-      { text: "زن", value: 0 },
+      { text: "Not selected", value: null },
+      { text: "Male", value: 1 },
+      { text: "Female", value: 0 },
     ];
 
     const handleSuggestionPerson = useCallback((query, fnCallback) => {

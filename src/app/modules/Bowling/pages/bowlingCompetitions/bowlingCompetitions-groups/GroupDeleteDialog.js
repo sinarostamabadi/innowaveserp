@@ -26,7 +26,7 @@ export function GroupDeleteDialog() {
 
   // Groups Redux state
   const dispatch = useDispatch();
-  const [ isLoading, setIsLoading ] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // if !id we should close modal
   useEffect(() => {
@@ -40,7 +40,7 @@ export function GroupDeleteDialog() {
   useEffect(() => {}, [isLoading, dispatch]);
 
   const deleteGroup = () => {
-    groupsUIProps.removeGroup(groupsUIProps.id)
+    groupsUIProps.removeGroup(groupsUIProps.id);
     groupsUIProps.onHide();
   };
 
@@ -57,9 +57,7 @@ export function GroupDeleteDialog() {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && (
-          <span>{t("Common.DeleteQuestion")}</span>
-        )}
+        {!isLoading && <span>{t("Common.DeleteQuestion")}</span>}
         {isLoading && <span>{t("Common.DeleteLoading")}</span>}
       </Modal.Body>
       <Modal.Footer>

@@ -26,7 +26,7 @@ export function IODeviceTypesPage({ history }) {
       history.push("/employment/iODeviceTypes/updateStatus");
     },
   };
-  
+
   return (
     <IODeviceTypesUIProvider iODeviceTypesUIEvents={iODeviceTypesUIEvents}>
       <IODeviceTypesLoadingDialog />

@@ -32,8 +32,10 @@ export function BuyRequestDetailsTable() {
       setIds: buyRequestDetailsUIContext.setIds,
       queryParams: buyRequestDetailsUIContext.queryParams,
       setQueryParams: buyRequestDetailsUIContext.setQueryParams,
-      openEditBuyRequestDetailPage: buyRequestDetailsUIContext.openEditBuyRequestDetailPage,
-      openDeleteBuyRequestDetailDialog: buyRequestDetailsUIContext.openDeleteBuyRequestDetailDialog,
+      openEditBuyRequestDetailPage:
+        buyRequestDetailsUIContext.openEditBuyRequestDetailPage,
+      openDeleteBuyRequestDetailDialog:
+        buyRequestDetailsUIContext.openDeleteBuyRequestDetailDialog,
     };
   }, [buyRequestDetailsUIContext]);
 
@@ -50,7 +52,9 @@ export function BuyRequestDetailsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     buyRequestDetailsUIProps.setIds([]);
-    dispatch(actions.fetchBuyRequestDetails(buyRequestDetailsUIProps.queryParams));
+    dispatch(
+      actions.fetchBuyRequestDetails(buyRequestDetailsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [buyRequestDetailsUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function BuyRequestDetailsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditBuyRequestDetailPage: buyRequestDetailsUIProps.openEditBuyRequestDetailPage,
-        openDeleteBuyRequestDetailDialog: buyRequestDetailsUIProps.openDeleteBuyRequestDetailDialog,
+        openEditBuyRequestDetailPage:
+          buyRequestDetailsUIProps.openEditBuyRequestDetailPage,
+        openDeleteBuyRequestDetailDialog:
+          buyRequestDetailsUIProps.openDeleteBuyRequestDetailDialog,
         t: t,
       },
       classes: "text-right pr-0",

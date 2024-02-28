@@ -11,15 +11,19 @@ export default function DefaultRestaurant() {
   const { t } = useTranslation();
 
   const [selectedRestaurant, setSelectedRestaurant] = useState(
-    !!getStorage("defaultRestaurant") ? JSON.parse(getStorage("defaultRestaurant")).RestaurantId: ""
+    !!getStorage("defaultRestaurant")
+      ? JSON.parse(getStorage("defaultRestaurant")).RestaurantId
+      : ""
   );
   useEffect(() => {
     if (!!selectedRestaurant && !!restaurants && restaurants.length)
-      setStorage("defaultRestaurant",
+      setStorage(
+        "defaultRestaurant",
         JSON.stringify({
           RestaurantId: selectedRestaurant,
-          Title: restaurants.filter((x) => x.RestaurantId == selectedRestaurant)[0]
-            .Title,
+          Title: restaurants.filter(
+            (x) => x.RestaurantId == selectedRestaurant
+          )[0].Title,
         })
       );
   }, [selectedRestaurant]);
@@ -45,9 +49,9 @@ export default function DefaultRestaurant() {
         <Row>
           <Col xs="12">
             <p className="text-center font-weight-normal font-size-lg pb-7">
-              توجه: انتخاب رستوران پیشفرض الزامی می‌باشد
+            Note: It is mandatory to select the default restaurant
               <br />
-              لطفا رستوران مربوطه را انتخاب نمایید.
+              Please select the relevant restaurant.
             </p>
             <select
               id="RestaurantId"

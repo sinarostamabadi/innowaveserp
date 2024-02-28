@@ -21,9 +21,9 @@ export const SellDocumentEditForm = forwardRef(({ sellDocument }, ref) => {
   let callBack;
 
   const Genders = [
-    { text: "بدون انتخاب", value: null },
-    { text: "مرد", value: 1 },
-    { text: "زن", value: 0 },
+    { text: "No select", value: null },
+    { text: "Male", value: 1 },
+    { text: "Female", value: 0 },
   ];
 
   const SellDocumentEditSchema = Yup.object().shape({
@@ -196,7 +196,7 @@ export const SellDocumentEditForm = forwardRef(({ sellDocument }, ref) => {
                 <div className="col-auto">
                   <div className="alert alert-warning mt-8 py-2">
                     <i className="fas fa-exclamation-triangle text-white mr-2"></i>
-                      مشتری را جستجو کرده و یا فیلدهای زیر را تکمیل نمایید
+                    Search for the customer or complete the fields below
                   </div>
                 </div>
               </div>

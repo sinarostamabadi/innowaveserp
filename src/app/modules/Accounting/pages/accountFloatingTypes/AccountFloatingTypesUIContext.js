@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { AccountFloatingTypeModel } from "../../../../../core/_models/Accounting/AccountFloatingTypeModel";
@@ -10,9 +9,13 @@ export function useAccountFloatingTypesUIContext() {
   return useContext(AccountFloatingTypesUIContext);
 }
 
-export const AccountFloatingTypesUIConsumer = AccountFloatingTypesUIContext.Consumer;
+export const AccountFloatingTypesUIConsumer =
+  AccountFloatingTypesUIContext.Consumer;
 
-export function AccountFloatingTypesUIProvider({ accountFloatingTypesUIEvents, children }) {
+export function AccountFloatingTypesUIProvider({
+  accountFloatingTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(AccountFloatingTypeModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function AccountFloatingTypesUIProvider({ accountFloatingTypesUIEvents, c
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function AccountFloatingTypesUIProvider({ accountFloatingTypesUIEvents, c
     setIds,
     setQueryParams,
     dataModel: AccountFloatingTypeModel,
-    newAccountFloatingTypeButtonClick: accountFloatingTypesUIEvents.newAccountFloatingTypeButtonClick,
-    openEditAccountFloatingTypePage: accountFloatingTypesUIEvents.openEditAccountFloatingTypePage,
-    openDeleteAccountFloatingTypeDialog: accountFloatingTypesUIEvents.openDeleteAccountFloatingTypeDialog,
-    openDeleteAccountFloatingTypesDialog: accountFloatingTypesUIEvents.openDeleteAccountFloatingTypesDialog,
-    openFetchAccountFloatingTypesDialog: accountFloatingTypesUIEvents.openFetchAccountFloatingTypesDialog,
-    openUpdateAccountFloatingTypesStatusDialog: accountFloatingTypesUIEvents.openUpdateAccountFloatingTypesStatusDialog,
+    newAccountFloatingTypeButtonClick:
+      accountFloatingTypesUIEvents.newAccountFloatingTypeButtonClick,
+    openEditAccountFloatingTypePage:
+      accountFloatingTypesUIEvents.openEditAccountFloatingTypePage,
+    openDeleteAccountFloatingTypeDialog:
+      accountFloatingTypesUIEvents.openDeleteAccountFloatingTypeDialog,
+    openDeleteAccountFloatingTypesDialog:
+      accountFloatingTypesUIEvents.openDeleteAccountFloatingTypesDialog,
+    openFetchAccountFloatingTypesDialog:
+      accountFloatingTypesUIEvents.openFetchAccountFloatingTypesDialog,
+    openUpdateAccountFloatingTypesStatusDialog:
+      accountFloatingTypesUIEvents.openUpdateAccountFloatingTypesStatusDialog,
   };
   return (
-    <AccountFloatingTypesUIContext.Provider value={value}>{children}</AccountFloatingTypesUIContext.Provider>
+    <AccountFloatingTypesUIContext.Provider value={value}>
+      {children}
+    </AccountFloatingTypesUIContext.Provider>
   );
 }

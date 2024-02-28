@@ -11,9 +11,15 @@ import {
   PleaseWaitMessage,
   sortCaret,
 } from "../../../../../core/_helpers";
-import {ActionsColumnFormatter} from "./actions/ActionsColumnFormatter";
-import {DateFaColumnFormatter} from "../../../../../core/_formatters";
-import { Pagination, Card, CardBody, CardHeader, CardHeaderToolbar } from "../../../../../core/_partials/controls";
+import { ActionsColumnFormatter } from "./actions/ActionsColumnFormatter";
+import { DateFaColumnFormatter } from "../../../../../core/_formatters";
+import {
+  Pagination,
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderToolbar,
+} from "../../../../../core/_partials/controls";
 import { useBuyRequestsUIContext } from "../buyRequests/BuyRequestsUIContext";
 import { BuyRequestModel } from "../../../../../core/_models/PurchaseOrder/BuyRequestModel";
 import {
@@ -22,9 +28,7 @@ import {
 } from "../../../../../core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
 
-export default function ManagerCartable({
-  history
-}) {
+export default function ManagerCartable({ history }) {
   const { t } = useTranslation();
 
   const { currentState } = useSelector(
@@ -35,11 +39,14 @@ export default function ManagerCartable({
   const defaultFilter = {
     Property: "BuyRequestStatusId",
     Operation: 5,
-    Values: ["1"]
+    Values: ["1"],
   };
   const { totalCount, entities, listLoading } = currentState;
   const configs = getConfig(BuyRequestModel, "BuyRequestDate", "desc");
-  const [queryParams, setQueryParams] = useState({...configs.initialFilter, Filters: [defaultFilter]});
+  const [queryParams, setQueryParams] = useState({
+    ...configs.initialFilter,
+    Filters: [defaultFilter],
+  });
   const fieldKey = getFields(BuyRequestModel);
   const fields = BuyRequestModel;
 
@@ -88,7 +95,7 @@ export default function ManagerCartable({
       formatExtraData: {
         approve: null,
         deny: null,
-        show: (id)=> {
+        show: (id) => {
           history.push(`/PurchaseOrder/buyRequests/${id}/manager`);
         },
         t: t,
@@ -111,7 +118,7 @@ export default function ManagerCartable({
   return (
     <>
       <Card>
-        <CardHeader title={t("Common.ManagerCartable")}/>
+        <CardHeader title={t("Common.ManagerCartable")} />
         <CardBody>
           <PaginationProvider pagination={paginationFactory(paginationOptions)}>
             {({ paginationProps, paginationTableProps }) => {

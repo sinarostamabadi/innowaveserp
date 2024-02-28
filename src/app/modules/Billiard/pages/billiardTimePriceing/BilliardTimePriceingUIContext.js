@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BilliardTimePriceingModel } from "../../../../../core/_models/Billiard/BilliardTimePriceingModel";
@@ -10,9 +9,13 @@ export function useBilliardTimePriceingUIContext() {
   return useContext(BilliardTimePriceingUIContext);
 }
 
-export const BilliardTimePriceingUIConsumer = BilliardTimePriceingUIContext.Consumer;
+export const BilliardTimePriceingUIConsumer =
+  BilliardTimePriceingUIContext.Consumer;
 
-export function BilliardTimePriceingUIProvider({ billiardTimePriceingUIEvents, children }) {
+export function BilliardTimePriceingUIProvider({
+  billiardTimePriceingUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(BilliardTimePriceingModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function BilliardTimePriceingUIProvider({ billiardTimePriceingUIEvents, c
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function BilliardTimePriceingUIProvider({ billiardTimePriceingUIEvents, c
     setIds,
     setQueryParams,
     dataModel: BilliardTimePriceingModel,
-    newBilliardTimePriceingButtonClick: billiardTimePriceingUIEvents.newBilliardTimePriceingButtonClick,
-    openEditBilliardTimePriceingPage: billiardTimePriceingUIEvents.openEditBilliardTimePriceingPage,
-    openDeleteBilliardTimePriceingDialog: billiardTimePriceingUIEvents.openDeleteBilliardTimePriceingDialog,
-    openDeleteBilliardTimePriceingDialog: billiardTimePriceingUIEvents.openDeleteBilliardTimePriceingDialog,
-    openFetchBilliardTimePriceingDialog: billiardTimePriceingUIEvents.openFetchBilliardTimePriceingDialog,
-    openUpdateBilliardTimePriceingStatusDialog: billiardTimePriceingUIEvents.openUpdateBilliardTimePriceingStatusDialog,
+    newBilliardTimePriceingButtonClick:
+      billiardTimePriceingUIEvents.newBilliardTimePriceingButtonClick,
+    openEditBilliardTimePriceingPage:
+      billiardTimePriceingUIEvents.openEditBilliardTimePriceingPage,
+    openDeleteBilliardTimePriceingDialog:
+      billiardTimePriceingUIEvents.openDeleteBilliardTimePriceingDialog,
+    openDeleteBilliardTimePriceingDialog:
+      billiardTimePriceingUIEvents.openDeleteBilliardTimePriceingDialog,
+    openFetchBilliardTimePriceingDialog:
+      billiardTimePriceingUIEvents.openFetchBilliardTimePriceingDialog,
+    openUpdateBilliardTimePriceingStatusDialog:
+      billiardTimePriceingUIEvents.openUpdateBilliardTimePriceingStatusDialog,
   };
   return (
-    <BilliardTimePriceingUIContext.Provider value={value}>{children}</BilliardTimePriceingUIContext.Provider>
+    <BilliardTimePriceingUIContext.Provider value={value}>
+      {children}
+    </BilliardTimePriceingUIContext.Provider>
   );
 }

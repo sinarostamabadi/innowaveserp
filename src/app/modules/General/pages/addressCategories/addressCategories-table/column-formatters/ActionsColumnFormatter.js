@@ -1,4 +1,3 @@
-
 /* eslint-disable no-script-url,jsx-a11y/anchor-is-valid */
 
 import React from "react";
@@ -13,7 +12,13 @@ export const ActionsColumnFormatter = (
   { openEditAddressCategoryPage, openDeleteAddressCategoryDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="addressCategories-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="addressCategories-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditAddressCategoryPage(row.AddressCategoryId)}
@@ -27,7 +32,11 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="addressCategories-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="addressCategories-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"

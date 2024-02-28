@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialRolesesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const rolesesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getRolesById  
+    // getRolesById
     rolesFetched: (state, action) => {
       state.actionsLoading = false;
       state.rolesForEdit = action.payload.rolesForEdit;
       state.error = null;
     },
-    // findRoleses  
+    // findRoleses
     rolesesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const rolesesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createRoles  
+    // createRoles
     rolesCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateRoles  
+    // updateRoles
     rolesUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const rolesesSlice = createSlice({
         return entity;
       });
     },
-    // deleteRoles  
+    // deleteRoles
     rolesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.RolesId !== action.payload.RolesId  
+        (el) => el.RolesId !== action.payload.RolesId
       );
     },
-    // deleteRoleses  
+    // deleteRoleses
     rolesesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.RolesId)  
+        (el) => !action.payload.ids.includes(el.RolesId)
       );
     },
-    // rolesesUpdateState  
+    // rolesesUpdateState
     rolesesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

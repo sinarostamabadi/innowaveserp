@@ -44,7 +44,8 @@ export function EmployeePromissoryNoteEdit({
   const { actionsLoading, employeePromissoryNoteForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.employeePromissoryNotes.actionsLoading,
-      employeePromissoryNoteForEdit: state.employeePromissoryNotes.employeePromissoryNoteForEdit,
+      employeePromissoryNoteForEdit:
+        state.employeePromissoryNotes.employeePromissoryNoteForEdit,
       error: state.employeePromissoryNotes.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function EmployeePromissoryNoteEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("EmployeePromissoryNote.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("EmployeePromissoryNote.Entity");
 
     if (employeePromissoryNoteForEdit && id) {
       _title = t("Common.Edit") + " " + employeePromissoryNoteForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function EmployeePromissoryNoteEdit({
         .then((arg) => {
           backToEmployeePromissoryNotesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateEmployeePromissoryNote(id, values))
         .then(() => backToEmployeePromissoryNotesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 
@@ -149,7 +152,9 @@ export function EmployeePromissoryNoteEdit({
           {tab === "basic" && (
             <EmployeePromissoryNoteEditForm
               actionsLoading={actionsLoading}
-              employeePromissoryNote={employeePromissoryNoteForEdit || initModel}
+              employeePromissoryNote={
+                employeePromissoryNoteForEdit || initModel
+              }
               btnRef={btnRef}
               saveEmployeePromissoryNote={saveEmployeePromissoryNote}
             />

@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialSpecialDayTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const specialDayTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getSpecialDayTypeById  
+    // getSpecialDayTypeById
     specialDayTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.specialDayTypeForEdit = action.payload.specialDayTypeForEdit;
       state.error = null;
     },
-    // findSpecialDayTypes  
+    // findSpecialDayTypes
     specialDayTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const specialDayTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createSpecialDayType  
+    // createSpecialDayType
     specialDayTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateSpecialDayType  
+    // updateSpecialDayType
     specialDayTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.SpecialDayTypeId === action.payload.specialDayType.SpecialDayTypeId) {
+        if (
+          entity.SpecialDayTypeId ===
+          action.payload.specialDayType.SpecialDayTypeId
+        ) {
           return action.payload.specialDayType;
         }
         return entity;
       });
     },
-    // deleteSpecialDayType  
+    // deleteSpecialDayType
     specialDayTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.SpecialDayTypeId !== action.payload.SpecialDayTypeId  
+        (el) => el.SpecialDayTypeId !== action.payload.SpecialDayTypeId
       );
     },
-    // deleteSpecialDayTypes  
+    // deleteSpecialDayTypes
     specialDayTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.SpecialDayTypeId)  
+        (el) => !action.payload.ids.includes(el.SpecialDayTypeId)
       );
     },
-    // specialDayTypesUpdateState  
+    // specialDayTypesUpdateState
     specialDayTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

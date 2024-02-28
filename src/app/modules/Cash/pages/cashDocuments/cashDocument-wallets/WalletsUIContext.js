@@ -46,7 +46,7 @@ export const WalletsUIProvider = forwardRef(
 
     const [selectedId, setSelectedId] = useState(null);
     const [documentId, setDocumentId] = useState(currentDocumentId);
-    const initWallet = {...WalletTools.Model, DocumentId: currentDocumentId};
+    const initWallet = { ...WalletTools.Model, DocumentId: currentDocumentId };
     const [selectedItem, setSelectedItem] = useState(initWallet);
     const { actionsLoading, documentForEdit, error } = useSelector(
       (state) => ({
@@ -57,7 +57,9 @@ export const WalletsUIProvider = forwardRef(
       shallowEqual
     );
 
-    const [queryParams, setQueryParamsBase] = useState(getConfig(WalletModel, "Title", "desc").initialFilter);
+    const [queryParams, setQueryParamsBase] = useState(
+      getConfig(WalletModel, "Title", "desc").initialFilter
+    );
 
     const setQueryParams = useCallback((nextQueryParams) => {
       setQueryParamsBase((prevQueryParams) => {
@@ -73,7 +75,9 @@ export const WalletsUIProvider = forwardRef(
       });
     }, []);
 
-    const [wallets, setWallets] = useState(wallet.map(x=> WalletTools.Clean(x)));
+    const [wallets, setWallets] = useState(
+      wallet.map((x) => WalletTools.Clean(x))
+    );
     const [activeWallets, setActiveWallets] = useState([]);
     const [totalCount, setTotalCount] = useState(0);
 
@@ -93,7 +97,7 @@ export const WalletsUIProvider = forwardRef(
       setSelectedItem(findWallet(selectedId));
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedId]);
-    
+
     const [showEditWalletDialog, setShowEditWalletDialog] = useState(false);
     const openNewWalletDialog = () => {
       setSelectedId(undefined);
@@ -127,9 +131,8 @@ export const WalletsUIProvider = forwardRef(
       setShowDeleteWalletDialog(false);
     };
 
-    const [showDeleteWalletsDialog, setShowDeleteWalletsDialog] = useState(
-      false
-    );
+    const [showDeleteWalletsDialog, setShowDeleteWalletsDialog] =
+      useState(false);
     const openDeleteWalletsDialog = () => {
       setShowDeleteWalletsDialog(true);
     };

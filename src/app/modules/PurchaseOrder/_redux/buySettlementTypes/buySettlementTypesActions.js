@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./buySettlementTypesCrud";
 import { buySettlementTypesSlice, callTypes } from "./buySettlementTypesSlice";
 const { actions } = buySettlementTypesSlice;
@@ -9,7 +8,10 @@ export const fetchBuySettlementTypes = (queryParams) => (dispatch) => {
     .then((response) => {
       const { Items, TotalCount } = response.data;
       dispatch(
-        actions.buySettlementTypesFetched({ totalCount: TotalCount, entities: Items })
+        actions.buySettlementTypesFetched({
+          totalCount: TotalCount,
+          entities: Items,
+        })
       );
     })
     .catch((error) => {
@@ -19,14 +21,20 @@ export const fetchBuySettlementTypes = (queryParams) => (dispatch) => {
 };
 export const fetchBuySettlementType = (id) => (dispatch) => {
   if (!id) {
-    return dispatch(actions.buySettlementTypeFetched({ buySettlementTypeForEdit: undefined }));
+    return dispatch(
+      actions.buySettlementTypeFetched({ buySettlementTypeForEdit: undefined })
+    );
   }
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
     .getBuySettlementTypeById(id)
     .then((response) => {
       const buySettlementType = response.data;
-      dispatch(actions.buySettlementTypeFetched({ buySettlementTypeForEdit: buySettlementType }));
+      dispatch(
+        actions.buySettlementTypeFetched({
+          buySettlementTypeForEdit: buySettlementType,
+        })
+      );
     })
     .catch((error) => {
       error.clientMessage = "Can't find buySettlementType";
@@ -46,33 +54,35 @@ export const deleteBuySettlementType = (id) => (dispatch) => {
       throw error;
     });
 };
-export const createBuySettlementType = (buySettlementTypeForCreation) => (dispatch) => {
-  dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer
-    .createBuySettlementType(buySettlementTypeForCreation)
-    .then((response) => {
-      const buySettlementType = response.data;
-      dispatch(actions.buySettlementTypeCreated(buySettlementType));
-    })
-    .catch((error) => {
-      error.clientMessage = "Can't create buySettlementType";
-      dispatch(actions.catchError({ error, callType: callTypes.action }));
-      throw error;
-    });
-};
-export const updateBuySettlementType = (id, buySettlementType) => (dispatch) => {
-  dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer
-    .updateBuySettlementType(id, buySettlementType)
-    .then((response) => {
-      dispatch(actions.buySettlementTypeUpdated({ buySettlementType }));
-    })
-    .catch((error) => {
-      error.clientMessage = "Can't update buySettlementType";
-      dispatch(actions.catchError({ error, callType: callTypes.action }));
-      throw error;
-    });
-};
+export const createBuySettlementType =
+  (buySettlementTypeForCreation) => (dispatch) => {
+    dispatch(actions.startCall({ callType: callTypes.action }));
+    return requestFromServer
+      .createBuySettlementType(buySettlementTypeForCreation)
+      .then((response) => {
+        const buySettlementType = response.data;
+        dispatch(actions.buySettlementTypeCreated(buySettlementType));
+      })
+      .catch((error) => {
+        error.clientMessage = "Can't create buySettlementType";
+        dispatch(actions.catchError({ error, callType: callTypes.action }));
+        throw error;
+      });
+  };
+export const updateBuySettlementType =
+  (id, buySettlementType) => (dispatch) => {
+    dispatch(actions.startCall({ callType: callTypes.action }));
+    return requestFromServer
+      .updateBuySettlementType(id, buySettlementType)
+      .then((response) => {
+        dispatch(actions.buySettlementTypeUpdated({ buySettlementType }));
+      })
+      .catch((error) => {
+        error.clientMessage = "Can't update buySettlementType";
+        dispatch(actions.catchError({ error, callType: callTypes.action }));
+        throw error;
+      });
+  };
 export const updateBuySettlementTypesStatus = (ids, status) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
@@ -97,4 +107,4 @@ export const deleteBuySettlementTypes = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

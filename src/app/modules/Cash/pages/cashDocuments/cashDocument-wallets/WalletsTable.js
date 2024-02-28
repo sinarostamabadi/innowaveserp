@@ -4,7 +4,10 @@ import { ActionsColumnFormatter } from "./column-formatters/ActionsColumnFormatt
 import { NoRecordsFoundMessage, PleaseWaitMessage } from "src/core/_helpers";
 import { useWalletsUIContext } from "./WalletsUIContext";
 import { useTranslation } from "react-i18next";
-import { MoneyColumnFormatter, DateFaColumnFormatter } from "src/core/_formatters";
+import {
+  MoneyColumnFormatter,
+  DateFaColumnFormatter,
+} from "src/core/_formatters";
 
 export function WalletsTable() {
   const { t } = useTranslation();
@@ -15,7 +18,7 @@ export function WalletsTable() {
     return {
       activeWallets: walletsUIContext.activeWallets,
       openEditWalletDialog: walletsUIContext.openEditWalletDialog,
-      openDeleteWalletDialog: walletsUIContext.openDeleteWalletDialog
+      openDeleteWalletDialog: walletsUIContext.openDeleteWalletDialog,
     };
   }, [walletsUIContext]);
 
@@ -34,7 +37,7 @@ export function WalletsTable() {
       dataField: "Price",
       text: t("CashDocument.Price"),
       sort: false,
-      formatter: MoneyColumnFormatter
+      formatter: MoneyColumnFormatter,
     },
     {
       dataField: "Description",

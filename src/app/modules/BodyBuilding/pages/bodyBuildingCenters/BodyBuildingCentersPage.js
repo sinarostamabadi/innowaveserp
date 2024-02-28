@@ -17,7 +17,9 @@ export function BodyBuildingCentersPage({ history }) {
       history.push(`/bodyBuilding/bodyBuildingCenters/${id}/delete`);
     },
     openDeleteBodyBuildingCentersDialog: () => {
-      history.push(`/bodyBuilding/bodyBuildingCenters/deleteBodyBuildingCenters`);
+      history.push(
+        `/bodyBuilding/bodyBuildingCenters/deleteBodyBuildingCenters`
+      );
     },
     openFetchBodyBuildingCentersDialog: () => {
       history.push(`/bodyBuilding/bodyBuildingCenters/fetch`);
@@ -26,9 +28,11 @@ export function BodyBuildingCentersPage({ history }) {
       history.push("/bodyBuilding/bodyBuildingCenters/updateStatus");
     },
   };
-  
+
   return (
-    <BodyBuildingCentersUIProvider bodyBuildingCentersUIEvents={bodyBuildingCentersUIEvents}>
+    <BodyBuildingCentersUIProvider
+      bodyBuildingCentersUIEvents={bodyBuildingCentersUIEvents}
+    >
       <BodyBuildingCentersLoadingDialog />
       <Route path="/bodyBuilding/bodyBuildingCenters/:id/delete">
         {({ history, match }) => (

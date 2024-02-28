@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { RolesModel } from "../../../../../core/_models/Security/RolesModel";
@@ -30,7 +29,7 @@ export function RolesesUIProvider({ rolesesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function RolesesUIProvider({ rolesesUIEvents, children }) {
     openDeleteRolesDialog: rolesesUIEvents.openDeleteRolesDialog,
     openDeleteRolesesDialog: rolesesUIEvents.openDeleteRolesesDialog,
     openFetchRolesesDialog: rolesesUIEvents.openFetchRolesesDialog,
-    openUpdateRolesesStatusDialog: rolesesUIEvents.openUpdateRolesesStatusDialog,
+    openUpdateRolesesStatusDialog:
+      rolesesUIEvents.openUpdateRolesesStatusDialog,
   };
   return (
-    <RolesesUIContext.Provider value={value}>{children}</RolesesUIContext.Provider>
+    <RolesesUIContext.Provider value={value}>
+      {children}
+    </RolesesUIContext.Provider>
   );
 }

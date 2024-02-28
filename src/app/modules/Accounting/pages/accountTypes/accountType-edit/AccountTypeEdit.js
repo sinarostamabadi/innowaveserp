@@ -30,7 +30,7 @@ export function AccountTypeEdit({
     AccountTypeId: undefined,
     Title: "",
     ParentId: "",
-    Parent: ""
+    Parent: "",
   };
 
   // Subheader

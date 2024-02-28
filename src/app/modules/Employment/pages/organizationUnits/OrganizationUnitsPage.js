@@ -26,9 +26,11 @@ export function OrganizationUnitsPage({ history }) {
       history.push("/employment/organizationUnits/updateStatus");
     },
   };
-  
+
   return (
-    <OrganizationUnitsUIProvider organizationUnitsUIEvents={organizationUnitsUIEvents}>
+    <OrganizationUnitsUIProvider
+      organizationUnitsUIEvents={organizationUnitsUIEvents}
+    >
       <OrganizationUnitsLoadingDialog />
       <Route path="/employment/organizationUnits/:id/delete">
         {({ history, match }) => (

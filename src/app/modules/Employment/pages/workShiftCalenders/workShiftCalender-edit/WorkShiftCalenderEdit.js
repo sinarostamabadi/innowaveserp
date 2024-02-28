@@ -45,7 +45,8 @@ export function WorkShiftCalenderEdit({
   const { actionsLoading, workShiftCalenderForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.workShiftCalenders.actionsLoading,
-      workShiftCalenderForEdit: state.workShiftCalenders.workShiftCalenderForEdit,
+      workShiftCalenderForEdit:
+        state.workShiftCalenders.workShiftCalenderForEdit,
       error: state.workShiftCalenders.error,
     }),
     shallowEqual
@@ -56,7 +57,9 @@ export function WorkShiftCalenderEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("WorkShiftCalender.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("WorkShiftCalender.Entity");
 
     if (workShiftCalenderForEdit && id) {
       _title = t("Common.Edit") + " " + workShiftCalenderForEdit.TitleFa;
@@ -74,11 +77,11 @@ export function WorkShiftCalenderEdit({
         .then((arg) => {
           backToWorkShiftCalendersList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateWorkShiftCalender(id, values))
         .then(() => backToWorkShiftCalendersList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

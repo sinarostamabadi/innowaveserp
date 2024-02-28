@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -16,7 +15,8 @@ export function RestaurantInvoiceDiscountDeleteDialog({ id, show, onHide }) {
   const { t } = useTranslation();
 
   // RestaurantInvoiceDiscounts UI Context
-  const restaurantInvoiceDiscountsUIContext = useRestaurantInvoiceDiscountsUIContext();
+  const restaurantInvoiceDiscountsUIContext =
+    useRestaurantInvoiceDiscountsUIContext();
   const [error, setError] = useState(null);
   const restaurantInvoiceDiscountsUIProps = useMemo(() => {
     return {
@@ -48,7 +48,11 @@ export function RestaurantInvoiceDiscountDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteRestaurantInvoiceDiscount(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchRestaurantInvoiceDiscounts(restaurantInvoiceDiscountsUIProps.queryParams));
+        dispatch(
+          actions.fetchRestaurantInvoiceDiscounts(
+            restaurantInvoiceDiscountsUIProps.queryParams
+          )
+        );
         // clear selections list
         restaurantInvoiceDiscountsUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +71,12 @@ export function RestaurantInvoiceDiscountDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("RestaurantInvoiceDiscount.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("RestaurantInvoiceDiscount.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

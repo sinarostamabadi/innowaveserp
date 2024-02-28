@@ -90,13 +90,21 @@ export function Pos({ data, setData, receivable, goBack }) {
                     customFeedbackLabel=""
                     onChange={(val) => {
                       setFieldValue("PosId", val.target.value);
-                      setFieldValue("BankAccount", poses.filter(x => x.PosId == val.target.value)[0]);
-                      setFieldValue("BankAccountId", poses.filter(x => x.PosId == val.target.value)[0].DefaultBankAccountId);
+                      setFieldValue(
+                        "BankAccount",
+                        poses.filter((x) => x.PosId == val.target.value)[0]
+                      );
+                      setFieldValue(
+                        "BankAccountId",
+                        poses.filter((x) => x.PosId == val.target.value)[0]
+                          .DefaultBankAccountId
+                      );
                     }}
                   >
                     {poses.map((cash) => (
                       <option key={cash.PosId} value={cash.PosId}>
-                        {(!!cash.PosId ? cash.Bank.TitleFa + " - " : "") + cash.SerialNo}
+                        {(!!cash.PosId ? cash.Bank.TitleFa + " - " : "") +
+                          cash.SerialNo}
                       </option>
                     ))}
                   </Select>
@@ -104,7 +112,9 @@ export function Pos({ data, setData, receivable, goBack }) {
                 <div className="col-lg-6">
                   <label>{t("CashDocument.BankAccount")}</label>
                   <label className="form-control">
-                    {!!values.BankAccountId? values.BankAccount.DefaultBankAccount.Title: ""}
+                    {!!values.BankAccountId
+                      ? values.BankAccount.DefaultBankAccount.Title
+                      : ""}
                   </label>
                 </div>
               </div>

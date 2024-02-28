@@ -26,9 +26,11 @@ export function UnitMeasureGroupsPage({ history }) {
       history.push("/general/unitMeasureGroups/updateStatus");
     },
   };
-  
+
   return (
-    <UnitMeasureGroupsUIProvider unitMeasureGroupsUIEvents={unitMeasureGroupsUIEvents}>
+    <UnitMeasureGroupsUIProvider
+      unitMeasureGroupsUIEvents={unitMeasureGroupsUIEvents}
+    >
       <UnitMeasureGroupsLoadingDialog />
       <Route path="/general/unitMeasureGroups/:id/delete">
         {({ history, match }) => (

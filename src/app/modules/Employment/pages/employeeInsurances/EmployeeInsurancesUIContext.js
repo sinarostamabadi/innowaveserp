@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmployeeInsuranceModel } from "../../../../../core/_models/Employment/EmployeeInsuranceModel";
@@ -10,9 +9,13 @@ export function useEmployeeInsurancesUIContext() {
   return useContext(EmployeeInsurancesUIContext);
 }
 
-export const EmployeeInsurancesUIConsumer = EmployeeInsurancesUIContext.Consumer;
+export const EmployeeInsurancesUIConsumer =
+  EmployeeInsurancesUIContext.Consumer;
 
-export function EmployeeInsurancesUIProvider({ employeeInsurancesUIEvents, children }) {
+export function EmployeeInsurancesUIProvider({
+  employeeInsurancesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(EmployeeInsuranceModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function EmployeeInsurancesUIProvider({ employeeInsurancesUIEvents, child
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function EmployeeInsurancesUIProvider({ employeeInsurancesUIEvents, child
     setIds,
     setQueryParams,
     dataModel: EmployeeInsuranceModel,
-    newEmployeeInsuranceButtonClick: employeeInsurancesUIEvents.newEmployeeInsuranceButtonClick,
-    openEditEmployeeInsurancePage: employeeInsurancesUIEvents.openEditEmployeeInsurancePage,
-    openDeleteEmployeeInsuranceDialog: employeeInsurancesUIEvents.openDeleteEmployeeInsuranceDialog,
-    openDeleteEmployeeInsurancesDialog: employeeInsurancesUIEvents.openDeleteEmployeeInsurancesDialog,
-    openFetchEmployeeInsurancesDialog: employeeInsurancesUIEvents.openFetchEmployeeInsurancesDialog,
-    openUpdateEmployeeInsurancesStatusDialog: employeeInsurancesUIEvents.openUpdateEmployeeInsurancesStatusDialog,
+    newEmployeeInsuranceButtonClick:
+      employeeInsurancesUIEvents.newEmployeeInsuranceButtonClick,
+    openEditEmployeeInsurancePage:
+      employeeInsurancesUIEvents.openEditEmployeeInsurancePage,
+    openDeleteEmployeeInsuranceDialog:
+      employeeInsurancesUIEvents.openDeleteEmployeeInsuranceDialog,
+    openDeleteEmployeeInsurancesDialog:
+      employeeInsurancesUIEvents.openDeleteEmployeeInsurancesDialog,
+    openFetchEmployeeInsurancesDialog:
+      employeeInsurancesUIEvents.openFetchEmployeeInsurancesDialog,
+    openUpdateEmployeeInsurancesStatusDialog:
+      employeeInsurancesUIEvents.openUpdateEmployeeInsurancesStatusDialog,
   };
   return (
-    <EmployeeInsurancesUIContext.Provider value={value}>{children}</EmployeeInsurancesUIContext.Provider>
+    <EmployeeInsurancesUIContext.Provider value={value}>
+      {children}
+    </EmployeeInsurancesUIContext.Provider>
   );
 }

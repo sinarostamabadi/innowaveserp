@@ -13,9 +13,11 @@ export function DetailEditDialogHeader({ id }) {
   const { actionsLoading, setActionsLoading } = useState();
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("BuyRequestDetail.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("BuyRequestDetail.Entity");
     if (id) {
-      _title = t("Common.Edit") + " " + t("BuyRequestDetail.Entity") ;
+      _title = t("Common.Edit") + " " + t("BuyRequestDetail.Entity");
     }
 
     setTitle(_title);

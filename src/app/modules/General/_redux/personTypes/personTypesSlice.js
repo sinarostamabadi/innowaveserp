@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPersonTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const personTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPersonTypeById  
+    // getPersonTypeById
     personTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.personTypeForEdit = action.payload.personTypeForEdit;
       state.error = null;
     },
-    // findPersonTypes  
+    // findPersonTypes
     personTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const personTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPersonType  
+    // createPersonType
     personTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePersonType  
+    // updatePersonType
     personTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const personTypesSlice = createSlice({
         return entity;
       });
     },
-    // deletePersonType  
+    // deletePersonType
     personTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PersonTypeId !== action.payload.PersonTypeId  
+        (el) => el.PersonTypeId !== action.payload.PersonTypeId
       );
     },
-    // deletePersonTypes  
+    // deletePersonTypes
     personTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PersonTypeId)  
+        (el) => !action.payload.ids.includes(el.PersonTypeId)
       );
     },
-    // personTypesUpdateState  
+    // personTypesUpdateState
     personTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

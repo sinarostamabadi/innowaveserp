@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { RestaurantTableModel } from "../../../../../core/_models/Restaurant/RestaurantTableModel";
@@ -12,7 +11,10 @@ export function useRestaurantTablesUIContext() {
 
 export const RestaurantTablesUIConsumer = RestaurantTablesUIContext.Consumer;
 
-export function RestaurantTablesUIProvider({ restaurantTablesUIEvents, children }) {
+export function RestaurantTablesUIProvider({
+  restaurantTablesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(RestaurantTableModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function RestaurantTablesUIProvider({ restaurantTablesUIEvents, children 
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function RestaurantTablesUIProvider({ restaurantTablesUIEvents, children 
     setIds,
     setQueryParams,
     dataModel: RestaurantTableModel,
-    newRestaurantTableButtonClick: restaurantTablesUIEvents.newRestaurantTableButtonClick,
-    openEditRestaurantTablePage: restaurantTablesUIEvents.openEditRestaurantTablePage,
-    openDeleteRestaurantTableDialog: restaurantTablesUIEvents.openDeleteRestaurantTableDialog,
-    openDeleteRestaurantTablesDialog: restaurantTablesUIEvents.openDeleteRestaurantTablesDialog,
-    openFetchRestaurantTablesDialog: restaurantTablesUIEvents.openFetchRestaurantTablesDialog,
-    openUpdateRestaurantTablesStatusDialog: restaurantTablesUIEvents.openUpdateRestaurantTablesStatusDialog,
+    newRestaurantTableButtonClick:
+      restaurantTablesUIEvents.newRestaurantTableButtonClick,
+    openEditRestaurantTablePage:
+      restaurantTablesUIEvents.openEditRestaurantTablePage,
+    openDeleteRestaurantTableDialog:
+      restaurantTablesUIEvents.openDeleteRestaurantTableDialog,
+    openDeleteRestaurantTablesDialog:
+      restaurantTablesUIEvents.openDeleteRestaurantTablesDialog,
+    openFetchRestaurantTablesDialog:
+      restaurantTablesUIEvents.openFetchRestaurantTablesDialog,
+    openUpdateRestaurantTablesStatusDialog:
+      restaurantTablesUIEvents.openUpdateRestaurantTablesStatusDialog,
   };
   return (
-    <RestaurantTablesUIContext.Provider value={value}>{children}</RestaurantTablesUIContext.Provider>
+    <RestaurantTablesUIContext.Provider value={value}>
+      {children}
+    </RestaurantTablesUIContext.Provider>
   );
 }

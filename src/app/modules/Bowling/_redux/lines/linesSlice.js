@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialLinesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const linesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getLineById  
+    // getLineById
     lineFetched: (state, action) => {
       state.actionsLoading = false;
       state.lineForEdit = action.payload.lineForEdit;
       state.error = null;
     },
-    // findLines  
+    // findLines
     linesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,7 +46,7 @@ export const linesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createLine  
+    // createLine
     lineCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
@@ -55,7 +54,7 @@ export const linesSlice = createSlice({
 
       return;
     },
-    // updateLine  
+    // updateLine
     lineUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -68,23 +67,23 @@ export const linesSlice = createSlice({
 
       return;
     },
-    // deleteLine  
+    // deleteLine
     lineDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.LineId !== action.payload.LineId  
+        (el) => el.LineId !== action.payload.LineId
       );
     },
-    // deleteLines  
+    // deleteLines
     linesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.LineId)  
+        (el) => !action.payload.ids.includes(el.LineId)
       );
     },
-    // linesUpdateState  
+    // linesUpdateState
     linesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

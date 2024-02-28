@@ -26,9 +26,11 @@ export function MonthlyEmployeeIOsPage({ history }) {
       history.push("/employment/monthlyEmployeeIOs/updateStatus");
     },
   };
-  
+
   return (
-    <MonthlyEmployeeIOsUIProvider monthlyEmployeeIOsUIEvents={monthlyEmployeeIOsUIEvents}>
+    <MonthlyEmployeeIOsUIProvider
+      monthlyEmployeeIOsUIEvents={monthlyEmployeeIOsUIEvents}
+    >
       <MonthlyEmployeeIOsLoadingDialog />
       <Route path="/employment/monthlyEmployeeIOs/:id/delete">
         {({ history, match }) => (

@@ -31,13 +31,13 @@ export const calendarsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCalendarById  
+    // getCalendarById
     calendarFetched: (state, action) => {
       state.actionsLoading = false;
       state.calendarForEdit = action.payload.calendarForEdit;
       state.error = null;
     },
-    // findCalendars  
+    // findCalendars
     calendarsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -45,13 +45,13 @@ export const calendarsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCalendar  
+    // createCalendar
     calendarCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCalendar  
+    // updateCalendar
     calendarUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -62,23 +62,23 @@ export const calendarsSlice = createSlice({
         return entity;
       });
     },
-    // deleteCalendar  
+    // deleteCalendar
     calendarDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CalendarId !== action.payload.CalendarId  
+        (el) => el.CalendarId !== action.payload.CalendarId
       );
     },
-    // deleteCalendars  
+    // deleteCalendars
     calendarsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CalendarId)  
+        (el) => !action.payload.ids.includes(el.CalendarId)
       );
     },
-    // calendarsUpdateState  
+    // calendarsUpdateState
     calendarsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

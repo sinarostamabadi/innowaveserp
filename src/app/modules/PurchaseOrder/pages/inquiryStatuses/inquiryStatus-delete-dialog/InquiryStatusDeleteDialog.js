@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -48,7 +47,9 @@ export function InquiryStatusDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteInquiryStatus(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchInquiryStatuses(inquiryStatusesUIProps.queryParams));
+        dispatch(
+          actions.fetchInquiryStatuses(inquiryStatusesUIProps.queryParams)
+        );
         // clear selections list
         inquiryStatusesUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +68,12 @@ export function InquiryStatusDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("InquiryStatus.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("InquiryStatus.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

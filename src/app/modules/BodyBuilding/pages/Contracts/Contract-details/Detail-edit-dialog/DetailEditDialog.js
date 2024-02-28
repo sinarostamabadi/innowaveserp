@@ -43,14 +43,17 @@ export function DetailEditDialog() {
       detailsUIProps.onHide();
     }
   };
-  
+
   return (
     <Modal
       show={detailsUIProps.show}
       onHide={detailsUIProps.onHide}
       aria-labelledby="example-modal-sizes-title-lg"
     >
-      <DetailEditDialogHeader id={detailsUIProps.id} isLoading={actionsLoading} />
+      <DetailEditDialogHeader
+        id={detailsUIProps.id}
+        isLoading={actionsLoading}
+      />
       <DetailEditForm
         saveDetail={saveDetail}
         actionsLoading={actionsLoading}

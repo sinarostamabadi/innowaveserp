@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { LineModel } from "../../../../../core/_models/Bowling/LineModel";
@@ -30,7 +29,7 @@ export function LinesUIProvider({ linesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,

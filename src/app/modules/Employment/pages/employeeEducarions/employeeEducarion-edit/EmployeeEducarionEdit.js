@@ -44,7 +44,8 @@ export function EmployeeEducarionEdit({
   const { actionsLoading, employeeEducarionForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.employeeEducarions.actionsLoading,
-      employeeEducarionForEdit: state.employeeEducarions.employeeEducarionForEdit,
+      employeeEducarionForEdit:
+        state.employeeEducarions.employeeEducarionForEdit,
       error: state.employeeEducarions.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function EmployeeEducarionEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("EmployeeEducarion.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("EmployeeEducarion.Entity");
 
     if (employeeEducarionForEdit && id) {
       _title = t("Common.Edit") + " " + employeeEducarionForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function EmployeeEducarionEdit({
         .then((arg) => {
           backToEmployeeEducarionsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateEmployeeEducarion(id, values))
         .then(() => backToEmployeeEducarionsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

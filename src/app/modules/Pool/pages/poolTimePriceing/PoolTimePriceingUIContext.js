@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { PoolTimePriceingModel } from "../../../../../core/_models/Pool/PoolTimePriceingModel";
@@ -12,7 +11,10 @@ export function usePoolTimePriceingUIContext() {
 
 export const PoolTimePriceingUIConsumer = PoolTimePriceingUIContext.Consumer;
 
-export function PoolTimePriceingUIProvider({ poolTimePriceingUIEvents, children }) {
+export function PoolTimePriceingUIProvider({
+  poolTimePriceingUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(PoolTimePriceingModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function PoolTimePriceingUIProvider({ poolTimePriceingUIEvents, children 
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function PoolTimePriceingUIProvider({ poolTimePriceingUIEvents, children 
     setIds,
     setQueryParams,
     dataModel: PoolTimePriceingModel,
-    newPoolTimePriceingButtonClick: poolTimePriceingUIEvents.newPoolTimePriceingButtonClick,
-    openEditPoolTimePriceingPage: poolTimePriceingUIEvents.openEditPoolTimePriceingPage,
-    openDeletePoolTimePriceingDialog: poolTimePriceingUIEvents.openDeletePoolTimePriceingDialog,
-    openDeletePoolTimePriceingDialog: poolTimePriceingUIEvents.openDeletePoolTimePriceingDialog,
-    openFetchPoolTimePriceingDialog: poolTimePriceingUIEvents.openFetchPoolTimePriceingDialog,
-    openUpdatePoolTimePriceingStatusDialog: poolTimePriceingUIEvents.openUpdatePoolTimePriceingStatusDialog,
+    newPoolTimePriceingButtonClick:
+      poolTimePriceingUIEvents.newPoolTimePriceingButtonClick,
+    openEditPoolTimePriceingPage:
+      poolTimePriceingUIEvents.openEditPoolTimePriceingPage,
+    openDeletePoolTimePriceingDialog:
+      poolTimePriceingUIEvents.openDeletePoolTimePriceingDialog,
+    openDeletePoolTimePriceingDialog:
+      poolTimePriceingUIEvents.openDeletePoolTimePriceingDialog,
+    openFetchPoolTimePriceingDialog:
+      poolTimePriceingUIEvents.openFetchPoolTimePriceingDialog,
+    openUpdatePoolTimePriceingStatusDialog:
+      poolTimePriceingUIEvents.openUpdatePoolTimePriceingStatusDialog,
   };
   return (
-    <PoolTimePriceingUIContext.Provider value={value}>{children}</PoolTimePriceingUIContext.Provider>
+    <PoolTimePriceingUIContext.Provider value={value}>
+      {children}
+    </PoolTimePriceingUIContext.Provider>
   );
 }

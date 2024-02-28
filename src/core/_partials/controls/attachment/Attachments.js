@@ -103,7 +103,7 @@ export function Attachments({ attachments, action }) {
             style={{ display: "flex", flexDirection: "column", width: "100%" }}
           >
             <label htmlFor="Title" style={{ width: "100%" }}>
-              لیست مدارک
+              List of documents
             </label>
             <div
               className="p-relative"
@@ -165,7 +165,7 @@ export function Attachments({ attachments, action }) {
                               className="flex-1 pl-3"
                             >
                               <div className="py-2">
-                                <b>نام: </b>{" "}
+                                <b>Name: </b>{" "}
                                 {!!x.Attachment &&
                                 !!x.Attachment.FormFile &&
                                 !!x.Attachment.FormFile.name
@@ -175,7 +175,7 @@ export function Attachments({ attachments, action }) {
                                   : ""}
                               </div>
                               <div className="pb-2">
-                                <b>نوع: </b>{" "}
+                                <b>Type: </b>{" "}
                                 {!!x.Attachment &&
                                 !!x.Attachment.FormFile &&
                                 !!x.Attachment.FormFile.type
@@ -185,7 +185,7 @@ export function Attachments({ attachments, action }) {
                                   : ""}
                               </div>
                               <div>
-                                <b>حجم: </b>{" "}
+                                <b>Size: </b>{" "}
                                 {Math.ceil(
                                   (!!x.Attachment &&
                                   !!x.Attachment.FormFile &&
@@ -195,7 +195,7 @@ export function Attachments({ attachments, action }) {
                                     ? x.Attachment.FileSize
                                     : 0) / 1024
                                 )}{" "}
-                                کیلوبایت
+                                KB
                               </div>
                               <div className="position-absolute top-0 right-0">
                                 <OverlayTrigger
@@ -262,7 +262,7 @@ export function Attachments({ attachments, action }) {
                         </div>
                       ))
                   ) : (
-                    <p className="p-5 text-center">فایلی انتخاب نشده است.</p>
+                    <p className="p-5 text-center">No file has been selected</p>
                   )}
                 </div>
               </div>

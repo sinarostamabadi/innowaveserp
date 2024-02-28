@@ -16,10 +16,7 @@ import { DateFaColumnFormatter } from "src/core/_formatters";
 import { Pagination } from "src/core/_partials/controls";
 import { useEmployeeTypesUIContext } from "../EmployeeTypesUIContext";
 import { BodyBuildingEmployeeTypeModel } from "src/core/_models/BodyBuilding/BodyBuildingEmployeeTypeModel";
-import {
-  getConfig,
-  getFields,
-} from "src/core/_models/ModelDescriber";
+import { getConfig, getFields } from "src/core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
 
 export function EmployeeTypesTable() {
@@ -52,9 +49,7 @@ export function EmployeeTypesTable() {
 
   useEffect(() => {
     uiProps.setIds([]);
-    dispatch(
-      actions.fetchEmployeeTypes(uiProps.queryParams)
-    );
+    dispatch(actions.fetchEmployeeTypes(uiProps.queryParams));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uiProps.queryParams, dispatch]);
 
@@ -109,9 +104,7 @@ export function EmployeeTypesTable() {
                 data={entities === null ? [] : entities}
                 columns={columns}
                 defaultSorted={configs.defaultSorted}
-                onTableChange={getHandlerTableChange(
-                  uiProps.setQueryParams
-                )}
+                onTableChange={getHandlerTableChange(uiProps.setQueryParams)}
                 {...paginationTableProps}
               >
                 <PleaseWaitMessage entities={entities} />

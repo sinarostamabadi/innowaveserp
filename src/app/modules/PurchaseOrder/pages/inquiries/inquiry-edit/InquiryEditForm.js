@@ -10,36 +10,34 @@ export function InquiryEditForm({ inquiry, btnRef, saveInquiry }) {
   const { t } = useTranslation();
 
   const InquiryEditSchema = Yup.object().shape({
-    PersonId: Yup.array()
-      .required(t("err.IsRequired", { 0: t("Inquiry.PersonId") })),
-    InquiryStatusId: Yup.array()
-      .required(t("err.IsRequired", { 0: t("Inquiry.InquiryStatusId") })),
+    PersonId: Yup.array().required(
+      t("err.IsRequired", { 0: t("Inquiry.PersonId") })
+    ),
+    InquiryStatusId: Yup.array().required(
+      t("err.IsRequired", { 0: t("Inquiry.InquiryStatusId") })
+    ),
   });
 
   const handleSuggestionPerson = useCallback((query, fnCallback) => {
-    Axios
-      .post("Person/Get", {
-        Filters: [{ Property: "FullNameFa", Operation: 7, Values: [query] }],
-        OrderBy: "FullNameFa asc",
-        PageNumber: 1,
-        PageSize: 10,
-      })
-      .then(({ data }) => {
-        fnCallback(data.Items);
-      });
+    Axios.post("Person/Get", {
+      Filters: [{ Property: "FullNameFa", Operation: 7, Values: [query] }],
+      OrderBy: "FullNameFa asc",
+      PageNumber: 1,
+      PageSize: 10,
+    }).then(({ data }) => {
+      fnCallback(data.Items);
+    });
   });
 
   const handleSuggestionInquiryStatus = useCallback((query, fnCallback) => {
-    Axios
-      .post("InquiryStatus/Get", {
-        Filters: [{ Property: "Title", Operation: 7, Values: [query] }],
-        OrderBy: "Title asc",
-        PageNumber: 1,
-        PageSize: 10,
-      })
-      .then(({ data }) => {
-        fnCallback(data.Items);
-      });
+    Axios.post("InquiryStatus/Get", {
+      Filters: [{ Property: "Title", Operation: 7, Values: [query] }],
+      OrderBy: "Title asc",
+      PageNumber: 1,
+      PageSize: 10,
+    }).then(({ data }) => {
+      fnCallback(data.Items);
+    });
   });
 
   return (

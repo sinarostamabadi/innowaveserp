@@ -44,7 +44,8 @@ export function MassageReservePriceEdit({
   const { actionsLoading, massageReservePriceForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.massageReservePrices.actionsLoading,
-      massageReservePriceForEdit: state.massageReservePrices.massageReservePriceForEdit,
+      massageReservePriceForEdit:
+        state.massageReservePrices.massageReservePriceForEdit,
       error: state.massageReservePrices.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function MassageReservePriceEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("MassageReservePrice.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("MassageReservePrice.Entity");
 
     if (massageReservePriceForEdit && id) {
       _title = t("Common.Edit") + " " + massageReservePriceForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function MassageReservePriceEdit({
         .then((arg) => {
           backToMassageReservePricesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateMassageReservePrice(id, values))
         .then(() => backToMassageReservePricesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

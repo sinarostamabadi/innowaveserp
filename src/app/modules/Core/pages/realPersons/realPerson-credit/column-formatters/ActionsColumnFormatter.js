@@ -30,7 +30,7 @@ export function ActionsColumnFormatter(
       <> </>
       <OverlayTrigger
         overlay={
-        <Tooltip id="spec-delete-tooltip">{t("Common.Delete")}</Tooltip>
+          <Tooltip id="spec-delete-tooltip">{t("Common.Delete")}</Tooltip>
         }
       >
         <a

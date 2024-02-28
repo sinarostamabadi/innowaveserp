@@ -12,10 +12,18 @@ export const ActionsColumnFormatter = (
   { openEditBilliardTimePriceingPage, openDeleteBilliardTimePriceingDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="billiardTimePriceing-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="billiardTimePriceing-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-        onClick={() => openEditBilliardTimePriceingPage(row.BilliardTimePriceingId)}
+        onClick={() =>
+          openEditBilliardTimePriceingPage(row.BilliardTimePriceingId)
+        }
       >
         <span className="svg-icon svg-icon-md svg-icon-primary">
           <SVG
@@ -26,11 +34,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="billiardTimePriceing-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="billiardTimePriceing-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteBilliardTimePriceingDialog(row.BilliardTimePriceingId)}
+        onClick={() =>
+          openDeleteBilliardTimePriceingDialog(row.BilliardTimePriceingId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

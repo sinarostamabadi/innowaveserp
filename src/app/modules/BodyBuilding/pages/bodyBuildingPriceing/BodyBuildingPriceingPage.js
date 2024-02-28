@@ -17,7 +17,9 @@ export function BodyBuildingPriceingPage({ history }) {
       history.push(`/bodyBuilding/bodyBuildingPriceing/${id}/delete`);
     },
     openDeleteBodyBuildingPriceingDialog: () => {
-      history.push(`/bodyBuilding/bodyBuildingPriceing/deleteBodyBuildingPriceing`);
+      history.push(
+        `/bodyBuilding/bodyBuildingPriceing/deleteBodyBuildingPriceing`
+      );
     },
     openFetchBodyBuildingPriceingDialog: () => {
       history.push(`/bodyBuilding/bodyBuildingPriceing/fetch`);
@@ -26,9 +28,11 @@ export function BodyBuildingPriceingPage({ history }) {
       history.push("/bodyBuilding/bodyBuildingPriceing/updateStatus");
     },
   };
-  
+
   return (
-    <BodyBuildingPriceingUIProvider bodyBuildingPriceingUIEvents={bodyBuildingPriceingUIEvents}>
+    <BodyBuildingPriceingUIProvider
+      bodyBuildingPriceingUIEvents={bodyBuildingPriceingUIEvents}
+    >
       <BodyBuildingPriceingLoadingDialog />
       <Route path="/bodyBuilding/bodyBuildingPriceing/:id/delete">
         {({ history, match }) => (

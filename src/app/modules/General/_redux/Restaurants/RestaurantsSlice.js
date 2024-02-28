@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialRestaurantsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const restaurantsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getRestaurantById  
+    // getRestaurantById
     restaurantFetched: (state, action) => {
       state.actionsLoading = false;
       state.restaurantForEdit = action.payload.restaurantForEdit;
       state.error = null;
     },
-    // findRestaurants  
+    // findRestaurants
     restaurantsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const restaurantsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createRestaurant  
+    // createRestaurant
     restaurantCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateRestaurant  
+    // updateRestaurant
     restaurantUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const restaurantsSlice = createSlice({
         return entity;
       });
     },
-    // deleteRestaurant  
+    // deleteRestaurant
     restaurantDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.RestaurantId !== action.payload.RestaurantId  
+        (el) => el.RestaurantId !== action.payload.RestaurantId
       );
     },
-    // deleteRestaurants  
+    // deleteRestaurants
     restaurantsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.RestaurantId)  
+        (el) => !action.payload.ids.includes(el.RestaurantId)
       );
     },
-    // restaurantsUpdateState  
+    // restaurantsUpdateState
     restaurantsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

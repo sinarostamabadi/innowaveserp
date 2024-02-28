@@ -32,8 +32,10 @@ export function EmployeeMissionsTable() {
       setIds: employeeMissionsUIContext.setIds,
       queryParams: employeeMissionsUIContext.queryParams,
       setQueryParams: employeeMissionsUIContext.setQueryParams,
-      openEditEmployeeMissionPage: employeeMissionsUIContext.openEditEmployeeMissionPage,
-      openDeleteEmployeeMissionDialog: employeeMissionsUIContext.openDeleteEmployeeMissionDialog,
+      openEditEmployeeMissionPage:
+        employeeMissionsUIContext.openEditEmployeeMissionPage,
+      openDeleteEmployeeMissionDialog:
+        employeeMissionsUIContext.openDeleteEmployeeMissionDialog,
     };
   }, [employeeMissionsUIContext]);
 
@@ -50,7 +52,9 @@ export function EmployeeMissionsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     employeeMissionsUIProps.setIds([]);
-    dispatch(actions.fetchEmployeeMissions(employeeMissionsUIProps.queryParams));
+    dispatch(
+      actions.fetchEmployeeMissions(employeeMissionsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employeeMissionsUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function EmployeeMissionsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmployeeMissionPage: employeeMissionsUIProps.openEditEmployeeMissionPage,
-        openDeleteEmployeeMissionDialog: employeeMissionsUIProps.openDeleteEmployeeMissionDialog,
+        openEditEmployeeMissionPage:
+          employeeMissionsUIProps.openEditEmployeeMissionPage,
+        openDeleteEmployeeMissionDialog:
+          employeeMissionsUIProps.openDeleteEmployeeMissionDialog,
         t: t,
       },
       classes: "text-right pr-0",

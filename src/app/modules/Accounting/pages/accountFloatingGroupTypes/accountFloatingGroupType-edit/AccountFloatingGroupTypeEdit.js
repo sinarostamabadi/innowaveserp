@@ -29,7 +29,7 @@ export function AccountFloatingGroupTypeEdit({
 
   const initModel = {
     AccountFloatingGroupTypeId: undefined,
-    Title: ""
+    Title: "",
   };
 
   // Subheader
@@ -41,21 +41,25 @@ export function AccountFloatingGroupTypeEdit({
   const dispatch = useDispatch();
 
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
-  const { actionsLoading, accountFloatingGroupTypeForEdit, error } = useSelector(
-    (state) => ({
-      actionsLoading: state.accountFloatingGroupTypes.actionsLoading,
-      accountFloatingGroupTypeForEdit: state.accountFloatingGroupTypes.accountFloatingGroupTypeForEdit,
-      error: state.accountFloatingGroupTypes.error,
-    }),
-    shallowEqual
-  );
+  const { actionsLoading, accountFloatingGroupTypeForEdit, error } =
+    useSelector(
+      (state) => ({
+        actionsLoading: state.accountFloatingGroupTypes.actionsLoading,
+        accountFloatingGroupTypeForEdit:
+          state.accountFloatingGroupTypes.accountFloatingGroupTypeForEdit,
+        error: state.accountFloatingGroupTypes.error,
+      }),
+      shallowEqual
+    );
 
   useEffect(() => {
     dispatch(actions.fetchAccountFloatingGroupType(id));
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("AccountFloatingGroupType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("AccountFloatingGroupType.Entity");
 
     if (accountFloatingGroupTypeForEdit && id) {
       _title = t("Common.Edit") + " " + accountFloatingGroupTypeForEdit.Title;
@@ -124,14 +128,14 @@ export function AccountFloatingGroupTypeEdit({
           </button>
           {`  `}
           <button
-              type="submit"
-              className="btn btn-primary ml-2"
-              onClick={saveAccountFloatingGroupTypeClick}
-            >
-              <i className="fa fa-save"></i> {t("Common.Save")}
-            </button>
-          </CardHeaderToolbar>
-        </CardHeader>
+            type="submit"
+            className="btn btn-primary ml-2"
+            onClick={saveAccountFloatingGroupTypeClick}
+          >
+            <i className="fa fa-save"></i> {t("Common.Save")}
+          </button>
+        </CardHeaderToolbar>
+      </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>
@@ -149,7 +153,9 @@ export function AccountFloatingGroupTypeEdit({
           {tab === "basic" && (
             <AccountFloatingGroupTypeEditForm
               actionsLoading={actionsLoading}
-              accountFloatingGroupType={accountFloatingGroupTypeForEdit || initModel}
+              accountFloatingGroupType={
+                accountFloatingGroupTypeForEdit || initModel
+              }
               btnRef={btnRef}
               saveAccountFloatingGroupType={saveAccountFloatingGroupType}
             />

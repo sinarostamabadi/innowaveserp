@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { DocumentModel } from "../../../../../core/_models/Accounting/DocumentModel";
@@ -30,7 +29,7 @@ export function DocumentsUIProvider({ documentsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function DocumentsUIProvider({ documentsUIEvents, children }) {
     openDeleteDocumentDialog: documentsUIEvents.openDeleteDocumentDialog,
     openDeleteDocumentsDialog: documentsUIEvents.openDeleteDocumentsDialog,
     openFetchDocumentsDialog: documentsUIEvents.openFetchDocumentsDialog,
-    openUpdateDocumentsStatusDialog: documentsUIEvents.openUpdateDocumentsStatusDialog,
+    openUpdateDocumentsStatusDialog:
+      documentsUIEvents.openUpdateDocumentsStatusDialog,
   };
   return (
-    <DocumentsUIContext.Provider value={value}>{children}</DocumentsUIContext.Provider>
+    <DocumentsUIContext.Provider value={value}>
+      {children}
+    </DocumentsUIContext.Provider>
   );
 }

@@ -26,9 +26,11 @@ export function RestaurantCostTypesPage({ history }) {
       history.push("/restaurant/restaurantCostTypes/updateStatus");
     },
   };
-  
+
   return (
-    <RestaurantCostTypesUIProvider restaurantCostTypesUIEvents={restaurantCostTypesUIEvents}>
+    <RestaurantCostTypesUIProvider
+      restaurantCostTypesUIEvents={restaurantCostTypesUIEvents}
+    >
       <RestaurantCostTypesLoadingDialog />
       <Route path="/restaurant/restaurantCostTypes/:id/delete">
         {({ history, match }) => (

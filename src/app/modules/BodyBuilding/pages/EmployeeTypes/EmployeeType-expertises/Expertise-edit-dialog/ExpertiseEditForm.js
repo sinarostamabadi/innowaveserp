@@ -15,13 +15,12 @@ export function ExpertiseEditForm({
     Title: Yup.string().required(
       t("err.IsRequired", { 0: t("BodyBuildingEmployeeTypeExpertise.Title") })
     ),
-
   });
-
 
   function cleanDetail(dirtyData) {
     return {
-      BodyBuildingEmployeeTypeExpertiseId: dirtyData.BodyBuildingEmployeeTypeExpertiseId,
+      BodyBuildingEmployeeTypeExpertiseId:
+        dirtyData.BodyBuildingEmployeeTypeExpertiseId,
       BodyBuildingEmployeeTypeId: dirtyData.BodyBuildingEmployeeTypeId,
       Title: dirtyData.Title,
       IsDeleted: false,
@@ -48,7 +47,7 @@ export function ExpertiseEditForm({
                 </div>
               )}
               <Form className="form form-label-right">
-              <div className="form-group row">
+                <div className="form-group row">
                   <div className="col-lg-12">
                     <Field
                       name="Title"

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { ChequeStatusModel } from "../../../../../core/_models/Cash/ChequeStatusModel";
@@ -30,7 +29,7 @@ export function ChequeStatusesUIProvider({ chequeStatusesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function ChequeStatusesUIProvider({ chequeStatusesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: ChequeStatusModel,
-    newChequeStatusButtonClick: chequeStatusesUIEvents.newChequeStatusButtonClick,
+    newChequeStatusButtonClick:
+      chequeStatusesUIEvents.newChequeStatusButtonClick,
     openEditChequeStatusPage: chequeStatusesUIEvents.openEditChequeStatusPage,
-    openDeleteChequeStatusDialog: chequeStatusesUIEvents.openDeleteChequeStatusDialog,
-    openDeleteChequeStatusesDialog: chequeStatusesUIEvents.openDeleteChequeStatusesDialog,
-    openFetchChequeStatusesDialog: chequeStatusesUIEvents.openFetchChequeStatusesDialog,
-    openUpdateChequeStatusesStatusDialog: chequeStatusesUIEvents.openUpdateChequeStatusesStatusDialog,
+    openDeleteChequeStatusDialog:
+      chequeStatusesUIEvents.openDeleteChequeStatusDialog,
+    openDeleteChequeStatusesDialog:
+      chequeStatusesUIEvents.openDeleteChequeStatusesDialog,
+    openFetchChequeStatusesDialog:
+      chequeStatusesUIEvents.openFetchChequeStatusesDialog,
+    openUpdateChequeStatusesStatusDialog:
+      chequeStatusesUIEvents.openUpdateChequeStatusesStatusDialog,
   };
   return (
-    <ChequeStatusesUIContext.Provider value={value}>{children}</ChequeStatusesUIContext.Provider>
+    <ChequeStatusesUIContext.Provider value={value}>
+      {children}
+    </ChequeStatusesUIContext.Provider>
   );
 }

@@ -26,7 +26,7 @@ export function MenuItemPricesPage({ history }) {
       history.push("/cofe/menuItemPrices/updateStatus");
     },
   };
-  
+
   return (
     <MenuItemPricesUIProvider menuItemPricesUIEvents={menuItemPricesUIEvents}>
       <MenuItemPricesLoadingDialog />

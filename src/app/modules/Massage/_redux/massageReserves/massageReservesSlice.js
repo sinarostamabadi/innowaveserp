@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialMassageReservesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const massageReservesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getMassageReserveById  
+    // getMassageReserveById
     massageReserveFetched: (state, action) => {
       state.actionsLoading = false;
       state.massageReserveForEdit = action.payload.massageReserveForEdit;
       state.error = null;
     },
-    // findMassageReserves  
+    // findMassageReserves
     massageReservesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const massageReservesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createMassageReserve  
+    // createMassageReserve
     massageReserveCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateMassageReserve  
+    // updateMassageReserve
     massageReserveUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.MassageReserveId === action.payload.massageReserve.MassageReserveId) {
+        if (
+          entity.MassageReserveId ===
+          action.payload.massageReserve.MassageReserveId
+        ) {
           return action.payload.massageReserve;
         }
         return entity;
       });
     },
-    // deleteMassageReserve  
+    // deleteMassageReserve
     massageReserveDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.MassageReserveId !== action.payload.MassageReserveId  
+        (el) => el.MassageReserveId !== action.payload.MassageReserveId
       );
     },
-    // deleteMassageReserves  
+    // deleteMassageReserves
     massageReservesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.MassageReserveId)  
+        (el) => !action.payload.ids.includes(el.MassageReserveId)
       );
     },
-    // massageReservesUpdateState  
+    // massageReservesUpdateState
     massageReservesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

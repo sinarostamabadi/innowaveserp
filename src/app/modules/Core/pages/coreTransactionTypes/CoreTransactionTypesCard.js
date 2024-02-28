@@ -18,25 +18,30 @@ export function CoreTransactionTypesCard() {
       ids: coreTransactionTypesUIContext.ids,
       queryParams: coreTransactionTypesUIContext.queryParams,
       setQueryParams: coreTransactionTypesUIContext.setQueryParams,
-      newCoreTransactionTypeButtonClick: coreTransactionTypesUIContext.newCoreTransactionTypeButtonClick,
-      openDeleteCoreTransactionTypesDialog:  
+      newCoreTransactionTypeButtonClick:
+        coreTransactionTypesUIContext.newCoreTransactionTypeButtonClick,
+      openDeleteCoreTransactionTypesDialog:
         coreTransactionTypesUIContext.openDeleteCoreTransactionTypesDialog,
-      openEditCoreTransactionTypePage: coreTransactionTypesUIContext.openEditCoreTransactionTypePage,
-      openUpdateCoreTransactionTypesStatusDialog:  
+      openEditCoreTransactionTypePage:
+        coreTransactionTypesUIContext.openEditCoreTransactionTypePage,
+      openUpdateCoreTransactionTypesStatusDialog:
         coreTransactionTypesUIContext.openUpdateCoreTransactionTypesStatusDialog,
-      openFetchCoreTransactionTypesDialog: coreTransactionTypesUIContext.openFetchCoreTransactionTypesDialog,
+      openFetchCoreTransactionTypesDialog:
+        coreTransactionTypesUIContext.openFetchCoreTransactionTypesDialog,
     };
   }, [coreTransactionTypesUIContext]);
   return (
     <Card>
       <CardHeader title="EntityTitle">
         <CardHeaderToolbar>
-          <button  
-            type="button"  
-            className="btn btn-primary"  
-            onClick={coreTransactionTypesUIProps.newCoreTransactionTypeButtonClick}
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={
+              coreTransactionTypesUIProps.newCoreTransactionTypeButtonClick
+            }
           >
-            EntityTitle  
+            EntityTitle
           </button>
         </CardHeaderToolbar>
       </CardHeader>

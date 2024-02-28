@@ -32,8 +32,10 @@ export function CoffeeInvoiceDtlsTable() {
       setIds: coffeeInvoiceDtlsUIContext.setIds,
       queryParams: coffeeInvoiceDtlsUIContext.queryParams,
       setQueryParams: coffeeInvoiceDtlsUIContext.setQueryParams,
-      openEditCoffeeInvoiceDtlPage: coffeeInvoiceDtlsUIContext.openEditCoffeeInvoiceDtlPage,
-      openDeleteCoffeeInvoiceDtlDialog: coffeeInvoiceDtlsUIContext.openDeleteCoffeeInvoiceDtlDialog,
+      openEditCoffeeInvoiceDtlPage:
+        coffeeInvoiceDtlsUIContext.openEditCoffeeInvoiceDtlPage,
+      openDeleteCoffeeInvoiceDtlDialog:
+        coffeeInvoiceDtlsUIContext.openDeleteCoffeeInvoiceDtlDialog,
     };
   }, [coffeeInvoiceDtlsUIContext]);
 
@@ -50,7 +52,9 @@ export function CoffeeInvoiceDtlsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     coffeeInvoiceDtlsUIProps.setIds([]);
-    dispatch(actions.fetchCoffeeInvoiceDtls(coffeeInvoiceDtlsUIProps.queryParams));
+    dispatch(
+      actions.fetchCoffeeInvoiceDtls(coffeeInvoiceDtlsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coffeeInvoiceDtlsUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function CoffeeInvoiceDtlsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditCoffeeInvoiceDtlPage: coffeeInvoiceDtlsUIProps.openEditCoffeeInvoiceDtlPage,
-        openDeleteCoffeeInvoiceDtlDialog: coffeeInvoiceDtlsUIProps.openDeleteCoffeeInvoiceDtlDialog,
+        openEditCoffeeInvoiceDtlPage:
+          coffeeInvoiceDtlsUIProps.openEditCoffeeInvoiceDtlPage,
+        openDeleteCoffeeInvoiceDtlDialog:
+          coffeeInvoiceDtlsUIProps.openDeleteCoffeeInvoiceDtlDialog,
         t: t,
       },
       classes: "text-right pr-0",

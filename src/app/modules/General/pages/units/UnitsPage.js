@@ -26,7 +26,7 @@ export function UnitsPage({ history }) {
       history.push("/general/units/updateStatus");
     },
   };
-  
+
   return (
     <UnitsUIProvider unitsUIEvents={unitsUIEvents}>
       <UnitsLoadingDialog />

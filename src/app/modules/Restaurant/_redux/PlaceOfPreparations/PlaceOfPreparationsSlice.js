@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPlaceOfPreparationsState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const placeOfPreparationsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPlaceOfPreparationById  
+    // getPlaceOfPreparationById
     placeOfPreparationFetched: (state, action) => {
       state.actionsLoading = false;
-      state.placeOfPreparationForEdit = action.payload.placeOfPreparationForEdit;
+      state.placeOfPreparationForEdit =
+        action.payload.placeOfPreparationForEdit;
       state.error = null;
     },
-    // findPlaceOfPreparations  
+    // findPlaceOfPreparations
     placeOfPreparationsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,43 @@ export const placeOfPreparationsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPlaceOfPreparation  
+    // createPlaceOfPreparation
     placeOfPreparationCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePlaceOfPreparation  
+    // updatePlaceOfPreparation
     placeOfPreparationUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.PlaceOfPreparationId === action.payload.placeOfPreparation.PlaceOfPreparationId) {
+        if (
+          entity.PlaceOfPreparationId ===
+          action.payload.placeOfPreparation.PlaceOfPreparationId
+        ) {
           return action.payload.placeOfPreparation;
         }
         return entity;
       });
     },
-    // deletePlaceOfPreparation  
+    // deletePlaceOfPreparation
     placeOfPreparationDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PlaceOfPreparationId !== action.payload.PlaceOfPreparationId  
+        (el) => el.PlaceOfPreparationId !== action.payload.PlaceOfPreparationId
       );
     },
-    // deletePlaceOfPreparations  
+    // deletePlaceOfPreparations
     placeOfPreparationsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PlaceOfPreparationId)  
+        (el) => !action.payload.ids.includes(el.PlaceOfPreparationId)
       );
     },
-    // placeOfPreparationsUpdateState  
+    // placeOfPreparationsUpdateState
     placeOfPreparationsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

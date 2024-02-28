@@ -26,7 +26,7 @@ export function PoolReservesPage({ history }) {
       history.push("/pool/poolReserves/updateStatus");
     },
   };
-  
+
   return (
     <PoolReservesUIProvider poolReservesUIEvents={poolReservesUIEvents}>
       <PoolReservesLoadingDialog />

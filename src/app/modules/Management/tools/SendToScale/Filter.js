@@ -20,17 +20,11 @@ export const Filter = forwardRef(({ reserve, btnRef, saveReserve }, ref) => {
 
   useImperativeHandle(ref, () => ({
     Search(fn) {
-      get().then(({data}) => {
+      get().then(({ data }) => {
         uiProps.setItems(data.Items);
-      })
+      });
     },
   }));
 
-
-
-
-  return (
-    <>
-    </>
-  );
+  return <></>;
 });

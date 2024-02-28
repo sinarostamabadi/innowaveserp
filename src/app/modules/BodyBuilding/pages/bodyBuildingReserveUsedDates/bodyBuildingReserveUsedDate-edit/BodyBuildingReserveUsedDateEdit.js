@@ -42,24 +42,29 @@ export function BodyBuildingReserveUsedDateEdit({
   const dispatch = useDispatch();
 
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
-  const { actionsLoading, bodyBuildingReserveUsedDateForEdit, error } = useSelector(
-    (state) => ({
-      actionsLoading: state.bodyBuildingReserveUsedDates.actionsLoading,
-      bodyBuildingReserveUsedDateForEdit: state.bodyBuildingReserveUsedDates.bodyBuildingReserveUsedDateForEdit,
-      error: state.bodyBuildingReserveUsedDates.error,
-    }),
-    shallowEqual
-  );
+  const { actionsLoading, bodyBuildingReserveUsedDateForEdit, error } =
+    useSelector(
+      (state) => ({
+        actionsLoading: state.bodyBuildingReserveUsedDates.actionsLoading,
+        bodyBuildingReserveUsedDateForEdit:
+          state.bodyBuildingReserveUsedDates.bodyBuildingReserveUsedDateForEdit,
+        error: state.bodyBuildingReserveUsedDates.error,
+      }),
+      shallowEqual
+    );
 
   useEffect(() => {
     dispatch(actions.fetchBodyBuildingReserveUsedDate(id));
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("BodyBuildingReserveUsedDate.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("BodyBuildingReserveUsedDate.Entity");
 
     if (bodyBuildingReserveUsedDateForEdit && id) {
-      _title = t("Common.Edit") + " " + bodyBuildingReserveUsedDateForEdit.TitleFa;
+      _title =
+        t("Common.Edit") + " " + bodyBuildingReserveUsedDateForEdit.TitleFa;
     }
 
     setTitle(_title);
@@ -125,14 +130,14 @@ export function BodyBuildingReserveUsedDateEdit({
           </button>
           {`  `}
           <button
-              type="submit"
-              className="btn btn-primary ml-2"
-              onClick={saveBodyBuildingReserveUsedDateClick}
-            >
-              <i className="fa fa-save"></i> {t("Common.Save")}
-            </button>
-          </CardHeaderToolbar>
-        </CardHeader>
+            type="submit"
+            className="btn btn-primary ml-2"
+            onClick={saveBodyBuildingReserveUsedDateClick}
+          >
+            <i className="fa fa-save"></i> {t("Common.Save")}
+          </button>
+        </CardHeaderToolbar>
+      </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>
@@ -150,7 +155,9 @@ export function BodyBuildingReserveUsedDateEdit({
           {tab === "basic" && (
             <BodyBuildingReserveUsedDateEditForm
               actionsLoading={actionsLoading}
-              bodyBuildingReserveUsedDate={bodyBuildingReserveUsedDateForEdit || initModel}
+              bodyBuildingReserveUsedDate={
+                bodyBuildingReserveUsedDateForEdit || initModel
+              }
               btnRef={btnRef}
               saveBodyBuildingReserveUsedDate={saveBodyBuildingReserveUsedDate}
             />

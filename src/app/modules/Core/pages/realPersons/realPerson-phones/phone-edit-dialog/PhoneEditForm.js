@@ -26,8 +26,9 @@ export function PhoneEditForm({ savePhone, phone, actionsLoading, onHide }) {
       .min(3, t("err.Min", { 0: 3 }))
       .max(100, t("err.Max", { 0: 100 }))
       .required(t("err.IsRequired", { 0: t("Phone.PhoneNumber") })),
-    PhoneTypeId: Yup.string()
-      .required(t("err.IsRequired", { 0: t("Phone.PhoneType") })),
+    PhoneTypeId: Yup.string().required(
+      t("err.IsRequired", { 0: t("Phone.PhoneType") })
+    ),
   });
 
   function clean(dirty) {
@@ -37,14 +38,13 @@ export function PhoneEditForm({ savePhone, phone, actionsLoading, onHide }) {
       PhoneTypeId: +dirty.PhoneTypeId,
       PhoneType: {
         PhoneTypeId: +dirty.PhoneTypeId,
-        TitleFa: phoneTypes.find(
-          (p) => p.PhoneTypeId == dirty.PhoneTypeId
-        ).TitleFa,
+        TitleFa: phoneTypes.find((p) => p.PhoneTypeId == dirty.PhoneTypeId)
+          .TitleFa,
       },
       AreaCode: dirty.AreaCode,
       PhoneNumber: dirty.PhoneNumber,
       Extension: dirty.Extension,
-      IsDeleted: false
+      IsDeleted: false,
     };
   }
   return (

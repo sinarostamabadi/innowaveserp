@@ -6,16 +6,22 @@ import { useTranslation } from "react-i18next";
 export function ExpertiseEditDialogHeader({ id, isLoading }) {
   const { t } = useTranslation();
   const [title, setTitle] = useState("");
-  const [ actionsLoading, setActionsLoading ] = useState(isLoading);
+  const [actionsLoading, setActionsLoading] = useState(isLoading);
 
   useEffect(() => {
     setActionsLoading(isLoading);
   }, [isLoading]);
 
   useEffect(() => {
-    id 
-      ? setTitle(t("Common.Edit") + " " + t("BodyBuildingEmployeeTypeExpertise.Entity"))
-      : setTitle(t("Common.Create") + " " + t("BodyBuildingEmployeeTypeExpertise.Entity"));    
+    id
+      ? setTitle(
+          t("Common.Edit") + " " + t("BodyBuildingEmployeeTypeExpertise.Entity")
+        )
+      : setTitle(
+          t("Common.Create") +
+            " " +
+            t("BodyBuildingEmployeeTypeExpertise.Entity")
+        );
   }, [id, t]);
 
   return (

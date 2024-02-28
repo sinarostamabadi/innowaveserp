@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { FutsalReserveDateModel } from "../../../../../core/_models/Futsal/FutsalReserveDateModel";
@@ -10,9 +9,13 @@ export function useFutsalReserveDatesUIContext() {
   return useContext(FutsalReserveDatesUIContext);
 }
 
-export const FutsalReserveDatesUIConsumer = FutsalReserveDatesUIContext.Consumer;
+export const FutsalReserveDatesUIConsumer =
+  FutsalReserveDatesUIContext.Consumer;
 
-export function FutsalReserveDatesUIProvider({ futsalReserveDatesUIEvents, children }) {
+export function FutsalReserveDatesUIProvider({
+  futsalReserveDatesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(FutsalReserveDateModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function FutsalReserveDatesUIProvider({ futsalReserveDatesUIEvents, child
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function FutsalReserveDatesUIProvider({ futsalReserveDatesUIEvents, child
     setIds,
     setQueryParams,
     dataModel: FutsalReserveDateModel,
-    newFutsalReserveDateButtonClick: futsalReserveDatesUIEvents.newFutsalReserveDateButtonClick,
-    openEditFutsalReserveDatePage: futsalReserveDatesUIEvents.openEditFutsalReserveDatePage,
-    openDeleteFutsalReserveDateDialog: futsalReserveDatesUIEvents.openDeleteFutsalReserveDateDialog,
-    openDeleteFutsalReserveDatesDialog: futsalReserveDatesUIEvents.openDeleteFutsalReserveDatesDialog,
-    openFetchFutsalReserveDatesDialog: futsalReserveDatesUIEvents.openFetchFutsalReserveDatesDialog,
-    openUpdateFutsalReserveDatesStatusDialog: futsalReserveDatesUIEvents.openUpdateFutsalReserveDatesStatusDialog,
+    newFutsalReserveDateButtonClick:
+      futsalReserveDatesUIEvents.newFutsalReserveDateButtonClick,
+    openEditFutsalReserveDatePage:
+      futsalReserveDatesUIEvents.openEditFutsalReserveDatePage,
+    openDeleteFutsalReserveDateDialog:
+      futsalReserveDatesUIEvents.openDeleteFutsalReserveDateDialog,
+    openDeleteFutsalReserveDatesDialog:
+      futsalReserveDatesUIEvents.openDeleteFutsalReserveDatesDialog,
+    openFetchFutsalReserveDatesDialog:
+      futsalReserveDatesUIEvents.openFetchFutsalReserveDatesDialog,
+    openUpdateFutsalReserveDatesStatusDialog:
+      futsalReserveDatesUIEvents.openUpdateFutsalReserveDatesStatusDialog,
   };
   return (
-    <FutsalReserveDatesUIContext.Provider value={value}>{children}</FutsalReserveDatesUIContext.Provider>
+    <FutsalReserveDatesUIContext.Provider value={value}>
+      {children}
+    </FutsalReserveDatesUIContext.Provider>
   );
 }

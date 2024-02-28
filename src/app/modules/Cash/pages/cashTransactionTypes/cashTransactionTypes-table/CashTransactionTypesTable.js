@@ -32,8 +32,10 @@ export function CashTransactionTypesTable() {
       setIds: cashTransactionTypesUIContext.setIds,
       queryParams: cashTransactionTypesUIContext.queryParams,
       setQueryParams: cashTransactionTypesUIContext.setQueryParams,
-      openEditCashTransactionTypePage: cashTransactionTypesUIContext.openEditCashTransactionTypePage,
-      openDeleteCashTransactionTypeDialog: cashTransactionTypesUIContext.openDeleteCashTransactionTypeDialog,
+      openEditCashTransactionTypePage:
+        cashTransactionTypesUIContext.openEditCashTransactionTypePage,
+      openDeleteCashTransactionTypeDialog:
+        cashTransactionTypesUIContext.openDeleteCashTransactionTypeDialog,
     };
   }, [cashTransactionTypesUIContext]);
 
@@ -50,7 +52,9 @@ export function CashTransactionTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     cashTransactionTypesUIProps.setIds([]);
-    dispatch(actions.fetchCashTransactionTypes(cashTransactionTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchCashTransactionTypes(cashTransactionTypesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cashTransactionTypesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function CashTransactionTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditCashTransactionTypePage: cashTransactionTypesUIProps.openEditCashTransactionTypePage,
-        openDeleteCashTransactionTypeDialog: cashTransactionTypesUIProps.openDeleteCashTransactionTypeDialog,
+        openEditCashTransactionTypePage:
+          cashTransactionTypesUIProps.openEditCashTransactionTypePage,
+        openDeleteCashTransactionTypeDialog:
+          cashTransactionTypesUIProps.openDeleteCashTransactionTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

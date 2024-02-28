@@ -28,7 +28,11 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger> */}
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="restaurantInvoices-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="restaurantInvoices-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"

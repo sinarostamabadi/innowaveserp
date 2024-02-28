@@ -1,4 +1,4 @@
-/* eslint-disable no-script-url,jsx-a11y/anchor-is-valid,jsx-a11y/role-supports-aria-props */  
+/* eslint-disable no-script-url,jsx-a11y/anchor-is-valid,jsx-a11y/role-supports-aria-props */
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { shallowEqual, useSelector } from "react-redux";
@@ -12,7 +12,7 @@ import {
 import { CoreTransactionTypeEditForm } from "./CoreTransactionTypeEditForm";
 import { useSubheader } from "../../../../../../core/layout";
 import { ModalProgressBar } from "../../../../../../core/_partials/controls";
-import { useReactToPrint } from 'react-to-print';
+import { useReactToPrint } from "react-to-print";
 const initCoreTransactionType = {
   CoreTransactionTypeId: undefined,
   TitleFa: "",
@@ -24,9 +24,9 @@ export function CoreTransactionTypeEdit({
     params: { id },
   },
 }) {
-  // Subheader  
+  // Subheader
   const suhbeader = useSubheader();
-  // Tabs  
+  // Tabs
   const [tab, setTab] = useState("basic");
   const [title, setTitle] = useState("");
   const dispatch = useDispatch();
@@ -34,9 +34,10 @@ export function CoreTransactionTypeEdit({
   const { actionsLoading, coreTransactionTypeForEdit } = useSelector(
     (state) => ({
       actionsLoading: state.coreTransactionTypes.actionsLoading,
-      coreTransactionTypeForEdit: state.coreTransactionTypes.coreTransactionTypeForEdit,
+      coreTransactionTypeForEdit:
+        state.coreTransactionTypes.coreTransactionTypeForEdit,
     }),
-    shallowEqual  
+    shallowEqual
   );
   useEffect(() => {
     dispatch(actions.fetchCoreTransactionType(id));
@@ -48,7 +49,7 @@ export function CoreTransactionTypeEdit({
     }
     setTitle(_title);
     suhbeader.setTitle(_title);
-    // eslint-disable-next-line react-hooks/exhaustive-deps  
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coreTransactionTypeForEdit, id]);
   const saveCoreTransactionType = (values) => {
     if (!id) {
@@ -57,7 +58,7 @@ export function CoreTransactionTypeEdit({
       });
     } else {
       dispatch(actions.updateCoreTransactionType(values)).then(() =>
-        backToCoreTransactionTypesList()  
+        backToCoreTransactionTypesList()
       );
     }
   };
@@ -75,52 +76,51 @@ export function CoreTransactionTypeEdit({
       {actionsLoading && <ModalProgressBar />}
       <CardHeader title={title}>
         <CardHeaderToolbar>
-          <button  
-            type="button"  
+          <button
+            type="button"
             onClick={backToCoreTransactionTypesList}
-            className="btn btn-light"  
+            className="btn btn-light"
           >
-            <i className="fa fa-arrow-left"></i> Exit  
+            <i className="fa fa-arrow-left"></i> Exit
           </button>
           {`  `}
           <button className="btn btn-light ml-2">
-            <i className="fa fa-redo"></i> ReValue  
+            <i className="fa fa-redo"></i> ReValue
           </button>
           {`  `}
-          <button  
-            type="submit"  
-            className="btn btn-light ml-2"  
-          >
-            <i className="fa fa-print"></i> PrintInfo  
+          <button type="submit" className="btn btn-light ml-2">
+            <i className="fa fa-print"></i> PrintInfo
           </button>
           {`  `}
-          <button  
-            type="submit"  
-            className="btn btn-primary ml-2"  
+          <button
+            type="submit"
+            className="btn btn-primary ml-2"
             onClick={saveCoreTransactionTypeClick}
           >
-            <i className="fa fa-save"></i> SaveInfo  
+            <i className="fa fa-save"></i> SaveInfo
           </button>
         </CardHeaderToolbar>
       </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>
-            <a  
+            <a
               className={`nav-link ${tab === "basic" && "active"}`}
-              data-toggle="tab"  
-              role="tab"  
+              data-toggle="tab"
+              role="tab"
               aria-selected={(tab === "basic").toString()}
             >
-              MenuName  
+              MenuName
             </a>
           </li>
         </ul>
         <div className="mt-5">
           {tab === "basic" && (
-            <CoreTransactionTypeEditForm  
+            <CoreTransactionTypeEditForm
               actionsLoading={actionsLoading}
-              coreTransactionType={coreTransactionTypeForEdit || initCoreTransactionType}
+              coreTransactionType={
+                coreTransactionTypeForEdit || initCoreTransactionType
+              }
               btnRef={btnRef}
               saveCoreTransactionType={saveCoreTransactionType}
             />

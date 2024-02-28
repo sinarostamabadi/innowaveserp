@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialRestaurantMenuItemAlbumsState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const restaurantMenuItemAlbumsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getRestaurantMenuItemAlbumById  
+    // getRestaurantMenuItemAlbumById
     restaurantMenuItemAlbumFetched: (state, action) => {
       state.actionsLoading = false;
-      state.restaurantMenuItemAlbumForEdit = action.payload.restaurantMenuItemAlbumForEdit;
+      state.restaurantMenuItemAlbumForEdit =
+        action.payload.restaurantMenuItemAlbumForEdit;
       state.error = null;
     },
-    // findRestaurantMenuItemAlbums  
+    // findRestaurantMenuItemAlbums
     restaurantMenuItemAlbumsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,46 +47,53 @@ export const restaurantMenuItemAlbumsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createRestaurantMenuItemAlbum  
+    // createRestaurantMenuItemAlbum
     restaurantMenuItemAlbumCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateRestaurantMenuItemAlbum  
+    // updateRestaurantMenuItemAlbum
     restaurantMenuItemAlbumUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.RestaurantMenuItemAlbumId === action.payload.restaurantMenuItemAlbum.RestaurantMenuItemAlbumId) {
+        if (
+          entity.RestaurantMenuItemAlbumId ===
+          action.payload.restaurantMenuItemAlbum.RestaurantMenuItemAlbumId
+        ) {
           return action.payload.restaurantMenuItemAlbum;
         }
         return entity;
       });
     },
-    // deleteRestaurantMenuItemAlbum  
+    // deleteRestaurantMenuItemAlbum
     restaurantMenuItemAlbumDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.RestaurantMenuItemAlbumId !== action.payload.RestaurantMenuItemAlbumId  
+        (el) =>
+          el.RestaurantMenuItemAlbumId !==
+          action.payload.RestaurantMenuItemAlbumId
       );
     },
-    // deleteRestaurantMenuItemAlbums  
+    // deleteRestaurantMenuItemAlbums
     restaurantMenuItemAlbumsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.RestaurantMenuItemAlbumId)  
+        (el) => !action.payload.ids.includes(el.RestaurantMenuItemAlbumId)
       );
     },
-    // restaurantMenuItemAlbumsUpdateState  
+    // restaurantMenuItemAlbumsUpdateState
     restaurantMenuItemAlbumsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       const { ids, status } = action.payload;
       state.entities = state.entities.map((entity) => {
-        if (ids.findIndex((id) => id === entity.RestaurantMenuItemAlbumId) > -1) {
+        if (
+          ids.findIndex((id) => id === entity.RestaurantMenuItemAlbumId) > -1
+        ) {
           entity.status = status;
         }
         return entity;

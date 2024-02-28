@@ -32,7 +32,8 @@ export function SetPricingTable() {
       queryParams: setPricingUIContext.queryParams,
       setQueryParams: setPricingUIContext.setQueryParams,
       openEditSetPricingPage: setPricingUIContext.openEditSetPricingPage,
-      openDeleteSetPricingDialog: setPricingUIContext.openDeleteSetPricingDialog,
+      openDeleteSetPricingDialog:
+        setPricingUIContext.openDeleteSetPricingDialog,
     };
   }, [setPricingUIContext]);
 
@@ -47,11 +48,9 @@ export function SetPricingTable() {
   const fields = SetPricingModel;
   const dispatch = useDispatch();
   useEffect(() => {
-    
     setPricingUIProps.setIds([]);
     dispatch(actions.fetchSetPricings(setPricingUIProps.queryParams));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    
   }, [setPricingUIProps.queryParams, dispatch]);
 
   const columns = [
@@ -61,7 +60,7 @@ export function SetPricingTable() {
       /* sort: fields.CenterId.sortable,
       sortCaret: sortCaret, */
     },
-   /*  {
+    /*  {
       dataField: fieldKey.SetPricingId,
       text: t("SetPricing." + fields.SetPricingId.display),
       sort: fields.SetPricingId.sortable,
@@ -86,21 +85,18 @@ export function SetPricingTable() {
       text: t("SetPricing." + fields.DayInWeek.display),
       sort: fields.DayInWeek.sortable,
       sortCaret: sortCaret,
-    
     },
     {
       dataField: fieldKey.Price,
       text: t("SetPricing." + fields.Price.display),
       sort: fields.Price.sortable,
       sortCaret: sortCaret,
-    
     },
     {
       dataField: fieldKey.PersonCount,
       text: t("SetPricing." + fields.PersonCount.display),
       sort: fields.PersonCount.sortable,
       sortCaret: sortCaret,
-    
     },
     {
       dataField: "action",
@@ -108,7 +104,8 @@ export function SetPricingTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditSetPricingPage: setPricingUIProps.openEditSetPricingPage,
-        openDeleteSetPricingDialog: setPricingUIProps.openDeleteSetPricingDialog,
+        openDeleteSetPricingDialog:
+          setPricingUIProps.openDeleteSetPricingDialog,
         t: t,
       },
       classes: "text-right pr-0",

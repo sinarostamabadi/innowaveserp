@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialMasseursState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const masseursSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getMasseurById  
+    // getMasseurById
     masseurFetched: (state, action) => {
       state.actionsLoading = false;
       state.masseurForEdit = action.payload.masseurForEdit;
       state.error = null;
     },
-    // findMasseurs  
+    // findMasseurs
     masseursFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const masseursSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createMasseur  
+    // createMasseur
     masseurCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateMasseur  
+    // updateMasseur
     masseurUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const masseursSlice = createSlice({
         return entity;
       });
     },
-    // deleteMasseur  
+    // deleteMasseur
     masseurDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.MasseurId !== action.payload.MasseurId  
+        (el) => el.MasseurId !== action.payload.MasseurId
       );
     },
-    // deleteMasseurs  
+    // deleteMasseurs
     masseursDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.MasseurId)  
+        (el) => !action.payload.ids.includes(el.MasseurId)
       );
     },
-    // masseursUpdateState  
+    // masseursUpdateState
     masseursStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

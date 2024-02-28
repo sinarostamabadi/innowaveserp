@@ -43,14 +43,17 @@ export function ServiceEditDialog() {
       servicesUIProps.onHide();
     }
   };
-  
+
   return (
     <Modal
       show={servicesUIProps.show}
       onHide={servicesUIProps.onHide}
       aria-labelledby="example-modal-sizes-title-lg"
     >
-      <ServiceEditDialogHeader id={servicesUIProps.id} isLoading={actionsLoading} />
+      <ServiceEditDialogHeader
+        id={servicesUIProps.id}
+        isLoading={actionsLoading}
+      />
       <ServiceEditForm
         saveService={saveService}
         actionsLoading={actionsLoading}

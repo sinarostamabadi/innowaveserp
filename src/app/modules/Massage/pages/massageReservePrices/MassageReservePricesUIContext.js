@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { MassageReservePriceModel } from "../../../../../core/_models/Massage/MassageReservePriceModel";
@@ -10,9 +9,13 @@ export function useMassageReservePricesUIContext() {
   return useContext(MassageReservePricesUIContext);
 }
 
-export const MassageReservePricesUIConsumer = MassageReservePricesUIContext.Consumer;
+export const MassageReservePricesUIConsumer =
+  MassageReservePricesUIContext.Consumer;
 
-export function MassageReservePricesUIProvider({ massageReservePricesUIEvents, children }) {
+export function MassageReservePricesUIProvider({
+  massageReservePricesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(MassageReservePriceModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function MassageReservePricesUIProvider({ massageReservePricesUIEvents, c
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function MassageReservePricesUIProvider({ massageReservePricesUIEvents, c
     setIds,
     setQueryParams,
     dataModel: MassageReservePriceModel,
-    newMassageReservePriceButtonClick: massageReservePricesUIEvents.newMassageReservePriceButtonClick,
-    openEditMassageReservePricePage: massageReservePricesUIEvents.openEditMassageReservePricePage,
-    openDeleteMassageReservePriceDialog: massageReservePricesUIEvents.openDeleteMassageReservePriceDialog,
-    openDeleteMassageReservePricesDialog: massageReservePricesUIEvents.openDeleteMassageReservePricesDialog,
-    openFetchMassageReservePricesDialog: massageReservePricesUIEvents.openFetchMassageReservePricesDialog,
-    openUpdateMassageReservePricesStatusDialog: massageReservePricesUIEvents.openUpdateMassageReservePricesStatusDialog,
+    newMassageReservePriceButtonClick:
+      massageReservePricesUIEvents.newMassageReservePriceButtonClick,
+    openEditMassageReservePricePage:
+      massageReservePricesUIEvents.openEditMassageReservePricePage,
+    openDeleteMassageReservePriceDialog:
+      massageReservePricesUIEvents.openDeleteMassageReservePriceDialog,
+    openDeleteMassageReservePricesDialog:
+      massageReservePricesUIEvents.openDeleteMassageReservePricesDialog,
+    openFetchMassageReservePricesDialog:
+      massageReservePricesUIEvents.openFetchMassageReservePricesDialog,
+    openUpdateMassageReservePricesStatusDialog:
+      massageReservePricesUIEvents.openUpdateMassageReservePricesStatusDialog,
   };
   return (
-    <MassageReservePricesUIContext.Provider value={value}>{children}</MassageReservePricesUIContext.Provider>
+    <MassageReservePricesUIContext.Provider value={value}>
+      {children}
+    </MassageReservePricesUIContext.Provider>
   );
 }

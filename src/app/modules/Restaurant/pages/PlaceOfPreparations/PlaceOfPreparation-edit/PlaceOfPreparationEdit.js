@@ -44,7 +44,8 @@ export function PlaceOfPreparationEdit({
   const { actionsLoading, placeOfPreparationForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.placeOfPreparations.actionsLoading,
-      placeOfPreparationForEdit: state.placeOfPreparations.placeOfPreparationForEdit,
+      placeOfPreparationForEdit:
+        state.placeOfPreparations.placeOfPreparationForEdit,
       error: state.placeOfPreparations.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function PlaceOfPreparationEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("PlaceOfPreparation.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("PlaceOfPreparation.Entity");
 
     if (placeOfPreparationForEdit && id) {
       _title = t("Common.Edit") + " " + placeOfPreparationForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function PlaceOfPreparationEdit({
         .then((arg) => {
           backToPlaceOfPreparationsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updatePlaceOfPreparation(id, values))
         .then(() => backToPlaceOfPreparationsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

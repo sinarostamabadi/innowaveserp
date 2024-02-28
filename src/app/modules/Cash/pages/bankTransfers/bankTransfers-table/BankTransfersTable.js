@@ -33,7 +33,8 @@ export function BankTransfersTable() {
       queryParams: bankTransfersUIContext.queryParams,
       setQueryParams: bankTransfersUIContext.setQueryParams,
       openEditBankTransferPage: bankTransfersUIContext.openEditBankTransferPage,
-      openDeleteBankTransferDialog: bankTransfersUIContext.openDeleteBankTransferDialog,
+      openDeleteBankTransferDialog:
+        bankTransfersUIContext.openDeleteBankTransferDialog,
     };
   }, [bankTransfersUIContext]);
 
@@ -73,7 +74,8 @@ export function BankTransfersTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditBankTransferPage: bankTransfersUIProps.openEditBankTransferPage,
-        openDeleteBankTransferDialog: bankTransfersUIProps.openDeleteBankTransferDialog,
+        openDeleteBankTransferDialog:
+          bankTransfersUIProps.openDeleteBankTransferDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBudgetsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const budgetsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBudgetById  
+    // getBudgetById
     budgetFetched: (state, action) => {
       state.actionsLoading = false;
       state.budgetForEdit = action.payload.budgetForEdit;
       state.error = null;
     },
-    // findBudgets  
+    // findBudgets
     budgetsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const budgetsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBudget  
+    // createBudget
     budgetCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBudget  
+    // updateBudget
     budgetUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const budgetsSlice = createSlice({
         return entity;
       });
     },
-    // deleteBudget  
+    // deleteBudget
     budgetDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BudgetId !== action.payload.BudgetId  
+        (el) => el.BudgetId !== action.payload.BudgetId
       );
     },
-    // deleteBudgets  
+    // deleteBudgets
     budgetsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BudgetId)  
+        (el) => !action.payload.ids.includes(el.BudgetId)
       );
     },
-    // budgetsUpdateState  
+    // budgetsUpdateState
     budgetsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

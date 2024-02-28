@@ -43,8 +43,7 @@ export const PrintBowlingCompetition = React.forwardRef(({ data }, ref) => {
                   {dataPrint.Person.FullNameFa}
                 </div>
                 <div style={{ flex: "1", textAlign: "left" }}>
-                  تاریخ:{" "}
-                  {EnToFaDateSlash(dataPrint.FactorDate)}
+                  تاریخ: {EnToFaDateSlash(dataPrint.FactorDate)}
                 </div>
               </div>
               <div style={{ display: "flex", margin: "1rem 0" }}>
@@ -63,8 +62,7 @@ export const PrintBowlingCompetition = React.forwardRef(({ data }, ref) => {
                     : ""}
                 </div>
                 <div style={{ flex: "1", textAlign: "left" }}>
-                  تلفن:{" "}
-                  {!!dataPrint.Person && dataPrint.Person.Mobile}
+                  تلفن: {!!dataPrint.Person && dataPrint.Person.Mobile}
                 </div>
               </div>
               <div
@@ -109,7 +107,10 @@ export const PrintBowlingCompetition = React.forwardRef(({ data }, ref) => {
                 >
                   <div style={{ display: "flex", margin: "1rem 0" }}>
                     <div style={{ flex: "1" }}>
-                      نام و نام خانوادگی: {dataPrint.CreateBy.FirstName + " " + dataPrint.CreateBy.LastName}
+                      نام و نام خانوادگی:{" "}
+                      {dataPrint.CreateBy.FirstName +
+                        " " +
+                        dataPrint.CreateBy.LastName}
                     </div>
                     <div style={{ flex: "1", textAlign: "center" }}>
                       کد پستی:{" "}

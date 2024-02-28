@@ -29,7 +29,7 @@ export function CountriesUIProvider({ countriesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -42,9 +42,12 @@ export function CountriesUIProvider({ countriesUIEvents, children }) {
     openDeleteCountryDialog: countriesUIEvents.openDeleteCountryDialog,
     openDeleteCountriesDialog: countriesUIEvents.openDeleteCountriesDialog,
     openFetchCountriesDialog: countriesUIEvents.openFetchCountriesDialog,
-    openUpdateCountriesStatusDialog: countriesUIEvents.openUpdateCountriesStatusDialog,
+    openUpdateCountriesStatusDialog:
+      countriesUIEvents.openUpdateCountriesStatusDialog,
   };
   return (
-    <CountriesUIContext.Provider value={value}>{children}</CountriesUIContext.Provider>
+    <CountriesUIContext.Provider value={value}>
+      {children}
+    </CountriesUIContext.Provider>
   );
 }

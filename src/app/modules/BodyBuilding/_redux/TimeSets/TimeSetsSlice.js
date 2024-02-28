@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialTimeSetsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const timeSetsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getTimeSetById  
+    // getTimeSetById
     timeSetFetched: (state, action) => {
       state.actionsLoading = false;
       state.timeSetForEdit = action.payload.timeSetForEdit;
       state.error = null;
     },
-    // findTimeSets  
+    // findTimeSets
     timeSetsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,44 @@ export const timeSetsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createTimeSet  
+    // createTimeSet
     timeSetCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateTimeSet  
+    // updateTimeSet
     timeSetUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BodyBuildingTimeSetId === action.payload.timeSet.BodyBuildingTimeSetId) {
+        if (
+          entity.BodyBuildingTimeSetId ===
+          action.payload.timeSet.BodyBuildingTimeSetId
+        ) {
           return action.payload.timeSet;
         }
         return entity;
       });
     },
-    // deleteTimeSet  
+    // deleteTimeSet
     timeSetDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BodyBuildingTimeSetId !== action.payload.BodyBuildingTimeSetId  
+        (el) =>
+          el.BodyBuildingTimeSetId !== action.payload.BodyBuildingTimeSetId
       );
     },
-    // deleteTimeSets  
+    // deleteTimeSets
     timeSetsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BodyBuildingTimeSetId)  
+        (el) => !action.payload.ids.includes(el.BodyBuildingTimeSetId)
       );
     },
-    // timeSetsUpdateState  
+    // timeSetsUpdateState
     timeSetsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

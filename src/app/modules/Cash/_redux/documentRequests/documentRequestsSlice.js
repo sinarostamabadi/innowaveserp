@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialDocumentRequestsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const documentRequestsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getDocumentRequestById  
+    // getDocumentRequestById
     documentRequestFetched: (state, action) => {
       state.actionsLoading = false;
       state.documentRequestForEdit = action.payload.documentRequestForEdit;
       state.error = null;
     },
-    // findDocumentRequests  
+    // findDocumentRequests
     documentRequestsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const documentRequestsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createDocumentRequest  
+    // createDocumentRequest
     documentRequestCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateDocumentRequest  
+    // updateDocumentRequest
     documentRequestUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.DocumentRequestId === action.payload.documentRequest.DocumentRequestId) {
+        if (
+          entity.DocumentRequestId ===
+          action.payload.documentRequest.DocumentRequestId
+        ) {
           return action.payload.documentRequest;
         }
         return entity;
       });
     },
-    // deleteDocumentRequest  
+    // deleteDocumentRequest
     documentRequestDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.DocumentRequestId !== action.payload.DocumentRequestId  
+        (el) => el.DocumentRequestId !== action.payload.DocumentRequestId
       );
     },
-    // deleteDocumentRequests  
+    // deleteDocumentRequests
     documentRequestsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.DocumentRequestId)  
+        (el) => !action.payload.ids.includes(el.DocumentRequestId)
       );
     },
-    // documentRequestsUpdateState  
+    // documentRequestsUpdateState
     documentRequestsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

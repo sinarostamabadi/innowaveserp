@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { IODevicesTable } from "./iODevices-table/IODevicesTable";
-import { useIODevicesUIContext, IODevicesUIConsumer } from "./IODevicesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useIODevicesUIContext,
+  IODevicesUIConsumer,
+} from "./IODevicesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function IODevicesCard() {
   const { t } = useTranslation();
@@ -24,21 +26,22 @@ export function IODevicesCard() {
       newIODeviceButtonClick: iODevicesUIContext.newIODeviceButtonClick,
       openDeleteIODevicesDialog: iODevicesUIContext.openDeleteIODevicesDialog,
       openEditIODevicePage: iODevicesUIContext.openEditIODevicePage,
-      openUpdateIODevicesStatusDialog: iODevicesUIContext.openUpdateIODevicesStatusDialog,
+      openUpdateIODevicesStatusDialog:
+        iODevicesUIContext.openUpdateIODevicesStatusDialog,
       openFetchIODevicesDialog: iODevicesUIContext.openFetchIODevicesDialog,
     };
   }, [iODevicesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("IODevice.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("IODevice.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={iODevicesUIProps.newIODeviceButtonClick}
           >
-            {t("IODevice.Entity")} {' '} {t("Common.New")}
+            {t("IODevice.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

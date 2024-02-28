@@ -34,7 +34,12 @@ export const Filter = forwardRef(({ reserve, btnRef, saveReserve }, ref) => {
   }, [context]);
 
   const BrandEditSchema = Yup.object().shape({
-    ProductId: Yup.array().nullable().min(1, t("err.IsRequired", { 0: t("Reports.ProductLifeCycle.Product") })),
+    ProductId: Yup.array()
+      .nullable()
+      .min(
+        1,
+        t("err.IsRequired", { 0: t("Reports.ProductLifeCycle.Product") })
+      ),
   });
 
   const handleSuggestionProduct = useCallback((query, fnCallback) => {
@@ -78,9 +83,8 @@ export const Filter = forwardRef(({ reserve, btnRef, saveReserve }, ref) => {
                     label={t("Reports.ProductLifeCycle.Product")}
                     placeHolder={t("msg.SelectBySuggestion")}
                     handleSearch={handleSuggestionProduct}
-                    handleOnChange={(val)=>{
-                      if(val == null)
-                      handleSubmit();
+                    handleOnChange={(val) => {
+                      if (val == null) handleSubmit();
                     }}
                     renderMenuItemChildren={(option, props) => (
                       <div>

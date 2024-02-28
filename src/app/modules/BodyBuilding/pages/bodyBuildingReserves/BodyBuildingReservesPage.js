@@ -17,7 +17,9 @@ export function BodyBuildingReservesPage({ history }) {
       history.push(`/bodyBuilding/bodyBuildingReserves/${id}/delete`);
     },
     openDeleteBodyBuildingReservesDialog: () => {
-      history.push(`/bodyBuilding/bodyBuildingReserves/deleteBodyBuildingReserves`);
+      history.push(
+        `/bodyBuilding/bodyBuildingReserves/deleteBodyBuildingReserves`
+      );
     },
     openFetchBodyBuildingReservesDialog: () => {
       history.push(`/bodyBuilding/bodyBuildingReserves/fetch`);
@@ -26,9 +28,11 @@ export function BodyBuildingReservesPage({ history }) {
       history.push("/bodyBuilding/bodyBuildingReserves/updateStatus");
     },
   };
-  
+
   return (
-    <BodyBuildingReservesUIProvider bodyBuildingReservesUIEvents={bodyBuildingReservesUIEvents}>
+    <BodyBuildingReservesUIProvider
+      bodyBuildingReservesUIEvents={bodyBuildingReservesUIEvents}
+    >
       <BodyBuildingReservesLoadingDialog />
       <Route path="/bodyBuilding/bodyBuildingReserves/:id/delete">
         {({ history, match }) => (

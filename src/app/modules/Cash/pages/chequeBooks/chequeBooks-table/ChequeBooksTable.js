@@ -15,10 +15,7 @@ import * as columnFormatter from "./column-formatters";
 import { Pagination } from "src/core/_partials/controls";
 import { useChequeBooksUIContext } from "../ChequeBooksUIContext";
 import { ChequeBookModel } from "src/core/_models/Cash/ChequeBookModel";
-import {
-  getConfig,
-  getFields,
-} from "src/core/_models/ModelDescriber";
+import { getConfig, getFields } from "src/core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
 import { DataFormatter } from "src/core/_formatters/DataFormatter";
 
@@ -34,7 +31,8 @@ export function ChequeBooksTable() {
       queryParams: chequeBooksUIContext.queryParams,
       setQueryParams: chequeBooksUIContext.setQueryParams,
       openEditChequeBookPage: chequeBooksUIContext.openEditChequeBookPage,
-      openDeleteChequeBookDialog: chequeBooksUIContext.openDeleteChequeBookDialog,
+      openDeleteChequeBookDialog:
+        chequeBooksUIContext.openDeleteChequeBookDialog,
     };
   }, [chequeBooksUIContext]);
 
@@ -87,7 +85,7 @@ export function ChequeBooksTable() {
           2: t("ChequeBook.ChequeStatus.Completion"),
           3: t("ChequeBook.ChequeStatus.Lost"),
           4: t("ChequeBook.ChequeStatus.Blocked"),
-        }
+        },
       },
     },
     {
@@ -102,7 +100,8 @@ export function ChequeBooksTable() {
       formatter: columnFormatter.ActionsColumnFormatter,
       formatExtraData: {
         openEditChequeBookPage: chequeBooksUIProps.openEditChequeBookPage,
-        openDeleteChequeBookDialog: chequeBooksUIProps.openDeleteChequeBookDialog,
+        openDeleteChequeBookDialog:
+          chequeBooksUIProps.openDeleteChequeBookDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { IODeviceModel } from "../../../../../core/_models/Employment/IODeviceModel";
@@ -30,7 +29,7 @@ export function IODevicesUIProvider({ iODevicesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function IODevicesUIProvider({ iODevicesUIEvents, children }) {
     openDeleteIODeviceDialog: iODevicesUIEvents.openDeleteIODeviceDialog,
     openDeleteIODevicesDialog: iODevicesUIEvents.openDeleteIODevicesDialog,
     openFetchIODevicesDialog: iODevicesUIEvents.openFetchIODevicesDialog,
-    openUpdateIODevicesStatusDialog: iODevicesUIEvents.openUpdateIODevicesStatusDialog,
+    openUpdateIODevicesStatusDialog:
+      iODevicesUIEvents.openUpdateIODevicesStatusDialog,
   };
   return (
-    <IODevicesUIContext.Provider value={value}>{children}</IODevicesUIContext.Provider>
+    <IODevicesUIContext.Provider value={value}>
+      {children}
+    </IODevicesUIContext.Provider>
   );
 }

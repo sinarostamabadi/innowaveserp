@@ -54,7 +54,9 @@ export function UnitMeasureGroupEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("UnitMeasureGroup.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("UnitMeasureGroup.Entity");
 
     if (unitMeasureGroupForEdit && id) {
       _title = t("Common.Edit") + " " + unitMeasureGroupForEdit.UnitGroupName;
@@ -72,11 +74,11 @@ export function UnitMeasureGroupEdit({
         .then((arg) => {
           backToUnitMeasureGroupsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateUnitMeasureGroup(id, values))
         .then(() => backToUnitMeasureGroupsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

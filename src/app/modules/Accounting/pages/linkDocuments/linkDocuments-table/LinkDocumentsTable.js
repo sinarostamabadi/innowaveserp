@@ -33,7 +33,8 @@ export function LinkDocumentsTable() {
       queryParams: linkDocumentsUIContext.queryParams,
       setQueryParams: linkDocumentsUIContext.setQueryParams,
       openEditLinkDocumentPage: linkDocumentsUIContext.openEditLinkDocumentPage,
-      openDeleteLinkDocumentDialog: linkDocumentsUIContext.openDeleteLinkDocumentDialog,
+      openDeleteLinkDocumentDialog:
+        linkDocumentsUIContext.openDeleteLinkDocumentDialog,
     };
   }, [linkDocumentsUIContext]);
 
@@ -73,7 +74,8 @@ export function LinkDocumentsTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditLinkDocumentPage: linkDocumentsUIProps.openEditLinkDocumentPage,
-        openDeleteLinkDocumentDialog: linkDocumentsUIProps.openDeleteLinkDocumentDialog,
+        openDeleteLinkDocumentDialog:
+          linkDocumentsUIProps.openDeleteLinkDocumentDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -45,7 +45,8 @@ export function FutsalReservePriceEdit({
   const { actionsLoading, futsalReservePriceForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.futsalReservePrices.actionsLoading,
-      futsalReservePriceForEdit: state.futsalReservePrices.futsalReservePriceForEdit,
+      futsalReservePriceForEdit:
+        state.futsalReservePrices.futsalReservePriceForEdit,
       error: state.futsalReservePrices.error,
     }),
     shallowEqual
@@ -56,7 +57,9 @@ export function FutsalReservePriceEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("FutsalReservePrice.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("FutsalReservePrice.Entity");
 
     if (futsalReservePriceForEdit && id) {
       _title = t("Common.Edit") + " " + futsalReservePriceForEdit.TitleFa;
@@ -129,7 +132,7 @@ export function FutsalReservePriceEdit({
             className="btn btn-primary ml-2"
             onClick={saveFutsalReservePriceClick}
           >
-            <i className="fa fa-save"></i> {t("Common.Save")}  
+            <i className="fa fa-save"></i> {t("Common.Save")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

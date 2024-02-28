@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialLoginHistoriesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const loginHistoriesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getLoginHistoryById  
+    // getLoginHistoryById
     loginHistoryFetched: (state, action) => {
       state.actionsLoading = false;
       state.loginHistoryForEdit = action.payload.loginHistoryForEdit;
       state.error = null;
     },
-    // findLoginHistories  
+    // findLoginHistories
     loginHistoriesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,42 @@ export const loginHistoriesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createLoginHistory  
+    // createLoginHistory
     loginHistoryCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateLoginHistory  
+    // updateLoginHistory
     loginHistoryUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.LoginHistoryId === action.payload.loginHistory.LoginHistoryId) {
+        if (
+          entity.LoginHistoryId === action.payload.loginHistory.LoginHistoryId
+        ) {
           return action.payload.loginHistory;
         }
         return entity;
       });
     },
-    // deleteLoginHistory  
+    // deleteLoginHistory
     loginHistoryDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.LoginHistoryId !== action.payload.LoginHistoryId  
+        (el) => el.LoginHistoryId !== action.payload.LoginHistoryId
       );
     },
-    // deleteLoginHistories  
+    // deleteLoginHistories
     loginHistoriesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.LoginHistoryId)  
+        (el) => !action.payload.ids.includes(el.LoginHistoryId)
       );
     },
-    // loginHistoriesUpdateState  
+    // loginHistoriesUpdateState
     loginHistoriesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

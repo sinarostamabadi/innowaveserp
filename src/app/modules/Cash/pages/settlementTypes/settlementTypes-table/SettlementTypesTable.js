@@ -32,8 +32,10 @@ export function SettlementTypesTable() {
       setIds: settlementTypesUIContext.setIds,
       queryParams: settlementTypesUIContext.queryParams,
       setQueryParams: settlementTypesUIContext.setQueryParams,
-      openEditSettlementTypePage: settlementTypesUIContext.openEditSettlementTypePage,
-      openDeleteSettlementTypeDialog: settlementTypesUIContext.openDeleteSettlementTypeDialog,
+      openEditSettlementTypePage:
+        settlementTypesUIContext.openEditSettlementTypePage,
+      openDeleteSettlementTypeDialog:
+        settlementTypesUIContext.openDeleteSettlementTypeDialog,
     };
   }, [settlementTypesUIContext]);
 
@@ -72,8 +74,10 @@ export function SettlementTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditSettlementTypePage: settlementTypesUIProps.openEditSettlementTypePage,
-        openDeleteSettlementTypeDialog: settlementTypesUIProps.openDeleteSettlementTypeDialog,
+        openEditSettlementTypePage:
+          settlementTypesUIProps.openEditSettlementTypePage,
+        openDeleteSettlementTypeDialog:
+          settlementTypesUIProps.openDeleteSettlementTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

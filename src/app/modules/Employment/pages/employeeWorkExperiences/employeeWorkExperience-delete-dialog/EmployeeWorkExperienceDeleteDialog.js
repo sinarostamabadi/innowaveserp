@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -16,7 +15,8 @@ export function EmployeeWorkExperienceDeleteDialog({ id, show, onHide }) {
   const { t } = useTranslation();
 
   // EmployeeWorkExperiences UI Context
-  const employeeWorkExperiencesUIContext = useEmployeeWorkExperiencesUIContext();
+  const employeeWorkExperiencesUIContext =
+    useEmployeeWorkExperiencesUIContext();
   const [error, setError] = useState(null);
   const employeeWorkExperiencesUIProps = useMemo(() => {
     return {
@@ -48,7 +48,11 @@ export function EmployeeWorkExperienceDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteEmployeeWorkExperience(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchEmployeeWorkExperiences(employeeWorkExperiencesUIProps.queryParams));
+        dispatch(
+          actions.fetchEmployeeWorkExperiences(
+            employeeWorkExperiencesUIProps.queryParams
+          )
+        );
         // clear selections list
         employeeWorkExperiencesUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +71,12 @@ export function EmployeeWorkExperienceDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("EmployeeWorkExperience.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("EmployeeWorkExperience.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

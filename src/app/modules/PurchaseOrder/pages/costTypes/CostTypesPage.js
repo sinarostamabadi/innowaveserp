@@ -26,7 +26,7 @@ export function CostTypesPage({ history }) {
       history.push("/purchaseOrder/costTypes/updateStatus");
     },
   };
-  
+
   return (
     <CostTypesUIProvider costTypesUIEvents={costTypesUIEvents}>
       <CostTypesLoadingDialog />

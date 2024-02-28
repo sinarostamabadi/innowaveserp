@@ -11,7 +11,7 @@ import * as actions from "../../../_redux/RestaurantInvoices/RestaurantInvoicesA
 import { useRestaurantInvoicesUIContext } from "../RestaurantInvoicesUIContext";
 import { useTranslation } from "react-i18next";
 
-  export function RestaurantInvoiceCancelAndReorder({id, show, onHide }) {
+export function RestaurantInvoiceCancelAndReorder({ id, show, onHide }) {
   const { t } = useTranslation();
   const [error, setError] = useState(null);
 
@@ -38,10 +38,11 @@ import { useTranslation } from "react-i18next";
   useEffect(() => {
     if (!id) {
       onHide();
-    }else{
-      setInvoiceModel(
-        {...entities.filter((model) => model.RestaurantInvoiceId == id)[0], RestaurantInvoiceStatusId: 5}
-      );
+    } else {
+      setInvoiceModel({
+        ...entities.filter((model) => model.RestaurantInvoiceId == id)[0],
+        RestaurantInvoiceStatusId: 5,
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
@@ -53,7 +54,7 @@ import { useTranslation } from "react-i18next";
     dispatch(actions.updateRestaurantInvoice(id, invoiceModel))
       .then(() => {
         // refresh list after deletion
-        
+
         // closing delete modal
         onHide();
       })

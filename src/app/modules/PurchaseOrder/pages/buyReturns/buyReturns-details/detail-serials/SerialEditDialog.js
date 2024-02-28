@@ -6,7 +6,7 @@ import { SerialEditForm } from "./SerialEditForm";
 import { useDetailsUIContext } from "../DetailsUIContext";
 
 export function SerialEditDialog() {
-    // Details UI Context
+  // Details UI Context
   const detailsUIContext = useDetailsUIContext();
   const detailsUIProps = useMemo(() => {
     return {
@@ -30,7 +30,11 @@ export function SerialEditDialog() {
       <SerialEditDialogHeader id={detailsUIProps.id} />
       <SerialEditForm
         actionsLoading={actionsLoading}
-        detail={!!detailsUIProps.selectedItem ? detailsUIProps.selectedItem.BuyReturnSerials: []}
+        detail={
+          !!detailsUIProps.selectedItem
+            ? detailsUIProps.selectedItem.BuyReturnSerials
+            : []
+        }
         onHide={detailsUIProps.onHide}
       />
     </Modal>

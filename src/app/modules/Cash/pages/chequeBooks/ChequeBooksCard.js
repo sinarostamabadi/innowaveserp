@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "src/core/_partials/controls";
 import { AdvancedFilter } from "src/core/_partials/custom/advanced-filter/AdvancedFilter";
 import { ChequeBooksTable } from "./chequeBooks-table/ChequeBooksTable";
-import { useChequeBooksUIContext, ChequeBooksUIConsumer } from "./ChequeBooksUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useChequeBooksUIContext,
+  ChequeBooksUIConsumer,
+} from "./ChequeBooksUIContext";
+import { useTranslation } from "react-i18next";
 
 export function ChequeBooksCard() {
   const { t } = useTranslation();
@@ -22,16 +24,19 @@ export function ChequeBooksCard() {
       queryParams: chequeBooksUIContext.queryParams,
       setQueryParams: chequeBooksUIContext.setQueryParams,
       newChequeBookButtonClick: chequeBooksUIContext.newChequeBookButtonClick,
-      openDeleteChequeBooksDialog: chequeBooksUIContext.openDeleteChequeBooksDialog,
+      openDeleteChequeBooksDialog:
+        chequeBooksUIContext.openDeleteChequeBooksDialog,
       openEditChequeBookPage: chequeBooksUIContext.openEditChequeBookPage,
-      openUpdateChequeBooksStatusDialog: chequeBooksUIContext.openUpdateChequeBooksStatusDialog,
-      openFetchChequeBooksDialog: chequeBooksUIContext.openFetchChequeBooksDialog,
+      openUpdateChequeBooksStatusDialog:
+        chequeBooksUIContext.openUpdateChequeBooksStatusDialog,
+      openFetchChequeBooksDialog:
+        chequeBooksUIContext.openFetchChequeBooksDialog,
     };
   }, [chequeBooksUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("ChequeBook.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("ChequeBook.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"

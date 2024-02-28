@@ -26,9 +26,11 @@ export function ProfitLossItemsPage({ history }) {
       history.push("/accounting/profitLossItems/updateStatus");
     },
   };
-  
+
   return (
-    <ProfitLossItemsUIProvider profitLossItemsUIEvents={profitLossItemsUIEvents}>
+    <ProfitLossItemsUIProvider
+      profitLossItemsUIEvents={profitLossItemsUIEvents}
+    >
       <ProfitLossItemsLoadingDialog />
       <Route path="/accounting/profitLossItems/:id/delete">
         {({ history, match }) => (

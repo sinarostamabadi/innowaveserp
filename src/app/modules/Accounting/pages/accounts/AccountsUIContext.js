@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { AccountModel } from "../../../../../core/_models/Accounting/AccountModel";
@@ -33,10 +32,10 @@ export function AccountsUIProvider({ accountsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const initDetail = {
     AccountId: null,
-  
+
     ParentId: null,
     Code: "",
     Title: "",
@@ -65,8 +64,10 @@ export function AccountsUIProvider({ accountsUIEvents, children }) {
   };
   const openEditDetailDialog = (id, parent, level) => {
     setSelectedItem({
-      id, parent, level
-    })
+      id,
+      parent,
+      level,
+    });
     setSelectedId(id);
     setShowEditDetailDialog(true);
   };
@@ -75,29 +76,25 @@ export function AccountsUIProvider({ accountsUIEvents, children }) {
     setShowEditDetailDialog(false);
   };
 
-  const findDetail = (detailId) => {
-
-  };
+  const findDetail = (detailId) => {};
 
   const dispatch = useDispatch();
   const addDetail = (detail) => {
     dispatch(actions.createAccount(detail))
-    .then((arg) => {
-      closeEditDetailDialog();
-    })
-    .catch((err) => {});
+      .then((arg) => {
+        closeEditDetailDialog();
+      })
+      .catch((err) => {});
   };
 
-  const removeDetail = (detailId) => {
-
-  };
+  const removeDetail = (detailId) => {};
 
   const updateDetail = (detail) => {
     dispatch(actions.updateAccount(detail.AccountId, detail))
-    .then((arg) => {
-      closeEditDetailDialog();
-    })
-    .catch((err) => {});
+      .then((arg) => {
+        closeEditDetailDialog();
+      })
+      .catch((err) => {});
   };
 
   const value = {
@@ -109,7 +106,7 @@ export function AccountsUIProvider({ accountsUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: AccountModel,
-    
+
     initDetail,
     findDetail,
     addDetail,
@@ -126,6 +123,8 @@ export function AccountsUIProvider({ accountsUIEvents, children }) {
     openDeleteAccountsDialog: accountsUIEvents.openDeleteAccountsDialog,
   };
   return (
-    <AccountsUIContext.Provider value={value}>{children}</AccountsUIContext.Provider>
+    <AccountsUIContext.Provider value={value}>
+      {children}
+    </AccountsUIContext.Provider>
   );
 }

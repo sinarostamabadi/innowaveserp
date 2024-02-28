@@ -26,7 +26,7 @@ export function BuySerialsPage({ history }) {
       history.push("/purchaseOrder/buySerials/updateStatus");
     },
   };
-  
+
   return (
     <BuySerialsUIProvider buySerialsUIEvents={buySerialsUIEvents}>
       <BuySerialsLoadingDialog />

@@ -3,13 +3,38 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./ServiceAccessShow.css";
 
+const translate={
+  "پایه":"Base",
+  "حسابداری":"Accounting",
+  "تامین و خرید":"Supply and purchase",
+  "انبار":"Store",
+  "فروشگاه":"Shop",
+  "بولینگ":"bowling",
+  "باشگاه بدنسازی":"Body building club",
+  "رستوران":"Restaurant",
+  "مدیریت":"Management",
+  "باشگاه مشتریان":"Customer club",
+  "فوتسال":"futsal",
+  "صندوق":"cash desk",
+  "سرویس ارسال":"Shipping service",
+  "عمومی":"General",
+  "امنیت سیستم":"System security"
+}
+
 export function ServiceAccessShow({ dashboardId }) {
   const { user } = useSelector((state) => state.auth);
   const [serviceId, setServiceId] = useState(dashboardId);
 
+  console.log(user);
+
+  console.log(user);
+
   if (dashboardId === 0) dashboardId = null;
 
   const listItems = !!user.Services
+
+
+
     ? user.Services.filter((model) => model.ParentId == serviceId).map(
         (model) => (
           <div className="item-box col-xl-2 col-md-3 mb-10" key={model.ServiceId + "dash"}>
@@ -27,7 +52,7 @@ export function ServiceAccessShow({ dashboardId }) {
                   style={{ height: "70px" }}
                 >
                   <i
-                    className={model.Icon || "fad fa-sitemap"}
+                    className={model.Icon || "fas fa-sitemap"}
                     style={{ fontSize: "5rem" }}
                   ></i>
                 </span>
@@ -49,7 +74,7 @@ export function ServiceAccessShow({ dashboardId }) {
                   style={{ height: "70px" }}
                 >
                   <i
-                    className={model.Icon || "fad fa-info-circle"}
+                    className={model.Icon || "fas fa-info-circle"}
                     style={{ fontSize: "5rem" }}
                   ></i>
                 </span>

@@ -26,9 +26,11 @@ export function PaymentStatusesPage({ history }) {
       history.push("//paymentStatuses/updateStatus");
     },
   };
-  
+
   return (
-    <PaymentStatusesUIProvider paymentStatusesUIEvents={paymentStatusesUIEvents}>
+    <PaymentStatusesUIProvider
+      paymentStatusesUIEvents={paymentStatusesUIEvents}
+    >
       <PaymentStatusesLoadingDialog />
       <Route path="//paymentStatuses/:id/delete">
         {({ history, match }) => (

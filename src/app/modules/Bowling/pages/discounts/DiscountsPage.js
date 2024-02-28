@@ -1,4 +1,3 @@
-
 import { Route } from "react-router-dom";
 import { DiscountsLoadingDialog } from "./discounts-loading-dialog/DiscountsLoadingDialog";
 import { DiscountDeleteDialog } from "./discount-delete-dialog/DiscountDeleteDialog";
@@ -27,10 +26,8 @@ export function DiscountsPage({ history }) {
     },
   };
 
-  
   return (
     <DiscountsUIProvider discountsUIEvents={discountsUIEvents}>
-      
       <DiscountsLoadingDialog />
       <Route path="/bowling/discount/:id/delete">
         {({ history, match }) => (

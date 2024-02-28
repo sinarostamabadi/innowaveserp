@@ -26,7 +26,7 @@ export function FutsalCentersPage({ history }) {
       history.push("/futsal/futsalCenters/updateStatus");
     },
   };
-  
+
   return (
     <FutsalCentersUIProvider futsalCentersUIEvents={futsalCentersUIEvents}>
       <FutsalCentersLoadingDialog />

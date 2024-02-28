@@ -44,7 +44,8 @@ export function IOTransactionTypeEdit({
   const { actionsLoading, iOTransactionTypeForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.iOTransactionTypes.actionsLoading,
-      iOTransactionTypeForEdit: state.iOTransactionTypes.iOTransactionTypeForEdit,
+      iOTransactionTypeForEdit:
+        state.iOTransactionTypes.iOTransactionTypeForEdit,
       error: state.iOTransactionTypes.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function IOTransactionTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("IOTransactionType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("IOTransactionType.Entity");
 
     if (iOTransactionTypeForEdit && id) {
       _title = t("Common.Edit") + " " + iOTransactionTypeForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function IOTransactionTypeEdit({
         .then((arg) => {
           backToIOTransactionTypesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateIOTransactionType(id, values))
         .then(() => backToIOTransactionTypesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

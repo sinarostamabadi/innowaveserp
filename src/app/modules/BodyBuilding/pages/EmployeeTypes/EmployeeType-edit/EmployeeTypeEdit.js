@@ -28,11 +28,11 @@ export function EmployeeTypeEdit({
 }) {
   const { t } = useTranslation();
   const defaultRestaurant = !!getStorage("defaultRestaurant")
-  ? JSON.parse(getStorage("defaultRestaurant"))
-  : null;
+    ? JSON.parse(getStorage("defaultRestaurant"))
+    : null;
 
   const initModel = {
-		BodyBuildingEmployeeTypeId: undefined,
+    BodyBuildingEmployeeTypeId: undefined,
     Title: "",
     Description: "",
     BodyBuildingEmployeeTypeExpertises: [],
@@ -69,7 +69,9 @@ export function EmployeeTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " «" + t("BodyBuildingEmployeeType.Entity") + "»";
+    let _title = id
+      ? ""
+      : t("Common.Create") + " «" + t("BodyBuildingEmployeeType.Entity") + "»";
 
     if (employeeTypeForEdit && id) {
       _title = t("Common.Edit") + " «" + employeeTypeForEdit.Title + "»";
@@ -201,13 +203,13 @@ export function EmployeeTypeEdit({
                 eventKey="expertises"
                 title={t("BodyBuildingEmployeeTypeExpertise.Entity")}
                 className="nav-item"
-                >
+              >
                 <ExpertisesUIProvider
                   currentPersonId={id}
                   actionsLoading={actionsLoading}
                   expertise={expertiseObj}
                   ref={btnRefExpertises}
-                  >
+                >
                   <Expertises />
                 </ExpertisesUIProvider>
               </Tab>

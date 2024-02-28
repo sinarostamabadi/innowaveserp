@@ -32,8 +32,10 @@ export function ProfitLossItemsTable() {
       setIds: profitLossItemsUIContext.setIds,
       queryParams: profitLossItemsUIContext.queryParams,
       setQueryParams: profitLossItemsUIContext.setQueryParams,
-      openEditProfitLossItemPage: profitLossItemsUIContext.openEditProfitLossItemPage,
-      openDeleteProfitLossItemDialog: profitLossItemsUIContext.openDeleteProfitLossItemDialog,
+      openEditProfitLossItemPage:
+        profitLossItemsUIContext.openEditProfitLossItemPage,
+      openDeleteProfitLossItemDialog:
+        profitLossItemsUIContext.openDeleteProfitLossItemDialog,
     };
   }, [profitLossItemsUIContext]);
 
@@ -72,8 +74,10 @@ export function ProfitLossItemsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditProfitLossItemPage: profitLossItemsUIProps.openEditProfitLossItemPage,
-        openDeleteProfitLossItemDialog: profitLossItemsUIProps.openDeleteProfitLossItemDialog,
+        openEditProfitLossItemPage:
+          profitLossItemsUIProps.openEditProfitLossItemPage,
+        openDeleteProfitLossItemDialog:
+          profitLossItemsUIProps.openDeleteProfitLossItemDialog,
         t: t,
       },
       classes: "text-right pr-0",

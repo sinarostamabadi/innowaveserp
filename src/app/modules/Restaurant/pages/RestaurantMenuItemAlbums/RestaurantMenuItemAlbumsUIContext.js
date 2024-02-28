@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { RestaurantMenuItemAlbumModel } from "../../../../../core/_models/Restaurant/RestaurantMenuItemAlbumModel";
@@ -10,9 +9,13 @@ export function useRestaurantMenuItemAlbumsUIContext() {
   return useContext(RestaurantMenuItemAlbumsUIContext);
 }
 
-export const RestaurantMenuItemAlbumsUIConsumer = RestaurantMenuItemAlbumsUIContext.Consumer;
+export const RestaurantMenuItemAlbumsUIConsumer =
+  RestaurantMenuItemAlbumsUIContext.Consumer;
 
-export function RestaurantMenuItemAlbumsUIProvider({ restaurantMenuItemAlbumsUIEvents, children }) {
+export function RestaurantMenuItemAlbumsUIProvider({
+  restaurantMenuItemAlbumsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(RestaurantMenuItemAlbumModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function RestaurantMenuItemAlbumsUIProvider({ restaurantMenuItemAlbumsUIE
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function RestaurantMenuItemAlbumsUIProvider({ restaurantMenuItemAlbumsUIE
     setIds,
     setQueryParams,
     dataModel: RestaurantMenuItemAlbumModel,
-    newRestaurantMenuItemAlbumButtonClick: restaurantMenuItemAlbumsUIEvents.newRestaurantMenuItemAlbumButtonClick,
-    openEditRestaurantMenuItemAlbumPage: restaurantMenuItemAlbumsUIEvents.openEditRestaurantMenuItemAlbumPage,
-    openDeleteRestaurantMenuItemAlbumDialog: restaurantMenuItemAlbumsUIEvents.openDeleteRestaurantMenuItemAlbumDialog,
-    openDeleteRestaurantMenuItemAlbumsDialog: restaurantMenuItemAlbumsUIEvents.openDeleteRestaurantMenuItemAlbumsDialog,
-    openFetchRestaurantMenuItemAlbumsDialog: restaurantMenuItemAlbumsUIEvents.openFetchRestaurantMenuItemAlbumsDialog,
-    openUpdateRestaurantMenuItemAlbumsStatusDialog: restaurantMenuItemAlbumsUIEvents.openUpdateRestaurantMenuItemAlbumsStatusDialog,
+    newRestaurantMenuItemAlbumButtonClick:
+      restaurantMenuItemAlbumsUIEvents.newRestaurantMenuItemAlbumButtonClick,
+    openEditRestaurantMenuItemAlbumPage:
+      restaurantMenuItemAlbumsUIEvents.openEditRestaurantMenuItemAlbumPage,
+    openDeleteRestaurantMenuItemAlbumDialog:
+      restaurantMenuItemAlbumsUIEvents.openDeleteRestaurantMenuItemAlbumDialog,
+    openDeleteRestaurantMenuItemAlbumsDialog:
+      restaurantMenuItemAlbumsUIEvents.openDeleteRestaurantMenuItemAlbumsDialog,
+    openFetchRestaurantMenuItemAlbumsDialog:
+      restaurantMenuItemAlbumsUIEvents.openFetchRestaurantMenuItemAlbumsDialog,
+    openUpdateRestaurantMenuItemAlbumsStatusDialog:
+      restaurantMenuItemAlbumsUIEvents.openUpdateRestaurantMenuItemAlbumsStatusDialog,
   };
   return (
-    <RestaurantMenuItemAlbumsUIContext.Provider value={value}>{children}</RestaurantMenuItemAlbumsUIContext.Provider>
+    <RestaurantMenuItemAlbumsUIContext.Provider value={value}>
+      {children}
+    </RestaurantMenuItemAlbumsUIContext.Provider>
   );
 }

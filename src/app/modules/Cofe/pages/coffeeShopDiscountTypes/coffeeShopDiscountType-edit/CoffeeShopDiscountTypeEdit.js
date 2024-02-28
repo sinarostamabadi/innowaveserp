@@ -44,7 +44,8 @@ export function CoffeeShopDiscountTypeEdit({
   const { actionsLoading, coffeeShopDiscountTypeForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.coffeeShopDiscountTypes.actionsLoading,
-      coffeeShopDiscountTypeForEdit: state.coffeeShopDiscountTypes.coffeeShopDiscountTypeForEdit,
+      coffeeShopDiscountTypeForEdit:
+        state.coffeeShopDiscountTypes.coffeeShopDiscountTypeForEdit,
       error: state.coffeeShopDiscountTypes.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function CoffeeShopDiscountTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("CoffeeShopDiscountType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("CoffeeShopDiscountType.Entity");
 
     if (coffeeShopDiscountTypeForEdit && id) {
       _title = t("Common.Edit") + " " + coffeeShopDiscountTypeForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function CoffeeShopDiscountTypeEdit({
         .then((arg) => {
           backToCoffeeShopDiscountTypesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateCoffeeShopDiscountType(id, values))
         .then(() => backToCoffeeShopDiscountTypesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 
@@ -149,7 +152,9 @@ export function CoffeeShopDiscountTypeEdit({
           {tab === "basic" && (
             <CoffeeShopDiscountTypeEditForm
               actionsLoading={actionsLoading}
-              coffeeShopDiscountType={coffeeShopDiscountTypeForEdit || initModel}
+              coffeeShopDiscountType={
+                coffeeShopDiscountTypeForEdit || initModel
+              }
               btnRef={btnRef}
               saveCoffeeShopDiscountType={saveCoffeeShopDiscountType}
             />

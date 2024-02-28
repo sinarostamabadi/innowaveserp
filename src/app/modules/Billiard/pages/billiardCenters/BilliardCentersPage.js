@@ -26,9 +26,11 @@ export function BilliardCentersPage({ history }) {
       history.push("/billiard/billiardCenters/updateStatus");
     },
   };
-  
+
   return (
-    <BilliardCentersUIProvider billiardCentersUIEvents={billiardCentersUIEvents}>
+    <BilliardCentersUIProvider
+      billiardCentersUIEvents={billiardCentersUIEvents}
+    >
       <BilliardCentersLoadingDialog />
       <Route path="/billiard/billiardCenters/:id/delete">
         {({ history, match }) => (

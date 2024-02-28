@@ -26,7 +26,7 @@ export function OperationsPage({ history }) {
       history.push("/cash/operations/updateStatus");
     },
   };
-  
+
   return (
     <OperationsUIProvider operationsUIEvents={operationsUIEvents}>
       <OperationsLoadingDialog />

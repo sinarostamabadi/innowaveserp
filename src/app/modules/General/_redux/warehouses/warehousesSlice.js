@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialWarehousesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const warehousesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getWarehouseById  
+    // getWarehouseById
     warehouseFetched: (state, action) => {
       state.actionsLoading = false;
       state.warehouseForEdit = action.payload.warehouseForEdit;
       state.error = null;
     },
-    // findWarehouses  
+    // findWarehouses
     warehousesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const warehousesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createWarehouse  
+    // createWarehouse
     warehouseCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateWarehouse  
+    // updateWarehouse
     warehouseUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const warehousesSlice = createSlice({
         return entity;
       });
     },
-    // deleteWarehouse  
+    // deleteWarehouse
     warehouseDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.WarehouseId !== action.payload.WarehouseId  
+        (el) => el.WarehouseId !== action.payload.WarehouseId
       );
     },
-    // deleteWarehouses  
+    // deleteWarehouses
     warehousesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.WarehouseId)  
+        (el) => !action.payload.ids.includes(el.WarehouseId)
       );
     },
-    // warehousesUpdateState  
+    // warehousesUpdateState
     warehousesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

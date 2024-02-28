@@ -238,7 +238,11 @@ export function DocumentEdit({
             onClick={Print}
             disabled={generateReport}
           >
-            <i className={`fa fa-${generateReport?'spinner fa-spin':'print'}`}></i>{" "}
+            <i
+              className={`fa fa-${
+                generateReport ? "spinner fa-spin" : "print"
+              }`}
+            ></i>{" "}
             {generateReport
               ? t("Common.GeneratingReport")
               : t("Common.Download")}

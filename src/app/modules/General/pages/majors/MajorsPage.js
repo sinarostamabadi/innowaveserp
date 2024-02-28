@@ -26,7 +26,7 @@ export function MajorsPage({ history }) {
       history.push("/general/majors/updateStatus");
     },
   };
-  
+
   return (
     <MajorsUIProvider majorsUIEvents={majorsUIEvents}>
       <MajorsLoadingDialog />

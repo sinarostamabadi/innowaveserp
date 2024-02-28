@@ -8,7 +8,10 @@ import {
 } from "src/core/_partials/controls";
 import { AdvancedFilter } from "src/core/_partials/custom/advanced-filter/AdvancedFilter";
 import { EmployeeTypesTable } from "./EmployeeTypes-table/EmployeeTypesTable";
-import { useEmployeeTypesUIContext, EmployeeTypesUIConsumer } from "./EmployeeTypesUIContext";
+import {
+  useEmployeeTypesUIContext,
+  EmployeeTypesUIConsumer,
+} from "./EmployeeTypesUIContext";
 
 export function EmployeeTypesCard() {
   const { t } = useTranslation();

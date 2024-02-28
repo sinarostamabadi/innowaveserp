@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialIODeviceTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const iODeviceTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getIODeviceTypeById  
+    // getIODeviceTypeById
     iODeviceTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.iODeviceTypeForEdit = action.payload.iODeviceTypeForEdit;
       state.error = null;
     },
-    // findIODeviceTypes  
+    // findIODeviceTypes
     iODeviceTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,42 @@ export const iODeviceTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createIODeviceType  
+    // createIODeviceType
     iODeviceTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateIODeviceType  
+    // updateIODeviceType
     iODeviceTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.IODeviceTypeId === action.payload.iODeviceType.IODeviceTypeId) {
+        if (
+          entity.IODeviceTypeId === action.payload.iODeviceType.IODeviceTypeId
+        ) {
           return action.payload.iODeviceType;
         }
         return entity;
       });
     },
-    // deleteIODeviceType  
+    // deleteIODeviceType
     iODeviceTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.IODeviceTypeId !== action.payload.IODeviceTypeId  
+        (el) => el.IODeviceTypeId !== action.payload.IODeviceTypeId
       );
     },
-    // deleteIODeviceTypes  
+    // deleteIODeviceTypes
     iODeviceTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.IODeviceTypeId)  
+        (el) => !action.payload.ids.includes(el.IODeviceTypeId)
       );
     },
-    // iODeviceTypesUpdateState  
+    // iODeviceTypesUpdateState
     iODeviceTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

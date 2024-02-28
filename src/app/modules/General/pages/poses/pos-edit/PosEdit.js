@@ -10,10 +10,7 @@ import {
 } from "src/core/_partials/controls";
 import { PosEditForm } from "./PosEditForm";
 import { useSubheader } from "src/core/layout";
-import {
-  ModalProgressBar,
-  Alerty,
-} from "src/core/_partials/controls";
+import { ModalProgressBar, Alerty } from "src/core/_partials/controls";
 import { useReactToPrint } from "react-to-print";
 import { useTranslation } from "react-i18next";
 import { CloneObject } from "src/core/_helpers";
@@ -137,8 +134,7 @@ export function PosEdit({
         </CardHeaderToolbar>
       </CardHeader>
       <CardBody>
-        {(!!id && !!posObj && posObj.PosId == id) ||
-        !!id == false ? (
+        {(!!id && !!posObj && posObj.PosId == id) || !!id == false ? (
           <PosEditForm
             actionsLoading={actionsLoading}
             pos={posObj}

@@ -26,9 +26,11 @@ export function OperationTypeAccountsPage({ history }) {
       history.push("/cash/operationTypeAccounts/updateStatus");
     },
   };
-  
+
   return (
-    <OperationTypeAccountsUIProvider operationTypeAccountsUIEvents={operationTypeAccountsUIEvents}>
+    <OperationTypeAccountsUIProvider
+      operationTypeAccountsUIEvents={operationTypeAccountsUIEvents}
+    >
       <OperationTypeAccountsLoadingDialog />
       <Route path="/cash/operationTypeAccounts/:id/delete">
         {({ history, match }) => (

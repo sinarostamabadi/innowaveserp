@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { MajorModel } from "../../../../../core/_models/General/MajorModel";
@@ -30,7 +29,7 @@ export function MajorsUIProvider({ majorsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -46,6 +45,8 @@ export function MajorsUIProvider({ majorsUIEvents, children }) {
     openUpdateMajorsStatusDialog: majorsUIEvents.openUpdateMajorsStatusDialog,
   };
   return (
-    <MajorsUIContext.Provider value={value}>{children}</MajorsUIContext.Provider>
+    <MajorsUIContext.Provider value={value}>
+      {children}
+    </MajorsUIContext.Provider>
   );
 }

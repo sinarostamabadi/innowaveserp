@@ -26,9 +26,11 @@ export function FutsalTimePriceingPage({ history }) {
       history.push("/futsal/futsalTimePriceing/updateStatus");
     },
   };
-  
+
   return (
-    <FutsalTimePriceingUIProvider futsalTimePriceingUIEvents={futsalTimePriceingUIEvents}>
+    <FutsalTimePriceingUIProvider
+      futsalTimePriceingUIEvents={futsalTimePriceingUIEvents}
+    >
       <FutsalTimePriceingLoadingDialog />
       <Route path="/futsal/futsalTimePriceing/:id/delete">
         {({ history, match }) => (

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { SoldiershipTypeModel } from "../../../../../core/_models/Employment/SoldiershipTypeModel";
@@ -12,7 +11,10 @@ export function useSoldiershipTypesUIContext() {
 
 export const SoldiershipTypesUIConsumer = SoldiershipTypesUIContext.Consumer;
 
-export function SoldiershipTypesUIProvider({ soldiershipTypesUIEvents, children }) {
+export function SoldiershipTypesUIProvider({
+  soldiershipTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(SoldiershipTypeModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function SoldiershipTypesUIProvider({ soldiershipTypesUIEvents, children 
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function SoldiershipTypesUIProvider({ soldiershipTypesUIEvents, children 
     setIds,
     setQueryParams,
     dataModel: SoldiershipTypeModel,
-    newSoldiershipTypeButtonClick: soldiershipTypesUIEvents.newSoldiershipTypeButtonClick,
-    openEditSoldiershipTypePage: soldiershipTypesUIEvents.openEditSoldiershipTypePage,
-    openDeleteSoldiershipTypeDialog: soldiershipTypesUIEvents.openDeleteSoldiershipTypeDialog,
-    openDeleteSoldiershipTypesDialog: soldiershipTypesUIEvents.openDeleteSoldiershipTypesDialog,
-    openFetchSoldiershipTypesDialog: soldiershipTypesUIEvents.openFetchSoldiershipTypesDialog,
-    openUpdateSoldiershipTypesStatusDialog: soldiershipTypesUIEvents.openUpdateSoldiershipTypesStatusDialog,
+    newSoldiershipTypeButtonClick:
+      soldiershipTypesUIEvents.newSoldiershipTypeButtonClick,
+    openEditSoldiershipTypePage:
+      soldiershipTypesUIEvents.openEditSoldiershipTypePage,
+    openDeleteSoldiershipTypeDialog:
+      soldiershipTypesUIEvents.openDeleteSoldiershipTypeDialog,
+    openDeleteSoldiershipTypesDialog:
+      soldiershipTypesUIEvents.openDeleteSoldiershipTypesDialog,
+    openFetchSoldiershipTypesDialog:
+      soldiershipTypesUIEvents.openFetchSoldiershipTypesDialog,
+    openUpdateSoldiershipTypesStatusDialog:
+      soldiershipTypesUIEvents.openUpdateSoldiershipTypesStatusDialog,
   };
   return (
-    <SoldiershipTypesUIContext.Provider value={value}>{children}</SoldiershipTypesUIContext.Provider>
+    <SoldiershipTypesUIContext.Provider value={value}>
+      {children}
+    </SoldiershipTypesUIContext.Provider>
   );
 }

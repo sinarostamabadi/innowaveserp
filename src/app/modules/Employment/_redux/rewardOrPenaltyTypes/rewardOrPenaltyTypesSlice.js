@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialRewardOrPenaltyTypesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const rewardOrPenaltyTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getRewardOrPenaltyTypeById  
+    // getRewardOrPenaltyTypeById
     rewardOrPenaltyTypeFetched: (state, action) => {
       state.actionsLoading = false;
-      state.rewardOrPenaltyTypeForEdit = action.payload.rewardOrPenaltyTypeForEdit;
+      state.rewardOrPenaltyTypeForEdit =
+        action.payload.rewardOrPenaltyTypeForEdit;
       state.error = null;
     },
-    // findRewardOrPenaltyTypes  
+    // findRewardOrPenaltyTypes
     rewardOrPenaltyTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const rewardOrPenaltyTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createRewardOrPenaltyType  
+    // createRewardOrPenaltyType
     rewardOrPenaltyTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateRewardOrPenaltyType  
+    // updateRewardOrPenaltyType
     rewardOrPenaltyTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.RewardOrPenaltyTypeId === action.payload.rewardOrPenaltyType.RewardOrPenaltyTypeId) {
+        if (
+          entity.RewardOrPenaltyTypeId ===
+          action.payload.rewardOrPenaltyType.RewardOrPenaltyTypeId
+        ) {
           return action.payload.rewardOrPenaltyType;
         }
         return entity;
       });
     },
-    // deleteRewardOrPenaltyType  
+    // deleteRewardOrPenaltyType
     rewardOrPenaltyTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.RewardOrPenaltyTypeId !== action.payload.RewardOrPenaltyTypeId  
+        (el) =>
+          el.RewardOrPenaltyTypeId !== action.payload.RewardOrPenaltyTypeId
       );
     },
-    // deleteRewardOrPenaltyTypes  
+    // deleteRewardOrPenaltyTypes
     rewardOrPenaltyTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.RewardOrPenaltyTypeId)  
+        (el) => !action.payload.ids.includes(el.RewardOrPenaltyTypeId)
       );
     },
-    // rewardOrPenaltyTypesUpdateState  
+    // rewardOrPenaltyTypesUpdateState
     rewardOrPenaltyTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

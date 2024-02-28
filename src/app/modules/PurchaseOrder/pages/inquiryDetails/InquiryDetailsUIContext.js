@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { InquiryDetailModel } from "../../../../../core/_models/PurchaseOrder/InquiryDetailModel";
@@ -30,7 +29,7 @@ export function InquiryDetailsUIProvider({ inquiryDetailsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function InquiryDetailsUIProvider({ inquiryDetailsUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: InquiryDetailModel,
-    newInquiryDetailButtonClick: inquiryDetailsUIEvents.newInquiryDetailButtonClick,
+    newInquiryDetailButtonClick:
+      inquiryDetailsUIEvents.newInquiryDetailButtonClick,
     openEditInquiryDetailPage: inquiryDetailsUIEvents.openEditInquiryDetailPage,
-    openDeleteInquiryDetailDialog: inquiryDetailsUIEvents.openDeleteInquiryDetailDialog,
-    openDeleteInquiryDetailsDialog: inquiryDetailsUIEvents.openDeleteInquiryDetailsDialog,
-    openFetchInquiryDetailsDialog: inquiryDetailsUIEvents.openFetchInquiryDetailsDialog,
-    openUpdateInquiryDetailsStatusDialog: inquiryDetailsUIEvents.openUpdateInquiryDetailsStatusDialog,
+    openDeleteInquiryDetailDialog:
+      inquiryDetailsUIEvents.openDeleteInquiryDetailDialog,
+    openDeleteInquiryDetailsDialog:
+      inquiryDetailsUIEvents.openDeleteInquiryDetailsDialog,
+    openFetchInquiryDetailsDialog:
+      inquiryDetailsUIEvents.openFetchInquiryDetailsDialog,
+    openUpdateInquiryDetailsStatusDialog:
+      inquiryDetailsUIEvents.openUpdateInquiryDetailsStatusDialog,
   };
   return (
-    <InquiryDetailsUIContext.Provider value={value}>{children}</InquiryDetailsUIContext.Provider>
+    <InquiryDetailsUIContext.Provider value={value}>
+      {children}
+    </InquiryDetailsUIContext.Provider>
   );
 }

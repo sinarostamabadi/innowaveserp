@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function BodyBuildingAccountTypesTable() {
   const { t } = useTranslation();
 
-  const bodyBuildingAccountTypesUIContext = useBodyBuildingAccountTypesUIContext();
+  const bodyBuildingAccountTypesUIContext =
+    useBodyBuildingAccountTypesUIContext();
 
   const bodyBuildingAccountTypesUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function BodyBuildingAccountTypesTable() {
       setIds: bodyBuildingAccountTypesUIContext.setIds,
       queryParams: bodyBuildingAccountTypesUIContext.queryParams,
       setQueryParams: bodyBuildingAccountTypesUIContext.setQueryParams,
-      openEditBodyBuildingAccountTypePage: bodyBuildingAccountTypesUIContext.openEditBodyBuildingAccountTypePage,
-      openDeleteBodyBuildingAccountTypeDialog: bodyBuildingAccountTypesUIContext.openDeleteBodyBuildingAccountTypeDialog,
+      openEditBodyBuildingAccountTypePage:
+        bodyBuildingAccountTypesUIContext.openEditBodyBuildingAccountTypePage,
+      openDeleteBodyBuildingAccountTypeDialog:
+        bodyBuildingAccountTypesUIContext.openDeleteBodyBuildingAccountTypeDialog,
     };
   }, [bodyBuildingAccountTypesUIContext]);
 
@@ -50,7 +53,11 @@ export function BodyBuildingAccountTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     bodyBuildingAccountTypesUIProps.setIds([]);
-    dispatch(actions.fetchBodyBuildingAccountTypes(bodyBuildingAccountTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchBodyBuildingAccountTypes(
+        bodyBuildingAccountTypesUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bodyBuildingAccountTypesUIProps.queryParams, dispatch]);
 
@@ -72,8 +79,10 @@ export function BodyBuildingAccountTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditBodyBuildingAccountTypePage: bodyBuildingAccountTypesUIProps.openEditBodyBuildingAccountTypePage,
-        openDeleteBodyBuildingAccountTypeDialog: bodyBuildingAccountTypesUIProps.openDeleteBodyBuildingAccountTypeDialog,
+        openEditBodyBuildingAccountTypePage:
+          bodyBuildingAccountTypesUIProps.openEditBodyBuildingAccountTypePage,
+        openDeleteBodyBuildingAccountTypeDialog:
+          bodyBuildingAccountTypesUIProps.openDeleteBodyBuildingAccountTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -12,7 +12,13 @@ export const ActionsColumnFormatter = (
   { openEditMasseurMassageTypePage, openDeleteMasseurMassageTypeDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="masseurMassageTypes-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="masseurMassageTypes-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditMasseurMassageTypePage(row.MasseurMassageTypeId)}
@@ -26,11 +32,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="masseurMassageTypes-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="masseurMassageTypes-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteMasseurMassageTypeDialog(row.MasseurMassageTypeId)}
+        onClick={() =>
+          openDeleteMasseurMassageTypeDialog(row.MasseurMassageTypeId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

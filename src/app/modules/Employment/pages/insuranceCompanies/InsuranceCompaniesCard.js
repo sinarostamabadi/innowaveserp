@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { InsuranceCompaniesTable } from "./insuranceCompanies-table/InsuranceCompaniesTable";
-import { useInsuranceCompaniesUIContext, InsuranceCompaniesUIConsumer } from "./InsuranceCompaniesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useInsuranceCompaniesUIContext,
+  InsuranceCompaniesUIConsumer,
+} from "./InsuranceCompaniesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function InsuranceCompaniesCard() {
   const { t } = useTranslation();
@@ -21,24 +23,29 @@ export function InsuranceCompaniesCard() {
       ids: insuranceCompaniesUIContext.ids,
       queryParams: insuranceCompaniesUIContext.queryParams,
       setQueryParams: insuranceCompaniesUIContext.setQueryParams,
-      newInsuranceCompanyButtonClick: insuranceCompaniesUIContext.newInsuranceCompanyButtonClick,
-      openDeleteInsuranceCompaniesDialog: insuranceCompaniesUIContext.openDeleteInsuranceCompaniesDialog,
-      openEditInsuranceCompanyPage: insuranceCompaniesUIContext.openEditInsuranceCompanyPage,
-      openUpdateInsuranceCompaniesStatusDialog: insuranceCompaniesUIContext.openUpdateInsuranceCompaniesStatusDialog,
-      openFetchInsuranceCompaniesDialog: insuranceCompaniesUIContext.openFetchInsuranceCompaniesDialog,
+      newInsuranceCompanyButtonClick:
+        insuranceCompaniesUIContext.newInsuranceCompanyButtonClick,
+      openDeleteInsuranceCompaniesDialog:
+        insuranceCompaniesUIContext.openDeleteInsuranceCompaniesDialog,
+      openEditInsuranceCompanyPage:
+        insuranceCompaniesUIContext.openEditInsuranceCompanyPage,
+      openUpdateInsuranceCompaniesStatusDialog:
+        insuranceCompaniesUIContext.openUpdateInsuranceCompaniesStatusDialog,
+      openFetchInsuranceCompaniesDialog:
+        insuranceCompaniesUIContext.openFetchInsuranceCompaniesDialog,
     };
   }, [insuranceCompaniesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("InsuranceCompany.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("InsuranceCompany.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={insuranceCompaniesUIProps.newInsuranceCompanyButtonClick}
           >
-            {t("InsuranceCompany.Entity")} {' '} {t("Common.New")}
+            {t("InsuranceCompany.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

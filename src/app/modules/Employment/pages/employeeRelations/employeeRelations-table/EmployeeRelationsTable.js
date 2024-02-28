@@ -32,8 +32,10 @@ export function EmployeeRelationsTable() {
       setIds: employeeRelationsUIContext.setIds,
       queryParams: employeeRelationsUIContext.queryParams,
       setQueryParams: employeeRelationsUIContext.setQueryParams,
-      openEditEmployeeRelationPage: employeeRelationsUIContext.openEditEmployeeRelationPage,
-      openDeleteEmployeeRelationDialog: employeeRelationsUIContext.openDeleteEmployeeRelationDialog,
+      openEditEmployeeRelationPage:
+        employeeRelationsUIContext.openEditEmployeeRelationPage,
+      openDeleteEmployeeRelationDialog:
+        employeeRelationsUIContext.openDeleteEmployeeRelationDialog,
     };
   }, [employeeRelationsUIContext]);
 
@@ -50,7 +52,9 @@ export function EmployeeRelationsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     employeeRelationsUIProps.setIds([]);
-    dispatch(actions.fetchEmployeeRelations(employeeRelationsUIProps.queryParams));
+    dispatch(
+      actions.fetchEmployeeRelations(employeeRelationsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employeeRelationsUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function EmployeeRelationsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmployeeRelationPage: employeeRelationsUIProps.openEditEmployeeRelationPage,
-        openDeleteEmployeeRelationDialog: employeeRelationsUIProps.openDeleteEmployeeRelationDialog,
+        openEditEmployeeRelationPage:
+          employeeRelationsUIProps.openEditEmployeeRelationPage,
+        openDeleteEmployeeRelationDialog:
+          employeeRelationsUIProps.openDeleteEmployeeRelationDialog,
         t: t,
       },
       classes: "text-right pr-0",

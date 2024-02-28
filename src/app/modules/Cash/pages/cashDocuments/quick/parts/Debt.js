@@ -1,9 +1,13 @@
-import {useCallback} from "react";
+import { useCallback } from "react";
 import { ButtonGroup } from "react-bootstrap";
 import { Formik, Form, Field } from "formik";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
-import { Input, DatePickerField, SuggestionField } from "src/core/_partials/controls";
+import {
+  Input,
+  DatePickerField,
+  SuggestionField,
+} from "src/core/_partials/controls";
 import { suggestPerson } from "src/app/modules/Core/_redux/people/peopleCrud";
 import { DebtTools } from "../Dependency";
 
@@ -15,12 +19,16 @@ export function Debt({ data, setData, receivable, goBack }) {
     ),
   });
 
-  let cashDocument = {...DebtTools.Model, Price: receivable};
+  let cashDocument = { ...DebtTools.Model, Price: receivable };
   function saveCashDocument(dirty) {
-    let obj = {...DebtTools.Clean(dirty)};
-    let tranObj = {...DebtTools.CleanTran(dirty, t)};
+    let obj = { ...DebtTools.Clean(dirty) };
+    let tranObj = { ...DebtTools.CleanTran(dirty, t) };
 
-    setData({ ...data, Debts: [...data.Debts, obj], Transactions: [...data.Transactions, tranObj] });
+    setData({
+      ...data,
+      Debts: [...data.Debts, obj],
+      Transactions: [...data.Transactions, tranObj],
+    });
     goBack();
   }
 
@@ -62,32 +70,32 @@ export function Debt({ data, setData, receivable, goBack }) {
               </h5>
               <div className="row">
                 <div className="col-12">
-                <SuggestionField
-                                name="PersonId"
-                                labelKey="FullNameFa"
-                                customFeedbackLabel=""
-                                label={t("CashDocument.Person")}
-                                placeholder={t("msg.SelectBySuggestion")}
-                                handleSearch={handleSuggestionPerson}
-                                defaultValue={
-                                  cashDocument && cashDocument.Person
-                                    ? [cashDocument.Person]
-                                    : []
-                                }
-                                renderMenuItemChildren={(option, props) => (
-                                  <div>
-                                    <h6>{option.FullNameFa}</h6>
-                                    {/* <div>
+                  <SuggestionField
+                    name="PersonId"
+                    labelKey="FullNameFa"
+                    customFeedbackLabel=""
+                    label={t("CashDocument.Person")}
+                    placeholder={t("msg.SelectBySuggestion")}
+                    handleSearch={handleSuggestionPerson}
+                    defaultValue={
+                      cashDocument && cashDocument.Person
+                        ? [cashDocument.Person]
+                        : []
+                    }
+                    renderMenuItemChildren={(option, props) => (
+                      <div>
+                        <h6>{option.FullNameFa}</h6>
+                        {/* <div>
                                   {t("CompanyType.Entity")}:{" "}
                                   {option.CompanyType.Title}
                                 </div>
                                 <div>
                                   {t("Company.OwnerName")}: {option.OwnerName}
                                 </div> */}
-                                  </div>
-                                )}
-                              />
-                  </div>
+                      </div>
+                    )}
+                  />
+                </div>
               </div>
               <div className="row mt-2">
                 <div className="col-lg-6">
@@ -137,7 +145,8 @@ export function Debt({ data, setData, receivable, goBack }) {
                         handleSubmit();
                       }}
                     >
-                      <i className="fa fa-arrow-down"></i> {t("CashDocument.Creditor")}
+                      <i className="fa fa-arrow-down"></i>{" "}
+                      {t("CashDocument.Creditor")}
                     </button>
                     <button
                       type="button"
@@ -147,7 +156,8 @@ export function Debt({ data, setData, receivable, goBack }) {
                         handleSubmit();
                       }}
                     >
-                      <i className="fa fa-arrow-up"></i> {t("CashDocument.Debtor")}
+                      <i className="fa fa-arrow-up"></i>{" "}
+                      {t("CashDocument.Debtor")}
                     </button>
                   </ButtonGroup>
                 </div>

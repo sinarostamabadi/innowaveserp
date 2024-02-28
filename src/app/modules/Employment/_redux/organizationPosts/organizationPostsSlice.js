@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialOrganizationPostsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const organizationPostsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getOrganizationPostById  
+    // getOrganizationPostById
     organizationPostFetched: (state, action) => {
       state.actionsLoading = false;
       state.organizationPostForEdit = action.payload.organizationPostForEdit;
       state.error = null;
     },
-    // findOrganizationPosts  
+    // findOrganizationPosts
     organizationPostsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const organizationPostsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createOrganizationPost  
+    // createOrganizationPost
     organizationPostCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateOrganizationPost  
+    // updateOrganizationPost
     organizationPostUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.OrganizationPostId === action.payload.organizationPost.OrganizationPostId) {
+        if (
+          entity.OrganizationPostId ===
+          action.payload.organizationPost.OrganizationPostId
+        ) {
           return action.payload.organizationPost;
         }
         return entity;
       });
     },
-    // deleteOrganizationPost  
+    // deleteOrganizationPost
     organizationPostDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.OrganizationPostId !== action.payload.OrganizationPostId  
+        (el) => el.OrganizationPostId !== action.payload.OrganizationPostId
       );
     },
-    // deleteOrganizationPosts  
+    // deleteOrganizationPosts
     organizationPostsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.OrganizationPostId)  
+        (el) => !action.payload.ids.includes(el.OrganizationPostId)
       );
     },
-    // organizationPostsUpdateState  
+    // organizationPostsUpdateState
     organizationPostsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

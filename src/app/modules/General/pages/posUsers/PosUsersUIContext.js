@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { PosUserModel } from "../../../../../core/_models/General/PosUserModel";
@@ -30,7 +29,7 @@ export function PosUsersUIProvider({ posUsersUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function PosUsersUIProvider({ posUsersUIEvents, children }) {
     openDeletePosUserDialog: posUsersUIEvents.openDeletePosUserDialog,
     openDeletePosUsersDialog: posUsersUIEvents.openDeletePosUsersDialog,
     openFetchPosUsersDialog: posUsersUIEvents.openFetchPosUsersDialog,
-    openUpdatePosUsersStatusDialog: posUsersUIEvents.openUpdatePosUsersStatusDialog,
+    openUpdatePosUsersStatusDialog:
+      posUsersUIEvents.openUpdatePosUsersStatusDialog,
   };
   return (
-    <PosUsersUIContext.Provider value={value}>{children}</PosUsersUIContext.Provider>
+    <PosUsersUIContext.Provider value={value}>
+      {children}
+    </PosUsersUIContext.Provider>
   );
 }

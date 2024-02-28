@@ -30,7 +30,7 @@ export function CalendarsPage({ history }) {
       <CalendarsLoadingDialog />
       <Route path="/General/calendars/:id/delete">
         {({ history, match }) => (
-          <CalendarDeleteDialog  
+          <CalendarDeleteDialog
             show={match != null}
             id={match && match.params.id}
             onHide={() => {

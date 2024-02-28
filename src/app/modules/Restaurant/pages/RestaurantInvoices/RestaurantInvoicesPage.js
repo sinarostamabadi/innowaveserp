@@ -66,7 +66,7 @@ export function RestaurantInvoicesPage({ history }) {
           />
         )}
       </Route>
-      
+
       <Route path="/restaurant/restaurantInvoices/:id/checkout">
         {({ history, match }) => (
           <RestaurantInvoiceCheckout
@@ -90,7 +90,7 @@ export function RestaurantInvoicesPage({ history }) {
           />
         )}
       </Route>
-      
+
       <Route path="/restaurant/restaurantInvoices/:id/relocation">
         {({ history, match }) => (
           <RestaurantInvoiceRelocation
@@ -102,7 +102,7 @@ export function RestaurantInvoicesPage({ history }) {
           />
         )}
       </Route>
-            
+
       <Route path="/restaurant/restaurantInvoices/:id/release">
         {({ history, match }) => (
           <RestaurantInvoiceRelease
@@ -114,7 +114,7 @@ export function RestaurantInvoicesPage({ history }) {
           />
         )}
       </Route>
-            
+
       <Route path="/restaurant/restaurantInvoices/:id/cancelOrder">
         {({ history, match }) => (
           <RestaurantInvoiceCancelOrder
@@ -126,14 +126,18 @@ export function RestaurantInvoicesPage({ history }) {
           />
         )}
       </Route>
-            
+
       <Route path="/restaurant/restaurantInvoices/:id/cancelAndReorder">
         {({ history, match }) => (
           <RestaurantInvoiceCancelAndReorder
             show={match != null}
             id={match && match.params.id}
             onHide={() => {
-              !!match && !!match.params.id && history.push(`/restaurant/restaurantInvoices/${match.params.id}/edit`);
+              !!match &&
+                !!match.params.id &&
+                history.push(
+                  `/restaurant/restaurantInvoices/${match.params.id}/edit`
+                );
             }}
           />
         )}

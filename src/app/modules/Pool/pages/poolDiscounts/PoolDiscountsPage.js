@@ -26,7 +26,7 @@ export function PoolDiscountsPage({ history }) {
       history.push("/pool/poolDiscounts/updateStatus");
     },
   };
-  
+
   return (
     <PoolDiscountsUIProvider poolDiscountsUIEvents={poolDiscountsUIEvents}>
       <PoolDiscountsLoadingDialog />

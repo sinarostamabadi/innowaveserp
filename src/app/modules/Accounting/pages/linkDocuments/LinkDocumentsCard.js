@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { LinkDocumentsTable } from "./linkDocuments-table/LinkDocumentsTable";
-import { useLinkDocumentsUIContext, LinkDocumentsUIConsumer } from "./LinkDocumentsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useLinkDocumentsUIContext,
+  LinkDocumentsUIConsumer,
+} from "./LinkDocumentsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function LinkDocumentsCard() {
   const { t } = useTranslation();
@@ -21,24 +23,28 @@ export function LinkDocumentsCard() {
       ids: linkDocumentsUIContext.ids,
       queryParams: linkDocumentsUIContext.queryParams,
       setQueryParams: linkDocumentsUIContext.setQueryParams,
-      newLinkDocumentButtonClick: linkDocumentsUIContext.newLinkDocumentButtonClick,
-      openDeleteLinkDocumentsDialog: linkDocumentsUIContext.openDeleteLinkDocumentsDialog,
+      newLinkDocumentButtonClick:
+        linkDocumentsUIContext.newLinkDocumentButtonClick,
+      openDeleteLinkDocumentsDialog:
+        linkDocumentsUIContext.openDeleteLinkDocumentsDialog,
       openEditLinkDocumentPage: linkDocumentsUIContext.openEditLinkDocumentPage,
-      openUpdateLinkDocumentsStatusDialog: linkDocumentsUIContext.openUpdateLinkDocumentsStatusDialog,
-      openFetchLinkDocumentsDialog: linkDocumentsUIContext.openFetchLinkDocumentsDialog,
+      openUpdateLinkDocumentsStatusDialog:
+        linkDocumentsUIContext.openUpdateLinkDocumentsStatusDialog,
+      openFetchLinkDocumentsDialog:
+        linkDocumentsUIContext.openFetchLinkDocumentsDialog,
     };
   }, [linkDocumentsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("LinkDocument.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("LinkDocument.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={linkDocumentsUIProps.newLinkDocumentButtonClick}
           >
-            {t("LinkDocument.Entity")} {' '} {t("Common.New")}
+            {t("LinkDocument.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

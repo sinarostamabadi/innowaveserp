@@ -166,7 +166,7 @@ export function FutsalReserveEditForm({
                     label={t("FutsalReserve.FromDate")}
                     handleOnChange={(val) => {
                       console.log("val >> ", val);
-                      
+
                       setTimingObj({
                         toDate: timingObj.toDate,
                         fromDate: val,
@@ -197,12 +197,14 @@ export function FutsalReserveEditForm({
                     label={t("FutsalReserve.PersonCount")}
                     initOptions={days}
                     placeholder=""
-                    handleSearch={(term, ops) => ops([
-                      { label: "سه‌شنبه", value: 2 },
-                      { label: "چهارشنبه", value: 3 },
-                      { label: "پنج‌شنبه", value: 4 },
-                      { label: "جمعه", value: 5 },
-                    ])}
+                    handleSearch={(term, ops) =>
+                      ops([
+                        { label: "سه‌شنبه", value: 2 },
+                        { label: "چهارشنبه", value: 3 },
+                        { label: "پنج‌شنبه", value: 4 },
+                        { label: "جمعه", value: 5 },
+                      ])
+                    }
                     onChanges={(val) => {
                       setTimingObj({
                         toDate: timingObj.toDate,

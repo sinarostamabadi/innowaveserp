@@ -80,9 +80,8 @@ export const Filter = forwardRef(({ reserve, btnRef, saveReserve }, ref) => {
                     label={t("Reports.ProductLifeCycle.Product")}
                     placeHolder={t("msg.SelectBySuggestion")}
                     handleSearch={handleSuggestionProduct}
-                    handleOnChange={(val)=>{
-                      if(val == null)
-                      handleSubmit();
+                    handleOnChange={(val) => {
+                      if (val == null) handleSubmit();
                     }}
                     renderMenuItemChildren={(option, props) => (
                       <div>

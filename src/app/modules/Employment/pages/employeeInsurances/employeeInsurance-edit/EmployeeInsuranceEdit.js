@@ -44,7 +44,8 @@ export function EmployeeInsuranceEdit({
   const { actionsLoading, employeeInsuranceForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.employeeInsurances.actionsLoading,
-      employeeInsuranceForEdit: state.employeeInsurances.employeeInsuranceForEdit,
+      employeeInsuranceForEdit:
+        state.employeeInsurances.employeeInsuranceForEdit,
       error: state.employeeInsurances.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function EmployeeInsuranceEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("EmployeeInsurance.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("EmployeeInsurance.Entity");
 
     if (employeeInsuranceForEdit && id) {
       _title = t("Common.Edit") + " " + employeeInsuranceForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function EmployeeInsuranceEdit({
         .then((arg) => {
           backToEmployeeInsurancesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateEmployeeInsurance(id, values))
         .then(() => backToEmployeeInsurancesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

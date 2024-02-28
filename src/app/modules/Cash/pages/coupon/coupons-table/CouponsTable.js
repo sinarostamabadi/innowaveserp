@@ -15,10 +15,7 @@ import * as columnFormatters from "./column-formatters";
 import { Pagination } from "src/core/_partials/controls";
 import { useCouponsUIContext } from "../CouponsUIContext";
 import { CouponModel } from "src/core/_models/Cash/CouponModel";
-import {
-  getConfig,
-  getFields,
-} from "src/core/_models/ModelDescriber";
+import { getConfig, getFields } from "src/core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
 import { CheckBoxFormatter } from "src/core/_formatters";
 
@@ -77,8 +74,8 @@ export function CouponsTable() {
       formatExtraData: {
         t: t,
         positive: t("Common.Yes"),
-        negetive: t("Common.No")
-      }
+        negetive: t("Common.No"),
+      },
     },
     {
       dataField: fieldKey.UseLocation.Title,

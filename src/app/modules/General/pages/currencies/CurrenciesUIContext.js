@@ -29,7 +29,7 @@ export function CurrenciesUIProvider({ currenciesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -42,9 +42,12 @@ export function CurrenciesUIProvider({ currenciesUIEvents, children }) {
     openDeleteCurrencyDialog: currenciesUIEvents.openDeleteCurrencyDialog,
     openDeleteCurrenciesDialog: currenciesUIEvents.openDeleteCurrenciesDialog,
     openFetchCurrenciesDialog: currenciesUIEvents.openFetchCurrenciesDialog,
-    openUpdateCurrenciesStatusDialog: currenciesUIEvents.openUpdateCurrenciesStatusDialog,
+    openUpdateCurrenciesStatusDialog:
+      currenciesUIEvents.openUpdateCurrenciesStatusDialog,
   };
   return (
-    <CurrenciesUIContext.Provider value={value}>{children}</CurrenciesUIContext.Provider>
+    <CurrenciesUIContext.Provider value={value}>
+      {children}
+    </CurrenciesUIContext.Provider>
   );
 }

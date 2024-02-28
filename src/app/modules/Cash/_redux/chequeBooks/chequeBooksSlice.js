@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialChequeBooksState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const chequeBooksSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getChequeBookById  
+    // getChequeBookById
     chequeBookFetched: (state, action) => {
       state.actionsLoading = false;
       state.chequeBookForEdit = action.payload.chequeBookForEdit;
       state.error = null;
     },
-    // findChequeBooks  
+    // findChequeBooks
     chequeBooksFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,7 +46,7 @@ export const chequeBooksSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createChequeBook  
+    // createChequeBook
     chequeBookCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
@@ -55,7 +54,7 @@ export const chequeBooksSlice = createSlice({
       state.entities.push(action.payload);
       return;
     },
-    // updateChequeBook  
+    // updateChequeBook
     chequeBookUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -67,24 +66,24 @@ export const chequeBooksSlice = createSlice({
       });
       return;
     },
-    // deleteChequeBook  
+    // deleteChequeBook
     chequeBookDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.chequeBookForEdit = undefined;
       state.entities = state.entities.filter(
-        (el) => el.ChequeBookId !== action.payload.ChequeBookId  
+        (el) => el.ChequeBookId !== action.payload.ChequeBookId
       );
     },
-    // deleteChequeBooks  
+    // deleteChequeBooks
     chequeBooksDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ChequeBookId)  
+        (el) => !action.payload.ids.includes(el.ChequeBookId)
       );
     },
-    // chequeBooksUpdateState  
+    // chequeBooksUpdateState
     chequeBooksStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

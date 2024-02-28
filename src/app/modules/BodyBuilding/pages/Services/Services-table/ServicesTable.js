@@ -16,10 +16,7 @@ import * as columnFormatters from "./column-formatters";
 import { Pagination } from "src/core/_partials/controls";
 import { useServicesUIContext } from "../ServicesUIContext";
 import { BodyBuildingServiceModel } from "src/core/_models/BodyBuilding/BodyBuildingServiceModel";
-import {
-  getConfig,
-  getFields,
-} from "src/core/_models/ModelDescriber";
+import { getConfig, getFields } from "src/core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
 
 export function ServicesTable() {
@@ -65,21 +62,21 @@ export function ServicesTable() {
       dataField: "BodyBuildingEmployeeType.Title",
       text: t("BodyBuildingService.BodyBuildingEmployeeType"),
       sort: fields.BodyBuildingEmployeeTypeId.sortable,
-      sortCaret: sortCaret
+      sortCaret: sortCaret,
     },
     {
       dataField: fieldKey.UseIPAddress,
       text: t("BodyBuildingService." + fields.UseIPAddress.display),
       sort: fields.UseIPAddress.sortable,
       sortCaret: sortCaret,
-      formatExtraData: {data: {0: t("Common.Female"), 1: t("Common.Male")}}
+      formatExtraData: { data: { 0: t("Common.Female"), 1: t("Common.Male") } },
     },
     {
       dataField: fieldKey.Price,
       text: t("BodyBuildingService." + fields.Price.display),
       sort: fields.Price.sortable,
       sortCaret: sortCaret,
-      formatter: MoneyColumnFormatter
+      formatter: MoneyColumnFormatter,
     },
     {
       dataField: "action",

@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function EmployeeWorkExperiencesTable() {
   const { t } = useTranslation();
 
-  const employeeWorkExperiencesUIContext = useEmployeeWorkExperiencesUIContext();
+  const employeeWorkExperiencesUIContext =
+    useEmployeeWorkExperiencesUIContext();
 
   const employeeWorkExperiencesUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function EmployeeWorkExperiencesTable() {
       setIds: employeeWorkExperiencesUIContext.setIds,
       queryParams: employeeWorkExperiencesUIContext.queryParams,
       setQueryParams: employeeWorkExperiencesUIContext.setQueryParams,
-      openEditEmployeeWorkExperiencePage: employeeWorkExperiencesUIContext.openEditEmployeeWorkExperiencePage,
-      openDeleteEmployeeWorkExperienceDialog: employeeWorkExperiencesUIContext.openDeleteEmployeeWorkExperienceDialog,
+      openEditEmployeeWorkExperiencePage:
+        employeeWorkExperiencesUIContext.openEditEmployeeWorkExperiencePage,
+      openDeleteEmployeeWorkExperienceDialog:
+        employeeWorkExperiencesUIContext.openDeleteEmployeeWorkExperienceDialog,
     };
   }, [employeeWorkExperiencesUIContext]);
 
@@ -50,7 +53,11 @@ export function EmployeeWorkExperiencesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     employeeWorkExperiencesUIProps.setIds([]);
-    dispatch(actions.fetchEmployeeWorkExperiences(employeeWorkExperiencesUIProps.queryParams));
+    dispatch(
+      actions.fetchEmployeeWorkExperiences(
+        employeeWorkExperiencesUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employeeWorkExperiencesUIProps.queryParams, dispatch]);
 
@@ -72,8 +79,10 @@ export function EmployeeWorkExperiencesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmployeeWorkExperiencePage: employeeWorkExperiencesUIProps.openEditEmployeeWorkExperiencePage,
-        openDeleteEmployeeWorkExperienceDialog: employeeWorkExperiencesUIProps.openDeleteEmployeeWorkExperienceDialog,
+        openEditEmployeeWorkExperiencePage:
+          employeeWorkExperiencesUIProps.openEditEmployeeWorkExperiencePage,
+        openDeleteEmployeeWorkExperienceDialog:
+          employeeWorkExperiencesUIProps.openDeleteEmployeeWorkExperienceDialog,
         t: t,
       },
       classes: "text-right pr-0",

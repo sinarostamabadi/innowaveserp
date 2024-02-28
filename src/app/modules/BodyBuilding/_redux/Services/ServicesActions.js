@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./ServicesCrud";
 import { servicesSlice, callTypes } from "./ServicesSlice";
 const { actions } = servicesSlice;
@@ -53,7 +52,7 @@ export const createService = (serviceForCreation, fnCallBack) => (dispatch) => {
     .then((response) => {
       const service = response.data;
       fnCallBack(service);
-      
+
       dispatch(actions.serviceCreated(service));
 
       return service;
@@ -105,4 +104,4 @@ export const deleteServices = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

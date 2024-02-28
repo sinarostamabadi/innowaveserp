@@ -4,17 +4,23 @@ import * as Yup from "yup";
 import { Input } from "../../../../../../core/_partials/controls";
 import { useTranslation } from "react-i18next";
 
-export function RestaurantInvoiceDiscountEditForm({ restaurantInvoiceDiscount, btnRef, saveRestaurantInvoiceDiscount }) {
+export function RestaurantInvoiceDiscountEditForm({
+  restaurantInvoiceDiscount,
+  btnRef,
+  saveRestaurantInvoiceDiscount,
+}) {
   const { t } = useTranslation();
 
   const RestaurantInvoiceDiscountEditSchema = Yup.object().shape({
     TitleFa: Yup.string()
       .min(2, t("err.Min", { 0: 2 }))
       .max(100, t("err.Max", { 0: 100 }))
-      .required(t("err.IsRequired", { 0: t("RestaurantInvoiceDiscount.TitleFa") })),
+      .required(
+        t("err.IsRequired", { 0: t("RestaurantInvoiceDiscount.TitleFa") })
+      ),
     TitleEn: Yup.string()
       .min(2, t("err.Min", { 0: 2 }))
-      .max(100, t("err.Max", { 0: 100 }))
+      .max(100, t("err.Max", { 0: 100 })),
   });
 
   return (

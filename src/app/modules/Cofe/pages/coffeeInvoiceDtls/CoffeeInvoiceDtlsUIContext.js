@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { CoffeeInvoiceDtlModel } from "../../../../../core/_models/Cofe/CoffeeInvoiceDtlModel";
@@ -12,7 +11,10 @@ export function useCoffeeInvoiceDtlsUIContext() {
 
 export const CoffeeInvoiceDtlsUIConsumer = CoffeeInvoiceDtlsUIContext.Consumer;
 
-export function CoffeeInvoiceDtlsUIProvider({ coffeeInvoiceDtlsUIEvents, children }) {
+export function CoffeeInvoiceDtlsUIProvider({
+  coffeeInvoiceDtlsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(CoffeeInvoiceDtlModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function CoffeeInvoiceDtlsUIProvider({ coffeeInvoiceDtlsUIEvents, childre
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function CoffeeInvoiceDtlsUIProvider({ coffeeInvoiceDtlsUIEvents, childre
     setIds,
     setQueryParams,
     dataModel: CoffeeInvoiceDtlModel,
-    newCoffeeInvoiceDtlButtonClick: coffeeInvoiceDtlsUIEvents.newCoffeeInvoiceDtlButtonClick,
-    openEditCoffeeInvoiceDtlPage: coffeeInvoiceDtlsUIEvents.openEditCoffeeInvoiceDtlPage,
-    openDeleteCoffeeInvoiceDtlDialog: coffeeInvoiceDtlsUIEvents.openDeleteCoffeeInvoiceDtlDialog,
-    openDeleteCoffeeInvoiceDtlsDialog: coffeeInvoiceDtlsUIEvents.openDeleteCoffeeInvoiceDtlsDialog,
-    openFetchCoffeeInvoiceDtlsDialog: coffeeInvoiceDtlsUIEvents.openFetchCoffeeInvoiceDtlsDialog,
-    openUpdateCoffeeInvoiceDtlsStatusDialog: coffeeInvoiceDtlsUIEvents.openUpdateCoffeeInvoiceDtlsStatusDialog,
+    newCoffeeInvoiceDtlButtonClick:
+      coffeeInvoiceDtlsUIEvents.newCoffeeInvoiceDtlButtonClick,
+    openEditCoffeeInvoiceDtlPage:
+      coffeeInvoiceDtlsUIEvents.openEditCoffeeInvoiceDtlPage,
+    openDeleteCoffeeInvoiceDtlDialog:
+      coffeeInvoiceDtlsUIEvents.openDeleteCoffeeInvoiceDtlDialog,
+    openDeleteCoffeeInvoiceDtlsDialog:
+      coffeeInvoiceDtlsUIEvents.openDeleteCoffeeInvoiceDtlsDialog,
+    openFetchCoffeeInvoiceDtlsDialog:
+      coffeeInvoiceDtlsUIEvents.openFetchCoffeeInvoiceDtlsDialog,
+    openUpdateCoffeeInvoiceDtlsStatusDialog:
+      coffeeInvoiceDtlsUIEvents.openUpdateCoffeeInvoiceDtlsStatusDialog,
   };
   return (
-    <CoffeeInvoiceDtlsUIContext.Provider value={value}>{children}</CoffeeInvoiceDtlsUIContext.Provider>
+    <CoffeeInvoiceDtlsUIContext.Provider value={value}>
+      {children}
+    </CoffeeInvoiceDtlsUIContext.Provider>
   );
 }

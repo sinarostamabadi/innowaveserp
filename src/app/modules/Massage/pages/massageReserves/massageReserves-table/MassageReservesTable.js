@@ -32,8 +32,10 @@ export function MassageReservesTable() {
       setIds: massageReservesUIContext.setIds,
       queryParams: massageReservesUIContext.queryParams,
       setQueryParams: massageReservesUIContext.setQueryParams,
-      openEditMassageReservePage: massageReservesUIContext.openEditMassageReservePage,
-      openDeleteMassageReserveDialog: massageReservesUIContext.openDeleteMassageReserveDialog,
+      openEditMassageReservePage:
+        massageReservesUIContext.openEditMassageReservePage,
+      openDeleteMassageReserveDialog:
+        massageReservesUIContext.openDeleteMassageReserveDialog,
     };
   }, [massageReservesUIContext]);
 
@@ -72,8 +74,10 @@ export function MassageReservesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditMassageReservePage: massageReservesUIProps.openEditMassageReservePage,
-        openDeleteMassageReserveDialog: massageReservesUIProps.openDeleteMassageReserveDialog,
+        openEditMassageReservePage:
+          massageReservesUIProps.openEditMassageReservePage,
+        openDeleteMassageReserveDialog:
+          massageReservesUIProps.openDeleteMassageReserveDialog,
         t: t,
       },
       classes: "text-right pr-0",

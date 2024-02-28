@@ -44,7 +44,8 @@ export function IODeviceTransactionTypeEdit({
   const { actionsLoading, iODeviceTransactionTypeForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.iODeviceTransactionTypes.actionsLoading,
-      iODeviceTransactionTypeForEdit: state.iODeviceTransactionTypes.iODeviceTransactionTypeForEdit,
+      iODeviceTransactionTypeForEdit:
+        state.iODeviceTransactionTypes.iODeviceTransactionTypeForEdit,
       error: state.iODeviceTransactionTypes.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function IODeviceTransactionTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("IODeviceTransactionType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("IODeviceTransactionType.Entity");
 
     if (iODeviceTransactionTypeForEdit && id) {
       _title = t("Common.Edit") + " " + iODeviceTransactionTypeForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function IODeviceTransactionTypeEdit({
         .then((arg) => {
           backToIODeviceTransactionTypesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateIODeviceTransactionType(id, values))
         .then(() => backToIODeviceTransactionTypesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 
@@ -149,7 +152,9 @@ export function IODeviceTransactionTypeEdit({
           {tab === "basic" && (
             <IODeviceTransactionTypeEditForm
               actionsLoading={actionsLoading}
-              iODeviceTransactionType={iODeviceTransactionTypeForEdit || initModel}
+              iODeviceTransactionType={
+                iODeviceTransactionTypeForEdit || initModel
+              }
               btnRef={btnRef}
               saveIODeviceTransactionType={saveIODeviceTransactionType}
             />

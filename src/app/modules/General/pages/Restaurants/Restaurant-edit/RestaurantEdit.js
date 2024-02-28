@@ -73,11 +73,11 @@ export function RestaurantEdit({
         .then((arg) => {
           backToRestaurantsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateRestaurant(id, values))
         .then(() => backToRestaurantsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

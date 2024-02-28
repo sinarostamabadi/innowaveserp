@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialSetPricingState = {
   listLoading: false,
@@ -33,28 +32,27 @@ export const setPricingSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getSetPricingById  
+    // getSetPricingById
     setPricingFetched: (state, action) => {
       state.actionsLoading = false;
       state.setPricingForEdit = action.payload.setPricingForEdit;
       state.error = null;
     },
-    // findSetPricing  
+    // findSetPricing
     setPricingsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
       state.error = null;
       state.entities = entities;
       state.totalCount = totalCount;
-     
     },
-    // createSetPricing  
+    // createSetPricing
     setPricingCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateSetPricing  
+    // updateSetPricing
     setPricingUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -65,23 +63,23 @@ export const setPricingSlice = createSlice({
         return entity;
       });
     },
-    // deleteSetPricing  
+    // deleteSetPricing
     setPricingDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.SetPricingId !== action.payload.SetPricingId  
+        (el) => el.SetPricingId !== action.payload.SetPricingId
       );
     },
-    // deleteSetPricing  
+    // deleteSetPricing
     setPricingsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.SetPricingId)  
+        (el) => !action.payload.ids.includes(el.SetPricingId)
       );
     },
-    // setPricingUpdateState  
+    // setPricingUpdateState
     setPricingStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

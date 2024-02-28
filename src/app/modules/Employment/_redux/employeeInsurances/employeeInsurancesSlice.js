@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmployeeInsurancesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const employeeInsurancesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmployeeInsuranceById  
+    // getEmployeeInsuranceById
     employeeInsuranceFetched: (state, action) => {
       state.actionsLoading = false;
       state.employeeInsuranceForEdit = action.payload.employeeInsuranceForEdit;
       state.error = null;
     },
-    // findEmployeeInsurances  
+    // findEmployeeInsurances
     employeeInsurancesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const employeeInsurancesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmployeeInsurance  
+    // createEmployeeInsurance
     employeeInsuranceCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmployeeInsurance  
+    // updateEmployeeInsurance
     employeeInsuranceUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.EmployeeInsuranceId === action.payload.employeeInsurance.EmployeeInsuranceId) {
+        if (
+          entity.EmployeeInsuranceId ===
+          action.payload.employeeInsurance.EmployeeInsuranceId
+        ) {
           return action.payload.employeeInsurance;
         }
         return entity;
       });
     },
-    // deleteEmployeeInsurance  
+    // deleteEmployeeInsurance
     employeeInsuranceDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EmployeeInsuranceId !== action.payload.EmployeeInsuranceId  
+        (el) => el.EmployeeInsuranceId !== action.payload.EmployeeInsuranceId
       );
     },
-    // deleteEmployeeInsurances  
+    // deleteEmployeeInsurances
     employeeInsurancesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EmployeeInsuranceId)  
+        (el) => !action.payload.ids.includes(el.EmployeeInsuranceId)
       );
     },
-    // employeeInsurancesUpdateState  
+    // employeeInsurancesUpdateState
     employeeInsurancesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -30,7 +30,7 @@ export function ErrorHandlersPage({ history }) {
       <ErrorHandlersLoadingDialog />
       <Route path="/Core/errorHandlers/:id/delete">
         {({ history, match }) => (
-          <ErrorHandlerDeleteDialog  
+          <ErrorHandlerDeleteDialog
             show={match != null}
             id={match && match.params.id}
             onHide={() => {

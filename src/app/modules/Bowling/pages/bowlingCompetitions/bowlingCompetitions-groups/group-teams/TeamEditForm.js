@@ -44,8 +44,7 @@ export function TeamEditForm({ group, actionsLoading, onHide }) {
     };
   }, [groupsUIContext]);
 
-  const BowlingCompetitionGroupTeamEditSchema = Yup.object().shape({
-  });
+  const BowlingCompetitionGroupTeamEditSchema = Yup.object().shape({});
 
   const columns = [
     {
@@ -72,13 +71,20 @@ export function TeamEditForm({ group, actionsLoading, onHide }) {
   function addTeam(values) {
     groupsUIProps.addTeam({
       BowlingCompetitionGroupTeamId: values.BowlingCompetitionGroupTeamId,
-      BowlingCompetitionGroupId: groupsUIProps.selectedItem.BowlingCompetitionGroupId,
-      BowlingTeamId: Array.isArray(values.BowlingTeamId) && values.BowlingTeamId.length == 1
-      ? values.BowlingTeamId[0].BowlingTeamId
-      : !!values.BowlingTeamId? values.BowlingTeamId: null,
-      BowlingTeam: Array.isArray(values.BowlingTeamId) && values.BowlingTeamId.length == 1
-      ? values.BowlingTeamId[0]
-      : !!values.BowlingTeamId? values.BowlingTeam: null,
+      BowlingCompetitionGroupId:
+        groupsUIProps.selectedItem.BowlingCompetitionGroupId,
+      BowlingTeamId:
+        Array.isArray(values.BowlingTeamId) && values.BowlingTeamId.length == 1
+          ? values.BowlingTeamId[0].BowlingTeamId
+          : !!values.BowlingTeamId
+          ? values.BowlingTeamId
+          : null,
+      BowlingTeam:
+        Array.isArray(values.BowlingTeamId) && values.BowlingTeamId.length == 1
+          ? values.BowlingTeamId[0]
+          : !!values.BowlingTeamId
+          ? values.BowlingTeam
+          : null,
     });
 
     setTimeout(() => {
@@ -103,7 +109,7 @@ export function TeamEditForm({ group, actionsLoading, onHide }) {
         fnCallback(data.Items);
       });
   });
-  
+
   return (
     <>
       <Modal.Body className="">
@@ -126,22 +132,24 @@ export function TeamEditForm({ group, actionsLoading, onHide }) {
                 <>
                   <Row>
                     <Col>
-                    <SuggestionField
-                      name="BowlingTeamId"
-                      labelKey="Title"
-                      customFeedbackLabel=""
-                      label={t("BowlingCompetitionGroupTeam.BowlingTeam")}
-                      placeHolder={t("msg.SelectBySuggestion")}
-                      handleSearch={handleSuggestionTeam}
-                      renderMenuItemChildren={(option, props) => (
-                        <div>
-                          <h6>{option.Title}</h6>
-                        </div>
-                      )}
-                    />
+                      <SuggestionField
+                        name="BowlingTeamId"
+                        labelKey="Title"
+                        customFeedbackLabel=""
+                        label={t("BowlingCompetitionGroupTeam.BowlingTeam")}
+                        placeHolder={t("msg.SelectBySuggestion")}
+                        handleSearch={handleSuggestionTeam}
+                        renderMenuItemChildren={(option, props) => (
+                          <div>
+                            <h6>{option.Title}</h6>
+                          </div>
+                        )}
+                      />
                     </Col>
                     <Col xs="auto">
-                      <label style={{visibility: "hidden", display: "block"}}>{"1"}</label>
+                      <label style={{ visibility: "hidden", display: "block" }}>
+                        {"1"}
+                      </label>
                       <Button
                         variant="outline-secondary"
                         type="button"
@@ -175,10 +183,14 @@ export function TeamEditForm({ group, actionsLoading, onHide }) {
               columns={columns}
             >
               <PleaseWaitMessage
-                entities={groupsUIProps.selectedItem.BowlingCompetitionGroupTeams}
+                entities={
+                  groupsUIProps.selectedItem.BowlingCompetitionGroupTeams
+                }
               />
               <NoRecordsFoundMessage
-                entities={groupsUIProps.selectedItem.BowlingCompetitionGroupTeams}
+                entities={
+                  groupsUIProps.selectedItem.BowlingCompetitionGroupTeams
+                }
               />
             </BootstrapTable>
           </Col>

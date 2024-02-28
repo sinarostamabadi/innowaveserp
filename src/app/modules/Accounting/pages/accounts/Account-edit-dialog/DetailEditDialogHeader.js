@@ -15,7 +15,7 @@ export function DetailEditDialogHeader({ id }) {
   useEffect(() => {
     let _title = id ? "" : t("Common.Create") + " " + t("Account.Entity");
     if (id) {
-      _title = t("Common.Edit") + " " + t("Account.Entity") ;
+      _title = t("Common.Edit") + " " + t("Account.Entity");
     }
 
     setTitle(_title);

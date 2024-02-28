@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { NextOperationModel } from "../../../../../core/_models/Cash/NextOperationModel";
@@ -30,7 +29,7 @@ export function NextOperationsUIProvider({ nextOperationsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function NextOperationsUIProvider({ nextOperationsUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: NextOperationModel,
-    newNextOperationButtonClick: nextOperationsUIEvents.newNextOperationButtonClick,
+    newNextOperationButtonClick:
+      nextOperationsUIEvents.newNextOperationButtonClick,
     openEditNextOperationPage: nextOperationsUIEvents.openEditNextOperationPage,
-    openDeleteNextOperationDialog: nextOperationsUIEvents.openDeleteNextOperationDialog,
-    openDeleteNextOperationsDialog: nextOperationsUIEvents.openDeleteNextOperationsDialog,
-    openFetchNextOperationsDialog: nextOperationsUIEvents.openFetchNextOperationsDialog,
-    openUpdateNextOperationsStatusDialog: nextOperationsUIEvents.openUpdateNextOperationsStatusDialog,
+    openDeleteNextOperationDialog:
+      nextOperationsUIEvents.openDeleteNextOperationDialog,
+    openDeleteNextOperationsDialog:
+      nextOperationsUIEvents.openDeleteNextOperationsDialog,
+    openFetchNextOperationsDialog:
+      nextOperationsUIEvents.openFetchNextOperationsDialog,
+    openUpdateNextOperationsStatusDialog:
+      nextOperationsUIEvents.openUpdateNextOperationsStatusDialog,
   };
   return (
-    <NextOperationsUIContext.Provider value={value}>{children}</NextOperationsUIContext.Provider>
+    <NextOperationsUIContext.Provider value={value}>
+      {children}
+    </NextOperationsUIContext.Provider>
   );
 }

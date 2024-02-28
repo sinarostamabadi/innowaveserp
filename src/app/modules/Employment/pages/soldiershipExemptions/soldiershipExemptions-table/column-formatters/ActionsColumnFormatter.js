@@ -12,10 +12,18 @@ export const ActionsColumnFormatter = (
   { openEditSoldiershipExemptionPage, openDeleteSoldiershipExemptionDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="soldiershipExemptions-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="soldiershipExemptions-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-        onClick={() => openEditSoldiershipExemptionPage(row.SoldiershipExemptionId)}
+        onClick={() =>
+          openEditSoldiershipExemptionPage(row.SoldiershipExemptionId)
+        }
       >
         <span className="svg-icon svg-icon-md svg-icon-primary">
           <SVG
@@ -26,11 +34,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="soldiershipExemptions-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="soldiershipExemptions-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteSoldiershipExemptionDialog(row.SoldiershipExemptionId)}
+        onClick={() =>
+          openDeleteSoldiershipExemptionDialog(row.SoldiershipExemptionId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

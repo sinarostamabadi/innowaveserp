@@ -26,7 +26,7 @@ export function MenuGroupsPage({ history }) {
       history.push("/cofe/menuGroups/updateStatus");
     },
   };
-  
+
   return (
     <MenuGroupsUIProvider menuGroupsUIEvents={menuGroupsUIEvents}>
       <MenuGroupsLoadingDialog />

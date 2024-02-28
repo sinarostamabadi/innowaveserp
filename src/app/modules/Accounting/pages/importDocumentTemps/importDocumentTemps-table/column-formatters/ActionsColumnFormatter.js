@@ -12,7 +12,13 @@ export const ActionsColumnFormatter = (
   { openEditImportDocumentTempPage, openDeleteImportDocumentTempDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="importDocumentTemps-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="importDocumentTemps-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditImportDocumentTempPage(row.ImportDocumentTempId)}
@@ -26,11 +32,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="importDocumentTemps-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="importDocumentTemps-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteImportDocumentTempDialog(row.ImportDocumentTempId)}
+        onClick={() =>
+          openDeleteImportDocumentTempDialog(row.ImportDocumentTempId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

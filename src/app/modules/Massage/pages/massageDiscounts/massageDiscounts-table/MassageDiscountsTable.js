@@ -32,8 +32,10 @@ export function MassageDiscountsTable() {
       setIds: massageDiscountsUIContext.setIds,
       queryParams: massageDiscountsUIContext.queryParams,
       setQueryParams: massageDiscountsUIContext.setQueryParams,
-      openEditMassageDiscountPage: massageDiscountsUIContext.openEditMassageDiscountPage,
-      openDeleteMassageDiscountDialog: massageDiscountsUIContext.openDeleteMassageDiscountDialog,
+      openEditMassageDiscountPage:
+        massageDiscountsUIContext.openEditMassageDiscountPage,
+      openDeleteMassageDiscountDialog:
+        massageDiscountsUIContext.openDeleteMassageDiscountDialog,
     };
   }, [massageDiscountsUIContext]);
 
@@ -50,7 +52,9 @@ export function MassageDiscountsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     massageDiscountsUIProps.setIds([]);
-    dispatch(actions.fetchMassageDiscounts(massageDiscountsUIProps.queryParams));
+    dispatch(
+      actions.fetchMassageDiscounts(massageDiscountsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [massageDiscountsUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function MassageDiscountsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditMassageDiscountPage: massageDiscountsUIProps.openEditMassageDiscountPage,
-        openDeleteMassageDiscountDialog: massageDiscountsUIProps.openDeleteMassageDiscountDialog,
+        openEditMassageDiscountPage:
+          massageDiscountsUIProps.openEditMassageDiscountPage,
+        openDeleteMassageDiscountDialog:
+          massageDiscountsUIProps.openDeleteMassageDiscountDialog,
         t: t,
       },
       classes: "text-right pr-0",

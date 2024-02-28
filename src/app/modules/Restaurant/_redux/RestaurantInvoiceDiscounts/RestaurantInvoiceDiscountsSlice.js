@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialRestaurantInvoiceDiscountsState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const restaurantInvoiceDiscountsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getRestaurantInvoiceDiscountById  
+    // getRestaurantInvoiceDiscountById
     restaurantInvoiceDiscountFetched: (state, action) => {
       state.actionsLoading = false;
-      state.restaurantInvoiceDiscountForEdit = action.payload.restaurantInvoiceDiscountForEdit;
+      state.restaurantInvoiceDiscountForEdit =
+        action.payload.restaurantInvoiceDiscountForEdit;
       state.error = null;
     },
-    // findRestaurantInvoiceDiscounts  
+    // findRestaurantInvoiceDiscounts
     restaurantInvoiceDiscountsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,46 +47,53 @@ export const restaurantInvoiceDiscountsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createRestaurantInvoiceDiscount  
+    // createRestaurantInvoiceDiscount
     restaurantInvoiceDiscountCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateRestaurantInvoiceDiscount  
+    // updateRestaurantInvoiceDiscount
     restaurantInvoiceDiscountUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.RestaurantInvoiceDiscountId === action.payload.restaurantInvoiceDiscount.RestaurantInvoiceDiscountId) {
+        if (
+          entity.RestaurantInvoiceDiscountId ===
+          action.payload.restaurantInvoiceDiscount.RestaurantInvoiceDiscountId
+        ) {
           return action.payload.restaurantInvoiceDiscount;
         }
         return entity;
       });
     },
-    // deleteRestaurantInvoiceDiscount  
+    // deleteRestaurantInvoiceDiscount
     restaurantInvoiceDiscountDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.RestaurantInvoiceDiscountId !== action.payload.RestaurantInvoiceDiscountId  
+        (el) =>
+          el.RestaurantInvoiceDiscountId !==
+          action.payload.RestaurantInvoiceDiscountId
       );
     },
-    // deleteRestaurantInvoiceDiscounts  
+    // deleteRestaurantInvoiceDiscounts
     restaurantInvoiceDiscountsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.RestaurantInvoiceDiscountId)  
+        (el) => !action.payload.ids.includes(el.RestaurantInvoiceDiscountId)
       );
     },
-    // restaurantInvoiceDiscountsUpdateState  
+    // restaurantInvoiceDiscountsUpdateState
     restaurantInvoiceDiscountsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       const { ids, status } = action.payload;
       state.entities = state.entities.map((entity) => {
-        if (ids.findIndex((id) => id === entity.RestaurantInvoiceDiscountId) > -1) {
+        if (
+          ids.findIndex((id) => id === entity.RestaurantInvoiceDiscountId) > -1
+        ) {
           entity.status = status;
         }
         return entity;

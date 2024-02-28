@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialLeaveTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const leaveTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getLeaveTypeById  
+    // getLeaveTypeById
     leaveTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.leaveTypeForEdit = action.payload.leaveTypeForEdit;
       state.error = null;
     },
-    // findLeaveTypes  
+    // findLeaveTypes
     leaveTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const leaveTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createLeaveType  
+    // createLeaveType
     leaveTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateLeaveType  
+    // updateLeaveType
     leaveTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const leaveTypesSlice = createSlice({
         return entity;
       });
     },
-    // deleteLeaveType  
+    // deleteLeaveType
     leaveTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.LeaveTypeId !== action.payload.LeaveTypeId  
+        (el) => el.LeaveTypeId !== action.payload.LeaveTypeId
       );
     },
-    // deleteLeaveTypes  
+    // deleteLeaveTypes
     leaveTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.LeaveTypeId)  
+        (el) => !action.payload.ids.includes(el.LeaveTypeId)
       );
     },
-    // leaveTypesUpdateState  
+    // leaveTypesUpdateState
     leaveTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

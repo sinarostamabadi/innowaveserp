@@ -33,7 +33,8 @@ export function CoffeeShopsTable() {
       queryParams: coffeeShopsUIContext.queryParams,
       setQueryParams: coffeeShopsUIContext.setQueryParams,
       openEditCoffeeShopPage: coffeeShopsUIContext.openEditCoffeeShopPage,
-      openDeleteCoffeeShopDialog: coffeeShopsUIContext.openDeleteCoffeeShopDialog,
+      openDeleteCoffeeShopDialog:
+        coffeeShopsUIContext.openDeleteCoffeeShopDialog,
     };
   }, [coffeeShopsUIContext]);
 
@@ -73,7 +74,8 @@ export function CoffeeShopsTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditCoffeeShopPage: coffeeShopsUIProps.openEditCoffeeShopPage,
-        openDeleteCoffeeShopDialog: coffeeShopsUIProps.openDeleteCoffeeShopDialog,
+        openDeleteCoffeeShopDialog:
+          coffeeShopsUIProps.openDeleteCoffeeShopDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -39,10 +39,7 @@ export function CashDocumentEdit({
     DocumentNo: "",
     TransactionTypeId: 1,
     DocumentDateObj: EnToFaObjDate(moment.from()),
-    DocumentDate: moment
-      .from()
-      .locale("en")
-      .format("YYYY-MM-DDTHH:mm:ss"),
+    DocumentDate: moment.from().locale("en").format("YYYY-MM-DDTHH:mm:ss"),
     PersonId: "",
     Person: null,
     CashId: 1,
@@ -69,11 +66,13 @@ export function CashDocumentEdit({
   const [paymentsObj, setPaymentsObj] = useState(initModel.Payments);
   const [creditsObj, setCreditsObj] = useState(initModel.Credits);
   const [couponsObj, setCouponsObj] = useState(initModel.CouponTransactions);
-  const [promissoryNotesObj, setPromissoryNotesObj] = useState(initModel.PromissoryNotes);
+  const [promissoryNotesObj, setPromissoryNotesObj] = useState(
+    initModel.PromissoryNotes
+  );
   const [walletsObj, setWalletsObj] = useState(initModel.Wallets);
   const [title, setTitle] = useState("");
   const [editMode, setEditMode] = useState(false);
-  
+
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
   const { actionsLoading, cashDocumentForEdit, error } = useSelector(
     (state) => ({
@@ -140,7 +139,7 @@ export function CashDocumentEdit({
 
     await btnRefCashDocuments.current.Collect(async (datas) => {
       cashDocumentObj = datas;
-      
+
       btnRefPayments.current.Collect((datas) => {
         cashDocumentObj["Payments"] = datas;
       });
@@ -220,7 +219,7 @@ export function CashDocumentEdit({
             </CardHeaderToolbar>
           </CardHeader>
           <CardBody>
-          <Tabs
+            <Tabs
               defaultActiveKey="cashDocument"
               transition={false}
               className="nav nav-tabs nav-tabs-line"
@@ -235,7 +234,7 @@ export function CashDocumentEdit({
                   cashDocument={documentObj}
                   ref={btnRefCashDocuments}
                 />
-               </Tab>
+              </Tab>
 
               <Tab
                 eventKey="payment"
@@ -250,13 +249,13 @@ export function CashDocumentEdit({
                 >
                   <Payments />
                 </PaymentsUIProvider>
-               </Tab>
+              </Tab>
 
-               <Tab
+              <Tab
                 eventKey="credit"
                 title={t("CashDocument.Credit")}
                 className="nav-item"
-                >
+              >
                 <CreditsUIProvider
                   currentDocumentId={id}
                   actionsLoading={actionsLoading}
@@ -265,9 +264,9 @@ export function CashDocumentEdit({
                 >
                   <Credits />
                 </CreditsUIProvider>
-               </Tab>
+              </Tab>
 
-               <Tab
+              <Tab
                 eventKey="wallet"
                 title={t("CashDocument.Wallet")}
                 className="nav-item"
@@ -280,9 +279,9 @@ export function CashDocumentEdit({
                 >
                   <Wallets />
                 </WalletsUIProvider>
-               </Tab>
+              </Tab>
 
-               <Tab
+              <Tab
                 eventKey="coupon"
                 title={t("CashDocument.Coupon")}
                 className="nav-item"
@@ -295,14 +294,14 @@ export function CashDocumentEdit({
                 >
                   <Coupons />
                 </CouponsUIProvider>
-               </Tab>
+              </Tab>
 
-               <Tab
+              <Tab
                 eventKey="promissoryNote"
                 title={t("CashDocument.PromissoryNote")}
                 className="nav-item"
               >
-               <PromissoryNotesUIProvider
+                <PromissoryNotesUIProvider
                   currentDocumentId={id}
                   actionsLoading={actionsLoading}
                   promissoryNote={promissoryNotesObj}
@@ -310,7 +309,7 @@ export function CashDocumentEdit({
                 >
                   <PromissoryNotes />
                 </PromissoryNotesUIProvider>
-               </Tab>
+              </Tab>
             </Tabs>
           </CardBody>
         </Card>

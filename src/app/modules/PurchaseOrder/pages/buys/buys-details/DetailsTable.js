@@ -8,7 +8,10 @@ import {
 } from "../../../../../../core/_helpers";
 import { useDetailsUIContext } from "./DetailsUIContext";
 import { useTranslation } from "react-i18next";
-import { MoneyColumnFormatter, RowIndexColumnFormatter } from "../../../../../../core/_formatters";
+import {
+  MoneyColumnFormatter,
+  RowIndexColumnFormatter,
+} from "../../../../../../core/_formatters";
 
 export function DetailsTable() {
   const { t } = useTranslation();

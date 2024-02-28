@@ -20,7 +20,7 @@ export function BodyBuildingDashboard() {
           >
             <div className="card-header">
               <div className="card-title">
-                <h3 className="card-label">اطلاعات بدن‌سازی</h3>
+                <h3 className="card-label">Bodybuilding information</h3>
               </div>
             </div>
             <div className="card-body">

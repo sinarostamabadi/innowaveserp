@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBuyDiscountsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const buyDiscountsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBuyDiscountById  
+    // getBuyDiscountById
     buyDiscountFetched: (state, action) => {
       state.actionsLoading = false;
       state.buyDiscountForEdit = action.payload.buyDiscountForEdit;
       state.error = null;
     },
-    // findBuyDiscounts  
+    // findBuyDiscounts
     buyDiscountsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const buyDiscountsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBuyDiscount  
+    // createBuyDiscount
     buyDiscountCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBuyDiscount  
+    // updateBuyDiscount
     buyDiscountUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const buyDiscountsSlice = createSlice({
         return entity;
       });
     },
-    // deleteBuyDiscount  
+    // deleteBuyDiscount
     buyDiscountDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BuyDiscountId !== action.payload.BuyDiscountId  
+        (el) => el.BuyDiscountId !== action.payload.BuyDiscountId
       );
     },
-    // deleteBuyDiscounts  
+    // deleteBuyDiscounts
     buyDiscountsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BuyDiscountId)  
+        (el) => !action.payload.ids.includes(el.BuyDiscountId)
       );
     },
-    // buyDiscountsUpdateState  
+    // buyDiscountsUpdateState
     buyDiscountsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

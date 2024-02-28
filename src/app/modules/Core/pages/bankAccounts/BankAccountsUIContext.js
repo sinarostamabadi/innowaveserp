@@ -12,7 +12,9 @@ export function useBankAccountsUIContext() {
 export const BankAccountsUIConsumer = BankAccountsUIContext.Consumer;
 
 export function BankAccountsUIProvider({ bankAccountsUIEvents, children }) {
-  const [queryParams, setQueryParamsBase] = useState(getConfig(BankAccountModel).initialFilter);
+  const [queryParams, setQueryParamsBase] = useState(
+    getConfig(BankAccountModel).initialFilter
+  );
   const [ids, setIds] = useState([]);
 
   const setQueryParams = useCallback((nextQueryParams) => {
@@ -36,9 +38,12 @@ export function BankAccountsUIProvider({ bankAccountsUIEvents, children }) {
     dataModel: BankAccountModel,
     newBankAccountButtonClick: bankAccountsUIEvents.newBankAccountButtonClick,
     openEditBankAccountPage: bankAccountsUIEvents.openEditBankAccountPage,
-    openDeleteBankAccountDialog: bankAccountsUIEvents.openDeleteBankAccountDialog,
-    openDeleteBankAccountsDialog: bankAccountsUIEvents.openDeleteBankAccountsDialog,
-    openFetchBankAccountsDialog: bankAccountsUIEvents.openFetchBankAccountsDialog,
+    openDeleteBankAccountDialog:
+      bankAccountsUIEvents.openDeleteBankAccountDialog,
+    openDeleteBankAccountsDialog:
+      bankAccountsUIEvents.openDeleteBankAccountsDialog,
+    openFetchBankAccountsDialog:
+      bankAccountsUIEvents.openFetchBankAccountsDialog,
     openUpdateBankAccountsStatusDialog:
       bankAccountsUIEvents.openUpdateBankAccountsStatusDialog,
   };
@@ -48,4 +53,4 @@ export function BankAccountsUIProvider({ bankAccountsUIEvents, children }) {
       {children}
     </BankAccountsUIContext.Provider>
   );
-}  
+}

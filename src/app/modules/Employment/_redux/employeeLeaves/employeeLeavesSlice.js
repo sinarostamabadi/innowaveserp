@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmployeeLeavesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const employeeLeavesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmployeeLeaveById  
+    // getEmployeeLeaveById
     employeeLeaveFetched: (state, action) => {
       state.actionsLoading = false;
       state.employeeLeaveForEdit = action.payload.employeeLeaveForEdit;
       state.error = null;
     },
-    // findEmployeeLeaves  
+    // findEmployeeLeaves
     employeeLeavesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const employeeLeavesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmployeeLeave  
+    // createEmployeeLeave
     employeeLeaveCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmployeeLeave  
+    // updateEmployeeLeave
     employeeLeaveUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.EmployeeLeaveId === action.payload.employeeLeave.EmployeeLeaveId) {
+        if (
+          entity.EmployeeLeaveId ===
+          action.payload.employeeLeave.EmployeeLeaveId
+        ) {
           return action.payload.employeeLeave;
         }
         return entity;
       });
     },
-    // deleteEmployeeLeave  
+    // deleteEmployeeLeave
     employeeLeaveDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EmployeeLeaveId !== action.payload.EmployeeLeaveId  
+        (el) => el.EmployeeLeaveId !== action.payload.EmployeeLeaveId
       );
     },
-    // deleteEmployeeLeaves  
+    // deleteEmployeeLeaves
     employeeLeavesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EmployeeLeaveId)  
+        (el) => !action.payload.ids.includes(el.EmployeeLeaveId)
       );
     },
-    // employeeLeavesUpdateState  
+    // employeeLeavesUpdateState
     employeeLeavesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -32,8 +32,10 @@ export function BodyBuildingDiscountsTable() {
       setIds: bodyBuildingDiscountsUIContext.setIds,
       queryParams: bodyBuildingDiscountsUIContext.queryParams,
       setQueryParams: bodyBuildingDiscountsUIContext.setQueryParams,
-      openEditBodyBuildingDiscountPage: bodyBuildingDiscountsUIContext.openEditBodyBuildingDiscountPage,
-      openDeleteBodyBuildingDiscountDialog: bodyBuildingDiscountsUIContext.openDeleteBodyBuildingDiscountDialog,
+      openEditBodyBuildingDiscountPage:
+        bodyBuildingDiscountsUIContext.openEditBodyBuildingDiscountPage,
+      openDeleteBodyBuildingDiscountDialog:
+        bodyBuildingDiscountsUIContext.openDeleteBodyBuildingDiscountDialog,
     };
   }, [bodyBuildingDiscountsUIContext]);
 
@@ -50,7 +52,11 @@ export function BodyBuildingDiscountsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     bodyBuildingDiscountsUIProps.setIds([]);
-    dispatch(actions.fetchBodyBuildingDiscounts(bodyBuildingDiscountsUIProps.queryParams));
+    dispatch(
+      actions.fetchBodyBuildingDiscounts(
+        bodyBuildingDiscountsUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bodyBuildingDiscountsUIProps.queryParams, dispatch]);
 
@@ -72,8 +78,10 @@ export function BodyBuildingDiscountsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditBodyBuildingDiscountPage: bodyBuildingDiscountsUIProps.openEditBodyBuildingDiscountPage,
-        openDeleteBodyBuildingDiscountDialog: bodyBuildingDiscountsUIProps.openDeleteBodyBuildingDiscountDialog,
+        openEditBodyBuildingDiscountPage:
+          bodyBuildingDiscountsUIProps.openEditBodyBuildingDiscountPage,
+        openDeleteBodyBuildingDiscountDialog:
+          bodyBuildingDiscountsUIProps.openDeleteBodyBuildingDiscountDialog,
         t: t,
       },
       classes: "text-right pr-0",

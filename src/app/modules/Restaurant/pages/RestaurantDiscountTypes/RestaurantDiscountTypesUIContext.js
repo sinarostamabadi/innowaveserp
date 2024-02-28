@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { RestaurantDiscountTypeModel } from "../../../../../core/_models/Restaurant/RestaurantDiscountTypeModel";
@@ -11,25 +10,29 @@ export function useRestaurantDiscountTypesUIContext() {
   return useContext(RestaurantDiscountTypesUIContext);
 }
 
-export const RestaurantDiscountTypesUIConsumer = RestaurantDiscountTypesUIContext.Consumer;
+export const RestaurantDiscountTypesUIConsumer =
+  RestaurantDiscountTypesUIContext.Consumer;
 
-export function RestaurantDiscountTypesUIProvider({ restaurantDiscountTypesUIEvents, children }) {
+export function RestaurantDiscountTypesUIProvider({
+  restaurantDiscountTypesUIEvents,
+  children,
+}) {
   const defaultRestaurant = !!getStorage("defaultRestaurant")
-  ? JSON.parse(getStorage("defaultRestaurant"))
-  : null;
+    ? JSON.parse(getStorage("defaultRestaurant"))
+    : null;
   const defaultFilter = {
     Property: "RestaurantId",
     Operation: 5,
-    Values: [!!defaultRestaurant? defaultRestaurant.RestaurantId: null],
+    Values: [!!defaultRestaurant ? defaultRestaurant.RestaurantId : null],
   };
 
   const [queryParams, setQueryParamsBase] = useState(
     !!defaultRestaurant
-    ? {
-        ...getConfig(RestaurantDiscountTypeModel).initialFilter,
-        Filters: [defaultFilter],
-      }
-    : getConfig(RestaurantDiscountTypeModel).initialFilter
+      ? {
+          ...getConfig(RestaurantDiscountTypeModel).initialFilter,
+          Filters: [defaultFilter],
+        }
+      : getConfig(RestaurantDiscountTypeModel).initialFilter
   );
 
   const [ids, setIds] = useState([]);
@@ -45,7 +48,7 @@ export function RestaurantDiscountTypesUIProvider({ restaurantDiscountTypesUIEve
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -53,14 +56,22 @@ export function RestaurantDiscountTypesUIProvider({ restaurantDiscountTypesUIEve
     setIds,
     setQueryParams,
     dataModel: RestaurantDiscountTypeModel,
-    newRestaurantDiscountTypeButtonClick: restaurantDiscountTypesUIEvents.newRestaurantDiscountTypeButtonClick,
-    openEditRestaurantDiscountTypePage: restaurantDiscountTypesUIEvents.openEditRestaurantDiscountTypePage,
-    openDeleteRestaurantDiscountTypeDialog: restaurantDiscountTypesUIEvents.openDeleteRestaurantDiscountTypeDialog,
-    openDeleteRestaurantDiscountTypesDialog: restaurantDiscountTypesUIEvents.openDeleteRestaurantDiscountTypesDialog,
-    openFetchRestaurantDiscountTypesDialog: restaurantDiscountTypesUIEvents.openFetchRestaurantDiscountTypesDialog,
-    openUpdateRestaurantDiscountTypesStatusDialog: restaurantDiscountTypesUIEvents.openUpdateRestaurantDiscountTypesStatusDialog,
+    newRestaurantDiscountTypeButtonClick:
+      restaurantDiscountTypesUIEvents.newRestaurantDiscountTypeButtonClick,
+    openEditRestaurantDiscountTypePage:
+      restaurantDiscountTypesUIEvents.openEditRestaurantDiscountTypePage,
+    openDeleteRestaurantDiscountTypeDialog:
+      restaurantDiscountTypesUIEvents.openDeleteRestaurantDiscountTypeDialog,
+    openDeleteRestaurantDiscountTypesDialog:
+      restaurantDiscountTypesUIEvents.openDeleteRestaurantDiscountTypesDialog,
+    openFetchRestaurantDiscountTypesDialog:
+      restaurantDiscountTypesUIEvents.openFetchRestaurantDiscountTypesDialog,
+    openUpdateRestaurantDiscountTypesStatusDialog:
+      restaurantDiscountTypesUIEvents.openUpdateRestaurantDiscountTypesStatusDialog,
   };
   return (
-    <RestaurantDiscountTypesUIContext.Provider value={value}>{children}</RestaurantDiscountTypesUIContext.Provider>
+    <RestaurantDiscountTypesUIContext.Provider value={value}>
+      {children}
+    </RestaurantDiscountTypesUIContext.Provider>
   );
 }

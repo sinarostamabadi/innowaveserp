@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { ActionsTable } from "./actions-table/ActionsTable";
 import { useActionsUIContext, ActionsUIConsumer } from "./ActionsUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function ActionsCard() {
   const { t } = useTranslation();
@@ -24,21 +23,22 @@ export function ActionsCard() {
       newActionButtonClick: actionsUIContext.newActionButtonClick,
       openDeleteActionsDialog: actionsUIContext.openDeleteActionsDialog,
       openEditActionPage: actionsUIContext.openEditActionPage,
-      openUpdateActionsStatusDialog: actionsUIContext.openUpdateActionsStatusDialog,
+      openUpdateActionsStatusDialog:
+        actionsUIContext.openUpdateActionsStatusDialog,
       openFetchActionsDialog: actionsUIContext.openFetchActionsDialog,
     };
   }, [actionsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Action.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Action.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={actionsUIProps.newActionButtonClick}
           >
-            {t("Action.Entity")} {' '} {t("Common.New")}
+            {t("Action.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

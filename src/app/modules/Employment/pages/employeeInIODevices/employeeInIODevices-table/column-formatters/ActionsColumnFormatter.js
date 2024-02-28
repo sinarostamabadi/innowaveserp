@@ -12,7 +12,13 @@ export const ActionsColumnFormatter = (
   { openEditEmployeeInIODevicePage, openDeleteEmployeeInIODeviceDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="employeeInIODevices-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="employeeInIODevices-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditEmployeeInIODevicePage(row.EmployeeInIODeviceId)}
@@ -26,11 +32,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="employeeInIODevices-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="employeeInIODevices-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteEmployeeInIODeviceDialog(row.EmployeeInIODeviceId)}
+        onClick={() =>
+          openDeleteEmployeeInIODeviceDialog(row.EmployeeInIODeviceId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

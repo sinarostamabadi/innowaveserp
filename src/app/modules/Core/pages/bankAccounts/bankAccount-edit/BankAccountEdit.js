@@ -62,9 +62,13 @@ export function BankAccountEdit({
 
   const saveBankAccount = (values) => {
     if (!id)
-      dispatch(actions.createBankAccount(values)).then((arg) => backToBankAccountsList());
+      dispatch(actions.createBankAccount(values)).then((arg) =>
+        backToBankAccountsList()
+      );
     else
-      dispatch(actions.updateBankAccount(id, values)).then(() => backToBankAccountsList());
+      dispatch(actions.updateBankAccount(id, values)).then(() =>
+        backToBankAccountsList()
+      );
   };
 
   const btnRef = useRef();
@@ -77,7 +81,7 @@ export function BankAccountEdit({
   const backToBankAccountsList = () => {
     history.push(`/Core/bankAccounts`);
   };
-  
+
   return (
     <>
       <Card>
@@ -110,14 +114,17 @@ export function BankAccountEdit({
           </CardHeaderToolbar>
         </CardHeader>
         <CardBody>
-          {(!!id && !!bankAccountObj && bankAccountObj.BankAccountId == id) || (!!id == false) ? (
+          {(!!id && !!bankAccountObj && bankAccountObj.BankAccountId == id) ||
+          !!id == false ? (
             <BankAccountEditForm
               actionsLoading={actionsLoading}
               bankAccount={bankAccountObj}
               btnRef={btnRef}
               saveBankAccount={saveBankAccount}
             />
-          ) : <p>در حال بارگذاری...</p>}
+          ) : (
+            <p>در حال بارگذاری...</p>
+          )}
         </CardBody>
       </Card>
     </>

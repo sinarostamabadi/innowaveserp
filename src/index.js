@@ -10,6 +10,7 @@ import axios from "axios";
 import * as _redux from "./redux";
 import store, { persistor } from "./redux/store";
 import App from "./app/App";
+import "./core/i18n/i18n"
 // if(REACT_APP_DIR == "rtl")
 // {
 //   import "./sass/style.react.rtl.css"; // RTL version

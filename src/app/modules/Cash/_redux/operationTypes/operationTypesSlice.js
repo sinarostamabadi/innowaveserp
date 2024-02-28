@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialOperationTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const operationTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getOperationTypeById  
+    // getOperationTypeById
     operationTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.operationTypeForEdit = action.payload.operationTypeForEdit;
       state.error = null;
     },
-    // findOperationTypes  
+    // findOperationTypes
     operationTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const operationTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createOperationType  
+    // createOperationType
     operationTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateOperationType  
+    // updateOperationType
     operationTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.OperationTypeId === action.payload.operationType.OperationTypeId) {
+        if (
+          entity.OperationTypeId ===
+          action.payload.operationType.OperationTypeId
+        ) {
           return action.payload.operationType;
         }
         return entity;
       });
     },
-    // deleteOperationType  
+    // deleteOperationType
     operationTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.OperationTypeId !== action.payload.OperationTypeId  
+        (el) => el.OperationTypeId !== action.payload.OperationTypeId
       );
     },
-    // deleteOperationTypes  
+    // deleteOperationTypes
     operationTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.OperationTypeId)  
+        (el) => !action.payload.ids.includes(el.OperationTypeId)
       );
     },
-    // operationTypesUpdateState  
+    // operationTypesUpdateState
     operationTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

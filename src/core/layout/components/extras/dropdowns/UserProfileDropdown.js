@@ -59,7 +59,7 @@ export function UserProfileDropdown() {
                 {user.RealPerson.FirstNameFa} {user.RealPerson.LastNameFa}
                 </div>
                 <span className="label label-light-success label-lg font-weight-bold label-inline">
-                  3 پیام
+                  3 Message
                 </span>
               </div>
               <div className="separator separator-solid"></div>
@@ -85,7 +85,7 @@ export function UserProfileDropdown() {
               {user.RealPerson.FirstNameFa} {user.RealPerson.LastNameFa}
               </div>
               <span className="label label-success label-lg font-weight-bold label-inline">
-                3 پیام
+                3 Message
               </span>
             </div>
           )}
@@ -99,10 +99,10 @@ export function UserProfileDropdown() {
               </div>
               <div className="navi-text">
                 <div className="font-weight-bold cursor-pointer">
-                  پروفایل
+                  Profile
                 </div>
                 <div className="text-muted">
-                  تنظیمات و بروزرسانی اطلاعات کاربری
+                  Setting and updating user information
                 </div>
               </div>
             </div>
@@ -114,8 +114,8 @@ export function UserProfileDropdown() {
                 <i className="flaticon2-mail text-warning"></i>
               </div>
               <div className="navi-text">
-                <div className="font-weight-bold">پیام‌ها</div>
-                <div className="text-muted">صندوق ورودی</div>
+                <div className="font-weight-bold">Messages</div>
+                <div className="text-muted">Inbox</div>
               </div>
             </div>
           </a>
@@ -126,8 +126,8 @@ export function UserProfileDropdown() {
                 <i className="flaticon2-rocket-1 text-danger"></i>
               </div>
               <div className="navi-text">
-                <div className="font-weight-bold">فعالیت‌ها</div>
-                <div className="text-muted">تمام کارها و عملیات‌های من</div>
+                <div className="font-weight-bold">Activities</div>
+                <div className="text-muted">All my work and operations</div>
               </div>
             </div>
           </a>
@@ -138,8 +138,8 @@ export function UserProfileDropdown() {
                 <i className="flaticon2-hourglass text-primary"></i>
               </div>
               <div className="navi-text">
-                <div className="font-weight-bold">وظایف</div>
-                <div className="text-muted">آخرین وظایف و کارهای تخصیص شده به من</div>
+                <div className="font-weight-bold">Tasks</div>
+                <div className="text-muted">The latest tasks assigned to me</div>
               </div>
             </div>
           </a>

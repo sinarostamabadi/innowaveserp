@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { TimePriceingModel } from "../../../../../core/_models/Bowling/TimePriceingModel";
@@ -30,7 +29,7 @@ export function TimePriceingUIProvider({ timePriceingUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -40,12 +39,18 @@ export function TimePriceingUIProvider({ timePriceingUIEvents, children }) {
     dataModel: TimePriceingModel,
     newTimePriceingButtonClick: timePriceingUIEvents.newTimePriceingButtonClick,
     openEditTimePriceingPage: timePriceingUIEvents.openEditTimePriceingPage,
-    openDeleteTimePriceingDialog: timePriceingUIEvents.openDeleteTimePriceingDialog,
-    openDeleteTimePriceingDialog: timePriceingUIEvents.openDeleteTimePriceingDialog,
-    openFetchTimePriceingDialog: timePriceingUIEvents.openFetchTimePriceingDialog,
-    openUpdateTimePriceingStatusDialog: timePriceingUIEvents.openUpdateTimePriceingStatusDialog,
+    openDeleteTimePriceingDialog:
+      timePriceingUIEvents.openDeleteTimePriceingDialog,
+    openDeleteTimePriceingDialog:
+      timePriceingUIEvents.openDeleteTimePriceingDialog,
+    openFetchTimePriceingDialog:
+      timePriceingUIEvents.openFetchTimePriceingDialog,
+    openUpdateTimePriceingStatusDialog:
+      timePriceingUIEvents.openUpdateTimePriceingStatusDialog,
   };
   return (
-    <TimePriceingUIContext.Provider value={value}>{children}</TimePriceingUIContext.Provider>
+    <TimePriceingUIContext.Provider value={value}>
+      {children}
+    </TimePriceingUIContext.Provider>
   );
 }

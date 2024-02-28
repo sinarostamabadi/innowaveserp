@@ -1,4 +1,6 @@
-export const defaultSorted = [{ dataField: "RelationPersonGroupId", order: "asc" }];
+export const defaultSorted = [
+  { dataField: "RelationPersonGroupId", order: "asc" },
+];
 export const sizePerPageList = [
   { text: "10", value: 10 },
   { text: "50", value: 50 },

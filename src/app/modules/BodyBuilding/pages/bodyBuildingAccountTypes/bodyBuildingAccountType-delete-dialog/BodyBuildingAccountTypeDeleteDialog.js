@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -16,7 +15,8 @@ export function BodyBuildingAccountTypeDeleteDialog({ id, show, onHide }) {
   const { t } = useTranslation();
 
   // BodyBuildingAccountTypes UI Context
-  const bodyBuildingAccountTypesUIContext = useBodyBuildingAccountTypesUIContext();
+  const bodyBuildingAccountTypesUIContext =
+    useBodyBuildingAccountTypesUIContext();
   const [error, setError] = useState(null);
   const bodyBuildingAccountTypesUIProps = useMemo(() => {
     return {
@@ -48,7 +48,11 @@ export function BodyBuildingAccountTypeDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteBodyBuildingAccountType(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchBodyBuildingAccountTypes(bodyBuildingAccountTypesUIProps.queryParams));
+        dispatch(
+          actions.fetchBodyBuildingAccountTypes(
+            bodyBuildingAccountTypesUIProps.queryParams
+          )
+        );
         // clear selections list
         bodyBuildingAccountTypesUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +71,12 @@ export function BodyBuildingAccountTypeDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("BodyBuildingAccountType.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("BodyBuildingAccountType.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

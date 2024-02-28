@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { PoolReservesTable } from "./poolReserves-table/PoolReservesTable";
-import { usePoolReservesUIContext, PoolReservesUIConsumer } from "./PoolReservesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  usePoolReservesUIContext,
+  PoolReservesUIConsumer,
+} from "./PoolReservesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function PoolReservesCard() {
   const { t } = useTranslation();
@@ -21,24 +23,28 @@ export function PoolReservesCard() {
       ids: poolReservesUIContext.ids,
       queryParams: poolReservesUIContext.queryParams,
       setQueryParams: poolReservesUIContext.setQueryParams,
-      newPoolReserveButtonClick: poolReservesUIContext.newPoolReserveButtonClick,
-      openDeletePoolReservesDialog: poolReservesUIContext.openDeletePoolReservesDialog,
+      newPoolReserveButtonClick:
+        poolReservesUIContext.newPoolReserveButtonClick,
+      openDeletePoolReservesDialog:
+        poolReservesUIContext.openDeletePoolReservesDialog,
       openEditPoolReservePage: poolReservesUIContext.openEditPoolReservePage,
-      openUpdatePoolReservesStatusDialog: poolReservesUIContext.openUpdatePoolReservesStatusDialog,
-      openFetchPoolReservesDialog: poolReservesUIContext.openFetchPoolReservesDialog,
+      openUpdatePoolReservesStatusDialog:
+        poolReservesUIContext.openUpdatePoolReservesStatusDialog,
+      openFetchPoolReservesDialog:
+        poolReservesUIContext.openFetchPoolReservesDialog,
     };
   }, [poolReservesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("PoolReserve.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("PoolReserve.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={poolReservesUIProps.newPoolReserveButtonClick}
           >
-            {t("PoolReserve.Entity")} {' '} {t("Common.New")}
+            {t("PoolReserve.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

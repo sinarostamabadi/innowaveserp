@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmployeeModel } from "../../../../../core/_models/Employment/EmployeeModel";
@@ -30,7 +29,7 @@ export function EmployeesUIProvider({ employeesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function EmployeesUIProvider({ employeesUIEvents, children }) {
     openDeleteEmployeeDialog: employeesUIEvents.openDeleteEmployeeDialog,
     openDeleteEmployeesDialog: employeesUIEvents.openDeleteEmployeesDialog,
     openFetchEmployeesDialog: employeesUIEvents.openFetchEmployeesDialog,
-    openUpdateEmployeesStatusDialog: employeesUIEvents.openUpdateEmployeesStatusDialog,
+    openUpdateEmployeesStatusDialog:
+      employeesUIEvents.openUpdateEmployeesStatusDialog,
   };
   return (
-    <EmployeesUIContext.Provider value={value}>{children}</EmployeesUIContext.Provider>
+    <EmployeesUIContext.Provider value={value}>
+      {children}
+    </EmployeesUIContext.Provider>
   );
 }

@@ -32,8 +32,10 @@ export function MassageReservePricesTable() {
       setIds: massageReservePricesUIContext.setIds,
       queryParams: massageReservePricesUIContext.queryParams,
       setQueryParams: massageReservePricesUIContext.setQueryParams,
-      openEditMassageReservePricePage: massageReservePricesUIContext.openEditMassageReservePricePage,
-      openDeleteMassageReservePriceDialog: massageReservePricesUIContext.openDeleteMassageReservePriceDialog,
+      openEditMassageReservePricePage:
+        massageReservePricesUIContext.openEditMassageReservePricePage,
+      openDeleteMassageReservePriceDialog:
+        massageReservePricesUIContext.openDeleteMassageReservePriceDialog,
     };
   }, [massageReservePricesUIContext]);
 
@@ -50,7 +52,9 @@ export function MassageReservePricesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     massageReservePricesUIProps.setIds([]);
-    dispatch(actions.fetchMassageReservePrices(massageReservePricesUIProps.queryParams));
+    dispatch(
+      actions.fetchMassageReservePrices(massageReservePricesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [massageReservePricesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function MassageReservePricesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditMassageReservePricePage: massageReservePricesUIProps.openEditMassageReservePricePage,
-        openDeleteMassageReservePriceDialog: massageReservePricesUIProps.openDeleteMassageReservePriceDialog,
+        openEditMassageReservePricePage:
+          massageReservePricesUIProps.openEditMassageReservePricePage,
+        openDeleteMassageReservePriceDialog:
+          massageReservePricesUIProps.openDeleteMassageReservePriceDialog,
         t: t,
       },
       classes: "text-right pr-0",

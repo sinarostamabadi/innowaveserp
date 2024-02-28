@@ -26,9 +26,11 @@ export function AccountFloatingPage({ history }) {
       history.push("/accounting/accountFloatings/updateStatus");
     },
   };
-  
+
   return (
-    <AccountFloatingUIProvider accountFloatingUIEvents={accountFloatingUIEvents}>
+    <AccountFloatingUIProvider
+      accountFloatingUIEvents={accountFloatingUIEvents}
+    >
       <AccountFloatingLoadingDialog />
       <Route path="/accounting/accountFloatings/:id/delete">
         {({ history, match }) => (

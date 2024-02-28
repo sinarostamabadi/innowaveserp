@@ -6,16 +6,20 @@ import { useTranslation } from "react-i18next";
 export function EmployeeTypeEditDialogHeader({ id, isLoading }) {
   const { t } = useTranslation();
   const [title, setTitle] = useState("");
-  const [ actionsLoading, setActionsLoading ] = useState(isLoading);
+  const [actionsLoading, setActionsLoading] = useState(isLoading);
 
   useEffect(() => {
     setActionsLoading(isLoading);
   }, [isLoading]);
 
   useEffect(() => {
-    id 
-      ? setTitle(t("Common.Edit") + " " + t("BodyBuildingEmployeeExpertise.Entity"))
-      : setTitle(t("Common.Create") + " " + t("BodyBuildingEmployeeExpertise.Entity"));    
+    id
+      ? setTitle(
+          t("Common.Edit") + " " + t("BodyBuildingEmployeeExpertise.Entity")
+        )
+      : setTitle(
+          t("Common.Create") + " " + t("BodyBuildingEmployeeExpertise.Entity")
+        );
   }, [id, t]);
 
   return (

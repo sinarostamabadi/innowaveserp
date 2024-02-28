@@ -32,8 +32,10 @@ export function BowlingCompetitionsTable() {
       setIds: bowlingCompetitionsUIContext.setIds,
       queryParams: bowlingCompetitionsUIContext.queryParams,
       setQueryParams: bowlingCompetitionsUIContext.setQueryParams,
-      openEditBowlingCompetitionPage: bowlingCompetitionsUIContext.openEditBowlingCompetitionPage,
-      openDeleteBowlingCompetitionDialog: bowlingCompetitionsUIContext.openDeleteBowlingCompetitionDialog,
+      openEditBowlingCompetitionPage:
+        bowlingCompetitionsUIContext.openEditBowlingCompetitionPage,
+      openDeleteBowlingCompetitionDialog:
+        bowlingCompetitionsUIContext.openDeleteBowlingCompetitionDialog,
     };
   }, [bowlingCompetitionsUIContext]);
 
@@ -43,14 +45,20 @@ export function BowlingCompetitionsTable() {
   );
 
   const { totalCount, entities, listLoading } = currentState;
-  const configs = getConfig(BowlingCompetitionModel, "BowlingCompetitionDate", "desc");
+  const configs = getConfig(
+    BowlingCompetitionModel,
+    "BowlingCompetitionDate",
+    "desc"
+  );
   const fieldKey = getFields(BowlingCompetitionModel);
   const fields = BowlingCompetitionModel;
 
   const dispatch = useDispatch();
   useEffect(() => {
     bowlingCompetitionsUIProps.setIds([]);
-    dispatch(actions.fetchBowlingCompetitions(bowlingCompetitionsUIProps.queryParams));
+    dispatch(
+      actions.fetchBowlingCompetitions(bowlingCompetitionsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bowlingCompetitionsUIProps.queryParams, dispatch]);
 
@@ -60,14 +68,16 @@ export function BowlingCompetitionsTable() {
       text: t("BowlingCompetition." + fields.Title.display),
       sort: fields.Title.sortable,
       sortCaret: sortCaret,
-    },    
+    },
     {
       dataField: "action",
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditBowlingCompetitionPage: bowlingCompetitionsUIProps.openEditBowlingCompetitionPage,
-        openDeleteBowlingCompetitionDialog: bowlingCompetitionsUIProps.openDeleteBowlingCompetitionDialog,
+        openEditBowlingCompetitionPage:
+          bowlingCompetitionsUIProps.openEditBowlingCompetitionPage,
+        openDeleteBowlingCompetitionDialog:
+          bowlingCompetitionsUIProps.openDeleteBowlingCompetitionDialog,
         t: t,
       },
       classes: "text-right pr-0",

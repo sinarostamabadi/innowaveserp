@@ -1,4 +1,3 @@
-
 import { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { DiscountsTable } from "./Discounts-table/DiscountsTable";
-import { useDiscountsUIContext, DiscountsUIConsumer } from "./DiscountsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useDiscountsUIContext,
+  DiscountsUIConsumer,
+} from "./DiscountsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function DiscountsCard() {
   const { t } = useTranslation();
@@ -24,14 +26,17 @@ export function DiscountsCard() {
       newDiscountButtonClick: discountsUIContext.newDiscountButtonClick,
       openDeleteDiscountsDialog: discountsUIContext.openDeleteDiscountsDialog,
       openEditDiscountPage: discountsUIContext.openEditDiscountPage,
-      openUpdateDiscountsStatusDialog: discountsUIContext.openUpdateDiscountsStatusDialog,
+      openUpdateDiscountsStatusDialog:
+        discountsUIContext.openUpdateDiscountsStatusDialog,
       openFetchDiscountsDialog: discountsUIContext.openFetchDiscountsDialog,
     };
   }, [discountsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("BodyBuildingDiscount.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("BodyBuildingDiscount.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"

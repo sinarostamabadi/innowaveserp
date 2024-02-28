@@ -47,7 +47,8 @@ export const RestaurantInvoiceCostDiscountsUIProvider = forwardRef(
                 "temp_"
               ) > -1
             )
-              restaurantInvoiceCostDiscount.RestaurantInvoiceCostDiscountId = null;
+              restaurantInvoiceCostDiscount.RestaurantInvoiceCostDiscountId =
+                null;
 
             return restaurantInvoiceCostDiscount;
           })
@@ -80,10 +81,8 @@ export const RestaurantInvoiceCostDiscountsUIProvider = forwardRef(
     const [restaurantInvoiceCosts, setRestaurantInvoiceCosts] = useState(
       restaurantInvoiceCost
     );
-    const [
-      restaurantInvoiceDiscounts,
-      setRestaurantInvoiceDiscounts,
-    ] = useState(restaurantInvoiceDiscount);
+    const [restaurantInvoiceDiscounts, setRestaurantInvoiceDiscounts] =
+      useState(restaurantInvoiceDiscount);
 
     const [costDiscounts, setCostDiscounts] = useState([
       ...restaurantInvoiceCost,
@@ -104,59 +103,59 @@ export const RestaurantInvoiceCostDiscountsUIProvider = forwardRef(
         setRestaurantInvoiceDiscounts(
           restaurantInvoiceForEdit.RestaurantInvoiceDiscount
         );
-        
-        setTotalCount(restaurantInvoiceForEdit.RestaurantInvoiceCost.length + restaurantInvoiceForEdit.RestaurantInvoiceDiscount.length);
+
+        setTotalCount(
+          restaurantInvoiceForEdit.RestaurantInvoiceCost.length +
+            restaurantInvoiceForEdit.RestaurantInvoiceDiscount.length
+        );
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [restaurantInvoiceForEdit]);
 
     useEffect(() => {
       let newCosts = [];
-      restaurantInvoiceCosts.forEach((model)=>{
+      restaurantInvoiceCosts.forEach((model) => {
         let obj = {};
         for (const key in model) {
           if (model.hasOwnProperty(key)) {
             const element = model[key];
-            obj[key]= element;
+            obj[key] = element;
           }
         }
         console.log("obj > ", obj);
-        
+
         obj["Id"] = obj.RestaurantInvoiceCostId;
         obj["mode"] = "cost";
         obj["Title"] = "هزینه";
         obj["TypeId"] = obj.RestaurantCostTypeId;
         obj["Type"] = obj.RestaurantCostType;
         obj["Percent"] = obj.RestaurantCostType.CostPercent;
-        
+
         newCosts.push(obj);
       });
-      
+
       let newDiscounts = [];
       restaurantInvoiceDiscounts.forEach((model) => {
         let obj = {};
         for (const key in model) {
           if (model.hasOwnProperty(key)) {
             const element = model[key];
-            obj[key]= element;
+            obj[key] = element;
           }
         }
         console.log("obj > ", obj);
 
-        obj["Id"]= obj.RestaurantInvoiceDiscountId;
+        obj["Id"] = obj.RestaurantInvoiceDiscountId;
         obj["mode"] = "discount";
         obj["Title"] = "تخفیف";
         obj["TypeId"] = obj.RestaurantDiscountTypeId;
         obj["Type"] = obj.RestaurantDiscountType;
         obj["Percent"] = obj.RestaurantDiscountType.DiscountPercent;
-        
+
         newDiscounts.push(obj);
       });
 
-      setCostDiscounts([
-        ...newCosts,
-        ...newDiscounts,
-      ]);
+      setCostDiscounts([...newCosts, ...newDiscounts]);
 
       console.log("RestaurantInvoiceCost >> ", newCosts);
       console.log("RestaurantInvoiceDiscount >> ", newDiscounts);
@@ -199,7 +198,8 @@ export const RestaurantInvoiceCostDiscountsUIProvider = forwardRef(
       restaurantInvoiceCostDiscount.RestaurantInvoiceCostDiscountId =
         "temp_" + Math.floor(Math.random() * 100);
 
-      restaurantInvoiceCostDiscount.RestaurantInvoiceId = +restaurantInvoiceCostDiscount.RestaurantInvoiceId;
+      restaurantInvoiceCostDiscount.RestaurantInvoiceId =
+        +restaurantInvoiceCostDiscount.RestaurantInvoiceId;
 
       setCostDiscounts((RestaurantInvoiceCostDiscounts) => [
         ...RestaurantInvoiceCostDiscounts,
@@ -220,8 +220,10 @@ export const RestaurantInvoiceCostDiscountsUIProvider = forwardRef(
     const updateRestaurantInvoiceCostDiscount = (
       restaurantInvoiceCostDiscount
     ) => {
-      restaurantInvoiceCostDiscount.RestaurantInvoiceCostDiscountTypeId = +restaurantInvoiceCostDiscount.RestaurantInvoiceCostDiscountTypeId;
-      restaurantInvoiceCostDiscount.RestaurantInvoiceId = +restaurantInvoiceCostDiscount.RestaurantInvoiceId;
+      restaurantInvoiceCostDiscount.RestaurantInvoiceCostDiscountTypeId =
+        +restaurantInvoiceCostDiscount.RestaurantInvoiceCostDiscountTypeId;
+      restaurantInvoiceCostDiscount.RestaurantInvoiceId =
+        +restaurantInvoiceCostDiscount.RestaurantInvoiceId;
 
       setCostDiscounts((RestaurantInvoiceCostDiscounts) =>
         RestaurantInvoiceCostDiscounts.map((item) =>

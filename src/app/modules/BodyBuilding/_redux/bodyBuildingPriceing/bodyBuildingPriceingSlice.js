@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBodyBuildingPriceingState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const bodyBuildingPriceingSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBodyBuildingPriceingById  
+    // getBodyBuildingPriceingById
     bodyBuildingPriceingFetched: (state, action) => {
       state.actionsLoading = false;
-      state.bodyBuildingPriceingForEdit = action.payload.bodyBuildingPriceingForEdit;
+      state.bodyBuildingPriceingForEdit =
+        action.payload.bodyBuildingPriceingForEdit;
       state.error = null;
     },
-    // findBodyBuildingPriceing  
+    // findBodyBuildingPriceing
     bodyBuildingPriceingFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const bodyBuildingPriceingSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBodyBuildingPriceing  
+    // createBodyBuildingPriceing
     bodyBuildingPriceingCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBodyBuildingPriceing  
+    // updateBodyBuildingPriceing
     bodyBuildingPriceingUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BodyBuildingPriceingId === action.payload.bodyBuildingPriceing.BodyBuildingPriceingId) {
+        if (
+          entity.BodyBuildingPriceingId ===
+          action.payload.bodyBuildingPriceing.BodyBuildingPriceingId
+        ) {
           return action.payload.bodyBuildingPriceing;
         }
         return entity;
       });
     },
-    // deleteBodyBuildingPriceing  
+    // deleteBodyBuildingPriceing
     bodyBuildingPriceingDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BodyBuildingPriceingId !== action.payload.BodyBuildingPriceingId  
+        (el) =>
+          el.BodyBuildingPriceingId !== action.payload.BodyBuildingPriceingId
       );
     },
-    // deleteBodyBuildingPriceing  
+    // deleteBodyBuildingPriceing
     bodyBuildingPriceingDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BodyBuildingPriceingId)  
+        (el) => !action.payload.ids.includes(el.BodyBuildingPriceingId)
       );
     },
-    // bodyBuildingPriceingUpdateState  
+    // bodyBuildingPriceingUpdateState
     bodyBuildingPriceingStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

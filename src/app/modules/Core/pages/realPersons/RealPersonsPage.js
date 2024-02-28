@@ -32,7 +32,7 @@ export function RealPersonsPage({ history }) {
       <RealPersonsLoadingDialog />
       <Route path="/core/realPersons/:id/delete">
         {({ history, match }) => (
-          <RealPersonDeleteDialog  
+          <RealPersonDeleteDialog
             show={match != null}
             id={match && match.params.id}
             onHide={() => {

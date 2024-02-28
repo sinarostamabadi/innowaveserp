@@ -97,18 +97,30 @@ export function DetailsTable() {
         <PleaseWaitMessage entities={detailsUIProps.activeDetails} />
         <NoRecordsFoundMessage entities={detailsUIProps.activeDetails} />
       </BootstrapTable>
-      <div className="d-flex" style={{width: "30%", flexDirection: "row",textAlign: "right",float: "left"}}>
+      <div
+        className="d-flex"
+        style={{
+          width: "30%",
+          flexDirection: "row",
+          textAlign: "right",
+          float: "left",
+        }}
+      >
         <div className="flex-grow-1">
           بدهکار:{" "}
-          {!!detailsUIProps.activeDetails && detailsUIProps.activeDetails.lenght? detailsUIProps.activeDetails
-            .map((x) => x.Bed)
-            .reduce((a, b) => a + b): 0}
+          {!!detailsUIProps.activeDetails && detailsUIProps.activeDetails.lenght
+            ? detailsUIProps.activeDetails
+                .map((x) => x.Bed)
+                .reduce((a, b) => a + b)
+            : 0}
         </div>
         <div className="flex-grow-1">
           بستانکار:{" "}
-          {!!detailsUIProps.activeDetails && detailsUIProps.activeDetails.lenght? detailsUIProps.activeDetails
-            .map((x) => x.Bes)
-            .reduce((a, b) => a + b): 0}
+          {!!detailsUIProps.activeDetails && detailsUIProps.activeDetails.lenght
+            ? detailsUIProps.activeDetails
+                .map((x) => x.Bes)
+                .reduce((a, b) => a + b)
+            : 0}
         </div>
       </div>
     </>

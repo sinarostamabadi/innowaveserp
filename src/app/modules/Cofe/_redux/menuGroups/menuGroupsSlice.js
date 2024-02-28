@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialMenuGroupsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const menuGroupsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getMenuGroupById  
+    // getMenuGroupById
     menuGroupFetched: (state, action) => {
       state.actionsLoading = false;
       state.menuGroupForEdit = action.payload.menuGroupForEdit;
       state.error = null;
     },
-    // findMenuGroups  
+    // findMenuGroups
     menuGroupsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const menuGroupsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createMenuGroup  
+    // createMenuGroup
     menuGroupCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateMenuGroup  
+    // updateMenuGroup
     menuGroupUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const menuGroupsSlice = createSlice({
         return entity;
       });
     },
-    // deleteMenuGroup  
+    // deleteMenuGroup
     menuGroupDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.MenuGroupId !== action.payload.MenuGroupId  
+        (el) => el.MenuGroupId !== action.payload.MenuGroupId
       );
     },
-    // deleteMenuGroups  
+    // deleteMenuGroups
     menuGroupsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.MenuGroupId)  
+        (el) => !action.payload.ids.includes(el.MenuGroupId)
       );
     },
-    // menuGroupsUpdateState  
+    // menuGroupsUpdateState
     menuGroupsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

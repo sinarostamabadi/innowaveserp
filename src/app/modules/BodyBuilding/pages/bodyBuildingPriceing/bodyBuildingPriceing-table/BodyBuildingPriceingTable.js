@@ -32,8 +32,10 @@ export function BodyBuildingPriceingTable() {
       setIds: bodyBuildingPriceingUIContext.setIds,
       queryParams: bodyBuildingPriceingUIContext.queryParams,
       setQueryParams: bodyBuildingPriceingUIContext.setQueryParams,
-      openEditBodyBuildingPriceingPage: bodyBuildingPriceingUIContext.openEditBodyBuildingPriceingPage,
-      openDeleteBodyBuildingPriceingDialog: bodyBuildingPriceingUIContext.openDeleteBodyBuildingPriceingDialog,
+      openEditBodyBuildingPriceingPage:
+        bodyBuildingPriceingUIContext.openEditBodyBuildingPriceingPage,
+      openDeleteBodyBuildingPriceingDialog:
+        bodyBuildingPriceingUIContext.openDeleteBodyBuildingPriceingDialog,
     };
   }, [bodyBuildingPriceingUIContext]);
 
@@ -50,7 +52,9 @@ export function BodyBuildingPriceingTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     bodyBuildingPriceingUIProps.setIds([]);
-    dispatch(actions.fetchBodyBuildingPriceing(bodyBuildingPriceingUIProps.queryParams));
+    dispatch(
+      actions.fetchBodyBuildingPriceing(bodyBuildingPriceingUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bodyBuildingPriceingUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function BodyBuildingPriceingTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditBodyBuildingPriceingPage: bodyBuildingPriceingUIProps.openEditBodyBuildingPriceingPage,
-        openDeleteBodyBuildingPriceingDialog: bodyBuildingPriceingUIProps.openDeleteBodyBuildingPriceingDialog,
+        openEditBodyBuildingPriceingPage:
+          bodyBuildingPriceingUIProps.openEditBodyBuildingPriceingPage,
+        openDeleteBodyBuildingPriceingDialog:
+          bodyBuildingPriceingUIProps.openDeleteBodyBuildingPriceingDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -21,7 +21,7 @@ export function PhoneEditDialogHeader({ id }) {
   useEffect(() => {
     let _title = id ? "" : t("Common.Create") + " " + t("Phone.Entity");
     if (phoneForEdit && id) {
-      _title = t("Common.Edit") + " " + t("Phone.Entity") ;
+      _title = t("Common.Edit") + " " + t("Phone.Entity");
     }
 
     setTitle(_title);

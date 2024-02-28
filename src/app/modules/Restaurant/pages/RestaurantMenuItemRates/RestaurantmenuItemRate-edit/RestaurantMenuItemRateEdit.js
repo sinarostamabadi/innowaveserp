@@ -44,7 +44,8 @@ export function RestaurantMenuItemRateEdit({
   const { actionsLoading, restaurantMenuItemRateForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.restaurantMenuItemRates.actionsLoading,
-      restaurantMenuItemRateForEdit: state.restaurantMenuItemRates.restaurantMenuItemRateForEdit,
+      restaurantMenuItemRateForEdit:
+        state.restaurantMenuItemRates.restaurantMenuItemRateForEdit,
       error: state.restaurantMenuItemRates.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function RestaurantMenuItemRateEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("RestaurantMenuItemRate.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("RestaurantMenuItemRate.Entity");
 
     if (restaurantMenuItemRateForEdit && id) {
       _title = t("Common.Edit") + " " + restaurantMenuItemRateForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function RestaurantMenuItemRateEdit({
         .then((arg) => {
           backToRestaurantMenuItemRatesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateRestaurantMenuItemRate(id, values))
         .then(() => backToRestaurantMenuItemRatesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 
@@ -149,7 +152,9 @@ export function RestaurantMenuItemRateEdit({
           {tab === "basic" && (
             <RestaurantMenuItemRateEditForm
               actionsLoading={actionsLoading}
-              restaurantMenuItemRate={restaurantMenuItemRateForEdit || initModel}
+              restaurantMenuItemRate={
+                restaurantMenuItemRateForEdit || initModel
+              }
               btnRef={btnRef}
               saveRestaurantMenuItemRate={saveRestaurantMenuItemRate}
             />

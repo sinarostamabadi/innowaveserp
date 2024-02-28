@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPoolDiscountsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const poolDiscountsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPoolDiscountById  
+    // getPoolDiscountById
     poolDiscountFetched: (state, action) => {
       state.actionsLoading = false;
       state.poolDiscountForEdit = action.payload.poolDiscountForEdit;
       state.error = null;
     },
-    // findPoolDiscounts  
+    // findPoolDiscounts
     poolDiscountsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,42 @@ export const poolDiscountsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPoolDiscount  
+    // createPoolDiscount
     poolDiscountCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePoolDiscount  
+    // updatePoolDiscount
     poolDiscountUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.PoolDiscountId === action.payload.poolDiscount.PoolDiscountId) {
+        if (
+          entity.PoolDiscountId === action.payload.poolDiscount.PoolDiscountId
+        ) {
           return action.payload.poolDiscount;
         }
         return entity;
       });
     },
-    // deletePoolDiscount  
+    // deletePoolDiscount
     poolDiscountDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PoolDiscountId !== action.payload.PoolDiscountId  
+        (el) => el.PoolDiscountId !== action.payload.PoolDiscountId
       );
     },
-    // deletePoolDiscounts  
+    // deletePoolDiscounts
     poolDiscountsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PoolDiscountId)  
+        (el) => !action.payload.ids.includes(el.PoolDiscountId)
       );
     },
-    // poolDiscountsUpdateState  
+    // poolDiscountsUpdateState
     poolDiscountsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -17,7 +17,9 @@ export function EmployeeWorkExperiencesPage({ history }) {
       history.push(`/employment/employeeWorkExperiences/${id}/delete`);
     },
     openDeleteEmployeeWorkExperiencesDialog: () => {
-      history.push(`/employment/employeeWorkExperiences/deleteEmployeeWorkExperiences`);
+      history.push(
+        `/employment/employeeWorkExperiences/deleteEmployeeWorkExperiences`
+      );
     },
     openFetchEmployeeWorkExperiencesDialog: () => {
       history.push(`/employment/employeeWorkExperiences/fetch`);
@@ -26,9 +28,11 @@ export function EmployeeWorkExperiencesPage({ history }) {
       history.push("/employment/employeeWorkExperiences/updateStatus");
     },
   };
-  
+
   return (
-    <EmployeeWorkExperiencesUIProvider employeeWorkExperiencesUIEvents={employeeWorkExperiencesUIEvents}>
+    <EmployeeWorkExperiencesUIProvider
+      employeeWorkExperiencesUIEvents={employeeWorkExperiencesUIEvents}
+    >
       <EmployeeWorkExperiencesLoadingDialog />
       <Route path="/employment/employeeWorkExperiences/:id/delete">
         {({ history, match }) => (

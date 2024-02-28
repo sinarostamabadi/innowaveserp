@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialCashsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const cashsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCashById  
+    // getCashById
     cashFetched: (state, action) => {
       state.actionsLoading = false;
       state.cashForEdit = action.payload.cashForEdit;
       state.error = null;
     },
-    // findCashs  
+    // findCashs
     cashsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const cashsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCash  
+    // createCash
     cashCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCash  
+    // updateCash
     cashUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const cashsSlice = createSlice({
         return entity;
       });
     },
-    // deleteCash  
+    // deleteCash
     cashDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CashId !== action.payload.CashId  
+        (el) => el.CashId !== action.payload.CashId
       );
     },
-    // deleteCashs  
+    // deleteCashs
     cashsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CashId)  
+        (el) => !action.payload.ids.includes(el.CashId)
       );
     },
-    // cashsUpdateState  
+    // cashsUpdateState
     cashsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

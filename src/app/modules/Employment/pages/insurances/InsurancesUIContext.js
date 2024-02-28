@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { InsuranceModel } from "../../../../../core/_models/Employment/InsuranceModel";
@@ -30,7 +29,7 @@ export function InsurancesUIProvider({ insurancesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function InsurancesUIProvider({ insurancesUIEvents, children }) {
     openDeleteInsuranceDialog: insurancesUIEvents.openDeleteInsuranceDialog,
     openDeleteInsurancesDialog: insurancesUIEvents.openDeleteInsurancesDialog,
     openFetchInsurancesDialog: insurancesUIEvents.openFetchInsurancesDialog,
-    openUpdateInsurancesStatusDialog: insurancesUIEvents.openUpdateInsurancesStatusDialog,
+    openUpdateInsurancesStatusDialog:
+      insurancesUIEvents.openUpdateInsurancesStatusDialog,
   };
   return (
-    <InsurancesUIContext.Provider value={value}>{children}</InsurancesUIContext.Provider>
+    <InsurancesUIContext.Provider value={value}>
+      {children}
+    </InsurancesUIContext.Provider>
   );
 }

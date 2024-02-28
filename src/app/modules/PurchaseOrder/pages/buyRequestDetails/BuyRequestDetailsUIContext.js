@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BuyRequestDetailModel } from "../../../../../core/_models/PurchaseOrder/BuyRequestDetailModel";
@@ -12,7 +11,10 @@ export function useBuyRequestDetailsUIContext() {
 
 export const BuyRequestDetailsUIConsumer = BuyRequestDetailsUIContext.Consumer;
 
-export function BuyRequestDetailsUIProvider({ buyRequestDetailsUIEvents, children }) {
+export function BuyRequestDetailsUIProvider({
+  buyRequestDetailsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(BuyRequestDetailModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function BuyRequestDetailsUIProvider({ buyRequestDetailsUIEvents, childre
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function BuyRequestDetailsUIProvider({ buyRequestDetailsUIEvents, childre
     setIds,
     setQueryParams,
     dataModel: BuyRequestDetailModel,
-    newBuyRequestDetailButtonClick: buyRequestDetailsUIEvents.newBuyRequestDetailButtonClick,
-    openEditBuyRequestDetailPage: buyRequestDetailsUIEvents.openEditBuyRequestDetailPage,
-    openDeleteBuyRequestDetailDialog: buyRequestDetailsUIEvents.openDeleteBuyRequestDetailDialog,
-    openDeleteBuyRequestDetailsDialog: buyRequestDetailsUIEvents.openDeleteBuyRequestDetailsDialog,
-    openFetchBuyRequestDetailsDialog: buyRequestDetailsUIEvents.openFetchBuyRequestDetailsDialog,
-    openUpdateBuyRequestDetailsStatusDialog: buyRequestDetailsUIEvents.openUpdateBuyRequestDetailsStatusDialog,
+    newBuyRequestDetailButtonClick:
+      buyRequestDetailsUIEvents.newBuyRequestDetailButtonClick,
+    openEditBuyRequestDetailPage:
+      buyRequestDetailsUIEvents.openEditBuyRequestDetailPage,
+    openDeleteBuyRequestDetailDialog:
+      buyRequestDetailsUIEvents.openDeleteBuyRequestDetailDialog,
+    openDeleteBuyRequestDetailsDialog:
+      buyRequestDetailsUIEvents.openDeleteBuyRequestDetailsDialog,
+    openFetchBuyRequestDetailsDialog:
+      buyRequestDetailsUIEvents.openFetchBuyRequestDetailsDialog,
+    openUpdateBuyRequestDetailsStatusDialog:
+      buyRequestDetailsUIEvents.openUpdateBuyRequestDetailsStatusDialog,
   };
   return (
-    <BuyRequestDetailsUIContext.Provider value={value}>{children}</BuyRequestDetailsUIContext.Provider>
+    <BuyRequestDetailsUIContext.Provider value={value}>
+      {children}
+    </BuyRequestDetailsUIContext.Provider>
   );
 }

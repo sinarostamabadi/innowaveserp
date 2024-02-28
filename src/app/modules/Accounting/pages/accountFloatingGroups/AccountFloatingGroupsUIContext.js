@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { AccountFloatingGroupModel } from "../../../../../core/_models/Accounting/AccountFloatingGroupModel";
@@ -10,9 +9,13 @@ export function useAccountFloatingGroupsUIContext() {
   return useContext(AccountFloatingGroupsUIContext);
 }
 
-export const AccountFloatingGroupsUIConsumer = AccountFloatingGroupsUIContext.Consumer;
+export const AccountFloatingGroupsUIConsumer =
+  AccountFloatingGroupsUIContext.Consumer;
 
-export function AccountFloatingGroupsUIProvider({ accountFloatingGroupsUIEvents, children }) {
+export function AccountFloatingGroupsUIProvider({
+  accountFloatingGroupsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(AccountFloatingGroupModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function AccountFloatingGroupsUIProvider({ accountFloatingGroupsUIEvents,
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function AccountFloatingGroupsUIProvider({ accountFloatingGroupsUIEvents,
     setIds,
     setQueryParams,
     dataModel: AccountFloatingGroupModel,
-    newAccountFloatingGroupButtonClick: accountFloatingGroupsUIEvents.newAccountFloatingGroupButtonClick,
-    openEditAccountFloatingGroupPage: accountFloatingGroupsUIEvents.openEditAccountFloatingGroupPage,
-    openDeleteAccountFloatingGroupDialog: accountFloatingGroupsUIEvents.openDeleteAccountFloatingGroupDialog,
-    openDeleteAccountFloatingGroupsDialog: accountFloatingGroupsUIEvents.openDeleteAccountFloatingGroupsDialog,
-    openFetchAccountFloatingGroupsDialog: accountFloatingGroupsUIEvents.openFetchAccountFloatingGroupsDialog,
-    openUpdateAccountFloatingGroupsStatusDialog: accountFloatingGroupsUIEvents.openUpdateAccountFloatingGroupsStatusDialog,
+    newAccountFloatingGroupButtonClick:
+      accountFloatingGroupsUIEvents.newAccountFloatingGroupButtonClick,
+    openEditAccountFloatingGroupPage:
+      accountFloatingGroupsUIEvents.openEditAccountFloatingGroupPage,
+    openDeleteAccountFloatingGroupDialog:
+      accountFloatingGroupsUIEvents.openDeleteAccountFloatingGroupDialog,
+    openDeleteAccountFloatingGroupsDialog:
+      accountFloatingGroupsUIEvents.openDeleteAccountFloatingGroupsDialog,
+    openFetchAccountFloatingGroupsDialog:
+      accountFloatingGroupsUIEvents.openFetchAccountFloatingGroupsDialog,
+    openUpdateAccountFloatingGroupsStatusDialog:
+      accountFloatingGroupsUIEvents.openUpdateAccountFloatingGroupsStatusDialog,
   };
   return (
-    <AccountFloatingGroupsUIContext.Provider value={value}>{children}</AccountFloatingGroupsUIContext.Provider>
+    <AccountFloatingGroupsUIContext.Provider value={value}>
+      {children}
+    </AccountFloatingGroupsUIContext.Provider>
   );
 }

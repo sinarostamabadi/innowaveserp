@@ -33,7 +33,8 @@ export const BuyRequestEditForm = forwardRef(({ buyRequest }, ref) => {
   let callBack;
   const BuyRequestEditSchema = Yup.object().shape({
     WarehouseId: Yup.string().required(
-      t("err.IsRequired", { 0: t("BuyRequest.Warehouse") }) + " !! برای انتخاب انبار پیشفرض به داشبورد انبار بروید !! "
+      t("err.IsRequired", { 0: t("BuyRequest.Warehouse") }) +
+      "!! Go to the warehouse dashboard to choose the default warehouse!!"
     ),
     BuyRequestDateObj: Yup.object()
       .required(t("err.IsRequired", { 0: t("BuyRequest.BuyRequestDate") }))
@@ -92,7 +93,10 @@ export const BuyRequestEditForm = forwardRef(({ buyRequest }, ref) => {
                       !!defaultWarehouse ? defaultWarehouse.WarehouseId : ""
                     }
                   /> */}
-                  <DefaultWarehouse name="WarehouseId" defaultWarehouse={buyRequest.Warehouse}/>
+                  <DefaultWarehouse
+                    name="WarehouseId"
+                    defaultWarehouse={buyRequest.Warehouse}
+                  />
                 </Col>
                 <Col md="4">
                   <DatePickerField

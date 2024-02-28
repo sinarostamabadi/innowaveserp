@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BodyBuildingDiscountModel } from "../../../../../core/_models/BodyBuilding/BodyBuildingDiscountModel";
@@ -30,7 +29,7 @@ export function DiscountsUIProvider({ discountsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function DiscountsUIProvider({ discountsUIEvents, children }) {
     openDeleteDiscountDialog: discountsUIEvents.openDeleteDiscountDialog,
     openDeleteDiscountsDialog: discountsUIEvents.openDeleteDiscountsDialog,
     openFetchDiscountsDialog: discountsUIEvents.openFetchDiscountsDialog,
-    openUpdateDiscountsStatusDialog: discountsUIEvents.openUpdateDiscountsStatusDialog,
+    openUpdateDiscountsStatusDialog:
+      discountsUIEvents.openUpdateDiscountsStatusDialog,
   };
   return (
-    <DiscountsUIContext.Provider value={value}>{children}</DiscountsUIContext.Provider>
+    <DiscountsUIContext.Provider value={value}>
+      {children}
+    </DiscountsUIContext.Provider>
   );
 }

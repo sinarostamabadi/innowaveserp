@@ -11,7 +11,7 @@ export function WarehouseEditForm({ warehouse, btnRef, saveWarehouse }) {
     Title: Yup.string()
       .min(2, t("err.Min", { 0: 2 }))
       .max(100, t("err.Max", { 0: 100 }))
-      .required(t("err.IsRequired", { 0: t("Warehouse.Title") }))
+      .required(t("err.IsRequired", { 0: t("Warehouse.Title") })),
   });
 
   const clean = (dirty) => {

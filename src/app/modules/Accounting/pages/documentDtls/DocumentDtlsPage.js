@@ -26,7 +26,7 @@ export function DocumentDtlsPage({ history }) {
       history.push("/accounting/documentDtls/updateStatus");
     },
   };
-  
+
   return (
     <DocumentDtlsUIProvider documentDtlsUIEvents={documentDtlsUIEvents}>
       <DocumentDtlsLoadingDialog />

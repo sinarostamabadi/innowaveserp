@@ -32,8 +32,10 @@ export function RolePermissionsesTable() {
       setIds: rolePermissionsesUIContext.setIds,
       queryParams: rolePermissionsesUIContext.queryParams,
       setQueryParams: rolePermissionsesUIContext.setQueryParams,
-      openEditRolePermissionsPage: rolePermissionsesUIContext.openEditRolePermissionsPage,
-      openDeleteRolePermissionsDialog: rolePermissionsesUIContext.openDeleteRolePermissionsDialog,
+      openEditRolePermissionsPage:
+        rolePermissionsesUIContext.openEditRolePermissionsPage,
+      openDeleteRolePermissionsDialog:
+        rolePermissionsesUIContext.openDeleteRolePermissionsDialog,
     };
   }, [rolePermissionsesUIContext]);
 
@@ -50,7 +52,9 @@ export function RolePermissionsesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     rolePermissionsesUIProps.setIds([]);
-    dispatch(actions.fetchRolePermissionses(rolePermissionsesUIProps.queryParams));
+    dispatch(
+      actions.fetchRolePermissionses(rolePermissionsesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rolePermissionsesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function RolePermissionsesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditRolePermissionsPage: rolePermissionsesUIProps.openEditRolePermissionsPage,
-        openDeleteRolePermissionsDialog: rolePermissionsesUIProps.openDeleteRolePermissionsDialog,
+        openEditRolePermissionsPage:
+          rolePermissionsesUIProps.openEditRolePermissionsPage,
+        openDeleteRolePermissionsDialog:
+          rolePermissionsesUIProps.openDeleteRolePermissionsDialog,
         t: t,
       },
       classes: "text-right pr-0",

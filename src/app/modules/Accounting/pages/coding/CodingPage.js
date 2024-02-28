@@ -26,7 +26,7 @@ export function CodingPage({ history }) {
       history.push("/accounting/coding/updateStatus");
     },
   };
-  
+
   return (
     <CodingUIProvider codingUIEvents={codingUIEvents}>
       <CodingLoadingDialog />

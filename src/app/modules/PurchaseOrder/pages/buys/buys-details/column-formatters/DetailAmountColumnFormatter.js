@@ -8,30 +8,30 @@ export function DetailAmountColumnFormatter(cellContent, row, rowIndex, { t }) {
   const hasSerial = row.Product.HasSerial;
   const amount = row.Amount;
   const serialCount = !!row.BuySerials ? row.BuySerials.length : 0;
-  
+
   return (
     <>
-        <OverlayTrigger
-          overlay={
-            <Tooltip id="specs-edit-tooltip">
-              {hasSerial ? (
-                <>
-                  {t("BuyDetail.Amount") + ": " + amount}
-                  <br />
-                  {t("Common.Serials") + ": " + serialCount}
-                </>
-              ) : (
-                t("BuyDetail.Amount") + ": " + amount
-              )}
-            </Tooltip>
-          }
+      <OverlayTrigger
+        overlay={
+          <Tooltip id="specs-edit-tooltip">
+            {hasSerial ? (
+              <>
+                {t("BuyDetail.Amount") + ": " + amount}
+                <br />
+                {t("Common.Serials") + ": " + serialCount}
+              </>
+            ) : (
+              t("BuyDetail.Amount") + ": " + amount
+            )}
+          </Tooltip>
+        }
+      >
+        <span
+          className={amount != serialCount && hasSerial ? "text-danger" : ""}
         >
-          <span
-            className={amount != serialCount && hasSerial ? "text-danger" : ""}
-          >
-            {amount + (hasSerial ? " (" + serialCount + ")" : "")}
-          </span>
-        </OverlayTrigger>
+          {amount + (hasSerial ? " (" + serialCount + ")" : "")}
+        </span>
+      </OverlayTrigger>
     </>
   );
 }

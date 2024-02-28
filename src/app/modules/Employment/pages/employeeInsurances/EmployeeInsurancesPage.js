@@ -26,9 +26,11 @@ export function EmployeeInsurancesPage({ history }) {
       history.push("/employment/employeeInsurances/updateStatus");
     },
   };
-  
+
   return (
-    <EmployeeInsurancesUIProvider employeeInsurancesUIEvents={employeeInsurancesUIEvents}>
+    <EmployeeInsurancesUIProvider
+      employeeInsurancesUIEvents={employeeInsurancesUIEvents}
+    >
       <EmployeeInsurancesLoadingDialog />
       <Route path="/employment/employeeInsurances/:id/delete">
         {({ history, match }) => (

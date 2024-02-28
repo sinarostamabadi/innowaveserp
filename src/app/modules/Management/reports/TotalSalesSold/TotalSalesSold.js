@@ -29,9 +29,7 @@ export function TotalSalesSold({ history }) {
     <TotalSalesSoldProvider events={events}>
       <Card>
         <CardHeader
-          title={
-            t("Common.Report") + " " + t("Reports.TotalSalesSold.Report")
-          }
+          title={t("Common.Report") + " " + t("Reports.TotalSalesSold.Report")}
         >
           <CardHeaderToolbar>
             <button

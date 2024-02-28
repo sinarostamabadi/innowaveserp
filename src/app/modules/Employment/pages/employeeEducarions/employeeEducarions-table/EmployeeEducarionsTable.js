@@ -32,8 +32,10 @@ export function EmployeeEducarionsTable() {
       setIds: employeeEducarionsUIContext.setIds,
       queryParams: employeeEducarionsUIContext.queryParams,
       setQueryParams: employeeEducarionsUIContext.setQueryParams,
-      openEditEmployeeEducarionPage: employeeEducarionsUIContext.openEditEmployeeEducarionPage,
-      openDeleteEmployeeEducarionDialog: employeeEducarionsUIContext.openDeleteEmployeeEducarionDialog,
+      openEditEmployeeEducarionPage:
+        employeeEducarionsUIContext.openEditEmployeeEducarionPage,
+      openDeleteEmployeeEducarionDialog:
+        employeeEducarionsUIContext.openDeleteEmployeeEducarionDialog,
     };
   }, [employeeEducarionsUIContext]);
 
@@ -50,7 +52,9 @@ export function EmployeeEducarionsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     employeeEducarionsUIProps.setIds([]);
-    dispatch(actions.fetchEmployeeEducarions(employeeEducarionsUIProps.queryParams));
+    dispatch(
+      actions.fetchEmployeeEducarions(employeeEducarionsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employeeEducarionsUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function EmployeeEducarionsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmployeeEducarionPage: employeeEducarionsUIProps.openEditEmployeeEducarionPage,
-        openDeleteEmployeeEducarionDialog: employeeEducarionsUIProps.openDeleteEmployeeEducarionDialog,
+        openEditEmployeeEducarionPage:
+          employeeEducarionsUIProps.openEditEmployeeEducarionPage,
+        openDeleteEmployeeEducarionDialog:
+          employeeEducarionsUIProps.openDeleteEmployeeEducarionDialog,
         t: t,
       },
       classes: "text-right pr-0",

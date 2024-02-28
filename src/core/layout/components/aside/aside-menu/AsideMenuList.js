@@ -43,7 +43,7 @@ export function AsideMenuList({ layoutProps }) {
         >
           <NavLink className="menu-link" to="/dashboard">
             <span className="svg-icon menu-icon">
-              <i className="fad fa-tachometer-alt-fast"></i>
+              <i className="fas fa-tachometer-alt-fast"></i>
             </span>
             <span className="menu-text">{t("MENU.DASHBOARD")}</span>
           </NavLink>

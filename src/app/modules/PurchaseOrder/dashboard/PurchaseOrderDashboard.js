@@ -31,7 +31,7 @@ export function PurchaseOrderDashboard() {
           >
             <div className="card-header">
               <div className="card-title">
-                <h3 className="card-label">اطلاعات خرید</h3>
+                <h3 className="card-label">Purchase order</h3>
               </div>
             </div>
             <div className="card-body">

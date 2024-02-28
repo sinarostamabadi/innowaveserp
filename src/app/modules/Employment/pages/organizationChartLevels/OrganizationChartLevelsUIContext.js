@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { OrganizationChartLevelModel } from "../../../../../core/_models/Employment/OrganizationChartLevelModel";
@@ -10,9 +9,13 @@ export function useOrganizationChartLevelsUIContext() {
   return useContext(OrganizationChartLevelsUIContext);
 }
 
-export const OrganizationChartLevelsUIConsumer = OrganizationChartLevelsUIContext.Consumer;
+export const OrganizationChartLevelsUIConsumer =
+  OrganizationChartLevelsUIContext.Consumer;
 
-export function OrganizationChartLevelsUIProvider({ organizationChartLevelsUIEvents, children }) {
+export function OrganizationChartLevelsUIProvider({
+  organizationChartLevelsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(OrganizationChartLevelModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function OrganizationChartLevelsUIProvider({ organizationChartLevelsUIEve
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function OrganizationChartLevelsUIProvider({ organizationChartLevelsUIEve
     setIds,
     setQueryParams,
     dataModel: OrganizationChartLevelModel,
-    newOrganizationChartLevelButtonClick: organizationChartLevelsUIEvents.newOrganizationChartLevelButtonClick,
-    openEditOrganizationChartLevelPage: organizationChartLevelsUIEvents.openEditOrganizationChartLevelPage,
-    openDeleteOrganizationChartLevelDialog: organizationChartLevelsUIEvents.openDeleteOrganizationChartLevelDialog,
-    openDeleteOrganizationChartLevelsDialog: organizationChartLevelsUIEvents.openDeleteOrganizationChartLevelsDialog,
-    openFetchOrganizationChartLevelsDialog: organizationChartLevelsUIEvents.openFetchOrganizationChartLevelsDialog,
-    openUpdateOrganizationChartLevelsStatusDialog: organizationChartLevelsUIEvents.openUpdateOrganizationChartLevelsStatusDialog,
+    newOrganizationChartLevelButtonClick:
+      organizationChartLevelsUIEvents.newOrganizationChartLevelButtonClick,
+    openEditOrganizationChartLevelPage:
+      organizationChartLevelsUIEvents.openEditOrganizationChartLevelPage,
+    openDeleteOrganizationChartLevelDialog:
+      organizationChartLevelsUIEvents.openDeleteOrganizationChartLevelDialog,
+    openDeleteOrganizationChartLevelsDialog:
+      organizationChartLevelsUIEvents.openDeleteOrganizationChartLevelsDialog,
+    openFetchOrganizationChartLevelsDialog:
+      organizationChartLevelsUIEvents.openFetchOrganizationChartLevelsDialog,
+    openUpdateOrganizationChartLevelsStatusDialog:
+      organizationChartLevelsUIEvents.openUpdateOrganizationChartLevelsStatusDialog,
   };
   return (
-    <OrganizationChartLevelsUIContext.Provider value={value}>{children}</OrganizationChartLevelsUIContext.Provider>
+    <OrganizationChartLevelsUIContext.Provider value={value}>
+      {children}
+    </OrganizationChartLevelsUIContext.Provider>
   );
 }

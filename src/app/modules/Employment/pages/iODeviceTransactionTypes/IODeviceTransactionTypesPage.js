@@ -17,7 +17,9 @@ export function IODeviceTransactionTypesPage({ history }) {
       history.push(`/employment/iODeviceTransactionTypes/${id}/delete`);
     },
     openDeleteIODeviceTransactionTypesDialog: () => {
-      history.push(`/employment/iODeviceTransactionTypes/deleteIODeviceTransactionTypes`);
+      history.push(
+        `/employment/iODeviceTransactionTypes/deleteIODeviceTransactionTypes`
+      );
     },
     openFetchIODeviceTransactionTypesDialog: () => {
       history.push(`/employment/iODeviceTransactionTypes/fetch`);
@@ -26,9 +28,11 @@ export function IODeviceTransactionTypesPage({ history }) {
       history.push("/employment/iODeviceTransactionTypes/updateStatus");
     },
   };
-  
+
   return (
-    <IODeviceTransactionTypesUIProvider iODeviceTransactionTypesUIEvents={iODeviceTransactionTypesUIEvents}>
+    <IODeviceTransactionTypesUIProvider
+      iODeviceTransactionTypesUIEvents={iODeviceTransactionTypesUIEvents}
+    >
       <IODeviceTransactionTypesLoadingDialog />
       <Route path="/employment/iODeviceTransactionTypes/:id/delete">
         {({ history, match }) => (

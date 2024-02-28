@@ -32,8 +32,10 @@ export function EmployeeContractsTable() {
       setIds: employeeContractsUIContext.setIds,
       queryParams: employeeContractsUIContext.queryParams,
       setQueryParams: employeeContractsUIContext.setQueryParams,
-      openEditEmployeeContractPage: employeeContractsUIContext.openEditEmployeeContractPage,
-      openDeleteEmployeeContractDialog: employeeContractsUIContext.openDeleteEmployeeContractDialog,
+      openEditEmployeeContractPage:
+        employeeContractsUIContext.openEditEmployeeContractPage,
+      openDeleteEmployeeContractDialog:
+        employeeContractsUIContext.openDeleteEmployeeContractDialog,
     };
   }, [employeeContractsUIContext]);
 
@@ -50,7 +52,9 @@ export function EmployeeContractsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     employeeContractsUIProps.setIds([]);
-    dispatch(actions.fetchEmployeeContracts(employeeContractsUIProps.queryParams));
+    dispatch(
+      actions.fetchEmployeeContracts(employeeContractsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employeeContractsUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function EmployeeContractsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmployeeContractPage: employeeContractsUIProps.openEditEmployeeContractPage,
-        openDeleteEmployeeContractDialog: employeeContractsUIProps.openDeleteEmployeeContractDialog,
+        openEditEmployeeContractPage:
+          employeeContractsUIProps.openEditEmployeeContractPage,
+        openDeleteEmployeeContractDialog:
+          employeeContractsUIProps.openDeleteEmployeeContractDialog,
         t: t,
       },
       classes: "text-right pr-0",

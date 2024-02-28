@@ -11,9 +11,15 @@ import {
   PleaseWaitMessage,
   sortCaret,
 } from "../../../../../core/_helpers";
-import {ActionsColumnFormatter} from "./actions/ActionsColumnFormatter";
-import {DateFaColumnFormatter} from "../../../../../core/_formatters";
-import { Pagination, Card, CardBody, CardHeader, CardHeaderToolbar } from "../../../../../core/_partials/controls";
+import { ActionsColumnFormatter } from "./actions/ActionsColumnFormatter";
+import { DateFaColumnFormatter } from "../../../../../core/_formatters";
+import {
+  Pagination,
+  Card,
+  CardBody,
+  CardHeader,
+  CardHeaderToolbar,
+} from "../../../../../core/_partials/controls";
 import { useBuyRequestsUIContext } from "../buyRequests/BuyRequestsUIContext";
 import { BuyRequestModel } from "../../../../../core/_models/PurchaseOrder/BuyRequestModel";
 import {
@@ -22,9 +28,7 @@ import {
 } from "../../../../../core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
 
-export default function WarehouseCartable({
-  history
-}) {
+export default function WarehouseCartable({ history }) {
   const { t } = useTranslation();
 
   const { currentState } = useSelector(
@@ -35,11 +39,14 @@ export default function WarehouseCartable({
   const defaultFilter = {
     Property: "BuyRequestStatusId",
     Operation: 5,
-    Values: ["2"]
+    Values: ["2"],
   };
   const { totalCount, entities, listLoading } = currentState;
   const configs = getConfig(BuyRequestModel, "BuyRequestDate", "desc");
-  const [queryParams, setQueryParams] = useState({...configs.initialFilter, Filters: [defaultFilter]});
+  const [queryParams, setQueryParams] = useState({
+    ...configs.initialFilter,
+    Filters: [defaultFilter],
+  });
   const fieldKey = getFields(BuyRequestModel);
   const fields = BuyRequestModel;
 
@@ -88,7 +95,7 @@ export default function WarehouseCartable({
       formatExtraData: {
         approve: null,
         deny: null,
-        show: (id)=> {
+        show: (id) => {
           history.push(`/PurchaseOrder/buyRequests/${id}/warehouse`);
         },
         t: t,
@@ -111,7 +118,7 @@ export default function WarehouseCartable({
   return (
     <>
       <Card>
-        <CardHeader title={t("Common.WarehouseCartable")}/>
+        <CardHeader title={t("Common.WarehouseCartable")} />
         <CardBody>
           <PaginationProvider pagination={paginationFactory(paginationOptions)}>
             {({ paginationProps, paginationTableProps }) => {

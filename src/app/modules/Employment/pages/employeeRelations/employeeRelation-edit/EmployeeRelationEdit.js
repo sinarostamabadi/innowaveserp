@@ -55,7 +55,9 @@ export function EmployeeRelationEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("EmployeeRelation.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("EmployeeRelation.Entity");
 
     if (employeeRelationForEdit && id) {
       _title = t("Common.Edit") + " " + employeeRelationForEdit.TitleFa;
@@ -73,11 +75,11 @@ export function EmployeeRelationEdit({
         .then((arg) => {
           backToEmployeeRelationsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateEmployeeRelation(id, values))
         .then(() => backToEmployeeRelationsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -16,7 +15,8 @@ export function RestaurantMenuItemAlbumDeleteDialog({ id, show, onHide }) {
   const { t } = useTranslation();
 
   // RestaurantMenuItemAlbums UI Context
-  const restaurantMenuItemAlbumsUIContext = useRestaurantMenuItemAlbumsUIContext();
+  const restaurantMenuItemAlbumsUIContext =
+    useRestaurantMenuItemAlbumsUIContext();
   const [error, setError] = useState(null);
   const restaurantMenuItemAlbumsUIProps = useMemo(() => {
     return {
@@ -48,7 +48,11 @@ export function RestaurantMenuItemAlbumDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteRestaurantMenuItemAlbum(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchRestaurantMenuItemAlbums(restaurantMenuItemAlbumsUIProps.queryParams));
+        dispatch(
+          actions.fetchRestaurantMenuItemAlbums(
+            restaurantMenuItemAlbumsUIProps.queryParams
+          )
+        );
         // clear selections list
         restaurantMenuItemAlbumsUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +71,12 @@ export function RestaurantMenuItemAlbumDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("RestaurantMenuItemAlbum.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("RestaurantMenuItemAlbum.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

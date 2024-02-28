@@ -29,9 +29,9 @@ export const fetchRealPerson = (id) => (dispatch) => {
     .then((response) => {
       const realPerson = response.data;
 
-      if (!!realPerson && !!realPerson.RealPerson){
-        const dr = realPerson.RealPerson.BirthDate.split('/');
-        
+      if (!!realPerson && !!realPerson.RealPerson) {
+        const dr = realPerson.RealPerson.BirthDate.split("/");
+
         realPerson.RealPerson.BirthDateObj = {
           day: +dr[2],
           month: +dr[1],

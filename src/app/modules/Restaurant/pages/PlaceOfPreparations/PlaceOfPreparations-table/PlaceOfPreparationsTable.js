@@ -32,8 +32,10 @@ export function PlaceOfPreparationsTable() {
       setIds: placeOfPreparationsUIContext.setIds,
       queryParams: placeOfPreparationsUIContext.queryParams,
       setQueryParams: placeOfPreparationsUIContext.setQueryParams,
-      openEditPlaceOfPreparationPage: placeOfPreparationsUIContext.openEditPlaceOfPreparationPage,
-      openDeletePlaceOfPreparationDialog: placeOfPreparationsUIContext.openDeletePlaceOfPreparationDialog,
+      openEditPlaceOfPreparationPage:
+        placeOfPreparationsUIContext.openEditPlaceOfPreparationPage,
+      openDeletePlaceOfPreparationDialog:
+        placeOfPreparationsUIContext.openDeletePlaceOfPreparationDialog,
     };
   }, [placeOfPreparationsUIContext]);
 
@@ -50,7 +52,9 @@ export function PlaceOfPreparationsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     placeOfPreparationsUIProps.setIds([]);
-    dispatch(actions.fetchPlaceOfPreparations(placeOfPreparationsUIProps.queryParams));
+    dispatch(
+      actions.fetchPlaceOfPreparations(placeOfPreparationsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [placeOfPreparationsUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function PlaceOfPreparationsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditPlaceOfPreparationPage: placeOfPreparationsUIProps.openEditPlaceOfPreparationPage,
-        openDeletePlaceOfPreparationDialog: placeOfPreparationsUIProps.openDeletePlaceOfPreparationDialog,
+        openEditPlaceOfPreparationPage:
+          placeOfPreparationsUIProps.openEditPlaceOfPreparationPage,
+        openDeletePlaceOfPreparationDialog:
+          placeOfPreparationsUIProps.openDeletePlaceOfPreparationDialog,
         t: t,
       },
       classes: "text-right pr-0",

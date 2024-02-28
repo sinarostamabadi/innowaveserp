@@ -29,7 +29,7 @@ export function CurrencyRatesUIProvider({ currencyRatesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -37,14 +37,21 @@ export function CurrencyRatesUIProvider({ currencyRatesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: CurrencyRateModel,
-    newCurrencyRateButtonClick: currencyRatesUIEvents.newCurrencyRateButtonClick,
+    newCurrencyRateButtonClick:
+      currencyRatesUIEvents.newCurrencyRateButtonClick,
     openEditCurrencyRatePage: currencyRatesUIEvents.openEditCurrencyRatePage,
-    openDeleteCurrencyRateDialog: currencyRatesUIEvents.openDeleteCurrencyRateDialog,
-    openDeleteCurrencyRatesDialog: currencyRatesUIEvents.openDeleteCurrencyRatesDialog,
-    openFetchCurrencyRatesDialog: currencyRatesUIEvents.openFetchCurrencyRatesDialog,
-    openUpdateCurrencyRatesStatusDialog: currencyRatesUIEvents.openUpdateCurrencyRatesStatusDialog,
+    openDeleteCurrencyRateDialog:
+      currencyRatesUIEvents.openDeleteCurrencyRateDialog,
+    openDeleteCurrencyRatesDialog:
+      currencyRatesUIEvents.openDeleteCurrencyRatesDialog,
+    openFetchCurrencyRatesDialog:
+      currencyRatesUIEvents.openFetchCurrencyRatesDialog,
+    openUpdateCurrencyRatesStatusDialog:
+      currencyRatesUIEvents.openUpdateCurrencyRatesStatusDialog,
   };
   return (
-    <CurrencyRatesUIContext.Provider value={value}>{children}</CurrencyRatesUIContext.Provider>
+    <CurrencyRatesUIContext.Provider value={value}>
+      {children}
+    </CurrencyRatesUIContext.Provider>
   );
 }

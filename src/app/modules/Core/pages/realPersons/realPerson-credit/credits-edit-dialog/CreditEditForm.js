@@ -4,30 +4,19 @@ import { useTranslation } from "react-i18next";
 import { Modal } from "react-bootstrap";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import {
-  Input
-} from "../../../../../../../core/_partials/controls";
+import { Input } from "../../../../../../../core/_partials/controls";
 import { getAllSpecialDayTypes } from "../../../../../General/_redux/specialDayTypes/specialDayTypesCrud";
 import { FaObjToEnDateTime } from "../../../../../../../core/_helpers";
 
-export function CreditEditForm({
-  saveCredit,
-  credit,
-  actionsLoading,
-  onHide,
-}) {
+export function CreditEditForm({ saveCredit, credit, actionsLoading, onHide }) {
   const { t } = useTranslation();
 
   // Validation schema
   const CreditEditSchema = Yup.object().shape({
-    Title: Yup.string().required(
-      t("err.IsRequired", { 0: t("Credit.Title") })
-    ),
+    Title: Yup.string().required(t("err.IsRequired", { 0: t("Credit.Title") })),
     Price: Yup.string()
       .nullable()
-      .required(
-        t("err.IsRequired", { 0: t("Credit.Price") })
-      ),
+      .required(t("err.IsRequired", { 0: t("Credit.Price") })),
   });
 
   function clean(dirty) {
@@ -61,23 +50,23 @@ export function CreditEditForm({
               <Form className="form form-label-right">
                 <div className="form-group row">
                   <div className="col-lg-12">
-                  <Field
-                    name="Title"
-                    component={Input}
-                    customFeedbackLabel=""
-                    label={t("Credit.Title")}
-                  />
+                    <Field
+                      name="Title"
+                      component={Input}
+                      customFeedbackLabel=""
+                      label={t("Credit.Title")}
+                    />
                   </div>
                 </div>
                 <div className="form-group row">
                   <div className="col-lg-12">
-                  <Field
-                    name="Price"
-                    component={Input}
-                    type="number"
-                    customFeedbackLabel=""
-                    label={t("Credit.Price")}
-                  />
+                    <Field
+                      name="Price"
+                      component={Input}
+                      type="number"
+                      customFeedbackLabel=""
+                      label={t("Credit.Price")}
+                    />
                   </div>
                 </div>
               </Form>

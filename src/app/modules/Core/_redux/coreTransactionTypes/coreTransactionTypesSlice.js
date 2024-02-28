@@ -31,13 +31,14 @@ export const coreTransactionTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCoreTransactionTypeById  
+    // getCoreTransactionTypeById
     coreTransactionTypeFetched: (state, action) => {
       state.actionsLoading = false;
-      state.coreTransactionTypeForEdit = action.payload.coreTransactionTypeForEdit;
+      state.coreTransactionTypeForEdit =
+        action.payload.coreTransactionTypeForEdit;
       state.error = null;
     },
-    // findCoreTransactionTypes  
+    // findCoreTransactionTypes
     coreTransactionTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -45,40 +46,44 @@ export const coreTransactionTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCoreTransactionType  
+    // createCoreTransactionType
     coreTransactionTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCoreTransactionType  
+    // updateCoreTransactionType
     coreTransactionTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.CoreTransactionTypeId === action.payload.coreTransactionType.CoreTransactionTypeId) {
+        if (
+          entity.CoreTransactionTypeId ===
+          action.payload.coreTransactionType.CoreTransactionTypeId
+        ) {
           return action.payload.coreTransactionType;
         }
         return entity;
       });
     },
-    // deleteCoreTransactionType  
+    // deleteCoreTransactionType
     coreTransactionTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CoreTransactionTypeId !== action.payload.CoreTransactionTypeId  
+        (el) =>
+          el.CoreTransactionTypeId !== action.payload.CoreTransactionTypeId
       );
     },
-    // deleteCoreTransactionTypes  
+    // deleteCoreTransactionTypes
     coreTransactionTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CoreTransactionTypeId)  
+        (el) => !action.payload.ids.includes(el.CoreTransactionTypeId)
       );
     },
-    // coreTransactionTypesUpdateState  
+    // coreTransactionTypesUpdateState
     coreTransactionTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

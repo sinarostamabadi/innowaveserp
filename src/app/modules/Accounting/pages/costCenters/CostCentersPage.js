@@ -26,7 +26,7 @@ export function CostCentersPage({ history }) {
       history.push("/accounting/costCenters/updateStatus");
     },
   };
-  
+
   return (
     <CostCentersUIProvider costCentersUIEvents={costCentersUIEvents}>
       <CostCentersLoadingDialog />

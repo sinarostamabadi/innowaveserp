@@ -32,8 +32,10 @@ export function EmployeeSoldiershipsTable() {
       setIds: employeeSoldiershipsUIContext.setIds,
       queryParams: employeeSoldiershipsUIContext.queryParams,
       setQueryParams: employeeSoldiershipsUIContext.setQueryParams,
-      openEditEmployeeSoldiershipPage: employeeSoldiershipsUIContext.openEditEmployeeSoldiershipPage,
-      openDeleteEmployeeSoldiershipDialog: employeeSoldiershipsUIContext.openDeleteEmployeeSoldiershipDialog,
+      openEditEmployeeSoldiershipPage:
+        employeeSoldiershipsUIContext.openEditEmployeeSoldiershipPage,
+      openDeleteEmployeeSoldiershipDialog:
+        employeeSoldiershipsUIContext.openDeleteEmployeeSoldiershipDialog,
     };
   }, [employeeSoldiershipsUIContext]);
 
@@ -50,7 +52,9 @@ export function EmployeeSoldiershipsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     employeeSoldiershipsUIProps.setIds([]);
-    dispatch(actions.fetchEmployeeSoldierships(employeeSoldiershipsUIProps.queryParams));
+    dispatch(
+      actions.fetchEmployeeSoldierships(employeeSoldiershipsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employeeSoldiershipsUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function EmployeeSoldiershipsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmployeeSoldiershipPage: employeeSoldiershipsUIProps.openEditEmployeeSoldiershipPage,
-        openDeleteEmployeeSoldiershipDialog: employeeSoldiershipsUIProps.openDeleteEmployeeSoldiershipDialog,
+        openEditEmployeeSoldiershipPage:
+          employeeSoldiershipsUIProps.openEditEmployeeSoldiershipPage,
+        openDeleteEmployeeSoldiershipDialog:
+          employeeSoldiershipsUIProps.openDeleteEmployeeSoldiershipDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -15,10 +15,7 @@ import * as columnFormatters from "./column-formatters";
 import { Pagination } from "src/core/_partials/controls";
 import { usePosesUIContext } from "../PosesUIContext";
 import { PosModel } from "src/core/_models/General/PosModel";
-import {
-  getConfig,
-  getFields,
-} from "src/core/_models/ModelDescriber";
+import { getConfig, getFields } from "src/core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
 
 export function PosesTable() {

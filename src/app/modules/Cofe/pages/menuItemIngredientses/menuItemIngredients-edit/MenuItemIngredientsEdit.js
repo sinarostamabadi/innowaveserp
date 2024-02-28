@@ -44,7 +44,8 @@ export function MenuItemIngredientsEdit({
   const { actionsLoading, menuItemIngredientsForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.menuItemIngredientses.actionsLoading,
-      menuItemIngredientsForEdit: state.menuItemIngredientses.menuItemIngredientsForEdit,
+      menuItemIngredientsForEdit:
+        state.menuItemIngredientses.menuItemIngredientsForEdit,
       error: state.menuItemIngredientses.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function MenuItemIngredientsEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("MenuItemIngredients.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("MenuItemIngredients.Entity");
 
     if (menuItemIngredientsForEdit && id) {
       _title = t("Common.Edit") + " " + menuItemIngredientsForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function MenuItemIngredientsEdit({
         .then((arg) => {
           backToMenuItemIngredientsesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateMenuItemIngredients(id, values))
         .then(() => backToMenuItemIngredientsesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

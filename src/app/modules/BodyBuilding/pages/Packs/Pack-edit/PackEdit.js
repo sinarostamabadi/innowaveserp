@@ -20,7 +20,6 @@ import { Tabs, Tab } from "react-bootstrap";
 import { ServicesUIProvider } from "../Pack-services/ServicesUIContext";
 import { Services } from "../Pack-services/Services";
 
-
 export function PackEdit({
   history,
   match: {
@@ -29,11 +28,11 @@ export function PackEdit({
 }) {
   const { t } = useTranslation();
   const defaultRestaurant = !!getStorage("defaultRestaurant")
-  ? JSON.parse(getStorage("defaultRestaurant"))
-  : null;
+    ? JSON.parse(getStorage("defaultRestaurant"))
+    : null;
 
   const initModel = {
-		BodyBuildingPackId: undefined,
+    BodyBuildingPackId: undefined,
     Title: "",
     Description: "",
     BodyBuildingPackServices: [],
@@ -70,7 +69,9 @@ export function PackEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " «" + t("BodyBuildingPack.Entity") + "»";
+    let _title = id
+      ? ""
+      : t("Common.Create") + " «" + t("BodyBuildingPack.Entity") + "»";
 
     if (packForEdit && id) {
       _title = t("Common.Edit") + " «" + packForEdit.Title + "»";
@@ -202,13 +203,13 @@ export function PackEdit({
                 eventKey="services"
                 title={t("BodyBuildingPackService.Entity")}
                 className="nav-item"
-                >
+              >
                 <ServicesUIProvider
                   currentPersonId={id}
                   actionsLoading={actionsLoading}
                   service={serviceObj}
                   ref={btnRefServices}
-                  >
+                >
                   <Services />
                 </ServicesUIProvider>
               </Tab>

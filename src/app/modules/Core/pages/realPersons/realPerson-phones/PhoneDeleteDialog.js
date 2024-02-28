@@ -40,10 +40,10 @@ export function PhoneDeleteDialog() {
   }, [phonesUIProps.id]);
 
   // looking for loading/dispatch
-  useEffect(() => { }, [isLoading, dispatch]);
+  useEffect(() => {}, [isLoading, dispatch]);
 
   const deletePhone = () => {
-    phonesUIProps.removePhone(phonesUIProps.id)
+    phonesUIProps.removePhone(phonesUIProps.id);
     phonesUIProps.onHide();
   };
 
@@ -60,9 +60,7 @@ export function PhoneDeleteDialog() {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && (
-          <span>{t("Common.DeleteQuestion")}</span>
-        )}
+        {!isLoading && <span>{t("Common.DeleteQuestion")}</span>}
         {isLoading && <span>{t("Common.DeleteLoading")}</span>}
       </Modal.Body>
       <Modal.Footer>

@@ -32,8 +32,10 @@ export function InquiryStatusesTable() {
       setIds: inquiryStatusesUIContext.setIds,
       queryParams: inquiryStatusesUIContext.queryParams,
       setQueryParams: inquiryStatusesUIContext.setQueryParams,
-      openEditInquiryStatusPage: inquiryStatusesUIContext.openEditInquiryStatusPage,
-      openDeleteInquiryStatusDialog: inquiryStatusesUIContext.openDeleteInquiryStatusDialog,
+      openEditInquiryStatusPage:
+        inquiryStatusesUIContext.openEditInquiryStatusPage,
+      openDeleteInquiryStatusDialog:
+        inquiryStatusesUIContext.openDeleteInquiryStatusDialog,
     };
   }, [inquiryStatusesUIContext]);
 
@@ -66,8 +68,10 @@ export function InquiryStatusesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditInquiryStatusPage: inquiryStatusesUIProps.openEditInquiryStatusPage,
-        openDeleteInquiryStatusDialog: inquiryStatusesUIProps.openDeleteInquiryStatusDialog,
+        openEditInquiryStatusPage:
+          inquiryStatusesUIProps.openEditInquiryStatusPage,
+        openDeleteInquiryStatusDialog:
+          inquiryStatusesUIProps.openDeleteInquiryStatusDialog,
         t: t,
       },
       classes: "text-right pr-0",

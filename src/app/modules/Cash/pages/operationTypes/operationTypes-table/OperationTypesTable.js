@@ -32,8 +32,10 @@ export function OperationTypesTable() {
       setIds: operationTypesUIContext.setIds,
       queryParams: operationTypesUIContext.queryParams,
       setQueryParams: operationTypesUIContext.setQueryParams,
-      openEditOperationTypePage: operationTypesUIContext.openEditOperationTypePage,
-      openDeleteOperationTypeDialog: operationTypesUIContext.openDeleteOperationTypeDialog,
+      openEditOperationTypePage:
+        operationTypesUIContext.openEditOperationTypePage,
+      openDeleteOperationTypeDialog:
+        operationTypesUIContext.openDeleteOperationTypeDialog,
     };
   }, [operationTypesUIContext]);
 
@@ -72,8 +74,10 @@ export function OperationTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditOperationTypePage: operationTypesUIProps.openEditOperationTypePage,
-        openDeleteOperationTypeDialog: operationTypesUIProps.openDeleteOperationTypeDialog,
+        openEditOperationTypePage:
+          operationTypesUIProps.openEditOperationTypePage,
+        openDeleteOperationTypeDialog:
+          operationTypesUIProps.openDeleteOperationTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

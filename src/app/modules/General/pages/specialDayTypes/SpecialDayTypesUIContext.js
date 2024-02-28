@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { SpecialDayTypeModel } from "../../../../../core/_models/General/SpecialDayTypeModel";
@@ -12,7 +11,10 @@ export function useSpecialDayTypesUIContext() {
 
 export const SpecialDayTypesUIConsumer = SpecialDayTypesUIContext.Consumer;
 
-export function SpecialDayTypesUIProvider({ specialDayTypesUIEvents, children }) {
+export function SpecialDayTypesUIProvider({
+  specialDayTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(SpecialDayTypeModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function SpecialDayTypesUIProvider({ specialDayTypesUIEvents, children })
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function SpecialDayTypesUIProvider({ specialDayTypesUIEvents, children })
     setIds,
     setQueryParams,
     dataModel: SpecialDayTypeModel,
-    newSpecialDayTypeButtonClick: specialDayTypesUIEvents.newSpecialDayTypeButtonClick,
-    openEditSpecialDayTypePage: specialDayTypesUIEvents.openEditSpecialDayTypePage,
-    openDeleteSpecialDayTypeDialog: specialDayTypesUIEvents.openDeleteSpecialDayTypeDialog,
-    openDeleteSpecialDayTypesDialog: specialDayTypesUIEvents.openDeleteSpecialDayTypesDialog,
-    openFetchSpecialDayTypesDialog: specialDayTypesUIEvents.openFetchSpecialDayTypesDialog,
-    openUpdateSpecialDayTypesStatusDialog: specialDayTypesUIEvents.openUpdateSpecialDayTypesStatusDialog,
+    newSpecialDayTypeButtonClick:
+      specialDayTypesUIEvents.newSpecialDayTypeButtonClick,
+    openEditSpecialDayTypePage:
+      specialDayTypesUIEvents.openEditSpecialDayTypePage,
+    openDeleteSpecialDayTypeDialog:
+      specialDayTypesUIEvents.openDeleteSpecialDayTypeDialog,
+    openDeleteSpecialDayTypesDialog:
+      specialDayTypesUIEvents.openDeleteSpecialDayTypesDialog,
+    openFetchSpecialDayTypesDialog:
+      specialDayTypesUIEvents.openFetchSpecialDayTypesDialog,
+    openUpdateSpecialDayTypesStatusDialog:
+      specialDayTypesUIEvents.openUpdateSpecialDayTypesStatusDialog,
   };
   return (
-    <SpecialDayTypesUIContext.Provider value={value}>{children}</SpecialDayTypesUIContext.Provider>
+    <SpecialDayTypesUIContext.Provider value={value}>
+      {children}
+    </SpecialDayTypesUIContext.Provider>
   );
 }

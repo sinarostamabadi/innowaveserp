@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmployeeRewardPenaltyModel } from "../../../../../core/_models/Employment/EmployeeRewardPenaltyModel";
@@ -10,9 +9,13 @@ export function useEmployeeRewardPenaltiesUIContext() {
   return useContext(EmployeeRewardPenaltiesUIContext);
 }
 
-export const EmployeeRewardPenaltiesUIConsumer = EmployeeRewardPenaltiesUIContext.Consumer;
+export const EmployeeRewardPenaltiesUIConsumer =
+  EmployeeRewardPenaltiesUIContext.Consumer;
 
-export function EmployeeRewardPenaltiesUIProvider({ employeeRewardPenaltiesUIEvents, children }) {
+export function EmployeeRewardPenaltiesUIProvider({
+  employeeRewardPenaltiesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(EmployeeRewardPenaltyModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function EmployeeRewardPenaltiesUIProvider({ employeeRewardPenaltiesUIEve
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function EmployeeRewardPenaltiesUIProvider({ employeeRewardPenaltiesUIEve
     setIds,
     setQueryParams,
     dataModel: EmployeeRewardPenaltyModel,
-    newEmployeeRewardPenaltyButtonClick: employeeRewardPenaltiesUIEvents.newEmployeeRewardPenaltyButtonClick,
-    openEditEmployeeRewardPenaltyPage: employeeRewardPenaltiesUIEvents.openEditEmployeeRewardPenaltyPage,
-    openDeleteEmployeeRewardPenaltyDialog: employeeRewardPenaltiesUIEvents.openDeleteEmployeeRewardPenaltyDialog,
-    openDeleteEmployeeRewardPenaltiesDialog: employeeRewardPenaltiesUIEvents.openDeleteEmployeeRewardPenaltiesDialog,
-    openFetchEmployeeRewardPenaltiesDialog: employeeRewardPenaltiesUIEvents.openFetchEmployeeRewardPenaltiesDialog,
-    openUpdateEmployeeRewardPenaltiesStatusDialog: employeeRewardPenaltiesUIEvents.openUpdateEmployeeRewardPenaltiesStatusDialog,
+    newEmployeeRewardPenaltyButtonClick:
+      employeeRewardPenaltiesUIEvents.newEmployeeRewardPenaltyButtonClick,
+    openEditEmployeeRewardPenaltyPage:
+      employeeRewardPenaltiesUIEvents.openEditEmployeeRewardPenaltyPage,
+    openDeleteEmployeeRewardPenaltyDialog:
+      employeeRewardPenaltiesUIEvents.openDeleteEmployeeRewardPenaltyDialog,
+    openDeleteEmployeeRewardPenaltiesDialog:
+      employeeRewardPenaltiesUIEvents.openDeleteEmployeeRewardPenaltiesDialog,
+    openFetchEmployeeRewardPenaltiesDialog:
+      employeeRewardPenaltiesUIEvents.openFetchEmployeeRewardPenaltiesDialog,
+    openUpdateEmployeeRewardPenaltiesStatusDialog:
+      employeeRewardPenaltiesUIEvents.openUpdateEmployeeRewardPenaltiesStatusDialog,
   };
   return (
-    <EmployeeRewardPenaltiesUIContext.Provider value={value}>{children}</EmployeeRewardPenaltiesUIContext.Provider>
+    <EmployeeRewardPenaltiesUIContext.Provider value={value}>
+      {children}
+    </EmployeeRewardPenaltiesUIContext.Provider>
   );
 }

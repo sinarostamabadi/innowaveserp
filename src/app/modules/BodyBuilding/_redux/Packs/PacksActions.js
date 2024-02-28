@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./PacksCrud";
 import { packsSlice, callTypes } from "./PacksSlice";
 const { actions } = packsSlice;
@@ -53,7 +52,7 @@ export const createPack = (packForCreation, fnCallBack) => (dispatch) => {
     .then((response) => {
       const pack = response.data;
       fnCallBack(pack);
-      
+
       dispatch(actions.packCreated(pack));
 
       return pack;
@@ -105,4 +104,4 @@ export const deletePacks = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

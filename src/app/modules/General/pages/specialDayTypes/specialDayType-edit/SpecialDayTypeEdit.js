@@ -56,7 +56,9 @@ export function SpecialDayTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("SpecialDayType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("SpecialDayType.Entity");
 
     if (specialDayTypeForEdit && id) {
       _title = t("Common.Edit") + " " + specialDayTypeForEdit.TitleFa;

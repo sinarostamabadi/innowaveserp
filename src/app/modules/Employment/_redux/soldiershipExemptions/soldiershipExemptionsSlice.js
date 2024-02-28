@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialSoldiershipExemptionsState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const soldiershipExemptionsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getSoldiershipExemptionById  
+    // getSoldiershipExemptionById
     soldiershipExemptionFetched: (state, action) => {
       state.actionsLoading = false;
-      state.soldiershipExemptionForEdit = action.payload.soldiershipExemptionForEdit;
+      state.soldiershipExemptionForEdit =
+        action.payload.soldiershipExemptionForEdit;
       state.error = null;
     },
-    // findSoldiershipExemptions  
+    // findSoldiershipExemptions
     soldiershipExemptionsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const soldiershipExemptionsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createSoldiershipExemption  
+    // createSoldiershipExemption
     soldiershipExemptionCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateSoldiershipExemption  
+    // updateSoldiershipExemption
     soldiershipExemptionUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.SoldiershipExemptionId === action.payload.soldiershipExemption.SoldiershipExemptionId) {
+        if (
+          entity.SoldiershipExemptionId ===
+          action.payload.soldiershipExemption.SoldiershipExemptionId
+        ) {
           return action.payload.soldiershipExemption;
         }
         return entity;
       });
     },
-    // deleteSoldiershipExemption  
+    // deleteSoldiershipExemption
     soldiershipExemptionDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.SoldiershipExemptionId !== action.payload.SoldiershipExemptionId  
+        (el) =>
+          el.SoldiershipExemptionId !== action.payload.SoldiershipExemptionId
       );
     },
-    // deleteSoldiershipExemptions  
+    // deleteSoldiershipExemptions
     soldiershipExemptionsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.SoldiershipExemptionId)  
+        (el) => !action.payload.ids.includes(el.SoldiershipExemptionId)
       );
     },
-    // soldiershipExemptionsUpdateState  
+    // soldiershipExemptionsUpdateState
     soldiershipExemptionsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function EmployeeMonthlyCalculatedsTable() {
   const { t } = useTranslation();
 
-  const employeeMonthlyCalculatedsUIContext = useEmployeeMonthlyCalculatedsUIContext();
+  const employeeMonthlyCalculatedsUIContext =
+    useEmployeeMonthlyCalculatedsUIContext();
 
   const employeeMonthlyCalculatedsUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function EmployeeMonthlyCalculatedsTable() {
       setIds: employeeMonthlyCalculatedsUIContext.setIds,
       queryParams: employeeMonthlyCalculatedsUIContext.queryParams,
       setQueryParams: employeeMonthlyCalculatedsUIContext.setQueryParams,
-      openEditEmployeeMonthlyCalculatedPage: employeeMonthlyCalculatedsUIContext.openEditEmployeeMonthlyCalculatedPage,
-      openDeleteEmployeeMonthlyCalculatedDialog: employeeMonthlyCalculatedsUIContext.openDeleteEmployeeMonthlyCalculatedDialog,
+      openEditEmployeeMonthlyCalculatedPage:
+        employeeMonthlyCalculatedsUIContext.openEditEmployeeMonthlyCalculatedPage,
+      openDeleteEmployeeMonthlyCalculatedDialog:
+        employeeMonthlyCalculatedsUIContext.openDeleteEmployeeMonthlyCalculatedDialog,
     };
   }, [employeeMonthlyCalculatedsUIContext]);
 
@@ -50,7 +53,11 @@ export function EmployeeMonthlyCalculatedsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     employeeMonthlyCalculatedsUIProps.setIds([]);
-    dispatch(actions.fetchEmployeeMonthlyCalculateds(employeeMonthlyCalculatedsUIProps.queryParams));
+    dispatch(
+      actions.fetchEmployeeMonthlyCalculateds(
+        employeeMonthlyCalculatedsUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employeeMonthlyCalculatedsUIProps.queryParams, dispatch]);
 
@@ -72,8 +79,10 @@ export function EmployeeMonthlyCalculatedsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmployeeMonthlyCalculatedPage: employeeMonthlyCalculatedsUIProps.openEditEmployeeMonthlyCalculatedPage,
-        openDeleteEmployeeMonthlyCalculatedDialog: employeeMonthlyCalculatedsUIProps.openDeleteEmployeeMonthlyCalculatedDialog,
+        openEditEmployeeMonthlyCalculatedPage:
+          employeeMonthlyCalculatedsUIProps.openEditEmployeeMonthlyCalculatedPage,
+        openDeleteEmployeeMonthlyCalculatedDialog:
+          employeeMonthlyCalculatedsUIProps.openDeleteEmployeeMonthlyCalculatedDialog,
         t: t,
       },
       classes: "text-right pr-0",

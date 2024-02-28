@@ -26,9 +26,11 @@ export function InquiryStatusesPage({ history }) {
       history.push("/purchaseOrder/inquiryStatuses/updateStatus");
     },
   };
-  
+
   return (
-    <InquiryStatusesUIProvider inquiryStatusesUIEvents={inquiryStatusesUIEvents}>
+    <InquiryStatusesUIProvider
+      inquiryStatusesUIEvents={inquiryStatusesUIEvents}
+    >
       <InquiryStatusesLoadingDialog />
       <Route path="/purchaseOrder/inquiryStatuses/:id/delete">
         {({ history, match }) => (

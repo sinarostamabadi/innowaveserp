@@ -1,17 +1,16 @@
-
 import * as requestFromServer from "./accountsCrud";
 import { accountsSlice, callTypes } from "./accountsSlice";
 const { actions } = accountsSlice;
 export const fetchAccounts = (queryParams) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.list }));
-  return requestFromServer  
-    .findAccounts(queryParams)  
+  return requestFromServer
+    .findAccounts(queryParams)
     .then((response) => {
       const { Items, TotalCount } = response.data;
       dispatch(
-        actions.accountsFetched({ totalCount: TotalCount, entities: Items })  
+        actions.accountsFetched({ totalCount: TotalCount, entities: Items })
       );
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't find accounts";
       dispatch(actions.catchError({ error, callType: callTypes.list }));
@@ -22,12 +21,12 @@ export const fetchAccount = (id) => (dispatch) => {
     return dispatch(actions.accountFetched({ accountForEdit: undefined }));
   }
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .getAccountById(id)  
+  return requestFromServer
+    .getAccountById(id)
     .then((response) => {
       const account = response.data;
       dispatch(actions.accountFetched({ accountForEdit: account }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't find account";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -35,11 +34,11 @@ export const fetchAccount = (id) => (dispatch) => {
 };
 export const deleteAccount = (id) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .deleteAccount(id)  
+  return requestFromServer
+    .deleteAccount(id)
     .then((response) => {
       dispatch(actions.accountDeleted({ id }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't delete account";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -48,12 +47,12 @@ export const deleteAccount = (id) => (dispatch) => {
 };
 export const createAccount = (accountForCreation) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .createAccount(accountForCreation)  
+  return requestFromServer
+    .createAccount(accountForCreation)
     .then((response) => {
       const account = response.data;
       dispatch(actions.accountCreated(account));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't create account";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -62,11 +61,11 @@ export const createAccount = (accountForCreation) => (dispatch) => {
 };
 export const updateAccount = (id, account) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .updateAccount(id, account)  
+  return requestFromServer
+    .updateAccount(id, account)
     .then((response) => {
       dispatch(actions.accountUpdated({ account }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't update account";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -75,11 +74,11 @@ export const updateAccount = (id, account) => (dispatch) => {
 };
 export const updateAccountsStatus = (ids, status) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .updateStatusForAccounts(ids, status)  
+  return requestFromServer
+    .updateStatusForAccounts(ids, status)
     .then(() => {
       dispatch(actions.accountsStatusUpdated({ ids, status }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't update accounts status";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -87,14 +86,14 @@ export const updateAccountsStatus = (ids, status) => (dispatch) => {
 };
 export const deleteAccounts = (ids) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .deleteAccounts(ids)  
+  return requestFromServer
+    .deleteAccounts(ids)
     .then(() => {
       dispatch(actions.accountsDeleted({ ids }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't delete accounts";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

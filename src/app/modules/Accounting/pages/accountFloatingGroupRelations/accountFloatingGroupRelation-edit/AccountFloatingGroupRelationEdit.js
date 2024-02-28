@@ -29,7 +29,7 @@ export function AccountFloatingGroupRelationEdit({
   const initModel = {
     AccountFloatingGroupRelationId: undefined,
     AccountFloatingId: "",
-    AccountFloatingGroupId: ""
+    AccountFloatingGroupId: "",
   };
 
   // Subheader
@@ -37,29 +37,41 @@ export function AccountFloatingGroupRelationEdit({
 
   // Tabs
   const [editMode, setEditMode] = useState(false);
-  const [obj, setObj] = useState({...initModel});
+  const [obj, setObj] = useState({ ...initModel });
   const [title, setTitle] = useState("");
   const dispatch = useDispatch();
 
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
-  const { actionsLoading, accountFloatingGroupRelationForEdit, error } = useSelector(
-    (state) => ({
-      actionsLoading: state.accountFloatingGroupRelations.actionsLoading,
-      accountFloatingGroupRelationForEdit: state.accountFloatingGroupRelations.accountFloatingGroupRelationForEdit,
-      error: state.accountFloatingGroupRelations.error,
-    }),
-    shallowEqual
-  );
+  const { actionsLoading, accountFloatingGroupRelationForEdit, error } =
+    useSelector(
+      (state) => ({
+        actionsLoading: state.accountFloatingGroupRelations.actionsLoading,
+        accountFloatingGroupRelationForEdit:
+          state.accountFloatingGroupRelations
+            .accountFloatingGroupRelationForEdit,
+        error: state.accountFloatingGroupRelations.error,
+      }),
+      shallowEqual
+    );
 
   useEffect(() => {
     dispatch(actions.fetchAccountFloatingGroupRelation(id));
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("AccountFloatingGroupRelation.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("AccountFloatingGroupRelation.Entity");
 
-    if (accountFloatingGroupRelationForEdit && id && accountFloatingGroupRelationForEdit.AccountFloatingGroupRelationId == id) {
-      _title = t("Common.Edit") + " " + accountFloatingGroupRelationForEdit.AccountFloating.Title;
+    if (
+      accountFloatingGroupRelationForEdit &&
+      id &&
+      accountFloatingGroupRelationForEdit.AccountFloatingGroupRelationId == id
+    ) {
+      _title =
+        t("Common.Edit") +
+        " " +
+        accountFloatingGroupRelationForEdit.AccountFloating.Title;
       setObj(accountFloatingGroupRelationForEdit);
       setEditMode(true);
     }
@@ -76,13 +88,13 @@ export function AccountFloatingGroupRelationEdit({
         .then((arg) => {
           backToList();
         })
-        .catch((err) => { 
+        .catch((err) => {
           console.log("err > ", err);
         });
     } else {
       dispatch(actions.update(id, values))
         .then(() => backToList())
-        .catch((err) => { 
+        .catch((err) => {
           console.log("err > ", err);
         });
     }
@@ -114,11 +126,7 @@ export function AccountFloatingGroupRelationEdit({
       )}
       <CardHeader title={title}>
         <CardHeaderToolbar>
-          <button
-            type="button"
-            onClick={backToList}
-            className="btn btn-light"
-          >
+          <button type="button" onClick={backToList} className="btn btn-light">
             <i className="fa fa-arrow-left"></i> {t("Common.Back")}
           </button>
           {`  `}
@@ -140,7 +148,7 @@ export function AccountFloatingGroupRelationEdit({
         </CardHeaderToolbar>
       </CardHeader>
       <CardBody>
-      {((!!id && editMode) || !!id == false) && (
+        {((!!id && editMode) || !!id == false) && (
           <AccountFloatingGroupRelationEditForm
             actionsLoading={actionsLoading}
             accountFloatingGroupRelation={obj}

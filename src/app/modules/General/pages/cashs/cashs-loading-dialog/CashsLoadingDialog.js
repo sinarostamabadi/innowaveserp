@@ -6,6 +6,6 @@ export function CashsLoadingDialog() {
     (state) => ({ isLoading: state.cashs.listLoading }),
     shallowEqual
   );
-  useEffect(() => { }, [isLoading]);
+  useEffect(() => {}, [isLoading]);
   return <LoadingDialog isLoading={isLoading} text="در حال بارگذاری..." />;
 }

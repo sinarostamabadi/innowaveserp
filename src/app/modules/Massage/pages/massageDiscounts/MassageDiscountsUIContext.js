@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { MassageDiscountModel } from "../../../../../core/_models/Massage/MassageDiscountModel";
@@ -12,7 +11,10 @@ export function useMassageDiscountsUIContext() {
 
 export const MassageDiscountsUIConsumer = MassageDiscountsUIContext.Consumer;
 
-export function MassageDiscountsUIProvider({ massageDiscountsUIEvents, children }) {
+export function MassageDiscountsUIProvider({
+  massageDiscountsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(MassageDiscountModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function MassageDiscountsUIProvider({ massageDiscountsUIEvents, children 
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function MassageDiscountsUIProvider({ massageDiscountsUIEvents, children 
     setIds,
     setQueryParams,
     dataModel: MassageDiscountModel,
-    newMassageDiscountButtonClick: massageDiscountsUIEvents.newMassageDiscountButtonClick,
-    openEditMassageDiscountPage: massageDiscountsUIEvents.openEditMassageDiscountPage,
-    openDeleteMassageDiscountDialog: massageDiscountsUIEvents.openDeleteMassageDiscountDialog,
-    openDeleteMassageDiscountsDialog: massageDiscountsUIEvents.openDeleteMassageDiscountsDialog,
-    openFetchMassageDiscountsDialog: massageDiscountsUIEvents.openFetchMassageDiscountsDialog,
-    openUpdateMassageDiscountsStatusDialog: massageDiscountsUIEvents.openUpdateMassageDiscountsStatusDialog,
+    newMassageDiscountButtonClick:
+      massageDiscountsUIEvents.newMassageDiscountButtonClick,
+    openEditMassageDiscountPage:
+      massageDiscountsUIEvents.openEditMassageDiscountPage,
+    openDeleteMassageDiscountDialog:
+      massageDiscountsUIEvents.openDeleteMassageDiscountDialog,
+    openDeleteMassageDiscountsDialog:
+      massageDiscountsUIEvents.openDeleteMassageDiscountsDialog,
+    openFetchMassageDiscountsDialog:
+      massageDiscountsUIEvents.openFetchMassageDiscountsDialog,
+    openUpdateMassageDiscountsStatusDialog:
+      massageDiscountsUIEvents.openUpdateMassageDiscountsStatusDialog,
   };
   return (
-    <MassageDiscountsUIContext.Provider value={value}>{children}</MassageDiscountsUIContext.Provider>
+    <MassageDiscountsUIContext.Provider value={value}>
+      {children}
+    </MassageDiscountsUIContext.Provider>
   );
 }

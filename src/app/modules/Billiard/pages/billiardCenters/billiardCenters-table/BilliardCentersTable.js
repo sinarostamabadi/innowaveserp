@@ -32,8 +32,10 @@ export function BilliardCentersTable() {
       setIds: billiardCentersUIContext.setIds,
       queryParams: billiardCentersUIContext.queryParams,
       setQueryParams: billiardCentersUIContext.setQueryParams,
-      openEditBilliardCenterPage: billiardCentersUIContext.openEditBilliardCenterPage,
-      openDeleteBilliardCenterDialog: billiardCentersUIContext.openDeleteBilliardCenterDialog,
+      openEditBilliardCenterPage:
+        billiardCentersUIContext.openEditBilliardCenterPage,
+      openDeleteBilliardCenterDialog:
+        billiardCentersUIContext.openDeleteBilliardCenterDialog,
     };
   }, [billiardCentersUIContext]);
 
@@ -72,8 +74,10 @@ export function BilliardCentersTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditBilliardCenterPage: billiardCentersUIProps.openEditBilliardCenterPage,
-        openDeleteBilliardCenterDialog: billiardCentersUIProps.openDeleteBilliardCenterDialog,
+        openEditBilliardCenterPage:
+          billiardCentersUIProps.openEditBilliardCenterPage,
+        openDeleteBilliardCenterDialog:
+          billiardCentersUIProps.openDeleteBilliardCenterDialog,
         t: t,
       },
       classes: "text-right pr-0",

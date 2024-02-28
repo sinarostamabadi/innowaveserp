@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { RestaurantMenuItemPriceModel } from "../../../../../core/_models/Restaurant/RestaurantMenuItemPriceModel";
@@ -10,9 +9,13 @@ export function useRestaurantMenuItemPricesUIContext() {
   return useContext(RestaurantMenuItemPricesUIContext);
 }
 
-export const RestaurantMenuItemPricesUIConsumer = RestaurantMenuItemPricesUIContext.Consumer;
+export const RestaurantMenuItemPricesUIConsumer =
+  RestaurantMenuItemPricesUIContext.Consumer;
 
-export function RestaurantMenuItemPricesUIProvider({ restaurantMenuItemPricesUIEvents, children }) {
+export function RestaurantMenuItemPricesUIProvider({
+  restaurantMenuItemPricesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(RestaurantMenuItemPriceModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function RestaurantMenuItemPricesUIProvider({ restaurantMenuItemPricesUIE
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function RestaurantMenuItemPricesUIProvider({ restaurantMenuItemPricesUIE
     setIds,
     setQueryParams,
     dataModel: RestaurantMenuItemPriceModel,
-    newRestaurantMenuItemPriceButtonClick: restaurantMenuItemPricesUIEvents.newRestaurantMenuItemPriceButtonClick,
-    openEditRestaurantMenuItemPricePage: restaurantMenuItemPricesUIEvents.openEditRestaurantMenuItemPricePage,
-    openDeleteRestaurantMenuItemPriceDialog: restaurantMenuItemPricesUIEvents.openDeleteRestaurantMenuItemPriceDialog,
-    openDeleteRestaurantMenuItemPricesDialog: restaurantMenuItemPricesUIEvents.openDeleteRestaurantMenuItemPricesDialog,
-    openFetchRestaurantMenuItemPricesDialog: restaurantMenuItemPricesUIEvents.openFetchRestaurantMenuItemPricesDialog,
-    openUpdateRestaurantMenuItemPricesStatusDialog: restaurantMenuItemPricesUIEvents.openUpdateRestaurantMenuItemPricesStatusDialog,
+    newRestaurantMenuItemPriceButtonClick:
+      restaurantMenuItemPricesUIEvents.newRestaurantMenuItemPriceButtonClick,
+    openEditRestaurantMenuItemPricePage:
+      restaurantMenuItemPricesUIEvents.openEditRestaurantMenuItemPricePage,
+    openDeleteRestaurantMenuItemPriceDialog:
+      restaurantMenuItemPricesUIEvents.openDeleteRestaurantMenuItemPriceDialog,
+    openDeleteRestaurantMenuItemPricesDialog:
+      restaurantMenuItemPricesUIEvents.openDeleteRestaurantMenuItemPricesDialog,
+    openFetchRestaurantMenuItemPricesDialog:
+      restaurantMenuItemPricesUIEvents.openFetchRestaurantMenuItemPricesDialog,
+    openUpdateRestaurantMenuItemPricesStatusDialog:
+      restaurantMenuItemPricesUIEvents.openUpdateRestaurantMenuItemPricesStatusDialog,
   };
   return (
-    <RestaurantMenuItemPricesUIContext.Provider value={value}>{children}</RestaurantMenuItemPricesUIContext.Provider>
+    <RestaurantMenuItemPricesUIContext.Provider value={value}>
+      {children}
+    </RestaurantMenuItemPricesUIContext.Provider>
   );
 }

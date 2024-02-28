@@ -27,8 +27,8 @@ export function RestaurantDiscountTypeEdit({
 }) {
   const { t } = useTranslation();
   const defaultRestaurant = !!getStorage("defaultRestaurant")
-  ? JSON.parse(getStorage("defaultRestaurant"))
-  : null;
+    ? JSON.parse(getStorage("defaultRestaurant"))
+    : null;
 
   const initModel = {
     RestaurantDiscountTypeId: undefined,
@@ -47,7 +47,7 @@ export function RestaurantDiscountTypeEdit({
     Person: "",
     PersonGroupId: "",
     PersonGroup: "",
-    RestaurantId: !!defaultRestaurant ? defaultRestaurant.RestaurantId: "",
+    RestaurantId: !!defaultRestaurant ? defaultRestaurant.RestaurantId : "",
     Restaurant: defaultRestaurant,
     RestaurantMenuGroupId: "",
     RestaurantMenuGroup: "",
@@ -69,7 +69,8 @@ export function RestaurantDiscountTypeEdit({
   const { actionsLoading, restaurantDiscountTypeForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.restaurantDiscountTypes.actionsLoading,
-      restaurantDiscountTypeForEdit: state.restaurantDiscountTypes.restaurantDiscountTypeForEdit,
+      restaurantDiscountTypeForEdit:
+        state.restaurantDiscountTypes.restaurantDiscountTypeForEdit,
       error: state.restaurantDiscountTypes.error,
     }),
     shallowEqual
@@ -83,7 +84,9 @@ export function RestaurantDiscountTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("RestaurantDiscountType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("RestaurantDiscountType.Entity");
 
     if (restaurantDiscountTypeForEdit && id) {
       _title = t("Common.Edit") + " " + restaurantDiscountTypeForEdit.Title;
@@ -98,14 +101,20 @@ export function RestaurantDiscountTypeEdit({
   function validate(values) {
     validation = [];
 
-    if ((values.DiscountPercent != null && values.Price != null) || (values.DiscountPercent == null && values.Price == null)) {
+    if (
+      (values.DiscountPercent != null && values.Price != null) ||
+      (values.DiscountPercent == null && values.Price == null)
+    ) {
       validation.push("مبلغ یا درصد تخفیف فقط یکی را وارد نمایید.");
     }
 
     if (values.PersonId != null && values.PersonGroupId != null)
       validation.push("شخص یا گروه اشخاص فقط یکی را وارد نمایید.");
 
-    if (values.RestaurantMenuItemId != null && values.RestaurantMenuGroupId != null)
+    if (
+      values.RestaurantMenuItemId != null &&
+      values.RestaurantMenuGroupId != null
+    )
       validation.push("منو یا گروه منو فقط یکی را وارد نمایید.");
 
     setErrs(validation);
@@ -113,26 +122,28 @@ export function RestaurantDiscountTypeEdit({
   }
 
   function validateToError() {
-    return errs.map(x => x + "<br/>");
+    return errs.map((x) => x + "<br/>");
   }
 
   const saveRestaurantDiscountType = (values) => {
-    if (!validate(values))
-      return;
+    if (!validate(values)) return;
 
     if (!id) {
-      dispatch(actions.createRestaurantDiscountType(values, () => {
-        backToRestaurantDiscountTypesList();
-      }))
-        .then((arg) => {
+      dispatch(
+        actions.createRestaurantDiscountType(values, () => {
+          backToRestaurantDiscountTypesList();
         })
-        .catch((err) => { });
+      )
+        .then((arg) => {})
+        .catch((err) => {});
     } else {
-      dispatch(actions.updateRestaurantDiscountType(id, values, () => {
-        backToRestaurantDiscountTypesList();
-      }))
+      dispatch(
+        actions.updateRestaurantDiscountType(id, values, () => {
+          backToRestaurantDiscountTypesList();
+        })
+      )
         .then(() => backToRestaurantDiscountTypesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 
@@ -202,7 +213,9 @@ export function RestaurantDiscountTypeEdit({
           <CardBody>
             <RestaurantDiscountTypeEditForm
               actionsLoading={actionsLoading}
-              restaurantDiscountType={restaurantDiscountTypeForEdit || initModel}
+              restaurantDiscountType={
+                restaurantDiscountTypeForEdit || initModel
+              }
               btnRef={btnRef}
               saveRestaurantDiscountType={saveRestaurantDiscountType}
             />

@@ -18,25 +18,30 @@ export function CoreTransactionPlacesCard() {
       ids: coreTransactionPlacesUIContext.ids,
       queryParams: coreTransactionPlacesUIContext.queryParams,
       setQueryParams: coreTransactionPlacesUIContext.setQueryParams,
-      newCoreTransactionPlaceButtonClick: coreTransactionPlacesUIContext.newCoreTransactionPlaceButtonClick,
-      openDeleteCoreTransactionPlacesDialog:  
+      newCoreTransactionPlaceButtonClick:
+        coreTransactionPlacesUIContext.newCoreTransactionPlaceButtonClick,
+      openDeleteCoreTransactionPlacesDialog:
         coreTransactionPlacesUIContext.openDeleteCoreTransactionPlacesDialog,
-      openEditCoreTransactionPlacePage: coreTransactionPlacesUIContext.openEditCoreTransactionPlacePage,
-      openUpdateCoreTransactionPlacesStatusDialog:  
+      openEditCoreTransactionPlacePage:
+        coreTransactionPlacesUIContext.openEditCoreTransactionPlacePage,
+      openUpdateCoreTransactionPlacesStatusDialog:
         coreTransactionPlacesUIContext.openUpdateCoreTransactionPlacesStatusDialog,
-      openFetchCoreTransactionPlacesDialog: coreTransactionPlacesUIContext.openFetchCoreTransactionPlacesDialog,
+      openFetchCoreTransactionPlacesDialog:
+        coreTransactionPlacesUIContext.openFetchCoreTransactionPlacesDialog,
     };
   }, [coreTransactionPlacesUIContext]);
   return (
     <Card>
       <CardHeader title="EntityTitle">
         <CardHeaderToolbar>
-          <button  
-            type="button"  
-            className="btn btn-primary"  
-            onClick={coreTransactionPlacesUIProps.newCoreTransactionPlaceButtonClick}
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={
+              coreTransactionPlacesUIProps.newCoreTransactionPlaceButtonClick
+            }
           >
-            EntityTitle  
+            EntityTitle
           </button>
         </CardHeaderToolbar>
       </CardHeader>

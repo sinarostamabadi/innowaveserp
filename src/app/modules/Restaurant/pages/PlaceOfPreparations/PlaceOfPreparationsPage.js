@@ -26,9 +26,11 @@ export function PlaceOfPreparationsPage({ history }) {
       history.push("//placeOfPreparations/updateStatus");
     },
   };
-  
+
   return (
-    <PlaceOfPreparationsUIProvider placeOfPreparationsUIEvents={placeOfPreparationsUIEvents}>
+    <PlaceOfPreparationsUIProvider
+      placeOfPreparationsUIEvents={placeOfPreparationsUIEvents}
+    >
       <PlaceOfPreparationsLoadingDialog />
       <Route path="//placeOfPreparations/:id/delete">
         {({ history, match }) => (

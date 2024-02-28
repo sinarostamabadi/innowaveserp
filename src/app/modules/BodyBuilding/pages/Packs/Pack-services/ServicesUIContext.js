@@ -27,28 +27,30 @@ export const ServicesUIProvider = forwardRef(
 
     useImperativeHandle(ref, () => ({
       Collect(fn) {
-          fn(
-            services.map((d) => {
-              let x = {
-                BodyBuildingPackServiceId:
-                  d.BodyBuildingPackServiceId.toString().indexOf("temp") > -1
-                    ? null
-                    : +d.BodyBuildingPackServiceId,
-                BodyBuildingPackId: d.BodyBuildingPackId,
-                BodyBuildingServiceId: d.BodyBuildingServiceId,
-                ServiceCount: +d.ServiceCount,
-                IsDeleted: d.IsDeleted,
-              };
+        fn(
+          services.map((d) => {
+            let x = {
+              BodyBuildingPackServiceId:
+                d.BodyBuildingPackServiceId.toString().indexOf("temp") > -1
+                  ? null
+                  : +d.BodyBuildingPackServiceId,
+              BodyBuildingPackId: d.BodyBuildingPackId,
+              BodyBuildingServiceId: d.BodyBuildingServiceId,
+              ServiceCount: +d.ServiceCount,
+              IsDeleted: d.IsDeleted,
+            };
 
-              return x;
-            })
-          );
+            return x;
+          })
+        );
       },
     }));
 
     const [selectedId, setSelectedId] = useState(null);
     const [selectedItem, setSelectedItem] = useState(null);
-    const [bodyBuildingPackId, setBodyBuildingPackId] = useState(currentBodyBuildingPackId);
+    const [bodyBuildingPackId, setBodyBuildingPackId] = useState(
+      currentBodyBuildingPackId
+    );
 
     const initService = {
       BodyBuildingPackServiceId: "",
@@ -170,7 +172,8 @@ export const ServicesUIProvider = forwardRef(
     };
 
     const addService = (service) => {
-      service.BodyBuildingPackServiceId = "temp_" + Math.floor(Math.random() * 100);
+      service.BodyBuildingPackServiceId =
+        "temp_" + Math.floor(Math.random() * 100);
 
       setServices((services) => [...services, service]);
     };
@@ -240,9 +243,9 @@ export const ServicesUIProvider = forwardRef(
     };
 
     return (
-        <ServicesUIContext.Provider value={value}>
-          {children}
-        </ServicesUIContext.Provider>
+      <ServicesUIContext.Provider value={value}>
+        {children}
+      </ServicesUIContext.Provider>
     );
   }
 );

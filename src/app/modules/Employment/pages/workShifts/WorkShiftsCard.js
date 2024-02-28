@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { WorkShiftsTable } from "./workShifts-table/WorkShiftsTable";
-import { useWorkShiftsUIContext, WorkShiftsUIConsumer } from "./WorkShiftsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useWorkShiftsUIContext,
+  WorkShiftsUIConsumer,
+} from "./WorkShiftsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function WorkShiftsCard() {
   const { t } = useTranslation();
@@ -22,23 +24,25 @@ export function WorkShiftsCard() {
       queryParams: workShiftsUIContext.queryParams,
       setQueryParams: workShiftsUIContext.setQueryParams,
       newWorkShiftButtonClick: workShiftsUIContext.newWorkShiftButtonClick,
-      openDeleteWorkShiftsDialog: workShiftsUIContext.openDeleteWorkShiftsDialog,
+      openDeleteWorkShiftsDialog:
+        workShiftsUIContext.openDeleteWorkShiftsDialog,
       openEditWorkShiftPage: workShiftsUIContext.openEditWorkShiftPage,
-      openUpdateWorkShiftsStatusDialog: workShiftsUIContext.openUpdateWorkShiftsStatusDialog,
+      openUpdateWorkShiftsStatusDialog:
+        workShiftsUIContext.openUpdateWorkShiftsStatusDialog,
       openFetchWorkShiftsDialog: workShiftsUIContext.openFetchWorkShiftsDialog,
     };
   }, [workShiftsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("WorkShift.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("WorkShift.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={workShiftsUIProps.newWorkShiftButtonClick}
           >
-            {t("WorkShift.Entity")} {' '} {t("Common.New")}
+            {t("WorkShift.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

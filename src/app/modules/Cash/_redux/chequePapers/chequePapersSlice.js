@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialChequePapersState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const chequePapersSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getChequePaperById  
+    // getChequePaperById
     chequePaperFetched: (state, action) => {
       state.actionsLoading = false;
       state.chequePaperForEdit = action.payload.chequePaperForEdit;
       state.error = null;
     },
-    // findChequePapers  
+    // findChequePapers
     chequePapersFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const chequePapersSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createChequePaper  
+    // createChequePaper
     chequePaperCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateChequePaper  
+    // updateChequePaper
     chequePaperUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const chequePapersSlice = createSlice({
         return entity;
       });
     },
-    // deleteChequePaper  
+    // deleteChequePaper
     chequePaperDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.ChequePaperId !== action.payload.ChequePaperId  
+        (el) => el.ChequePaperId !== action.payload.ChequePaperId
       );
     },
-    // deleteChequePapers  
+    // deleteChequePapers
     chequePapersDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ChequePaperId)  
+        (el) => !action.payload.ids.includes(el.ChequePaperId)
       );
     },
-    // chequePapersUpdateState  
+    // chequePapersUpdateState
     chequePapersStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

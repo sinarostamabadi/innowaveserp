@@ -30,7 +30,7 @@ export function LoadingDialog({ isLoading, text }) {
 
   return (
     <Portal node={document && document.getElementById("layout-portal")}>
-      <div className={cssClasses.join(" ")}>{text}</div>
+      <div className={cssClasses.join(" ")}>Loading...</div>
     </Portal>
   );
 }

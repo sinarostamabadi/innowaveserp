@@ -8,13 +8,26 @@ import { useHtmlClassService } from "src/core/layout";
 import { topPlayer } from "../_redux/reports/reports";
 import { useTranslation } from "react-i18next";
 
-export function ChartTopPlayer({ id, className, symbolShape, baseColor , mode, title, description}) {
-  const {t} = useTranslation();
+export function ChartTopPlayer({
+  id,
+  className,
+  symbolShape,
+  baseColor,
+  mode,
+  title,
+  description,
+}) {
+  const { t } = useTranslation();
   const uiService = useHtmlClassService();
-  const [ data, setData ] = useState({Scores: [], Persons: []});
+  const [data, setData] = useState({ Scores: [], Persons: [] });
 
   useEffect(() => {
-    topPlayer(mode).then(({data}) => setData({Scores: data.map(x=> x.TotalScore), Persons: data.map(x=> x.PersonName)}));
+    topPlayer(mode).then(({ data }) =>
+      setData({
+        Scores: data.map((x) => x.TotalScore),
+        Persons: data.map((x) => x.PersonName),
+      })
+    );
   }, []);
 
   const layoutProps = useMemo(() => {
@@ -60,10 +73,13 @@ export function ChartTopPlayer({ id, className, symbolShape, baseColor , mode, t
   }, [id, data, layoutProps]);
 
   return (
-    <div className={`card card-custom ${className}`}  style={{minHeight: "300px"}}>
+    <div
+      className={`card card-custom ${className}`}
+      style={{ minHeight: "300px" }}
+    >
       <div className="card-body p-0">
         <div className="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
-        <div className="d-flex flex-column text-left">
+          <div className="d-flex flex-column text-left">
             <span className="text-dark-75 font-weight-bolder font-size-h3">
               {title}
             </span>
@@ -71,12 +87,13 @@ export function ChartTopPlayer({ id, className, symbolShape, baseColor , mode, t
               {description}
             </span>
           </div>
-          <span
-            className={`symbol ${symbolShape} symbol-50 symbol-light mr-2`}
-          >
+          <span className={`symbol ${symbolShape} symbol-50 symbol-light mr-2`}>
             <span className="symbol-label">
               <span className={`svg-icon svg-icon-xl svg-icon-${baseColor}`}>
-                <i className={`fad fa-bowling-pins text-${baseColor}`} style={{fontSize: '2.5rem'}}></i>
+                <i
+                  className={`fad fa-bowling-pins text-${baseColor}`}
+                  style={{ fontSize: "2.5rem" }}
+                ></i>
               </span>
             </span>
           </span>
@@ -109,15 +126,15 @@ function getChartOption(layoutProps, data, t) {
     plotOptions: {
       bar: {
         horizontal: false,
-        columnWidth: '60%',
-        endingShape: 'rounded'
+        columnWidth: "60%",
+        endingShape: "rounded",
       },
     },
     dataLabels: {
-      enabled: false
+      enabled: false,
     },
     fill: {
-      opacity: 1
+      opacity: 1,
     },
     xaxis: {
       categories: data.Persons,
@@ -137,12 +154,12 @@ function getChartOption(layoutProps, data, t) {
         minHeight: undefined,
         maxHeight: 120,
         style: {
-            colors: [],
-            fontSize: '10px',
-            fontFamily: 'IransansFa',
-            fontWeight: 600,
-            cssClass: 'apexcharts-xaxis-label',
-            top:200
+          colors: [],
+          fontSize: "10px",
+          fontFamily: "IransansFa",
+          fontWeight: 600,
+          cssClass: "apexcharts-xaxis-label",
+          top: 200,
         },
       },
       crosshairs: {
@@ -167,9 +184,9 @@ function getChartOption(layoutProps, data, t) {
     yaxis: {
       labels: {
         show: true,
-        textAnchor: 'start',
-        position: 'left',
-        borderColor: '#c2c2c2',
+        textAnchor: "start",
+        position: "left",
+        borderColor: "#c2c2c2",
         borderWidth: 1,
         borderRadius: 2,
         text: undefined,
@@ -209,7 +226,7 @@ function getChartOption(layoutProps, data, t) {
         fontFamily: layoutProps.fontFamily,
       },
       y: {
-        formatter: function(val) {
+        formatter: function (val) {
           return val;
         },
       },

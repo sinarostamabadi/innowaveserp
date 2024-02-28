@@ -17,7 +17,9 @@ export function EmployeePromissoryNotesPage({ history }) {
       history.push(`/employment/employeePromissoryNotes/${id}/delete`);
     },
     openDeleteEmployeePromissoryNotesDialog: () => {
-      history.push(`/employment/employeePromissoryNotes/deleteEmployeePromissoryNotes`);
+      history.push(
+        `/employment/employeePromissoryNotes/deleteEmployeePromissoryNotes`
+      );
     },
     openFetchEmployeePromissoryNotesDialog: () => {
       history.push(`/employment/employeePromissoryNotes/fetch`);
@@ -26,9 +28,11 @@ export function EmployeePromissoryNotesPage({ history }) {
       history.push("/employment/employeePromissoryNotes/updateStatus");
     },
   };
-  
+
   return (
-    <EmployeePromissoryNotesUIProvider employeePromissoryNotesUIEvents={employeePromissoryNotesUIEvents}>
+    <EmployeePromissoryNotesUIProvider
+      employeePromissoryNotesUIEvents={employeePromissoryNotesUIEvents}
+    >
       <EmployeePromissoryNotesLoadingDialog />
       <Route path="/employment/employeePromissoryNotes/:id/delete">
         {({ history, match }) => (

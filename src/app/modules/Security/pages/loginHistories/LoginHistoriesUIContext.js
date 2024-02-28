@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { LoginHistoryModel } from "../../../../../core/_models/Security/LoginHistoryModel";
@@ -30,7 +29,7 @@ export function LoginHistoriesUIProvider({ loginHistoriesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function LoginHistoriesUIProvider({ loginHistoriesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: LoginHistoryModel,
-    newLoginHistoryButtonClick: loginHistoriesUIEvents.newLoginHistoryButtonClick,
+    newLoginHistoryButtonClick:
+      loginHistoriesUIEvents.newLoginHistoryButtonClick,
     openEditLoginHistoryPage: loginHistoriesUIEvents.openEditLoginHistoryPage,
-    openDeleteLoginHistoryDialog: loginHistoriesUIEvents.openDeleteLoginHistoryDialog,
-    openDeleteLoginHistoriesDialog: loginHistoriesUIEvents.openDeleteLoginHistoriesDialog,
-    openFetchLoginHistoriesDialog: loginHistoriesUIEvents.openFetchLoginHistoriesDialog,
-    openUpdateLoginHistoriesStatusDialog: loginHistoriesUIEvents.openUpdateLoginHistoriesStatusDialog,
+    openDeleteLoginHistoryDialog:
+      loginHistoriesUIEvents.openDeleteLoginHistoryDialog,
+    openDeleteLoginHistoriesDialog:
+      loginHistoriesUIEvents.openDeleteLoginHistoriesDialog,
+    openFetchLoginHistoriesDialog:
+      loginHistoriesUIEvents.openFetchLoginHistoriesDialog,
+    openUpdateLoginHistoriesStatusDialog:
+      loginHistoriesUIEvents.openUpdateLoginHistoriesStatusDialog,
   };
   return (
-    <LoginHistoriesUIContext.Provider value={value}>{children}</LoginHistoriesUIContext.Provider>
+    <LoginHistoriesUIContext.Provider value={value}>
+      {children}
+    </LoginHistoriesUIContext.Provider>
   );
 }

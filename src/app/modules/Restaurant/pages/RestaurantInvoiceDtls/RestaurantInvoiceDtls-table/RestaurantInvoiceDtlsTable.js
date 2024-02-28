@@ -32,8 +32,10 @@ export function RestaurantInvoiceDtlsTable() {
       setIds: restaurantInvoiceDtlsUIContext.setIds,
       queryParams: restaurantInvoiceDtlsUIContext.queryParams,
       setQueryParams: restaurantInvoiceDtlsUIContext.setQueryParams,
-      openEditRestaurantInvoiceDtlPage: restaurantInvoiceDtlsUIContext.openEditRestaurantInvoiceDtlPage,
-      openDeleteRestaurantInvoiceDtlDialog: restaurantInvoiceDtlsUIContext.openDeleteRestaurantInvoiceDtlDialog,
+      openEditRestaurantInvoiceDtlPage:
+        restaurantInvoiceDtlsUIContext.openEditRestaurantInvoiceDtlPage,
+      openDeleteRestaurantInvoiceDtlDialog:
+        restaurantInvoiceDtlsUIContext.openDeleteRestaurantInvoiceDtlDialog,
     };
   }, [restaurantInvoiceDtlsUIContext]);
 
@@ -50,7 +52,11 @@ export function RestaurantInvoiceDtlsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     restaurantInvoiceDtlsUIProps.setIds([]);
-    dispatch(actions.fetchRestaurantInvoiceDtls(restaurantInvoiceDtlsUIProps.queryParams));
+    dispatch(
+      actions.fetchRestaurantInvoiceDtls(
+        restaurantInvoiceDtlsUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restaurantInvoiceDtlsUIProps.queryParams, dispatch]);
 
@@ -72,8 +78,10 @@ export function RestaurantInvoiceDtlsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditRestaurantInvoiceDtlPage: restaurantInvoiceDtlsUIProps.openEditRestaurantInvoiceDtlPage,
-        openDeleteRestaurantInvoiceDtlDialog: restaurantInvoiceDtlsUIProps.openDeleteRestaurantInvoiceDtlDialog,
+        openEditRestaurantInvoiceDtlPage:
+          restaurantInvoiceDtlsUIProps.openEditRestaurantInvoiceDtlPage,
+        openDeleteRestaurantInvoiceDtlDialog:
+          restaurantInvoiceDtlsUIProps.openDeleteRestaurantInvoiceDtlDialog,
         t: t,
       },
       classes: "text-right pr-0",

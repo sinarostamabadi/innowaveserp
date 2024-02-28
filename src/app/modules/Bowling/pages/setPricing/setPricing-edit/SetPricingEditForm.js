@@ -109,7 +109,9 @@ export function SetPricingEditForm({ setPricing, btnRef, saveSetPricing }) {
                     label={t("BowlingReserve.Person")}
                     placeHolder={t("msg.SelectBySuggestion")}
                     handleSearch={handleSuggestionPerson}
-                    defaultValue={setPricing && setPricing.Person? [setPricing.Person] : []}
+                    defaultValue={
+                      setPricing && setPricing.Person ? [setPricing.Person] : []
+                    }
                     renderMenuItemChildren={(option, props) => (
                       <div>
                         <h6>{option.FullNameFa}</h6>
@@ -212,9 +214,7 @@ export function SetPricingEditForm({ setPricing, btnRef, saveSetPricing }) {
                   </Select>
                 </div>
               </div>
-              <div className="form-group row">
-              
-              </div>
+              <div className="form-group row"></div>
               <button
                 type="submit"
                 style={{ display: "none" }}

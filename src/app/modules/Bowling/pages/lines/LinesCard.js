@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { LinesTable } from "./lines-table/LinesTable";
 import { useLinesUIContext, LinesUIConsumer } from "./LinesUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function LinesCard() {
   const { t } = useTranslation();
@@ -31,7 +30,7 @@ export function LinesCard() {
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Line.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Line.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"

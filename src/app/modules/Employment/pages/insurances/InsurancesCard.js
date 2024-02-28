@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { InsurancesTable } from "./insurances-table/InsurancesTable";
-import { useInsurancesUIContext, InsurancesUIConsumer } from "./InsurancesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useInsurancesUIContext,
+  InsurancesUIConsumer,
+} from "./InsurancesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function InsurancesCard() {
   const { t } = useTranslation();
@@ -22,23 +24,25 @@ export function InsurancesCard() {
       queryParams: insurancesUIContext.queryParams,
       setQueryParams: insurancesUIContext.setQueryParams,
       newInsuranceButtonClick: insurancesUIContext.newInsuranceButtonClick,
-      openDeleteInsurancesDialog: insurancesUIContext.openDeleteInsurancesDialog,
+      openDeleteInsurancesDialog:
+        insurancesUIContext.openDeleteInsurancesDialog,
       openEditInsurancePage: insurancesUIContext.openEditInsurancePage,
-      openUpdateInsurancesStatusDialog: insurancesUIContext.openUpdateInsurancesStatusDialog,
+      openUpdateInsurancesStatusDialog:
+        insurancesUIContext.openUpdateInsurancesStatusDialog,
       openFetchInsurancesDialog: insurancesUIContext.openFetchInsurancesDialog,
     };
   }, [insurancesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Insurance.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Insurance.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={insurancesUIProps.newInsuranceButtonClick}
           >
-            {t("Insurance.Entity")} {' '} {t("Common.New")}
+            {t("Insurance.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

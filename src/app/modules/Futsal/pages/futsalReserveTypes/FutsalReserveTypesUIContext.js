@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { FutsalReserveTypeModel } from "../../../../../core/_models/Futsal/FutsalReserveTypeModel";
@@ -10,9 +9,13 @@ export function useFutsalReserveTypesUIContext() {
   return useContext(FutsalReserveTypesUIContext);
 }
 
-export const FutsalReserveTypesUIConsumer = FutsalReserveTypesUIContext.Consumer;
+export const FutsalReserveTypesUIConsumer =
+  FutsalReserveTypesUIContext.Consumer;
 
-export function FutsalReserveTypesUIProvider({ futsalReserveTypesUIEvents, children }) {
+export function FutsalReserveTypesUIProvider({
+  futsalReserveTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(FutsalReserveTypeModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function FutsalReserveTypesUIProvider({ futsalReserveTypesUIEvents, child
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function FutsalReserveTypesUIProvider({ futsalReserveTypesUIEvents, child
     setIds,
     setQueryParams,
     dataModel: FutsalReserveTypeModel,
-    newFutsalReserveTypeButtonClick: futsalReserveTypesUIEvents.newFutsalReserveTypeButtonClick,
-    openEditFutsalReserveTypePage: futsalReserveTypesUIEvents.openEditFutsalReserveTypePage,
-    openDeleteFutsalReserveTypeDialog: futsalReserveTypesUIEvents.openDeleteFutsalReserveTypeDialog,
-    openDeleteFutsalReserveTypesDialog: futsalReserveTypesUIEvents.openDeleteFutsalReserveTypesDialog,
-    openFetchFutsalReserveTypesDialog: futsalReserveTypesUIEvents.openFetchFutsalReserveTypesDialog,
-    openUpdateFutsalReserveTypesStatusDialog: futsalReserveTypesUIEvents.openUpdateFutsalReserveTypesStatusDialog,
+    newFutsalReserveTypeButtonClick:
+      futsalReserveTypesUIEvents.newFutsalReserveTypeButtonClick,
+    openEditFutsalReserveTypePage:
+      futsalReserveTypesUIEvents.openEditFutsalReserveTypePage,
+    openDeleteFutsalReserveTypeDialog:
+      futsalReserveTypesUIEvents.openDeleteFutsalReserveTypeDialog,
+    openDeleteFutsalReserveTypesDialog:
+      futsalReserveTypesUIEvents.openDeleteFutsalReserveTypesDialog,
+    openFetchFutsalReserveTypesDialog:
+      futsalReserveTypesUIEvents.openFetchFutsalReserveTypesDialog,
+    openUpdateFutsalReserveTypesStatusDialog:
+      futsalReserveTypesUIEvents.openUpdateFutsalReserveTypesStatusDialog,
   };
   return (
-    <FutsalReserveTypesUIContext.Provider value={value}>{children}</FutsalReserveTypesUIContext.Provider>
+    <FutsalReserveTypesUIContext.Provider value={value}>
+      {children}
+    </FutsalReserveTypesUIContext.Provider>
   );
 }

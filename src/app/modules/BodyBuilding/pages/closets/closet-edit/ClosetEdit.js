@@ -45,7 +45,9 @@ export function ClosetEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " «" + t("BodyBuildingCloset.Entity") + "»";
+    let _title = id
+      ? ""
+      : t("Common.Create") + " «" + t("BodyBuildingCloset.Entity") + "»";
 
     if (closetForEdit && closetForEdit.BodyBuildingClosetId == id) {
       _title = t("Common.Edit") + " «" + closetForEdit.Title + "»";
@@ -73,8 +75,7 @@ export function ClosetEdit({
 
   const btnRef = useRef();
   const saveClosetClick = () => {
-    if (btnRef && btnRef.current) 
-      btnRef.current.click();
+    if (btnRef && btnRef.current) btnRef.current.click();
   };
 
   const backToClosetsList = () => history.push(`/BodyBuilding/closets`);

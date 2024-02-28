@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialImportAccountFloatingTempsState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const importAccountFloatingTempsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getImportAccountFloatingTempById  
+    // getImportAccountFloatingTempById
     importAccountFloatingTempFetched: (state, action) => {
       state.actionsLoading = false;
-      state.importAccountFloatingTempForEdit = action.payload.importAccountFloatingTempForEdit;
+      state.importAccountFloatingTempForEdit =
+        action.payload.importAccountFloatingTempForEdit;
       state.error = null;
     },
-    // findImportAccountFloatingTemps  
+    // findImportAccountFloatingTemps
     importAccountFloatingTempsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,46 +47,53 @@ export const importAccountFloatingTempsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createImportAccountFloatingTemp  
+    // createImportAccountFloatingTemp
     importAccountFloatingTempCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateImportAccountFloatingTemp  
+    // updateImportAccountFloatingTemp
     importAccountFloatingTempUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.ImportAccountFloatingTempId === action.payload.importAccountFloatingTemp.ImportAccountFloatingTempId) {
+        if (
+          entity.ImportAccountFloatingTempId ===
+          action.payload.importAccountFloatingTemp.ImportAccountFloatingTempId
+        ) {
           return action.payload.importAccountFloatingTemp;
         }
         return entity;
       });
     },
-    // deleteImportAccountFloatingTemp  
+    // deleteImportAccountFloatingTemp
     importAccountFloatingTempDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.ImportAccountFloatingTempId !== action.payload.ImportAccountFloatingTempId  
+        (el) =>
+          el.ImportAccountFloatingTempId !==
+          action.payload.ImportAccountFloatingTempId
       );
     },
-    // deleteImportAccountFloatingTemps  
+    // deleteImportAccountFloatingTemps
     importAccountFloatingTempsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ImportAccountFloatingTempId)  
+        (el) => !action.payload.ids.includes(el.ImportAccountFloatingTempId)
       );
     },
-    // importAccountFloatingTempsUpdateState  
+    // importAccountFloatingTempsUpdateState
     importAccountFloatingTempsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       const { ids, status } = action.payload;
       state.entities = state.entities.map((entity) => {
-        if (ids.findIndex((id) => id === entity.ImportAccountFloatingTempId) > -1) {
+        if (
+          ids.findIndex((id) => id === entity.ImportAccountFloatingTempId) > -1
+        ) {
           entity.status = status;
         }
         return entity;

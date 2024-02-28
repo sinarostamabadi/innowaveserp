@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialMenuItemIngredientsesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const menuItemIngredientsesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getMenuItemIngredientsById  
+    // getMenuItemIngredientsById
     menuItemIngredientsFetched: (state, action) => {
       state.actionsLoading = false;
-      state.menuItemIngredientsForEdit = action.payload.menuItemIngredientsForEdit;
+      state.menuItemIngredientsForEdit =
+        action.payload.menuItemIngredientsForEdit;
       state.error = null;
     },
-    // findMenuItemIngredientses  
+    // findMenuItemIngredientses
     menuItemIngredientsesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const menuItemIngredientsesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createMenuItemIngredients  
+    // createMenuItemIngredients
     menuItemIngredientsCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateMenuItemIngredients  
+    // updateMenuItemIngredients
     menuItemIngredientsUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.MenuItemIngredientsId === action.payload.menuItemIngredients.MenuItemIngredientsId) {
+        if (
+          entity.MenuItemIngredientsId ===
+          action.payload.menuItemIngredients.MenuItemIngredientsId
+        ) {
           return action.payload.menuItemIngredients;
         }
         return entity;
       });
     },
-    // deleteMenuItemIngredients  
+    // deleteMenuItemIngredients
     menuItemIngredientsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.MenuItemIngredientsId !== action.payload.MenuItemIngredientsId  
+        (el) =>
+          el.MenuItemIngredientsId !== action.payload.MenuItemIngredientsId
       );
     },
-    // deleteMenuItemIngredientses  
+    // deleteMenuItemIngredientses
     menuItemIngredientsesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.MenuItemIngredientsId)  
+        (el) => !action.payload.ids.includes(el.MenuItemIngredientsId)
       );
     },
-    // menuItemIngredientsesUpdateState  
+    // menuItemIngredientsesUpdateState
     menuItemIngredientsesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

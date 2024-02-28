@@ -26,9 +26,11 @@ export function UnitConversionsPage({ history }) {
       history.push("/general/unitConversions/updateStatus");
     },
   };
-  
+
   return (
-    <UnitConversionsUIProvider unitConversionsUIEvents={unitConversionsUIEvents}>
+    <UnitConversionsUIProvider
+      unitConversionsUIEvents={unitConversionsUIEvents}
+    >
       <UnitConversionsLoadingDialog />
       <Route path="/general/unitConversions/:id/delete">
         {({ history, match }) => (

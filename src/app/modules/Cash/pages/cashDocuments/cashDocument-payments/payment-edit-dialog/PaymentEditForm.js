@@ -21,9 +21,9 @@ export function PaymentEditForm({
   ];
 
   const PaymentEditSchema = Yup.object().shape({
-    TransactionTypeId: Yup.number().nullable().required(
-      t("err.IsRequired", { 0: t("CashDocument.TransactionType") })
-    ),
+    TransactionTypeId: Yup.number()
+      .nullable()
+      .required(t("err.IsRequired", { 0: t("CashDocument.TransactionType") })),
     Price: Yup.string().required(
       t("err.IsRequired", { 0: t("CashDocument.Price") })
     ),
@@ -68,7 +68,7 @@ export function PaymentEditForm({
                         ))}
                       </Select>
                     </div>
-                    </div>
+                  </div>
                   <div className="row mt-2">
                     <div className="col-lg-6">
                       <Field

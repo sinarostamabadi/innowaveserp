@@ -17,7 +17,9 @@ export function EmployeePhysicalConditionsPage({ history }) {
       history.push(`/employment/employeePhysicalConditions/${id}/delete`);
     },
     openDeleteEmployeePhysicalConditionsDialog: () => {
-      history.push(`/employment/employeePhysicalConditions/deleteEmployeePhysicalConditions`);
+      history.push(
+        `/employment/employeePhysicalConditions/deleteEmployeePhysicalConditions`
+      );
     },
     openFetchEmployeePhysicalConditionsDialog: () => {
       history.push(`/employment/employeePhysicalConditions/fetch`);
@@ -26,9 +28,11 @@ export function EmployeePhysicalConditionsPage({ history }) {
       history.push("/employment/employeePhysicalConditions/updateStatus");
     },
   };
-  
+
   return (
-    <EmployeePhysicalConditionsUIProvider employeePhysicalConditionsUIEvents={employeePhysicalConditionsUIEvents}>
+    <EmployeePhysicalConditionsUIProvider
+      employeePhysicalConditionsUIEvents={employeePhysicalConditionsUIEvents}
+    >
       <EmployeePhysicalConditionsLoadingDialog />
       <Route path="/employment/employeePhysicalConditions/:id/delete">
         {({ history, match }) => (

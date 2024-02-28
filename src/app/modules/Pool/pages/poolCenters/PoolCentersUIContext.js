@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { PoolCenterModel } from "../../../../../core/_models/Pool/PoolCenterModel";
@@ -30,7 +29,7 @@ export function PoolCentersUIProvider({ poolCentersUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -41,11 +40,15 @@ export function PoolCentersUIProvider({ poolCentersUIEvents, children }) {
     newPoolCenterButtonClick: poolCentersUIEvents.newPoolCenterButtonClick,
     openEditPoolCenterPage: poolCentersUIEvents.openEditPoolCenterPage,
     openDeletePoolCenterDialog: poolCentersUIEvents.openDeletePoolCenterDialog,
-    openDeletePoolCentersDialog: poolCentersUIEvents.openDeletePoolCentersDialog,
+    openDeletePoolCentersDialog:
+      poolCentersUIEvents.openDeletePoolCentersDialog,
     openFetchPoolCentersDialog: poolCentersUIEvents.openFetchPoolCentersDialog,
-    openUpdatePoolCentersStatusDialog: poolCentersUIEvents.openUpdatePoolCentersStatusDialog,
+    openUpdatePoolCentersStatusDialog:
+      poolCentersUIEvents.openUpdatePoolCentersStatusDialog,
   };
   return (
-    <PoolCentersUIContext.Provider value={value}>{children}</PoolCentersUIContext.Provider>
+    <PoolCentersUIContext.Provider value={value}>
+      {children}
+    </PoolCentersUIContext.Provider>
   );
 }

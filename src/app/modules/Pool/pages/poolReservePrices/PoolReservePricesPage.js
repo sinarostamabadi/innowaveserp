@@ -26,9 +26,11 @@ export function PoolReservePricesPage({ history }) {
       history.push("/pool/poolReservePrices/updateStatus");
     },
   };
-  
+
   return (
-    <PoolReservePricesUIProvider poolReservePricesUIEvents={poolReservePricesUIEvents}>
+    <PoolReservePricesUIProvider
+      poolReservePricesUIEvents={poolReservePricesUIEvents}
+    >
       <PoolReservePricesLoadingDialog />
       <Route path="/pool/poolReservePrices/:id/delete">
         {({ history, match }) => (

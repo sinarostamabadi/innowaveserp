@@ -5,8 +5,11 @@ import { Input } from "../../../../../../core/_partials/controls";
 import { useTranslation } from "react-i18next";
 import { getAllAccountFloatingGroups } from "./../../../_redux/accountFloatingGroups/accountFloatingGroupsCrud";
 
-
-export function AccountFloatingEditForm({ accountFloating, btnRef, saveAccountFloating }) {
+export function AccountFloatingEditForm({
+  accountFloating,
+  btnRef,
+  saveAccountFloating,
+}) {
   const { t } = useTranslation();
   const [codes, setCodes] = useState([]);
 
@@ -21,25 +24,25 @@ export function AccountFloatingEditForm({ accountFloating, btnRef, saveAccountFl
       .required(t("err.IsRequired", { 0: t("AccountFloating.Title") })),
     Des: Yup.string()
       .min(2, t("err.Min", { 0: 2 }))
-      .max(100, t("err.Max", { 0: 100 }))
+      .max(100, t("err.Max", { 0: 100 })),
   });
 
   useEffect(() => {
     if (codes.length === 0)
-    getAllAccountFloatingGroups().then(({ data }) =>
-    setCodes((lines) => [
+      getAllAccountFloatingGroups().then(({ data }) =>
+        setCodes((lines) => [
           { Code: "", Title: t("Common.WithoutSelect") },
           ...data.Items,
         ])
       );
   }, [codes.length, t]);
-  
+
   function clean(dirty) {
     return {
       AccountFloatingId: dirty.AccountFloatingId,
       Des: dirty.Des,
       Code: dirty.Code,
-      Title: dirty.Title
+      Title: dirty.Title,
     };
   }
 

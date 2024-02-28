@@ -29,7 +29,7 @@ export function CostsUIProvider({ costsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,

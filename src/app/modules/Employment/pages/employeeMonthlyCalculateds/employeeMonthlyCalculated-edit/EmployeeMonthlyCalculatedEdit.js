@@ -41,24 +41,29 @@ export function EmployeeMonthlyCalculatedEdit({
   const dispatch = useDispatch();
 
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
-  const { actionsLoading, employeeMonthlyCalculatedForEdit, error } = useSelector(
-    (state) => ({
-      actionsLoading: state.employeeMonthlyCalculateds.actionsLoading,
-      employeeMonthlyCalculatedForEdit: state.employeeMonthlyCalculateds.employeeMonthlyCalculatedForEdit,
-      error: state.employeeMonthlyCalculateds.error,
-    }),
-    shallowEqual
-  );
+  const { actionsLoading, employeeMonthlyCalculatedForEdit, error } =
+    useSelector(
+      (state) => ({
+        actionsLoading: state.employeeMonthlyCalculateds.actionsLoading,
+        employeeMonthlyCalculatedForEdit:
+          state.employeeMonthlyCalculateds.employeeMonthlyCalculatedForEdit,
+        error: state.employeeMonthlyCalculateds.error,
+      }),
+      shallowEqual
+    );
 
   useEffect(() => {
     dispatch(actions.fetchEmployeeMonthlyCalculated(id));
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("EmployeeMonthlyCalculated.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("EmployeeMonthlyCalculated.Entity");
 
     if (employeeMonthlyCalculatedForEdit && id) {
-      _title = t("Common.Edit") + " " + employeeMonthlyCalculatedForEdit.TitleFa;
+      _title =
+        t("Common.Edit") + " " + employeeMonthlyCalculatedForEdit.TitleFa;
     }
 
     setTitle(_title);
@@ -73,11 +78,11 @@ export function EmployeeMonthlyCalculatedEdit({
         .then((arg) => {
           backToEmployeeMonthlyCalculatedsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateEmployeeMonthlyCalculated(id, values))
         .then(() => backToEmployeeMonthlyCalculatedsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 
@@ -149,7 +154,9 @@ export function EmployeeMonthlyCalculatedEdit({
           {tab === "basic" && (
             <EmployeeMonthlyCalculatedEditForm
               actionsLoading={actionsLoading}
-              employeeMonthlyCalculated={employeeMonthlyCalculatedForEdit || initModel}
+              employeeMonthlyCalculated={
+                employeeMonthlyCalculatedForEdit || initModel
+              }
               btnRef={btnRef}
               saveEmployeeMonthlyCalculated={saveEmployeeMonthlyCalculated}
             />

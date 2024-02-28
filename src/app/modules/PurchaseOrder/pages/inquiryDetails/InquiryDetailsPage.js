@@ -26,7 +26,7 @@ export function InquiryDetailsPage({ history }) {
       history.push("/purchaseOrder/inquiryDetails/updateStatus");
     },
   };
-  
+
   return (
     <InquiryDetailsUIProvider inquiryDetailsUIEvents={inquiryDetailsUIEvents}>
       <InquiryDetailsLoadingDialog />

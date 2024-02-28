@@ -32,8 +32,10 @@ export function FutsalTimePriceingTable() {
       setIds: futsalTimePriceingUIContext.setIds,
       queryParams: futsalTimePriceingUIContext.queryParams,
       setQueryParams: futsalTimePriceingUIContext.setQueryParams,
-      openEditFutsalTimePriceingPage: futsalTimePriceingUIContext.openEditFutsalTimePriceingPage,
-      openDeleteFutsalTimePriceingDialog: futsalTimePriceingUIContext.openDeleteFutsalTimePriceingDialog,
+      openEditFutsalTimePriceingPage:
+        futsalTimePriceingUIContext.openEditFutsalTimePriceingPage,
+      openDeleteFutsalTimePriceingDialog:
+        futsalTimePriceingUIContext.openDeleteFutsalTimePriceingDialog,
     };
   }, [futsalTimePriceingUIContext]);
 
@@ -50,7 +52,9 @@ export function FutsalTimePriceingTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     futsalTimePriceingUIProps.setIds([]);
-    dispatch(actions.fetchFutsalTimePriceing(futsalTimePriceingUIProps.queryParams));
+    dispatch(
+      actions.fetchFutsalTimePriceing(futsalTimePriceingUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [futsalTimePriceingUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function FutsalTimePriceingTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditFutsalTimePriceingPage: futsalTimePriceingUIProps.openEditFutsalTimePriceingPage,
-        openDeleteFutsalTimePriceingDialog: futsalTimePriceingUIProps.openDeleteFutsalTimePriceingDialog,
+        openEditFutsalTimePriceingPage:
+          futsalTimePriceingUIProps.openEditFutsalTimePriceingPage,
+        openDeleteFutsalTimePriceingDialog:
+          futsalTimePriceingUIProps.openDeleteFutsalTimePriceingDialog,
         t: t,
       },
       classes: "text-right pr-0",

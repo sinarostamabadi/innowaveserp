@@ -59,7 +59,7 @@ export function RestaurantInvoicesTable() {
   const fieldKey = getFields(RestaurantInvoiceModel);
   const fields = RestaurantInvoiceModel;
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(actions.fetchRestaurantInvoices(invoicesUIProps.queryParams));
     // eslint-disable-next-line react-hooks/exhaustive-deps

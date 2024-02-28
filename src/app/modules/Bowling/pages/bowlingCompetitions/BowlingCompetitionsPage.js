@@ -26,9 +26,11 @@ export function BowlingCompetitionsPage({ history }) {
       history.push("/bowling/bowlingCompetitions/updateStatus");
     },
   };
-  
+
   return (
-    <BowlingCompetitionsUIProvider bowlingCompetitionsUIEvents={bowlingCompetitionsUIEvents}>
+    <BowlingCompetitionsUIProvider
+      bowlingCompetitionsUIEvents={bowlingCompetitionsUIEvents}
+    >
       <BowlingCompetitionsLoadingDialog />
       <Route path="/bowling/bowlingCompetitions/:id/delete">
         {({ history, match }) => (

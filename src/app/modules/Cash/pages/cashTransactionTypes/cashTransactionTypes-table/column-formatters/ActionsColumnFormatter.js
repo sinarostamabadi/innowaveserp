@@ -12,10 +12,18 @@ export const ActionsColumnFormatter = (
   { openEditCashTransactionTypePage, openDeleteCashTransactionTypeDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="cashTransactionTypes-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="cashTransactionTypes-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-        onClick={() => openEditCashTransactionTypePage(row.CashTransactionTypeId)}
+        onClick={() =>
+          openEditCashTransactionTypePage(row.CashTransactionTypeId)
+        }
       >
         <span className="svg-icon svg-icon-md svg-icon-primary">
           <SVG
@@ -26,11 +34,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="cashTransactionTypes-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="cashTransactionTypes-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteCashTransactionTypeDialog(row.CashTransactionTypeId)}
+        onClick={() =>
+          openDeleteCashTransactionTypeDialog(row.CashTransactionTypeId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

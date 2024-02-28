@@ -34,7 +34,7 @@ export function BuyReturnsTable() {
       openEditBuyReturnPage: buyReturnsUIContext.openEditBuyReturnPage,
       openDeleteBuyReturnDialog: buyReturnsUIContext.openDeleteBuyReturnDialog,
       openCancelAndReturnDialog: buyReturnsUIContext.openCancelAndReturnDialog,
-      openAttachmentsDialog: buyReturnsUIContext.openAttachmentsDialog
+      openAttachmentsDialog: buyReturnsUIContext.openAttachmentsDialog,
     };
   }, [buyReturnsUIContext]);
 
@@ -56,7 +56,10 @@ export function BuyReturnsTable() {
   }, [buyReturnsUIProps.queryParams, dispatch]);
 
   function openBuyReturnProfit(buyReturnId) {
-    window.open(process.env.REACT_APP_API_URL + `ProductManagement/buyReturnprofit/${buyReturnId}`);
+    window.open(
+      process.env.REACT_APP_API_URL +
+        `ProductManagement/buyReturnprofit/${buyReturnId}`
+    );
   }
 
   const columns = [
@@ -65,13 +68,13 @@ export function BuyReturnsTable() {
       text: t("BuyReturn." + fields.BuyReturnNumber.display),
       sort: fields.BuyReturnNumber.sortable,
       sortCaret: sortCaret,
-    },  
+    },
     {
       dataField: fieldKey.FactorNumber,
       text: t("BuyReturn." + fields.FactorNumber.display),
       sort: fields.FactorNumber.sortable,
       sortCaret: sortCaret,
-    },   
+    },
     {
       dataField: fieldKey.BuyReturnDate,
       text: t("BuyReturn." + fields.BuyReturnDate.display),

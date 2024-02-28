@@ -45,7 +45,8 @@ export function FutsalReserveTypeEdit({
   const { actionsLoading, futsalReserveTypeForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.futsalReserveTypes.actionsLoading,
-      futsalReserveTypeForEdit: state.futsalReserveTypes.futsalReserveTypeForEdit,
+      futsalReserveTypeForEdit:
+        state.futsalReserveTypes.futsalReserveTypeForEdit,
       error: state.futsalReserveTypes.error,
     }),
     shallowEqual
@@ -56,7 +57,9 @@ export function FutsalReserveTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("FutsalReserveType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("FutsalReserveType.Entity");
 
     if (futsalReserveTypeForEdit && id) {
       _title = t("Common.Edit") + " " + futsalReserveTypeForEdit.TitleFa;
@@ -130,7 +133,7 @@ export function FutsalReserveTypeEdit({
             onClick={saveFutsalReserveTypeClick}
           >
             <i className="fa fa-save"></i> {t("Common.Save")}
-            </button>
+          </button>
         </CardHeaderToolbar>
       </CardHeader>
       <CardBody>

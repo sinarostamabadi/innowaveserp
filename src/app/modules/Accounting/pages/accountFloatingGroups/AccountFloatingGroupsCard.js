@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { AccountFloatingGroupsTable } from "./accountFloatingGroups-table/AccountFloatingGroupsTable";
-import { useAccountFloatingGroupsUIContext, AccountFloatingGroupsUIConsumer } from "./AccountFloatingGroupsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useAccountFloatingGroupsUIContext,
+  AccountFloatingGroupsUIConsumer,
+} from "./AccountFloatingGroupsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function AccountFloatingGroupsCard() {
   const { t } = useTranslation();
@@ -21,22 +23,31 @@ export function AccountFloatingGroupsCard() {
       ids: accountFloatingGroupsUIContext.ids,
       queryParams: accountFloatingGroupsUIContext.queryParams,
       setQueryParams: accountFloatingGroupsUIContext.setQueryParams,
-      newAccountFloatingGroupButtonClick: accountFloatingGroupsUIContext.newAccountFloatingGroupButtonClick,
-      openDeleteAccountFloatingGroupsDialog: accountFloatingGroupsUIContext.openDeleteAccountFloatingGroupsDialog,
-      openEditAccountFloatingGroupPage: accountFloatingGroupsUIContext.openEditAccountFloatingGroupPage,
-      openUpdateAccountFloatingGroupsStatusDialog: accountFloatingGroupsUIContext.openUpdateAccountFloatingGroupsStatusDialog,
-      openFetchAccountFloatingGroupsDialog: accountFloatingGroupsUIContext.openFetchAccountFloatingGroupsDialog,
+      newAccountFloatingGroupButtonClick:
+        accountFloatingGroupsUIContext.newAccountFloatingGroupButtonClick,
+      openDeleteAccountFloatingGroupsDialog:
+        accountFloatingGroupsUIContext.openDeleteAccountFloatingGroupsDialog,
+      openEditAccountFloatingGroupPage:
+        accountFloatingGroupsUIContext.openEditAccountFloatingGroupPage,
+      openUpdateAccountFloatingGroupsStatusDialog:
+        accountFloatingGroupsUIContext.openUpdateAccountFloatingGroupsStatusDialog,
+      openFetchAccountFloatingGroupsDialog:
+        accountFloatingGroupsUIContext.openFetchAccountFloatingGroupsDialog,
     };
   }, [accountFloatingGroupsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("AccountFloatingGroup.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("AccountFloatingGroup.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
-            onClick={accountFloatingGroupsUIProps.newAccountFloatingGroupButtonClick}
+            onClick={
+              accountFloatingGroupsUIProps.newAccountFloatingGroupButtonClick
+            }
           >
             <i className="far fa-plus"></i> {t("Common.New")}
           </button>

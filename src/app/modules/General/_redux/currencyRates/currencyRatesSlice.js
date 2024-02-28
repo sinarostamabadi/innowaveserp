@@ -32,13 +32,13 @@ export const currencyRatesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCurrencyRateById  
+    // getCurrencyRateById
     currencyRateFetched: (state, action) => {
       state.actionsLoading = false;
       state.currencyRateForEdit = action.payload.currencyRateForEdit;
       state.error = null;
     },
-    // findCurrencyRates  
+    // findCurrencyRates
     currencyRatesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -46,40 +46,42 @@ export const currencyRatesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCurrencyRate  
+    // createCurrencyRate
     currencyRateCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCurrencyRate  
+    // updateCurrencyRate
     currencyRateUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.CurrencyRateId === action.payload.currencyRate.CurrencyRateId) {
+        if (
+          entity.CurrencyRateId === action.payload.currencyRate.CurrencyRateId
+        ) {
           return action.payload.currencyRate;
         }
         return entity;
       });
     },
-    // deleteCurrencyRate  
+    // deleteCurrencyRate
     currencyRateDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CurrencyRateId !== action.payload.CurrencyRateId  
+        (el) => el.CurrencyRateId !== action.payload.CurrencyRateId
       );
     },
-    // deleteCurrencyRates  
+    // deleteCurrencyRates
     currencyRatesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CurrencyRateId)  
+        (el) => !action.payload.ids.includes(el.CurrencyRateId)
       );
     },
-    // currencyRatesUpdateState  
+    // currencyRatesUpdateState
     currencyRatesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

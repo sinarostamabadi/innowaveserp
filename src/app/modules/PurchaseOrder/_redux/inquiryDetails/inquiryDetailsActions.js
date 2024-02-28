@@ -1,4 +1,3 @@
-
 // /________________________________________________/ //
 /*****************[09.File_ActionJs]*************************/
 
@@ -12,7 +11,10 @@ export const fetchInquiryDetails = (queryParams) => (dispatch) => {
     .then((response) => {
       const { Items, TotalCount } = response.data;
       dispatch(
-        actions.inquiryDetailsFetched({ totalCount: TotalCount, entities: Items })
+        actions.inquiryDetailsFetched({
+          totalCount: TotalCount,
+          entities: Items,
+        })
       );
     })
     .catch((error) => {
@@ -22,14 +24,18 @@ export const fetchInquiryDetails = (queryParams) => (dispatch) => {
 };
 export const fetchInquiryDetail = (id) => (dispatch) => {
   if (!id) {
-    return dispatch(actions.inquiryDetailFetched({ inquiryDetailForEdit: undefined }));
+    return dispatch(
+      actions.inquiryDetailFetched({ inquiryDetailForEdit: undefined })
+    );
   }
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
     .getInquiryDetailById(id)
     .then((response) => {
       const inquiryDetail = response.data;
-      dispatch(actions.inquiryDetailFetched({ inquiryDetailForEdit: inquiryDetail }));
+      dispatch(
+        actions.inquiryDetailFetched({ inquiryDetailForEdit: inquiryDetail })
+      );
     })
     .catch((error) => {
       error.clientMessage = "Can't find inquiryDetail";
@@ -100,4 +106,4 @@ export const deleteInquiryDetails = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

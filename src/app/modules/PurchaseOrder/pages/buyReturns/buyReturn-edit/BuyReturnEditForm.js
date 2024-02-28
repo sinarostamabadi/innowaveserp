@@ -47,7 +47,7 @@ export const BuyReturnEditForm = forwardRef(({ buyReturn }, ref) => {
       .nullable()
       .required(t("err.IsRequired", { 0: t("BuyReturn.BuyReturnNumber") })),
   });
-  
+
   useImperativeHandle(ref, () => ({
     Collect(fn) {
       callBack = fn;
@@ -63,16 +63,18 @@ export const BuyReturnEditForm = forwardRef(({ buyReturn }, ref) => {
       BuyReturnNumber: 0,
       FactorNumber: data.FactorNumber,
       BuyReturnSettlementTypeId: data.BuyReturnSettlementTypeId,
-      ProviderId: !!data.ProviderId && Array.isArray(data.ProviderId)
+      ProviderId:
+        !!data.ProviderId && Array.isArray(data.ProviderId)
           ? +data.ProviderId[0].PersonId
           : data.ProviderId != ""
           ? data.ProviderId
           : null,
-      InquiryId: !!data.InquiryId && Array.isArray(data.InquiryId)
-      ? +data.InquiryId[0].PersonId
-      : data.InquiryId != ""
-      ? data.InquiryId
-      : null,
+      InquiryId:
+        !!data.InquiryId && Array.isArray(data.InquiryId)
+          ? +data.InquiryId[0].PersonId
+          : data.InquiryId != ""
+          ? data.InquiryId
+          : null,
       BuyReturnDate: FaObjToEnDateTime(data.BuyReturnDateObj),
       FactorDate: FaObjToEnDateTime(data.FactorDateObj),
       IsClosed: !!data.IsClosed,
@@ -144,9 +146,11 @@ export const BuyReturnEditForm = forwardRef(({ buyReturn }, ref) => {
                     customFeedbackLabel=""
                     label={t("BuyReturn.FactorDate")}
                     minimumDate={{
-                      year: +moment().locale(process.env.REACT_APP_DATE).format("YYYY"),
+                      year: +moment()
+                        .locale(process.env.REACT_APP_DATE)
+                        .format("YYYY"),
                       month: 1,
-                      day: 1
+                      day: 1,
                     }}
                     value={buyReturn.FactorDateObj}
                   />
@@ -159,8 +163,14 @@ export const BuyReturnEditForm = forwardRef(({ buyReturn }, ref) => {
                     label={t("BuyReturn.Inquiry")}
                     placeHolder={t("msg.SelectBySuggestion")}
                     handleSearch={handleSuggestionProvider}
-                    initOptions={buyReturn && buyReturn.Inquiry ? [buyReturn.Inquiry] : null}
-                    defaultSelected={buyReturn && buyReturn.Inquiry ? [buyReturn.Inquiry] : []}
+                    initOptions={
+                      buyReturn && buyReturn.Inquiry
+                        ? [buyReturn.Inquiry]
+                        : null
+                    }
+                    defaultSelected={
+                      buyReturn && buyReturn.Inquiry ? [buyReturn.Inquiry] : []
+                    }
                     // defaultValue={buyReturn ? [buyReturn.Inquiry] : []}
                     renderMenuItemChildren={(option, props) => (
                       <div>
@@ -177,8 +187,16 @@ export const BuyReturnEditForm = forwardRef(({ buyReturn }, ref) => {
                     label={t("BuyReturn.Provider")}
                     placeHolder={t("msg.SelectBySuggestion")}
                     handleSearch={handleSuggestionProvider}
-                    initOptions={buyReturn && buyReturn.Provider ? [buyReturn.Provider] : null}
-                    defaultSelected={buyReturn && buyReturn.Provider? [buyReturn.Provider] : []}
+                    initOptions={
+                      buyReturn && buyReturn.Provider
+                        ? [buyReturn.Provider]
+                        : null
+                    }
+                    defaultSelected={
+                      buyReturn && buyReturn.Provider
+                        ? [buyReturn.Provider]
+                        : []
+                    }
                     // defaultValue={buyReturn ? [buyReturn.Provider] : []}
                     renderMenuItemChildren={(option, props) => (
                       <div>

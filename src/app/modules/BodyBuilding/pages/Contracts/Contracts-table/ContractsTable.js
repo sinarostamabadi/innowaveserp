@@ -32,7 +32,7 @@ export function ContractsTable() {
       setQueryParams: uiContext.setQueryParams,
       openEditContractPage: uiContext.openEditContractPage,
       openDeleteContractDialog: uiContext.openDeleteContractDialog,
-      openShowContractDialog: uiContext.openShowContractDialog
+      openShowContractDialog: uiContext.openShowContractDialog,
     };
   }, [uiContext]);
 

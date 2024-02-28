@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function RestaurantMenuItemAlbumsTable() {
   const { t } = useTranslation();
 
-  const restaurantMenuItemAlbumsUIContext = useRestaurantMenuItemAlbumsUIContext();
+  const restaurantMenuItemAlbumsUIContext =
+    useRestaurantMenuItemAlbumsUIContext();
 
   const restaurantMenuItemAlbumsUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function RestaurantMenuItemAlbumsTable() {
       setIds: restaurantMenuItemAlbumsUIContext.setIds,
       queryParams: restaurantMenuItemAlbumsUIContext.queryParams,
       setQueryParams: restaurantMenuItemAlbumsUIContext.setQueryParams,
-      openEditRestaurantMenuItemAlbumPage: restaurantMenuItemAlbumsUIContext.openEditRestaurantMenuItemAlbumPage,
-      openDeleteRestaurantMenuItemAlbumDialog: restaurantMenuItemAlbumsUIContext.openDeleteRestaurantMenuItemAlbumDialog,
+      openEditRestaurantMenuItemAlbumPage:
+        restaurantMenuItemAlbumsUIContext.openEditRestaurantMenuItemAlbumPage,
+      openDeleteRestaurantMenuItemAlbumDialog:
+        restaurantMenuItemAlbumsUIContext.openDeleteRestaurantMenuItemAlbumDialog,
     };
   }, [restaurantMenuItemAlbumsUIContext]);
 
@@ -50,7 +53,11 @@ export function RestaurantMenuItemAlbumsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     restaurantMenuItemAlbumsUIProps.setIds([]);
-    dispatch(actions.fetchRestaurantMenuItemAlbums(restaurantMenuItemAlbumsUIProps.queryParams));
+    dispatch(
+      actions.fetchRestaurantMenuItemAlbums(
+        restaurantMenuItemAlbumsUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restaurantMenuItemAlbumsUIProps.queryParams, dispatch]);
 
@@ -72,8 +79,10 @@ export function RestaurantMenuItemAlbumsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditRestaurantMenuItemAlbumPage: restaurantMenuItemAlbumsUIProps.openEditRestaurantMenuItemAlbumPage,
-        openDeleteRestaurantMenuItemAlbumDialog: restaurantMenuItemAlbumsUIProps.openDeleteRestaurantMenuItemAlbumDialog,
+        openEditRestaurantMenuItemAlbumPage:
+          restaurantMenuItemAlbumsUIProps.openEditRestaurantMenuItemAlbumPage,
+        openDeleteRestaurantMenuItemAlbumDialog:
+          restaurantMenuItemAlbumsUIProps.openDeleteRestaurantMenuItemAlbumDialog,
         t: t,
       },
       classes: "text-right pr-0",

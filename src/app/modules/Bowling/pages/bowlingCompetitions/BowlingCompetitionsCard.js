@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { BowlingCompetitionsTable } from "./bowlingCompetitions-table/BowlingCompetitionsTable";
-import { useBowlingCompetitionsUIContext, BowlingCompetitionsUIConsumer } from "./BowlingCompetitionsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useBowlingCompetitionsUIContext,
+  BowlingCompetitionsUIConsumer,
+} from "./BowlingCompetitionsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function BowlingCompetitionsCard() {
   const { t } = useTranslation();

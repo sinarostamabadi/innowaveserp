@@ -32,8 +32,10 @@ export function EmployeeWorkShiftsTable() {
       setIds: employeeWorkShiftsUIContext.setIds,
       queryParams: employeeWorkShiftsUIContext.queryParams,
       setQueryParams: employeeWorkShiftsUIContext.setQueryParams,
-      openEditEmployeeWorkShiftPage: employeeWorkShiftsUIContext.openEditEmployeeWorkShiftPage,
-      openDeleteEmployeeWorkShiftDialog: employeeWorkShiftsUIContext.openDeleteEmployeeWorkShiftDialog,
+      openEditEmployeeWorkShiftPage:
+        employeeWorkShiftsUIContext.openEditEmployeeWorkShiftPage,
+      openDeleteEmployeeWorkShiftDialog:
+        employeeWorkShiftsUIContext.openDeleteEmployeeWorkShiftDialog,
     };
   }, [employeeWorkShiftsUIContext]);
 
@@ -50,7 +52,9 @@ export function EmployeeWorkShiftsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     employeeWorkShiftsUIProps.setIds([]);
-    dispatch(actions.fetchEmployeeWorkShifts(employeeWorkShiftsUIProps.queryParams));
+    dispatch(
+      actions.fetchEmployeeWorkShifts(employeeWorkShiftsUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [employeeWorkShiftsUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function EmployeeWorkShiftsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmployeeWorkShiftPage: employeeWorkShiftsUIProps.openEditEmployeeWorkShiftPage,
-        openDeleteEmployeeWorkShiftDialog: employeeWorkShiftsUIProps.openDeleteEmployeeWorkShiftDialog,
+        openEditEmployeeWorkShiftPage:
+          employeeWorkShiftsUIProps.openEditEmployeeWorkShiftPage,
+        openDeleteEmployeeWorkShiftDialog:
+          employeeWorkShiftsUIProps.openDeleteEmployeeWorkShiftDialog,
         t: t,
       },
       classes: "text-right pr-0",

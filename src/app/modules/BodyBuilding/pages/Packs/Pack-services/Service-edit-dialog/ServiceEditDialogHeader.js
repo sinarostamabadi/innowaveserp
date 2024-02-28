@@ -6,16 +6,18 @@ import { useTranslation } from "react-i18next";
 export function ServiceEditDialogHeader({ id, isLoading }) {
   const { t } = useTranslation();
   const [title, setTitle] = useState("");
-  const [ actionsLoading, setActionsLoading ] = useState(isLoading);
+  const [actionsLoading, setActionsLoading] = useState(isLoading);
 
   useEffect(() => {
     setActionsLoading(isLoading);
   }, [isLoading]);
 
   useEffect(() => {
-    id 
+    id
       ? setTitle(t("Common.Edit") + " " + t("BodyBuildingPackService.Entity"))
-      : setTitle(t("Common.Create") + " " + t("BodyBuildingPackService.Entity"));    
+      : setTitle(
+          t("Common.Create") + " " + t("BodyBuildingPackService.Entity")
+        );
   }, [id, t]);
 
   return (

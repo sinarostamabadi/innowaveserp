@@ -6,7 +6,15 @@ export const ActionsColumnFormatter = (
   cellContent,
   row,
   rowIndex,
-  { openEditBuyPage, openDeleteBuyDialog, openCancelAndReturnDialog, openAttachmentsDialog, openBuyProfit, pay, t }
+  {
+    openEditBuyPage,
+    openDeleteBuyDialog,
+    openCancelAndReturnDialog,
+    openAttachmentsDialog,
+    openBuyProfit,
+    pay,
+    t,
+  }
 ) => {
   return (
     <>
@@ -41,7 +49,7 @@ export const ActionsColumnFormatter = (
         </OverlayTrigger>
       )}
       <OverlayTrigger
-        overlay={<Tooltip id="buys-delete-tooltip">برگشت از خرید</Tooltip>}
+        overlay={<Tooltip id="buys-delete-tooltip">Back from shopping</Tooltip>}
       >
         <button
           className="btn btn-icon btn-light btn-hover-danger btn-sm mr-2"
@@ -53,7 +61,7 @@ export const ActionsColumnFormatter = (
         </button>
       </OverlayTrigger>
       <OverlayTrigger
-        overlay={<Tooltip id="buys-delete-tooltip">سود خرید</Tooltip>}
+        overlay={<Tooltip id="buys-delete-tooltip">Purchase profit</Tooltip>}
       >
         <button
           className="btn btn-icon btn-light btn-hover-success btn-sm mr-2"
@@ -65,7 +73,9 @@ export const ActionsColumnFormatter = (
         </button>
       </OverlayTrigger>
       <OverlayTrigger
-        overlay={<Tooltip id="buys-delete-tooltip">{t("Common.Attachments")}</Tooltip>}
+        overlay={
+          <Tooltip id="buys-delete-tooltip">{t("Common.Attachments")}</Tooltip>
+        }
       >
         <button
           className="btn btn-icon btn-light btn-hover-success btn-sm mr-2"
@@ -77,11 +87,7 @@ export const ActionsColumnFormatter = (
         </button>
       </OverlayTrigger>
       <OverlayTrigger
-        overlay={
-          <Tooltip id="buys-edit-tooltip">
-            {t("Common.Pay")}
-          </Tooltip>
-        }
+        overlay={<Tooltip id="buys-edit-tooltip">{t("Common.Pay")}</Tooltip>}
       >
         <button
           className="btn btn-icon btn-light btn-hover-primary btn-sm"
@@ -144,6 +150,6 @@ export const ActionsColumnFormatter = (
         <i className="fas fa-trash-alt text-danger"></i>
       </a>
     </OverlayTrigger> */}
-
     </>
-  )};
+  );
+};

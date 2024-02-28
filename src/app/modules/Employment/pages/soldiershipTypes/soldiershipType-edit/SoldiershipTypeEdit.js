@@ -55,7 +55,9 @@ export function SoldiershipTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("SoldiershipType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("SoldiershipType.Entity");
 
     if (soldiershipTypeForEdit && id) {
       _title = t("Common.Edit") + " " + soldiershipTypeForEdit.TitleFa;
@@ -73,11 +75,11 @@ export function SoldiershipTypeEdit({
         .then((arg) => {
           backToSoldiershipTypesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateSoldiershipType(id, values))
         .then(() => backToSoldiershipTypesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

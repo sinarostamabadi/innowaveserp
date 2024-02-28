@@ -21,16 +21,15 @@ export function ServiceDeleteDialog() {
     };
   }, [uiContext]);
 
-  const [ isLoading, setIsLoading ] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (!uiProps.id) 
-      uiProps.onHide();
+    if (!uiProps.id) uiProps.onHide();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uiProps.id]);
 
   const deleteService = () => {
-    uiProps.removeService(uiProps.id)
+    uiProps.removeService(uiProps.id);
     uiProps.onHide();
   };
   return (
@@ -47,26 +46,32 @@ export function ServiceDeleteDialog() {
       </Modal.Header>
       <Modal.Body>
         {!isLoading && !!uiProps.selectedItem && (
-          <span>{t("Common.DeleteQuestionWithContent", {0:!!uiProps.selectedItem? uiProps.selectedItem.BodyBuildingService.Title: ""})}</span>
+          <span>
+            {t("Common.DeleteQuestionWithContent", {
+              0: !!uiProps.selectedItem
+                ? uiProps.selectedItem.BodyBuildingService.Title
+                : "",
+            })}
+          </span>
         )}
         {isLoading && <span>{t("Common.DeleteLoading")}</span>}
       </Modal.Body>
       <Modal.Footer>
-          <button
-            type="button"
-            onClick={uiProps.onHide}
-            className="btn btn-light btn-elevate"
-          >
-            {t("Common.Cancel")}
-          </button>
-          <> </>
-          <button
-            type="button"
-            onClick={deleteService}
-            className="btn btn-danger btn-elevate"
-          >
-            {t("Common.Delete")}
-          </button>
+        <button
+          type="button"
+          onClick={uiProps.onHide}
+          className="btn btn-light btn-elevate"
+        >
+          {t("Common.Cancel")}
+        </button>
+        <> </>
+        <button
+          type="button"
+          onClick={deleteService}
+          className="btn btn-danger btn-elevate"
+        >
+          {t("Common.Delete")}
+        </button>
       </Modal.Footer>
     </Modal>
   );

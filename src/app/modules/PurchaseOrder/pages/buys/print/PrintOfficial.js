@@ -303,9 +303,7 @@ export const PrintOfficial = React.forwardRef(({ data }, ref) => {
                           ? null
                           : providerData.nationalCode[8]}
                       </div>
-                      <div
-                        className="flex-1"
-                      >
+                      <div className="flex-1">
                         {providerData.nationalCode == ""
                           ? null
                           : providerData.nationalCode[9]}
@@ -699,9 +697,7 @@ export const PrintOfficial = React.forwardRef(({ data }, ref) => {
                           ? null
                           : inquiryData.nationalCode[8]}
                       </div>
-                      <div
-                        className="flex-1"
-                      >
+                      <div className="flex-1">
                         {inquiryData.nationalCode == ""
                           ? null
                           : inquiryData.nationalCode[9]}

@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialImportXMLSettingState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const importXMLSettingSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getImportXMLSettingById  
+    // getImportXMLSettingById
     importXMLSettingFetched: (state, action) => {
       state.actionsLoading = false;
       state.importXMLSettingForEdit = action.payload.importXMLSettingForEdit;
       state.error = null;
     },
-    // findImportXMLSetting  
+    // findImportXMLSetting
     importXMLSettingFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const importXMLSettingSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createImportXMLSetting  
+    // createImportXMLSetting
     importXMLSettingCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateImportXMLSetting  
+    // updateImportXMLSetting
     importXMLSettingUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.ImportXMLSettingId === action.payload.importXMLSetting.ImportXMLSettingId) {
+        if (
+          entity.ImportXMLSettingId ===
+          action.payload.importXMLSetting.ImportXMLSettingId
+        ) {
           return action.payload.importXMLSetting;
         }
         return entity;
       });
     },
-    // deleteImportXMLSetting  
+    // deleteImportXMLSetting
     importXMLSettingDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.ImportXMLSettingId !== action.payload.ImportXMLSettingId  
+        (el) => el.ImportXMLSettingId !== action.payload.ImportXMLSettingId
       );
     },
-    // deleteImportXMLSetting  
+    // deleteImportXMLSetting
     importXMLSettingDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ImportXMLSettingId)  
+        (el) => !action.payload.ids.includes(el.ImportXMLSettingId)
       );
     },
-    // importXMLSettingUpdateState  
+    // importXMLSettingUpdateState
     importXMLSettingStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

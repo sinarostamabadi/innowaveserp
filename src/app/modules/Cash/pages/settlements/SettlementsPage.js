@@ -26,7 +26,7 @@ export function SettlementsPage({ history }) {
       history.push("/cash/settlements/updateStatus");
     },
   };
-  
+
   return (
     <SettlementsUIProvider settlementsUIEvents={settlementsUIEvents}>
       <SettlementsLoadingDialog />

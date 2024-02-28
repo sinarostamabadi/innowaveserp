@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { CashDocumentModel } from "src/core/_models/Cash/CashDocumentModel";
@@ -30,7 +29,7 @@ export function CashDocumentsUIProvider({ cashDocumentsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const [showReportDialog, setShowReportDialog] = useState(false);
   const openReportDialog = () => {
     setShowReportDialog(true);
@@ -38,7 +37,7 @@ export function CashDocumentsUIProvider({ cashDocumentsUIEvents, children }) {
   const closeReportDialog = () => {
     setShowReportDialog(false);
   };
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -46,18 +45,25 @@ export function CashDocumentsUIProvider({ cashDocumentsUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: CashDocumentModel,
-    newCashDocumentButtonClick: cashDocumentsUIEvents.newCashDocumentButtonClick,
+    newCashDocumentButtonClick:
+      cashDocumentsUIEvents.newCashDocumentButtonClick,
     openEditCashDocumentPage: cashDocumentsUIEvents.openEditCashDocumentPage,
-    openDeleteCashDocumentDialog: cashDocumentsUIEvents.openDeleteCashDocumentDialog,
-    openDeleteCashDocumentsDialog: cashDocumentsUIEvents.openDeleteCashDocumentsDialog,
-    openFetchCashDocumentsDialog: cashDocumentsUIEvents.openFetchCashDocumentsDialog,
-    openUpdateCashDocumentsStatusDialog: cashDocumentsUIEvents.openUpdateCashDocumentsStatusDialog,
+    openDeleteCashDocumentDialog:
+      cashDocumentsUIEvents.openDeleteCashDocumentDialog,
+    openDeleteCashDocumentsDialog:
+      cashDocumentsUIEvents.openDeleteCashDocumentsDialog,
+    openFetchCashDocumentsDialog:
+      cashDocumentsUIEvents.openFetchCashDocumentsDialog,
+    openUpdateCashDocumentsStatusDialog:
+      cashDocumentsUIEvents.openUpdateCashDocumentsStatusDialog,
     openCloseCashDialog: cashDocumentsUIEvents.openCloseCashDialog,
     showReportDialog,
     openReportDialog,
     closeReportDialog,
   };
   return (
-    <CashDocumentsUIContext.Provider value={value}>{children}</CashDocumentsUIContext.Provider>
+    <CashDocumentsUIContext.Provider value={value}>
+      {children}
+    </CashDocumentsUIContext.Provider>
   );
 }

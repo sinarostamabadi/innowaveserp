@@ -73,11 +73,11 @@ export function CountryEdit({
         .then((arg) => {
           backToCountriesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateCountry(id, values))
         .then(() => backToCountriesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { MenuGroupModel } from "../../../../../core/_models/Cofe/MenuGroupModel";
@@ -30,7 +29,7 @@ export function MenuGroupsUIProvider({ menuGroupsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function MenuGroupsUIProvider({ menuGroupsUIEvents, children }) {
     openDeleteMenuGroupDialog: menuGroupsUIEvents.openDeleteMenuGroupDialog,
     openDeleteMenuGroupsDialog: menuGroupsUIEvents.openDeleteMenuGroupsDialog,
     openFetchMenuGroupsDialog: menuGroupsUIEvents.openFetchMenuGroupsDialog,
-    openUpdateMenuGroupsStatusDialog: menuGroupsUIEvents.openUpdateMenuGroupsStatusDialog,
+    openUpdateMenuGroupsStatusDialog:
+      menuGroupsUIEvents.openUpdateMenuGroupsStatusDialog,
   };
   return (
-    <MenuGroupsUIContext.Provider value={value}>{children}</MenuGroupsUIContext.Provider>
+    <MenuGroupsUIContext.Provider value={value}>
+      {children}
+    </MenuGroupsUIContext.Provider>
   );
 }

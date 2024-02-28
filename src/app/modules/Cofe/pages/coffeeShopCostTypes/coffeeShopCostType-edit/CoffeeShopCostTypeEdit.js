@@ -45,7 +45,8 @@ export function CoffeeShopCostTypeEdit({
   const { actionsLoading, coffeeShopCostTypeForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.coffeeShopCostTypes.actionsLoading,
-      coffeeShopCostTypeForEdit: state.coffeeShopCostTypes.coffeeShopCostTypeForEdit,
+      coffeeShopCostTypeForEdit:
+        state.coffeeShopCostTypes.coffeeShopCostTypeForEdit,
       error: state.coffeeShopCostTypes.error,
     }),
     shallowEqual
@@ -56,7 +57,9 @@ export function CoffeeShopCostTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("CoffeeShopCostType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("CoffeeShopCostType.Entity");
 
     if (coffeeShopCostTypeForEdit && id) {
       _title = t("Common.Edit") + " " + coffeeShopCostTypeForEdit.TitleFa;
@@ -74,11 +77,11 @@ export function CoffeeShopCostTypeEdit({
         .then((arg) => {
           backToCoffeeShopCostTypesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateCoffeeShopCostType(id, values))
         .then(() => backToCoffeeShopCostTypesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

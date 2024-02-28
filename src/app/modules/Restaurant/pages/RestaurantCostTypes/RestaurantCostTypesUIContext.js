@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { RestaurantCostTypeModel } from "../../../../../core/_models/Restaurant/RestaurantCostTypeModel";
@@ -10,9 +9,13 @@ export function useRestaurantCostTypesUIContext() {
   return useContext(RestaurantCostTypesUIContext);
 }
 
-export const RestaurantCostTypesUIConsumer = RestaurantCostTypesUIContext.Consumer;
+export const RestaurantCostTypesUIConsumer =
+  RestaurantCostTypesUIContext.Consumer;
 
-export function RestaurantCostTypesUIProvider({ restaurantCostTypesUIEvents, children }) {
+export function RestaurantCostTypesUIProvider({
+  restaurantCostTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(RestaurantCostTypeModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function RestaurantCostTypesUIProvider({ restaurantCostTypesUIEvents, chi
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function RestaurantCostTypesUIProvider({ restaurantCostTypesUIEvents, chi
     setIds,
     setQueryParams,
     dataModel: RestaurantCostTypeModel,
-    newRestaurantCostTypeButtonClick: restaurantCostTypesUIEvents.newRestaurantCostTypeButtonClick,
-    openEditRestaurantCostTypePage: restaurantCostTypesUIEvents.openEditRestaurantCostTypePage,
-    openDeleteRestaurantCostTypeDialog: restaurantCostTypesUIEvents.openDeleteRestaurantCostTypeDialog,
-    openDeleteRestaurantCostTypesDialog: restaurantCostTypesUIEvents.openDeleteRestaurantCostTypesDialog,
-    openFetchRestaurantCostTypesDialog: restaurantCostTypesUIEvents.openFetchRestaurantCostTypesDialog,
-    openUpdateRestaurantCostTypesStatusDialog: restaurantCostTypesUIEvents.openUpdateRestaurantCostTypesStatusDialog,
+    newRestaurantCostTypeButtonClick:
+      restaurantCostTypesUIEvents.newRestaurantCostTypeButtonClick,
+    openEditRestaurantCostTypePage:
+      restaurantCostTypesUIEvents.openEditRestaurantCostTypePage,
+    openDeleteRestaurantCostTypeDialog:
+      restaurantCostTypesUIEvents.openDeleteRestaurantCostTypeDialog,
+    openDeleteRestaurantCostTypesDialog:
+      restaurantCostTypesUIEvents.openDeleteRestaurantCostTypesDialog,
+    openFetchRestaurantCostTypesDialog:
+      restaurantCostTypesUIEvents.openFetchRestaurantCostTypesDialog,
+    openUpdateRestaurantCostTypesStatusDialog:
+      restaurantCostTypesUIEvents.openUpdateRestaurantCostTypesStatusDialog,
   };
   return (
-    <RestaurantCostTypesUIContext.Provider value={value}>{children}</RestaurantCostTypesUIContext.Provider>
+    <RestaurantCostTypesUIContext.Provider value={value}>
+      {children}
+    </RestaurantCostTypesUIContext.Provider>
   );
 }

@@ -5,13 +5,17 @@ import { Input, Select } from "../../../../../../core/_partials/controls";
 import { useTranslation } from "react-i18next";
 import { getAllAccountFloatingGroups } from "./../../../_redux/accountFloatingGroups/accountFloatingGroupsCrud";
 
-export function AccountFloatingGroupEditForm({ accountFloatingGroup, btnRef, saveAccountFloatingGroup }) {
+export function AccountFloatingGroupEditForm({
+  accountFloatingGroup,
+  btnRef,
+  saveAccountFloatingGroup,
+}) {
   const { t } = useTranslation();
-  const defaultInput = createRef()
+  const defaultInput = createRef();
 
   useEffect(() => {
     defaultInput.current.focus();
- }, [defaultInput]);
+  }, [defaultInput]);
 
   const AccountFloatingGroupEditSchema = Yup.object().shape({
     Title: Yup.string()
@@ -21,15 +25,16 @@ export function AccountFloatingGroupEditForm({ accountFloatingGroup, btnRef, sav
     Code: Yup.string()
       .min(2, t("err.Min", { 0: 2 }))
       .max(100, t("err.Max", { 0: 100 }))
-      .required(t("err.IsRequired", { 0: t("AccountFloatingGroup.Code") }))
+      .required(t("err.IsRequired", { 0: t("AccountFloatingGroup.Code") })),
   });
 
-  const [accountFloatingGroupTypeIds, setAccountFloatingGroupTypeIds] = useState([]);
-  
+  const [accountFloatingGroupTypeIds, setAccountFloatingGroupTypeIds] =
+    useState([]);
+
   useEffect(() => {
     if (accountFloatingGroupTypeIds.length == 0)
-    getAllAccountFloatingGroups().then(({ data }) =>
-    setAccountFloatingGroupTypeIds((accountFloatingGroupTypeIds) => [
+      getAllAccountFloatingGroups().then(({ data }) =>
+        setAccountFloatingGroupTypeIds((accountFloatingGroupTypeIds) => [
           { AccountFloatingGroupTypeId: "", Title: t("Common.WithoutSelect") },
           ...data.Items,
         ])
@@ -39,9 +44,10 @@ export function AccountFloatingGroupEditForm({ accountFloatingGroup, btnRef, sav
   function clean(dirty) {
     return {
       AccountFloatingGroupId: dirty.AccountFloatingGroupId,
-      AccountFloatingGroupTypeId: dirty.AccountFloatingGroupTypeId && +dirty.AccountFloatingGroupTypeId,
+      AccountFloatingGroupTypeId:
+        dirty.AccountFloatingGroupTypeId && +dirty.AccountFloatingGroupTypeId,
       Code: dirty.Code,
-      Title: dirty.Title
+      Title: dirty.Title,
     };
   }
 
@@ -73,17 +79,18 @@ export function AccountFloatingGroupEditForm({ accountFloatingGroup, btnRef, sav
                     label={t("AccountFloatingGroup.Code")}
                   />
                   <Select
-                      name="AccountFloatingGroupTypeId"
-                      label={t("AccountFloatingGroup.AccountFloatingGroupTypeId")}
-                      setref={defaultInput}
+                    name="AccountFloatingGroupTypeId"
+                    label={t("AccountFloatingGroup.AccountFloatingGroupTypeId")}
+                    setref={defaultInput}
+                  >
+                    {accountFloatingGroupTypeIds.map((accountFloatingGroup) => (
+                      <option
+                        key={accountFloatingGroup.AccountFloatingGroupTypeId}
+                        value={accountFloatingGroup.AccountFloatingGroupTypeId}
                       >
-                        {accountFloatingGroupTypeIds.map((accountFloatingGroup) => (
-                          <option 
-                            key={accountFloatingGroup.AccountFloatingGroupTypeId} 
-                            value={accountFloatingGroup.AccountFloatingGroupTypeId}>
-                            {accountFloatingGroup.AccountFloatingGroupTypeId}
-                          </option>
-                        ))}
+                        {accountFloatingGroup.AccountFloatingGroupTypeId}
+                      </option>
+                    ))}
                   </Select>
                 </div>
               </div>

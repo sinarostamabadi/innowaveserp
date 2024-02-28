@@ -26,7 +26,7 @@ export function MenuItemAlbumsPage({ history }) {
       history.push("/cofe/menuItemAlbums/updateStatus");
     },
   };
-  
+
   return (
     <MenuItemAlbumsUIProvider menuItemAlbumsUIEvents={menuItemAlbumsUIEvents}>
       <MenuItemAlbumsLoadingDialog />

@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BodyBuildingEmployeeTypeModel } from "../../../../../core/_models/BodyBuilding/BodyBuildingEmployeeTypeModel";
@@ -13,7 +12,9 @@ export function useEmployeeTypesUIContext() {
 export const EmployeeTypesUIConsumer = EmployeeTypesUIContext.Consumer;
 
 export function EmployeeTypesUIProvider({ employeeTypesUIEvents, children }) {
-  const [queryParams, setQueryParamsBase] = useState(getConfig(BodyBuildingEmployeeTypeModel).initialFilter);
+  const [queryParams, setQueryParamsBase] = useState(
+    getConfig(BodyBuildingEmployeeTypeModel).initialFilter
+  );
 
   const [ids, setIds] = useState([]);
 
@@ -28,7 +29,7 @@ export function EmployeeTypesUIProvider({ employeeTypesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -36,14 +37,21 @@ export function EmployeeTypesUIProvider({ employeeTypesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: BodyBuildingEmployeeTypeModel,
-    newEmployeeTypeButtonClick: employeeTypesUIEvents.newEmployeeTypeButtonClick,
+    newEmployeeTypeButtonClick:
+      employeeTypesUIEvents.newEmployeeTypeButtonClick,
     openEditEmployeeTypePage: employeeTypesUIEvents.openEditEmployeeTypePage,
-    openDeleteEmployeeTypeDialog: employeeTypesUIEvents.openDeleteEmployeeTypeDialog,
-    openDeleteEmployeeTypesDialog: employeeTypesUIEvents.openDeleteEmployeeTypesDialog,
-    openFetchEmployeeTypesDialog: employeeTypesUIEvents.openFetchEmployeeTypesDialog,
-    openUpdateEmployeeTypesStatusDialog: employeeTypesUIEvents.openUpdateEmployeeTypesStatusDialog,
+    openDeleteEmployeeTypeDialog:
+      employeeTypesUIEvents.openDeleteEmployeeTypeDialog,
+    openDeleteEmployeeTypesDialog:
+      employeeTypesUIEvents.openDeleteEmployeeTypesDialog,
+    openFetchEmployeeTypesDialog:
+      employeeTypesUIEvents.openFetchEmployeeTypesDialog,
+    openUpdateEmployeeTypesStatusDialog:
+      employeeTypesUIEvents.openUpdateEmployeeTypesStatusDialog,
   };
   return (
-    <EmployeeTypesUIContext.Provider value={value}>{children}</EmployeeTypesUIContext.Provider>
+    <EmployeeTypesUIContext.Provider value={value}>
+      {children}
+    </EmployeeTypesUIContext.Provider>
   );
 }

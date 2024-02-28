@@ -10,17 +10,20 @@ export function TimeSetEditForm({ timeSet, btnRef, saveTimeSet }) {
       .min(2, t("err.Min", { 0: 2 }))
       .max(100, t("err.Max", { 0: 100 }))
       .required(t("err.IsRequired", { 0: t("BodyBuildingTimeSet.Title") })),
-    FromTime: Yup.string()
-      .required(t("err.IsRequired", { 0: t("BodyBuildingTimeSet.FromTime") })),
-    ToTime: Yup.string()
-      .required(t("err.IsRequired", { 0: t("BodyBuildingTimeSet.ToTime") })),
-    Gender: Yup.string()
-      .required(t("err.IsRequired", { 0: t("BodyBuildingTimeSet.Gender") })),
+    FromTime: Yup.string().required(
+      t("err.IsRequired", { 0: t("BodyBuildingTimeSet.FromTime") })
+    ),
+    ToTime: Yup.string().required(
+      t("err.IsRequired", { 0: t("BodyBuildingTimeSet.ToTime") })
+    ),
+    Gender: Yup.string().required(
+      t("err.IsRequired", { 0: t("BodyBuildingTimeSet.Gender") })
+    ),
   });
 
   const genders = [
     { text: t("Common.Male"), value: 1 },
-    { text: t("Common.Female"), value: 0 }
+    { text: t("Common.Female"), value: 0 },
   ];
 
   const days = [
@@ -31,7 +34,7 @@ export function TimeSetEditForm({ timeSet, btnRef, saveTimeSet }) {
     { value: 3, text: t("Common.Tuesday") },
     { value: 4, text: t("Common.Wednesday") },
     { value: 5, text: t("Common.Thursday") },
-    { value: 6, text: t("Common.Friday") }
+    { value: 6, text: t("Common.Friday") },
   ];
 
   function clean(dirty) {
@@ -52,10 +55,8 @@ export function TimeSetEditForm({ timeSet, btnRef, saveTimeSet }) {
         initialValues={timeSet}
         validationSchema={schemaValidation}
         onSubmit={(values) => {
-
-          saveTimeSet(clean(values))
-        }
-      }
+          saveTimeSet(clean(values));
+        }}
       >
         {({ handleSubmit }) => (
           <>

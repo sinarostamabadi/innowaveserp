@@ -1,4 +1,3 @@
-
 import axios from "axios";
 export const URL = "Coupon";
 // CREATE = add a new coupons to the server
@@ -27,7 +26,7 @@ export function remove(id) {
 }
 // DELETE Coupons by ids
 export function removeIds(ids) {
-return axios.post(`${URL}/deleteCoupons`, ids);
+  return axios.post(`${URL}/deleteCoupons`, ids);
 }
 export function getUseLocations() {
   return axios.get(`/entity/getAll`);

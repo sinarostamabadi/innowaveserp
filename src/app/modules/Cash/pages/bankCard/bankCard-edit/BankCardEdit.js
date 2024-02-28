@@ -12,10 +12,7 @@ import {
 } from "src/core/_partials/controls";
 import { BankCardEditForm } from "./BankCardEditForm";
 import { useSubheader } from "src/core/layout";
-import {
-  ModalProgressBar,
-  Alerty,
-} from "src/core/_partials/controls";
+import { ModalProgressBar, Alerty } from "src/core/_partials/controls";
 import { useReactToPrint } from "react-to-print";
 import { useTranslation } from "react-i18next";
 
@@ -43,7 +40,6 @@ export function BankCardEdit({
   const [editMode, setEditMode] = useState(false);
   const [obj, setobj] = useState(initModel);
 
-  
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
   const { actionsLoading, bankCardForEdit, error } = useSelector(
     (state) => ({
@@ -52,11 +48,12 @@ export function BankCardEdit({
       error: state.bankCards.error,
     }),
     shallowEqual
-    );
-    console.log("bankCardForEdit ", bankCardForEdit)
-    const dispatch = useDispatch();
+  );
+  console.log("bankCardForEdit ", bankCardForEdit);
+  const dispatch = useDispatch();
   useEffect(() => {
-    !!id && dispatch(actions.fetchBankCard(id)).then((res) => setEditMode(true));
+    !!id &&
+      dispatch(actions.fetchBankCard(id)).then((res) => setEditMode(true));
   }, [id, dispatch]);
 
   useEffect(() => {

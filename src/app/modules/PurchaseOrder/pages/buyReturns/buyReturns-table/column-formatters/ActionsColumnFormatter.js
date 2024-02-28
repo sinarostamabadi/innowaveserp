@@ -9,53 +9,66 @@ export const ActionsColumnFormatter = (
   cellContent,
   row,
   rowIndex,
-  { openEditBuyReturnPage, openDeleteBuyReturnDialog, openCancelAndReturnDialog, openAttachmentsDialog, openBuyReturnProfit, t }
+  {
+    openEditBuyReturnPage,
+    openDeleteBuyReturnDialog,
+    openCancelAndReturnDialog,
+    openAttachmentsDialog,
+    openBuyReturnProfit,
+    t,
+  }
 ) => (
-    <>
+  <>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="buyReturns-edit-tooltip">{t("Common.Edit")}</Tooltip>
+      }
+    >
+      <a
+        className="btn btn-icon btn-light btn-hover-primary btn-sm mr-2"
+        onClick={() => openEditBuyReturnPage(row.BuyReturnId)}
+      >
+        <span className="svg-icon svg-icon-md svg-icon-primary">
+          <SVG
+            src={toAbsoluteUrl("/media/svg/icons/Communication/Write.svg")}
+          />
+        </span>
+      </a>
+    </OverlayTrigger>
+    {!!row.IsTemp && (
       <OverlayTrigger
-        overlay={<Tooltip id="buyReturns-edit-tooltip">{t("Common.Edit")}</Tooltip>}
+        overlay={
+          <Tooltip id="buyReturns-delete-tooltip">{t("Common.Delete")}</Tooltip>
+        }
       >
         <a
-          className="btn btn-icon btn-light btn-hover-primary btn-sm mr-2"
-          onClick={() => openEditBuyReturnPage(row.BuyReturnId)}
+          className="btn btn-icon btn-light btn-hover-danger btn-sm mr-2"
+          onClick={() => openDeleteBuyReturnDialog(row.BuyReturnId)}
         >
-          <span className="svg-icon svg-icon-md svg-icon-primary">
-            <SVG
-              src={toAbsoluteUrl("/media/svg/icons/Communication/Write.svg")}
-            />
+          <span className="svg-icon svg-icon-md svg-icon-danger">
+            <SVG src={toAbsoluteUrl("/media/svg/icons/General/Trash.svg")} />
           </span>
         </a>
       </OverlayTrigger>
-      {!!row.IsTemp && (
-        <OverlayTrigger
-          overlay={
-            <Tooltip id="buyReturns-delete-tooltip">{t("Common.Delete")}</Tooltip>
-          }
-        >
-          <a
-            className="btn btn-icon btn-light btn-hover-danger btn-sm mr-2"
-            onClick={() => openDeleteBuyReturnDialog(row.BuyReturnId)}
-          >
-            <span className="svg-icon svg-icon-md svg-icon-danger">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/General/Trash.svg")} />
-            </span>
-          </a>
-        </OverlayTrigger>
-      )}
+    )}
 
-      <OverlayTrigger
-        overlay={<Tooltip id="buyReturns-delete-tooltip">{t("Common.Attachments")}</Tooltip>}
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="buyReturns-delete-tooltip">
+          {t("Common.Attachments")}
+        </Tooltip>
+      }
+    >
+      <a
+        className="btn btn-icon btn-light btn-hover-success btn-sm mr-2"
+        onClick={() => openAttachmentsDialog(row.BuyReturnId)}
       >
-        <a
-          className="btn btn-icon btn-light btn-hover-success btn-sm mr-2"
-          onClick={() => openAttachmentsDialog(row.BuyReturnId)}
-        >
-          <span className="svg-icon svg-icon-md svg-icon-success">
-            <i className="fas fa-paperclip text-success"></i>
-          </span>
-        </a>
-      </OverlayTrigger>
-      {/* <OverlayTrigger
+        <span className="svg-icon svg-icon-md svg-icon-success">
+          <i className="fas fa-paperclip text-success"></i>
+        </span>
+      </a>
+    </OverlayTrigger>
+    {/* <OverlayTrigger
       overlay={<Tooltip id="buyReturns-delete-tooltip">پرداخت</Tooltip>}
     >
       <a
@@ -107,6 +120,5 @@ export const ActionsColumnFormatter = (
         <i className="fas fa-trash-alt text-danger"></i>
       </a>
     </OverlayTrigger> */}
-
-    </>
-  );
+  </>
+);

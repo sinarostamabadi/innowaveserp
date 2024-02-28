@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialInquiryDetailsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const inquiryDetailsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getInquiryDetailById  
+    // getInquiryDetailById
     inquiryDetailFetched: (state, action) => {
       state.actionsLoading = false;
       state.inquiryDetailForEdit = action.payload.inquiryDetailForEdit;
       state.error = null;
     },
-    // findInquiryDetails  
+    // findInquiryDetails
     inquiryDetailsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const inquiryDetailsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createInquiryDetail  
+    // createInquiryDetail
     inquiryDetailCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateInquiryDetail  
+    // updateInquiryDetail
     inquiryDetailUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.InquiryDetailId === action.payload.inquiryDetail.InquiryDetailId) {
+        if (
+          entity.InquiryDetailId ===
+          action.payload.inquiryDetail.InquiryDetailId
+        ) {
           return action.payload.inquiryDetail;
         }
         return entity;
       });
     },
-    // deleteInquiryDetail  
+    // deleteInquiryDetail
     inquiryDetailDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.InquiryDetailId !== action.payload.InquiryDetailId  
+        (el) => el.InquiryDetailId !== action.payload.InquiryDetailId
       );
     },
-    // deleteInquiryDetails  
+    // deleteInquiryDetails
     inquiryDetailsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.InquiryDetailId)  
+        (el) => !action.payload.ids.includes(el.InquiryDetailId)
       );
     },
-    // inquiryDetailsUpdateState  
+    // inquiryDetailsUpdateState
     inquiryDetailsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

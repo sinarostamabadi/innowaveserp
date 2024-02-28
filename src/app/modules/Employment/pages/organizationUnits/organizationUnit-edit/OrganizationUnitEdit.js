@@ -55,7 +55,9 @@ export function OrganizationUnitEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("OrganizationUnit.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("OrganizationUnit.Entity");
 
     if (organizationUnitForEdit && id) {
       _title = t("Common.Edit") + " " + organizationUnitForEdit.TitleFa;
@@ -73,11 +75,11 @@ export function OrganizationUnitEdit({
         .then((arg) => {
           backToOrganizationUnitsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateOrganizationUnit(id, values))
         .then(() => backToOrganizationUnitsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

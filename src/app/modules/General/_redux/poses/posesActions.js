@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./posesCrud";
 import { posesSlice, callTypes } from "./posesSlice";
 const { actions } = posesSlice;

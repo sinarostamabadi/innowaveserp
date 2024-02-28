@@ -12,7 +12,13 @@ export const ActionsColumnFormatter = (
   { openEditImportAccountTempPage, openDeleteImportAccountTempDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="importAccountTemps-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="importAccountTemps-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditImportAccountTempPage(row.ImportAccountTempId)}
@@ -26,11 +32,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="importAccountTemps-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="importAccountTemps-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteImportAccountTempDialog(row.ImportAccountTempId)}
+        onClick={() =>
+          openDeleteImportAccountTempDialog(row.ImportAccountTempId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

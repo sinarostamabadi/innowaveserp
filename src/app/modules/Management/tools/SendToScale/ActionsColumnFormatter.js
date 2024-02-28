@@ -9,10 +9,7 @@ export const ActionsColumnFormatter = (
   cellContent,
   row,
   rowIndex,
-  {
-    gotoSellPricing,
-    t,
-  }
+  { gotoSellPricing, t }
 ) => (
   <>
     <OverlayTrigger

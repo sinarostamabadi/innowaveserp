@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialRequestDtlsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const requestDtlsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getRequestDtlById  
+    // getRequestDtlById
     requestDtlFetched: (state, action) => {
       state.actionsLoading = false;
       state.requestDtlForEdit = action.payload.requestDtlForEdit;
       state.error = null;
     },
-    // findRequestDtls  
+    // findRequestDtls
     requestDtlsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const requestDtlsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createRequestDtl  
+    // createRequestDtl
     requestDtlCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateRequestDtl  
+    // updateRequestDtl
     requestDtlUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const requestDtlsSlice = createSlice({
         return entity;
       });
     },
-    // deleteRequestDtl  
+    // deleteRequestDtl
     requestDtlDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.RequestDtlId !== action.payload.RequestDtlId  
+        (el) => el.RequestDtlId !== action.payload.RequestDtlId
       );
     },
-    // deleteRequestDtls  
+    // deleteRequestDtls
     requestDtlsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.RequestDtlId)  
+        (el) => !action.payload.ids.includes(el.RequestDtlId)
       );
     },
-    // requestDtlsUpdateState  
+    // requestDtlsUpdateState
     requestDtlsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

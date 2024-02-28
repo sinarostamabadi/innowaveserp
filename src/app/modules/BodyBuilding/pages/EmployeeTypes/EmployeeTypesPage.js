@@ -25,7 +25,7 @@ export function EmployeeTypesPage({ history }) {
       history.push("/BodyBuilding/EmployeeTypes/updateStatus");
     },
   };
-  
+
   return (
     <EmployeeTypesUIProvider employeeTypesUIEvents={employeeTypesUIEvents}>
       <EmployeeTypesLoadingDialog />

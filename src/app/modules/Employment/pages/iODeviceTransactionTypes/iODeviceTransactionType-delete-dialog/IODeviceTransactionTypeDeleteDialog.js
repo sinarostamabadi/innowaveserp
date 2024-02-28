@@ -1,4 +1,3 @@
-
 /* eslint-disable no-restricted-imports */
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -16,7 +15,8 @@ export function IODeviceTransactionTypeDeleteDialog({ id, show, onHide }) {
   const { t } = useTranslation();
 
   // IODeviceTransactionTypes UI Context
-  const iODeviceTransactionTypesUIContext = useIODeviceTransactionTypesUIContext();
+  const iODeviceTransactionTypesUIContext =
+    useIODeviceTransactionTypesUIContext();
   const [error, setError] = useState(null);
   const iODeviceTransactionTypesUIProps = useMemo(() => {
     return {
@@ -48,7 +48,11 @@ export function IODeviceTransactionTypeDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deleteIODeviceTransactionType(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchIODeviceTransactionTypes(iODeviceTransactionTypesUIProps.queryParams));
+        dispatch(
+          actions.fetchIODeviceTransactionTypes(
+            iODeviceTransactionTypesUIProps.queryParams
+          )
+        );
         // clear selections list
         iODeviceTransactionTypesUIProps.setIds([]);
         // closing delete modal
@@ -67,10 +71,12 @@ export function IODeviceTransactionTypeDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("IODeviceTransactionType.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("IODeviceTransactionType.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

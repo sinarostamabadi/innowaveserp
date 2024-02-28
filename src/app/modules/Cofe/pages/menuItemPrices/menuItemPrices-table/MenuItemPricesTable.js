@@ -32,8 +32,10 @@ export function MenuItemPricesTable() {
       setIds: menuItemPricesUIContext.setIds,
       queryParams: menuItemPricesUIContext.queryParams,
       setQueryParams: menuItemPricesUIContext.setQueryParams,
-      openEditMenuItemPricePage: menuItemPricesUIContext.openEditMenuItemPricePage,
-      openDeleteMenuItemPriceDialog: menuItemPricesUIContext.openDeleteMenuItemPriceDialog,
+      openEditMenuItemPricePage:
+        menuItemPricesUIContext.openEditMenuItemPricePage,
+      openDeleteMenuItemPriceDialog:
+        menuItemPricesUIContext.openDeleteMenuItemPriceDialog,
     };
   }, [menuItemPricesUIContext]);
 
@@ -72,8 +74,10 @@ export function MenuItemPricesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditMenuItemPricePage: menuItemPricesUIProps.openEditMenuItemPricePage,
-        openDeleteMenuItemPriceDialog: menuItemPricesUIProps.openDeleteMenuItemPriceDialog,
+        openEditMenuItemPricePage:
+          menuItemPricesUIProps.openEditMenuItemPricePage,
+        openDeleteMenuItemPriceDialog:
+          menuItemPricesUIProps.openDeleteMenuItemPriceDialog,
         t: t,
       },
       classes: "text-right pr-0",

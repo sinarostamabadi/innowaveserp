@@ -42,24 +42,29 @@ export function EmployeePhysicalConditionEdit({
   const dispatch = useDispatch();
 
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
-  const { actionsLoading, employeePhysicalConditionForEdit, error } = useSelector(
-    (state) => ({
-      actionsLoading: state.employeePhysicalConditions.actionsLoading,
-      employeePhysicalConditionForEdit: state.employeePhysicalConditions.employeePhysicalConditionForEdit,
-      error: state.employeePhysicalConditions.error,
-    }),
-    shallowEqual
-  );
+  const { actionsLoading, employeePhysicalConditionForEdit, error } =
+    useSelector(
+      (state) => ({
+        actionsLoading: state.employeePhysicalConditions.actionsLoading,
+        employeePhysicalConditionForEdit:
+          state.employeePhysicalConditions.employeePhysicalConditionForEdit,
+        error: state.employeePhysicalConditions.error,
+      }),
+      shallowEqual
+    );
 
   useEffect(() => {
     dispatch(actions.fetchEmployeePhysicalCondition(id));
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("EmployeePhysicalCondition.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("EmployeePhysicalCondition.Entity");
 
     if (employeePhysicalConditionForEdit && id) {
-      _title = t("Common.Edit") + " " + employeePhysicalConditionForEdit.TitleFa;
+      _title =
+        t("Common.Edit") + " " + employeePhysicalConditionForEdit.TitleFa;
     }
 
     setTitle(_title);
@@ -74,11 +79,11 @@ export function EmployeePhysicalConditionEdit({
         .then((arg) => {
           backToEmployeePhysicalConditionsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateEmployeePhysicalCondition(id, values))
         .then(() => backToEmployeePhysicalConditionsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 
@@ -150,7 +155,9 @@ export function EmployeePhysicalConditionEdit({
           {tab === "basic" && (
             <EmployeePhysicalConditionEditForm
               actionsLoading={actionsLoading}
-              employeePhysicalCondition={employeePhysicalConditionForEdit || initModel}
+              employeePhysicalCondition={
+                employeePhysicalConditionForEdit || initModel
+              }
               btnRef={btnRef}
               saveEmployeePhysicalCondition={saveEmployeePhysicalCondition}
             />

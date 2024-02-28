@@ -27,7 +27,10 @@ export const CompanyPersonsUIProvider = forwardRef(
       Collect(fn) {
         fn(
           companyPersons.map((companyPerson) => {
-            if (!!companyPerson.CompanyPersonId && companyPerson.CompanyPersonId.toString().indexOf("temp_") > -1){
+            if (
+              !!companyPerson.CompanyPersonId &&
+              companyPerson.CompanyPersonId.toString().indexOf("temp_") > -1
+            ) {
               companyPerson.CompanyPersonId = null;
               // delete  companyPerson.PersonId;
             }
@@ -94,7 +97,8 @@ export const CompanyPersonsUIProvider = forwardRef(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPersonId]);
 
-    const [showEditCompanyPersonDialog, setShowEditCompanyPersonDialog] = useState(false);
+    const [showEditCompanyPersonDialog, setShowEditCompanyPersonDialog] =
+      useState(false);
     const openNewCompanyPersonDialog = () => {
       setSelectedId(undefined);
       setShowEditCompanyPersonDialog(true);
@@ -108,7 +112,8 @@ export const CompanyPersonsUIProvider = forwardRef(
       setShowEditCompanyPersonDialog(false);
     };
 
-    const [showDeleteCompanyPersonDialog, setShowDeleteCompanyPersonDialog] = useState(false);
+    const [showDeleteCompanyPersonDialog, setShowDeleteCompanyPersonDialog] =
+      useState(false);
     const openDeleteCompanyPersonDialog = (id) => {
       setSelectedId(id);
       setShowDeleteCompanyPersonDialog(true);
@@ -118,7 +123,8 @@ export const CompanyPersonsUIProvider = forwardRef(
       setShowDeleteCompanyPersonDialog(false);
     };
 
-    const [showDeleteCompanyPersonsDialog, setShowDeleteCompanyPersonsDialog] = useState(false);
+    const [showDeleteCompanyPersonsDialog, setShowDeleteCompanyPersonsDialog] =
+      useState(false);
     const openDeleteCompanyPersonsDialog = () => {
       setShowDeleteCompanyPersonsDialog(true);
     };
@@ -126,7 +132,8 @@ export const CompanyPersonsUIProvider = forwardRef(
       setShowDeleteCompanyPersonsDialog(false);
     };
 
-    const [showFetchCompanyPersonsDialog, setShowFetchCompanyPersonsDialog] = useState(false);
+    const [showFetchCompanyPersonsDialog, setShowFetchCompanyPersonsDialog] =
+      useState(false);
     const openFetchCompanyPersonsDialog = () => {
       setShowFetchCompanyPersonsDialog(true);
     };
@@ -135,14 +142,16 @@ export const CompanyPersonsUIProvider = forwardRef(
     };
 
     const findCompanyPerson = (companyPersonId) => {
-      return companyPersons.filter((companyPerson) => companyPerson.CompanyPersonId == companyPersonId)[0];
+      return companyPersons.filter(
+        (companyPerson) => companyPerson.CompanyPersonId == companyPersonId
+      )[0];
     };
 
     const addCompanyPerson = (companyPerson) => {
       companyPerson.CompanyPersonId = "temp_" + Math.floor(Math.random() * 100);
       companyPerson.CompanyPersonId = +companyPerson.CompanyPersonId;
       // companyPerson.PersonId = +companyPerson.PersonId;
-      
+
       setCompanyPersons((companyPersons) => [...companyPersons, companyPerson]);
     };
 
@@ -157,7 +166,11 @@ export const CompanyPersonsUIProvider = forwardRef(
       companyPerson.PersonId = +companyPerson.PersonId;
 
       setCompanyPersons((companyPersons) =>
-        companyPersons.map((item) => (item.CompanyPersonId === companyPerson.CompanyPersonId ? companyPerson : item))
+        companyPersons.map((item) =>
+          item.CompanyPersonId === companyPerson.CompanyPersonId
+            ? companyPerson
+            : item
+        )
       );
     };
 

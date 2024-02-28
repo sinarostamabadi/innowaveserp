@@ -1,4 +1,3 @@
-
 import React, { useEffect, useMemo, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
@@ -47,7 +46,9 @@ export function PersonSpecialDayDeleteDialog({ id, show, onHide }) {
     dispatch(actions.deletePersonSpecialDay(id))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchPersonSpecialDays(personSpecialDaysUIProps.queryParams));
+        dispatch(
+          actions.fetchPersonSpecialDays(personSpecialDaysUIProps.queryParams)
+        );
         // clear selections list
         personSpecialDaysUIProps.setIds([]);
         // closing delete modal
@@ -66,10 +67,12 @@ export function PersonSpecialDayDeleteDialog({ id, show, onHide }) {
     >
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
-        <Modal.Title id="example-modal-sizes-title-lg">{t("Common.Delete") + " " + t("PersonSpecialDay.Entity")}</Modal.Title>
+        <Modal.Title id="example-modal-sizes-title-lg">
+          {t("Common.Delete") + " " + t("PersonSpecialDay.Entity")}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {!isLoading && error != null && (
+        {!isLoading && error != null && (
           <>
             <Alerty
               variant="danger"

@@ -12,8 +12,9 @@ export function ScaleEditForm({ scale, btnRef, saveScale }) {
       .min(2, t("err.Min", { 0: 2 }))
       .max(100, t("err.Max", { 0: 100 }))
       .required(t("err.IsRequired", { 0: t("Scale.Title") })),
-    IpAddress: Yup.string()
-      .required(t("err.IsRequired", { 0: t("Scale.IpAddress") }))
+    IpAddress: Yup.string().required(
+      t("err.IsRequired", { 0: t("Scale.IpAddress") })
+    ),
   });
 
   function clean(dirty) {
@@ -23,7 +24,7 @@ export function ScaleEditForm({ scale, btnRef, saveScale }) {
       IpAddress: dirty.IpAddress,
     };
   }
-  
+
   return (
     <>
       <Formik

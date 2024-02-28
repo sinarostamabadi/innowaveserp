@@ -26,7 +26,7 @@ export function ImportXMLKeiesPage({ history }) {
       history.push("/accounting/importXMLKeies/updateStatus");
     },
   };
-  
+
   return (
     <ImportXMLKeiesUIProvider importXMLKeiesUIEvents={importXMLKeiesUIEvents}>
       <ImportXMLKeiesLoadingDialog />

@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./costTypesCrud";
 import { costTypesSlice, callTypes } from "./costTypesSlice";
 const { actions } = costTypesSlice;
@@ -97,4 +96,4 @@ export const deleteCostTypes = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

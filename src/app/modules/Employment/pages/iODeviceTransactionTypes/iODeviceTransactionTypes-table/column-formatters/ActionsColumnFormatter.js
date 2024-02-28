@@ -9,13 +9,25 @@ export const ActionsColumnFormatter = (
   cellContent,
   row,
   rowIndex,
-  { openEditIODeviceTransactionTypePage, openDeleteIODeviceTransactionTypeDialog, t }
+  {
+    openEditIODeviceTransactionTypePage,
+    openDeleteIODeviceTransactionTypeDialog,
+    t,
+  }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="iODeviceTransactionTypes-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="iODeviceTransactionTypes-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-        onClick={() => openEditIODeviceTransactionTypePage(row.IODeviceTransactionTypeId)}
+        onClick={() =>
+          openEditIODeviceTransactionTypePage(row.IODeviceTransactionTypeId)
+        }
       >
         <span className="svg-icon svg-icon-md svg-icon-primary">
           <SVG
@@ -26,11 +38,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="iODeviceTransactionTypes-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="iODeviceTransactionTypes-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteIODeviceTransactionTypeDialog(row.IODeviceTransactionTypeId)}
+        onClick={() =>
+          openDeleteIODeviceTransactionTypeDialog(row.IODeviceTransactionTypeId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

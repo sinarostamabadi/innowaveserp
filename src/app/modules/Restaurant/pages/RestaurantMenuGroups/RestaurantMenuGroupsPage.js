@@ -17,7 +17,9 @@ export function RestaurantMenuGroupsPage({ history }) {
       history.push(`/restaurant/restaurantMenuGroups/${id}/delete`);
     },
     openDeleteRestaurantMenuGroupsDialog: () => {
-      history.push(`/restaurant/restaurantMenuGroups/deleteRestaurantMenuGroups`);
+      history.push(
+        `/restaurant/restaurantMenuGroups/deleteRestaurantMenuGroups`
+      );
     },
     openFetchRestaurantMenuGroupsDialog: () => {
       history.push(`/restaurant/restaurantMenuGroups/fetch`);
@@ -26,9 +28,11 @@ export function RestaurantMenuGroupsPage({ history }) {
       history.push("/restaurant/restaurantMenuGroups/updateStatus");
     },
   };
-  
+
   return (
-    <RestaurantMenuGroupsUIProvider restaurantMenuGroupsUIEvents={restaurantMenuGroupsUIEvents}>
+    <RestaurantMenuGroupsUIProvider
+      restaurantMenuGroupsUIEvents={restaurantMenuGroupsUIEvents}
+    >
       <RestaurantMenuGroupsLoadingDialog />
       <Route path="/restaurant/restaurantMenuGroups/:id/delete">
         {({ history, match }) => (

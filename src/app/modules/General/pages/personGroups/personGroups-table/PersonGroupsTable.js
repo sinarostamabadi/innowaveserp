@@ -33,7 +33,8 @@ export function PersonGroupsTable() {
       queryParams: personGroupsUIContext.queryParams,
       setQueryParams: personGroupsUIContext.setQueryParams,
       openEditPersonGroupPage: personGroupsUIContext.openEditPersonGroupPage,
-      openDeletePersonGroupDialog: personGroupsUIContext.openDeletePersonGroupDialog,
+      openDeletePersonGroupDialog:
+        personGroupsUIContext.openDeletePersonGroupDialog,
     };
   }, [personGroupsUIContext]);
 
@@ -67,7 +68,8 @@ export function PersonGroupsTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditPersonGroupPage: personGroupsUIProps.openEditPersonGroupPage,
-        openDeletePersonGroupDialog: personGroupsUIProps.openDeletePersonGroupDialog,
+        openDeletePersonGroupDialog:
+          personGroupsUIProps.openDeletePersonGroupDialog,
         t: t,
       },
       classes: "text-right pr-0",

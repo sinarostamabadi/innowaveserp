@@ -21,7 +21,7 @@ export function CouponEditDialogHeader({ id }) {
   useEffect(() => {
     let _title = id ? "" : t("Common.Create") + " " + t("CashDocument.Coupon");
     if (id) {
-      _title = t("Common.Edit") + " " + t("CashDocument.Coupon") ;
+      _title = t("Common.Edit") + " " + t("CashDocument.Coupon");
     }
 
     setTitle(_title);

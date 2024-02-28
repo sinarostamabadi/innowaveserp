@@ -55,7 +55,9 @@ export function OrganizationPostEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("OrganizationPost.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("OrganizationPost.Entity");
 
     if (organizationPostForEdit && id) {
       _title = t("Common.Edit") + " " + organizationPostForEdit.TitleFa;
@@ -73,11 +75,11 @@ export function OrganizationPostEdit({
         .then((arg) => {
           backToOrganizationPostsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateOrganizationPost(id, values))
         .then(() => backToOrganizationPostsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

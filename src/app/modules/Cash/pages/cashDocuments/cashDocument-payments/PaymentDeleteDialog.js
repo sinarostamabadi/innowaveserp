@@ -40,10 +40,10 @@ export function PaymentDeleteDialog() {
   }, [paymentsUIProps.id]);
 
   // looking for loading/dispatch
-  useEffect(() => { }, [isLoading, dispatch]);
+  useEffect(() => {}, [isLoading, dispatch]);
 
   const deletePayment = () => {
-    paymentsUIProps.removePayment(paymentsUIProps.id)
+    paymentsUIProps.removePayment(paymentsUIProps.id);
     paymentsUIProps.onHide();
   };
 
@@ -60,9 +60,7 @@ export function PaymentDeleteDialog() {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && (
-          <span>{t("Common.DeleteQuestion")}</span>
-        )}
+        {!isLoading && <span>{t("Common.DeleteQuestion")}</span>}
         {isLoading && <span>{t("Common.DeleteLoading")}</span>}
       </Modal.Body>
       <Modal.Footer>

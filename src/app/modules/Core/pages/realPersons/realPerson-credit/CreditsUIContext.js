@@ -29,11 +29,14 @@ export const CreditsUIProvider = forwardRef(
           !!credits && credits.length > 0
             ? credits.map((credit) => {
                 return {
-                  CreditId: credit.CreditId.toString().indexOf("temp_") > -1? null: +credit.CreditId,
+                  CreditId:
+                    credit.CreditId.toString().indexOf("temp_") > -1
+                      ? null
+                      : +credit.CreditId,
                   PersonId: +personId,
                   Title: credit.Title,
                   Price: credit.Price,
-                  IsDeleted: credit.IsDeleted
+                  IsDeleted: credit.IsDeleted,
                 };
               })
             : []
@@ -98,14 +101,10 @@ export const CreditsUIProvider = forwardRef(
     }, [currentPersonId]);
 
     useEffect(() => {
-      if(credits.length > 0)
-        setActive(credits.filter(x=> !x.IsDeleted));
+      if (credits.length > 0) setActive(credits.filter((x) => !x.IsDeleted));
     }, [credits]);
 
-    const [
-      showEditCreditDialog,
-      setShowEditCreditDialog,
-    ] = useState(false);
+    const [showEditCreditDialog, setShowEditCreditDialog] = useState(false);
     const openNewCreditDialog = () => {
       setSelectedId(undefined);
       setShowEditCreditDialog(true);
@@ -119,10 +118,7 @@ export const CreditsUIProvider = forwardRef(
       setShowEditCreditDialog(false);
     };
 
-    const [
-      showDeleteCreditDialog,
-      setShowDeleteCreditDialog,
-    ] = useState(false);
+    const [showDeleteCreditDialog, setShowDeleteCreditDialog] = useState(false);
     const openDeleteCreditDialog = (id) => {
       setSelectedId(id);
       setShowDeleteCreditDialog(true);
@@ -132,10 +128,8 @@ export const CreditsUIProvider = forwardRef(
       setShowDeleteCreditDialog(false);
     };
 
-    const [
-      showDeleteCreditsDialog,
-      setShowDeleteCreditsDialog,
-    ] = useState(false);
+    const [showDeleteCreditsDialog, setShowDeleteCreditsDialog] =
+      useState(false);
     const openDeleteCreditsDialog = () => {
       setShowDeleteCreditsDialog(true);
     };
@@ -143,10 +137,7 @@ export const CreditsUIProvider = forwardRef(
       setShowDeleteCreditsDialog(false);
     };
 
-    const [
-      showFetchCreditsDialog,
-      setShowFetchCreditsDialog,
-    ] = useState(false);
+    const [showFetchCreditsDialog, setShowFetchCreditsDialog] = useState(false);
     const openFetchCreditsDialog = () => {
       setShowFetchCreditsDialog(true);
     };
@@ -156,25 +147,18 @@ export const CreditsUIProvider = forwardRef(
 
     const findCredit = (creditId) => {
       let creditObj = !!credits
-        ? credits.filter(
-            (credit) =>
-              credit.CreditId == creditId
-          )[0]
+        ? credits.filter((credit) => credit.CreditId == creditId)[0]
         : null;
 
       return creditObj;
     };
 
     const addCredit = (credit) => {
-      credit.CreditId =
-        "temp_" + Math.floor(Math.random() * 100);
+      credit.CreditId = "temp_" + Math.floor(Math.random() * 100);
       credit.Title = credit.Title;
       credit.PersonId = +credit.PersonId;
 
-      setCredits((credits) => [
-        ...credits,
-        credit,
-      ]);
+      setCredits((credits) => [...credits, credit]);
     };
 
     const removeCredit = (creditId) => {
@@ -189,9 +173,7 @@ export const CreditsUIProvider = forwardRef(
 
       setCredits((credits) =>
         credits.map((item) =>
-          item.CreditId === credit.CreditId
-            ? credit
-            : item
+          item.CreditId === credit.CreditId ? credit : item
         )
       );
     };

@@ -44,7 +44,8 @@ export function EmployeeWorkExperienceEdit({
   const { actionsLoading, employeeWorkExperienceForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.employeeWorkExperiences.actionsLoading,
-      employeeWorkExperienceForEdit: state.employeeWorkExperiences.employeeWorkExperienceForEdit,
+      employeeWorkExperienceForEdit:
+        state.employeeWorkExperiences.employeeWorkExperienceForEdit,
       error: state.employeeWorkExperiences.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function EmployeeWorkExperienceEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("EmployeeWorkExperience.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("EmployeeWorkExperience.Entity");
 
     if (employeeWorkExperienceForEdit && id) {
       _title = t("Common.Edit") + " " + employeeWorkExperienceForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function EmployeeWorkExperienceEdit({
         .then((arg) => {
           backToEmployeeWorkExperiencesList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateEmployeeWorkExperience(id, values))
         .then(() => backToEmployeeWorkExperiencesList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 
@@ -149,7 +152,9 @@ export function EmployeeWorkExperienceEdit({
           {tab === "basic" && (
             <EmployeeWorkExperienceEditForm
               actionsLoading={actionsLoading}
-              employeeWorkExperience={employeeWorkExperienceForEdit || initModel}
+              employeeWorkExperience={
+                employeeWorkExperienceForEdit || initModel
+              }
               btnRef={btnRef}
               saveEmployeeWorkExperience={saveEmployeeWorkExperience}
             />

@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { BudgetsTable } from "./budgets-table/BudgetsTable";
 import { useBudgetsUIContext, BudgetsUIConsumer } from "./BudgetsUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function BudgetsCard() {
   const { t } = useTranslation();
@@ -24,21 +23,22 @@ export function BudgetsCard() {
       newBudgetButtonClick: budgetsUIContext.newBudgetButtonClick,
       openDeleteBudgetsDialog: budgetsUIContext.openDeleteBudgetsDialog,
       openEditBudgetPage: budgetsUIContext.openEditBudgetPage,
-      openUpdateBudgetsStatusDialog: budgetsUIContext.openUpdateBudgetsStatusDialog,
+      openUpdateBudgetsStatusDialog:
+        budgetsUIContext.openUpdateBudgetsStatusDialog,
       openFetchBudgetsDialog: budgetsUIContext.openFetchBudgetsDialog,
     };
   }, [budgetsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Budget.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Budget.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={budgetsUIProps.newBudgetButtonClick}
           >
-            {t("Budget.Entity")} {' '} {t("Common.New")}
+            {t("Budget.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

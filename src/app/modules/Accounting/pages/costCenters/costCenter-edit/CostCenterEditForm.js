@@ -8,11 +8,11 @@ import { useTranslation } from "react-i18next";
 export function CostCenterEditForm({ costCenter, btnRef, saveCostCenter }) {
   console.log(costCenter);
   const { t } = useTranslation();
-  const defaultInput = createRef()
+  const defaultInput = createRef();
 
   useEffect(() => {
     defaultInput.current.focus();
- }, [defaultInput]);
+  }, [defaultInput]);
 
   const CostCenterEditSchema = Yup.object().shape({
     Title: Yup.string()
@@ -26,31 +26,33 @@ export function CostCenterEditForm({ costCenter, btnRef, saveCostCenter }) {
       .required(t("err.IsRequired", { 0: t("CostCenter.Code") })),
     level: Yup.string()
       .min(1, t("err.Min", { 0: 1 }))
-      .max(3, t("err.Max", { 0: 3 }))
+      .max(3, t("err.Max", { 0: 3 })),
   });
   const [parents, setParents] = useState([]);
 
   useEffect(() => {
-    if (parents.length == 0){
-      console.log("costCenter -> ",costCenter);
+    if (parents.length == 0) {
+      console.log("costCenter -> ", costCenter);
       getAllCostCenters().then(({ data }) =>
-      setParents((parents) => [
+        setParents((parents) => [
           { CostCenterId: "", Title: t("Common.WithoutSelect") },
-          ...data.Items.filter( x => x.CostCenterId != costCenter.CostCenterId),
+          ...data.Items.filter(
+            (x) => x.CostCenterId != costCenter.CostCenterId
+          ),
         ])
       );
     }
   }, [parents.length, costCenter.CostCenterId]);
 
-  function clean (values) {
+  function clean(values) {
     return {
       CostCenterId: values.CostCenterId,
       Title: values.Title,
       Code: values.Code,
       ParentId: +values.ParentId,
-      Level: values.Level && +values.Level
+      Level: values.Level && +values.Level,
     };
-  };
+  }
 
   return (
     <>
@@ -91,7 +93,7 @@ export function CostCenterEditForm({ costCenter, btnRef, saveCostCenter }) {
                     component={Input}
                     customFeedbackLabel=""
                     label={t("CostCenter.Level")}
-                    />
+                  />
                 </div>
                 <div className="col-lg-6">
                   <Select
@@ -100,7 +102,10 @@ export function CostCenterEditForm({ costCenter, btnRef, saveCostCenter }) {
                     setref={defaultInput}
                   >
                     {parents.map((parent) => (
-                      <option key={parent.CostCenterId} value={parent.CostCenterId}>
+                      <option
+                        key={parent.CostCenterId}
+                        value={parent.CostCenterId}
+                      >
                         {parent.Title}
                       </option>
                     ))}

@@ -5,10 +5,12 @@ import { useTranslation } from "react-i18next";
 export function RestaurantMenuItemPricesToolbar() {
   const { t } = useTranslation();
 
-  const restaurantMenuItemPricesUIContext = useRestaurantMenuItemPricesUIContext();
+  const restaurantMenuItemPricesUIContext =
+    useRestaurantMenuItemPricesUIContext();
   const restaurantMenuItemPricesUIProps = useMemo(() => {
     return {
-      openNewRestaurantMenuItemPriceDialog: restaurantMenuItemPricesUIContext.openNewRestaurantMenuItemPriceDialog,
+      openNewRestaurantMenuItemPriceDialog:
+        restaurantMenuItemPricesUIContext.openNewRestaurantMenuItemPriceDialog,
     };
   }, [restaurantMenuItemPricesUIContext]);
 
@@ -23,7 +25,9 @@ export function RestaurantMenuItemPricesToolbar() {
             <button
               type="button"
               className="btn btn-success"
-              onClick={() => restaurantMenuItemPricesUIProps.openNewRestaurantMenuItemPriceDialog()}
+              onClick={() =>
+                restaurantMenuItemPricesUIProps.openNewRestaurantMenuItemPriceDialog()
+              }
             >
               {t("RestaurantMenuItemPrice.Entity")} {t("Common.New")}
             </button>

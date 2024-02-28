@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { FutsalTimingModel } from "../../../../../core/_models/Futsal/FutsalTimingModel";
@@ -30,7 +29,7 @@ export function FutsalTimingUIProvider({ futsalTimingUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -40,12 +39,18 @@ export function FutsalTimingUIProvider({ futsalTimingUIEvents, children }) {
     dataModel: FutsalTimingModel,
     newFutsalTimingButtonClick: futsalTimingUIEvents.newFutsalTimingButtonClick,
     openEditFutsalTimingPage: futsalTimingUIEvents.openEditFutsalTimingPage,
-    openDeleteFutsalTimingDialog: futsalTimingUIEvents.openDeleteFutsalTimingDialog,
-    openDeleteFutsalTimingDialog: futsalTimingUIEvents.openDeleteFutsalTimingDialog,
-    openFetchFutsalTimingDialog: futsalTimingUIEvents.openFetchFutsalTimingDialog,
-    openUpdateFutsalTimingStatusDialog: futsalTimingUIEvents.openUpdateFutsalTimingStatusDialog,
+    openDeleteFutsalTimingDialog:
+      futsalTimingUIEvents.openDeleteFutsalTimingDialog,
+    openDeleteFutsalTimingDialog:
+      futsalTimingUIEvents.openDeleteFutsalTimingDialog,
+    openFetchFutsalTimingDialog:
+      futsalTimingUIEvents.openFetchFutsalTimingDialog,
+    openUpdateFutsalTimingStatusDialog:
+      futsalTimingUIEvents.openUpdateFutsalTimingStatusDialog,
   };
   return (
-    <FutsalTimingUIContext.Provider value={value}>{children}</FutsalTimingUIContext.Provider>
+    <FutsalTimingUIContext.Provider value={value}>
+      {children}
+    </FutsalTimingUIContext.Provider>
   );
 }

@@ -26,7 +26,7 @@ export function InsurancesPage({ history }) {
       history.push("/employment/insurances/updateStatus");
     },
   };
-  
+
   return (
     <InsurancesUIProvider insurancesUIEvents={insurancesUIEvents}>
       <InsurancesLoadingDialog />

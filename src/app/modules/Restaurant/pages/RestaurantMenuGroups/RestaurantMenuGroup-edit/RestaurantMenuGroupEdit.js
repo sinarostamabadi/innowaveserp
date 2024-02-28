@@ -44,7 +44,8 @@ export function RestaurantMenuGroupEdit({
   const { actionsLoading, restaurantMenuGroupForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.restaurantMenuGroups.actionsLoading,
-      restaurantMenuGroupForEdit: state.restaurantMenuGroups.restaurantMenuGroupForEdit,
+      restaurantMenuGroupForEdit:
+        state.restaurantMenuGroups.restaurantMenuGroupForEdit,
       error: state.restaurantMenuGroups.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function RestaurantMenuGroupEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("RestaurantMenuGroup.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("RestaurantMenuGroup.Entity");
 
     if (restaurantMenuGroupForEdit && id) {
       _title = t("Common.Edit") + " " + restaurantMenuGroupForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function RestaurantMenuGroupEdit({
         .then((arg) => {
           backToRestaurantMenuGroupsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateRestaurantMenuGroup(id, values))
         .then(() => backToRestaurantMenuGroupsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

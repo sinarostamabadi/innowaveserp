@@ -17,7 +17,9 @@ export function AccountFloatingGroupTypesPage({ history }) {
       history.push(`/accounting/accountFloatingGroupTypes/${id}/delete`);
     },
     openDeleteAccountFloatingGroupTypesDialog: () => {
-      history.push(`/accounting/accountFloatingGroupTypes/deleteAccountFloatingGroupTypes`);
+      history.push(
+        `/accounting/accountFloatingGroupTypes/deleteAccountFloatingGroupTypes`
+      );
     },
     openFetchAccountFloatingGroupTypesDialog: () => {
       history.push(`/accounting/accountFloatingGroupTypes/fetch`);
@@ -26,9 +28,11 @@ export function AccountFloatingGroupTypesPage({ history }) {
       history.push("/accounting/accountFloatingGroupTypes/updateStatus");
     },
   };
-  
+
   return (
-    <AccountFloatingGroupTypesUIProvider accountFloatingGroupTypesUIEvents={accountFloatingGroupTypesUIEvents}>
+    <AccountFloatingGroupTypesUIProvider
+      accountFloatingGroupTypesUIEvents={accountFloatingGroupTypesUIEvents}
+    >
       <AccountFloatingGroupTypesLoadingDialog />
       <Route path="/accounting/accountFloatingGroupTypes/:id/delete">
         {({ history, match }) => (

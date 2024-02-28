@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BilliardReserveModel } from "../../../../../core/_models/Billiard/BilliardReserveModel";
@@ -12,7 +11,10 @@ export function useBilliardReservesUIContext() {
 
 export const BilliardReservesUIConsumer = BilliardReservesUIContext.Consumer;
 
-export function BilliardReservesUIProvider({ billiardReservesUIEvents, children }) {
+export function BilliardReservesUIProvider({
+  billiardReservesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(BilliardReserveModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function BilliardReservesUIProvider({ billiardReservesUIEvents, children 
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function BilliardReservesUIProvider({ billiardReservesUIEvents, children 
     setIds,
     setQueryParams,
     dataModel: BilliardReserveModel,
-    newBilliardReserveButtonClick: billiardReservesUIEvents.newBilliardReserveButtonClick,
-    openEditBilliardReservePage: billiardReservesUIEvents.openEditBilliardReservePage,
-    openDeleteBilliardReserveDialog: billiardReservesUIEvents.openDeleteBilliardReserveDialog,
-    openDeleteBilliardReservesDialog: billiardReservesUIEvents.openDeleteBilliardReservesDialog,
-    openFetchBilliardReservesDialog: billiardReservesUIEvents.openFetchBilliardReservesDialog,
-    openUpdateBilliardReservesStatusDialog: billiardReservesUIEvents.openUpdateBilliardReservesStatusDialog,
+    newBilliardReserveButtonClick:
+      billiardReservesUIEvents.newBilliardReserveButtonClick,
+    openEditBilliardReservePage:
+      billiardReservesUIEvents.openEditBilliardReservePage,
+    openDeleteBilliardReserveDialog:
+      billiardReservesUIEvents.openDeleteBilliardReserveDialog,
+    openDeleteBilliardReservesDialog:
+      billiardReservesUIEvents.openDeleteBilliardReservesDialog,
+    openFetchBilliardReservesDialog:
+      billiardReservesUIEvents.openFetchBilliardReservesDialog,
+    openUpdateBilliardReservesStatusDialog:
+      billiardReservesUIEvents.openUpdateBilliardReservesStatusDialog,
   };
   return (
-    <BilliardReservesUIContext.Provider value={value}>{children}</BilliardReservesUIContext.Provider>
+    <BilliardReservesUIContext.Provider value={value}>
+      {children}
+    </BilliardReservesUIContext.Provider>
   );
 }

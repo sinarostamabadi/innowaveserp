@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { BodyBuildingCentersTable } from "./bodyBuildingCenters-table/BodyBuildingCentersTable";
-import { useBodyBuildingCentersUIContext, BodyBuildingCentersUIConsumer } from "./BodyBuildingCentersUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useBodyBuildingCentersUIContext,
+  BodyBuildingCentersUIConsumer,
+} from "./BodyBuildingCentersUIContext";
+import { useTranslation } from "react-i18next";
 
 export function BodyBuildingCentersCard() {
   const { t } = useTranslation();
@@ -21,24 +23,33 @@ export function BodyBuildingCentersCard() {
       ids: bodyBuildingCentersUIContext.ids,
       queryParams: bodyBuildingCentersUIContext.queryParams,
       setQueryParams: bodyBuildingCentersUIContext.setQueryParams,
-      newBodyBuildingCenterButtonClick: bodyBuildingCentersUIContext.newBodyBuildingCenterButtonClick,
-      openDeleteBodyBuildingCentersDialog: bodyBuildingCentersUIContext.openDeleteBodyBuildingCentersDialog,
-      openEditBodyBuildingCenterPage: bodyBuildingCentersUIContext.openEditBodyBuildingCenterPage,
-      openUpdateBodyBuildingCentersStatusDialog: bodyBuildingCentersUIContext.openUpdateBodyBuildingCentersStatusDialog,
-      openFetchBodyBuildingCentersDialog: bodyBuildingCentersUIContext.openFetchBodyBuildingCentersDialog,
+      newBodyBuildingCenterButtonClick:
+        bodyBuildingCentersUIContext.newBodyBuildingCenterButtonClick,
+      openDeleteBodyBuildingCentersDialog:
+        bodyBuildingCentersUIContext.openDeleteBodyBuildingCentersDialog,
+      openEditBodyBuildingCenterPage:
+        bodyBuildingCentersUIContext.openEditBodyBuildingCenterPage,
+      openUpdateBodyBuildingCentersStatusDialog:
+        bodyBuildingCentersUIContext.openUpdateBodyBuildingCentersStatusDialog,
+      openFetchBodyBuildingCentersDialog:
+        bodyBuildingCentersUIContext.openFetchBodyBuildingCentersDialog,
     };
   }, [bodyBuildingCentersUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("BodyBuildingCenter.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("BodyBuildingCenter.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
-            onClick={bodyBuildingCentersUIProps.newBodyBuildingCenterButtonClick}
+            onClick={
+              bodyBuildingCentersUIProps.newBodyBuildingCenterButtonClick
+            }
           >
-            {t("BodyBuildingCenter.Entity")} {' '} {t("Common.New")}
+            {t("BodyBuildingCenter.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

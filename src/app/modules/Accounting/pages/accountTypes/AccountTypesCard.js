@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { AccountTypesTable } from "./accountTypes-table/AccountTypesTable";
-import { useAccountTypesUIContext, AccountTypesUIConsumer } from "./AccountTypesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useAccountTypesUIContext,
+  AccountTypesUIConsumer,
+} from "./AccountTypesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function AccountTypesCard() {
   const { t } = useTranslation();
@@ -21,17 +23,21 @@ export function AccountTypesCard() {
       ids: accountTypesUIContext.ids,
       queryParams: accountTypesUIContext.queryParams,
       setQueryParams: accountTypesUIContext.setQueryParams,
-      newAccountTypeButtonClick: accountTypesUIContext.newAccountTypeButtonClick,
-      openDeleteAccountTypesDialog: accountTypesUIContext.openDeleteAccountTypesDialog,
+      newAccountTypeButtonClick:
+        accountTypesUIContext.newAccountTypeButtonClick,
+      openDeleteAccountTypesDialog:
+        accountTypesUIContext.openDeleteAccountTypesDialog,
       openEditAccountTypePage: accountTypesUIContext.openEditAccountTypePage,
-      openUpdateAccountTypesStatusDialog: accountTypesUIContext.openUpdateAccountTypesStatusDialog,
-      openFetchAccountTypesDialog: accountTypesUIContext.openFetchAccountTypesDialog,
+      openUpdateAccountTypesStatusDialog:
+        accountTypesUIContext.openUpdateAccountTypesStatusDialog,
+      openFetchAccountTypesDialog:
+        accountTypesUIContext.openFetchAccountTypesDialog,
     };
   }, [accountTypesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("AccountType.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("AccountType.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"

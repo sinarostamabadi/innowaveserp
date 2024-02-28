@@ -36,21 +36,21 @@ export function AddressEditDialog() {
       {/* {!!addressesUIProps.id == false &&
         !!addressesUIProps.id &&
           editAddress.AddressId == addressesUIProps.id && ( */}
-          <Modal
-            size="lg"
-            show={uiProps.show}
-            onHide={uiProps.onHide}
-            aria-labelledby="example-modal-sizes-title-lg"
-          >
-            <AddressEditDialogHeader id={uiProps.id} />
-            <AddressEditForm
-              saveAddress={saveAddress}
-              actionsLoading={false}
-              address={uiProps.selectedItem}
-              onHide={uiProps.onHide}
-            />
-          </Modal>
-        {/* )} */}
+      <Modal
+        size="lg"
+        show={uiProps.show}
+        onHide={uiProps.onHide}
+        aria-labelledby="example-modal-sizes-title-lg"
+      >
+        <AddressEditDialogHeader id={uiProps.id} />
+        <AddressEditForm
+          saveAddress={saveAddress}
+          actionsLoading={false}
+          address={uiProps.selectedItem}
+          onHide={uiProps.onHide}
+        />
+      </Modal>
+      {/* )} */}
     </>
   );
 }

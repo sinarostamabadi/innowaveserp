@@ -55,7 +55,9 @@ export function BuyRequestDetailEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("BuyRequestDetail.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("BuyRequestDetail.Entity");
 
     if (buyRequestDetailForEdit && id) {
       _title = t("Common.Edit") + " " + buyRequestDetailForEdit.TitleFa;
@@ -73,11 +75,11 @@ export function BuyRequestDetailEdit({
         .then((arg) => {
           backToBuyRequestDetailsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateBuyRequestDetail(id, values))
         .then(() => backToBuyRequestDetailsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

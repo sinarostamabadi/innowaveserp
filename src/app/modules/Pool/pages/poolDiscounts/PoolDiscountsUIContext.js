@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { PoolDiscountModel } from "../../../../../core/_models/Pool/PoolDiscountModel";
@@ -30,7 +29,7 @@ export function PoolDiscountsUIProvider({ poolDiscountsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function PoolDiscountsUIProvider({ poolDiscountsUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: PoolDiscountModel,
-    newPoolDiscountButtonClick: poolDiscountsUIEvents.newPoolDiscountButtonClick,
+    newPoolDiscountButtonClick:
+      poolDiscountsUIEvents.newPoolDiscountButtonClick,
     openEditPoolDiscountPage: poolDiscountsUIEvents.openEditPoolDiscountPage,
-    openDeletePoolDiscountDialog: poolDiscountsUIEvents.openDeletePoolDiscountDialog,
-    openDeletePoolDiscountsDialog: poolDiscountsUIEvents.openDeletePoolDiscountsDialog,
-    openFetchPoolDiscountsDialog: poolDiscountsUIEvents.openFetchPoolDiscountsDialog,
-    openUpdatePoolDiscountsStatusDialog: poolDiscountsUIEvents.openUpdatePoolDiscountsStatusDialog,
+    openDeletePoolDiscountDialog:
+      poolDiscountsUIEvents.openDeletePoolDiscountDialog,
+    openDeletePoolDiscountsDialog:
+      poolDiscountsUIEvents.openDeletePoolDiscountsDialog,
+    openFetchPoolDiscountsDialog:
+      poolDiscountsUIEvents.openFetchPoolDiscountsDialog,
+    openUpdatePoolDiscountsStatusDialog:
+      poolDiscountsUIEvents.openUpdatePoolDiscountsStatusDialog,
   };
   return (
-    <PoolDiscountsUIContext.Provider value={value}>{children}</PoolDiscountsUIContext.Provider>
+    <PoolDiscountsUIContext.Provider value={value}>
+      {children}
+    </PoolDiscountsUIContext.Provider>
   );
 }

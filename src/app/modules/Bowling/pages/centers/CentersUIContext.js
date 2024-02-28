@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { CenterModel } from "../../../../../core/_models/Bowling/CenterModel";
@@ -30,7 +29,7 @@ export function CentersUIProvider({ centersUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function CentersUIProvider({ centersUIEvents, children }) {
     openDeleteCenterDialog: centersUIEvents.openDeleteCenterDialog,
     openDeleteCentersDialog: centersUIEvents.openDeleteCentersDialog,
     openFetchCentersDialog: centersUIEvents.openFetchCentersDialog,
-    openUpdateCentersStatusDialog: centersUIEvents.openUpdateCentersStatusDialog,
+    openUpdateCentersStatusDialog:
+      centersUIEvents.openUpdateCentersStatusDialog,
   };
   return (
-    <CentersUIContext.Provider value={value}>{children}</CentersUIContext.Provider>
+    <CentersUIContext.Provider value={value}>
+      {children}
+    </CentersUIContext.Provider>
   );
 }

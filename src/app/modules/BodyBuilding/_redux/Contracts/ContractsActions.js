@@ -1,4 +1,3 @@
-
 import * as requestFromServer from "./ContractsCrud";
 import { contractsSlice, callTypes } from "./ContractsSlice";
 const { actions } = contractsSlice;
@@ -46,24 +45,25 @@ export const deleteContract = (id) => (dispatch) => {
       throw error;
     });
 };
-export const createContract = (contractForCreation, fnCallBack) => (dispatch) => {
-  dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer
-    .createContract(contractForCreation)
-    .then((response) => {
-      const contract = response.data;
-      fnCallBack(contract);
-      
-      dispatch(actions.contractCreated(contract));
+export const createContract =
+  (contractForCreation, fnCallBack) => (dispatch) => {
+    dispatch(actions.startCall({ callType: callTypes.action }));
+    return requestFromServer
+      .createContract(contractForCreation)
+      .then((response) => {
+        const contract = response.data;
+        fnCallBack(contract);
 
-      return contract;
-    })
-    .catch((error) => {
-      error.clientMessage = "Can't create contract";
-      dispatch(actions.catchError({ error, callType: callTypes.action }));
-      throw error;
-    });
-};
+        dispatch(actions.contractCreated(contract));
+
+        return contract;
+      })
+      .catch((error) => {
+        error.clientMessage = "Can't create contract";
+        dispatch(actions.catchError({ error, callType: callTypes.action }));
+        throw error;
+      });
+  };
 export const updateContract = (id, contract, fnCallBack) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
   return requestFromServer
@@ -105,4 +105,4 @@ export const deleteContracts = (ids) => (dispatch) => {
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

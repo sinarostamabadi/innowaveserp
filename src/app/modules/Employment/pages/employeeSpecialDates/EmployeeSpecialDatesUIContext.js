@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmployeeSpecialDateModel } from "../../../../../core/_models/Employment/EmployeeSpecialDateModel";
@@ -10,9 +9,13 @@ export function useEmployeeSpecialDatesUIContext() {
   return useContext(EmployeeSpecialDatesUIContext);
 }
 
-export const EmployeeSpecialDatesUIConsumer = EmployeeSpecialDatesUIContext.Consumer;
+export const EmployeeSpecialDatesUIConsumer =
+  EmployeeSpecialDatesUIContext.Consumer;
 
-export function EmployeeSpecialDatesUIProvider({ employeeSpecialDatesUIEvents, children }) {
+export function EmployeeSpecialDatesUIProvider({
+  employeeSpecialDatesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(EmployeeSpecialDateModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function EmployeeSpecialDatesUIProvider({ employeeSpecialDatesUIEvents, c
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function EmployeeSpecialDatesUIProvider({ employeeSpecialDatesUIEvents, c
     setIds,
     setQueryParams,
     dataModel: EmployeeSpecialDateModel,
-    newEmployeeSpecialDateButtonClick: employeeSpecialDatesUIEvents.newEmployeeSpecialDateButtonClick,
-    openEditEmployeeSpecialDatePage: employeeSpecialDatesUIEvents.openEditEmployeeSpecialDatePage,
-    openDeleteEmployeeSpecialDateDialog: employeeSpecialDatesUIEvents.openDeleteEmployeeSpecialDateDialog,
-    openDeleteEmployeeSpecialDatesDialog: employeeSpecialDatesUIEvents.openDeleteEmployeeSpecialDatesDialog,
-    openFetchEmployeeSpecialDatesDialog: employeeSpecialDatesUIEvents.openFetchEmployeeSpecialDatesDialog,
-    openUpdateEmployeeSpecialDatesStatusDialog: employeeSpecialDatesUIEvents.openUpdateEmployeeSpecialDatesStatusDialog,
+    newEmployeeSpecialDateButtonClick:
+      employeeSpecialDatesUIEvents.newEmployeeSpecialDateButtonClick,
+    openEditEmployeeSpecialDatePage:
+      employeeSpecialDatesUIEvents.openEditEmployeeSpecialDatePage,
+    openDeleteEmployeeSpecialDateDialog:
+      employeeSpecialDatesUIEvents.openDeleteEmployeeSpecialDateDialog,
+    openDeleteEmployeeSpecialDatesDialog:
+      employeeSpecialDatesUIEvents.openDeleteEmployeeSpecialDatesDialog,
+    openFetchEmployeeSpecialDatesDialog:
+      employeeSpecialDatesUIEvents.openFetchEmployeeSpecialDatesDialog,
+    openUpdateEmployeeSpecialDatesStatusDialog:
+      employeeSpecialDatesUIEvents.openUpdateEmployeeSpecialDatesStatusDialog,
   };
   return (
-    <EmployeeSpecialDatesUIContext.Provider value={value}>{children}</EmployeeSpecialDatesUIContext.Provider>
+    <EmployeeSpecialDatesUIContext.Provider value={value}>
+      {children}
+    </EmployeeSpecialDatesUIContext.Provider>
   );
 }

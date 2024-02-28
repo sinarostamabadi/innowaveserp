@@ -26,9 +26,11 @@ export function BilliardTimePriceingPage({ history }) {
       history.push("/billiard/billiardTimePriceing/updateStatus");
     },
   };
-  
+
   return (
-    <BilliardTimePriceingUIProvider billiardTimePriceingUIEvents={billiardTimePriceingUIEvents}>
+    <BilliardTimePriceingUIProvider
+      billiardTimePriceingUIEvents={billiardTimePriceingUIEvents}
+    >
       <BilliardTimePriceingLoadingDialog />
       <Route path="/billiard/billiardTimePriceing/:id/delete">
         {({ history, match }) => (

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { ChequeModel } from "../../../../../core/_models/Cash/ChequeModel";
@@ -30,7 +29,7 @@ export function ChequesUIProvider({ chequesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function ChequesUIProvider({ chequesUIEvents, children }) {
     openDeleteChequeDialog: chequesUIEvents.openDeleteChequeDialog,
     openDeleteChequesDialog: chequesUIEvents.openDeleteChequesDialog,
     openFetchChequesDialog: chequesUIEvents.openFetchChequesDialog,
-    openUpdateChequesStatusDialog: chequesUIEvents.openUpdateChequesStatusDialog,
+    openUpdateChequesStatusDialog:
+      chequesUIEvents.openUpdateChequesStatusDialog,
   };
   return (
-    <ChequesUIContext.Provider value={value}>{children}</ChequesUIContext.Provider>
+    <ChequesUIContext.Provider value={value}>
+      {children}
+    </ChequesUIContext.Provider>
   );
 }

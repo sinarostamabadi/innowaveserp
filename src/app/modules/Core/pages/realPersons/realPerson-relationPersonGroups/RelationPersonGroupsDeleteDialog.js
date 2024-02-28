@@ -13,10 +13,12 @@ export function RelationPersonGroupsDeleteDialog() {
       personId: relationPersonGroupsUIContext.personId,
       ids: relationPersonGroupsUIContext.ids,
       show: relationPersonGroupsUIContext.showDeleteRelationPersonGroupsDialog,
-      onHide: relationPersonGroupsUIContext.closeDeleteRelationPersonGroupsDialog,
+      onHide:
+        relationPersonGroupsUIContext.closeDeleteRelationPersonGroupsDialog,
       setIds: relationPersonGroupsUIContext.setIds,
       queryParams: relationPersonGroupsUIContext.queryParams,
-      findRelationPersonGroup: relationPersonGroupsUIContext.findRelationPersonGroup,
+      findRelationPersonGroup:
+        relationPersonGroupsUIContext.findRelationPersonGroup,
     };
   }, [relationPersonGroupsUIContext]);
 
@@ -32,7 +34,10 @@ export function RelationPersonGroupsDeleteDialog() {
 
   // if there weren't selected relationPersonGroups we should close modal
   useEffect(() => {
-    if (!relationPersonGroupsUIProps.ids || relationPersonGroupsUIProps.ids.length === 0) {
+    if (
+      !relationPersonGroupsUIProps.ids ||
+      relationPersonGroupsUIProps.ids.length === 0
+    ) {
       relationPersonGroupsUIProps.onHide();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -40,7 +45,6 @@ export function RelationPersonGroupsDeleteDialog() {
 
   const deleteRelationPersonGroups = () => {
     // server request for selected deleting relationPersonGroups
-
   };
 
   return (

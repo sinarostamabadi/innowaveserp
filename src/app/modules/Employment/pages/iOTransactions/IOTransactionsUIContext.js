@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { IOTransactionModel } from "../../../../../core/_models/Employment/IOTransactionModel";
@@ -30,7 +29,7 @@ export function IOTransactionsUIProvider({ iOTransactionsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function IOTransactionsUIProvider({ iOTransactionsUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: IOTransactionModel,
-    newIOTransactionButtonClick: iOTransactionsUIEvents.newIOTransactionButtonClick,
+    newIOTransactionButtonClick:
+      iOTransactionsUIEvents.newIOTransactionButtonClick,
     openEditIOTransactionPage: iOTransactionsUIEvents.openEditIOTransactionPage,
-    openDeleteIOTransactionDialog: iOTransactionsUIEvents.openDeleteIOTransactionDialog,
-    openDeleteIOTransactionsDialog: iOTransactionsUIEvents.openDeleteIOTransactionsDialog,
-    openFetchIOTransactionsDialog: iOTransactionsUIEvents.openFetchIOTransactionsDialog,
-    openUpdateIOTransactionsStatusDialog: iOTransactionsUIEvents.openUpdateIOTransactionsStatusDialog,
+    openDeleteIOTransactionDialog:
+      iOTransactionsUIEvents.openDeleteIOTransactionDialog,
+    openDeleteIOTransactionsDialog:
+      iOTransactionsUIEvents.openDeleteIOTransactionsDialog,
+    openFetchIOTransactionsDialog:
+      iOTransactionsUIEvents.openFetchIOTransactionsDialog,
+    openUpdateIOTransactionsStatusDialog:
+      iOTransactionsUIEvents.openUpdateIOTransactionsStatusDialog,
   };
   return (
-    <IOTransactionsUIContext.Provider value={value}>{children}</IOTransactionsUIContext.Provider>
+    <IOTransactionsUIContext.Provider value={value}>
+      {children}
+    </IOTransactionsUIContext.Provider>
   );
 }

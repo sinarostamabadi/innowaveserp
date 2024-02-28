@@ -26,7 +26,7 @@ export function OperationTypesPage({ history }) {
       history.push("/cash/operationTypes/updateStatus");
     },
   };
-  
+
   return (
     <OperationTypesUIProvider operationTypesUIEvents={operationTypesUIEvents}>
       <OperationTypesLoadingDialog />

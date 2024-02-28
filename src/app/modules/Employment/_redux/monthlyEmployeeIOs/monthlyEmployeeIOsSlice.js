@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialMonthlyEmployeeIOsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const monthlyEmployeeIOsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getMonthlyEmployeeIOById  
+    // getMonthlyEmployeeIOById
     monthlyEmployeeIOFetched: (state, action) => {
       state.actionsLoading = false;
       state.monthlyEmployeeIOForEdit = action.payload.monthlyEmployeeIOForEdit;
       state.error = null;
     },
-    // findMonthlyEmployeeIOs  
+    // findMonthlyEmployeeIOs
     monthlyEmployeeIOsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const monthlyEmployeeIOsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createMonthlyEmployeeIO  
+    // createMonthlyEmployeeIO
     monthlyEmployeeIOCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateMonthlyEmployeeIO  
+    // updateMonthlyEmployeeIO
     monthlyEmployeeIOUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.MonthlyEmployeeIOId === action.payload.monthlyEmployeeIO.MonthlyEmployeeIOId) {
+        if (
+          entity.MonthlyEmployeeIOId ===
+          action.payload.monthlyEmployeeIO.MonthlyEmployeeIOId
+        ) {
           return action.payload.monthlyEmployeeIO;
         }
         return entity;
       });
     },
-    // deleteMonthlyEmployeeIO  
+    // deleteMonthlyEmployeeIO
     monthlyEmployeeIODeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.MonthlyEmployeeIOId !== action.payload.MonthlyEmployeeIOId  
+        (el) => el.MonthlyEmployeeIOId !== action.payload.MonthlyEmployeeIOId
       );
     },
-    // deleteMonthlyEmployeeIOs  
+    // deleteMonthlyEmployeeIOs
     monthlyEmployeeIOsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.MonthlyEmployeeIOId)  
+        (el) => !action.payload.ids.includes(el.MonthlyEmployeeIOId)
       );
     },
-    // monthlyEmployeeIOsUpdateState  
+    // monthlyEmployeeIOsUpdateState
     monthlyEmployeeIOsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

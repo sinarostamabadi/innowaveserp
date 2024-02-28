@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { ServiceItemModel } from "../../../../../core/_models/Security/ServiceItemModel";
@@ -30,7 +29,7 @@ export function ServiceItemsUIProvider({ serviceItemsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -40,12 +39,18 @@ export function ServiceItemsUIProvider({ serviceItemsUIEvents, children }) {
     dataModel: ServiceItemModel,
     newServiceItemButtonClick: serviceItemsUIEvents.newServiceItemButtonClick,
     openEditServiceItemPage: serviceItemsUIEvents.openEditServiceItemPage,
-    openDeleteServiceItemDialog: serviceItemsUIEvents.openDeleteServiceItemDialog,
-    openDeleteServiceItemsDialog: serviceItemsUIEvents.openDeleteServiceItemsDialog,
-    openFetchServiceItemsDialog: serviceItemsUIEvents.openFetchServiceItemsDialog,
-    openUpdateServiceItemsStatusDialog: serviceItemsUIEvents.openUpdateServiceItemsStatusDialog,
+    openDeleteServiceItemDialog:
+      serviceItemsUIEvents.openDeleteServiceItemDialog,
+    openDeleteServiceItemsDialog:
+      serviceItemsUIEvents.openDeleteServiceItemsDialog,
+    openFetchServiceItemsDialog:
+      serviceItemsUIEvents.openFetchServiceItemsDialog,
+    openUpdateServiceItemsStatusDialog:
+      serviceItemsUIEvents.openUpdateServiceItemsStatusDialog,
   };
   return (
-    <ServiceItemsUIContext.Provider value={value}>{children}</ServiceItemsUIContext.Provider>
+    <ServiceItemsUIContext.Provider value={value}>
+      {children}
+    </ServiceItemsUIContext.Provider>
   );
 }

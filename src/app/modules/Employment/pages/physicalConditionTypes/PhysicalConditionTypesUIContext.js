@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { PhysicalConditionTypeModel } from "../../../../../core/_models/Employment/PhysicalConditionTypeModel";
@@ -10,9 +9,13 @@ export function usePhysicalConditionTypesUIContext() {
   return useContext(PhysicalConditionTypesUIContext);
 }
 
-export const PhysicalConditionTypesUIConsumer = PhysicalConditionTypesUIContext.Consumer;
+export const PhysicalConditionTypesUIConsumer =
+  PhysicalConditionTypesUIContext.Consumer;
 
-export function PhysicalConditionTypesUIProvider({ physicalConditionTypesUIEvents, children }) {
+export function PhysicalConditionTypesUIProvider({
+  physicalConditionTypesUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(PhysicalConditionTypeModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function PhysicalConditionTypesUIProvider({ physicalConditionTypesUIEvent
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function PhysicalConditionTypesUIProvider({ physicalConditionTypesUIEvent
     setIds,
     setQueryParams,
     dataModel: PhysicalConditionTypeModel,
-    newPhysicalConditionTypeButtonClick: physicalConditionTypesUIEvents.newPhysicalConditionTypeButtonClick,
-    openEditPhysicalConditionTypePage: physicalConditionTypesUIEvents.openEditPhysicalConditionTypePage,
-    openDeletePhysicalConditionTypeDialog: physicalConditionTypesUIEvents.openDeletePhysicalConditionTypeDialog,
-    openDeletePhysicalConditionTypesDialog: physicalConditionTypesUIEvents.openDeletePhysicalConditionTypesDialog,
-    openFetchPhysicalConditionTypesDialog: physicalConditionTypesUIEvents.openFetchPhysicalConditionTypesDialog,
-    openUpdatePhysicalConditionTypesStatusDialog: physicalConditionTypesUIEvents.openUpdatePhysicalConditionTypesStatusDialog,
+    newPhysicalConditionTypeButtonClick:
+      physicalConditionTypesUIEvents.newPhysicalConditionTypeButtonClick,
+    openEditPhysicalConditionTypePage:
+      physicalConditionTypesUIEvents.openEditPhysicalConditionTypePage,
+    openDeletePhysicalConditionTypeDialog:
+      physicalConditionTypesUIEvents.openDeletePhysicalConditionTypeDialog,
+    openDeletePhysicalConditionTypesDialog:
+      physicalConditionTypesUIEvents.openDeletePhysicalConditionTypesDialog,
+    openFetchPhysicalConditionTypesDialog:
+      physicalConditionTypesUIEvents.openFetchPhysicalConditionTypesDialog,
+    openUpdatePhysicalConditionTypesStatusDialog:
+      physicalConditionTypesUIEvents.openUpdatePhysicalConditionTypesStatusDialog,
   };
   return (
-    <PhysicalConditionTypesUIContext.Provider value={value}>{children}</PhysicalConditionTypesUIContext.Provider>
+    <PhysicalConditionTypesUIContext.Provider value={value}>
+      {children}
+    </PhysicalConditionTypesUIContext.Provider>
   );
 }

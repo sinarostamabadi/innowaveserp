@@ -22,9 +22,7 @@ export function DetailsToolbar() {
           <div className="col-md-3 mr-auto text-left margin-bottom-10-mobile">
             <h4>{t("DocumentDtl.Entity")}</h4>
           </div>
-          <div className="col-md-3 ml-auto text-right margin-bottom-10-mobile">
-
-          </div>
+          <div className="col-md-3 ml-auto text-right margin-bottom-10-mobile"></div>
         </div>
       </div>
     </>

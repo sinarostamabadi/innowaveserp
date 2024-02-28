@@ -32,8 +32,10 @@ export function FutsalReservePricesTable() {
       setIds: futsalReservePricesUIContext.setIds,
       queryParams: futsalReservePricesUIContext.queryParams,
       setQueryParams: futsalReservePricesUIContext.setQueryParams,
-      openEditFutsalReservePricePage: futsalReservePricesUIContext.openEditFutsalReservePricePage,
-      openDeleteFutsalReservePriceDialog: futsalReservePricesUIContext.openDeleteFutsalReservePriceDialog,
+      openEditFutsalReservePricePage:
+        futsalReservePricesUIContext.openEditFutsalReservePricePage,
+      openDeleteFutsalReservePriceDialog:
+        futsalReservePricesUIContext.openDeleteFutsalReservePriceDialog,
     };
   }, [futsalReservePricesUIContext]);
 
@@ -50,7 +52,9 @@ export function FutsalReservePricesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     futsalReservePricesUIProps.setIds([]);
-    dispatch(actions.fetchFutsalReservePrices(futsalReservePricesUIProps.queryParams));
+    dispatch(
+      actions.fetchFutsalReservePrices(futsalReservePricesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [futsalReservePricesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function FutsalReservePricesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditFutsalReservePricePage: futsalReservePricesUIProps.openEditFutsalReservePricePage,
-        openDeleteFutsalReservePriceDialog: futsalReservePricesUIProps.openDeleteFutsalReservePriceDialog,
+        openEditFutsalReservePricePage:
+          futsalReservePricesUIProps.openEditFutsalReservePricePage,
+        openDeleteFutsalReservePriceDialog:
+          futsalReservePricesUIProps.openDeleteFutsalReservePriceDialog,
         t: t,
       },
       classes: "text-right pr-0",

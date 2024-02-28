@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialPersonGroupsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const personGroupsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getPersonGroupById  
+    // getPersonGroupById
     personGroupFetched: (state, action) => {
       state.actionsLoading = false;
       state.personGroupForEdit = action.payload.personGroupForEdit;
       state.error = null;
     },
-    // findPersonGroups  
+    // findPersonGroups
     personGroupsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const personGroupsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createPersonGroup  
+    // createPersonGroup
     personGroupCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updatePersonGroup  
+    // updatePersonGroup
     personGroupUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const personGroupsSlice = createSlice({
         return entity;
       });
     },
-    // deletePersonGroup  
+    // deletePersonGroup
     personGroupDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.PersonGroupId !== action.payload.PersonGroupId  
+        (el) => el.PersonGroupId !== action.payload.PersonGroupId
       );
     },
-    // deletePersonGroups  
+    // deletePersonGroups
     personGroupsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.PersonGroupId)  
+        (el) => !action.payload.ids.includes(el.PersonGroupId)
       );
     },
-    // personGroupsUpdateState  
+    // personGroupsUpdateState
     personGroupsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

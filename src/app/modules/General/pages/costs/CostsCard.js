@@ -8,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { CostsTable } from "./costs-table/CostsTable";
 import { useCostsUIContext, CostsUIConsumer } from "./CostsUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function CostsCard() {
   const { t } = useTranslation();

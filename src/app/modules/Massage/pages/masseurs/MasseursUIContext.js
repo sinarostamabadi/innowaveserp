@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { MasseurModel } from "../../../../../core/_models/Massage/MasseurModel";
@@ -30,7 +29,7 @@ export function MasseursUIProvider({ masseursUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function MasseursUIProvider({ masseursUIEvents, children }) {
     openDeleteMasseurDialog: masseursUIEvents.openDeleteMasseurDialog,
     openDeleteMasseursDialog: masseursUIEvents.openDeleteMasseursDialog,
     openFetchMasseursDialog: masseursUIEvents.openFetchMasseursDialog,
-    openUpdateMasseursStatusDialog: masseursUIEvents.openUpdateMasseursStatusDialog,
+    openUpdateMasseursStatusDialog:
+      masseursUIEvents.openUpdateMasseursStatusDialog,
   };
   return (
-    <MasseursUIContext.Provider value={value}>{children}</MasseursUIContext.Provider>
+    <MasseursUIContext.Provider value={value}>
+      {children}
+    </MasseursUIContext.Provider>
   );
 }

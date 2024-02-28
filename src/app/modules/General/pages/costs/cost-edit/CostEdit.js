@@ -70,11 +70,11 @@ export function CostEdit({
         .then((arg) => {
           backToCostsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateCost(id, values))
         .then(() => backToCostsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

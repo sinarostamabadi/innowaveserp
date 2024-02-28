@@ -24,7 +24,7 @@ export function GroupEditForm({ saveGroup, group, actionsLoading, onHide }) {
   const GroupEditSchema = Yup.object().shape({
     Title: Yup.string().required(
       t("err.IsRequired", { 0: t("BowlingCompetitionGroup.Title") })
-    )
+    ),
   });
 
   const groupsUIContext = useGroupsUIContext();

@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBilliardReservePricesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const billiardReservePricesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBilliardReservePriceById  
+    // getBilliardReservePriceById
     billiardReservePriceFetched: (state, action) => {
       state.actionsLoading = false;
-      state.billiardReservePriceForEdit = action.payload.billiardReservePriceForEdit;
+      state.billiardReservePriceForEdit =
+        action.payload.billiardReservePriceForEdit;
       state.error = null;
     },
-    // findBilliardReservePrices  
+    // findBilliardReservePrices
     billiardReservePricesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const billiardReservePricesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBilliardReservePrice  
+    // createBilliardReservePrice
     billiardReservePriceCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBilliardReservePrice  
+    // updateBilliardReservePrice
     billiardReservePriceUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BilliardReservePriceId === action.payload.billiardReservePrice.BilliardReservePriceId) {
+        if (
+          entity.BilliardReservePriceId ===
+          action.payload.billiardReservePrice.BilliardReservePriceId
+        ) {
           return action.payload.billiardReservePrice;
         }
         return entity;
       });
     },
-    // deleteBilliardReservePrice  
+    // deleteBilliardReservePrice
     billiardReservePriceDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BilliardReservePriceId !== action.payload.BilliardReservePriceId  
+        (el) =>
+          el.BilliardReservePriceId !== action.payload.BilliardReservePriceId
       );
     },
-    // deleteBilliardReservePrices  
+    // deleteBilliardReservePrices
     billiardReservePricesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BilliardReservePriceId)  
+        (el) => !action.payload.ids.includes(el.BilliardReservePriceId)
       );
     },
-    // billiardReservePricesUpdateState  
+    // billiardReservePricesUpdateState
     billiardReservePricesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -36,7 +36,7 @@ import {
   PromissoryNote,
   Credit,
   Wallet,
-  Debt
+  Debt,
 } from "./parts";
 import {
   create,
@@ -71,9 +71,9 @@ export function Quick({
     DocumentDateObj: Yup.object().required(
       t("err.IsRequired", { 0: t("CashDocument.DocumentDate") })
     ),
-    PersonId: Yup.array().nullable().min(1,
-      t("err.IsRequired", { 0: t("CashDocument.Person") })
-    ),
+    PersonId: Yup.array()
+      .nullable()
+      .min(1, t("err.IsRequired", { 0: t("CashDocument.Person") })),
     Added: Yup.string().required(
       t("err.IsRequired", { 0: t("CashDocument.Added") })
     ),
@@ -86,7 +86,7 @@ export function Quick({
   const [cashStatus, setCashStatus] = useState({ Reciept: 0, Payment: 0 });
   const [extra, setExtra] = useState({ Added: 0, Deficit: 0 });
 
-  const [cashDocument, setCashDocument] = useState({...CashTools.Model});
+  const [cashDocument, setCashDocument] = useState({ ...CashTools.Model });
   const [transactions, setTransactions] = useState({ ...CashTools.Model });
 
   useEffect(() => {
@@ -216,7 +216,7 @@ export function Quick({
   const rowClasses = (row, rowIndex) => {
     return "row-status row-status-" + row["TransactionTypeId"];
   };
-  
+
   return (
     <>
       {(!!id && cashDocument.CashDocumentId == id) || !!id == false ? (
@@ -246,14 +246,14 @@ export function Quick({
                         fontWeight: "bold",
                       }}
                     >
-                      <i className="fa fa-arrow-up text-danger mr-2"></i> پرداخت
+                      <i className="fa fa-arrow-up text-danger mr-2"></i> Payment
                     </InputGroup.Text>
                   </InputGroup.Prepend>
                   <label
                     className="form-control"
                     style={{ fontSize: "1.1rem", fontWeight: "bold" }}
                   >
-                    {numberWithCommas(cashStatus.Payment)} ریال
+                    {numberWithCommas(cashStatus.Payment)}
                   </label>
                 </InputGroup>
                 <InputGroup
@@ -272,14 +272,14 @@ export function Quick({
                       }}
                     >
                       <i className="fa fa-arrow-down text-success mr-2"></i>{" "}
-                      دریافت
+                        Receive
                     </InputGroup.Text>
                   </InputGroup.Prepend>
                   <label
                     className="form-control"
                     style={{ fontSize: "1.1rem", fontWeight: "bold" }}
                   >
-                    {numberWithCommas(cashStatus.Reciept)} ریال
+                    {numberWithCommas(cashStatus.Reciept)}
                   </label>
                 </InputGroup>
               </div>
@@ -289,15 +289,21 @@ export function Quick({
                 type="submit"
                 className="btn btn-primary ml-2"
                 onClick={saveLineClick}
-                disabled={!!receivable && (receivable - cashStatus.Reciept !== 0)}
+                disabled={!!receivable && receivable - cashStatus.Reciept !== 0}
               >
                 <i className="fa fa-save"></i> {t("Common.Save")}
               </Button>
             </CardHeaderToolbar>
           </CardHeader>
           <CardBody className="pt-2">
-            {!!receivable && (receivable - cashStatus.Reciept !== 0) && (
-              <Alerty variant="danger" title={t("Common.Pay")} description={t("err.RecieveDeferenceByRequest")} className="" dismis={false}/>
+            {!!receivable && receivable - cashStatus.Reciept !== 0 && (
+              <Alerty
+                variant="danger"
+                title={t("Common.Pay")}
+                description={t("err.RecieveDeferenceByRequest")}
+                className=""
+                dismis={false}
+              />
             )}
             {receivable != null && (
               <Row className="pb-3">
@@ -338,7 +344,10 @@ export function Quick({
                     validationSchema={CashDocumentEditSchema}
                     onSubmit={(values) => {
                       console.log("values < ", values);
-                      console.log("CashTools.Clean(values, transactions) < ", CashTools.Clean(values, transactions));
+                      console.log(
+                        "CashTools.Clean(values, transactions) < ",
+                        CashTools.Clean(values, transactions)
+                      );
                       saveCashDocument(CashTools.Clean(values, transactions));
                     }}
                   >
@@ -579,15 +588,11 @@ export function Quick({
                     <div>
                       <div
                         className="flex-1 btn cash-box mt-2"
-                        style={{width: "100%"}}
-                        onClick={() =>
-                          setPart({ name: "debt", id: null })
-                        }
+                        style={{ width: "100%" }}
+                        onClick={() => setPart({ name: "debt", id: null })}
                       >
                         <div className="svg-icon svg-icon-md-5x svg-icon-primary m-0 mt-2 mb-3">
-                          <SVG
-                            src={"/media/svg/icons/cash/ledger.svg"}
-                          />
+                          <SVG src={"/media/svg/icons/cash/ledger.svg"} />
                         </div>
                         {t("CashDocument.Debt")}
                       </div>

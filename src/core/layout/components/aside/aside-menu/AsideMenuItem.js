@@ -44,7 +44,7 @@ export function AsideMenuItem({ element, service, root }) {
       >
         {!!service.Icon ? (
           <span className="svg-icon menu-icon">
-            <i className={"fad " + service.Icon}></i>
+            <i className={"fas " + service.Icon}></i>
           </span>
         ) : (
           <i className="menu-bullet menu-bullet-dot">

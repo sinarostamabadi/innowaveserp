@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { ProfitLossItemModel } from "../../../../../core/_models/Accounting/ProfitLossItemModel";
@@ -12,7 +11,10 @@ export function useProfitLossItemsUIContext() {
 
 export const ProfitLossItemsUIConsumer = ProfitLossItemsUIContext.Consumer;
 
-export function ProfitLossItemsUIProvider({ profitLossItemsUIEvents, children }) {
+export function ProfitLossItemsUIProvider({
+  profitLossItemsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(ProfitLossItemModel).initialFilter
   );
@@ -30,7 +32,7 @@ export function ProfitLossItemsUIProvider({ profitLossItemsUIEvents, children })
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +40,22 @@ export function ProfitLossItemsUIProvider({ profitLossItemsUIEvents, children })
     setIds,
     setQueryParams,
     dataModel: ProfitLossItemModel,
-    newProfitLossItemButtonClick: profitLossItemsUIEvents.newProfitLossItemButtonClick,
-    openEditProfitLossItemPage: profitLossItemsUIEvents.openEditProfitLossItemPage,
-    openDeleteProfitLossItemDialog: profitLossItemsUIEvents.openDeleteProfitLossItemDialog,
-    openDeleteProfitLossItemsDialog: profitLossItemsUIEvents.openDeleteProfitLossItemsDialog,
-    openFetchProfitLossItemsDialog: profitLossItemsUIEvents.openFetchProfitLossItemsDialog,
-    openUpdateProfitLossItemsStatusDialog: profitLossItemsUIEvents.openUpdateProfitLossItemsStatusDialog,
+    newProfitLossItemButtonClick:
+      profitLossItemsUIEvents.newProfitLossItemButtonClick,
+    openEditProfitLossItemPage:
+      profitLossItemsUIEvents.openEditProfitLossItemPage,
+    openDeleteProfitLossItemDialog:
+      profitLossItemsUIEvents.openDeleteProfitLossItemDialog,
+    openDeleteProfitLossItemsDialog:
+      profitLossItemsUIEvents.openDeleteProfitLossItemsDialog,
+    openFetchProfitLossItemsDialog:
+      profitLossItemsUIEvents.openFetchProfitLossItemsDialog,
+    openUpdateProfitLossItemsStatusDialog:
+      profitLossItemsUIEvents.openUpdateProfitLossItemsStatusDialog,
   };
   return (
-    <ProfitLossItemsUIContext.Provider value={value}>{children}</ProfitLossItemsUIContext.Provider>
+    <ProfitLossItemsUIContext.Provider value={value}>
+      {children}
+    </ProfitLossItemsUIContext.Provider>
   );
 }

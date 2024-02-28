@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmployeeRelationsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const employeeRelationsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmployeeRelationById  
+    // getEmployeeRelationById
     employeeRelationFetched: (state, action) => {
       state.actionsLoading = false;
       state.employeeRelationForEdit = action.payload.employeeRelationForEdit;
       state.error = null;
     },
-    // findEmployeeRelations  
+    // findEmployeeRelations
     employeeRelationsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const employeeRelationsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmployeeRelation  
+    // createEmployeeRelation
     employeeRelationCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmployeeRelation  
+    // updateEmployeeRelation
     employeeRelationUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.EmployeeRelationId === action.payload.employeeRelation.EmployeeRelationId) {
+        if (
+          entity.EmployeeRelationId ===
+          action.payload.employeeRelation.EmployeeRelationId
+        ) {
           return action.payload.employeeRelation;
         }
         return entity;
       });
     },
-    // deleteEmployeeRelation  
+    // deleteEmployeeRelation
     employeeRelationDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EmployeeRelationId !== action.payload.EmployeeRelationId  
+        (el) => el.EmployeeRelationId !== action.payload.EmployeeRelationId
       );
     },
-    // deleteEmployeeRelations  
+    // deleteEmployeeRelations
     employeeRelationsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EmployeeRelationId)  
+        (el) => !action.payload.ids.includes(el.EmployeeRelationId)
       );
     },
-    // employeeRelationsUpdateState  
+    // employeeRelationsUpdateState
     employeeRelationsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

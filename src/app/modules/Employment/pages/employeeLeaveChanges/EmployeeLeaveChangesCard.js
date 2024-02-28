@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { EmployeeLeaveChangesTable } from "./employeeLeaveChanges-table/EmployeeLeaveChangesTable";
-import { useEmployeeLeaveChangesUIContext, EmployeeLeaveChangesUIConsumer } from "./EmployeeLeaveChangesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useEmployeeLeaveChangesUIContext,
+  EmployeeLeaveChangesUIConsumer,
+} from "./EmployeeLeaveChangesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function EmployeeLeaveChangesCard() {
   const { t } = useTranslation();
@@ -21,24 +23,33 @@ export function EmployeeLeaveChangesCard() {
       ids: employeeLeaveChangesUIContext.ids,
       queryParams: employeeLeaveChangesUIContext.queryParams,
       setQueryParams: employeeLeaveChangesUIContext.setQueryParams,
-      newEmployeeLeaveChangeButtonClick: employeeLeaveChangesUIContext.newEmployeeLeaveChangeButtonClick,
-      openDeleteEmployeeLeaveChangesDialog: employeeLeaveChangesUIContext.openDeleteEmployeeLeaveChangesDialog,
-      openEditEmployeeLeaveChangePage: employeeLeaveChangesUIContext.openEditEmployeeLeaveChangePage,
-      openUpdateEmployeeLeaveChangesStatusDialog: employeeLeaveChangesUIContext.openUpdateEmployeeLeaveChangesStatusDialog,
-      openFetchEmployeeLeaveChangesDialog: employeeLeaveChangesUIContext.openFetchEmployeeLeaveChangesDialog,
+      newEmployeeLeaveChangeButtonClick:
+        employeeLeaveChangesUIContext.newEmployeeLeaveChangeButtonClick,
+      openDeleteEmployeeLeaveChangesDialog:
+        employeeLeaveChangesUIContext.openDeleteEmployeeLeaveChangesDialog,
+      openEditEmployeeLeaveChangePage:
+        employeeLeaveChangesUIContext.openEditEmployeeLeaveChangePage,
+      openUpdateEmployeeLeaveChangesStatusDialog:
+        employeeLeaveChangesUIContext.openUpdateEmployeeLeaveChangesStatusDialog,
+      openFetchEmployeeLeaveChangesDialog:
+        employeeLeaveChangesUIContext.openFetchEmployeeLeaveChangesDialog,
     };
   }, [employeeLeaveChangesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("EmployeeLeaveChange.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("EmployeeLeaveChange.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
-            onClick={employeeLeaveChangesUIProps.newEmployeeLeaveChangeButtonClick}
+            onClick={
+              employeeLeaveChangesUIProps.newEmployeeLeaveChangeButtonClick
+            }
           >
-            {t("EmployeeLeaveChange.Entity")} {' '} {t("Common.New")}
+            {t("EmployeeLeaveChange.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

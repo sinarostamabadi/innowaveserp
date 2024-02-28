@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialContractEndTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const contractEndTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getContractEndTypeById  
+    // getContractEndTypeById
     contractEndTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.contractEndTypeForEdit = action.payload.contractEndTypeForEdit;
       state.error = null;
     },
-    // findContractEndTypes  
+    // findContractEndTypes
     contractEndTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const contractEndTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createContractEndType  
+    // createContractEndType
     contractEndTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateContractEndType  
+    // updateContractEndType
     contractEndTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.ContractEndTypeId === action.payload.contractEndType.ContractEndTypeId) {
+        if (
+          entity.ContractEndTypeId ===
+          action.payload.contractEndType.ContractEndTypeId
+        ) {
           return action.payload.contractEndType;
         }
         return entity;
       });
     },
-    // deleteContractEndType  
+    // deleteContractEndType
     contractEndTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.ContractEndTypeId !== action.payload.ContractEndTypeId  
+        (el) => el.ContractEndTypeId !== action.payload.ContractEndTypeId
       );
     },
-    // deleteContractEndTypes  
+    // deleteContractEndTypes
     contractEndTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ContractEndTypeId)  
+        (el) => !action.payload.ids.includes(el.ContractEndTypeId)
       );
     },
-    // contractEndTypesUpdateState  
+    // contractEndTypesUpdateState
     contractEndTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function RestaurantMenuItemRatesTable() {
   const { t } = useTranslation();
 
-  const restaurantMenuItemRatesUIContext = useRestaurantMenuItemRatesUIContext();
+  const restaurantMenuItemRatesUIContext =
+    useRestaurantMenuItemRatesUIContext();
 
   const restaurantMenuItemRatesUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function RestaurantMenuItemRatesTable() {
       setIds: restaurantMenuItemRatesUIContext.setIds,
       queryParams: restaurantMenuItemRatesUIContext.queryParams,
       setQueryParams: restaurantMenuItemRatesUIContext.setQueryParams,
-      openEditRestaurantMenuItemRatePage: restaurantMenuItemRatesUIContext.openEditRestaurantMenuItemRatePage,
-      openDeleteRestaurantMenuItemRateDialog: restaurantMenuItemRatesUIContext.openDeleteRestaurantMenuItemRateDialog,
+      openEditRestaurantMenuItemRatePage:
+        restaurantMenuItemRatesUIContext.openEditRestaurantMenuItemRatePage,
+      openDeleteRestaurantMenuItemRateDialog:
+        restaurantMenuItemRatesUIContext.openDeleteRestaurantMenuItemRateDialog,
     };
   }, [restaurantMenuItemRatesUIContext]);
 
@@ -50,7 +53,11 @@ export function RestaurantMenuItemRatesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     restaurantMenuItemRatesUIProps.setIds([]);
-    dispatch(actions.fetchRestaurantMenuItemRates(restaurantMenuItemRatesUIProps.queryParams));
+    dispatch(
+      actions.fetchRestaurantMenuItemRates(
+        restaurantMenuItemRatesUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restaurantMenuItemRatesUIProps.queryParams, dispatch]);
 
@@ -72,8 +79,10 @@ export function RestaurantMenuItemRatesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditRestaurantMenuItemRatePage: restaurantMenuItemRatesUIProps.openEditRestaurantMenuItemRatePage,
-        openDeleteRestaurantMenuItemRateDialog: restaurantMenuItemRatesUIProps.openDeleteRestaurantMenuItemRateDialog,
+        openEditRestaurantMenuItemRatePage:
+          restaurantMenuItemRatesUIProps.openEditRestaurantMenuItemRatePage,
+        openDeleteRestaurantMenuItemRateDialog:
+          restaurantMenuItemRatesUIProps.openDeleteRestaurantMenuItemRateDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialImportDocumentTempsState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const importDocumentTempsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getImportDocumentTempById  
+    // getImportDocumentTempById
     importDocumentTempFetched: (state, action) => {
       state.actionsLoading = false;
-      state.importDocumentTempForEdit = action.payload.importDocumentTempForEdit;
+      state.importDocumentTempForEdit =
+        action.payload.importDocumentTempForEdit;
       state.error = null;
     },
-    // findImportDocumentTemps  
+    // findImportDocumentTemps
     importDocumentTempsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,43 @@ export const importDocumentTempsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createImportDocumentTemp  
+    // createImportDocumentTemp
     importDocumentTempCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateImportDocumentTemp  
+    // updateImportDocumentTemp
     importDocumentTempUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.ImportDocumentTempId === action.payload.importDocumentTemp.ImportDocumentTempId) {
+        if (
+          entity.ImportDocumentTempId ===
+          action.payload.importDocumentTemp.ImportDocumentTempId
+        ) {
           return action.payload.importDocumentTemp;
         }
         return entity;
       });
     },
-    // deleteImportDocumentTemp  
+    // deleteImportDocumentTemp
     importDocumentTempDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.ImportDocumentTempId !== action.payload.ImportDocumentTempId  
+        (el) => el.ImportDocumentTempId !== action.payload.ImportDocumentTempId
       );
     },
-    // deleteImportDocumentTemps  
+    // deleteImportDocumentTemps
     importDocumentTempsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ImportDocumentTempId)  
+        (el) => !action.payload.ids.includes(el.ImportDocumentTempId)
       );
     },
-    // importDocumentTempsUpdateState  
+    // importDocumentTempsUpdateState
     importDocumentTempsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

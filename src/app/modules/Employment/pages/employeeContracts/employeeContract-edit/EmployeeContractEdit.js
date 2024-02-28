@@ -55,7 +55,9 @@ export function EmployeeContractEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("EmployeeContract.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("EmployeeContract.Entity");
 
     if (employeeContractForEdit && id) {
       _title = t("Common.Edit") + " " + employeeContractForEdit.TitleFa;
@@ -73,11 +75,11 @@ export function EmployeeContractEdit({
         .then((arg) => {
           backToEmployeeContractsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateEmployeeContract(id, values))
         .then(() => backToEmployeeContractsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

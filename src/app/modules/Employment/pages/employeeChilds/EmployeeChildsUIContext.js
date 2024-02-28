@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { EmployeeChildModel } from "../../../../../core/_models/Employment/EmployeeChildModel";
@@ -30,7 +29,7 @@ export function EmployeeChildsUIProvider({ employeeChildsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function EmployeeChildsUIProvider({ employeeChildsUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: EmployeeChildModel,
-    newEmployeeChildButtonClick: employeeChildsUIEvents.newEmployeeChildButtonClick,
+    newEmployeeChildButtonClick:
+      employeeChildsUIEvents.newEmployeeChildButtonClick,
     openEditEmployeeChildPage: employeeChildsUIEvents.openEditEmployeeChildPage,
-    openDeleteEmployeeChildDialog: employeeChildsUIEvents.openDeleteEmployeeChildDialog,
-    openDeleteEmployeeChildsDialog: employeeChildsUIEvents.openDeleteEmployeeChildsDialog,
-    openFetchEmployeeChildsDialog: employeeChildsUIEvents.openFetchEmployeeChildsDialog,
-    openUpdateEmployeeChildsStatusDialog: employeeChildsUIEvents.openUpdateEmployeeChildsStatusDialog,
+    openDeleteEmployeeChildDialog:
+      employeeChildsUIEvents.openDeleteEmployeeChildDialog,
+    openDeleteEmployeeChildsDialog:
+      employeeChildsUIEvents.openDeleteEmployeeChildsDialog,
+    openFetchEmployeeChildsDialog:
+      employeeChildsUIEvents.openFetchEmployeeChildsDialog,
+    openUpdateEmployeeChildsStatusDialog:
+      employeeChildsUIEvents.openUpdateEmployeeChildsStatusDialog,
   };
   return (
-    <EmployeeChildsUIContext.Provider value={value}>{children}</EmployeeChildsUIContext.Provider>
+    <EmployeeChildsUIContext.Provider value={value}>
+      {children}
+    </EmployeeChildsUIContext.Provider>
   );
 }

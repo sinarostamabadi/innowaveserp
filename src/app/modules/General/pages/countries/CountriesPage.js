@@ -26,7 +26,7 @@ export function CountriesPage({ history }) {
       history.push("/general/countries/updateStatus");
     },
   };
-  
+
   return (
     <CountriesUIProvider countriesUIEvents={countriesUIEvents}>
       <CountriesLoadingDialog />

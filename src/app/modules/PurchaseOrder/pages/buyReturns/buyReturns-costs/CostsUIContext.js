@@ -25,25 +25,39 @@ export function useCostsUIContext() {
 export const CostsUIConsumer = CostsUIContext.Consumer;
 
 export const CostsUIProvider = forwardRef(
-  ({ currentBuyReturnId, children, cost, btnRef, updateBuyReturn, editable, buyReturnSum }, ref) => {
+  (
+    {
+      currentBuyReturnId,
+      children,
+      cost,
+      btnRef,
+      updateBuyReturn,
+      editable,
+      buyReturnSum,
+    },
+    ref
+  ) => {
     const { t } = useTranslation();
 
     useImperativeHandle(ref, () => ({
       Collect(fn) {
-          fn(
-            costs.map((d) => {
-              let xx = {
-                BuyReturnCostId: d.BuyReturnCostId.toString().indexOf("temp") > -1? null: d.BuyReturnCostId,
-                CostTypeId: d.CostTypeId,
-                Price: d.Price,
-                CostPercent: d.CostPercent,
-                Describtion: d.Describtion,
-                IsDeleted: d.IsDeleted
-              };
+        fn(
+          costs.map((d) => {
+            let xx = {
+              BuyReturnCostId:
+                d.BuyReturnCostId.toString().indexOf("temp") > -1
+                  ? null
+                  : d.BuyReturnCostId,
+              CostTypeId: d.CostTypeId,
+              Price: d.Price,
+              CostPercent: d.CostPercent,
+              Describtion: d.Describtion,
+              IsDeleted: d.IsDeleted,
+            };
 
-              return xx;
-            })
-          );
+            return xx;
+          })
+        );
       },
     }));
 
@@ -57,7 +71,7 @@ export const CostsUIProvider = forwardRef(
       CostTypeId: "",
       Price: "",
       CostPercent: "",
-      Describtion: ""
+      Describtion: "",
     };
 
     const { actionsLoading, realPersonForEdit, error } = useSelector(
@@ -92,7 +106,8 @@ export const CostsUIProvider = forwardRef(
       setCosts(
         !!realPersonForEdit &&
           !!realPersonForEdit.BuyReturnCosts &&
-          realPersonForEdit.BuyReturnCosts.length > 0 && realPersonForEdit.BuyReturnId == currentBuyReturnId
+          realPersonForEdit.BuyReturnCosts.length > 0 &&
+          realPersonForEdit.BuyReturnId == currentBuyReturnId
           ? realPersonForEdit.BuyReturnCosts
           : []
       );
@@ -117,7 +132,9 @@ export const CostsUIProvider = forwardRef(
       setActiveCosts(costs.filter((x) => x.IsDeleted == false));
 
       updateBuyReturn(
-        !!costs && costs.length > 0 && costs.filter((x) => x.IsDeleted == false).length > 0 
+        !!costs &&
+          costs.length > 0 &&
+          costs.filter((x) => x.IsDeleted == false).length > 0
           ? costs
               .filter((x) => x.IsDeleted == false)
               .map((x) => x.Price)
@@ -156,9 +173,7 @@ export const CostsUIProvider = forwardRef(
       setShowDeleteCostDialog(false);
     };
 
-    const [showDeleteCostsDialog, setShowDeleteCostsDialog] = useState(
-      false
-    );
+    const [showDeleteCostsDialog, setShowDeleteCostsDialog] = useState(false);
     const openDeleteCostsDialog = () => {
       setShowDeleteCostsDialog(true);
     };
@@ -177,9 +192,7 @@ export const CostsUIProvider = forwardRef(
     const findCost = (costId) => {
       if (!!costId == false) return;
 
-      const costObj = costs.filter(
-        (cost) => cost.BuyReturnCostId == costId
-      )[0];
+      const costObj = costs.filter((cost) => cost.BuyReturnCostId == costId)[0];
 
       return {
         BuyReturnCostId: costObj.BuyReturnCostId,
@@ -194,7 +207,7 @@ export const CostsUIProvider = forwardRef(
 
     const addCost = (cost) => {
       cost.BuyReturnCostId = "temp_" + Math.floor(Math.random() * 100);
-      if(+cost.CostPercent > 0)
+      if (+cost.CostPercent > 0)
         cost.Price = (+buyReturnSum.SumPayable * +cost.CostPercent) / 100;
 
       setCosts((costs) => [...costs, cost]);
@@ -211,7 +224,7 @@ export const CostsUIProvider = forwardRef(
     };
 
     const updateCost = (cost) => {
-      if(+cost.CostPercent > 0)
+      if (+cost.CostPercent > 0)
         cost.Price = (+buyReturnSum.SumPayable * +cost.CostPercent) / 100;
 
       setCosts((costs) =>
@@ -264,9 +277,9 @@ export const CostsUIProvider = forwardRef(
     };
 
     return (
-        <CostsUIContext.Provider value={value}>
-          {children}
-        </CostsUIContext.Provider>
+      <CostsUIContext.Provider value={value}>
+        {children}
+      </CostsUIContext.Provider>
     );
   }
 );

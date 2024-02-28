@@ -26,9 +26,11 @@ export function EmployeeRelationsPage({ history }) {
       history.push("/employment/employeeRelations/updateStatus");
     },
   };
-  
+
   return (
-    <EmployeeRelationsUIProvider employeeRelationsUIEvents={employeeRelationsUIEvents}>
+    <EmployeeRelationsUIProvider
+      employeeRelationsUIEvents={employeeRelationsUIEvents}
+    >
       <EmployeeRelationsLoadingDialog />
       <Route path="/employment/employeeRelations/:id/delete">
         {({ history, match }) => (

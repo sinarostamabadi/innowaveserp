@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialAccountFloatingGroupTypesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const accountFloatingGroupTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getAccountFloatingGroupTypeById  
+    // getAccountFloatingGroupTypeById
     accountFloatingGroupTypeFetched: (state, action) => {
       state.actionsLoading = false;
-      state.accountFloatingGroupTypeForEdit = action.payload.accountFloatingGroupTypeForEdit;
+      state.accountFloatingGroupTypeForEdit =
+        action.payload.accountFloatingGroupTypeForEdit;
       state.error = null;
     },
-    // findAccountFloatingGroupTypes  
+    // findAccountFloatingGroupTypes
     accountFloatingGroupTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,7 +47,7 @@ export const accountFloatingGroupTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createAccountFloatingGroupType  
+    // createAccountFloatingGroupType
     accountFloatingGroupTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
@@ -55,12 +55,15 @@ export const accountFloatingGroupTypesSlice = createSlice({
 
       return;
     },
-    // updateAccountFloatingGroupType  
+    // updateAccountFloatingGroupType
     accountFloatingGroupTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.AccountFloatingGroupTypeId === action.payload.accountFloatingGroupType.AccountFloatingGroupTypeId) {
+        if (
+          entity.AccountFloatingGroupTypeId ===
+          action.payload.accountFloatingGroupType.AccountFloatingGroupTypeId
+        ) {
           return action.payload.accountFloatingGroupType;
         }
         return entity;
@@ -68,29 +71,33 @@ export const accountFloatingGroupTypesSlice = createSlice({
 
       return;
     },
-    // deleteAccountFloatingGroupType  
+    // deleteAccountFloatingGroupType
     accountFloatingGroupTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.AccountFloatingGroupTypeId !== action.payload.AccountFloatingGroupTypeId  
+        (el) =>
+          el.AccountFloatingGroupTypeId !==
+          action.payload.AccountFloatingGroupTypeId
       );
     },
-    // deleteAccountFloatingGroupTypes  
+    // deleteAccountFloatingGroupTypes
     accountFloatingGroupTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.AccountFloatingGroupTypeId)  
+        (el) => !action.payload.ids.includes(el.AccountFloatingGroupTypeId)
       );
     },
-    // accountFloatingGroupTypesUpdateState  
+    // accountFloatingGroupTypesUpdateState
     accountFloatingGroupTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       const { ids, status } = action.payload;
       state.entities = state.entities.map((entity) => {
-        if (ids.findIndex((id) => id === entity.AccountFloatingGroupTypeId) > -1) {
+        if (
+          ids.findIndex((id) => id === entity.AccountFloatingGroupTypeId) > -1
+        ) {
           entity.status = status;
         }
         return entity;

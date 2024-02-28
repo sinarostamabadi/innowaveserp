@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialChequeStatusesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const chequeStatusesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getChequeStatusById  
+    // getChequeStatusById
     chequeStatusFetched: (state, action) => {
       state.actionsLoading = false;
       state.chequeStatusForEdit = action.payload.chequeStatusForEdit;
       state.error = null;
     },
-    // findChequeStatuses  
+    // findChequeStatuses
     chequeStatusesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,42 @@ export const chequeStatusesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createChequeStatus  
+    // createChequeStatus
     chequeStatusCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateChequeStatus  
+    // updateChequeStatus
     chequeStatusUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.ChequeStatusId === action.payload.chequeStatus.ChequeStatusId) {
+        if (
+          entity.ChequeStatusId === action.payload.chequeStatus.ChequeStatusId
+        ) {
           return action.payload.chequeStatus;
         }
         return entity;
       });
     },
-    // deleteChequeStatus  
+    // deleteChequeStatus
     chequeStatusDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.ChequeStatusId !== action.payload.ChequeStatusId  
+        (el) => el.ChequeStatusId !== action.payload.ChequeStatusId
       );
     },
-    // deleteChequeStatuses  
+    // deleteChequeStatuses
     chequeStatusesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ChequeStatusId)  
+        (el) => !action.payload.ids.includes(el.ChequeStatusId)
       );
     },
-    // chequeStatusesUpdateState  
+    // chequeStatusesUpdateState
     chequeStatusesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

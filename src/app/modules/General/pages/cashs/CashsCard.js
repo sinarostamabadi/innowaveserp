@@ -8,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { CashsTable } from "./cashs-table/CashsTable";
 import { useCashsUIContext, CashsUIConsumer } from "./CashsUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function CashsCard() {
   const { t } = useTranslation();
@@ -30,14 +30,14 @@ export function CashsCard() {
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Cash.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Cash.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={cashsUIProps.newCashButtonClick}
           >
-            {t("Cash.Entity")} {' '} {t("Common.New")}
+            {t("Cash.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

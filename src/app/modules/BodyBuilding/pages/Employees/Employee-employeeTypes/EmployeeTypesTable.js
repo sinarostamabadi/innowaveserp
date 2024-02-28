@@ -19,7 +19,9 @@ export function EmployeeTypesTable() {
   const columns = [
     {
       dataField: "BodyBuildingEmployeeTypeExpertise.Title",
-      text: t("BodyBuildingEmployeeExpertise.BodyBuildingEmployeeTypeExpertise"),
+      text: t(
+        "BodyBuildingEmployeeExpertise.BodyBuildingEmployeeTypeExpertise"
+      ),
       sort: false,
     },
     {

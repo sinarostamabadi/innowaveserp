@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialAccountTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const accountTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getAccountTypeById  
+    // getAccountTypeById
     accountTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.accountTypeForEdit = action.payload.accountTypeForEdit;
       state.error = null;
     },
-    // findAccountTypes  
+    // findAccountTypes
     accountTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,7 +46,7 @@ export const accountTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createAccountType  
+    // createAccountType
     accountTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
@@ -55,7 +54,7 @@ export const accountTypesSlice = createSlice({
 
       return;
     },
-    // updateAccountType  
+    // updateAccountType
     accountTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -65,26 +64,26 @@ export const accountTypesSlice = createSlice({
         }
         return entity;
       });
-      
+
       return;
     },
-    // deleteAccountType  
+    // deleteAccountType
     accountTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.AccountTypeId !== action.payload.AccountTypeId  
+        (el) => el.AccountTypeId !== action.payload.AccountTypeId
       );
     },
-    // deleteAccountTypes  
+    // deleteAccountTypes
     accountTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.AccountTypeId)  
+        (el) => !action.payload.ids.includes(el.AccountTypeId)
       );
     },
-    // accountTypesUpdateState  
+    // accountTypesUpdateState
     accountTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

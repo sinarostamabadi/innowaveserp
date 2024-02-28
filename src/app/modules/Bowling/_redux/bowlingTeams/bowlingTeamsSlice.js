@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBowlingTeamsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const bowlingTeamsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBowlingTeamById  
+    // getBowlingTeamById
     bowlingTeamFetched: (state, action) => {
       state.actionsLoading = false;
       state.bowlingTeamForEdit = action.payload.bowlingTeamForEdit;
       state.error = null;
     },
-    // findBowlingTeams  
+    // findBowlingTeams
     bowlingTeamsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const bowlingTeamsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBowlingTeam  
+    // createBowlingTeam
     bowlingTeamCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBowlingTeam  
+    // updateBowlingTeam
     bowlingTeamUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,20 +63,20 @@ export const bowlingTeamsSlice = createSlice({
         return entity;
       });
     },
-    // deleteBowlingTeam  
+    // deleteBowlingTeam
     bowlingTeamDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BowlingTeamId !== action.payload.BowlingTeamId  
+        (el) => el.BowlingTeamId !== action.payload.BowlingTeamId
       );
     },
-    // deleteBowlingTeams  
+    // deleteBowlingTeams
     bowlingTeamsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BowlingTeamId)  
+        (el) => !action.payload.ids.includes(el.BowlingTeamId)
       );
     },
     // bowlingTeamDone
@@ -85,7 +84,7 @@ export const bowlingTeamsSlice = createSlice({
       state.error = null;
       state.actionsLoading = false;
     },
-    // bowlingTeamsUpdateState  
+    // bowlingTeamsUpdateState
     bowlingTeamsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

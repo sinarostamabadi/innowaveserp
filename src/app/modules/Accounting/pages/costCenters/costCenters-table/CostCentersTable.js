@@ -33,7 +33,8 @@ export function CostCentersTable() {
       queryParams: costCentersUIContext.queryParams,
       setQueryParams: costCentersUIContext.setQueryParams,
       openEditCostCenterPage: costCentersUIContext.openEditCostCenterPage,
-      openDeleteCostCenterDialog: costCentersUIContext.openDeleteCostCenterDialog,
+      openDeleteCostCenterDialog:
+        costCentersUIContext.openDeleteCostCenterDialog,
     };
   }, [costCentersUIContext]);
 
@@ -86,7 +87,8 @@ export function CostCentersTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditCostCenterPage: costCentersUIProps.openEditCostCenterPage,
-        openDeleteCostCenterDialog: costCentersUIProps.openDeleteCostCenterDialog,
+        openDeleteCostCenterDialog:
+          costCentersUIProps.openDeleteCostCenterDialog,
         t: t,
       },
       classes: "text-right pr-0",

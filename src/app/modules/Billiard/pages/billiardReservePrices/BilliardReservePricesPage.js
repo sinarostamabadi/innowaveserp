@@ -17,7 +17,9 @@ export function BilliardReservePricesPage({ history }) {
       history.push(`/billiard/billiardReservePrices/${id}/delete`);
     },
     openDeleteBilliardReservePricesDialog: () => {
-      history.push(`/billiard/billiardReservePrices/deleteBilliardReservePrices`);
+      history.push(
+        `/billiard/billiardReservePrices/deleteBilliardReservePrices`
+      );
     },
     openFetchBilliardReservePricesDialog: () => {
       history.push(`/billiard/billiardReservePrices/fetch`);
@@ -26,9 +28,11 @@ export function BilliardReservePricesPage({ history }) {
       history.push("/billiard/billiardReservePrices/updateStatus");
     },
   };
-  
+
   return (
-    <BilliardReservePricesUIProvider billiardReservePricesUIEvents={billiardReservePricesUIEvents}>
+    <BilliardReservePricesUIProvider
+      billiardReservePricesUIEvents={billiardReservePricesUIEvents}
+    >
       <BilliardReservePricesLoadingDialog />
       <Route path="/billiard/billiardReservePrices/:id/delete">
         {({ history, match }) => (

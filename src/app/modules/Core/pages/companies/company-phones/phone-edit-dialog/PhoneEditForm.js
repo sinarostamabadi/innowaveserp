@@ -35,14 +35,13 @@ export function PhoneEditForm({ savePhone, phone, actionsLoading, onHide }) {
       PhoneTypeId: +dirty.PhoneTypeId,
       PhoneType: {
         PhoneTypeId: +dirty.PhoneTypeId,
-        TitleFa: phoneTypes.find(
-          (p) => p.PhoneTypeId == dirty.PhoneTypeId
-        ).TitleFa,
+        TitleFa: phoneTypes.find((p) => p.PhoneTypeId == dirty.PhoneTypeId)
+          .TitleFa,
       },
       AreaCode: dirty.AreaCode,
       PhoneNumber: dirty.PhoneNumber,
       Extension: dirty.Extension,
-      IsDeleted: false
+      IsDeleted: false,
     };
   }
   return (

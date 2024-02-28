@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { PosUsersTable } from "./posUsers-table/PosUsersTable";
 import { usePosUsersUIContext, PosUsersUIConsumer } from "./PosUsersUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function PosUsersCard() {
   const { t } = useTranslation();
@@ -24,21 +23,22 @@ export function PosUsersCard() {
       newPosUserButtonClick: posUsersUIContext.newPosUserButtonClick,
       openDeletePosUsersDialog: posUsersUIContext.openDeletePosUsersDialog,
       openEditPosUserPage: posUsersUIContext.openEditPosUserPage,
-      openUpdatePosUsersStatusDialog: posUsersUIContext.openUpdatePosUsersStatusDialog,
+      openUpdatePosUsersStatusDialog:
+        posUsersUIContext.openUpdatePosUsersStatusDialog,
       openFetchPosUsersDialog: posUsersUIContext.openFetchPosUsersDialog,
     };
   }, [posUsersUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("PosUser.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("PosUser.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={posUsersUIProps.newPosUserButtonClick}
           >
-            {t("PosUser.Entity")} {' '} {t("Common.New")}
+            {t("PosUser.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

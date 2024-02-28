@@ -55,7 +55,9 @@ export function PoolTimePriceingEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("PoolTimePriceing.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("PoolTimePriceing.Entity");
 
     if (poolTimePriceingForEdit && id) {
       _title = t("Common.Edit") + " " + poolTimePriceingForEdit.TitleFa;
@@ -73,11 +75,11 @@ export function PoolTimePriceingEdit({
         .then((arg) => {
           backToPoolTimePriceingList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updatePoolTimePriceing(id, values))
         .then(() => backToPoolTimePriceingList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

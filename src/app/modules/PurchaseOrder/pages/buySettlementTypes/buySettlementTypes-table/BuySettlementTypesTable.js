@@ -32,8 +32,10 @@ export function BuySettlementTypesTable() {
       setIds: buySettlementTypesUIContext.setIds,
       queryParams: buySettlementTypesUIContext.queryParams,
       setQueryParams: buySettlementTypesUIContext.setQueryParams,
-      openEditBuySettlementTypePage: buySettlementTypesUIContext.openEditBuySettlementTypePage,
-      openDeleteBuySettlementTypeDialog: buySettlementTypesUIContext.openDeleteBuySettlementTypeDialog,
+      openEditBuySettlementTypePage:
+        buySettlementTypesUIContext.openEditBuySettlementTypePage,
+      openDeleteBuySettlementTypeDialog:
+        buySettlementTypesUIContext.openDeleteBuySettlementTypeDialog,
     };
   }, [buySettlementTypesUIContext]);
 
@@ -50,7 +52,9 @@ export function BuySettlementTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     buySettlementTypesUIProps.setIds([]);
-    dispatch(actions.fetchBuySettlementTypes(buySettlementTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchBuySettlementTypes(buySettlementTypesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [buySettlementTypesUIProps.queryParams, dispatch]);
 
@@ -66,8 +70,10 @@ export function BuySettlementTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditBuySettlementTypePage: buySettlementTypesUIProps.openEditBuySettlementTypePage,
-        openDeleteBuySettlementTypeDialog: buySettlementTypesUIProps.openDeleteBuySettlementTypeDialog,
+        openEditBuySettlementTypePage:
+          buySettlementTypesUIProps.openEditBuySettlementTypePage,
+        openDeleteBuySettlementTypeDialog:
+          buySettlementTypesUIProps.openDeleteBuySettlementTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

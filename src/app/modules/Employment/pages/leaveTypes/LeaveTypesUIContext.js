@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { LeaveTypeModel } from "../../../../../core/_models/Employment/LeaveTypeModel";
@@ -30,7 +29,7 @@ export function LeaveTypesUIProvider({ leaveTypesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function LeaveTypesUIProvider({ leaveTypesUIEvents, children }) {
     openDeleteLeaveTypeDialog: leaveTypesUIEvents.openDeleteLeaveTypeDialog,
     openDeleteLeaveTypesDialog: leaveTypesUIEvents.openDeleteLeaveTypesDialog,
     openFetchLeaveTypesDialog: leaveTypesUIEvents.openFetchLeaveTypesDialog,
-    openUpdateLeaveTypesStatusDialog: leaveTypesUIEvents.openUpdateLeaveTypesStatusDialog,
+    openUpdateLeaveTypesStatusDialog:
+      leaveTypesUIEvents.openUpdateLeaveTypesStatusDialog,
   };
   return (
-    <LeaveTypesUIContext.Provider value={value}>{children}</LeaveTypesUIContext.Provider>
+    <LeaveTypesUIContext.Provider value={value}>
+      {children}
+    </LeaveTypesUIContext.Provider>
   );
 }

@@ -16,11 +16,14 @@ export function RelationPersonGroupDeleteDialog() {
       id: relationPersonGroupsUIContext.selectedId,
       personId: relationPersonGroupsUIContext.personId,
       show: relationPersonGroupsUIContext.showDeleteRelationPersonGroupDialog,
-      onHide: relationPersonGroupsUIContext.closeDeleteRelationPersonGroupDialog,
+      onHide:
+        relationPersonGroupsUIContext.closeDeleteRelationPersonGroupDialog,
       queryParams: relationPersonGroupsUIContext.queryParams,
       setIds: relationPersonGroupsUIContext.setIds,
-      findRelationPersonGroup: relationPersonGroupsUIContext.findRelationPersonGroup,
-      removeRelationPersonGroup: relationPersonGroupsUIContext.removeRelationPersonGroup,
+      findRelationPersonGroup:
+        relationPersonGroupsUIContext.findRelationPersonGroup,
+      removeRelationPersonGroup:
+        relationPersonGroupsUIContext.removeRelationPersonGroup,
     };
   }, [relationPersonGroupsUIContext]);
 
@@ -40,10 +43,12 @@ export function RelationPersonGroupDeleteDialog() {
   }, [relationPersonGroupsUIProps.id]);
 
   // looking for loading/dispatch
-  useEffect(() => { }, [isLoading, dispatch]);
+  useEffect(() => {}, [isLoading, dispatch]);
 
   const deleteRelationPersonGroup = () => {
-    relationPersonGroupsUIProps.removeRelationPersonGroup(relationPersonGroupsUIProps.id)
+    relationPersonGroupsUIProps.removeRelationPersonGroup(
+      relationPersonGroupsUIProps.id
+    );
     relationPersonGroupsUIProps.onHide();
   };
 
@@ -60,9 +65,7 @@ export function RelationPersonGroupDeleteDialog() {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && (
-          <span>{t("Common.DeleteQuestion")}</span>
-        )}
+        {!isLoading && <span>{t("Common.DeleteQuestion")}</span>}
         {isLoading && <span>{t("Common.DeleteLoading")}</span>}
       </Modal.Body>
       <Modal.Footer>

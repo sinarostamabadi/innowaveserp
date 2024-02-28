@@ -13,9 +13,11 @@ export function DiscountEditDialogHeader({ id }) {
   const { actionsLoading, setActionsLoading } = useState();
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("BuyReturnDiscount.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("BuyReturnDiscount.Entity");
     if (id) {
-      _title = t("Common.Edit") + " " + t("BuyReturnDiscount.Entity") ;
+      _title = t("Common.Edit") + " " + t("BuyReturnDiscount.Entity");
     }
 
     setTitle(_title);

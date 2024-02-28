@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { CoffeeInvoiceCostsTable } from "./coffeeInvoiceCosts-table/CoffeeInvoiceCostsTable";
-import { useCoffeeInvoiceCostsUIContext, CoffeeInvoiceCostsUIConsumer } from "./CoffeeInvoiceCostsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useCoffeeInvoiceCostsUIContext,
+  CoffeeInvoiceCostsUIConsumer,
+} from "./CoffeeInvoiceCostsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function CoffeeInvoiceCostsCard() {
   const { t } = useTranslation();
@@ -21,24 +23,31 @@ export function CoffeeInvoiceCostsCard() {
       ids: coffeeInvoiceCostsUIContext.ids,
       queryParams: coffeeInvoiceCostsUIContext.queryParams,
       setQueryParams: coffeeInvoiceCostsUIContext.setQueryParams,
-      newCoffeeInvoiceCostButtonClick: coffeeInvoiceCostsUIContext.newCoffeeInvoiceCostButtonClick,
-      openDeleteCoffeeInvoiceCostsDialog: coffeeInvoiceCostsUIContext.openDeleteCoffeeInvoiceCostsDialog,
-      openEditCoffeeInvoiceCostPage: coffeeInvoiceCostsUIContext.openEditCoffeeInvoiceCostPage,
-      openUpdateCoffeeInvoiceCostsStatusDialog: coffeeInvoiceCostsUIContext.openUpdateCoffeeInvoiceCostsStatusDialog,
-      openFetchCoffeeInvoiceCostsDialog: coffeeInvoiceCostsUIContext.openFetchCoffeeInvoiceCostsDialog,
+      newCoffeeInvoiceCostButtonClick:
+        coffeeInvoiceCostsUIContext.newCoffeeInvoiceCostButtonClick,
+      openDeleteCoffeeInvoiceCostsDialog:
+        coffeeInvoiceCostsUIContext.openDeleteCoffeeInvoiceCostsDialog,
+      openEditCoffeeInvoiceCostPage:
+        coffeeInvoiceCostsUIContext.openEditCoffeeInvoiceCostPage,
+      openUpdateCoffeeInvoiceCostsStatusDialog:
+        coffeeInvoiceCostsUIContext.openUpdateCoffeeInvoiceCostsStatusDialog,
+      openFetchCoffeeInvoiceCostsDialog:
+        coffeeInvoiceCostsUIContext.openFetchCoffeeInvoiceCostsDialog,
     };
   }, [coffeeInvoiceCostsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("CoffeeInvoiceCost.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("CoffeeInvoiceCost.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={coffeeInvoiceCostsUIProps.newCoffeeInvoiceCostButtonClick}
           >
-            {t("CoffeeInvoiceCost.Entity")} {' '} {t("Common.New")}
+            {t("CoffeeInvoiceCost.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

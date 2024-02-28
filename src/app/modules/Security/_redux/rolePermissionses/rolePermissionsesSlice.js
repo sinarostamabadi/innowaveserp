@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialRolePermissionsesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const rolePermissionsesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getRolePermissionsById  
+    // getRolePermissionsById
     rolePermissionsFetched: (state, action) => {
       state.actionsLoading = false;
       state.rolePermissionsForEdit = action.payload.rolePermissionsForEdit;
       state.error = null;
     },
-    // findRolePermissionses  
+    // findRolePermissionses
     rolePermissionsesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const rolePermissionsesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createRolePermissions  
+    // createRolePermissions
     rolePermissionsCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateRolePermissions  
+    // updateRolePermissions
     rolePermissionsUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.RolePermissionsId === action.payload.rolePermissions.RolePermissionsId) {
+        if (
+          entity.RolePermissionsId ===
+          action.payload.rolePermissions.RolePermissionsId
+        ) {
           return action.payload.rolePermissions;
         }
         return entity;
       });
     },
-    // deleteRolePermissions  
+    // deleteRolePermissions
     rolePermissionsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.RolePermissionsId !== action.payload.RolePermissionsId  
+        (el) => el.RolePermissionsId !== action.payload.RolePermissionsId
       );
     },
-    // deleteRolePermissionses  
+    // deleteRolePermissionses
     rolePermissionsesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.RolePermissionsId)  
+        (el) => !action.payload.ids.includes(el.RolePermissionsId)
       );
     },
-    // rolePermissionsesUpdateState  
+    // rolePermissionsesUpdateState
     rolePermissionsesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

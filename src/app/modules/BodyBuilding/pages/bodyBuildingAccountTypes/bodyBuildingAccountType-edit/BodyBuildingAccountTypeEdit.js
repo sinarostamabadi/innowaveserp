@@ -45,7 +45,8 @@ export function BodyBuildingAccountTypeEdit({
   const { actionsLoading, bodyBuildingAccountTypeForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.bodyBuildingAccountTypes.actionsLoading,
-      bodyBuildingAccountTypeForEdit: state.bodyBuildingAccountTypes.bodyBuildingAccountTypeForEdit,
+      bodyBuildingAccountTypeForEdit:
+        state.bodyBuildingAccountTypes.bodyBuildingAccountTypeForEdit,
       error: state.bodyBuildingAccountTypes.error,
     }),
     shallowEqual
@@ -56,7 +57,9 @@ export function BodyBuildingAccountTypeEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("BodyBuildingAccountType.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("BodyBuildingAccountType.Entity");
 
     if (bodyBuildingAccountTypeForEdit && id) {
       _title = t("Common.Edit") + " " + bodyBuildingAccountTypeForEdit.TitleFa;
@@ -125,14 +128,14 @@ export function BodyBuildingAccountTypeEdit({
           </button>
           {`  `}
           <button
-              type="submit"
-              className="btn btn-primary ml-2"
-              onClick={saveBodyBuildingAccountTypeClick}
-            >
-              <i className="fa fa-save"></i> {t("Common.Save")}
-            </button>
-          </CardHeaderToolbar>
-        </CardHeader>
+            type="submit"
+            className="btn btn-primary ml-2"
+            onClick={saveBodyBuildingAccountTypeClick}
+          >
+            <i className="fa fa-save"></i> {t("Common.Save")}
+          </button>
+        </CardHeaderToolbar>
+      </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>
@@ -150,7 +153,9 @@ export function BodyBuildingAccountTypeEdit({
           {tab === "basic" && (
             <BodyBuildingAccountTypeEditForm
               actionsLoading={actionsLoading}
-              bodyBuildingAccountType={bodyBuildingAccountTypeForEdit || initModel}
+              bodyBuildingAccountType={
+                bodyBuildingAccountTypeForEdit || initModel
+              }
               btnRef={btnRef}
               saveBodyBuildingAccountType={saveBodyBuildingAccountType}
             />

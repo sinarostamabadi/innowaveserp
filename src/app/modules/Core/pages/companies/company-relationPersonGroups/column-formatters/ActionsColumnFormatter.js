@@ -17,7 +17,9 @@ export function ActionsColumnFormatter(
       >
         <a
           className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-          onClick={() => openEditRelationPersonGroupDialog(row.RelationPersonGroupId)}
+          onClick={() =>
+            openEditRelationPersonGroupDialog(row.RelationPersonGroupId)
+          }
         >
           <span className="svg-icon svg-icon-md svg-icon-primary">
             <SVG
@@ -30,12 +32,14 @@ export function ActionsColumnFormatter(
       <> </>
       <OverlayTrigger
         overlay={
-        <Tooltip id="spec-delete-tooltip">{t("Common.Delete")}</Tooltip>
+          <Tooltip id="spec-delete-tooltip">{t("Common.Delete")}</Tooltip>
         }
       >
         <a
           className="btn btn-icon btn-light btn-hover-danger btn-sm"
-          onClick={() => openDeleteRelationPersonGroupDialog(row.RelationPersonGroupId)}
+          onClick={() =>
+            openDeleteRelationPersonGroupDialog(row.RelationPersonGroupId)
+          }
         >
           <span className="svg-icon svg-icon-md svg-icon-danger">
             <SVG src={toAbsoluteUrl("/media/svg/icons/General/Trash.svg")} />

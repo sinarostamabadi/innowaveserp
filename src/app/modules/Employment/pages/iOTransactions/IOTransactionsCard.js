@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { IOTransactionsTable } from "./iOTransactions-table/IOTransactionsTable";
-import { useIOTransactionsUIContext, IOTransactionsUIConsumer } from "./IOTransactionsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useIOTransactionsUIContext,
+  IOTransactionsUIConsumer,
+} from "./IOTransactionsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function IOTransactionsCard() {
   const { t } = useTranslation();
@@ -21,24 +23,29 @@ export function IOTransactionsCard() {
       ids: iOTransactionsUIContext.ids,
       queryParams: iOTransactionsUIContext.queryParams,
       setQueryParams: iOTransactionsUIContext.setQueryParams,
-      newIOTransactionButtonClick: iOTransactionsUIContext.newIOTransactionButtonClick,
-      openDeleteIOTransactionsDialog: iOTransactionsUIContext.openDeleteIOTransactionsDialog,
-      openEditIOTransactionPage: iOTransactionsUIContext.openEditIOTransactionPage,
-      openUpdateIOTransactionsStatusDialog: iOTransactionsUIContext.openUpdateIOTransactionsStatusDialog,
-      openFetchIOTransactionsDialog: iOTransactionsUIContext.openFetchIOTransactionsDialog,
+      newIOTransactionButtonClick:
+        iOTransactionsUIContext.newIOTransactionButtonClick,
+      openDeleteIOTransactionsDialog:
+        iOTransactionsUIContext.openDeleteIOTransactionsDialog,
+      openEditIOTransactionPage:
+        iOTransactionsUIContext.openEditIOTransactionPage,
+      openUpdateIOTransactionsStatusDialog:
+        iOTransactionsUIContext.openUpdateIOTransactionsStatusDialog,
+      openFetchIOTransactionsDialog:
+        iOTransactionsUIContext.openFetchIOTransactionsDialog,
     };
   }, [iOTransactionsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("IOTransaction.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("IOTransaction.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={iOTransactionsUIProps.newIOTransactionButtonClick}
           >
-            {t("IOTransaction.Entity")} {' '} {t("Common.New")}
+            {t("IOTransaction.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

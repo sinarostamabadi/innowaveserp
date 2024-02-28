@@ -29,7 +29,7 @@ export function CitiesUIProvider({ citiesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -45,6 +45,8 @@ export function CitiesUIProvider({ citiesUIEvents, children }) {
     openUpdateCitiesStatusDialog: citiesUIEvents.openUpdateCitiesStatusDialog,
   };
   return (
-    <CitiesUIContext.Provider value={value}>{children}</CitiesUIContext.Provider>
+    <CitiesUIContext.Provider value={value}>
+      {children}
+    </CitiesUIContext.Provider>
   );
 }

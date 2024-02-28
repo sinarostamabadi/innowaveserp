@@ -17,7 +17,9 @@ export function RestaurantDiscountTypesPage({ history }) {
       history.push(`/restaurant/restaurantDiscountTypes/${id}/delete`);
     },
     openDeleteRestaurantDiscountTypesDialog: () => {
-      history.push(`/restaurant/restaurantDiscountTypes/deleteRestaurantDiscountTypes`);
+      history.push(
+        `/restaurant/restaurantDiscountTypes/deleteRestaurantDiscountTypes`
+      );
     },
     openFetchRestaurantDiscountTypesDialog: () => {
       history.push(`/restaurant/restaurantDiscountTypes/fetch`);
@@ -26,9 +28,11 @@ export function RestaurantDiscountTypesPage({ history }) {
       history.push("/restaurant/restaurantDiscountTypes/updateStatus");
     },
   };
-  
+
   return (
-    <RestaurantDiscountTypesUIProvider restaurantDiscountTypesUIEvents={restaurantDiscountTypesUIEvents}>
+    <RestaurantDiscountTypesUIProvider
+      restaurantDiscountTypesUIEvents={restaurantDiscountTypesUIEvents}
+    >
       <RestaurantDiscountTypesLoadingDialog />
       <Route path="/restaurant/restaurantDiscountTypes/:id/delete">
         {({ history, match }) => (

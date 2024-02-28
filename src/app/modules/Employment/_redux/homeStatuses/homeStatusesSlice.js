@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialHomeStatusesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const homeStatusesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getHomeStatusById  
+    // getHomeStatusById
     homeStatusFetched: (state, action) => {
       state.actionsLoading = false;
       state.homeStatusForEdit = action.payload.homeStatusForEdit;
       state.error = null;
     },
-    // findHomeStatuses  
+    // findHomeStatuses
     homeStatusesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const homeStatusesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createHomeStatus  
+    // createHomeStatus
     homeStatusCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateHomeStatus  
+    // updateHomeStatus
     homeStatusUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const homeStatusesSlice = createSlice({
         return entity;
       });
     },
-    // deleteHomeStatus  
+    // deleteHomeStatus
     homeStatusDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.HomeStatusId !== action.payload.HomeStatusId  
+        (el) => el.HomeStatusId !== action.payload.HomeStatusId
       );
     },
-    // deleteHomeStatuses  
+    // deleteHomeStatuses
     homeStatusesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.HomeStatusId)  
+        (el) => !action.payload.ids.includes(el.HomeStatusId)
       );
     },
-    // homeStatusesUpdateState  
+    // homeStatusesUpdateState
     homeStatusesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

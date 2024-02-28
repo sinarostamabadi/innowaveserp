@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialUsersState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const usersSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getUserById  
+    // getUserById
     userFetched: (state, action) => {
       state.actionsLoading = false;
       state.userForEdit = action.payload.userForEdit;
       state.error = null;
     },
-    // findUsers  
+    // findUsers
     usersFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const usersSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createUser  
+    // createUser
     userCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateUser  
+    // updateUser
     userUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const usersSlice = createSlice({
         return entity;
       });
     },
-    // deleteUser  
+    // deleteUser
     userDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.UserId !== action.payload.UserId  
+        (el) => el.UserId !== action.payload.UserId
       );
     },
-    // deleteUsers  
+    // deleteUsers
     usersDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.UserId)  
+        (el) => !action.payload.ids.includes(el.UserId)
       );
     },
-    // usersUpdateState  
+    // usersUpdateState
     usersStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

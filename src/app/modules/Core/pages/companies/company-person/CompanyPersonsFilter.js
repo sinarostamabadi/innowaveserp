@@ -8,7 +8,8 @@ export function CompanyPersonsFilter() {
   const companyPersonsUIContext = useCompanyPersonsUIContext();
   const companyPersonsUIProps = useMemo(() => {
     return {
-      openNewCompanyPersonDialog: companyPersonsUIContext.openNewCompanyPersonDialog,
+      openNewCompanyPersonDialog:
+        companyPersonsUIContext.openNewCompanyPersonDialog,
     };
   }, [companyPersonsUIContext]);
 

@@ -32,13 +32,13 @@ export const costsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCostById  
+    // getCostById
     costFetched: (state, action) => {
       state.actionsLoading = false;
       state.costForEdit = action.payload.costForEdit;
       state.error = null;
     },
-    // findCosts  
+    // findCosts
     costsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -46,13 +46,13 @@ export const costsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCost  
+    // createCost
     costCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCost  
+    // updateCost
     costUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -63,23 +63,23 @@ export const costsSlice = createSlice({
         return entity;
       });
     },
-    // deleteCost  
+    // deleteCost
     costDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CostId !== action.payload.CostId  
+        (el) => el.CostId !== action.payload.CostId
       );
     },
-    // deleteCosts  
+    // deleteCosts
     costsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CostId)  
+        (el) => !action.payload.ids.includes(el.CostId)
       );
     },
-    // costsUpdateState  
+    // costsUpdateState
     costsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

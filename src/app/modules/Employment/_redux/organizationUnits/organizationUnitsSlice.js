@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialOrganizationUnitsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const organizationUnitsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getOrganizationUnitById  
+    // getOrganizationUnitById
     organizationUnitFetched: (state, action) => {
       state.actionsLoading = false;
       state.organizationUnitForEdit = action.payload.organizationUnitForEdit;
       state.error = null;
     },
-    // findOrganizationUnits  
+    // findOrganizationUnits
     organizationUnitsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const organizationUnitsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createOrganizationUnit  
+    // createOrganizationUnit
     organizationUnitCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateOrganizationUnit  
+    // updateOrganizationUnit
     organizationUnitUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.OrganizationUnitId === action.payload.organizationUnit.OrganizationUnitId) {
+        if (
+          entity.OrganizationUnitId ===
+          action.payload.organizationUnit.OrganizationUnitId
+        ) {
           return action.payload.organizationUnit;
         }
         return entity;
       });
     },
-    // deleteOrganizationUnit  
+    // deleteOrganizationUnit
     organizationUnitDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.OrganizationUnitId !== action.payload.OrganizationUnitId  
+        (el) => el.OrganizationUnitId !== action.payload.OrganizationUnitId
       );
     },
-    // deleteOrganizationUnits  
+    // deleteOrganizationUnits
     organizationUnitsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.OrganizationUnitId)  
+        (el) => !action.payload.ids.includes(el.OrganizationUnitId)
       );
     },
-    // organizationUnitsUpdateState  
+    // organizationUnitsUpdateState
     organizationUnitsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

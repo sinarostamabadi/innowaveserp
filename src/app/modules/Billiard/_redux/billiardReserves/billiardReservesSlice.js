@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBilliardReservesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const billiardReservesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBilliardReserveById  
+    // getBilliardReserveById
     billiardReserveFetched: (state, action) => {
       state.actionsLoading = false;
       state.billiardReserveForEdit = action.payload.billiardReserveForEdit;
       state.error = null;
     },
-    // findBilliardReserves  
+    // findBilliardReserves
     billiardReservesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const billiardReservesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBilliardReserve  
+    // createBilliardReserve
     billiardReserveCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBilliardReserve  
+    // updateBilliardReserve
     billiardReserveUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BilliardReserveId === action.payload.billiardReserve.BilliardReserveId) {
+        if (
+          entity.BilliardReserveId ===
+          action.payload.billiardReserve.BilliardReserveId
+        ) {
           return action.payload.billiardReserve;
         }
         return entity;
       });
     },
-    // deleteBilliardReserve  
+    // deleteBilliardReserve
     billiardReserveDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BilliardReserveId !== action.payload.BilliardReserveId  
+        (el) => el.BilliardReserveId !== action.payload.BilliardReserveId
       );
     },
-    // deleteBilliardReserves  
+    // deleteBilliardReserves
     billiardReservesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BilliardReserveId)  
+        (el) => !action.payload.ids.includes(el.BilliardReserveId)
       );
     },
-    // billiardReservesUpdateState  
+    // billiardReservesUpdateState
     billiardReservesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

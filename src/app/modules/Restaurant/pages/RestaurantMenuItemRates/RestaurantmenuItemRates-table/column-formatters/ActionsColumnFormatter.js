@@ -9,13 +9,25 @@ export const ActionsColumnFormatter = (
   cellContent,
   row,
   rowIndex,
-  { openEditRestaurantMenuItemRatePage, openDeleteRestaurantMenuItemRateDialog, t }
+  {
+    openEditRestaurantMenuItemRatePage,
+    openDeleteRestaurantMenuItemRateDialog,
+    t,
+  }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="restaurantMenuItemRates-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="restaurantMenuItemRates-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-        onClick={() => openEditRestaurantMenuItemRatePage(row.RestaurantMenuItemRateId)}
+        onClick={() =>
+          openEditRestaurantMenuItemRatePage(row.RestaurantMenuItemRateId)
+        }
       >
         <span className="svg-icon svg-icon-md svg-icon-primary">
           <SVG
@@ -26,11 +38,17 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="restaurantMenuItemRates-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="restaurantMenuItemRates-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteRestaurantMenuItemRateDialog(row.RestaurantMenuItemRateId)}
+        onClick={() =>
+          openDeleteRestaurantMenuItemRateDialog(row.RestaurantMenuItemRateId)
+        }
       >
         <span className="svg-icon svg-icon-md svg-icon-danger">
           <SVG src={toAbsoluteUrl("/media/svg/icons//Trash.svg")} />

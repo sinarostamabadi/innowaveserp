@@ -32,8 +32,10 @@ export function FutsalDiscountsTable() {
       setIds: futsalDiscountsUIContext.setIds,
       queryParams: futsalDiscountsUIContext.queryParams,
       setQueryParams: futsalDiscountsUIContext.setQueryParams,
-      openEditFutsalDiscountPage: futsalDiscountsUIContext.openEditFutsalDiscountPage,
-      openDeleteFutsalDiscountDialog: futsalDiscountsUIContext.openDeleteFutsalDiscountDialog,
+      openEditFutsalDiscountPage:
+        futsalDiscountsUIContext.openEditFutsalDiscountPage,
+      openDeleteFutsalDiscountDialog:
+        futsalDiscountsUIContext.openDeleteFutsalDiscountDialog,
     };
   }, [futsalDiscountsUIContext]);
 
@@ -72,8 +74,10 @@ export function FutsalDiscountsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditFutsalDiscountPage: futsalDiscountsUIProps.openEditFutsalDiscountPage,
-        openDeleteFutsalDiscountDialog: futsalDiscountsUIProps.openDeleteFutsalDiscountDialog,
+        openEditFutsalDiscountPage:
+          futsalDiscountsUIProps.openEditFutsalDiscountPage,
+        openDeleteFutsalDiscountDialog:
+          futsalDiscountsUIProps.openDeleteFutsalDiscountDialog,
         t: t,
       },
       classes: "text-right pr-0",

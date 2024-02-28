@@ -32,8 +32,10 @@ export function ServiceActionsesTable() {
       setIds: serviceActionsesUIContext.setIds,
       queryParams: serviceActionsesUIContext.queryParams,
       setQueryParams: serviceActionsesUIContext.setQueryParams,
-      openEditServiceActionsPage: serviceActionsesUIContext.openEditServiceActionsPage,
-      openDeleteServiceActionsDialog: serviceActionsesUIContext.openDeleteServiceActionsDialog,
+      openEditServiceActionsPage:
+        serviceActionsesUIContext.openEditServiceActionsPage,
+      openDeleteServiceActionsDialog:
+        serviceActionsesUIContext.openDeleteServiceActionsDialog,
     };
   }, [serviceActionsesUIContext]);
 
@@ -50,7 +52,9 @@ export function ServiceActionsesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     serviceActionsesUIProps.setIds([]);
-    dispatch(actions.fetchServiceActionses(serviceActionsesUIProps.queryParams));
+    dispatch(
+      actions.fetchServiceActionses(serviceActionsesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [serviceActionsesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function ServiceActionsesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditServiceActionsPage: serviceActionsesUIProps.openEditServiceActionsPage,
-        openDeleteServiceActionsDialog: serviceActionsesUIProps.openDeleteServiceActionsDialog,
+        openEditServiceActionsPage:
+          serviceActionsesUIProps.openEditServiceActionsPage,
+        openDeleteServiceActionsDialog:
+          serviceActionsesUIProps.openDeleteServiceActionsDialog,
         t: t,
       },
       classes: "text-right pr-0",

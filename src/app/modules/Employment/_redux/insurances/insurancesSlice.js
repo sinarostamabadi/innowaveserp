@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialInsurancesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const insurancesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getInsuranceById  
+    // getInsuranceById
     insuranceFetched: (state, action) => {
       state.actionsLoading = false;
       state.insuranceForEdit = action.payload.insuranceForEdit;
       state.error = null;
     },
-    // findInsurances  
+    // findInsurances
     insurancesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const insurancesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createInsurance  
+    // createInsurance
     insuranceCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateInsurance  
+    // updateInsurance
     insuranceUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const insurancesSlice = createSlice({
         return entity;
       });
     },
-    // deleteInsurance  
+    // deleteInsurance
     insuranceDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.InsuranceId !== action.payload.InsuranceId  
+        (el) => el.InsuranceId !== action.payload.InsuranceId
       );
     },
-    // deleteInsurances  
+    // deleteInsurances
     insurancesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.InsuranceId)  
+        (el) => !action.payload.ids.includes(el.InsuranceId)
       );
     },
-    // insurancesUpdateState  
+    // insurancesUpdateState
     insurancesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

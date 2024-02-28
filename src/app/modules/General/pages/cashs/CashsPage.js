@@ -26,7 +26,7 @@ export function CashsPage({ history }) {
       history.push("/general/cashs/updateStatus");
     },
   };
-  
+
   return (
     <CashsUIProvider cashsUIEvents={cashsUIEvents}>
       <CashsLoadingDialog />

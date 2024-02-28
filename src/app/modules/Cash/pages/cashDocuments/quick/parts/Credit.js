@@ -23,7 +23,9 @@ export function Credit({ data, setData, receivable, goBack }) {
     let tranObj = { ...CreditTools.CleanTran(dirty, t) };
 
     setData({
-      ...data, Credits: [...data.Credits, obj], Transactions: [...data.Transactions, tranObj],
+      ...data,
+      Credits: [...data.Credits, obj],
+      Transactions: [...data.Transactions, tranObj],
     });
     goBack();
   }

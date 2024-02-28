@@ -7,18 +7,27 @@ import {
   PleaseWaitMessage,
 } from "../../../../../../core/_helpers";
 import { useRestaurantMenuItemPricesUIContext } from "./RestaurantMenuItemPricesUIContext";
-import { DateFaColumnFormatter, MoneyColumnFormatter } from "../../../../../../core/_formatters";
+import {
+  DateFaColumnFormatter,
+  MoneyColumnFormatter,
+} from "../../../../../../core/_formatters";
 
 export function RestaurantMenuItemPricesTable() {
   const { t } = useTranslation();
-  const restaurantMenuItemPricesUIContext = useRestaurantMenuItemPricesUIContext();
+  const restaurantMenuItemPricesUIContext =
+    useRestaurantMenuItemPricesUIContext();
   const restaurantMenuItemPricesUIProps = useMemo(() => {
     return {
-      restaurantMenuItemPrices: restaurantMenuItemPricesUIContext.restaurantMenuItemPrices,
-      activeRestaurantMenuItemPrices: restaurantMenuItemPricesUIContext.activeRestaurantMenuItemPrices,
-      openEditRestaurantMenuItemPriceDialog: restaurantMenuItemPricesUIContext.openEditRestaurantMenuItemPriceDialog,
-      openSerialRestaurantMenuItemPriceDialog: restaurantMenuItemPricesUIContext.openSerialRestaurantMenuItemPriceDialog,
-      openDeleteRestaurantMenuItemPriceDialog: restaurantMenuItemPricesUIContext.openDeleteRestaurantMenuItemPriceDialog,
+      restaurantMenuItemPrices:
+        restaurantMenuItemPricesUIContext.restaurantMenuItemPrices,
+      activeRestaurantMenuItemPrices:
+        restaurantMenuItemPricesUIContext.activeRestaurantMenuItemPrices,
+      openEditRestaurantMenuItemPriceDialog:
+        restaurantMenuItemPricesUIContext.openEditRestaurantMenuItemPriceDialog,
+      openSerialRestaurantMenuItemPriceDialog:
+        restaurantMenuItemPricesUIContext.openSerialRestaurantMenuItemPriceDialog,
+      openDeleteRestaurantMenuItemPriceDialog:
+        restaurantMenuItemPricesUIContext.openDeleteRestaurantMenuItemPriceDialog,
     };
   }, [restaurantMenuItemPricesUIContext]);
 
@@ -27,21 +36,23 @@ export function RestaurantMenuItemPricesTable() {
       dataField: "Price",
       text: t("RestaurantMenuItemPrice.Price"),
       sort: false,
-      formatter: MoneyColumnFormatter
+      formatter: MoneyColumnFormatter,
     },
     {
       dataField: "ActiveDate",
       text: t("RestaurantMenuItemPrice.ActiveDate"),
       sort: false,
-      formatter: DateFaColumnFormatter
-    },    
+      formatter: DateFaColumnFormatter,
+    },
     {
       dataField: "action",
       text: t("Common.Action"),
       formatter: ActionsColumnFormatter,
       formatExtraData: {
-        openEditRestaurantMenuItemPriceDialog: restaurantMenuItemPricesUIProps.openEditRestaurantMenuItemPriceDialog,
-        openDeleteRestaurantMenuItemPriceDialog: restaurantMenuItemPricesUIProps.openDeleteRestaurantMenuItemPriceDialog,
+        openEditRestaurantMenuItemPriceDialog:
+          restaurantMenuItemPricesUIProps.openEditRestaurantMenuItemPriceDialog,
+        openDeleteRestaurantMenuItemPriceDialog:
+          restaurantMenuItemPricesUIProps.openDeleteRestaurantMenuItemPriceDialog,
         t: t,
       },
       classes: "text-right pr-0",
@@ -51,7 +62,10 @@ export function RestaurantMenuItemPricesTable() {
       },
     },
   ];
-console.log("activeRestaurantMenuItemPrices > ", restaurantMenuItemPricesUIProps.activeRestaurantMenuItemPrices);
+  console.log(
+    "activeRestaurantMenuItemPrices > ",
+    restaurantMenuItemPricesUIProps.activeRestaurantMenuItemPrices
+  );
   return (
     <>
       <BootstrapTable
@@ -62,14 +76,23 @@ console.log("activeRestaurantMenuItemPrices > ", restaurantMenuItemPricesUIProps
         remote
         keyField="RestaurantMenuItemPriceId"
         data={
-          restaurantMenuItemPricesUIProps.activeRestaurantMenuItemPrices === null
+          restaurantMenuItemPricesUIProps.activeRestaurantMenuItemPrices ===
+          null
             ? []
             : restaurantMenuItemPricesUIProps.activeRestaurantMenuItemPrices
         }
         columns={columns}
       >
-        <PleaseWaitMessage entities={restaurantMenuItemPricesUIProps.activeRestaurantMenuItemPrices} />
-        <NoRecordsFoundMessage entities={restaurantMenuItemPricesUIProps.activeRestaurantMenuItemPrices} />
+        <PleaseWaitMessage
+          entities={
+            restaurantMenuItemPricesUIProps.activeRestaurantMenuItemPrices
+          }
+        />
+        <NoRecordsFoundMessage
+          entities={
+            restaurantMenuItemPricesUIProps.activeRestaurantMenuItemPrices
+          }
+        />
       </BootstrapTable>
     </>
   );

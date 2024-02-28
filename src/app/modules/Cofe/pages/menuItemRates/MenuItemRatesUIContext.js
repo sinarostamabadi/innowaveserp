@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { MenuItemRateModel } from "../../../../../core/_models/Cofe/MenuItemRateModel";
@@ -30,7 +29,7 @@ export function MenuItemRatesUIProvider({ menuItemRatesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function MenuItemRatesUIProvider({ menuItemRatesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: MenuItemRateModel,
-    newMenuItemRateButtonClick: menuItemRatesUIEvents.newMenuItemRateButtonClick,
+    newMenuItemRateButtonClick:
+      menuItemRatesUIEvents.newMenuItemRateButtonClick,
     openEditMenuItemRatePage: menuItemRatesUIEvents.openEditMenuItemRatePage,
-    openDeleteMenuItemRateDialog: menuItemRatesUIEvents.openDeleteMenuItemRateDialog,
-    openDeleteMenuItemRatesDialog: menuItemRatesUIEvents.openDeleteMenuItemRatesDialog,
-    openFetchMenuItemRatesDialog: menuItemRatesUIEvents.openFetchMenuItemRatesDialog,
-    openUpdateMenuItemRatesStatusDialog: menuItemRatesUIEvents.openUpdateMenuItemRatesStatusDialog,
+    openDeleteMenuItemRateDialog:
+      menuItemRatesUIEvents.openDeleteMenuItemRateDialog,
+    openDeleteMenuItemRatesDialog:
+      menuItemRatesUIEvents.openDeleteMenuItemRatesDialog,
+    openFetchMenuItemRatesDialog:
+      menuItemRatesUIEvents.openFetchMenuItemRatesDialog,
+    openUpdateMenuItemRatesStatusDialog:
+      menuItemRatesUIEvents.openUpdateMenuItemRatesStatusDialog,
   };
   return (
-    <MenuItemRatesUIContext.Provider value={value}>{children}</MenuItemRatesUIContext.Provider>
+    <MenuItemRatesUIContext.Provider value={value}>
+      {children}
+    </MenuItemRatesUIContext.Provider>
   );
 }

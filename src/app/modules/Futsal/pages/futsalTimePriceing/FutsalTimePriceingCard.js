@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { FutsalTimePriceingTable } from "./futsalTimePriceing-table/FutsalTimePriceingTable";
-import { useFutsalTimePriceingUIContext, FutsalTimePriceingUIConsumer } from "./FutsalTimePriceingUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useFutsalTimePriceingUIContext,
+  FutsalTimePriceingUIConsumer,
+} from "./FutsalTimePriceingUIContext";
+import { useTranslation } from "react-i18next";
 
 export function FutsalTimePriceingCard() {
   const { t } = useTranslation();
@@ -21,24 +23,31 @@ export function FutsalTimePriceingCard() {
       ids: futsalTimePriceingUIContext.ids,
       queryParams: futsalTimePriceingUIContext.queryParams,
       setQueryParams: futsalTimePriceingUIContext.setQueryParams,
-      newFutsalTimePriceingButtonClick: futsalTimePriceingUIContext.newFutsalTimePriceingButtonClick,
-      openDeleteFutsalTimePriceingDialog: futsalTimePriceingUIContext.openDeleteFutsalTimePriceingDialog,
-      openEditFutsalTimePriceingPage: futsalTimePriceingUIContext.openEditFutsalTimePriceingPage,
-      openUpdateFutsalTimePriceingStatusDialog: futsalTimePriceingUIContext.openUpdateFutsalTimePriceingStatusDialog,
-      openFetchFutsalTimePriceingDialog: futsalTimePriceingUIContext.openFetchFutsalTimePriceingDialog,
+      newFutsalTimePriceingButtonClick:
+        futsalTimePriceingUIContext.newFutsalTimePriceingButtonClick,
+      openDeleteFutsalTimePriceingDialog:
+        futsalTimePriceingUIContext.openDeleteFutsalTimePriceingDialog,
+      openEditFutsalTimePriceingPage:
+        futsalTimePriceingUIContext.openEditFutsalTimePriceingPage,
+      openUpdateFutsalTimePriceingStatusDialog:
+        futsalTimePriceingUIContext.openUpdateFutsalTimePriceingStatusDialog,
+      openFetchFutsalTimePriceingDialog:
+        futsalTimePriceingUIContext.openFetchFutsalTimePriceingDialog,
     };
   }, [futsalTimePriceingUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("FutsalTimePriceing.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("FutsalTimePriceing.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={futsalTimePriceingUIProps.newFutsalTimePriceingButtonClick}
           >
-            {t("FutsalTimePriceing.Entity")} {' '} {t("Common.New")}
+            {t("FutsalTimePriceing.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

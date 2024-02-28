@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { OperationModel } from "../../../../../core/_models/Cash/OperationModel";
@@ -30,7 +29,7 @@ export function OperationsUIProvider({ operationsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function OperationsUIProvider({ operationsUIEvents, children }) {
     openDeleteOperationDialog: operationsUIEvents.openDeleteOperationDialog,
     openDeleteOperationsDialog: operationsUIEvents.openDeleteOperationsDialog,
     openFetchOperationsDialog: operationsUIEvents.openFetchOperationsDialog,
-    openUpdateOperationsStatusDialog: operationsUIEvents.openUpdateOperationsStatusDialog,
+    openUpdateOperationsStatusDialog:
+      operationsUIEvents.openUpdateOperationsStatusDialog,
   };
   return (
-    <OperationsUIContext.Provider value={value}>{children}</OperationsUIContext.Provider>
+    <OperationsUIContext.Provider value={value}>
+      {children}
+    </OperationsUIContext.Provider>
   );
 }

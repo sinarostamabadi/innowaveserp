@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialLinkDocumentParametersState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const linkDocumentParametersSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getLinkDocumentParameterById  
+    // getLinkDocumentParameterById
     linkDocumentParameterFetched: (state, action) => {
       state.actionsLoading = false;
-      state.linkDocumentParameterForEdit = action.payload.linkDocumentParameterForEdit;
+      state.linkDocumentParameterForEdit =
+        action.payload.linkDocumentParameterForEdit;
       state.error = null;
     },
-    // findLinkDocumentParameters  
+    // findLinkDocumentParameters
     linkDocumentParametersFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const linkDocumentParametersSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createLinkDocumentParameter  
+    // createLinkDocumentParameter
     linkDocumentParameterCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateLinkDocumentParameter  
+    // updateLinkDocumentParameter
     linkDocumentParameterUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.LinkDocumentParameterId === action.payload.linkDocumentParameter.LinkDocumentParameterId) {
+        if (
+          entity.LinkDocumentParameterId ===
+          action.payload.linkDocumentParameter.LinkDocumentParameterId
+        ) {
           return action.payload.linkDocumentParameter;
         }
         return entity;
       });
     },
-    // deleteLinkDocumentParameter  
+    // deleteLinkDocumentParameter
     linkDocumentParameterDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.LinkDocumentParameterId !== action.payload.LinkDocumentParameterId  
+        (el) =>
+          el.LinkDocumentParameterId !== action.payload.LinkDocumentParameterId
       );
     },
-    // deleteLinkDocumentParameters  
+    // deleteLinkDocumentParameters
     linkDocumentParametersDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.LinkDocumentParameterId)  
+        (el) => !action.payload.ids.includes(el.LinkDocumentParameterId)
       );
     },
-    // linkDocumentParametersUpdateState  
+    // linkDocumentParametersUpdateState
     linkDocumentParametersStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

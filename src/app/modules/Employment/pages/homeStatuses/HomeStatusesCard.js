@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { HomeStatusesTable } from "./homeStatuses-table/HomeStatusesTable";
-import { useHomeStatusesUIContext, HomeStatusesUIConsumer } from "./HomeStatusesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useHomeStatusesUIContext,
+  HomeStatusesUIConsumer,
+} from "./HomeStatusesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function HomeStatusesCard() {
   const { t } = useTranslation();
@@ -22,23 +24,26 @@ export function HomeStatusesCard() {
       queryParams: homeStatusesUIContext.queryParams,
       setQueryParams: homeStatusesUIContext.setQueryParams,
       newHomeStatusButtonClick: homeStatusesUIContext.newHomeStatusButtonClick,
-      openDeleteHomeStatusesDialog: homeStatusesUIContext.openDeleteHomeStatusesDialog,
+      openDeleteHomeStatusesDialog:
+        homeStatusesUIContext.openDeleteHomeStatusesDialog,
       openEditHomeStatusPage: homeStatusesUIContext.openEditHomeStatusPage,
-      openUpdateHomeStatusesStatusDialog: homeStatusesUIContext.openUpdateHomeStatusesStatusDialog,
-      openFetchHomeStatusesDialog: homeStatusesUIContext.openFetchHomeStatusesDialog,
+      openUpdateHomeStatusesStatusDialog:
+        homeStatusesUIContext.openUpdateHomeStatusesStatusDialog,
+      openFetchHomeStatusesDialog:
+        homeStatusesUIContext.openFetchHomeStatusesDialog,
     };
   }, [homeStatusesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("HomeStatus.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("HomeStatus.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={homeStatusesUIProps.newHomeStatusButtonClick}
           >
-            {t("HomeStatus.Entity")} {' '} {t("Common.New")}
+            {t("HomeStatus.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

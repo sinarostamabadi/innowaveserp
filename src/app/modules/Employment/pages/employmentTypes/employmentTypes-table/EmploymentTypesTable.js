@@ -32,8 +32,10 @@ export function EmploymentTypesTable() {
       setIds: employmentTypesUIContext.setIds,
       queryParams: employmentTypesUIContext.queryParams,
       setQueryParams: employmentTypesUIContext.setQueryParams,
-      openEditEmploymentTypePage: employmentTypesUIContext.openEditEmploymentTypePage,
-      openDeleteEmploymentTypeDialog: employmentTypesUIContext.openDeleteEmploymentTypeDialog,
+      openEditEmploymentTypePage:
+        employmentTypesUIContext.openEditEmploymentTypePage,
+      openDeleteEmploymentTypeDialog:
+        employmentTypesUIContext.openDeleteEmploymentTypeDialog,
     };
   }, [employmentTypesUIContext]);
 
@@ -72,8 +74,10 @@ export function EmploymentTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditEmploymentTypePage: employmentTypesUIProps.openEditEmploymentTypePage,
-        openDeleteEmploymentTypeDialog: employmentTypesUIProps.openDeleteEmploymentTypeDialog,
+        openEditEmploymentTypePage:
+          employmentTypesUIProps.openEditEmploymentTypePage,
+        openDeleteEmploymentTypeDialog:
+          employmentTypesUIProps.openDeleteEmploymentTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

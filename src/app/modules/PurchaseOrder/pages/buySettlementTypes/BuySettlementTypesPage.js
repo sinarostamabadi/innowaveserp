@@ -17,7 +17,9 @@ export function BuySettlementTypesPage({ history }) {
       history.push(`/purchaseOrder/buySettlementTypes/${id}/delete`);
     },
     openDeleteBuySettlementTypesDialog: () => {
-      history.push(`/purchaseOrder/buySettlementTypes/deleteBuySettlementTypes`);
+      history.push(
+        `/purchaseOrder/buySettlementTypes/deleteBuySettlementTypes`
+      );
     },
     openFetchBuySettlementTypesDialog: () => {
       history.push(`/purchaseOrder/buySettlementTypes/fetch`);
@@ -26,9 +28,11 @@ export function BuySettlementTypesPage({ history }) {
       history.push("/purchaseOrder/buySettlementTypes/updateStatus");
     },
   };
-  
+
   return (
-    <BuySettlementTypesUIProvider buySettlementTypesUIEvents={buySettlementTypesUIEvents}>
+    <BuySettlementTypesUIProvider
+      buySettlementTypesUIEvents={buySettlementTypesUIEvents}
+    >
       <BuySettlementTypesLoadingDialog />
       <Route path="/purchaseOrder/buySettlementTypes/:id/delete">
         {({ history, match }) => (

@@ -26,7 +26,7 @@ export function IOTransactionsPage({ history }) {
       history.push("/employment/iOTransactions/updateStatus");
     },
   };
-  
+
   return (
     <IOTransactionsUIProvider iOTransactionsUIEvents={iOTransactionsUIEvents}>
       <IOTransactionsLoadingDialog />

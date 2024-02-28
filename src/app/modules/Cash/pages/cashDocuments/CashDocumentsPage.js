@@ -30,7 +30,7 @@ export function CashDocumentsPage({ history }) {
       history.push(`/cash/cashDocuments/closeCash`);
     },
   };
-  
+
   return (
     <CashDocumentsUIProvider cashDocumentsUIEvents={cashDocumentsUIEvents}>
       <CashDocumentsLoadingDialog />

@@ -37,10 +37,11 @@ export function RestaurantInvoiceRelease({ id, show, onHide }) {
   useEffect(() => {
     if (!id) {
       onHide();
-    }else{
-      setInvoiceModel(
-        {...entities.filter((model) => model.RestaurantInvoiceId == id)[0], RestaurantInvoiceStatusId: 4}
-      );
+    } else {
+      setInvoiceModel({
+        ...entities.filter((model) => model.RestaurantInvoiceId == id)[0],
+        RestaurantInvoiceStatusId: 4,
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
@@ -52,7 +53,9 @@ export function RestaurantInvoiceRelease({ id, show, onHide }) {
     dispatch(actions.updateRestaurantInvoice(id, invoiceModel))
       .then(() => {
         // refresh list after deletion
-        dispatch(actions.fetchRestaurantInvoices(restaurantInvoicesUIProps.queryParams));
+        dispatch(
+          actions.fetchRestaurantInvoices(restaurantInvoicesUIProps.queryParams)
+        );
 
         // closing delete modal
         onHide();
@@ -71,7 +74,9 @@ export function RestaurantInvoiceRelease({ id, show, onHide }) {
       {isLoading && <ModalProgressBar variant="query" />}
       <Modal.Header closeButton>
         <Modal.Title id="example-modal-sizes-title-lg">
-          {t("Common.ReleaseWithoutCheckout") + " " + t("RestaurantInvoice.Entity")}
+          {t("Common.ReleaseWithoutCheckout") +
+            " " +
+            t("RestaurantInvoice.Entity")}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

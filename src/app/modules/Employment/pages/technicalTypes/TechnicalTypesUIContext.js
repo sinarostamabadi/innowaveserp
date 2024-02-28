@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { TechnicalTypeModel } from "../../../../../core/_models/Employment/TechnicalTypeModel";
@@ -30,7 +29,7 @@ export function TechnicalTypesUIProvider({ technicalTypesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function TechnicalTypesUIProvider({ technicalTypesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: TechnicalTypeModel,
-    newTechnicalTypeButtonClick: technicalTypesUIEvents.newTechnicalTypeButtonClick,
+    newTechnicalTypeButtonClick:
+      technicalTypesUIEvents.newTechnicalTypeButtonClick,
     openEditTechnicalTypePage: technicalTypesUIEvents.openEditTechnicalTypePage,
-    openDeleteTechnicalTypeDialog: technicalTypesUIEvents.openDeleteTechnicalTypeDialog,
-    openDeleteTechnicalTypesDialog: technicalTypesUIEvents.openDeleteTechnicalTypesDialog,
-    openFetchTechnicalTypesDialog: technicalTypesUIEvents.openFetchTechnicalTypesDialog,
-    openUpdateTechnicalTypesStatusDialog: technicalTypesUIEvents.openUpdateTechnicalTypesStatusDialog,
+    openDeleteTechnicalTypeDialog:
+      technicalTypesUIEvents.openDeleteTechnicalTypeDialog,
+    openDeleteTechnicalTypesDialog:
+      technicalTypesUIEvents.openDeleteTechnicalTypesDialog,
+    openFetchTechnicalTypesDialog:
+      technicalTypesUIEvents.openFetchTechnicalTypesDialog,
+    openUpdateTechnicalTypesStatusDialog:
+      technicalTypesUIEvents.openUpdateTechnicalTypesStatusDialog,
   };
   return (
-    <TechnicalTypesUIContext.Provider value={value}>{children}</TechnicalTypesUIContext.Provider>
+    <TechnicalTypesUIContext.Provider value={value}>
+      {children}
+    </TechnicalTypesUIContext.Provider>
   );
 }

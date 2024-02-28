@@ -1,4 +1,3 @@
-
 import React, { Suspense } from "react";
 import { Redirect, Switch } from "react-router-dom";
 import { LayoutSplashScreen, ContentRoute } from "../../../../core/layout";
@@ -22,42 +21,76 @@ export default function GeneralPage() {
     <Suspense fallback={<LayoutSplashScreen />}>
       <Switch>
         {<Redirect exact={true} from="/Pool" to="/Pool/dashboard" />}
-        
+
         {/* begin PoolDashboard */}
         <ContentRoute path="/Pool/dashboard" component={PoolDashboard} />
-        {/* end PoolDashboard */}  
-		
+        {/* end PoolDashboard */}
 
-			{/* begin PoolCenters */}
-			<ContentRoute path="/Pool/poolCenters/new" component={PoolCenterEdit} />
-			<ContentRoute path="/Pool/poolCenters/:id/edit" component={PoolCenterEdit} />
-			<ContentRoute path="/Pool/poolCenters" component={PoolCentersPage} />
-			{/* end PoolCenters */}
+        {/* begin PoolCenters */}
+        <ContentRoute path="/Pool/poolCenters/new" component={PoolCenterEdit} />
+        <ContentRoute
+          path="/Pool/poolCenters/:id/edit"
+          component={PoolCenterEdit}
+        />
+        <ContentRoute path="/Pool/poolCenters" component={PoolCentersPage} />
+        {/* end PoolCenters */}
 
-			{/* begin PoolDiscounts */}
-			<ContentRoute path="/Pool/poolDiscounts/new" component={PoolDiscountEdit} />
-			<ContentRoute path="/Pool/poolDiscounts/:id/edit" component={PoolDiscountEdit} />
-			<ContentRoute path="/Pool/poolDiscounts" component={PoolDiscountsPage} />
-			{/* end PoolDiscounts */}
+        {/* begin PoolDiscounts */}
+        <ContentRoute
+          path="/Pool/poolDiscounts/new"
+          component={PoolDiscountEdit}
+        />
+        <ContentRoute
+          path="/Pool/poolDiscounts/:id/edit"
+          component={PoolDiscountEdit}
+        />
+        <ContentRoute
+          path="/Pool/poolDiscounts"
+          component={PoolDiscountsPage}
+        />
+        {/* end PoolDiscounts */}
 
-			{/* begin PoolReserves */}
-			<ContentRoute path="/Pool/poolReserves/new" component={PoolReserveEdit} />
-			<ContentRoute path="/Pool/poolReserves/:id/edit" component={PoolReserveEdit} />
-			<ContentRoute path="/Pool/poolReserves" component={PoolReservesPage} />
-			{/* end PoolReserves */}
+        {/* begin PoolReserves */}
+        <ContentRoute
+          path="/Pool/poolReserves/new"
+          component={PoolReserveEdit}
+        />
+        <ContentRoute
+          path="/Pool/poolReserves/:id/edit"
+          component={PoolReserveEdit}
+        />
+        <ContentRoute path="/Pool/poolReserves" component={PoolReservesPage} />
+        {/* end PoolReserves */}
 
-			{/* begin PoolReservePrices */}
-			<ContentRoute path="/Pool/poolReservePrices/new" component={PoolReservePriceEdit} />
-			<ContentRoute path="/Pool/poolReservePrices/:id/edit" component={PoolReservePriceEdit} />
-			<ContentRoute path="/Pool/poolReservePrices" component={PoolReservePricesPage} />
-			{/* end PoolReservePrices */}
+        {/* begin PoolReservePrices */}
+        <ContentRoute
+          path="/Pool/poolReservePrices/new"
+          component={PoolReservePriceEdit}
+        />
+        <ContentRoute
+          path="/Pool/poolReservePrices/:id/edit"
+          component={PoolReservePriceEdit}
+        />
+        <ContentRoute
+          path="/Pool/poolReservePrices"
+          component={PoolReservePricesPage}
+        />
+        {/* end PoolReservePrices */}
 
-			{/* begin PoolTimePriceing */}
-			<ContentRoute path="/Pool/poolTimePriceing/new" component={PoolTimePriceingEdit} />
-			<ContentRoute path="/Pool/poolTimePriceing/:id/edit" component={PoolTimePriceingEdit} />
-			<ContentRoute path="/Pool/poolTimePriceing" component={PoolTimePriceingPage} />
-			{/* end PoolTimePriceing */}
-
+        {/* begin PoolTimePriceing */}
+        <ContentRoute
+          path="/Pool/poolTimePriceing/new"
+          component={PoolTimePriceingEdit}
+        />
+        <ContentRoute
+          path="/Pool/poolTimePriceing/:id/edit"
+          component={PoolTimePriceingEdit}
+        />
+        <ContentRoute
+          path="/Pool/poolTimePriceing"
+          component={PoolTimePriceingPage}
+        />
+        {/* end PoolTimePriceing */}
       </Switch>
     </Suspense>
   );

@@ -26,7 +26,7 @@ export function PhoneTypesPage({ history }) {
       history.push("/general/phoneTypes/updateStatus");
     },
   };
-  
+
   return (
     <PhoneTypesUIProvider phoneTypesUIEvents={phoneTypesUIEvents}>
       <PhoneTypesLoadingDialog />

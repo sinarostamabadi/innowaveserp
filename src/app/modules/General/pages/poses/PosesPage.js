@@ -26,7 +26,7 @@ export function PosesPage({ history }) {
       history.push("/general/poses/updateStatus");
     },
   };
-  
+
   return (
     <PosesUIProvider posesUIEvents={posesUIEvents}>
       <PosesLoadingDialog />

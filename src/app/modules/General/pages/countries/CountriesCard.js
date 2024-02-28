@@ -7,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { CountriesTable } from "./countries-table/CountriesTable";
-import { useCountriesUIContext, CountriesUIConsumer } from "./CountriesUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useCountriesUIContext,
+  CountriesUIConsumer,
+} from "./CountriesUIContext";
+import { useTranslation } from "react-i18next";
 
 export function CountriesCard() {
   const { t } = useTranslation();
@@ -23,7 +26,8 @@ export function CountriesCard() {
       newCountryButtonClick: countriesUIContext.newCountryButtonClick,
       openDeleteCountriesDialog: countriesUIContext.openDeleteCountriesDialog,
       openEditCountryPage: countriesUIContext.openEditCountryPage,
-      openUpdateCountriesStatusDialog: countriesUIContext.openUpdateCountriesStatusDialog,
+      openUpdateCountriesStatusDialog:
+        countriesUIContext.openUpdateCountriesStatusDialog,
       openFetchCountriesDialog: countriesUIContext.openFetchCountriesDialog,
     };
   }, [countriesUIContext]);

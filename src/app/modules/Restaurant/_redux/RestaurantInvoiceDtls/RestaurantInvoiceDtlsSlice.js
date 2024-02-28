@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialRestaurantInvoiceDtlsState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const restaurantInvoiceDtlsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getRestaurantInvoiceDtlById  
+    // getRestaurantInvoiceDtlById
     restaurantInvoiceDtlFetched: (state, action) => {
       state.actionsLoading = false;
-      state.restaurantInvoiceDtlForEdit = action.payload.restaurantInvoiceDtlForEdit;
+      state.restaurantInvoiceDtlForEdit =
+        action.payload.restaurantInvoiceDtlForEdit;
       state.error = null;
     },
-    // findRestaurantInvoiceDtls  
+    // findRestaurantInvoiceDtls
     restaurantInvoiceDtlsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const restaurantInvoiceDtlsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createRestaurantInvoiceDtl  
+    // createRestaurantInvoiceDtl
     restaurantInvoiceDtlCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateRestaurantInvoiceDtl  
+    // updateRestaurantInvoiceDtl
     restaurantInvoiceDtlUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.RestaurantInvoiceDtlId === action.payload.restaurantInvoiceDtl.RestaurantInvoiceDtlId) {
+        if (
+          entity.RestaurantInvoiceDtlId ===
+          action.payload.restaurantInvoiceDtl.RestaurantInvoiceDtlId
+        ) {
           return action.payload.restaurantInvoiceDtl;
         }
         return entity;
       });
     },
-    // deleteRestaurantInvoiceDtl  
+    // deleteRestaurantInvoiceDtl
     restaurantInvoiceDtlDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.RestaurantInvoiceDtlId !== action.payload.RestaurantInvoiceDtlId  
+        (el) =>
+          el.RestaurantInvoiceDtlId !== action.payload.RestaurantInvoiceDtlId
       );
     },
-    // deleteRestaurantInvoiceDtls  
+    // deleteRestaurantInvoiceDtls
     restaurantInvoiceDtlsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.RestaurantInvoiceDtlId)  
+        (el) => !action.payload.ids.includes(el.RestaurantInvoiceDtlId)
       );
     },
-    // restaurantInvoiceDtlsUpdateState  
+    // restaurantInvoiceDtlsUpdateState
     restaurantInvoiceDtlsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -1,17 +1,19 @@
-
 import * as requestFromServer from "./userInRolesesCrud";
 import { userInRolesesSlice, callTypes } from "./userInRolesesSlice";
 const { actions } = userInRolesesSlice;
 export const fetchUserInRoleses = (queryParams) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.list }));
-  return requestFromServer  
-    .findUserInRoleses(queryParams)  
+  return requestFromServer
+    .findUserInRoleses(queryParams)
     .then((response) => {
       const { Items, TotalCount } = response.data;
       dispatch(
-        actions.userInRolesesFetched({ totalCount: TotalCount, entities: Items })  
+        actions.userInRolesesFetched({
+          totalCount: TotalCount,
+          entities: Items,
+        })
       );
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't find userInRoleses";
       dispatch(actions.catchError({ error, callType: callTypes.list }));
@@ -19,15 +21,17 @@ export const fetchUserInRoleses = (queryParams) => (dispatch) => {
 };
 export const fetchUserInRoles = (id) => (dispatch) => {
   if (!id) {
-    return dispatch(actions.userInRolesFetched({ userInRolesForEdit: undefined }));
+    return dispatch(
+      actions.userInRolesFetched({ userInRolesForEdit: undefined })
+    );
   }
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .getUserInRolesById(id)  
+  return requestFromServer
+    .getUserInRolesById(id)
     .then((response) => {
       const userInRoles = response.data;
       dispatch(actions.userInRolesFetched({ userInRolesForEdit: userInRoles }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't find userInRoles";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -35,11 +39,11 @@ export const fetchUserInRoles = (id) => (dispatch) => {
 };
 export const deleteUserInRoles = (id) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .deleteUserInRoles(id)  
+  return requestFromServer
+    .deleteUserInRoles(id)
     .then((response) => {
       dispatch(actions.userInRolesDeleted({ id }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't delete userInRoles";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -48,12 +52,12 @@ export const deleteUserInRoles = (id) => (dispatch) => {
 };
 export const createUserInRoles = (userInRolesForCreation) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .createUserInRoles(userInRolesForCreation)  
+  return requestFromServer
+    .createUserInRoles(userInRolesForCreation)
     .then((response) => {
       const userInRoles = response.data;
       dispatch(actions.userInRolesCreated(userInRoles));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't create userInRoles";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -62,11 +66,11 @@ export const createUserInRoles = (userInRolesForCreation) => (dispatch) => {
 };
 export const updateUserInRoles = (userInRoles) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .updateUserInRoles(userInRoles)  
+  return requestFromServer
+    .updateUserInRoles(userInRoles)
     .then((response) => {
       dispatch(actions.userInRolesUpdated({ userInRoles }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't update userInRoles";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -75,11 +79,11 @@ export const updateUserInRoles = (userInRoles) => (dispatch) => {
 };
 export const updateUserInRolesesStatus = (ids, status) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .updateStatusForUserInRoleses(ids, status)  
+  return requestFromServer
+    .updateStatusForUserInRoleses(ids, status)
     .then(() => {
       dispatch(actions.userInRolesesStatusUpdated({ ids, status }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't update userInRoleses status";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
@@ -87,14 +91,14 @@ export const updateUserInRolesesStatus = (ids, status) => (dispatch) => {
 };
 export const deleteUserInRoleses = (ids) => (dispatch) => {
   dispatch(actions.startCall({ callType: callTypes.action }));
-  return requestFromServer  
-    .deleteUserInRoleses(ids)  
+  return requestFromServer
+    .deleteUserInRoleses(ids)
     .then(() => {
       dispatch(actions.userInRolesesDeleted({ ids }));
-    })  
+    })
     .catch((error) => {
       error.clientMessage = "Can't delete userInRoleses";
       dispatch(actions.catchError({ error, callType: callTypes.action }));
       throw error;
     });
-}; 
+};

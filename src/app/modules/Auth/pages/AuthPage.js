@@ -13,7 +13,7 @@ import moment from "jalali-moment";
 export function AuthPage() {
   const { t } = useTranslation();
   const year = moment.from().locale(process.env.REACT_APP_DATE).format("yyyy");
-  
+
   return (
     <>
       <div className="d-flex flex-column flex-root">
@@ -34,9 +34,9 @@ export function AuthPage() {
               {/* start:: Aside header */}
               <Link to="/" className="flex-column-auto mt-5">
                 <img
+                  style={{width:"250px"}}
                   alt="Logo"
-                  className=""
-                  src={toAbsoluteUrl("/media/logos/logo.png")}
+                  src={toAbsoluteUrl("/media/logos/logo-gray.png")}
                 />
               </Link>
               {/* end:: Aside header */}

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { TownshipModel } from "../../../../../core/_models/General/TownshipModel";
@@ -30,7 +29,7 @@ export function TownshipsUIProvider({ townshipsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function TownshipsUIProvider({ townshipsUIEvents, children }) {
     openDeleteTownshipDialog: townshipsUIEvents.openDeleteTownshipDialog,
     openDeleteTownshipsDialog: townshipsUIEvents.openDeleteTownshipsDialog,
     openFetchTownshipsDialog: townshipsUIEvents.openFetchTownshipsDialog,
-    openUpdateTownshipsStatusDialog: townshipsUIEvents.openUpdateTownshipsStatusDialog,
+    openUpdateTownshipsStatusDialog:
+      townshipsUIEvents.openUpdateTownshipsStatusDialog,
   };
   return (
-    <TownshipsUIContext.Provider value={value}>{children}</TownshipsUIContext.Provider>
+    <TownshipsUIContext.Provider value={value}>
+      {children}
+    </TownshipsUIContext.Provider>
   );
 }

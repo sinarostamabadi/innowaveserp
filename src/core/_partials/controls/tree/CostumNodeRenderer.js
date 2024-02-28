@@ -82,16 +82,16 @@ class NodeRendererDefault extends Component {
         <Tooltip id="accounts-edit-tooltip">
           <div style={{direction: "rtl", textAlign: "right", width: "180px"}}>
             <ul className="m-0 p-0 pl-3">
-              <li><b>فعال: </b>{boolToString(node.object.Active)}</li>
-              <li><b>نوع: </b>{node.object.AccountType.Title}</li>
-              <li><b>سال شروع: </b>{node.object.StartYearId}</li>
-              <li><b>تراز سود: </b>{boolToString(node.object.TarazSood)}</li>
-              <li><b>دارای پروژه: </b>{boolToString(node.object.HasProject)}</li>
-              <li><b>دارای حساب شناور: </b>{boolToString(node.object.HasAccountFloating)}</li>
-              <li><b>دارای مرکز هزینه: </b>{boolToString(node.object.HasCostCenter)}</li>
-              <li><b>دارای ارز: </b>{boolToString(node.object.HasCurrency)}</li>
-              <li><b>دارای مرجع: </b>{boolToString(node.object.HasReference)}</li>
-              <li><b>دارای قرارداد: </b>{boolToString(node.object.HasContract)}</li>
+              <li><b>IsActive: </b>{boolToString(node.object.Active)}</li>
+              <li><b>Type: </b>{node.object.AccountType.Title}</li>
+              <li><b>Start year: </b>{node.object.StartYearId}</li>
+              <li><b>profit balance: </b>{boolToString(node.object.TarazSood)}</li>
+              <li><b>Has project: </b>{boolToString(node.object.HasProject)}</li>
+              <li><b>Has floating account: </b>{boolToString(node.object.HasAccountFloating)}</li>
+              <li><b>Has cost center: </b>{boolToString(node.object.HasCostCenter)}</li>
+              <li><b>Has currency: </b>{boolToString(node.object.HasCurrency)}</li>
+              <li><b>With reference: </b>{boolToString(node.object.HasReference)}</li>
+              <li><b>Have contract: </b>{boolToString(node.object.HasContract)}</li>
             </ul>
           </div>
         </Tooltip>

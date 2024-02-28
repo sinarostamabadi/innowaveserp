@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBuyRequestDetailsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const buyRequestDetailsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBuyRequestDetailById  
+    // getBuyRequestDetailById
     buyRequestDetailFetched: (state, action) => {
       state.actionsLoading = false;
       state.buyRequestDetailForEdit = action.payload.buyRequestDetailForEdit;
       state.error = null;
     },
-    // findBuyRequestDetails  
+    // findBuyRequestDetails
     buyRequestDetailsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const buyRequestDetailsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBuyRequestDetail  
+    // createBuyRequestDetail
     buyRequestDetailCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBuyRequestDetail  
+    // updateBuyRequestDetail
     buyRequestDetailUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BuyRequestDetailId === action.payload.buyRequestDetail.BuyRequestDetailId) {
+        if (
+          entity.BuyRequestDetailId ===
+          action.payload.buyRequestDetail.BuyRequestDetailId
+        ) {
           return action.payload.buyRequestDetail;
         }
         return entity;
       });
     },
-    // deleteBuyRequestDetail  
+    // deleteBuyRequestDetail
     buyRequestDetailDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BuyRequestDetailId !== action.payload.BuyRequestDetailId  
+        (el) => el.BuyRequestDetailId !== action.payload.BuyRequestDetailId
       );
     },
-    // deleteBuyRequestDetails  
+    // deleteBuyRequestDetails
     buyRequestDetailsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BuyRequestDetailId)  
+        (el) => !action.payload.ids.includes(el.BuyRequestDetailId)
       );
     },
-    // buyRequestDetailsUpdateState  
+    // buyRequestDetailsUpdateState
     buyRequestDetailsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

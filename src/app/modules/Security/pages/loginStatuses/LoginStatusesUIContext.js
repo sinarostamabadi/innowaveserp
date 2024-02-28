@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { LoginStatusModel } from "../../../../../core/_models/Security/LoginStatusModel";
@@ -30,7 +29,7 @@ export function LoginStatusesUIProvider({ loginStatusesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -40,12 +39,18 @@ export function LoginStatusesUIProvider({ loginStatusesUIEvents, children }) {
     dataModel: LoginStatusModel,
     newLoginStatusButtonClick: loginStatusesUIEvents.newLoginStatusButtonClick,
     openEditLoginStatusPage: loginStatusesUIEvents.openEditLoginStatusPage,
-    openDeleteLoginStatusDialog: loginStatusesUIEvents.openDeleteLoginStatusDialog,
-    openDeleteLoginStatusesDialog: loginStatusesUIEvents.openDeleteLoginStatusesDialog,
-    openFetchLoginStatusesDialog: loginStatusesUIEvents.openFetchLoginStatusesDialog,
-    openUpdateLoginStatusesStatusDialog: loginStatusesUIEvents.openUpdateLoginStatusesStatusDialog,
+    openDeleteLoginStatusDialog:
+      loginStatusesUIEvents.openDeleteLoginStatusDialog,
+    openDeleteLoginStatusesDialog:
+      loginStatusesUIEvents.openDeleteLoginStatusesDialog,
+    openFetchLoginStatusesDialog:
+      loginStatusesUIEvents.openFetchLoginStatusesDialog,
+    openUpdateLoginStatusesStatusDialog:
+      loginStatusesUIEvents.openUpdateLoginStatusesStatusDialog,
   };
   return (
-    <LoginStatusesUIContext.Provider value={value}>{children}</LoginStatusesUIContext.Provider>
+    <LoginStatusesUIContext.Provider value={value}>
+      {children}
+    </LoginStatusesUIContext.Provider>
   );
 }

@@ -8,7 +8,11 @@ export function ActionsColumnFormatter(
   cellContent,
   row,
   rowIndex,
-  { openEditRestaurantMenuItemPriceDialog, openDeleteRestaurantMenuItemPriceDialog, t }
+  {
+    openEditRestaurantMenuItemPriceDialog,
+    openDeleteRestaurantMenuItemPriceDialog,
+    t,
+  }
 ) {
   return (
     <>
@@ -17,7 +21,9 @@ export function ActionsColumnFormatter(
       >
         <a
           className="btn btn-icon btn-light btn-hover-primary btn-sm mx-1"
-          onClick={() => openEditRestaurantMenuItemPriceDialog(row.RestaurantMenuItemPriceId)}
+          onClick={() =>
+            openEditRestaurantMenuItemPriceDialog(row.RestaurantMenuItemPriceId)
+          }
         >
           <span className="svg-icon svg-icon-md svg-icon-primary">
             <SVG
@@ -36,7 +42,9 @@ export function ActionsColumnFormatter(
         <a
           className="btn btn-icon btn-light btn-hover-danger btn-sm"
           onClick={() => {
-            openDeleteRestaurantMenuItemPriceDialog(row.RestaurantMenuItemPriceId);
+            openDeleteRestaurantMenuItemPriceDialog(
+              row.RestaurantMenuItemPriceId
+            );
           }}
         >
           <span className="svg-icon svg-icon-md svg-icon-danger">

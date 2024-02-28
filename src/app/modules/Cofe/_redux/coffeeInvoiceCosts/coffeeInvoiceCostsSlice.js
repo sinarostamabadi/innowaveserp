@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialCoffeeInvoiceCostsState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const coffeeInvoiceCostsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCoffeeInvoiceCostById  
+    // getCoffeeInvoiceCostById
     coffeeInvoiceCostFetched: (state, action) => {
       state.actionsLoading = false;
       state.coffeeInvoiceCostForEdit = action.payload.coffeeInvoiceCostForEdit;
       state.error = null;
     },
-    // findCoffeeInvoiceCosts  
+    // findCoffeeInvoiceCosts
     coffeeInvoiceCostsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const coffeeInvoiceCostsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCoffeeInvoiceCost  
+    // createCoffeeInvoiceCost
     coffeeInvoiceCostCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCoffeeInvoiceCost  
+    // updateCoffeeInvoiceCost
     coffeeInvoiceCostUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.CoffeeInvoiceCostId === action.payload.coffeeInvoiceCost.CoffeeInvoiceCostId) {
+        if (
+          entity.CoffeeInvoiceCostId ===
+          action.payload.coffeeInvoiceCost.CoffeeInvoiceCostId
+        ) {
           return action.payload.coffeeInvoiceCost;
         }
         return entity;
       });
     },
-    // deleteCoffeeInvoiceCost  
+    // deleteCoffeeInvoiceCost
     coffeeInvoiceCostDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CoffeeInvoiceCostId !== action.payload.CoffeeInvoiceCostId  
+        (el) => el.CoffeeInvoiceCostId !== action.payload.CoffeeInvoiceCostId
       );
     },
-    // deleteCoffeeInvoiceCosts  
+    // deleteCoffeeInvoiceCosts
     coffeeInvoiceCostsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CoffeeInvoiceCostId)  
+        (el) => !action.payload.ids.includes(el.CoffeeInvoiceCostId)
       );
     },
-    // coffeeInvoiceCostsUpdateState  
+    // coffeeInvoiceCostsUpdateState
     coffeeInvoiceCostsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

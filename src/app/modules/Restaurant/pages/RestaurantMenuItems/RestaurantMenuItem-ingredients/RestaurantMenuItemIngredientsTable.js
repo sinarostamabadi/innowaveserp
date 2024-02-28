@@ -10,14 +10,20 @@ import { useTranslation } from "react-i18next";
 
 export function RestaurantMenuItemIngredientsTable() {
   const { t } = useTranslation();
-  const restaurantMenuItemIngredientsUIContext = useRestaurantMenuItemIngredientsUIContext();
+  const restaurantMenuItemIngredientsUIContext =
+    useRestaurantMenuItemIngredientsUIContext();
   const restaurantMenuItemIngredientsUIProps = useMemo(() => {
     return {
-      restaurantMenuItemIngredients: restaurantMenuItemIngredientsUIContext.restaurantMenuItemIngredients,
-      activeRestaurantMenuItemIngredients: restaurantMenuItemIngredientsUIContext.activeRestaurantMenuItemIngredients,
-      openEditRestaurantMenuItemIngredientDialog: restaurantMenuItemIngredientsUIContext.openEditRestaurantMenuItemIngredientDialog,
-      openSerialRestaurantMenuItemIngredientDialog: restaurantMenuItemIngredientsUIContext.openSerialRestaurantMenuItemIngredientDialog,
-      openDeleteRestaurantMenuItemIngredientDialog: restaurantMenuItemIngredientsUIContext.openDeleteRestaurantMenuItemIngredientDialog,
+      restaurantMenuItemIngredients:
+        restaurantMenuItemIngredientsUIContext.restaurantMenuItemIngredients,
+      activeRestaurantMenuItemIngredients:
+        restaurantMenuItemIngredientsUIContext.activeRestaurantMenuItemIngredients,
+      openEditRestaurantMenuItemIngredientDialog:
+        restaurantMenuItemIngredientsUIContext.openEditRestaurantMenuItemIngredientDialog,
+      openSerialRestaurantMenuItemIngredientDialog:
+        restaurantMenuItemIngredientsUIContext.openSerialRestaurantMenuItemIngredientDialog,
+      openDeleteRestaurantMenuItemIngredientDialog:
+        restaurantMenuItemIngredientsUIContext.openDeleteRestaurantMenuItemIngredientDialog,
     };
   }, [restaurantMenuItemIngredientsUIContext]);
 
@@ -47,8 +53,10 @@ export function RestaurantMenuItemIngredientsTable() {
       text: t("Common.Action"),
       formatter: ActionsColumnFormatter,
       formatExtraData: {
-        openEditRestaurantMenuItemIngredientDialog: restaurantMenuItemIngredientsUIProps.openEditRestaurantMenuItemIngredientDialog,
-        openDeleteRestaurantMenuItemIngredientDialog: restaurantMenuItemIngredientsUIProps.openDeleteRestaurantMenuItemIngredientDialog,
+        openEditRestaurantMenuItemIngredientDialog:
+          restaurantMenuItemIngredientsUIProps.openEditRestaurantMenuItemIngredientDialog,
+        openDeleteRestaurantMenuItemIngredientDialog:
+          restaurantMenuItemIngredientsUIProps.openDeleteRestaurantMenuItemIngredientDialog,
         t: t,
       },
       classes: "text-right pr-0",
@@ -69,14 +77,23 @@ export function RestaurantMenuItemIngredientsTable() {
         remote
         keyField="RestaurantMenuItemIngredientId"
         data={
-          restaurantMenuItemIngredientsUIProps.activeRestaurantMenuItemIngredients === null
+          restaurantMenuItemIngredientsUIProps.activeRestaurantMenuItemIngredients ===
+          null
             ? []
             : restaurantMenuItemIngredientsUIProps.activeRestaurantMenuItemIngredients
         }
         columns={columns}
       >
-        <PleaseWaitMessage entities={restaurantMenuItemIngredientsUIProps.activeRestaurantMenuItemIngredients} />
-        <NoRecordsFoundMessage entities={restaurantMenuItemIngredientsUIProps.activeRestaurantMenuItemIngredients} />
+        <PleaseWaitMessage
+          entities={
+            restaurantMenuItemIngredientsUIProps.activeRestaurantMenuItemIngredients
+          }
+        />
+        <NoRecordsFoundMessage
+          entities={
+            restaurantMenuItemIngredientsUIProps.activeRestaurantMenuItemIngredients
+          }
+        />
       </BootstrapTable>
     </>
   );

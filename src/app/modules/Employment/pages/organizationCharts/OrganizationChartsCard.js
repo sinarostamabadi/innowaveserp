@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { OrganizationChartsTable } from "./organizationCharts-table/OrganizationChartsTable";
-import { useOrganizationChartsUIContext, OrganizationChartsUIConsumer } from "./OrganizationChartsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useOrganizationChartsUIContext,
+  OrganizationChartsUIConsumer,
+} from "./OrganizationChartsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function OrganizationChartsCard() {
   const { t } = useTranslation();
@@ -21,24 +23,31 @@ export function OrganizationChartsCard() {
       ids: organizationChartsUIContext.ids,
       queryParams: organizationChartsUIContext.queryParams,
       setQueryParams: organizationChartsUIContext.setQueryParams,
-      newOrganizationChartButtonClick: organizationChartsUIContext.newOrganizationChartButtonClick,
-      openDeleteOrganizationChartsDialog: organizationChartsUIContext.openDeleteOrganizationChartsDialog,
-      openEditOrganizationChartPage: organizationChartsUIContext.openEditOrganizationChartPage,
-      openUpdateOrganizationChartsStatusDialog: organizationChartsUIContext.openUpdateOrganizationChartsStatusDialog,
-      openFetchOrganizationChartsDialog: organizationChartsUIContext.openFetchOrganizationChartsDialog,
+      newOrganizationChartButtonClick:
+        organizationChartsUIContext.newOrganizationChartButtonClick,
+      openDeleteOrganizationChartsDialog:
+        organizationChartsUIContext.openDeleteOrganizationChartsDialog,
+      openEditOrganizationChartPage:
+        organizationChartsUIContext.openEditOrganizationChartPage,
+      openUpdateOrganizationChartsStatusDialog:
+        organizationChartsUIContext.openUpdateOrganizationChartsStatusDialog,
+      openFetchOrganizationChartsDialog:
+        organizationChartsUIContext.openFetchOrganizationChartsDialog,
     };
   }, [organizationChartsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("OrganizationChart.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("OrganizationChart.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={organizationChartsUIProps.newOrganizationChartButtonClick}
           >
-            {t("OrganizationChart.Entity")} {' '} {t("Common.New")}
+            {t("OrganizationChart.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

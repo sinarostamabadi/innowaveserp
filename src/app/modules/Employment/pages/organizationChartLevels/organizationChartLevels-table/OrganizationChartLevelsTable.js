@@ -24,7 +24,8 @@ import { useTranslation } from "react-i18next";
 export function OrganizationChartLevelsTable() {
   const { t } = useTranslation();
 
-  const organizationChartLevelsUIContext = useOrganizationChartLevelsUIContext();
+  const organizationChartLevelsUIContext =
+    useOrganizationChartLevelsUIContext();
 
   const organizationChartLevelsUIProps = useMemo(() => {
     return {
@@ -32,8 +33,10 @@ export function OrganizationChartLevelsTable() {
       setIds: organizationChartLevelsUIContext.setIds,
       queryParams: organizationChartLevelsUIContext.queryParams,
       setQueryParams: organizationChartLevelsUIContext.setQueryParams,
-      openEditOrganizationChartLevelPage: organizationChartLevelsUIContext.openEditOrganizationChartLevelPage,
-      openDeleteOrganizationChartLevelDialog: organizationChartLevelsUIContext.openDeleteOrganizationChartLevelDialog,
+      openEditOrganizationChartLevelPage:
+        organizationChartLevelsUIContext.openEditOrganizationChartLevelPage,
+      openDeleteOrganizationChartLevelDialog:
+        organizationChartLevelsUIContext.openDeleteOrganizationChartLevelDialog,
     };
   }, [organizationChartLevelsUIContext]);
 
@@ -50,7 +53,11 @@ export function OrganizationChartLevelsTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     organizationChartLevelsUIProps.setIds([]);
-    dispatch(actions.fetchOrganizationChartLevels(organizationChartLevelsUIProps.queryParams));
+    dispatch(
+      actions.fetchOrganizationChartLevels(
+        organizationChartLevelsUIProps.queryParams
+      )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [organizationChartLevelsUIProps.queryParams, dispatch]);
 
@@ -72,8 +79,10 @@ export function OrganizationChartLevelsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditOrganizationChartLevelPage: organizationChartLevelsUIProps.openEditOrganizationChartLevelPage,
-        openDeleteOrganizationChartLevelDialog: organizationChartLevelsUIProps.openDeleteOrganizationChartLevelDialog,
+        openEditOrganizationChartLevelPage:
+          organizationChartLevelsUIProps.openEditOrganizationChartLevelPage,
+        openDeleteOrganizationChartLevelDialog:
+          organizationChartLevelsUIProps.openDeleteOrganizationChartLevelDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { RestaurantInvoiceCostModel } from "../../../../../core/_models/Restaurant/RestaurantInvoiceCostModel";
@@ -10,9 +9,13 @@ export function useRestaurantInvoiceCostsUIContext() {
   return useContext(RestaurantInvoiceCostsUIContext);
 }
 
-export const RestaurantInvoiceCostsUIConsumer = RestaurantInvoiceCostsUIContext.Consumer;
+export const RestaurantInvoiceCostsUIConsumer =
+  RestaurantInvoiceCostsUIContext.Consumer;
 
-export function RestaurantInvoiceCostsUIProvider({ restaurantInvoiceCostsUIEvents, children }) {
+export function RestaurantInvoiceCostsUIProvider({
+  restaurantInvoiceCostsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(RestaurantInvoiceCostModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function RestaurantInvoiceCostsUIProvider({ restaurantInvoiceCostsUIEvent
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function RestaurantInvoiceCostsUIProvider({ restaurantInvoiceCostsUIEvent
     setIds,
     setQueryParams,
     dataModel: RestaurantInvoiceCostModel,
-    newRestaurantInvoiceCostButtonClick: restaurantInvoiceCostsUIEvents.newRestaurantInvoiceCostButtonClick,
-    openEditRestaurantInvoiceCostPage: restaurantInvoiceCostsUIEvents.openEditRestaurantInvoiceCostPage,
-    openDeleteRestaurantInvoiceCostDialog: restaurantInvoiceCostsUIEvents.openDeleteRestaurantInvoiceCostDialog,
-    openDeleteRestaurantInvoiceCostsDialog: restaurantInvoiceCostsUIEvents.openDeleteRestaurantInvoiceCostsDialog,
-    openFetchRestaurantInvoiceCostsDialog: restaurantInvoiceCostsUIEvents.openFetchRestaurantInvoiceCostsDialog,
-    openUpdateRestaurantInvoiceCostsStatusDialog: restaurantInvoiceCostsUIEvents.openUpdateRestaurantInvoiceCostsStatusDialog,
+    newRestaurantInvoiceCostButtonClick:
+      restaurantInvoiceCostsUIEvents.newRestaurantInvoiceCostButtonClick,
+    openEditRestaurantInvoiceCostPage:
+      restaurantInvoiceCostsUIEvents.openEditRestaurantInvoiceCostPage,
+    openDeleteRestaurantInvoiceCostDialog:
+      restaurantInvoiceCostsUIEvents.openDeleteRestaurantInvoiceCostDialog,
+    openDeleteRestaurantInvoiceCostsDialog:
+      restaurantInvoiceCostsUIEvents.openDeleteRestaurantInvoiceCostsDialog,
+    openFetchRestaurantInvoiceCostsDialog:
+      restaurantInvoiceCostsUIEvents.openFetchRestaurantInvoiceCostsDialog,
+    openUpdateRestaurantInvoiceCostsStatusDialog:
+      restaurantInvoiceCostsUIEvents.openUpdateRestaurantInvoiceCostsStatusDialog,
   };
   return (
-    <RestaurantInvoiceCostsUIContext.Provider value={value}>{children}</RestaurantInvoiceCostsUIContext.Provider>
+    <RestaurantInvoiceCostsUIContext.Provider value={value}>
+      {children}
+    </RestaurantInvoiceCostsUIContext.Provider>
   );
 }

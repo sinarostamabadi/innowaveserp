@@ -26,11 +26,13 @@ export function PersonSpecialDaysPage({ history }) {
     },
   };
   return (
-    <PersonSpecialDaysUIProvider personSpecialDaysUIEvents={personSpecialDaysUIEvents}>
+    <PersonSpecialDaysUIProvider
+      personSpecialDaysUIEvents={personSpecialDaysUIEvents}
+    >
       <PersonSpecialDaysLoadingDialog />
       <Route path="/General/personSpecialDays/:id/delete">
         {({ history, match }) => (
-          <PersonSpecialDayDeleteDialog  
+          <PersonSpecialDayDeleteDialog
             show={match != null}
             id={match && match.params.id}
             onHide={() => {

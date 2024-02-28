@@ -29,7 +29,7 @@ export function AccountFloatingEdit({
     AccountFloatingId: undefined,
     Title: "",
     Code: "",
-    Des: ""
+    Des: "",
   };
 
   // Subheader
@@ -55,7 +55,9 @@ export function AccountFloatingEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("AccountFloating.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("AccountFloating.Entity");
 
     if (accountFloatingForEdit && id) {
       _title = t("Common.Edit") + " " + accountFloatingForEdit.Title;

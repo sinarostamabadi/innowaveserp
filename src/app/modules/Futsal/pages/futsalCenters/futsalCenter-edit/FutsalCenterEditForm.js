@@ -4,7 +4,11 @@ import * as Yup from "yup";
 import { Input } from "../../../../../../core/_partials/controls";
 import { useTranslation } from "react-i18next";
 
-export function FutsalCenterEditForm({ futsalCenter, btnRef, saveFutsalCenter }) {
+export function FutsalCenterEditForm({
+  futsalCenter,
+  btnRef,
+  saveFutsalCenter,
+}) {
   const { t } = useTranslation();
 
   const FutsalCenterEditSchema = Yup.object().shape({
@@ -14,7 +18,7 @@ export function FutsalCenterEditForm({ futsalCenter, btnRef, saveFutsalCenter })
       .required(t("err.IsRequired", { 0: t("FutsalCenter.TitleFa") })),
     TitleEn: Yup.string()
       .min(2, t("err.Min", { 0: 2 }))
-      .max(100, t("err.Max", { 0: 100 }))
+      .max(100, t("err.Max", { 0: 100 })),
   });
 
   return (

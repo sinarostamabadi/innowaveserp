@@ -26,7 +26,7 @@ export function LinesPage({ history }) {
       history.push("/bowling/lines/updateStatus");
     },
   };
-  
+
   return (
     <LinesUIProvider linesUIEvents={linesUIEvents}>
       <LinesLoadingDialog />

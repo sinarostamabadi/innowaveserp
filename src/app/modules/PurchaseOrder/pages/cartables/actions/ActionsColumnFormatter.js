@@ -40,16 +40,21 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </> */}
     <OverlayTrigger
-      overlay={<Tooltip id="buyRequests-delete-tooltip">{t("Common.Show")}</Tooltip>}
+      overlay={
+        <Tooltip id="buyRequests-delete-tooltip">{t("Common.Show")}</Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm"
         onClick={() => show(row.BuyRequestId)}
       >
         <span className="svg-icon svg-icon-md svg-icon-primary">
-          <SVG src={toAbsoluteUrl("/media/svg/icons/General/Visible.svg")} title={t("Common.Show")}/>
+          <SVG
+            src={toAbsoluteUrl("/media/svg/icons/General/Visible.svg")}
+            title={t("Common.Show")}
+          />
         </span>
       </a>
-    </OverlayTrigger>    
+    </OverlayTrigger>
   </>
 );

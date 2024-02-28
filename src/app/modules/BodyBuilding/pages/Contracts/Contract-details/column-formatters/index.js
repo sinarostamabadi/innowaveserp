@@ -1,2 +1,2 @@
-export * from './ActionsColumnFormatter'
-export * from './TotalCountColumnFormatter'
+export * from "./ActionsColumnFormatter";
+export * from "./TotalCountColumnFormatter";

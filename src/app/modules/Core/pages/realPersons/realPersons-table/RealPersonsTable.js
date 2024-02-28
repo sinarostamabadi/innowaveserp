@@ -19,12 +19,12 @@ import {
   getConfig,
   getFields,
 } from "../../../../../../core/_models/ModelDescriber";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import { DateFaColumnFormatter } from "../../../../../../core/_formatters";
 
 export default function RealPersonsTable() {
-  const {t} = useTranslation();
-  
+  const { t } = useTranslation();
+
   const realPersonsUIContext = useRealPersonsUIContext();
   const realPersonsUIProps = useMemo(() => {
     return {
@@ -101,12 +101,13 @@ export default function RealPersonsTable() {
     },
     {
       dataField: "action",
-      text: "عملیات",
+      text: "Actions",
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditRealPersonPage: realPersonsUIProps.openEditRealPersonPage,
-        openDeleteRealPersonDialog:realPersonsUIProps.openDeleteRealPersonDialog,
-        t: t
+        openDeleteRealPersonDialog:
+          realPersonsUIProps.openDeleteRealPersonDialog,
+        t: t,
       },
       classes: "text-right pr-0",
       headerClasses: "text-right pr-3",

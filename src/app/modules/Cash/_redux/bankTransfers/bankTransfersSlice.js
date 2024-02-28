@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBankTransfersState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const bankTransfersSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBankTransferById  
+    // getBankTransferById
     bankTransferFetched: (state, action) => {
       state.actionsLoading = false;
       state.bankTransferForEdit = action.payload.bankTransferForEdit;
       state.error = null;
     },
-    // findBankTransfers  
+    // findBankTransfers
     bankTransfersFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,42 @@ export const bankTransfersSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBankTransfer  
+    // createBankTransfer
     bankTransferCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBankTransfer  
+    // updateBankTransfer
     bankTransferUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BankTransferId === action.payload.bankTransfer.BankTransferId) {
+        if (
+          entity.BankTransferId === action.payload.bankTransfer.BankTransferId
+        ) {
           return action.payload.bankTransfer;
         }
         return entity;
       });
     },
-    // deleteBankTransfer  
+    // deleteBankTransfer
     bankTransferDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BankTransferId !== action.payload.BankTransferId  
+        (el) => el.BankTransferId !== action.payload.BankTransferId
       );
     },
-    // deleteBankTransfers  
+    // deleteBankTransfers
     bankTransfersDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BankTransferId)  
+        (el) => !action.payload.ids.includes(el.BankTransferId)
       );
     },
-    // bankTransfersUpdateState  
+    // bankTransfersUpdateState
     bankTransfersStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

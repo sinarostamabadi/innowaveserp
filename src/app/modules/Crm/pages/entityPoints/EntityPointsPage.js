@@ -26,7 +26,7 @@ export function EntityPointsPage({ history }) {
       history.push("/crm/entityPoints/updateStatus");
     },
   };
-  
+
   return (
     <EntityPointsUIProvider entityPointsUIEvents={entityPointsUIEvents}>
       <EntityPointsLoadingDialog />

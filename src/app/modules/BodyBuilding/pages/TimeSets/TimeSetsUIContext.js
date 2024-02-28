@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BodyBuildingTimeSetModel } from "../../../../../core/_models/BodyBuilding/BodyBuildingTimeSetModel";
@@ -30,7 +29,7 @@ export function TimeSetsUIProvider({ timeSetsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function TimeSetsUIProvider({ timeSetsUIEvents, children }) {
     openDeleteTimeSetDialog: timeSetsUIEvents.openDeleteTimeSetDialog,
     openDeleteTimeSetsDialog: timeSetsUIEvents.openDeleteTimeSetsDialog,
     openFetchTimeSetsDialog: timeSetsUIEvents.openFetchTimeSetsDialog,
-    openUpdateTimeSetsStatusDialog: timeSetsUIEvents.openUpdateTimeSetsStatusDialog,
+    openUpdateTimeSetsStatusDialog:
+      timeSetsUIEvents.openUpdateTimeSetsStatusDialog,
   };
   return (
-    <TimeSetsUIContext.Provider value={value}>{children}</TimeSetsUIContext.Provider>
+    <TimeSetsUIContext.Provider value={value}>
+      {children}
+    </TimeSetsUIContext.Provider>
   );
 }

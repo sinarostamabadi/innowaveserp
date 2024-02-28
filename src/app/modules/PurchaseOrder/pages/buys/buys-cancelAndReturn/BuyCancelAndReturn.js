@@ -12,7 +12,7 @@ import { useBuysUIContext } from "../BuysUIContext";
 import { useTranslation } from "react-i18next";
 import { ObjectToFormData } from "src/core/_helpers";
 
-  export function BuyCancelAndReturn({id, show, onHide }) {
+export function BuyCancelAndReturn({ id, show, onHide }) {
   const { t } = useTranslation();
   const [error, setError] = useState(null);
 
@@ -39,10 +39,11 @@ import { ObjectToFormData } from "src/core/_helpers";
   useEffect(() => {
     if (!id) {
       onHide();
-    }else{
-      setInvoiceModel(
-        {...entities.filter((model) => model.BuyId == id)[0], IsCanceled: true}
-      );
+    } else {
+      setInvoiceModel({
+        ...entities.filter((model) => model.BuyId == id)[0],
+        IsCanceled: true,
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
@@ -51,12 +52,13 @@ import { ObjectToFormData } from "src/core/_helpers";
   useEffect(() => {}, [isLoading, dispatch]);
   const updateBuy = () => {
     // server request for deleting buy by id
-    dispatch(actions.updateBuy(id, ObjectToFormData(invoiceModel),()=>{
-      onHide(true);
-    }))
+    dispatch(
+      actions.updateBuy(id, ObjectToFormData(invoiceModel), () => {
+        onHide(true);
+      })
+    )
       .then(() => {
         // refresh list after deletion
-        
         // closing delete modal
       })
       .catch((err) => {
@@ -67,7 +69,7 @@ import { ObjectToFormData } from "src/core/_helpers";
   return (
     <Modal
       show={show}
-      onHide={()=> onHide(false)}
+      onHide={() => onHide(false)}
       aria-labelledby="example-modal-sizes-title-lg"
     >
       {isLoading && <ModalProgressBar variant="query" />}

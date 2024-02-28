@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialFutsalTimePriceingState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const futsalTimePriceingSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getFutsalTimePriceingById  
+    // getFutsalTimePriceingById
     futsalTimePriceingFetched: (state, action) => {
       state.actionsLoading = false;
-      state.futsalTimePriceingForEdit = action.payload.futsalTimePriceingForEdit;
+      state.futsalTimePriceingForEdit =
+        action.payload.futsalTimePriceingForEdit;
       state.error = null;
     },
-    // findFutsalTimePriceing  
+    // findFutsalTimePriceing
     futsalTimePriceingsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,43 @@ export const futsalTimePriceingSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createFutsalTimePriceing  
+    // createFutsalTimePriceing
     futsalTimePriceingCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateFutsalTimePriceing  
+    // updateFutsalTimePriceing
     futsalTimePriceingUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.FutsalTimePriceingId === action.payload.futsalTimePriceing.FutsalTimePriceingId) {
+        if (
+          entity.FutsalTimePriceingId ===
+          action.payload.futsalTimePriceing.FutsalTimePriceingId
+        ) {
           return action.payload.futsalTimePriceing;
         }
         return entity;
       });
     },
-    // deleteFutsalTimePriceing  
+    // deleteFutsalTimePriceing
     futsalTimePriceingDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.FutsalTimePriceingId !== action.payload.FutsalTimePriceingId  
+        (el) => el.FutsalTimePriceingId !== action.payload.FutsalTimePriceingId
       );
     },
-    // deleteFutsalTimePriceing  
+    // deleteFutsalTimePriceing
     futsalTimePriceingsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.FutsalTimePriceingId)  
+        (el) => !action.payload.ids.includes(el.FutsalTimePriceingId)
       );
     },
-    // futsalTimePriceingUpdateState  
+    // futsalTimePriceingUpdateState
     futsalTimePriceingStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

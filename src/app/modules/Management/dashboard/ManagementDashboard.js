@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 import { ServiceAccessShow } from "../../../../core/_partials/custom/service-access-show/ServiceAccessShow";
 
 export function ManagementDashboard() {
-  const {t} = useTranslation();
-  
+  const { t } = useTranslation();
+
   return (
     <>
       <Row

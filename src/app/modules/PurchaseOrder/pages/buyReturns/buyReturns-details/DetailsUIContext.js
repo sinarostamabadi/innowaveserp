@@ -25,7 +25,10 @@ export function useDetailsUIContext() {
 export const DetailsUIConsumer = DetailsUIContext.Consumer;
 
 export const DetailsUIProvider = forwardRef(
-  ({ currentBuyReturnId, children, detail, btnRef, editable, updateBuyReturn }, ref) => {
+  (
+    { currentBuyReturnId, children, detail, btnRef, editable, updateBuyReturn },
+    ref
+  ) => {
     const { t } = useTranslation();
     const [serialErrors, setSerialErrors] = useState("");
     console.log("detail > ", detail);
@@ -35,9 +38,10 @@ export const DetailsUIProvider = forwardRef(
           fn(
             details.map((d) => {
               let xx = {
-                BuyReturnDetailId: d.BuyReturnDetailId.toString().indexOf("temp") > -1
-                  ? null
-                  : d.BuyReturnDetailId,
+                BuyReturnDetailId:
+                  d.BuyReturnDetailId.toString().indexOf("temp") > -1
+                    ? null
+                    : d.BuyReturnDetailId,
                 ProductId: d.ProductId,
                 ProductUnitId: d.ProductUnitId,
                 Amount: d.Amount && +d.Amount,
@@ -135,18 +139,24 @@ export const DetailsUIProvider = forwardRef(
 
       updateBuyReturn({
         DetailCount:
-          !!details && details.length > 0 && details.filter((x) => x.IsDeleted == false).length > 0 
+          !!details &&
+          details.length > 0 &&
+          details.filter((x) => x.IsDeleted == false).length > 0
             ? details.filter((x) => x.IsDeleted == false).length
             : 0,
         SumPrice:
-          !!details && details.length > 0 && details.filter((x) => x.IsDeleted == false).length > 0
+          !!details &&
+          details.length > 0 &&
+          details.filter((x) => x.IsDeleted == false).length > 0
             ? details
                 .filter((x) => x.IsDeleted == false)
                 .map((x) => +x.Amount * +x.Price)
                 .reduce((a, b) => a + b)
             : 0,
         SumPayable:
-          !!details && details.length > 0 && details.filter((x) => x.IsDeleted == false).length > 0 
+          !!details &&
+          details.length > 0 &&
+          details.filter((x) => x.IsDeleted == false).length > 0
             ? details
                 .filter((x) => x.IsDeleted == false)
                 .map(
@@ -210,9 +220,8 @@ export const DetailsUIProvider = forwardRef(
       setShowDeleteDetailDialog(false);
     };
 
-    const [showDeleteDetailsDialog, setShowDeleteDetailsDialog] = useState(
-      false
-    );
+    const [showDeleteDetailsDialog, setShowDeleteDetailsDialog] =
+      useState(false);
     const openDeleteDetailsDialog = () => {
       setShowDeleteDetailsDialog(true);
     };
@@ -312,7 +321,8 @@ export const DetailsUIProvider = forwardRef(
     const checkSerial = (serial) => {
       detail = findDetail(selectedItem.BuyReturnDetailId);
       return (
-        detail.BuyReturnSerials.filter((x) => x.SerialNumber == serial).length > 0
+        detail.BuyReturnSerials.filter((x) => x.SerialNumber == serial).length >
+        0
       );
     };
     console.log("details > ", details);

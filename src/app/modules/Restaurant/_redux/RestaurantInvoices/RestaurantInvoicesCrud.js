@@ -62,5 +62,8 @@ export function deleteRestaurantInvoices(ids) {
 
 // DELETE RestaurantInvoices by ids
 export function getReport(restaurantParams) {
-  return axios.post(`${RESTAURANTINVOICES_URL}/GetCashReport`, restaurantParams);
+  return axios.post(
+    `${RESTAURANTINVOICES_URL}/GetCashReport`,
+    restaurantParams
+  );
 }

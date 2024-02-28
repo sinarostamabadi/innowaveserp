@@ -12,7 +12,13 @@ export const ActionsColumnFormatter = (
   { openEditChequeBookPage, openDeleteChequeBookDialog, t }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="chequeBooks-edit-tooltip">{t("Common.ChangeStatus")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="chequeBooks-edit-tooltip">
+          {t("Common.ChangeStatus")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditChequeBookPage(row.ChequeBookId)}

@@ -33,7 +33,8 @@ export function FutsalTimingTable() {
       queryParams: futsalTimingUIContext.queryParams,
       setQueryParams: futsalTimingUIContext.setQueryParams,
       openEditFutsalTimingPage: futsalTimingUIContext.openEditFutsalTimingPage,
-      openDeleteFutsalTimingDialog: futsalTimingUIContext.openDeleteFutsalTimingDialog,
+      openDeleteFutsalTimingDialog:
+        futsalTimingUIContext.openDeleteFutsalTimingDialog,
     };
   }, [futsalTimingUIContext]);
 
@@ -73,7 +74,8 @@ export function FutsalTimingTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditFutsalTimingPage: futsalTimingUIProps.openEditFutsalTimingPage,
-        openDeleteFutsalTimingDialog: futsalTimingUIProps.openDeleteFutsalTimingDialog,
+        openDeleteFutsalTimingDialog:
+          futsalTimingUIProps.openDeleteFutsalTimingDialog,
         t: t,
       },
       classes: "text-right pr-0",

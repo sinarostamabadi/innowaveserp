@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { SetPricingModel } from "../../../../../core/_models/Bowling/SetPricingModel";
@@ -16,7 +15,7 @@ export function SetPricingUIProvider({ setPricingUIEvents, children }) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(SetPricingModel).initialFilter
   );
-  
+
   const [ids, setIds] = useState([]);
   const setQueryParams = useCallback((nextQueryParams) => {
     setQueryParamsBase((prevQueryParams) => {
@@ -29,7 +28,7 @@ export function SetPricingUIProvider({ setPricingUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -41,9 +40,12 @@ export function SetPricingUIProvider({ setPricingUIEvents, children }) {
     openEditSetPricingPage: setPricingUIEvents.openEditSetPricingPage,
     openDeleteSetPricingDialog: setPricingUIEvents.openDeleteSetPricingDialog,
     openFetchSetPricingDialog: setPricingUIEvents.openFetchSetPricingDialog,
-    openUpdateSetPricingStatusDialog: setPricingUIEvents.openUpdateSetPricingStatusDialog,
+    openUpdateSetPricingStatusDialog:
+      setPricingUIEvents.openUpdateSetPricingStatusDialog,
   };
   return (
-    <SetPricingUIContext.Provider value={value}>{children}</SetPricingUIContext.Provider>
+    <SetPricingUIContext.Provider value={value}>
+      {children}
+    </SetPricingUIContext.Provider>
   );
 }

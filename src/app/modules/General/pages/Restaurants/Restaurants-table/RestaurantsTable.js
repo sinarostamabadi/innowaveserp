@@ -33,7 +33,8 @@ export function RestaurantsTable() {
       queryParams: restaurantsUIContext.queryParams,
       setQueryParams: restaurantsUIContext.setQueryParams,
       openEditRestaurantPage: restaurantsUIContext.openEditRestaurantPage,
-      openDeleteRestaurantDialog: restaurantsUIContext.openDeleteRestaurantDialog,
+      openDeleteRestaurantDialog:
+        restaurantsUIContext.openDeleteRestaurantDialog,
     };
   }, [restaurantsUIContext]);
 
@@ -73,7 +74,8 @@ export function RestaurantsTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditRestaurantPage: restaurantsUIProps.openEditRestaurantPage,
-        openDeleteRestaurantDialog: restaurantsUIProps.openDeleteRestaurantDialog,
+        openDeleteRestaurantDialog:
+          restaurantsUIProps.openDeleteRestaurantDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -4,7 +4,11 @@ import * as Yup from "yup";
 import { Input } from "../../../../../../core/_partials/controls";
 import { useTranslation } from "react-i18next";
 
-export function EmployeeContractEditForm({ employeeContract, btnRef, saveEmployeeContract }) {
+export function EmployeeContractEditForm({
+  employeeContract,
+  btnRef,
+  saveEmployeeContract,
+}) {
   const { t } = useTranslation();
 
   const EmployeeContractEditSchema = Yup.object().shape({
@@ -14,7 +18,7 @@ export function EmployeeContractEditForm({ employeeContract, btnRef, saveEmploye
       .required(t("err.IsRequired", { 0: t("EmployeeContract.TitleFa") })),
     TitleEn: Yup.string()
       .min(2, t("err.Min", { 0: 2 }))
-      .max(100, t("err.Max", { 0: 100 }))
+      .max(100, t("err.Max", { 0: 100 })),
   });
 
   return (

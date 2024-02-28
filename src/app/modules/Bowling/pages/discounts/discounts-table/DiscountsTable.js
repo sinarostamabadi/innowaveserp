@@ -20,7 +20,10 @@ import {
   getFields,
 } from "../../../../../../core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
-import { DateFaColumnFormatter, TimeColumnFormatter } from "../../../../../../core/_formatters";
+import {
+  DateFaColumnFormatter,
+  TimeColumnFormatter,
+} from "../../../../../../core/_formatters";
 
 export function DiscountsTable() {
   const { t } = useTranslation();
@@ -50,12 +53,11 @@ export function DiscountsTable() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    
     discountsUIProps.setIds([]);
     dispatch(actions.fetchDiscounts(discountsUIProps.queryParams));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [discountsUIProps.queryParams, dispatch]);
-  
+
   const columns = [
     {
       dataField: "DiscountType.TitleFa",
@@ -80,28 +82,28 @@ export function DiscountsTable() {
       text: t("Discount." + fields.FromDate.display),
       sort: fields.FromDate.sortable,
       sortCaret: sortCaret,
-      formatter: DateFaColumnFormatter
+      formatter: DateFaColumnFormatter,
     },
     {
       dataField: fieldKey.ToDate,
       text: t("Discount." + fields.ToDate.display),
       sort: fields.ToDate.sortable,
       sortCaret: sortCaret,
-      formatter: DateFaColumnFormatter
+      formatter: DateFaColumnFormatter,
     },
     {
       dataField: fieldKey.FromTime,
       text: t("Discount." + fields.FromTime.display),
       sort: fields.FromTime.sortable,
       sortCaret: sortCaret,
-      formatter: TimeColumnFormatter
-    },            
+      formatter: TimeColumnFormatter,
+    },
     {
       dataField: fieldKey.ToTime,
       text: t("Discount." + fields.ToTime.display),
       sort: fields.ToTime.sortable,
       sortCaret: sortCaret,
-      formatter: TimeColumnFormatter
+      formatter: TimeColumnFormatter,
     },
     {
       dataField: "action",

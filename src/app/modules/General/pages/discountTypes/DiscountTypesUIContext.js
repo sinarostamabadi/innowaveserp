@@ -29,7 +29,7 @@ export function DiscountTypesUIProvider({ discountTypesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -37,14 +37,21 @@ export function DiscountTypesUIProvider({ discountTypesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: DiscountTypeModel,
-    newDiscountTypeButtonClick: discountTypesUIEvents.newDiscountTypeButtonClick,
+    newDiscountTypeButtonClick:
+      discountTypesUIEvents.newDiscountTypeButtonClick,
     openEditDiscountTypePage: discountTypesUIEvents.openEditDiscountTypePage,
-    openDeleteDiscountTypeDialog: discountTypesUIEvents.openDeleteDiscountTypeDialog,
-    openDeleteDiscountTypesDialog: discountTypesUIEvents.openDeleteDiscountTypesDialog,
-    openFetchDiscountTypesDialog: discountTypesUIEvents.openFetchDiscountTypesDialog,
-    openUpdateDiscountTypesStatusDialog: discountTypesUIEvents.openUpdateDiscountTypesStatusDialog,
+    openDeleteDiscountTypeDialog:
+      discountTypesUIEvents.openDeleteDiscountTypeDialog,
+    openDeleteDiscountTypesDialog:
+      discountTypesUIEvents.openDeleteDiscountTypesDialog,
+    openFetchDiscountTypesDialog:
+      discountTypesUIEvents.openFetchDiscountTypesDialog,
+    openUpdateDiscountTypesStatusDialog:
+      discountTypesUIEvents.openUpdateDiscountTypesStatusDialog,
   };
   return (
-    <DiscountTypesUIContext.Provider value={value}>{children}</DiscountTypesUIContext.Provider>
+    <DiscountTypesUIContext.Provider value={value}>
+      {children}
+    </DiscountTypesUIContext.Provider>
   );
 }

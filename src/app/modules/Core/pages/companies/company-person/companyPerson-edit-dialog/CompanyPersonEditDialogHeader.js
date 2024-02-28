@@ -21,7 +21,7 @@ export function CompanyPersonEditDialogHeader({ id }) {
   useEffect(() => {
     let _title = id ? "" : t("Common.Create") + " " + t("CompanyPerson.Entity");
     if (companyPersonForEdit && id) {
-      _title = t("Common.Edit") + " " + t("CompanyPerson.Entity") ;
+      _title = t("Common.Edit") + " " + t("CompanyPerson.Entity");
     }
 
     setTitle(_title);

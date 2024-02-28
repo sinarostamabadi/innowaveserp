@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmployeeWorkExperiencesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const employeeWorkExperiencesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmployeeWorkExperienceById  
+    // getEmployeeWorkExperienceById
     employeeWorkExperienceFetched: (state, action) => {
       state.actionsLoading = false;
-      state.employeeWorkExperienceForEdit = action.payload.employeeWorkExperienceForEdit;
+      state.employeeWorkExperienceForEdit =
+        action.payload.employeeWorkExperienceForEdit;
       state.error = null;
     },
-    // findEmployeeWorkExperiences  
+    // findEmployeeWorkExperiences
     employeeWorkExperiencesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,46 +47,53 @@ export const employeeWorkExperiencesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmployeeWorkExperience  
+    // createEmployeeWorkExperience
     employeeWorkExperienceCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmployeeWorkExperience  
+    // updateEmployeeWorkExperience
     employeeWorkExperienceUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.EmployeeWorkExperienceId === action.payload.employeeWorkExperience.EmployeeWorkExperienceId) {
+        if (
+          entity.EmployeeWorkExperienceId ===
+          action.payload.employeeWorkExperience.EmployeeWorkExperienceId
+        ) {
           return action.payload.employeeWorkExperience;
         }
         return entity;
       });
     },
-    // deleteEmployeeWorkExperience  
+    // deleteEmployeeWorkExperience
     employeeWorkExperienceDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EmployeeWorkExperienceId !== action.payload.EmployeeWorkExperienceId  
+        (el) =>
+          el.EmployeeWorkExperienceId !==
+          action.payload.EmployeeWorkExperienceId
       );
     },
-    // deleteEmployeeWorkExperiences  
+    // deleteEmployeeWorkExperiences
     employeeWorkExperiencesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EmployeeWorkExperienceId)  
+        (el) => !action.payload.ids.includes(el.EmployeeWorkExperienceId)
       );
     },
-    // employeeWorkExperiencesUpdateState  
+    // employeeWorkExperiencesUpdateState
     employeeWorkExperiencesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       const { ids, status } = action.payload;
       state.entities = state.entities.map((entity) => {
-        if (ids.findIndex((id) => id === entity.EmployeeWorkExperienceId) > -1) {
+        if (
+          ids.findIndex((id) => id === entity.EmployeeWorkExperienceId) > -1
+        ) {
           entity.status = status;
         }
         return entity;

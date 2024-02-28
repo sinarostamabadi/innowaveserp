@@ -44,10 +44,7 @@ export function PhonesDeleteDialog() {
     dispatch(actions.deletePhones(phonesUIProps.ids)).then(() => {
       // refresh list after deletion
       dispatch(
-        actions.fetchPhones(
-          phonesUIProps.queryParams,
-          phonesUIProps.personId
-        )
+        actions.fetchPhones(phonesUIProps.queryParams, phonesUIProps.personId)
       ).then(() => {
         phonesUIProps.setIds([]);
         phonesUIProps.onHide();
@@ -69,9 +66,7 @@ export function PhonesDeleteDialog() {
       </Modal.Header>
       <Modal.Body>
         {!isLoading && (
-          <span>
-            Are you sure to permanently delete selected phones?
-          </span>
+          <span>Are you sure to permanently delete selected phones?</span>
         )}
         {isLoading && <span>Phones are deleting...</span>}
       </Modal.Body>

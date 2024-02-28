@@ -44,7 +44,8 @@ export function SoldiershipExemptionEdit({
   const { actionsLoading, soldiershipExemptionForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.soldiershipExemptions.actionsLoading,
-      soldiershipExemptionForEdit: state.soldiershipExemptions.soldiershipExemptionForEdit,
+      soldiershipExemptionForEdit:
+        state.soldiershipExemptions.soldiershipExemptionForEdit,
       error: state.soldiershipExemptions.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function SoldiershipExemptionEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("SoldiershipExemption.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("SoldiershipExemption.Entity");
 
     if (soldiershipExemptionForEdit && id) {
       _title = t("Common.Edit") + " " + soldiershipExemptionForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function SoldiershipExemptionEdit({
         .then((arg) => {
           backToSoldiershipExemptionsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateSoldiershipExemption(id, values))
         .then(() => backToSoldiershipExemptionsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

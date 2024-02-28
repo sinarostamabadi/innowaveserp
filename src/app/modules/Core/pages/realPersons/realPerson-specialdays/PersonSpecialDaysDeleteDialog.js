@@ -33,7 +33,10 @@ export function PersonSpecialDaysDeleteDialog() {
 
   // if there weren't selected personSpecialDays we should close modal
   useEffect(() => {
-    if (!personSpecialDaysUIProps.ids || personSpecialDaysUIProps.ids.length === 0) {
+    if (
+      !personSpecialDaysUIProps.ids ||
+      personSpecialDaysUIProps.ids.length === 0
+    ) {
       personSpecialDaysUIProps.onHide();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -41,7 +44,9 @@ export function PersonSpecialDaysDeleteDialog() {
 
   const deletePersonSpecialDays = () => {
     // server request for selected deleting personSpecialDays
-    dispatch(actions.deletePersonSpecialDays(personSpecialDaysUIProps.ids)).then(() => {
+    dispatch(
+      actions.deletePersonSpecialDays(personSpecialDaysUIProps.ids)
+    ).then(() => {
       // refresh list after deletion
       dispatch(
         actions.fetchPersonSpecialDays(

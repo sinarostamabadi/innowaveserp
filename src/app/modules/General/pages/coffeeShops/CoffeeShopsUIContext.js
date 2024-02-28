@@ -29,7 +29,7 @@ export function CoffeeShopsUIProvider({ coffeeShopsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -40,11 +40,15 @@ export function CoffeeShopsUIProvider({ coffeeShopsUIEvents, children }) {
     newCoffeeShopButtonClick: coffeeShopsUIEvents.newCoffeeShopButtonClick,
     openEditCoffeeShopPage: coffeeShopsUIEvents.openEditCoffeeShopPage,
     openDeleteCoffeeShopDialog: coffeeShopsUIEvents.openDeleteCoffeeShopDialog,
-    openDeleteCoffeeShopsDialog: coffeeShopsUIEvents.openDeleteCoffeeShopsDialog,
+    openDeleteCoffeeShopsDialog:
+      coffeeShopsUIEvents.openDeleteCoffeeShopsDialog,
     openFetchCoffeeShopsDialog: coffeeShopsUIEvents.openFetchCoffeeShopsDialog,
-    openUpdateCoffeeShopsStatusDialog: coffeeShopsUIEvents.openUpdateCoffeeShopsStatusDialog,
+    openUpdateCoffeeShopsStatusDialog:
+      coffeeShopsUIEvents.openUpdateCoffeeShopsStatusDialog,
   };
   return (
-    <CoffeeShopsUIContext.Provider value={value}>{children}</CoffeeShopsUIContext.Provider>
+    <CoffeeShopsUIContext.Provider value={value}>
+      {children}
+    </CoffeeShopsUIContext.Provider>
   );
 }

@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialOrganizationChartLevelsState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const organizationChartLevelsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getOrganizationChartLevelById  
+    // getOrganizationChartLevelById
     organizationChartLevelFetched: (state, action) => {
       state.actionsLoading = false;
-      state.organizationChartLevelForEdit = action.payload.organizationChartLevelForEdit;
+      state.organizationChartLevelForEdit =
+        action.payload.organizationChartLevelForEdit;
       state.error = null;
     },
-    // findOrganizationChartLevels  
+    // findOrganizationChartLevels
     organizationChartLevelsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,46 +47,53 @@ export const organizationChartLevelsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createOrganizationChartLevel  
+    // createOrganizationChartLevel
     organizationChartLevelCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateOrganizationChartLevel  
+    // updateOrganizationChartLevel
     organizationChartLevelUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.OrganizationChartLevelId === action.payload.organizationChartLevel.OrganizationChartLevelId) {
+        if (
+          entity.OrganizationChartLevelId ===
+          action.payload.organizationChartLevel.OrganizationChartLevelId
+        ) {
           return action.payload.organizationChartLevel;
         }
         return entity;
       });
     },
-    // deleteOrganizationChartLevel  
+    // deleteOrganizationChartLevel
     organizationChartLevelDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.OrganizationChartLevelId !== action.payload.OrganizationChartLevelId  
+        (el) =>
+          el.OrganizationChartLevelId !==
+          action.payload.OrganizationChartLevelId
       );
     },
-    // deleteOrganizationChartLevels  
+    // deleteOrganizationChartLevels
     organizationChartLevelsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.OrganizationChartLevelId)  
+        (el) => !action.payload.ids.includes(el.OrganizationChartLevelId)
       );
     },
-    // organizationChartLevelsUpdateState  
+    // organizationChartLevelsUpdateState
     organizationChartLevelsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       const { ids, status } = action.payload;
       state.entities = state.entities.map((entity) => {
-        if (ids.findIndex((id) => id === entity.OrganizationChartLevelId) > -1) {
+        if (
+          ids.findIndex((id) => id === entity.OrganizationChartLevelId) > -1
+        ) {
           entity.status = status;
         }
         return entity;

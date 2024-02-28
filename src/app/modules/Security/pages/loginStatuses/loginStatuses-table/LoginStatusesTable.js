@@ -33,7 +33,8 @@ export function LoginStatusesTable() {
       queryParams: loginStatusesUIContext.queryParams,
       setQueryParams: loginStatusesUIContext.setQueryParams,
       openEditLoginStatusPage: loginStatusesUIContext.openEditLoginStatusPage,
-      openDeleteLoginStatusDialog: loginStatusesUIContext.openDeleteLoginStatusDialog,
+      openDeleteLoginStatusDialog:
+        loginStatusesUIContext.openDeleteLoginStatusDialog,
     };
   }, [loginStatusesUIContext]);
 
@@ -73,7 +74,8 @@ export function LoginStatusesTable() {
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
         openEditLoginStatusPage: loginStatusesUIProps.openEditLoginStatusPage,
-        openDeleteLoginStatusDialog: loginStatusesUIProps.openDeleteLoginStatusDialog,
+        openDeleteLoginStatusDialog:
+          loginStatusesUIProps.openDeleteLoginStatusDialog,
         t: t,
       },
       classes: "text-right pr-0",

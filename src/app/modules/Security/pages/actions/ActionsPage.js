@@ -26,7 +26,7 @@ export function ActionsPage({ history }) {
       history.push("/security/actions/updateStatus");
     },
   };
-  
+
   return (
     <ActionsUIProvider actionsUIEvents={actionsUIEvents}>
       <ActionsLoadingDialog />

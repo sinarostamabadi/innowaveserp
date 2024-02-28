@@ -15,10 +15,7 @@ import * as columnFormatters from "./column-formatters";
 import { Pagination } from "src/core/_partials/controls";
 import { usePosTransactionsUIContext } from "../PosTransactionsUIContext";
 import { PosTransactionModel } from "src/core/_models/Cash/PosTransactionModel";
-import {
-  getConfig,
-  getFields,
-} from "src/core/_models/ModelDescriber";
+import { getConfig, getFields } from "src/core/_models/ModelDescriber";
 import { useTranslation } from "react-i18next";
 
 export function PosTransactionsTable() {
@@ -32,8 +29,10 @@ export function PosTransactionsTable() {
       setIds: posTransactionsUIContext.setIds,
       queryParams: posTransactionsUIContext.queryParams,
       setQueryParams: posTransactionsUIContext.setQueryParams,
-      openEditPosTransactionPage: posTransactionsUIContext.openEditPosTransactionPage,
-      openDeletePosTransactionDialog: posTransactionsUIContext.openDeletePosTransactionDialog,
+      openEditPosTransactionPage:
+        posTransactionsUIContext.openEditPosTransactionPage,
+      openDeletePosTransactionDialog:
+        posTransactionsUIContext.openDeletePosTransactionDialog,
     };
   }, [posTransactionsUIContext]);
 
@@ -150,8 +149,10 @@ export function PosTransactionsTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditPosTransactionPage: posTransactionsUIProps.openEditPosTransactionPage,
-        openDeletePosTransactionDialog: posTransactionsUIProps.openDeletePosTransactionDialog,
+        openEditPosTransactionPage:
+          posTransactionsUIProps.openEditPosTransactionPage,
+        openDeletePosTransactionDialog:
+          posTransactionsUIProps.openDeletePosTransactionDialog,
         t: t,
       },
       classes: "text-right pr-0",

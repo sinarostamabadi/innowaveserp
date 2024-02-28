@@ -26,9 +26,11 @@ export function FutsalReservePricesPage({ history }) {
       history.push("/futsal/futsalReservePrices/updateStatus");
     },
   };
-  
+
   return (
-    <FutsalReservePricesUIProvider futsalReservePricesUIEvents={futsalReservePricesUIEvents}>
+    <FutsalReservePricesUIProvider
+      futsalReservePricesUIEvents={futsalReservePricesUIEvents}
+    >
       <FutsalReservePricesLoadingDialog />
       <Route path="/futsal/futsalReservePrices/:id/delete">
         {({ history, match }) => (

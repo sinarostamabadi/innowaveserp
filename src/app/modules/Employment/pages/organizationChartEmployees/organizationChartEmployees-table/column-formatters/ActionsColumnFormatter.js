@@ -9,13 +9,25 @@ export const ActionsColumnFormatter = (
   cellContent,
   row,
   rowIndex,
-  { openEditOrganizationChartEmployeePage, openDeleteOrganizationChartEmployeeDialog, t }
+  {
+    openEditOrganizationChartEmployeePage,
+    openDeleteOrganizationChartEmployeeDialog,
+    t,
+  }
 ) => (
   <>
-    <OverlayTrigger overlay={<Tooltip id="organizationChartEmployees-edit-tooltip">{t("Common.Edit")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="organizationChartEmployees-edit-tooltip">
+          {t("Common.Edit")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-        onClick={() => openEditOrganizationChartEmployeePage(row.OrganizationChartEmployeeId)}
+        onClick={() =>
+          openEditOrganizationChartEmployeePage(row.OrganizationChartEmployeeId)
+        }
       >
         <span className="svg-icon svg-icon-md svg-icon-primary">
           <SVG
@@ -26,11 +38,19 @@ export const ActionsColumnFormatter = (
     </OverlayTrigger>
     <> </>
     <OverlayTrigger
-      overlay={<Tooltip id="organizationChartEmployees-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="organizationChartEmployees-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteOrganizationChartEmployeeDialog(row.OrganizationChartEmployeeId)}
+        onClick={() =>
+          openDeleteOrganizationChartEmployeeDialog(
+            row.OrganizationChartEmployeeId
+          )
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

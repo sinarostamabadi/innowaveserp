@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBodyBuildingReservesState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const bodyBuildingReservesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBodyBuildingReserveById  
+    // getBodyBuildingReserveById
     bodyBuildingReserveFetched: (state, action) => {
       state.actionsLoading = false;
-      state.bodyBuildingReserveForEdit = action.payload.bodyBuildingReserveForEdit;
+      state.bodyBuildingReserveForEdit =
+        action.payload.bodyBuildingReserveForEdit;
       state.error = null;
     },
-    // findBodyBuildingReserves  
+    // findBodyBuildingReserves
     bodyBuildingReservesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,44 @@ export const bodyBuildingReservesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBodyBuildingReserve  
+    // createBodyBuildingReserve
     bodyBuildingReserveCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBodyBuildingReserve  
+    // updateBodyBuildingReserve
     bodyBuildingReserveUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BodyBuildingReserveId === action.payload.bodyBuildingReserve.BodyBuildingReserveId) {
+        if (
+          entity.BodyBuildingReserveId ===
+          action.payload.bodyBuildingReserve.BodyBuildingReserveId
+        ) {
           return action.payload.bodyBuildingReserve;
         }
         return entity;
       });
     },
-    // deleteBodyBuildingReserve  
+    // deleteBodyBuildingReserve
     bodyBuildingReserveDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BodyBuildingReserveId !== action.payload.BodyBuildingReserveId  
+        (el) =>
+          el.BodyBuildingReserveId !== action.payload.BodyBuildingReserveId
       );
     },
-    // deleteBodyBuildingReserves  
+    // deleteBodyBuildingReserves
     bodyBuildingReservesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BodyBuildingReserveId)  
+        (el) => !action.payload.ids.includes(el.BodyBuildingReserveId)
       );
     },
-    // bodyBuildingReservesUpdateState  
+    // bodyBuildingReservesUpdateState
     bodyBuildingReservesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -8,8 +7,11 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { UnitConversionsTable } from "./unitConversions-table/UnitConversionsTable";
-import { useUnitConversionsUIContext, UnitConversionsUIConsumer } from "./UnitConversionsUIContext";
-import { useTranslation } from 'react-i18next';
+import {
+  useUnitConversionsUIContext,
+  UnitConversionsUIConsumer,
+} from "./UnitConversionsUIContext";
+import { useTranslation } from "react-i18next";
 
 export function UnitConversionsCard() {
   const { t } = useTranslation();
@@ -21,11 +23,16 @@ export function UnitConversionsCard() {
       ids: unitConversionsUIContext.ids,
       queryParams: unitConversionsUIContext.queryParams,
       setQueryParams: unitConversionsUIContext.setQueryParams,
-      newUnitConversionButtonClick: unitConversionsUIContext.newUnitConversionButtonClick,
-      openDeleteUnitConversionsDialog: unitConversionsUIContext.openDeleteUnitConversionsDialog,
-      openEditUnitConversionPage: unitConversionsUIContext.openEditUnitConversionPage,
-      openUpdateUnitConversionsStatusDialog: unitConversionsUIContext.openUpdateUnitConversionsStatusDialog,
-      openFetchUnitConversionsDialog: unitConversionsUIContext.openFetchUnitConversionsDialog,
+      newUnitConversionButtonClick:
+        unitConversionsUIContext.newUnitConversionButtonClick,
+      openDeleteUnitConversionsDialog:
+        unitConversionsUIContext.openDeleteUnitConversionsDialog,
+      openEditUnitConversionPage:
+        unitConversionsUIContext.openEditUnitConversionPage,
+      openUpdateUnitConversionsStatusDialog:
+        unitConversionsUIContext.openUpdateUnitConversionsStatusDialog,
+      openFetchUnitConversionsDialog:
+        unitConversionsUIContext.openFetchUnitConversionsDialog,
     };
   }, [unitConversionsUIContext]);
 

@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialEmploymentTypesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const employmentTypesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getEmploymentTypeById  
+    // getEmploymentTypeById
     employmentTypeFetched: (state, action) => {
       state.actionsLoading = false;
       state.employmentTypeForEdit = action.payload.employmentTypeForEdit;
       state.error = null;
     },
-    // findEmploymentTypes  
+    // findEmploymentTypes
     employmentTypesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,43 @@ export const employmentTypesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createEmploymentType  
+    // createEmploymentType
     employmentTypeCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateEmploymentType  
+    // updateEmploymentType
     employmentTypeUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.EmploymentTypeId === action.payload.employmentType.EmploymentTypeId) {
+        if (
+          entity.EmploymentTypeId ===
+          action.payload.employmentType.EmploymentTypeId
+        ) {
           return action.payload.employmentType;
         }
         return entity;
       });
     },
-    // deleteEmploymentType  
+    // deleteEmploymentType
     employmentTypeDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.EmploymentTypeId !== action.payload.EmploymentTypeId  
+        (el) => el.EmploymentTypeId !== action.payload.EmploymentTypeId
       );
     },
-    // deleteEmploymentTypes  
+    // deleteEmploymentTypes
     employmentTypesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.EmploymentTypeId)  
+        (el) => !action.payload.ids.includes(el.EmploymentTypeId)
       );
     },
-    // employmentTypesUpdateState  
+    // employmentTypesUpdateState
     employmentTypesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

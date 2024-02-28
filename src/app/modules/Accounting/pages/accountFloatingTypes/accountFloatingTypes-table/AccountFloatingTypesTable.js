@@ -32,8 +32,10 @@ export function AccountFloatingTypesTable() {
       setIds: accountFloatingTypesUIContext.setIds,
       queryParams: accountFloatingTypesUIContext.queryParams,
       setQueryParams: accountFloatingTypesUIContext.setQueryParams,
-      openEditAccountFloatingTypePage: accountFloatingTypesUIContext.openEditAccountFloatingTypePage,
-      openDeleteAccountFloatingTypeDialog: accountFloatingTypesUIContext.openDeleteAccountFloatingTypeDialog,
+      openEditAccountFloatingTypePage:
+        accountFloatingTypesUIContext.openEditAccountFloatingTypePage,
+      openDeleteAccountFloatingTypeDialog:
+        accountFloatingTypesUIContext.openDeleteAccountFloatingTypeDialog,
     };
   }, [accountFloatingTypesUIContext]);
 
@@ -50,7 +52,9 @@ export function AccountFloatingTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     accountFloatingTypesUIProps.setIds([]);
-    dispatch(actions.fetchAccountFloatingTypes(accountFloatingTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchAccountFloatingTypes(accountFloatingTypesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accountFloatingTypesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function AccountFloatingTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditAccountFloatingTypePage: accountFloatingTypesUIProps.openEditAccountFloatingTypePage,
-        openDeleteAccountFloatingTypeDialog: accountFloatingTypesUIProps.openDeleteAccountFloatingTypeDialog,
+        openEditAccountFloatingTypePage:
+          accountFloatingTypesUIProps.openEditAccountFloatingTypePage,
+        openDeleteAccountFloatingTypeDialog:
+          accountFloatingTypesUIProps.openDeleteAccountFloatingTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

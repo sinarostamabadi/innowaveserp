@@ -56,7 +56,9 @@ export function ImportXMLSettingEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("ImportXMLSetting.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("ImportXMLSetting.Entity");
 
     if (importXMLSettingForEdit && id) {
       _title = t("Common.Edit") + " " + importXMLSettingForEdit.TitleFa;
@@ -125,14 +127,14 @@ export function ImportXMLSettingEdit({
           </button>
           {`  `}
           <button
-              type="submit"
-              className="btn btn-primary ml-2"
-              onClick={saveImportXMLSettingClick}
-            >
-              <i className="fa fa-save"></i> {t("Common.Save")}
-            </button>
-          </CardHeaderToolbar>
-        </CardHeader>
+            type="submit"
+            className="btn btn-primary ml-2"
+            onClick={saveImportXMLSettingClick}
+          >
+            <i className="fa fa-save"></i> {t("Common.Save")}
+          </button>
+        </CardHeaderToolbar>
+      </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>

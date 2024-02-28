@@ -8,7 +8,8 @@ export function ReservePersonsToolbar() {
   const reservePersonsUIContext = useReservePersonsUIContext();
   const reservePersonsUIProps = useMemo(() => {
     return {
-      openNewReservePersonDialog: reservePersonsUIContext.openNewReservePersonDialog,
+      openNewReservePersonDialog:
+        reservePersonsUIContext.openNewReservePersonDialog,
       clearPersons: reservePersonsUIContext.clearPersons,
     };
   }, [reservePersonsUIContext]);

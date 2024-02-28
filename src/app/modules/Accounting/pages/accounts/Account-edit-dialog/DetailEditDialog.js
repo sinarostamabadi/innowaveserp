@@ -43,7 +43,7 @@ export function DetailEditDialog() {
       detailsUIProps.onHide();
     }
   };
-  
+
   return (
     <Modal
       show={detailsUIProps.show}
@@ -54,7 +54,11 @@ export function DetailEditDialog() {
       <DetailEditForm
         saveDetail={saveDetail}
         actionsLoading={actionsLoading}
-        detail={!!detailsUIProps.id ? detailsUIProps.selectedItem.id: detailsUIProps.initDetail}
+        detail={
+          !!detailsUIProps.id
+            ? detailsUIProps.selectedItem.id
+            : detailsUIProps.initDetail
+        }
         onHide={detailsUIProps.onHide}
       />
     </Modal>

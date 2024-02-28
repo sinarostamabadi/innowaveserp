@@ -40,10 +40,10 @@ export function CompanyPersonDeleteDialog() {
   }, [companyPersonsUIProps.id]);
 
   // looking for loading/dispatch
-  useEffect(() => { }, [isLoading, dispatch]);
+  useEffect(() => {}, [isLoading, dispatch]);
 
   const deleteCompanyPerson = () => {
-    companyPersonsUIProps.removeCompanyPerson(companyPersonsUIProps.id)
+    companyPersonsUIProps.removeCompanyPerson(companyPersonsUIProps.id);
     companyPersonsUIProps.onHide();
   };
 
@@ -60,9 +60,7 @@ export function CompanyPersonDeleteDialog() {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {!isLoading && (
-          <span>{t("Common.DeleteQuestion")}</span>
-        )}
+        {!isLoading && <span>{t("Common.DeleteQuestion")}</span>}
         {isLoading && <span>{t("Common.DeleteLoading")}</span>}
       </Modal.Body>
       <Modal.Footer>

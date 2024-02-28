@@ -45,7 +45,8 @@ export function BodyBuildingPriceingEdit({
   const { actionsLoading, bodyBuildingPriceingForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.bodyBuildingPriceing.actionsLoading,
-      bodyBuildingPriceingForEdit: state.bodyBuildingPriceing.bodyBuildingPriceingForEdit,
+      bodyBuildingPriceingForEdit:
+        state.bodyBuildingPriceing.bodyBuildingPriceingForEdit,
       error: state.bodyBuildingPriceing.error,
     }),
     shallowEqual
@@ -56,7 +57,9 @@ export function BodyBuildingPriceingEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("BodyBuildingPriceing.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("BodyBuildingPriceing.Entity");
 
     if (bodyBuildingPriceingForEdit && id) {
       _title = t("Common.Edit") + " " + bodyBuildingPriceingForEdit.TitleFa;
@@ -125,14 +128,14 @@ export function BodyBuildingPriceingEdit({
           </button>
           {`  `}
           <button
-              type="submit"
-              className="btn btn-primary ml-2"
-              onClick={saveBodyBuildingPriceingClick}
-            >
-              <i className="fa fa-save"></i> {t("Common.Save")}
-            </button>
-          </CardHeaderToolbar>
-        </CardHeader>
+            type="submit"
+            className="btn btn-primary ml-2"
+            onClick={saveBodyBuildingPriceingClick}
+          >
+            <i className="fa fa-save"></i> {t("Common.Save")}
+          </button>
+        </CardHeaderToolbar>
+      </CardHeader>
       <CardBody>
         <ul className="nav nav-tabs nav-tabs-line " role="tablist">
           <li className="nav-item" onClick={() => setTab("basic")}>

@@ -7,10 +7,7 @@ import {
 } from "../../../../../core/_partials/controls";
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { peopleTable } from "./people-table/peopleTable";
-import {
-  usepeopleUIContext,
-  peopleUIConsumer,
-} from "./peopleUIContext";
+import { usepeopleUIContext, peopleUIConsumer } from "./peopleUIContext";
 export function peopleCard() {
   const peopleUIContext = usepeopleUIContext();
   const peopleUIProps = useMemo(() => {
@@ -19,10 +16,9 @@ export function peopleCard() {
       queryParams: peopleUIContext.queryParams,
       setQueryParams: peopleUIContext.setQueryParams,
       newPersonButtonClick: peopleUIContext.newPersonButtonClick,
-      openDeletepeopleDialog:  
-        peopleUIContext.openDeletepeopleDialog,
+      openDeletepeopleDialog: peopleUIContext.openDeletepeopleDialog,
       openEditPersonPage: peopleUIContext.openEditPersonPage,
-      openUpdatepeopleStatusDialog:  
+      openUpdatepeopleStatusDialog:
         peopleUIContext.openUpdatepeopleStatusDialog,
       openFetchpeopleDialog: peopleUIContext.openFetchpeopleDialog,
     };
@@ -31,12 +27,12 @@ export function peopleCard() {
     <Card>
       <CardHeader title="EntityTitle">
         <CardHeaderToolbar>
-          <button  
-            type="button"  
-            className="btn btn-primary"  
+          <button
+            type="button"
+            className="btn btn-primary"
             onClick={peopleUIProps.newPersonButtonClick}
           >
-            EntityTitle  
+            EntityTitle
           </button>
         </CardHeaderToolbar>
       </CardHeader>

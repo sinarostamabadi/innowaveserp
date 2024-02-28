@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialProvincesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const provincesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getProvinceById  
+    // getProvinceById
     provinceFetched: (state, action) => {
       state.actionsLoading = false;
       state.provinceForEdit = action.payload.provinceForEdit;
       state.error = null;
     },
-    // findProvinces  
+    // findProvinces
     provincesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const provincesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createProvince  
+    // createProvince
     provinceCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateProvince  
+    // updateProvince
     provinceUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const provincesSlice = createSlice({
         return entity;
       });
     },
-    // deleteProvince  
+    // deleteProvince
     provinceDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.ProvinceId !== action.payload.ProvinceId  
+        (el) => el.ProvinceId !== action.payload.ProvinceId
       );
     },
-    // deleteProvinces  
+    // deleteProvinces
     provincesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.ProvinceId)  
+        (el) => !action.payload.ids.includes(el.ProvinceId)
       );
     },
-    // provincesUpdateState  
+    // provincesUpdateState
     provincesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

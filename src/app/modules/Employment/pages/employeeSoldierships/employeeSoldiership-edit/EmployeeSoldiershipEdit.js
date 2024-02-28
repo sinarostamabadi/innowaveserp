@@ -44,7 +44,8 @@ export function EmployeeSoldiershipEdit({
   const { actionsLoading, employeeSoldiershipForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.employeeSoldierships.actionsLoading,
-      employeeSoldiershipForEdit: state.employeeSoldierships.employeeSoldiershipForEdit,
+      employeeSoldiershipForEdit:
+        state.employeeSoldierships.employeeSoldiershipForEdit,
       error: state.employeeSoldierships.error,
     }),
     shallowEqual
@@ -55,7 +56,9 @@ export function EmployeeSoldiershipEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("EmployeeSoldiership.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("EmployeeSoldiership.Entity");
 
     if (employeeSoldiershipForEdit && id) {
       _title = t("Common.Edit") + " " + employeeSoldiershipForEdit.TitleFa;
@@ -73,11 +76,11 @@ export function EmployeeSoldiershipEdit({
         .then((arg) => {
           backToEmployeeSoldiershipsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateEmployeeSoldiership(id, values))
         .then(() => backToEmployeeSoldiershipsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

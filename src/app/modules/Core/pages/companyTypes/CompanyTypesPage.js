@@ -30,7 +30,7 @@ export function CompanyTypesPage({ history }) {
       <CompanyTypesLoadingDialog />
       <Route path="/Core/companyTypes/:id/delete">
         {({ history, match }) => (
-          <CompanyTypeDeleteDialog  
+          <CompanyTypeDeleteDialog
             show={match != null}
             id={match && match.params.id}
             onHide={() => {

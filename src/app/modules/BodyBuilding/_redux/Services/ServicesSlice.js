@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialServicesState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const servicesSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getServiceById  
+    // getServiceById
     serviceFetched: (state, action) => {
       state.actionsLoading = false;
       state.serviceForEdit = action.payload.serviceForEdit;
       state.error = null;
     },
-    // findServices  
+    // findServices
     servicesFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +46,44 @@ export const servicesSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createService  
+    // createService
     serviceCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateService  
+    // updateService
     serviceUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BodyBuildingServiceId === action.payload.service.BodyBuildingServiceId) {
+        if (
+          entity.BodyBuildingServiceId ===
+          action.payload.service.BodyBuildingServiceId
+        ) {
           return action.payload.service;
         }
         return entity;
       });
     },
-    // deleteService  
+    // deleteService
     serviceDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BodyBuildingServiceId !== action.payload.BodyBuildingServiceId  
+        (el) =>
+          el.BodyBuildingServiceId !== action.payload.BodyBuildingServiceId
       );
     },
-    // deleteServices  
+    // deleteServices
     servicesDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BodyBuildingServiceId)  
+        (el) => !action.payload.ids.includes(el.BodyBuildingServiceId)
       );
     },
-    // servicesUpdateState  
+    // servicesUpdateState
     servicesStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

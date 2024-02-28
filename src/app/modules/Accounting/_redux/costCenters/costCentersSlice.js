@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialCostCentersState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const costCentersSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCostCenterById  
+    // getCostCenterById
     costCenterFetched: (state, action) => {
       state.actionsLoading = false;
       state.costCenterForEdit = action.payload.costCenterForEdit;
       state.error = null;
     },
-    // findCostCenters  
+    // findCostCenters
     costCentersFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,15 +46,15 @@ export const costCentersSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCostCenter  
+    // createCostCenter
     costCenterCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
-      
+
       return;
     },
-    // updateCostCenter  
+    // updateCostCenter
     costCenterUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -68,23 +67,23 @@ export const costCentersSlice = createSlice({
 
       return;
     },
-    // deleteCostCenter  
+    // deleteCostCenter
     costCenterDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CostCenterId !== action.payload.CostCenterId  
+        (el) => el.CostCenterId !== action.payload.CostCenterId
       );
     },
-    // deleteCostCenters  
+    // deleteCostCenters
     costCentersDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CostCenterId)  
+        (el) => !action.payload.ids.includes(el.CostCenterId)
       );
     },
-    // costCentersUpdateState  
+    // costCentersUpdateState
     costCentersStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

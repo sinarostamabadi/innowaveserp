@@ -45,7 +45,8 @@ export function CoffeeInvoiceDiscountEdit({
   const { actionsLoading, coffeeInvoiceDiscountForEdit, error } = useSelector(
     (state) => ({
       actionsLoading: state.coffeeInvoiceDiscounts.actionsLoading,
-      coffeeInvoiceDiscountForEdit: state.coffeeInvoiceDiscounts.coffeeInvoiceDiscountForEdit,
+      coffeeInvoiceDiscountForEdit:
+        state.coffeeInvoiceDiscounts.coffeeInvoiceDiscountForEdit,
       error: state.coffeeInvoiceDiscounts.error,
     }),
     shallowEqual
@@ -56,7 +57,9 @@ export function CoffeeInvoiceDiscountEdit({
   }, [id, dispatch]);
 
   useEffect(() => {
-    let _title = id ? "" : t("Common.Create") + " " + t("CoffeeInvoiceDiscount.Entity");
+    let _title = id
+      ? ""
+      : t("Common.Create") + " " + t("CoffeeInvoiceDiscount.Entity");
 
     if (coffeeInvoiceDiscountForEdit && id) {
       _title = t("Common.Edit") + " " + coffeeInvoiceDiscountForEdit.TitleFa;
@@ -74,11 +77,11 @@ export function CoffeeInvoiceDiscountEdit({
         .then((arg) => {
           backToCoffeeInvoiceDiscountsList();
         })
-        .catch((err) => { });
+        .catch((err) => {});
     } else {
       dispatch(actions.updateCoffeeInvoiceDiscount(id, values))
         .then(() => backToCoffeeInvoiceDiscountsList())
-        .catch((err) => { });
+        .catch((err) => {});
     }
   };
 

@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialBowlingCompetitionsState = {
   listLoading: false,
@@ -33,13 +32,14 @@ export const bowlingCompetitionsSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getBowlingCompetitionById  
+    // getBowlingCompetitionById
     bowlingCompetitionFetched: (state, action) => {
       state.actionsLoading = false;
-      state.bowlingCompetitionForEdit = action.payload.bowlingCompetitionForEdit;
+      state.bowlingCompetitionForEdit =
+        action.payload.bowlingCompetitionForEdit;
       state.error = null;
     },
-    // findBowlingCompetitions  
+    // findBowlingCompetitions
     bowlingCompetitionsFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,40 +47,43 @@ export const bowlingCompetitionsSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createBowlingCompetition  
+    // createBowlingCompetition
     bowlingCompetitionCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateBowlingCompetition  
+    // updateBowlingCompetition
     bowlingCompetitionUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.map((entity) => {
-        if (entity.BowlingCompetitionId === action.payload.bowlingCompetition.BowlingCompetitionId) {
+        if (
+          entity.BowlingCompetitionId ===
+          action.payload.bowlingCompetition.BowlingCompetitionId
+        ) {
           return action.payload.bowlingCompetition;
         }
         return entity;
       });
     },
-    // deleteBowlingCompetition  
+    // deleteBowlingCompetition
     bowlingCompetitionDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.BowlingCompetitionId !== action.payload.BowlingCompetitionId  
+        (el) => el.BowlingCompetitionId !== action.payload.BowlingCompetitionId
       );
     },
-    // deleteBowlingCompetitions  
+    // deleteBowlingCompetitions
     bowlingCompetitionsDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.BowlingCompetitionId)  
+        (el) => !action.payload.ids.includes(el.BowlingCompetitionId)
       );
     },
-    // bowlingCompetitionsUpdateState  
+    // bowlingCompetitionsUpdateState
     bowlingCompetitionsStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

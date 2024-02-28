@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { ContractTypeModel } from "../../../../../core/_models/Employment/ContractTypeModel";
@@ -30,7 +29,7 @@ export function ContractTypesUIProvider({ contractTypesUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +37,21 @@ export function ContractTypesUIProvider({ contractTypesUIEvents, children }) {
     setIds,
     setQueryParams,
     dataModel: ContractTypeModel,
-    newContractTypeButtonClick: contractTypesUIEvents.newContractTypeButtonClick,
+    newContractTypeButtonClick:
+      contractTypesUIEvents.newContractTypeButtonClick,
     openEditContractTypePage: contractTypesUIEvents.openEditContractTypePage,
-    openDeleteContractTypeDialog: contractTypesUIEvents.openDeleteContractTypeDialog,
-    openDeleteContractTypesDialog: contractTypesUIEvents.openDeleteContractTypesDialog,
-    openFetchContractTypesDialog: contractTypesUIEvents.openFetchContractTypesDialog,
-    openUpdateContractTypesStatusDialog: contractTypesUIEvents.openUpdateContractTypesStatusDialog,
+    openDeleteContractTypeDialog:
+      contractTypesUIEvents.openDeleteContractTypeDialog,
+    openDeleteContractTypesDialog:
+      contractTypesUIEvents.openDeleteContractTypesDialog,
+    openFetchContractTypesDialog:
+      contractTypesUIEvents.openFetchContractTypesDialog,
+    openUpdateContractTypesStatusDialog:
+      contractTypesUIEvents.openUpdateContractTypesStatusDialog,
   };
   return (
-    <ContractTypesUIContext.Provider value={value}>{children}</ContractTypesUIContext.Provider>
+    <ContractTypesUIContext.Provider value={value}>
+      {children}
+    </ContractTypesUIContext.Provider>
   );
 }

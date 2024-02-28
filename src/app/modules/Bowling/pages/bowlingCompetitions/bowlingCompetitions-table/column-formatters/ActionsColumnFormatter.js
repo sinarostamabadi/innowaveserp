@@ -17,14 +17,24 @@ export const ActionsColumnFormatter = (
     >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm"
-        onClick={() => window.open(`/bowling/bowlingCompetitions/${row.BowlingCompetitionId}/standing`)}
+        onClick={() =>
+          window.open(
+            `/bowling/bowlingCompetitions/${row.BowlingCompetitionId}/standing`
+          )
+        }
       >
         <span className="svg-icon svg-icon-md svg-icon-primary">
           <SVG src={toAbsoluteUrl("/media/svg/icons/Devices/Display2.svg")} />
         </span>
       </a>
     </OverlayTrigger>
-    <OverlayTrigger overlay={<Tooltip id="bowlingCompetitions-edit-tooltip">{t("Common.Show")}</Tooltip>}>
+    <OverlayTrigger
+      overlay={
+        <Tooltip id="bowlingCompetitions-edit-tooltip">
+          {t("Common.Show")}
+        </Tooltip>
+      }
+    >
       <a
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => openEditBowlingCompetitionPage(row.BowlingCompetitionId)}
@@ -37,11 +47,17 @@ export const ActionsColumnFormatter = (
       </a>
     </OverlayTrigger>
     <OverlayTrigger
-      overlay={<Tooltip id="bowlingCompetitions-delete-tooltip">{t("Common.Delete")}</Tooltip>}
+      overlay={
+        <Tooltip id="bowlingCompetitions-delete-tooltip">
+          {t("Common.Delete")}
+        </Tooltip>
+      }
     >
       <a
         className="btn btn-icon btn-light btn-hover-danger btn-sm"
-        onClick={() => openDeleteBowlingCompetitionDialog(row.BowlingCompetitionId)}
+        onClick={() =>
+          openDeleteBowlingCompetitionDialog(row.BowlingCompetitionId)
+        }
       >
         <i className="fas fa-trash-alt text-danger"></i>
       </a>

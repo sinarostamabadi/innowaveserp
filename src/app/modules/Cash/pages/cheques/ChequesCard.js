@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { ChequesTable } from "./cheques-table/ChequesTable";
 import { useChequesUIContext, ChequesUIConsumer } from "./ChequesUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function ChequesCard() {
   const { t } = useTranslation();
@@ -24,21 +23,22 @@ export function ChequesCard() {
       newChequeButtonClick: chequesUIContext.newChequeButtonClick,
       openDeleteChequesDialog: chequesUIContext.openDeleteChequesDialog,
       openEditChequePage: chequesUIContext.openEditChequePage,
-      openUpdateChequesStatusDialog: chequesUIContext.openUpdateChequesStatusDialog,
+      openUpdateChequesStatusDialog:
+        chequesUIContext.openUpdateChequesStatusDialog,
       openFetchChequesDialog: chequesUIContext.openFetchChequesDialog,
     };
   }, [chequesUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("Cheque.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("Cheque.Entity")}>
         <CardHeaderToolbar>
           <button
             type="button"
             className="btn btn-primary"
             onClick={chequesUIProps.newChequeButtonClick}
           >
-            {t("Cheque.Entity")} {' '} {t("Common.New")}
+            {t("Cheque.Entity")} {t("Common.New")}
           </button>
         </CardHeaderToolbar>
       </CardHeader>

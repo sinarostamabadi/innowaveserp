@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { BuySerialModel } from "../../../../../core/_models/PurchaseOrder/BuySerialModel";
@@ -30,7 +29,7 @@ export function BuySerialsUIProvider({ buySerialsUIEvents, children }) {
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -43,9 +42,12 @@ export function BuySerialsUIProvider({ buySerialsUIEvents, children }) {
     openDeleteBuySerialDialog: buySerialsUIEvents.openDeleteBuySerialDialog,
     openDeleteBuySerialsDialog: buySerialsUIEvents.openDeleteBuySerialsDialog,
     openFetchBuySerialsDialog: buySerialsUIEvents.openFetchBuySerialsDialog,
-    openUpdateBuySerialsStatusDialog: buySerialsUIEvents.openUpdateBuySerialsStatusDialog,
+    openUpdateBuySerialsStatusDialog:
+      buySerialsUIEvents.openUpdateBuySerialsStatusDialog,
   };
   return (
-    <BuySerialsUIContext.Provider value={value}>{children}</BuySerialsUIContext.Provider>
+    <BuySerialsUIContext.Provider value={value}>
+      {children}
+    </BuySerialsUIContext.Provider>
   );
 }

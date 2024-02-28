@@ -21,7 +21,7 @@ export function CreditEditDialogHeader({ id }) {
   useEffect(() => {
     let _title = id ? "" : t("Common.Create") + " " + t("CashDocument.Credit");
     if (id) {
-      _title = t("Common.Edit") + " " + t("CashDocument.Credit") ;
+      _title = t("Common.Edit") + " " + t("CashDocument.Credit");
     }
 
     setTitle(_title);

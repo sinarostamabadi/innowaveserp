@@ -1,4 +1,3 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 const initialCodingState = {
   listLoading: false,
@@ -33,13 +32,13 @@ export const codingSlice = createSlice({
         state.actionsLoading = true;
       }
     },
-    // getCodingById  
+    // getCodingById
     codingFetched: (state, action) => {
       state.actionsLoading = false;
       state.codingForEdit = action.payload.codingForEdit;
       state.error = null;
     },
-    // findCoding  
+    // findCoding
     codingFetched: (state, action) => {
       const { entities, totalCount } = action.payload;
       state.listLoading = false;
@@ -47,13 +46,13 @@ export const codingSlice = createSlice({
       state.entities = entities;
       state.totalCount = totalCount;
     },
-    // createCoding  
+    // createCoding
     codingCreated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;
       state.entities.push(action.payload);
     },
-    // updateCoding  
+    // updateCoding
     codingUpdated: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
@@ -64,23 +63,23 @@ export const codingSlice = createSlice({
         return entity;
       });
     },
-    // deleteCoding  
+    // deleteCoding
     codingDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => el.CodingId !== action.payload.CodingId  
+        (el) => el.CodingId !== action.payload.CodingId
       );
     },
-    // deleteCoding  
+    // deleteCoding
     codingDeleted: (state, action) => {
       state.error = null;
       state.actionsLoading = false;
       state.entities = state.entities.filter(
-        (el) => !action.payload.ids.includes(el.CodingId)  
+        (el) => !action.payload.ids.includes(el.CodingId)
       );
     },
-    // codingUpdateState  
+    // codingUpdateState
     codingStatusUpdated: (state, action) => {
       state.actionsLoading = false;
       state.error = null;

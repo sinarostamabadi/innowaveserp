@@ -32,8 +32,10 @@ export function TableStatusTypesTable() {
       setIds: tableStatusTypesUIContext.setIds,
       queryParams: tableStatusTypesUIContext.queryParams,
       setQueryParams: tableStatusTypesUIContext.setQueryParams,
-      openEditTableStatusTypePage: tableStatusTypesUIContext.openEditTableStatusTypePage,
-      openDeleteTableStatusTypeDialog: tableStatusTypesUIContext.openDeleteTableStatusTypeDialog,
+      openEditTableStatusTypePage:
+        tableStatusTypesUIContext.openEditTableStatusTypePage,
+      openDeleteTableStatusTypeDialog:
+        tableStatusTypesUIContext.openDeleteTableStatusTypeDialog,
     };
   }, [tableStatusTypesUIContext]);
 
@@ -50,7 +52,9 @@ export function TableStatusTypesTable() {
   const dispatch = useDispatch();
   useEffect(() => {
     tableStatusTypesUIProps.setIds([]);
-    dispatch(actions.fetchTableStatusTypes(tableStatusTypesUIProps.queryParams));
+    dispatch(
+      actions.fetchTableStatusTypes(tableStatusTypesUIProps.queryParams)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tableStatusTypesUIProps.queryParams, dispatch]);
 
@@ -72,8 +76,10 @@ export function TableStatusTypesTable() {
       text: t("Common.Action"),
       formatter: columnFormatters.ActionsColumnFormatter,
       formatExtraData: {
-        openEditTableStatusTypePage: tableStatusTypesUIProps.openEditTableStatusTypePage,
-        openDeleteTableStatusTypeDialog: tableStatusTypesUIProps.openDeleteTableStatusTypeDialog,
+        openEditTableStatusTypePage:
+          tableStatusTypesUIProps.openEditTableStatusTypePage,
+        openDeleteTableStatusTypeDialog:
+          tableStatusTypesUIProps.openDeleteTableStatusTypeDialog,
         t: t,
       },
       classes: "text-right pr-0",

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { isEqual, isFunction } from "lodash";
 import { RestaurantMenuItemIngredientModel } from "../../../../../core/_models/Restaurant/RestaurantMenuItemIngredientModel";
@@ -10,9 +9,13 @@ export function useRestaurantMenuItemIngredientsUIContext() {
   return useContext(RestaurantMenuItemIngredientsUIContext);
 }
 
-export const RestaurantMenuItemIngredientsUIConsumer = RestaurantMenuItemIngredientsUIContext.Consumer;
+export const RestaurantMenuItemIngredientsUIConsumer =
+  RestaurantMenuItemIngredientsUIContext.Consumer;
 
-export function RestaurantMenuItemIngredientsUIProvider({ restaurantMenuItemIngredientsUIEvents, children }) {
+export function RestaurantMenuItemIngredientsUIProvider({
+  restaurantMenuItemIngredientsUIEvents,
+  children,
+}) {
   const [queryParams, setQueryParamsBase] = useState(
     getConfig(RestaurantMenuItemIngredientModel).initialFilter
   );
@@ -30,7 +33,7 @@ export function RestaurantMenuItemIngredientsUIProvider({ restaurantMenuItemIngr
       return nextQueryParams;
     });
   }, []);
-  
+
   const value = {
     queryParams,
     setQueryParamsBase,
@@ -38,14 +41,22 @@ export function RestaurantMenuItemIngredientsUIProvider({ restaurantMenuItemIngr
     setIds,
     setQueryParams,
     dataModel: RestaurantMenuItemIngredientModel,
-    newRestaurantMenuItemIngredientButtonClick: restaurantMenuItemIngredientsUIEvents.newRestaurantMenuItemIngredientButtonClick,
-    openEditRestaurantMenuItemIngredientPage: restaurantMenuItemIngredientsUIEvents.openEditRestaurantMenuItemIngredientPage,
-    openDeleteRestaurantMenuItemIngredientDialog: restaurantMenuItemIngredientsUIEvents.openDeleteRestaurantMenuItemIngredientDialog,
-    openDeleteRestaurantMenuItemIngredientsDialog: restaurantMenuItemIngredientsUIEvents.openDeleteRestaurantMenuItemIngredientsDialog,
-    openFetchRestaurantMenuItemIngredientsDialog: restaurantMenuItemIngredientsUIEvents.openFetchRestaurantMenuItemIngredientsDialog,
-    openUpdateRestaurantMenuItemIngredientsStatusDialog: restaurantMenuItemIngredientsUIEvents.openUpdateRestaurantMenuItemIngredientsStatusDialog,
+    newRestaurantMenuItemIngredientButtonClick:
+      restaurantMenuItemIngredientsUIEvents.newRestaurantMenuItemIngredientButtonClick,
+    openEditRestaurantMenuItemIngredientPage:
+      restaurantMenuItemIngredientsUIEvents.openEditRestaurantMenuItemIngredientPage,
+    openDeleteRestaurantMenuItemIngredientDialog:
+      restaurantMenuItemIngredientsUIEvents.openDeleteRestaurantMenuItemIngredientDialog,
+    openDeleteRestaurantMenuItemIngredientsDialog:
+      restaurantMenuItemIngredientsUIEvents.openDeleteRestaurantMenuItemIngredientsDialog,
+    openFetchRestaurantMenuItemIngredientsDialog:
+      restaurantMenuItemIngredientsUIEvents.openFetchRestaurantMenuItemIngredientsDialog,
+    openUpdateRestaurantMenuItemIngredientsStatusDialog:
+      restaurantMenuItemIngredientsUIEvents.openUpdateRestaurantMenuItemIngredientsStatusDialog,
   };
   return (
-    <RestaurantMenuItemIngredientsUIContext.Provider value={value}>{children}</RestaurantMenuItemIngredientsUIContext.Provider>
+    <RestaurantMenuItemIngredientsUIContext.Provider value={value}>
+      {children}
+    </RestaurantMenuItemIngredientsUIContext.Provider>
   );
 }

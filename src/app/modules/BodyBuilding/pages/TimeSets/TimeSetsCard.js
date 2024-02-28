@@ -1,4 +1,3 @@
-
 import { useMemo } from "react";
 import {
   Card,
@@ -9,7 +8,7 @@ import {
 import { AdvancedFilter } from "../../../../../core/_partials/custom/advanced-filter/AdvancedFilter";
 import { TimeSetsTable } from "./TimeSets-table/TimeSetsTable";
 import { useTimeSetsUIContext, TimeSetsUIConsumer } from "./TimeSetsUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function TimeSetsCard() {
   const { t } = useTranslation();
@@ -24,14 +23,17 @@ export function TimeSetsCard() {
       newTimeSetButtonClick: timeSetsUIContext.newTimeSetButtonClick,
       openDeleteTimeSetsDialog: timeSetsUIContext.openDeleteTimeSetsDialog,
       openEditTimeSetPage: timeSetsUIContext.openEditTimeSetPage,
-      openUpdateTimeSetsStatusDialog: timeSetsUIContext.openUpdateTimeSetsStatusDialog,
+      openUpdateTimeSetsStatusDialog:
+        timeSetsUIContext.openUpdateTimeSetsStatusDialog,
       openFetchTimeSetsDialog: timeSetsUIContext.openFetchTimeSetsDialog,
     };
   }, [timeSetsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("BodyBuildingTimeSet.Entity")}>
+      <CardHeader
+        title={t("Common.List") + " " + t("BodyBuildingTimeSet.Entity")}
+      >
         <CardHeaderToolbar>
           <button
             type="button"

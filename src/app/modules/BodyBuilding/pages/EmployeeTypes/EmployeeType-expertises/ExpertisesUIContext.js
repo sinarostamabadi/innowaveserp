@@ -27,27 +27,30 @@ export const ExpertisesUIProvider = forwardRef(
 
     useImperativeHandle(ref, () => ({
       Collect(fn) {
-          fn(
-            expertises.map((d) => {
-              let x = {
-                BodyBuildingEmployeeTypeExpertiseId:
-                  d.BodyBuildingEmployeeTypeExpertiseId.toString().indexOf("temp") > -1
-                    ? null
-                    : +d.BodyBuildingEmployeeTypeExpertiseId,
-                BodyBuildingEmployeeTypeId: d.BodyBuildingEmployeeTypeId,
-                Title: d.Title,
-                IsDeleted: d.IsDeleted,
-              };
+        fn(
+          expertises.map((d) => {
+            let x = {
+              BodyBuildingEmployeeTypeExpertiseId:
+                d.BodyBuildingEmployeeTypeExpertiseId.toString().indexOf(
+                  "temp"
+                ) > -1
+                  ? null
+                  : +d.BodyBuildingEmployeeTypeExpertiseId,
+              BodyBuildingEmployeeTypeId: d.BodyBuildingEmployeeTypeId,
+              Title: d.Title,
+              IsDeleted: d.IsDeleted,
+            };
 
-              return x;
-            })
-          );
+            return x;
+          })
+        );
       },
     }));
 
     const [selectedId, setSelectedId] = useState(null);
     const [selectedItem, setSelectedItem] = useState(null);
-    const [bodyBuildingEmployeeTypeId, setBodyBuildingEmployeeTypeId] = useState(currentBodyBuildingEmployeeTypeId);
+    const [bodyBuildingEmployeeTypeId, setBodyBuildingEmployeeTypeId] =
+      useState(currentBodyBuildingEmployeeTypeId);
 
     const initExpertise = {
       BodyBuildingEmployeeTypeExpertiseId: "",
@@ -89,7 +92,8 @@ export const ExpertisesUIProvider = forwardRef(
     }, [expertise]);
 
     useEffect(() => {
-      initExpertise.BodyBuildingEmployeeTypeId = currentBodyBuildingEmployeeTypeId;
+      initExpertise.BodyBuildingEmployeeTypeId =
+        currentBodyBuildingEmployeeTypeId;
 
       setBodyBuildingEmployeeTypeId(currentBodyBuildingEmployeeTypeId);
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -101,7 +105,8 @@ export const ExpertisesUIProvider = forwardRef(
     }, [expertises]);
 
     // Edit Dialog, New Dialog
-    const [showEditExpertiseDialog, setShowEditExpertiseDialog] = useState(false);
+    const [showEditExpertiseDialog, setShowEditExpertiseDialog] =
+      useState(false);
     const openNewExpertiseDialog = () => {
       setSelectedId(undefined);
       setSelectedItem(undefined);
@@ -154,11 +159,13 @@ export const ExpertisesUIProvider = forwardRef(
 
       const expertiseObj = expertises.filter(
         (expertise) =>
-          expertise.BodyBuildingEmployeeTypeExpertiseId == bodyBuildingEmployeeTypeExpertiseId
+          expertise.BodyBuildingEmployeeTypeExpertiseId ==
+          bodyBuildingEmployeeTypeExpertiseId
       )[0];
 
       return {
-        BodyBuildingEmployeeTypeExpertiseId: expertiseObj.BodyBuildingEmployeeTypeExpertiseId,
+        BodyBuildingEmployeeTypeExpertiseId:
+          expertiseObj.BodyBuildingEmployeeTypeExpertiseId,
         BodyBuildingEmployeeTypeId: expertiseObj.BodyBuildingEmployeeTypeId,
         Title: expertiseObj.Title,
         IsDeleted: false,
@@ -166,7 +173,8 @@ export const ExpertisesUIProvider = forwardRef(
     };
 
     const addExpertise = (expertise) => {
-      expertise.BodyBuildingEmployeeTypeExpertiseId = "temp_" + Math.floor(Math.random() * 100);
+      expertise.BodyBuildingEmployeeTypeExpertiseId =
+        "temp_" + Math.floor(Math.random() * 100);
 
       setExpertises((expertises) => [...expertises, expertise]);
     };
@@ -175,7 +183,9 @@ export const ExpertisesUIProvider = forwardRef(
       if (bodyBuildingEmployeeTypeExpertiseId.toString().indexOf("temp_") > -1)
         setExpertises(
           expertises.filter(
-            (x) => x.BodyBuildingEmployeeTypeExpertiseId != bodyBuildingEmployeeTypeExpertiseId
+            (x) =>
+              x.BodyBuildingEmployeeTypeExpertiseId !=
+              bodyBuildingEmployeeTypeExpertiseId
           )
         );
       else {
@@ -188,7 +198,8 @@ export const ExpertisesUIProvider = forwardRef(
     const updateExpertise = (expertise) => {
       setExpertises((expertises) =>
         expertises.map((item) =>
-          item.BodyBuildingEmployeeTypeExpertiseId == expertise.BodyBuildingEmployeeTypeExpertiseId
+          item.BodyBuildingEmployeeTypeExpertiseId ==
+          expertise.BodyBuildingEmployeeTypeExpertiseId
             ? expertise
             : item
         )
@@ -236,9 +247,9 @@ export const ExpertisesUIProvider = forwardRef(
     };
 
     return (
-        <ExpertisesUIContext.Provider value={value}>
-          {children}
-        </ExpertisesUIContext.Provider>
+      <ExpertisesUIContext.Provider value={value}>
+        {children}
+      </ExpertisesUIContext.Provider>
     );
   }
 );

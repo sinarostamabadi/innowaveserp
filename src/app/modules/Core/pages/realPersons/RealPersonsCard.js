@@ -11,11 +11,11 @@ import {
   useRealPersonsUIContext,
   RealPersonsUIConsumer,
 } from "./RealPersonsUIContext";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export function RealPersonsCard() {
-  const {t} = useTranslation();
-  
+  const { t } = useTranslation();
+
   const realPersonsUIContext = useRealPersonsUIContext();
   const realPersonsUIProps = useMemo(() => {
     return {
@@ -23,22 +23,23 @@ export function RealPersonsCard() {
       queryParams: realPersonsUIContext.queryParams,
       setQueryParams: realPersonsUIContext.setQueryParams,
       newRealPersonButtonClick: realPersonsUIContext.newRealPersonButtonClick,
-      openDeleteRealPersonsDialog:  
+      openDeleteRealPersonsDialog:
         realPersonsUIContext.openDeleteRealPersonsDialog,
       openEditRealPersonPage: realPersonsUIContext.openEditRealPersonPage,
-      openUpdateRealPersonsStatusDialog:  
+      openUpdateRealPersonsStatusDialog:
         realPersonsUIContext.openUpdateRealPersonsStatusDialog,
-      openFetchRealPersonsDialog: realPersonsUIContext.openFetchRealPersonsDialog,
+      openFetchRealPersonsDialog:
+        realPersonsUIContext.openFetchRealPersonsDialog,
     };
   }, [realPersonsUIContext]);
 
   return (
     <Card>
-      <CardHeader title={t("Common.List") + ' ' + t("RealPerson.Entity")}>
+      <CardHeader title={t("Common.List") + " " + t("RealPerson.Entity")}>
         <CardHeaderToolbar>
-          <button  
-            type="button"  
-            className="btn btn-primary"  
+          <button
+            type="button"
+            className="btn btn-primary"
             onClick={realPersonsUIProps.newRealPersonButtonClick}
           >
             <i className="far fa-plus ml-1"></i> {t("Common.New")}

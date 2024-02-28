@@ -12,10 +12,7 @@ import {
 } from "src/core/_partials/controls";
 import { ChequeBookEditForm } from "./ChequeBookEditForm";
 import { useSubheader } from "src/core/layout";
-import {
-  ModalProgressBar,
-  Alerty,
-} from "src/core/_partials/controls";
+import { ModalProgressBar, Alerty } from "src/core/_partials/controls";
 import { Tabs, Tab } from "react-bootstrap";
 import { useReactToPrint } from "react-to-print";
 import { useTranslation } from "react-i18next";
@@ -46,7 +43,6 @@ export function ChequeBookEdit({
   // Tabs
   // const [tab, setTab] = useState("basic");
   const [title, setTitle] = useState("");
-  
 
   // const layoutDispatch = useContext(LayoutContext.Dispatch);
   const { actionsLoading, chequeBookForEdit, error } = useSelector(
@@ -57,14 +53,17 @@ export function ChequeBookEdit({
     }),
     shallowEqual
   );
-  
+
   const [chequeBookObj, setChequeBookObj] = useState(initModel);
-  const [chequePapersObj, setChequePapersObj] = useState(initModel.ChequePapers);
+  const [chequePapersObj, setChequePapersObj] = useState(
+    initModel.ChequePapers
+  );
   const [editMode, setEditMode] = useState(false);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    !!id && dispatch(actions.fetchChequeBook(id)).then((res) => setEditMode(true));
+    !!id &&
+      dispatch(actions.fetchChequeBook(id)).then((res) => setEditMode(true));
   }, [id, dispatch]);
 
   useEffect(() => {
@@ -75,7 +74,6 @@ export function ChequeBookEdit({
 
       setChequeBookObj(chequeBookForEdit);
       setChequePapersObj(chequeBookForEdit.ChequePapers);
-
     }
     setTitle(_title);
     subheader.setTitle(_title);
@@ -97,9 +95,7 @@ export function ChequeBookEdit({
           //backToChequeBooksList();
         });
     } else {
-      dispatch(
-        actions.update(id, data)
-      )
+      dispatch(actions.update(id, data))
         .then(() => {
           backToChequeBooksList();
         })
@@ -112,103 +108,103 @@ export function ChequeBookEdit({
   const btnRefChequeBook = useRef("1");
   const btnRefChequePaper = useRef("2");
 
-  const saveChequeBookClick =  () => {
+  const saveChequeBookClick = () => {
     let ChequeBookObj = {};
 
-     btnRefChequeBook.current.Collect( (datas) => {
+    btnRefChequeBook.current.Collect((datas) => {
       ChequeBookObj = datas;
-    if(btnRefChequePaper.current != null && !!chequeBookObj.ChequeBookId){
-      btnRefChequePaper.current.Collect((datas) => {
-        ChequeBookObj["ChequePapers"] = datas;
-      });
-    }
+      if (btnRefChequePaper.current != null && !!chequeBookObj.ChequeBookId) {
+        btnRefChequePaper.current.Collect((datas) => {
+          ChequeBookObj["ChequePapers"] = datas;
+        });
+      }
 
-    SaveChequeBook(ChequeBookObj);
+      SaveChequeBook(ChequeBookObj);
     });
   };
   const backToChequeBooksList = () => {
     history.push(`/cash/chequeBooks`);
   };
 
-return (
-  <>
-    {((!!id && editMode) || !!id == false) && (
-      <Card>
-        {actionsLoading && <ModalProgressBar />}
-        {!actionsLoading && error != null && (
-          <>
-            <ModalProgressBar variant="danger" />
-            <Alerty
-              variant="danger"
-              title={t("err.Error")}
-              description={error}
-            ></Alerty>
-          </>
-        )}
-        <CardHeader title={title}>
-          <CardHeaderToolbar>
-          <button
-            type="button"
-            onClick={backToChequeBooksList}
-            className="btn btn-light"
-          >
-            <i className="fa fa-arrow-left"></i> {t("Common.Back")}
-          </button>
+  return (
+    <>
+      {((!!id && editMode) || !!id == false) && (
+        <Card>
+          {actionsLoading && <ModalProgressBar />}
+          {!actionsLoading && error != null && (
+            <>
+              <ModalProgressBar variant="danger" />
+              <Alerty
+                variant="danger"
+                title={t("err.Error")}
+                description={error}
+              ></Alerty>
+            </>
+          )}
+          <CardHeader title={title}>
+            <CardHeaderToolbar>
+              <button
+                type="button"
+                onClick={backToChequeBooksList}
+                className="btn btn-light"
+              >
+                <i className="fa fa-arrow-left"></i> {t("Common.Back")}
+              </button>
 
-          <button className="btn btn-light ml-2">
-            <i className="fa fa-redo"></i> {t("Common.Reset")}
-          </button>
+              <button className="btn btn-light ml-2">
+                <i className="fa fa-redo"></i> {t("Common.Reset")}
+              </button>
 
-          <button type="submit" className="btn btn-light ml-2">
-            <i className="fa fa-print"></i> {t("Common.Print")}
-          </button>
+              <button type="submit" className="btn btn-light ml-2">
+                <i className="fa fa-print"></i> {t("Common.Print")}
+              </button>
 
-          <button
-            type="submit"
-            className="btn btn-primary ml-2"
-            onClick={saveChequeBookClick}
-          >
-            <i className="fa fa-save"></i> {t("Common.Save")}
-          </button>
-          </CardHeaderToolbar>
-        </CardHeader>
-        <CardBody>
-          <Tabs
-            defaultActiveKey="chequeBook"
-            transition={false}
-            className="nav nav-tabs nav-tabs-line"
-          >
-            <Tab
-              eventKey="chequeBook"
-              title={t("Common.BasicInfo")}
-              className="nav-item"
+              <button
+                type="submit"
+                className="btn btn-primary ml-2"
+                onClick={saveChequeBookClick}
+              >
+                <i className="fa fa-save"></i> {t("Common.Save")}
+              </button>
+            </CardHeaderToolbar>
+          </CardHeader>
+          <CardBody>
+            <Tabs
+              defaultActiveKey="chequeBook"
+              transition={false}
+              className="nav nav-tabs nav-tabs-line"
             >
-              <ChequeBookEditForm
-                actionsLoading={actionsLoading}
-                chequeBook={chequeBookObj}
-                ref={btnRefChequeBook}
-              />
-            </Tab>
-            {!!chequeBookObj.ChequeBookId && (
-                <Tab
-                eventKey="chequePapers"
-                title={t("ChequePaper.Plural")}
+              <Tab
+                eventKey="chequeBook"
+                title={t("Common.BasicInfo")}
                 className="nav-item"
               >
-                <ChequePapersUIProvider
-                  currentChequeBookId={id}
+                <ChequeBookEditForm
                   actionsLoading={actionsLoading}
-                  chequePaper={chequePapersObj}
-                  ref={btnRefChequePaper}
-                >
-                  <ChequePapers />
-                </ChequePapersUIProvider>
+                  chequeBook={chequeBookObj}
+                  ref={btnRefChequeBook}
+                />
               </Tab>
-            )}
-          </Tabs>
-        </CardBody>
-      </Card>
-    )}
-  </>
-);
+              {!!chequeBookObj.ChequeBookId && (
+                <Tab
+                  eventKey="chequePapers"
+                  title={t("ChequePaper.Plural")}
+                  className="nav-item"
+                >
+                  <ChequePapersUIProvider
+                    currentChequeBookId={id}
+                    actionsLoading={actionsLoading}
+                    chequePaper={chequePapersObj}
+                    ref={btnRefChequePaper}
+                  >
+                    <ChequePapers />
+                  </ChequePapersUIProvider>
+                </Tab>
+              )}
+            </Tabs>
+          </CardBody>
+        </Card>
+      )}
+    </>
+  );
 }

@@ -36,7 +36,9 @@ export function ChequePaperEditDialog() {
   const [editChequePaper, setEditChequePaper] = useState(null);
   useEffect(() => {
     // server request for getting chequePaper by seleted id
-    setEditChequePaper(chequePapersUIProps.findChequePaper(chequePapersUIProps.id));
+    setEditChequePaper(
+      chequePapersUIProps.findChequePaper(chequePapersUIProps.id)
+    );
   }, [chequePapersUIProps.id, dispatch]);
 
   const saveChequePaper = (chequePaper) => {

@@ -46,7 +46,10 @@ export const PaymentsUIProvider = forwardRef(
 
     const [selectedId, setSelectedId] = useState(null);
     const [documentId, setDocumentId] = useState(currentDocumentId);
-    const initPayment = {...PaymentTools.Model, DocumentId: currentDocumentId};
+    const initPayment = {
+      ...PaymentTools.Model,
+      DocumentId: currentDocumentId,
+    };
     const [selectedItem, setSelectedItem] = useState(initPayment);
     const { actionsLoading, documentForEdit, error } = useSelector(
       (state) => ({
@@ -57,7 +60,9 @@ export const PaymentsUIProvider = forwardRef(
       shallowEqual
     );
 
-    const [queryParams, setQueryParamsBase] = useState(getConfig(PaymentModel, "PaymentDate", "desc").initialFilter);
+    const [queryParams, setQueryParamsBase] = useState(
+      getConfig(PaymentModel, "PaymentDate", "desc").initialFilter
+    );
 
     const setQueryParams = useCallback((nextQueryParams) => {
       setQueryParamsBase((prevQueryParams) => {
@@ -73,7 +78,9 @@ export const PaymentsUIProvider = forwardRef(
       });
     }, []);
 
-    const [payments, setPayments] = useState(payment.map(x=> PaymentTools.Clean(x)));
+    const [payments, setPayments] = useState(
+      payment.map((x) => PaymentTools.Clean(x))
+    );
     const [activePayments, setActivePayments] = useState([]);
     const [totalCount, setTotalCount] = useState(0);
 
@@ -93,7 +100,7 @@ export const PaymentsUIProvider = forwardRef(
       setSelectedItem(findPayment(selectedId));
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedId]);
-    
+
     const [showEditPaymentDialog, setShowEditPaymentDialog] = useState(false);
     const openNewPaymentDialog = () => {
       setSelectedId(undefined);
@@ -116,7 +123,8 @@ export const PaymentsUIProvider = forwardRef(
       setShowEditPaymentDialog(false);
     };
 
-    const [showDeletePaymentDialog, setShowDeletePaymentDialog] = useState(false);
+    const [showDeletePaymentDialog, setShowDeletePaymentDialog] =
+      useState(false);
     const openDeletePaymentDialog = (id) => {
       setSelectedId(id);
       setShowDeletePaymentDialog(true);
@@ -127,9 +135,8 @@ export const PaymentsUIProvider = forwardRef(
       setShowDeletePaymentDialog(false);
     };
 
-    const [showDeletePaymentsDialog, setShowDeletePaymentsDialog] = useState(
-      false
-    );
+    const [showDeletePaymentsDialog, setShowDeletePaymentsDialog] =
+      useState(false);
     const openDeletePaymentsDialog = () => {
       setShowDeletePaymentsDialog(true);
     };
@@ -137,7 +144,8 @@ export const PaymentsUIProvider = forwardRef(
       setShowDeletePaymentsDialog(false);
     };
 
-    const [showFetchPaymentsDialog, setShowFetchPaymentsDialog] = useState(false);
+    const [showFetchPaymentsDialog, setShowFetchPaymentsDialog] =
+      useState(false);
     const openFetchPaymentsDialog = () => {
       setShowFetchPaymentsDialog(true);
     };
@@ -165,7 +173,8 @@ export const PaymentsUIProvider = forwardRef(
         setPayments((payments) =>
           payments.map((item) => {
             let copyPayment = CloneObject(item);
-            if (copyPayment.PaymentId == paymentId) copyPayment.IsDeleted = true;
+            if (copyPayment.PaymentId == paymentId)
+              copyPayment.IsDeleted = true;
 
             return copyPayment;
           })
